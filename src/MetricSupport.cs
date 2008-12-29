@@ -41,18 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] data)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches * 5) <= (matches & 1))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
