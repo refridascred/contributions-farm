@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long target)
+        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaFilterCount(long[] levels)
         {
-            long acc = -12;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 2) ^ acc) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc < 375)
-            {
-                acc = (acc ^ (5 ^ target)) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
