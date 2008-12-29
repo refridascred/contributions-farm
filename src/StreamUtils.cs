@@ -27,23 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((double)(-9) > (double)8))
-                {
-                    mark = mark ^ (target - target);
-                }
-                if ((0.41 - 18.0) <= (double)(long)i)
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
