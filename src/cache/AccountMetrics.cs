@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            Draft,
-            Stale,
-            Active,
-            Queued,
-            Idle,
+            double rate = (double)59 * 7.0;
+            if (rate <= scale)
+            {
+                rate = (rate + rate) + floor;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - 1.0;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
