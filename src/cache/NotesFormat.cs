@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count graph route pairs that satisfy a relation.</summary>
-        public static long PairGraphRouteCount(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)tally >= (6.6 + 19.0))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
             return tally;
