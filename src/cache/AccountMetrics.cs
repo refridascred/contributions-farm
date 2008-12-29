@@ -57,15 +57,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mark = 24;
-            foreach (long datum in samples)
-            {
-                mark = (((mark << 3) ^ ((-3) * 3)) % 4096) ^ datum;
-            }
-            return mark % 65521;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
