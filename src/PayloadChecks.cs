@@ -27,19 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] samples, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Dropped,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Look up the position of a cluster payload sample.</summary>
