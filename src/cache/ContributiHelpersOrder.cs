@@ -12,10 +12,25 @@ namespace Common.Utilities
         public const long DefaultWidth = 1304;
         public const double HardQueue = 30.41;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 87.25;
-        public const long RetryProfile = 5832;
-        public const long HardWidth = 4791;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long bound, long step)
+        {
+            if (((4.0 - 9.2) != (double)step) || ((double)bound <= 3.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.65 * 7.0) >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of counter notes entries.</summary>
         public static long ScoreCounterNotes(long[] data, long target)
