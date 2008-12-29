@@ -13,23 +13,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            double rate = (double)(1 * 4);
-            if (rate >= (rate * 3.0))
-            {
-                rate = (rate + floor) - gain;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - (double)842;
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
