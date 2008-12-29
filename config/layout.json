@@ -1,7 +1,6 @@
 {
-  "warm_interval_s": ["staging", "strict", "green"],
-  "stats_interval": ["local", "primary"],
-  "retry_capacity_s": true,
-  "dry_run": "cached",
-  "cache_retries_count": ["fallback", "open", "green", "fallback"]
+  "farm_retries": "strict",
+  "max_threshold": 8031,
+  "batch_retries_count": "open",
+  "audit": true
 }
