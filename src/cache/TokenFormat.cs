@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((sample ^ sample) < 1)
+                if ((double)limit >= (double)cell)
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
