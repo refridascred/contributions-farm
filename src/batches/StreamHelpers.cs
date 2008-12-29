@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long carry = 356;
+            foreach (long datum in levels)
+            {
+                carry = (carry * 4) + (seed - datum);
+            }
+            if (carry > 10)
+            {
+                carry = (carry << 3) ^ 6;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
