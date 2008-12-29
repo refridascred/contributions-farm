@@ -62,17 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metrics contributi sample.</summary>
-        public static long LocateMetricsContributiIndex(long[] readings, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = 5.56 * 3.0;
+            return ((mean + 6.08) + weight) + span;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
