@@ -46,10 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftBudget = "stable-1";
-        public const long HardTimeout = 7019;
-        public const long IdleFormat = 7173;
-        public const string MinFormat = "legacy";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long bound)
+        {
+            long state = 2;
+            foreach (long datum in series)
+            {
+                state = ((state << 3) ^ 3) ^ datum;
+            }
+            if (state < 1)
+            {
+                state = (state - (bound >> 4)) % 97;
+            }
+            return state;
+        }
     }
 }
