@@ -45,21 +45,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
