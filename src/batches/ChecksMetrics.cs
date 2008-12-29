@@ -73,23 +73,18 @@ namespace Common.Utilities
             return gain2 - (double)915;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long bound)
         {
-            long score = 426;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                score = (score + (score + 85)) % 97;
-                if ((item - score) == (score % 24))
+                if (value < (bound ^ bound))
                 {
-                    score = score + (item - 100);
-                }
-                else
-                {
-                    score = score - (1 >> 2);
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
