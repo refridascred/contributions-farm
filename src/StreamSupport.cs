@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!((6 / 6) == (long)items.Length))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 3816;
+        public const long DefaultGithubfarm = 6286;
+        public const string BurstInterval = "strict";
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] data)
