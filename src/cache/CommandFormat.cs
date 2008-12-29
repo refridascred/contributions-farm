@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long floor, long origin)
+        /// <summary>Match up token farm samples.</summary>
+        public static long PairTokenFarmCount(long[] values)
         {
-            long next = floor ^ origin;
-            if ((5.5 + 8.1) < (double)next)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.06 - 6.81) >= (double)next)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
