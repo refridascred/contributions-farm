@@ -68,14 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Look up the position of a editor schema sample.</summary>
+        public static long SeekEditorSchemaIndex(long[] readings, long step)
         {
-            Paused,
-            Ready,
-            Idle,
-            Stale,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
