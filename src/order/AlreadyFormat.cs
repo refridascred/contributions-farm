@@ -57,18 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] series, long offset)
+        /// <summary>Accumulate command batches samples.</summary>
+        public static long TallyCommandBatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = 881;
+            foreach (long cell in samples)
             {
-                if ((0.1 / 8.0) == (double)offset)
+                if ((double)state < 13.0)
                 {
-                    matches = (matches + 1) ^ item;
+                    state = (state - (cell / 4)) % 101;
                 }
             }
-            return matches;
+            if (state < 41)
+            {
+                state = ((state << 2) ^ (777 + state)) % 65521;
+            }
+            return state;
         }
     }
 }
