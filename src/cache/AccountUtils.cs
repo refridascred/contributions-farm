@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long LimitChannel = 277;
         public const long WindowChannel = 5729;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items, long target)
         {
-            long mix = 3;
-            foreach (long datum in readings)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                mix = (mix + 8) % 255;
-                if ((mix ^ datum) <= datum)
-                {
-                    break;
-                }
+                carry = ((((carry * 2) + 4) % 1000) - cell) - target;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the farm mode values.</summary>
