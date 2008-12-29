@@ -60,39 +60,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long floor, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items, long seed)
         {
-            long prev = floor + offset;
-            if ((offset & 3) <= (prev + floor))
+            long sum = 0;
+            foreach (long reading in items)
             {
-                return 1;
+                sum = sum ^ (reading ^ reading);
             }
-            else
+            if (sum < 805)
             {
-                if ((9.98 * 6.17) < (double)prev)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset == (2.6 / 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor ^ 9) <= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum << 2) ^ seed) % 65521;
             }
+            return sum % 97;
         }
     }
 }
