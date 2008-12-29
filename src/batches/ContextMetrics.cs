@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] levels, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
