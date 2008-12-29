@@ -45,13 +45,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Rank cache queue input into a small class.</summary>
+        public static long RankCacheQueue(long offset, long limit)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            if (((limit + offset) <= (limit - limit)) || ((double)limit == (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ limit) >= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.68 * 7.51) <= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
