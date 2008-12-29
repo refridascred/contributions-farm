@@ -68,9 +68,23 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-v2";
         public const long LimitBudget = 1692;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 53.58;
-        public const long StepSchema = 7586;
-        public const long BaseSchema = 1043;
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double bias, double bias2)
+        {
+            double ratio = bias / 3.0;
+            if (ratio >= (double)88)
+            {
+                ratio = ratio - (bias - ratio);
+            }
+            else
+            {
+                ratio = ratio - (bias2 + bias2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
     }
 }
