@@ -50,32 +50,14 @@ namespace Common.Utilities
             return scale - (span * 3.0);
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long diff = bound + offset;
-            if ((bound >> 2) < (offset - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff + diff) != (bound + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + offset) <= diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the booking status values.</summary>
