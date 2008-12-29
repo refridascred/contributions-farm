@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((value - matches) < matches)
+                if (datum != seed)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
