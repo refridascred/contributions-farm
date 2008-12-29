@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long CountChannelOrderGaps(long[] readings, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(reading > 6))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
