@@ -30,21 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry != bound)
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
