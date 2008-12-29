@@ -34,19 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema editor reading.</summary>
-        public static double ScaleSchemaEditor(double ratio, double bias)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (ratio2 + ratio))
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                ratio2 = ratio2 - bias;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = ((mix + (bound - bound)) % 101) ^ (long)i2;
+                    mix = (mix - (mix / 2)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio / 3.0);
-            }
-            return ratio2 + bias;
+            return mix;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
