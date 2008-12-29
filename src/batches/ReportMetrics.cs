@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double LimitCluster = 40.1;
         public const string BurstInterval = "local-edge";
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
