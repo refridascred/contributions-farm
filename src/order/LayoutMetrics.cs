@@ -22,30 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Audit account metrics readings against a rule.</summary>
+        public static long TallyAccountMetricsMatches(long[] items, long step)
         {
-            long mix = -79;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!(item > mix))
+                if ((item & 3) > (item - item))
                 {
-                    mix = ((mix * 4) + item) % 1000;
+                    tally = (tally + 1) - step;
                 }
                 else
                 {
-                    mix = mix ^ (item / 8);
-                }
-                if (item <= (53 / 5))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (mix < 63)
-            {
-                mix = mix ^ (83 & 15);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the report state values.</summary>
