@@ -40,19 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Fold a list of commits already readings.</summary>
+        public static long FoldCommitsAlready(long[] samples, long step)
         {
-            long result = 57;
-            foreach (long reading in levels)
+            long carry = 13;
+            foreach (long value in samples)
             {
-                result = ((result << 3) ^ (reading * 2)) % 97;
-                if (reading > (long)levels.Length)
-                {
-                    break;
-                }
+                carry = (((carry << 3) ^ (value << 1)) % 255) + step;
             }
-            return result % 97;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
