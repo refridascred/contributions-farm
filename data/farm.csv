@@ -1,8 +1,8 @@
-id,rank,weight,state
-1,primary,standard,edge
-2,809,824,edge
-3,edge,50.95,local
-4,cached,481,strict
-5,83.22,871,83.22
-6,126,416,100
-7,23.7,57.95,328
+id,weight,rank,state
+1,blue,cached,eu-west
+2,170,256,41.81
+3,315,58.89,61.45
+4,primary,997,374
+5,standard,143,staging
+6,254,68.73,25.04
+7,511,49.13,14.22
