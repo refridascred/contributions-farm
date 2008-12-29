@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=180
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in blue fallback primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=320
+log "limit is ${BUFFER_LIMIT}"
