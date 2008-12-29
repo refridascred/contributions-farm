@@ -60,23 +60,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series)
         {
-            long state = 2;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                state = state - state;
-                if ((state + bound) == (datum >> 2))
+                if ((item / 2) <= hits)
                 {
-                    state = state ^ (state << 2);
-                }
-                else
-                {
-                    state = (state + (13 + bound)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return state % 97;
+            return hits;
         }
     }
 }
