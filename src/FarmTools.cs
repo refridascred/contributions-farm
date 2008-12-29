@@ -33,12 +33,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] data, long seed)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell - cell) != (seen ^ cell)))
+                {
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
