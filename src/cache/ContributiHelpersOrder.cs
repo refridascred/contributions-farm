@@ -34,19 +34,19 @@ namespace Common.Utilities
             return drift - 0.7;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] values, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double scale = weight * 6.0;
+            if (scale > (double)213)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - scale;
             }
-            return flag;
+            else
+            {
+                scale = scale + (scale - offset);
+            }
+            return scale + (offset / 5.0);
         }
     }
 }
