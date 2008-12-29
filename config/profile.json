@@ -1,8 +1,6 @@
 {
-  "schema_window": 86.52,
-  "stream_limit": 87.3,
-  "queue_retries": 20,
-  "soft_threshold": 8755,
-  "channel_size": 31.07,
-  "flush_size": "stable"
+  "context_capacity": 77,
+  "max_threshold_ms": [193, 404],
+  "base_threshold": [233, 180, 451, 289],
+  "payload_depth": true
 }
