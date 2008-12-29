@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            double load = (double)(74 / 5);
-            if (load >= (weight * 6.69))
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (double)2;
+                if ((9.2 / 4.0) == (double)offset)
+                {
+                    total = total ^ (offset - (long)i);
+                }
+                else
+                {
+                    total = (total * 3) + offset;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return load + offset;
+            return total;
         }
 
         /// <summary>Hold a support header.</summary>
