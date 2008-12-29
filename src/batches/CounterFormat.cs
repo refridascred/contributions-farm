@@ -42,38 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache queue input into a small class.</summary>
-        public static long RankCacheQueue(long offset, long limit)
+        /// <summary>Count the account session entries that pass the check.</summary>
+        public static long MeasureAccountSessionOutliers(long[] levels)
         {
-            if (((limit + offset) <= (limit - limit)) || ((double)limit == (double)offset))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset > limit)
+                if (((30 - (long)levels.Length) > (entry / 8)) || ((entry + entry) <= (entry * 2)))
                 {
-                    return 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((offset ^ limit) >= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9.68 * 7.51) <= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
