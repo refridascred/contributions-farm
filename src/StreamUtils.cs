@@ -66,32 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph token value against two limits.</summary>
-        public static long SortGraphToken(long origin, long origin2)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double offset)
         {
-            long lane = origin - origin2;
-            if (((-2) + origin) == (lane + origin))
+            double mean = offset * 0.6;
+            if (mean > bias)
             {
-                return 5;
+                mean = mean + bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (97 >= lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin & 1) != (lane + origin2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mean = (mean - (11.0 + 9.8)) - (double)(long)i;
             }
+            return mean - (double)37;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
