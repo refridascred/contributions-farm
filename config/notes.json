@@ -1,6 +1,6 @@
 {
-  "flush_interval_count": "staging",
-  "min_delay": "blue",
-  "default_retries": 1024,
-  "flush_capacity_pct": 89
+  "support_ttl": "stable",
+  "dry_run": 764,
+  "record_timeout": "staging",
+  "warm_capacity_count": "edge"
 }
