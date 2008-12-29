@@ -10,40 +10,12 @@ namespace Common.Utilities
         public const double DefaultLevel = 64.23;
         public const long BurstRatio = 1790;
 
-        /// <summary>Classify a checks notes pair into a bucket.</summary>
-        public static long RankChecksNotes(long target, long bound)
-        {
-            long edge = target ^ bound;
-            if (!(target > (bound + edge)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target + 3) == (bound & 31)) && (edge > (bound * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.22 >= (double)bound) && ((double)bound == (4.39 + 5.3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5 + 7) == (bound / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftLevel = 3253;
+        public const double MaxSpan = 89.93;
+        public const string BatchCount = "latest-edge";
+        public const string WindowGithubfarm = "cached-1";
+        public const long RetryInterval = 6421;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
