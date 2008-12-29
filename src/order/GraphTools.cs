@@ -52,9 +52,10 @@ namespace Common.Utilities
         public const long BatchStats = 123;
         public const long HardBudget = 8519;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySpan = 141;
-        public const long HardInterval = 1284;
-        public const long DefaultBatch = 8860;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 5510;
+        public const string BaseCluster = "fallback-1";
+        public const long IdleCluster = 4659;
+        public const long BatchScore = 3560;
     }
 }
