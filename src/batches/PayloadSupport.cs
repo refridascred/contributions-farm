@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long step, long seed)
         {
-            Idle,
-            Locked,
-            Pending,
-            Queued,
+            if ((double)371 == (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((779 + seed) > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - (-31)) != (878 / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches record.</summary>
