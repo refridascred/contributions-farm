@@ -52,13 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Locate a already route reading by value.</summary>
+        public static long LocateAlreadyRouteIndex(long[] values, long seed)
         {
-            Idle,
-            Closed,
-            Synced,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
