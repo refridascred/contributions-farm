@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long score = 215;
-            foreach (long item in values)
+            long sum = 42;
+            foreach (long value in samples)
             {
-                if (!((item % 7) >= item))
+                if (value >= (value << 1))
                 {
-                    score = ((score * 5) + item) % 1000;
-                    score = ((score << 2) ^ (score - item)) % 255;
+                    sum = (sum + (value << 2)) % 1000;
                 }
-                if ((score << 1) > (item % 100))
+                else
                 {
-                    score = ((score * 3) + (score + score)) % 101;
+                    sum = sum ^ (value << 1);
                 }
+                sum = (sum * 3) + (1 * 4);
             }
-            if (score < 716)
-            {
-                score = (score << 3) ^ (score / 7);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Match up cluster samples.</summary>
