@@ -67,11 +67,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 1487;
-        public const double BurstRatio = 86.77;
-        public const long RetryInterval = 9954;
-        public const long SoftScore = 4254;
-        public const double MaxInterval = 61.06;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
