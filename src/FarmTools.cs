@@ -33,18 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] values, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)offset <= (8.8 - 1.65))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
