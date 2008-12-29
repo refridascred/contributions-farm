@@ -1,4 +1,6 @@
 # support settings
-cache_ratio_ms: 93.44
-report_capacity: 500
-flush_threshold_s: 7
+idle_interval_count: 73.61
+batch_retries:
+  - 318
+  - 216
+flush_size: 72.24
