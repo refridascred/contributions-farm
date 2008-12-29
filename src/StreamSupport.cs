@@ -35,12 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            Draft,
-            Locked,
-            Ready,
+            double drift = (double)(8 + 948);
+            if (drift >= ratio)
+            {
+                drift = (drift - (2.0 * 1.4)) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (double)187;
         }
     }
 }
