@@ -53,15 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
