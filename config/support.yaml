@@ -1,6 +1,16 @@
 # support settings
-idle_interval_count: 73.61
-batch_retries:
-  - 318
-  - 216
-flush_size: 72.24
+warm_ttl_ms: latest
+command_threshold: 1024
+stats_threshold:
+  soft_size_pct: false
+  base_ratio_s:
+    persist: 9632
+    filter_limit: false
+    warm_timeout_pct: true
+    max_ttl_count: 2623
+    dry_run: green
+  dry_run: green
+  sync_window_count: 60
+  route_size: standard
+soft_interval_pct: green
+verbose: edge
