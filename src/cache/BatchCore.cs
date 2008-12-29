@@ -60,19 +60,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] series, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > bound)
+                if ((2.16 >= (double)(long)i) || (seed <= (mark & 1)))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 2) ^ ((long)i * 5)) % 97;
+                    mark = mark ^ (seed & 127);
+                    continue;
                 }
+                else
+                {
+                    mark = mark ^ (mark * 4);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
