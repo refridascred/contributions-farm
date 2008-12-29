@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((2.1 / 6.0) == (double)sum))
+                if (series[i] > step)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine cache cluster values into a single score.</summary>
