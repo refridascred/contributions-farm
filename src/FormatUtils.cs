@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] samples, long origin)
+        /// <summary>Adjust a stats layout reading.</summary>
+        public static double ProjectStatsLayout(double rate, double bias)
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = rate;
+            return (drift + (16.0 + rate)) + bias;
         }
 
         /// <summary>Describe the layout level values.</summary>
