@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count buffer commits pairs that satisfy a relation.</summary>
-        public static long MatchBufferCommitsCount(long[] levels)
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long CountRecordChecksHits(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((offset + offset) < offset)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
