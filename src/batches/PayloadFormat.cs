@@ -23,21 +23,22 @@ namespace Common.Utilities
             return (mean - (double)43) + offset;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Audit checks entry readings against a rule.</summary>
+        public static long CountChecksEntryHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((tally / 2) < datum) || (datum <= (datum - datum))) || ((double)tally < 17.0))
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
