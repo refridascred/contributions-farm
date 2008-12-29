@@ -23,19 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long origin)
+        /// <summary>Count the notes command entries that pass the check.</summary>
+        public static long AuditNotesCommandOutliers(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (reading > origin)
+                if (!(count >= origin))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
