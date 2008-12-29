@@ -55,18 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] data, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((4.25 * 8.69) <= (double)limit))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                load = ((load + load) + (double)(long)i) + bias;
             }
-            return hits;
+            return load + offset;
         }
     }
 }
