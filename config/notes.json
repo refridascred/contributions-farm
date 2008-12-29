@@ -1,6 +1,7 @@
 {
-  "default_size_ms": ["green", "primary", "cached"],
-  "flush_size_count": ["edge", "legacy", "edge"],
-  "buffer_delay": false,
-  "entry_window": 38
+  "idle_size": true,
+  "report_capacity": 3557,
+  "idle_capacity_ms": ["latest", "edge", "latest", "staging"],
+  "compress": 35.26,
+  "cache_ttl": "eu-west"
 }
