@@ -23,14 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long step)
         {
-            Done,
-            Stale,
-            Queued,
-            Dropped,
-            Active,
+            if (((-36) + step) == (seed >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (4.0 - 8.56))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed <= step) || ((seed - seed) != (seed / 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.0 - 4.0) < (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token class values.</summary>
