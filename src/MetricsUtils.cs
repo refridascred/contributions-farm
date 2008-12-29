@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-v2";
         public const string CacheWindow = "cached";
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] items, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                if ((origin * 4) >= 528)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
