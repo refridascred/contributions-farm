@@ -1,8 +1,12 @@
 {
-  "queue_delay": "eu-west",
-  "verbose": "legacy",
-  "soft_ttl_pct": "primary",
-  "min_ratio_count": true,
-  "readonly": 1024,
-  "batch_limit": 250
+  "base_size": ["stable", "edge", "edge", "fallback"],
+  "warm_ratio": {
+    "cache_ttl": "open",
+    "max_timeout": true,
+    "payload_interval": "green",
+    "cache_ratio": ["fallback", "staging", "cached", "legacy"]
+  },
+  "audit": "blue",
+  "flush_delay": [309, 60, 423],
+  "flush_ttl_s": "legacy"
 }
