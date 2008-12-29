@@ -19,18 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((offset + 8) <= (target & 63))
             {
-                if ((double)tally <= (12.0 - 7.0))
+                return 6;
+            }
+            else
+            {
+                if (((offset & 255) != (offset & 31)) || (872 < (offset - offset)))
                 {
-                    tally = (tally + 1) ^ entry;
+                    return 7;
+                }
+                else
+                {
+                    if (target < (offset >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
