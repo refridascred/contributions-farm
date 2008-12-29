@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long target)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long gap = floor - target;
+            if (target < (94 * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor > (gap >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - gap) >= gap)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target * 5) <= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
