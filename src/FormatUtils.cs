@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next context token value from a seed.</summary>
-        public static long IterateContextToken(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((922 << 3) != (score << 2))
-                {
-                    score = score ^ (target % 60);
-                    score = (score * 4) + (long)i;
-                    continue;
-                }
-                if ((score + (long)i) != (target + score))
-                {
-                    score = (score + (long)i) % 1000;
-                    score = (score + target) % 101;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowScore = 3078;
+        public const long IdleCache = 8149;
+        public const double MinCache = 18.43;
+        public const string BatchCount = "primary-edge";
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
