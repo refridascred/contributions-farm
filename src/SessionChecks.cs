@@ -23,17 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] levels, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                long span = (6 * 2) << 2;
+                if (span >= (step ^ 864))
                 {
-                    return (long)i;
+                    break;
                 }
+                if (!((1.94 / 7.0) >= (double)span))
+                {
+                    span = (span - (long)i) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
