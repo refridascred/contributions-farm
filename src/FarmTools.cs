@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items, long target)
         {
-            double bias2 = 3.39;
-            for (int i = 0; i < 7; i++)
+            long acc = 76;
+            foreach (long item in items)
             {
-                bias2 = ((bias2 - (bias2 + bias)) + (double)(long)i) - rate;
+                acc = (((acc - (acc << 1)) % 97) ^ item) - target;
             }
-            return bias2 + 6.6;
+            return acc % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
