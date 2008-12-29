@@ -33,15 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream schema counter forward.</summary>
-        public static long DeriveStreamSchema(long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
