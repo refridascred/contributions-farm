@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long score = 53;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (score ^ (entry * 3)) - (long)i;
-                    score = (score + (8 * 2)) % 101;
-                }
-                if (((15.0 - 8.7) >= (double)entry) || ((score & 63) < (entry * 2)))
-                {
-                    score = (score << 3) ^ entry;
-                }
-            }
-            if (score > 31)
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
