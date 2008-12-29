@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Validate layout token readings against a bound.</summary>
+        public static bool GuardLayoutTokenLimits(long[] readings, long target)
         {
-            double drift = (double)(8 + 948);
-            if (drift >= ratio)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                drift = (drift - (2.0 * 1.4)) - span;
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (double)187;
+            return valid;
         }
     }
 }
