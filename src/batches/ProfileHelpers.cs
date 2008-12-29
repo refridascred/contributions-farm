@@ -62,15 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series, long limit)
+        /// <summary>Compare every pair of layout graph readings.</summary>
+        public static long OverlapLayoutGraphCount(long[] readings)
         {
-            long acc = 666;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - datum) - limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
