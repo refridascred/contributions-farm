@@ -13,10 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 7709;
-        public const string MinRatio = "primary-v2";
-        public const long MaxRatio = 5246;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Synced,
+            Failed,
+            Paused,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
