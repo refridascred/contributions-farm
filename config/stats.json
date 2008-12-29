@@ -1,14 +1,12 @@
 {
-  "batch_delay": ["strict", "local", "blue"],
-  "retry_delay_count": {
-    "checks_ratio": false,
-    "sync_timeout": false,
-    "notes_ratio": {
-      "sync_size_s": [210, 30, 330],
-      "default_ratio_pct": "local",
-      "retry_ttl": 1044
-    },
-    "warm_depth_s": true
+  "hard_depth": "blue",
+  "retry_depth_pct": 250,
+  "record_ttl": "staging",
+  "poll_threshold_s": {
+    "already_capacity": "fallback",
+    "soft_ratio_s": "stable",
+    "min_ratio": 75
   },
-  "persist": "green"
+  "farm_capacity": false,
+  "poll_timeout_s": 6.36
 }
