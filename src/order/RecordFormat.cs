@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
