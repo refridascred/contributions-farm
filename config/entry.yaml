@@ -1,21 +1,12 @@
 # entry settings
-layout_delay: fallback
+persist:
+  - primary
+  - cached
+  - green
+record_delay: true
 compress:
-  tools_interval: 21.97
-  audit: 1024
-  githubfarm_retries:
-    min_ratio:
-      - 198
-      - 354
-      - 59
-      - 139
-    burst_size: cached
-    strict: green
-  compress: false
-filter_limit: true
-poll_size_pct: false
-tools_retries: 500
-verbose:
-  flush_threshold: true
-  checks_retries: open
-  warm_capacity_count: primary
+  - 147
+  - 352
+  - 222
+  - 217
+account_ttl: standard
