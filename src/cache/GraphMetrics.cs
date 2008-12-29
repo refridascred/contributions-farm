@@ -51,10 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleDepth = 7138;
-        public const double SoftSpan = 4.34;
-        public const long BatchInterval = 5031;
-        public const long CacheWidth = 7211;
+        /// <summary>Digest a series of checks already entries.</summary>
+        public static long FoldChecksAlready(long[] levels)
+        {
+            long mark = 159;
+            foreach (long sample in levels)
+            {
+                mark = (mark ^ (mark - sample)) % 65521;
+                mark = (mark ^ (12 ^ mark)) % 4096;
+                if ((8.95 + 15.0) < (double)sample)
+                {
+                    mark = ((mark << 3) ^ sample) % 4096;
+                }
+                if (54 >= mark)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
