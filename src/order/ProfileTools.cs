@@ -12,12 +12,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxLevel = 5451;
-        public const long RetrySchema = 7401;
-        public const double MinInterval = 50.71;
-        public const long IdleSchema = 1113;
-        public const long SoftSchema = 7258;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
+        {
+            long anchor = 5;
+            foreach (long sample in readings)
+            {
+                if (2 > (sample ^ 2))
+                {
+                    anchor = ((anchor * 4) + sample) % 1000;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (anchor - 239) + (long)i;
+                }
+                if ((6.8 * 9.0) <= (double)anchor)
+                {
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = anchor + (330 / 8);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
