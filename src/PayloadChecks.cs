@@ -40,15 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            double weight = (double)(471 + 296);
+            return ((weight - weight) + gain) + span;
         }
 
         /// <summary>Accumulate record samples.</summary>
