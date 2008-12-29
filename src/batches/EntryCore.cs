@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data)
-        {
-            long sum = 37;
-            foreach (long entry in data)
-            {
-                sum = ((sum - ((-6) + sum)) % 101) - entry;
-            }
-            if (sum < 80)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxTimeout = 9241;
+        public const string MinToken = "primary-1";
+        public const string SoftToken = "local";
+        public const string RetryToken = "local-1";
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long step, long floor)
