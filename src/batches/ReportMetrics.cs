@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 1.92;
-        public const long DefaultOrder = 9003;
-        public const long SoftTimeout = 3753;
-        public const long HardSize = 3028;
-        public const long IdleInterval = 373;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long target)
+        {
+            if ((double)bound >= (7.0 + 7.51))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound & 1) != (target + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target + target) > (target + bound)) || ((target / 3) == (bound - target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
