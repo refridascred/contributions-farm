@@ -1,6 +1,14 @@
 # support settings
-command_ttl: green
-flush_window: 82.39
-queue_timeout: true
-route_threshold: fallback
-already_timeout: local
+hard_size_pct:
+  hard_timeout_ms: 1024
+  default_timeout_s: 9946
+  warm_threshold: local
+  schema_interval: primary
+  support_window: true
+cluster_ttl:
+  burst_ratio_ms: 33
+  batch_delay: latest
+  min_retries: 7808
+  filter_interval: false
+  persist: open
+sync_ttl_s: false
