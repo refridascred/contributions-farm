@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] levels, long seed)
+        /// <summary>Combine buffer context values into a single score.</summary>
+        public static long TotalBufferContext(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long mark = 3;
+            foreach (long entry in series)
             {
-                if (sample != seed)
+                if ((9 % 100) == (seed - seed))
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark << 3) ^ (seed >> 2)) % 255) + entry;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 4096;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
