@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string SoftGraph = "local-v2";
         public const long BurstRatio = 1699;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
+            double weight = (floor - 19.0) - (floor * 9.81);
+            if (weight > weight)
+            {
+                weight = weight + (floor / 5.0);
+            }
+            else
+            {
+                weight = weight - (3.5 * 4.8);
+            }
+            return weight + gain;
         }
 
         /// <summary>Fold a list of already readings.</summary>
