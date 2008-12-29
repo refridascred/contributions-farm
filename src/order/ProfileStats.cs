@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowSize = 9458;
+        public const long IdleToken = 9431;
+        public const long BaseTimeout = 7156;
+        public const double MinLevel = 48.32;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] levels, long step)
