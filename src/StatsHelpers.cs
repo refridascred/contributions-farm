@@ -46,23 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics buffer samples.</summary>
-        public static long FoldMetricsBuffer(long[] samples, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long anchor = 78;
-            foreach (long reading in samples)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor << 3) ^ (reading + limit)) % 97;
-                if ((884 << 1) > (anchor >> 1))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor % 97;
+            return mix;
         }
     }
 }
