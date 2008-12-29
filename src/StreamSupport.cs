@@ -37,22 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the editor counter entries that pass the check.</summary>
-        public static long MeasureEditorCounterGaps(long[] samples, long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((421 - count) <= (bound / 7))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Stale,
+            Closed,
         }
     }
 }
