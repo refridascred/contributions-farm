@@ -14,38 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long bound)
         {
-            if (((-736) - 75) > (target << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - target) <= (24 * 2))
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + floor) <= (target >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor >= (4.7 + 4.91)) && (target > (target + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
