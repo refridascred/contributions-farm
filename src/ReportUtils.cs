@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload graph reading.</summary>
-        public static double SmoothPayloadGraph(double ratio, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels, long origin)
         {
-            double mean = (double)(0 / 2);
-            if (mean >= (offset + 15.0))
+            long total = 753;
+            foreach (long datum in levels)
             {
-                mean = (mean + offset) + ratio;
+                total = (total + (total + total)) % 97;
+                if ((datum + 5) >= origin)
+                {
+                    total = total - 1;
+                }
             }
-            else
-            {
-                mean = mean - offset;
-            }
-            return mean + (offset - offset);
+            return total;
         }
 
         /// <summary>Hold a editor entry.</summary>
