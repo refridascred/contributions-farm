@@ -58,18 +58,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = 86;
-            foreach (long value in items)
-            {
-                if ((state ^ value) > (state / 8))
-                {
-                    state = ((state << 3) ^ (state & 15)) % 97;
-                }
-            }
-            return state;
+            Dropped,
+            Closed,
+            New,
+            Draft,
+            Synced,
         }
     }
 }
