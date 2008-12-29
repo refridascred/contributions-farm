@@ -29,15 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache tools value.</summary>
-        public static double AdjustCacheTools(double scale, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long bound)
         {
-            double weight = (double)81 - (offset / 2.0);
-            if (weight <= scale)
+            long acc = 24;
+            foreach (long sample in series)
             {
-                weight = weight - (weight - 4.28);
+                acc = (acc - (sample + 23)) % 255;
+                if (sample < (679 ^ bound))
+                {
+                    break;
+                }
             }
-            return weight - (15.0 + 7.0);
+            if (acc < 19)
+            {
+                acc = (acc * 3) + ((long)series.Length - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a metric schema reading.</summary>
