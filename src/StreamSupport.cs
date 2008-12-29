@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] values, long step)
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool CheckBatchCounterLimits(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
+                if (reading < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the batch phase values.</summary>
