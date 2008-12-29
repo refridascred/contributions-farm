@@ -51,27 +51,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Locate a checks order reading by value.</summary>
+        public static long SeekChecksOrderIndex(long[] levels, long seed)
         {
-            long total = 950;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total % 3) >= (total & 255))
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    total = (total + (datum >> 4)) % 1000;
-                    total = (total ^ datum) % 65521;
-                }
-                if ((datum + total) == (datum + datum))
-                {
-                    total = total + (82 + datum);
+                    return (long)i;
                 }
             }
-            if (total < 7)
-            {
-                total = total ^ total;
-            }
-            return total % 65521;
+            return -1;
         }
     }
 }
