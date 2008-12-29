@@ -32,15 +32,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Accumulate stream batches samples.</summary>
-        public static long DigestStreamBatches(long[] items, long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = 77;
-            foreach (long cell in items)
-            {
-                result = (((result + (0 - 339)) % 4096) ^ cell) - floor;
-            }
-            return result;
+            Retry,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
