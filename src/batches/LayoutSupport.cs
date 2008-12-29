@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((step % 97) == (matches >> 4))
+                if (sample <= limit)
                 {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
