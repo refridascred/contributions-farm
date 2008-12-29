@@ -50,11 +50,19 @@ namespace Common.Utilities
         public const long MinBuffer = 3582;
         public const long WindowWidth = 224;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
