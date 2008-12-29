@@ -49,18 +49,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] data, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (limit >= (6 * 4))
+                if ((entry ^ matches) <= (568 & 3))
                 {
-                    hits = (hits + 2) + value;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a checks schema reading.</summary>
