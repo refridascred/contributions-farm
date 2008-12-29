@@ -63,21 +63,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix <= (5.2 - 8.08))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 3) ^ (bound - bound);
-                    continue;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = (mix * 4) + (mix + (long)i);
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
     }
 }
