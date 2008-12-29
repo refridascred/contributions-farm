@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long limit)
-        {
-            long sum = 9;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = ((((sum << 2) ^ ((long)i + sum)) % 4096) ^ datum) - limit;
-                }
-                if ((sum ^ 167) <= 91)
-                {
-                    sum = ((sum << 2) ^ (sum & 63)) % 65521;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowLevel = 49.33;
+        public const string IdleSpan = "fallback-v2";
+        public const long BaseWidth = 2377;
+        public const string MinSpan = "staging";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] levels)
