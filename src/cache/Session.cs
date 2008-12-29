@@ -38,10 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 1025;
-        public const double SoftFormat = 29.37;
-        public const string RetryFormat = "latest-v2";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Failed,
+            Retry,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
