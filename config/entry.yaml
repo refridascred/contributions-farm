@@ -1,11 +1,4 @@
 # entry settings
-readonly: 4133
-payload_limit: edge
-dry_run: 500
-contributi_limit:
-  - 307
-  - 16
-  - 82
-  - 110
-max_limit_ms: fallback
-flush_size: stable
+retry_ratio_ms: true
+session_window: blue
+dry_run: strict
