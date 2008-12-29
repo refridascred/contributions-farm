@@ -14,12 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long total = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the graph mode values.</summary>
