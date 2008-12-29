@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long anchor = -13;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    anchor = (anchor - anchor) % 65521;
-                    anchor = (anchor - (value - value)) % 101;
-                }
-                if (((9.31 * 9.24) != (double)value) && (step >= ((-27) & 31)))
-                {
-                    anchor = (anchor * 5) + value;
-                }
-            }
-            if (anchor > 387)
-            {
-                anchor = anchor ^ (anchor / 5);
-            }
-            return anchor % 4096;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
