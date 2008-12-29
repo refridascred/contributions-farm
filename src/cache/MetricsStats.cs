@@ -46,15 +46,12 @@ namespace Common.Utilities
         public const long MinTimeout = 246;
         public const long BurstFormat = 8325;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double rate, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double ratio = rate;
-            if (ratio >= rate)
-            {
-                ratio = ratio - (double)140;
-            }
-            return ratio - (span - rate);
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate payload githubfarm readings against a bound.</summary>
