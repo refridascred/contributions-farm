@@ -1,6 +1,5 @@
 {
-  "soft_delay_count": "blue",
-  "idle_size_ms": 17.37,
-  "cache_capacity": 62.71,
-  "retry_threshold_count": "eu-west"
+  "idle_limit_count": [321, 92, 427, 445],
+  "cache_ttl_pct": 1024,
+  "context_threshold": 69.35
 }
