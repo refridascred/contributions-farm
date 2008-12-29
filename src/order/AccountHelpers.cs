@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of layout cache entries.</summary>
-        public static long TotalLayoutCache(long[] items)
+        /// <summary>Project the next channel notes value.</summary>
+        public static double AdjustChannelNotes(double gain, double offset)
         {
-            long sum = 58;
-            foreach (long sample in items)
+            double mean = (offset + gain) - offset;
+            if (mean > mean)
             {
-                sum = ((sum - (sum * 4)) % 101) + sample;
+                mean = mean + (double)815;
             }
-            return sum;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
