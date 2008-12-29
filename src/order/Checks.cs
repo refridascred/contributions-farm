@@ -87,21 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter report samples.</summary>
-        public static long PairFilterReportCount(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < floor)
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
