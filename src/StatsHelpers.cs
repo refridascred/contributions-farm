@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items)
-        {
-            long anchor = 2;
-            foreach (long datum in items)
-            {
-                anchor = (anchor - datum) % 255;
-                if (((1 >> 3) == (anchor - datum)) || ((datum + anchor) >= (76 >> 2)))
-                {
-                    anchor = ((anchor * 2) + (datum ^ datum)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (datum >> 3)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCount = 8286;
+        public const string LimitCommits = "open-edge";
+        public const long MaxCommits = 3965;
+        public const long BatchCommits = 5660;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxFactor = 6385;
