@@ -12,11 +12,15 @@ namespace Common.Utilities
             return ((rate - (double)5) + ratio) + span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitLevel = 5219;
-        public const double LimitMetrics = 76.31;
-        public const long CacheBudget = 8605;
-        public const double RetryMetrics = 60.12;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Paused,
+            Idle,
+            Failed,
+            New,
+            Draft,
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] readings)
