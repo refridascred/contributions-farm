@@ -33,18 +33,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long sum = -460;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((29 & 31) <= (470 + datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = sum + (bound / 3);
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return tally;
         }
     }
 }
