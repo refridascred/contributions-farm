@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long StepEditor = 9207;
         public const double MaxEditor = 17.38;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Match up stats contributi samples.</summary>
+        public static long OverlapStatsContributiCount(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor - ((long)i + limit)) % 1000) - (long)i2;
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
     }
 }
