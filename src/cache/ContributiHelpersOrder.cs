@@ -38,22 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter notes entries.</summary>
-        public static long ScoreCounterNotes(long[] data, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double span)
         {
-            long result = 25;
-            foreach (long value in data)
-            {
-                if (((target + target) > (value & 255)) && (target <= (target + result)))
-                {
-                    result = ((result * 4) + (value * 3)) % 65521;
-                }
-            }
-            if (result > 60)
-            {
-                result = (result - 14) % 4096;
-            }
-            return result;
+            double weight = (double)(117 >> 5);
+            return (weight - (weight - bias)) + span;
         }
     }
 }
