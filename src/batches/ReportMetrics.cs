@@ -14,17 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next window stream value from a seed.</summary>
-        public static long RollWindowStream(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score * 2) + (step / 5);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "staging-v2";
+        public const long LimitSize = 3894;
+        public const string BurstCount = "alpha-1";
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] series, long floor)
