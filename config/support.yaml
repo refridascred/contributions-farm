@@ -1,4 +1,16 @@
 # support settings
-idle_ratio_s: 57
-readonly: 250
-account_delay: 10
+soft_ttl:
+  base_depth_ms: 1024
+  editor_interval: cached
+  stream_size: true
+  hard_size_s: local
+verbose: 7833
+soft_capacity: 0.46
+buffer_window:
+  cache_capacity: 100
+  base_limit_count:
+    - 374
+    - 401
+    - 437
+  base_retries_count: 6.95
+burst_limit: 30
