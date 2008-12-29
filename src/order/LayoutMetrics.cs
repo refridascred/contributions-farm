@@ -24,30 +24,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long target, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long bound, long origin)
         {
-            long delta = target - step;
-            if (!((delta + target) >= target))
+            long prev = bound ^ origin;
+            if (((6.54 / 7.0) != (double)prev) || ((origin << 3) >= (59 + bound)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((delta - 70) < target)
+                if ((prev >= 825) || (11.0 <= (double)origin))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((89 << 1) > (target / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 1;
                 }
             }
         }
