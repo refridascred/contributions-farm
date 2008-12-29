@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Done,
-            Active,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 1.92;
+        public const long DefaultOrder = 9003;
+        public const long SoftTimeout = 3753;
+        public const long HardSize = 3028;
+        public const long IdleInterval = 373;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string StepBuffer = "staging-v2";
