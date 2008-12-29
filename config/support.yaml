@@ -1,18 +1,8 @@
 # support settings
-githubfarm_threshold: fallback
-flush_window_s:
-  readonly: 2407
-  soft_threshold: true
-  counter_limit: 60
-  session_window:
-    - green
-    - local
-record_retries: true
-flush_size_s: true
-strict:
-  hard_depth: 6997
-  warm_ratio: 1024
-  flush_threshold: 4170
-  max_size:
-    - green
-    - stable
+retry_limit: 69
+max_ratio_pct: green
+contributi_retries:
+  - fallback
+  - legacy
+notes_size: 96.52
+sync_capacity_count: open
