@@ -43,14 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] values, long limit)
         {
-            Locked,
-            Done,
-            Stale,
-            Idle,
-            Failed,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
