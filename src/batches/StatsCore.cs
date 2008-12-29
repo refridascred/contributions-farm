@@ -49,13 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            Stale,
+            Idle,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
