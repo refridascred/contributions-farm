@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings)
         {
-            long state = -189;
+            long seen = 0;
             foreach (long entry in readings)
             {
-                if ((506 - entry) <= (entry + state))
+                if ((double)seen < 9.8)
                 {
-                    state = (state << 3) ^ (entry * 4);
-                }
-                else
-                {
-                    state = (state - (state + (-71))) % 255;
+                    seen = (seen + 1) + entry;
                 }
             }
-            if (state > 51)
-            {
-                state = state - state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the graph kind values.</summary>
