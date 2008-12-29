@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine notes support values into a single score.</summary>
-        public static long DigestNotesSupport(long[] data, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long limit)
         {
-            long score = 354;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - (datum - datum);
-                if ((double)score == (0.1 - 5.2))
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    score = score + (75 % 100);
+                    return (long)i;
                 }
             }
-            if (score > 7)
-            {
-                score = (score ^ (score - origin)) % 101;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
