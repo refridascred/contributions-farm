@@ -26,12 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Idle,
+            Paused,
         }
     }
 }
