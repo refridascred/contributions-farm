@@ -1,5 +1,9 @@
 {
-  "cache_retries": 3834,
-  "dry_run": [27, 75, 436, 385],
-  "record_timeout": ["open", "standard", "standard", "staging"]
+  "batch_depth_count": {
+    "base_ttl_pct": 60,
+    "base_interval_ms": "strict",
+    "idle_timeout": 6690
+  },
+  "audit": ["stable", "primary"],
+  "stream_depth": 1024
 }
