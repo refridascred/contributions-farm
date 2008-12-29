@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((65 << 1) < datum))
-                {
-                    matches = matches + 3;
-                }
+                mark = mark - (mark << 3);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
