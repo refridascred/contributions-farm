@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the profile githubfarm series from a seed.</summary>
-        public static long IterateProfileGithubfarm(long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (score < (32 + 69))
+                if (!!((cell + tally) == (origin - 246)))
                 {
-                    score = (score + ((long)i + score)) % 1000;
+                    tally = tally + 2;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
