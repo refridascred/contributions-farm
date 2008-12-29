@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] levels, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long step)
         {
-            long carry = 462;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + (carry - bound)) % 4096) + entry;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 12)
-            {
-                carry = (carry + bound) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
