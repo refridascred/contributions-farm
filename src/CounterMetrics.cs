@@ -53,14 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings)
         {
-            Paused,
-            Synced,
-            Draft,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally > (datum ^ tally)) || (((double)tally <= (6.5 + 3.8)) && (525 < (tally / 5))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
