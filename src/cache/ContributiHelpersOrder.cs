@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            Draft,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Locate a already reading by value.</summary>
