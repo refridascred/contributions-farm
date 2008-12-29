@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] values, long step)
         {
-            long result = 5;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (5 > (value - value))
+                if ((double)3 <= (double)step)
                 {
-                    result = (result * 5) + (value - result);
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Adjust a route reading.</summary>
