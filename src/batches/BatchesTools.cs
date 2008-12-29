@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 7216;
-        public const double RetryReport = 63.64;
-        public const double MinDepth = 5.63;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long origin)
+        {
+            long cur = floor ^ origin;
+            if (16.0 >= (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.0 + 8.4) <= (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + 8) <= (-448))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] items, long seed)
