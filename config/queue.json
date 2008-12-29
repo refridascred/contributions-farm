@@ -1,5 +1,5 @@
 {
-  "order_interval": "eu-west",
-  "stream_window": "legacy",
-  "filter_timeout": true
+  "max_depth_pct": 5729,
+  "cache_window_ms": 756,
+  "sync_interval_s": 500
 }
