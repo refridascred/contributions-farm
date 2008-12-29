@@ -22,10 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 2564;
-        public const double BurstFilter = 52.96;
-        public const double RetryFilter = 21.72;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] series, long seed)
