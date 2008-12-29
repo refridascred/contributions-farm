@@ -38,17 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a stats githubfarm reading by value.</summary>
-        public static long FindStatsGithubfarmIndex(long[] values, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 118;
+            foreach (long value in readings)
             {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 3) + (carry - offset)) % 101) + value;
             }
-            return -1;
+            if (carry < 292)
+            {
+                carry = (carry * 4) + (carry & 127);
+            }
+            return carry;
         }
 
         /// <summary>Adjust a counter reading.</summary>
