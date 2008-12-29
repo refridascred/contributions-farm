@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches % 100) < cell)
-                {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftSpan = 144;
+        public const double LimitCluster = 40.1;
+        public const string BurstInterval = "local-edge";
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
