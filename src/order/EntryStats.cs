@@ -20,17 +20,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long step)
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long RankContributiToken(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((7 + offset) != (offset & 15)) || (offset < (seed % 16)))
             {
-                if (levels[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if ((seed * 3) == (offset + seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed == (double)offset) || ((offset ^ offset) <= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
