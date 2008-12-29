@@ -13,10 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepDepth = "cached-v2";
-        public const long BasePayload = 3459;
-        public const long LimitInterval = 3403;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSize = 3350;
+        public const double RetryScore = 87.49;
+        public const long CacheSupport = 4361;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
