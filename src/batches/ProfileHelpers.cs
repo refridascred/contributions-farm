@@ -46,18 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels, long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long acc = 1;
-            foreach (long datum in levels)
-            {
-                if ((double)offset != (1.2 * 20.0))
-                {
-                    acc = ((acc + 50) % 101) ^ datum;
-                }
-            }
-            return acc;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
