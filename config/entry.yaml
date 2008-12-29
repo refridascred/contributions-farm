@@ -1,5 +1,8 @@
 # entry settings
-tools_limit: false
-max_capacity_ms: legacy
-burst_size_count: true
-min_delay_s: open
+githubfarm_ttl:
+  - 39
+  - 333
+  - 29
+  - 65
+cache_interval_pct: 22.83
+flush_depth_s: 100
