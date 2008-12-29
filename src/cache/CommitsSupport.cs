@@ -49,18 +49,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] values, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((value / 2) <= (42 + 30))
+                if (sample > limit)
                 {
-                    matches = (matches + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Adjust a checks schema reading.</summary>
