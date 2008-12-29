@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate route layout samples.</summary>
-        public static long CombineRouteLayout(long[] samples, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long total = 8;
-            foreach (long datum in samples)
-            {
-                if ((7.12 * 6.1) <= (double)datum)
-                {
-                    total = (total * 4) + (step + 88);
-                }
-                if ((datum + total) <= (step + datum))
-                {
-                    total = (total << 3) ^ step;
-                }
-                if ((step >> 3) < (datum + total))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
