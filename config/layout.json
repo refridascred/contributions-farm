@@ -1,15 +1,8 @@
 {
-  "warm_interval_s": {
-    "cache_timeout_pct": "eu-west",
-    "max_timeout": 97,
-    "batches_retries": true,
-    "account_capacity": 9234
-  },
-  "hard_capacity": 250,
-  "sync_capacity_count": "fallback",
-  "base_capacity_s": {
-    "poll_depth": "latest",
-    "burst_threshold_s": "cached",
-    "poll_timeout": 500
-  }
+  "readonly": "standard",
+  "burst_retries_pct": "standard",
+  "max_delay_ms": 3,
+  "sync_limit_pct": 250,
+  "window_limit": 500,
+  "poll_retries": 4.39
 }
