@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a githubfarm record reading by value.</summary>
-        public static long LookupGithubfarmRecordIndex(long[] series, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 27;
+            foreach (long cell in data)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                if (total < 63)
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ cell) % 1000;
                 }
             }
-            return -1;
+            if (total < 679)
+            {
+                total = total - (offset ^ total);
+            }
+            return total;
         }
 
         /// <summary>Describe the batch kind values.</summary>
