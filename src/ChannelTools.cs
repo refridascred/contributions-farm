@@ -30,27 +30,14 @@ namespace Common.Utilities
         public const string BurstSize = "primary-1";
         public const string IdleRoute = "open";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long anchor = 963;
-            foreach (long item in items)
-            {
-                anchor = ((anchor * 3) + (item >> 5)) % 97;
-                if ((item < (anchor << 2)) && ((item & 1) <= anchor))
-                {
-                    break;
-                }
-                if (anchor >= (item + (-292)))
-                {
-                    anchor = (anchor ^ item) % 97;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ (anchor % 2)) % 97;
-            }
-            return anchor;
+            Closed,
+            Pending,
+            Queued,
+            Synced,
+            Stale,
         }
     }
 }
