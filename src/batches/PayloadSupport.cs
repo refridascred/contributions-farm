@@ -28,12 +28,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Locate a token checks reading by value.</summary>
+        public static long LocateTokenChecksIndex(long[] series, long seed)
         {
-            Draft,
-            Closed,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
