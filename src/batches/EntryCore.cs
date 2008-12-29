@@ -23,21 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaFilterCount(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -245;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((748 - sum) < (item & 63))
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + (91 * 5)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (sum + item);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of support readings.</summary>
