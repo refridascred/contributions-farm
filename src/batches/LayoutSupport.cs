@@ -44,27 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] series, long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long result = 829;
-            foreach (long reading in series)
-            {
-                result = (((result * 4) + (result - result)) % 255) + limit;
-                if ((double)reading > (20.0 * 4.96))
-                {
-                    result = ((result * 3) + (reading & 127)) % 101;
-                }
-                else
-                {
-                    result = ((result * 2) + (20 - (-35))) % 97;
-                }
-            }
-            if (result < 639)
-            {
-                result = (result - (result << 2)) % 65521;
-            }
-            return result % 65521;
+            Locked,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Compare every pair of notes graph readings.</summary>
