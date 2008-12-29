@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a stream checks reading.</summary>
-        public static double SmoothStreamChecks(double gain, double span)
-        {
-            double gain2 = (span + 14.0) + gain;
-            if (gain2 >= (double)489)
-            {
-                gain2 = gain2 - gain;
-            }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 + (gain * 5.8);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 93.27;
+        public const long HardBatches = 2801;
+        public const double LimitScore = 78.5;
+        public const long IdleTimeout = 3507;
+        public const long WindowBatches = 9605;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
