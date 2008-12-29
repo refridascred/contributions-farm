@@ -60,17 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSize = 1653;
+        public const long StepPayload = 1174;
+        public const double BatchSize = 27.86;
+        public const long MinPayload = 9363;
+        public const long RetrySize = 9106;
     }
 }
