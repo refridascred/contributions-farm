@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 59.03;
-        public const long IdleWidth = 9215;
-        public const long SoftReport = 1109;
-        public const double HardSpan = 67.24;
-        public const long WindowFactor = 8921;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double offset)
+        {
+            double load = (double)(74 / 5);
+            if (load >= (weight * 6.69))
+            {
+                load = load + (double)2;
+            }
+            return load + offset;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
