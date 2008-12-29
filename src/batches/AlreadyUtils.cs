@@ -15,19 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] samples, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ origin) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Scale a metric buffer figure with a bias.</summary>
