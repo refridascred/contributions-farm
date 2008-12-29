@@ -34,18 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long floor, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long delta = floor + target;
+            if ((floor << 3) < ((-86) + target))
             {
-                if ((origin * 4) >= 528)
+                return 6;
+            }
+            else
+            {
+                if ((2.35 > (double)target) || ((floor * 3) < delta))
                 {
-                    tally = (tally + 3) ^ reading;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
