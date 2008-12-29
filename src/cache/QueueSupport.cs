@@ -16,11 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 9921;
-        public const double BaseStats = 68.79;
-        public const long WindowStats = 7074;
-        public const long MaxInterval = 619;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long bound, long step)
+        {
+            if ((bound + bound) == (step + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 1) >= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound % 3) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] readings, long limit)
