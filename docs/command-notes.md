@@ -1,10 +1,10 @@
 # Command notes
 
-Use payload settings to tune how often window data is refreshed.
-Run the record check before changing any command limits.
+Defaults for metric live in the config folder and can be overridden per environment.
+When a report fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate report input early
-- Log every githubfarm change
-- Document new record fields
+- Document new profile fields
+- Validate entry input early
+- Log every profile change
