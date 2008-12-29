@@ -1,5 +1,16 @@
 # githubfarm settings
-cache_interval_count: 2.27
-verbose: blue
-counter_size: 26.79
-warm_ratio_s: 76.37
+schema_interval:
+  metrics_window: 81.03
+  base_timeout_count:
+    cache_retries: 41.87
+    batch_depth_count: 500
+    poll_limit: 2348
+    order_interval: staging
+  idle_ttl: cached
+soft_ratio_pct: 93
+min_limit:
+  - 79
+  - 146
+  - 431
+  - 260
+default_depth_pct: fallback
