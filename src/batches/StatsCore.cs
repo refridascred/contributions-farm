@@ -58,19 +58,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every githubfarm counter entry stays within the limit.</summary>
-        public static bool GuardGithubfarmCounterLimits(long[] readings, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < bound)
+                if (data[i] <= target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
