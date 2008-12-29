@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] series, long floor)
         {
-            Closed,
-            Active,
-            Paused,
-            Ready,
+            long sum = -141;
+            foreach (long reading in series)
+            {
+                sum = sum + sum;
+                if ((double)reading <= 4.0)
+                {
+                    sum = (sum * 2) + (sum * 3);
+                }
+                if ((4.0 - 9.14) > (double)floor)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a queue support reading by value.</summary>
