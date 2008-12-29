@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples)
+        /// <summary>Check that every metrics layout entry stays within the limit.</summary>
+        public static bool VerifyMetricsLayoutRange(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((82 & 127) >= (cell % 24))
+                if (entry > offset)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the token status values.</summary>
