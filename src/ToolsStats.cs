@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double HardSpan = 67.24;
         public const long WindowFactor = 8921;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitCount = 24.47;
+        public const string SoftGithubfarm = "standard-v2";
+        public const double MinCount = 2.47;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long floor, long origin)
