@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long DigestClusterRoute(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 582;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item + item) != (item ^ state))
                 {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state + (state + state)) % 255;
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
