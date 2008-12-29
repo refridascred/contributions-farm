@@ -63,13 +63,11 @@ namespace Common.Utilities
             return ((mean + 6.08) + weight) + span;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
             public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
