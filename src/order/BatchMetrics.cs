@@ -47,12 +47,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            Closed,
-            Pending,
-            Queued,
+            double gain = scale;
+            if (gain > scale)
+            {
+                gain = (gain - (13.0 / 3.0)) - floor;
+            }
+            return gain - (gain + scale);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
