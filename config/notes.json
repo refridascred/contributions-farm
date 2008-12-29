@@ -1,12 +1,6 @@
 {
-  "enabled": true,
-  "dry_run": "open",
-  "payload_ttl": {
-    "window_depth": 44.81,
-    "hard_window": false,
-    "default_timeout": "local"
-  },
-  "max_ttl_count": "primary",
-  "max_threshold": "standard",
-  "contributi_timeout": 83.27
+  "route_delay": "edge",
+  "command_ratio": 1965,
+  "max_window_count": ["standard", "latest", "green"],
+  "enabled": 90.81
 }
