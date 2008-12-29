@@ -71,15 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] data, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (!((4.25 * 8.69) <= (double)limit))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
