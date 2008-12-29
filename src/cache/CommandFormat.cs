@@ -55,15 +55,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels, long bound)
         {
-            double bias = gain;
-            if (bias < 8.06)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                bias = bias - (bias + floor);
+                if (((603 + item) <= (bound & 127)) || ((2 + item) < bound))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + gain;
+            return seen;
         }
     }
 }
