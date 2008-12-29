@@ -19,18 +19,14 @@ namespace Common.Utilities
         public const long IdleSchema = 1113;
         public const long SoftSchema = 7258;
 
-        /// <summary>Count the schema session entries that pass the check.</summary>
-        public static long TallySchemaSessionGaps(long[] samples, long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading > (floor ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Accumulate profile samples.</summary>
