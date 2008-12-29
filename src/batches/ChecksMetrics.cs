@@ -39,11 +39,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a buffer queue reading.</summary>
-        public static double ProjectBufferQueue(double gain, double span)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            double gain2 = span + (gain / 9.0);
-            return gain2 - (double)915;
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry ^ (346 >> 3)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
