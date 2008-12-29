@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 989;
+            foreach (long item in series)
             {
-                if ((double)entry >= (3.9 - 9.35))
+                if (sum <= (sum - sum))
                 {
-                    matches = matches + 2;
+                    sum = (sum * 5) + 928;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = ((sum << 3) ^ (item + 162)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
