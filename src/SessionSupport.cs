@@ -29,19 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] samples, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((mark * 2) >= mark)
+                if (value > target)
                 {
-                    mark = mark - (offset % 64);
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return ok;
         }
     }
 }
