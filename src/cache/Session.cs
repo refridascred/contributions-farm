@@ -52,17 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
