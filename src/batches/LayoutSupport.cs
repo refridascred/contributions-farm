@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Stale,
-            New,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 17.73;
+        public const long LimitFilter = 3093;
+        public const long SoftBudget = 4763;
+        public const string BaseInterval = "primary-edge";
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] series)
