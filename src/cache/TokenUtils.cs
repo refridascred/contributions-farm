@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "legacy";
-        public const long SoftToken = 8303;
-        public const long DefaultToken = 9060;
-        public const long DefaultBudget = 8478;
-        public const long IdleToken = 6732;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinRatio = 4642;
+        public const double RetryReport = 91.16;
+        public const double RetryRatio = 69.65;
+        public const string BurstWidth = "alpha";
+        public const long IdleReport = 5150;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double SoftSpan = 31.69;
