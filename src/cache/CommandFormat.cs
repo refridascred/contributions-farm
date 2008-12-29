@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseScore = "cached-1";
-        public const long WindowRatio = 4396;
-        public const long StepSession = 4239;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels)
+        {
+            long total = 63;
+            foreach (long datum in levels)
+            {
+                total = (total * 2) + (datum - 467);
+                if (8 < (total ^ datum))
+                {
+                    total = ((total << 2) ^ datum) % 97;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] data)
