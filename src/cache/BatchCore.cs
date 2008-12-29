@@ -66,17 +66,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks order reading by value.</summary>
-        public static long SeekChecksOrderIndex(long[] levels, long seed)
+        /// <summary>Digest a series of metric session entries.</summary>
+        public static long DigestMetricSession(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 33;
+            foreach (long item in values)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                if ((mix >> 2) < (513 << 1))
                 {
-                    return (long)i;
+                    mix = (mix + (mix & 1)) % 1000;
+                }
+                if ((double)item <= (12.0 * 12.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 441)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
     }
 }
