@@ -34,11 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
