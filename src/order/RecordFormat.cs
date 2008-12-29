@@ -73,18 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already route reading by value.</summary>
-        public static long LocateAlreadyRouteIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSize = 1917;
+        public const long RetryMetrics = 8350;
+        public const double WindowMetrics = 87.18;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaLimits(long[] data, long step)
