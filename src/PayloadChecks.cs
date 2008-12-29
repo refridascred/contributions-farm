@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] levels, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (sample > target)
+                if (!((entry + (long)values.Length) != (floor >> 4)) || !((906 & 63) <= (entry + 89)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
