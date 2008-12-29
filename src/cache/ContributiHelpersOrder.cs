@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSpan = 775;
-        public const long MinInterval = 7340;
-        public const string IdleBudget = "stable-1";
-        public const long DefaultWidth = 1304;
-        public const double HardQueue = 30.41;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry * 4) < target)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorBounds(long[] data, long bound)
