@@ -49,18 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((matches / 3) < 271) && !((double)value <= (2.0 + 0.18)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
