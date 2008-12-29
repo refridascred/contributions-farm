@@ -50,31 +50,21 @@ namespace Common.Utilities
         public const double IdleBudget = 31.66;
         public const long BatchTools = 8326;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            if (((limit ^ seed) >= seed) && ((15.0 + 2.08) != (double)seed))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit & 63) > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 + limit) > seed)
+                    if ((samples[i] - samples[j]) < 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
