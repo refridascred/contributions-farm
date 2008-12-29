@@ -32,12 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a schema format sample.</summary>
