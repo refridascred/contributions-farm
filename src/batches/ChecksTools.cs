@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "standard";
-        public const double DefaultScore = 76.35;
-        public const long DefaultSpan = 9507;
-        public const long RetryPayload = 4760;
-        public const string BatchSpan = "cached";
+        /// <summary>Accumulate already order samples.</summary>
+        public static long CombineAlreadyOrder(long[] series, long bound)
+        {
+            long score = 81;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((((score * 2) + (0 >> 5)) % 255) - (long)i) - cell;
+                }
+                if ((double)bound <= (double)(long)series.Length)
+                {
+                    score = ((score * 3) + (score + 2)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Roll a notes profile counter forward.</summary>
         public static long SeriesNotesProfile(long offset)
