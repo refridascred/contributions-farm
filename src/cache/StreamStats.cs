@@ -33,11 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseScore = 7834;
-        public const double SoftBudget = 73.47;
-        public const long LimitRatio = 7070;
-        public const long WindowProfile = 1877;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
