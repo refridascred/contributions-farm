@@ -23,32 +23,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long seed, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long diff = seed + origin;
-            if ((double)diff < 7.4)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + diff) == (diff - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin == (0.8 - 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Synced,
         }
     }
 }
