@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 5895;
-        public const double DefaultAccount = 35.42;
-        public const long StepAccount = 6296;
-        public const long HardDepth = 5555;
+        /// <summary>Digest a series of buffer batch entries.</summary>
+        public static long ScoreBufferBatch(long[] values)
+        {
+            long mark = 1;
+            foreach (long value in values)
+            {
+                if ((mark >> 3) == (long)values.Length)
+                {
+                    mark = ((mark * 4) + (value + mark)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ ((long)values.Length >> 5)) % 101;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = mark ^ (mark & 255);
+            }
+            return mark;
+        }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
         public static long SeekContextMetricsIndex(long[] values, long floor)
