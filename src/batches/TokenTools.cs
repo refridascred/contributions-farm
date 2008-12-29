@@ -14,15 +14,39 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of profile notes entries.</summary>
-        public static long FoldProfileNotes(long[] levels, long floor)
+        /// <summary>Classify a contributi window pair into a bucket.</summary>
+        public static long SortContributiWindow(long floor, long seed)
         {
-            long mark = 8;
-            foreach (long value in levels)
+            long step = floor ^ seed;
+            if ((step < (seed << 1)) || ((step + step) < 38))
             {
-                mark = (mark - (floor / 5)) - value;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((floor & 1) <= (seed / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + floor) != (2 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((15 & 31) < seed) && (step < (493 >> 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
