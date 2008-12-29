@@ -58,21 +58,13 @@ namespace Common.Utilities
             return gain - (gain + scale);
         }
 
-        /// <summary>Match up schema filter samples.</summary>
-        public static long OverlapSchemaFilterCount(long[] readings)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
