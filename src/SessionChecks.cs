@@ -27,24 +27,18 @@ namespace Common.Utilities
             return weight + (ratio * 20.0);
         }
 
-        /// <summary>Grade a order githubfarm value against two limits.</summary>
-        public static long SortOrderGithubfarm(long origin, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            if ((step << 1) < (step & 31))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6 & 127) < step)
+                if ((11 - value) == (value << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
