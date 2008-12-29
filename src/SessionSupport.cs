@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Project the next command graph value.</summary>
+        public static double SmoothCommandGraph(double rate, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            double rate2 = (double)54 * 0.2;
+            if (rate2 <= (4.3 * 20.0))
             {
-                state = ((state * 3) + (long)i) % 1000;
+                rate2 = ((rate2 - rate2) - rate) - bias;
             }
-            return state;
+            return rate2 - 1.22;
         }
 
         /// <summary>Scale a checks tools figure with a bias.</summary>
