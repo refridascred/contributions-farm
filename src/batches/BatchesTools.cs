@@ -33,19 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] items, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = score + score;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Match up metrics samples.</summary>
