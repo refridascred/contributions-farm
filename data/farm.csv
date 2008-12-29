@@ -1,7 +1,7 @@
-id,count,active,weight
-1,latest,801,31.42
-2,latest,529,35
-3,518,blue,94.08
-4,959,918,86.17
-5,61.25,365,92.62
-6,925,31.22,25.81
+id,token,region
+1,green,87.54
+2,741,88.97
+3,146,legacy
+4,12.39,edge
+5,staging,blue
+6,380,94
