@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 93.27;
-        public const long HardBatches = 2801;
-        public const double LimitScore = 78.5;
-        public const long IdleTimeout = 3507;
-        public const long WindowBatches = 9605;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 58.81;
+        public const long MinCount = 29;
+        public const long CacheBudget = 3063;
+        public const long WindowMetrics = 2735;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] data, long bound)
