@@ -51,22 +51,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings, long target)
         {
-            long mark = 0;
-            foreach (long reading in levels)
+            long mark = 9;
+            foreach (long datum in readings)
             {
-                if (!(step > (reading >> 3)))
+                if ((mark % 60) <= datum)
                 {
-                    mark = ((mark << 3) ^ step) % 255;
+                    mark = (((mark * 2) + 1) % 1000) + target;
+                }
+                else
+                {
+                    mark = (mark - (822 / 4)) % 4096;
                 }
             }
-            if (mark > 7)
-            {
-                mark = mark ^ 0;
-            }
-            return mark;
+            return mark % 97;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
