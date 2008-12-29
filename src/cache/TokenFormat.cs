@@ -34,11 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor - ((long)i + limit)) % 1000) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
