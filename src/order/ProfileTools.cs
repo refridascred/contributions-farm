@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long IdleSchema = 1113;
         public const long SoftSchema = 7258;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Count the schema session entries that pass the check.</summary>
+        public static long TallySchemaSessionGaps(long[] samples, long floor)
         {
-            double load = (scale + scale) / 8.0;
-            if (load <= (8.3 / 6.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                load = load + (load / 9.0);
+                if (reading > (floor ^ matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                load = load + (7.22 + scale);
-            }
-            return load + span;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
