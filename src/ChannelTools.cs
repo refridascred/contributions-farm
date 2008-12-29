@@ -31,13 +31,12 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
