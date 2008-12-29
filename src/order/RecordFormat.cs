@@ -52,17 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - 968) % 97;
-                state = (state + (limit - (long)i)) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            double bias = (floor / 4.0) + 3.95;
+            return (bias + bias) + gain;
         }
     }
 }
