@@ -1,11 +1,11 @@
 # Command notes
 
-The window module keeps metric values in sync with the commits cache.
-When a session fails, the contributi handler retries a few times before giving up.
-When a payload fails, the already handler retries a few times before giving up.
+When a token fails, the record handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate counter input early
-- Keep token values small
-- Review format limits each release
+- Review context limits each release
+- Validate entry input early
+- Log every command change
+- Keep queue values small
