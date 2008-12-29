@@ -20,21 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 16;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state - (9 / 3)) % 255) ^ reading;
             }
-            return hits;
+            if (state > 67)
+            {
+                state = (state * 5) + state;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the token status values.</summary>
