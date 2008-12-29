@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 90.84;
-        public const string BatchDepth = "legacy";
-        public const double BurstBudget = 33.59;
-        public const string StepMetrics = "latest-1";
+        /// <summary>Compare every pair of profile window readings.</summary>
+        public static long PairProfileWindowCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of report already readings.</summary>
         public static long TotalReportAlready(long[] data)
