@@ -16,23 +16,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double load = (double)(10 + 196);
-            if (load < (double)2)
-            {
-                load = load - scale;
-            }
-            else
-            {
-                load = load + (load * 13.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (offset / 3.0)) + (double)(long)i;
-            }
-            return load - scale;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
