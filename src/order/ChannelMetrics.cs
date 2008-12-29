@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double mean = 0.5;
+            if (mean < (ratio / 2.0))
             {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (ratio - ratio)) + floor;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (double)740;
         }
 
         /// <summary>Hold a payload info.</summary>
