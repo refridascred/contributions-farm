@@ -32,20 +32,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Accumulate stream batches samples.</summary>
+        public static long DigestStreamBatches(long[] items, long floor)
         {
-            long anchor = 55;
-            foreach (long entry in samples)
+            long result = 77;
+            foreach (long cell in items)
             {
-                if ((double)entry < (8.84 / 5.0))
-                {
-                    anchor = anchor + (entry - entry);
-                    continue;
-                }
-                anchor = (anchor + (entry + anchor)) % 4096;
+                result = (((result + (0 - 339)) % 4096) ^ cell) - floor;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
