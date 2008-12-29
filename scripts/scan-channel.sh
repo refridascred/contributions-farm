@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy blue stable; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 7); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=358
+log "limit is ${CHANNEL_LIMIT}"
