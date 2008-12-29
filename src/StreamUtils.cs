@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Adjust a window checks reading.</summary>
+        public static double ProjectWindowChecks(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double gain = (double)8;
+            for (int i = 0; i < 2; i++)
             {
-                if ((2.5 * 8.28) > (double)(long)levels.Length)
-                {
-                    seen = (seen + 1) + entry;
-                }
+                gain = ((gain + (bias / 8.0)) - (double)(long)i) - bias2;
             }
-            return seen;
+            return gain - bias;
         }
 
         /// <summary>Blend two batch measurements.</summary>
