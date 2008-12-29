@@ -33,12 +33,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            Stale,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits < (hits - datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
