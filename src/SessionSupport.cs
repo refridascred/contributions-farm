@@ -29,12 +29,31 @@ namespace Common.Utilities
         public const long StepDepth = 7480;
         public const long HardFilter = 1877;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Rank already batch input into a small class.</summary>
+        public static long GradeAlreadyBatch(long offset, long target)
         {
-            Failed,
-            Done,
-            Pending,
+            if (target <= (target + 780))
+            {
+                return 8;
+            }
+            else
+            {
+                if (5 <= (offset << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 5) > (566 + 99))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
