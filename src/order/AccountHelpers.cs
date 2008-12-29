@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const string BurstChecks = "alpha-v2";
         public const long LimitDepth = 3075;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mix = 85;
+            foreach (long entry in levels)
             {
-                if ((value + value) > (seen % 16))
+                if (((mix + mix) >= 7) && (target <= (target << 3)))
                 {
-                    seen = seen + 3;
+                    mix = (((mix << 3) ^ (579 % 100)) % 65521) + entry;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Combine queue route values into a single score.</summary>
