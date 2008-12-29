@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(99 + 986);
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)(long)i) + offset;
             }
-            return -1;
+            return bias - (7.0 - gain);
         }
 
         /// <summary>Accumulate already order samples.</summary>
