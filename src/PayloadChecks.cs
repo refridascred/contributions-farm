@@ -77,22 +77,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long floor)
         {
-            long state = 49;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= (428 % 60))
+                if (items[i] > floor)
                 {
-                    state = state ^ origin;
-                }
-                if ((0.5 * 7.3) != (double)sample)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
