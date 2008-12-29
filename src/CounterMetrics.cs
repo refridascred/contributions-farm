@@ -39,22 +39,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes cluster entries that pass the check.</summary>
-        public static long TallyNotesClusterHits(long[] readings, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double weight = floor * 7.48;
+            if (weight < bias)
             {
-                if ((target - count) <= target)
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight - 8.11;
             }
-            return count;
+            else
+            {
+                weight = weight - 0.49;
+            }
+            return weight + (floor - 6.8);
         }
     }
 }
