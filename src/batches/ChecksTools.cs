@@ -19,19 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= bound)
+                result = (result * 5) + (step - result);
+                if ((result - result) < ((long)i + (long)i))
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 2) ^ (step % 100)) % 255;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
