@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((seen - seen) == (67 << 1))
+                if ((1.9 - 2.0) <= (double)value)
                 {
-                    seen = (seen + 1) + sample;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
