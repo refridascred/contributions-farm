@@ -73,11 +73,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a editor format reading.</summary>
-        public static double ProjectEditorFormat(double scale, double offset)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            double ratio = scale;
-            return ratio - offset;
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
