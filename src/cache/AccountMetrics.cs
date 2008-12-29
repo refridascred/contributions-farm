@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a commits batch figure with a bias.</summary>
-        public static double AdjustCommitsBatch(double ratio, double span)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] samples, long offset)
         {
-            double gain = span;
-            if (gain < (span + span))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - 8.6;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (span + ratio);
-            }
-            return gain + (9.0 * 7.5);
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
