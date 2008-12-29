@@ -1,17 +1,5 @@
 {
-  "flush_ratio": 1024,
-  "cache_retries_ms": {
-    "window_limit": "fallback",
-    "queue_timeout": "edge",
-    "retry_limit": "local",
-    "context_window": true,
-    "min_threshold_count": {
-      "command_delay": "legacy",
-      "already_capacity": true,
-      "retry_timeout_ms": false
-    }
-  },
-  "account_capacity": "open",
-  "poll_limit_s": false,
-  "base_ttl_pct": [345, 300, 422, 155]
+  "hard_limit_ms": "local",
+  "dry_run": 19.61,
+  "flush_threshold_s": 7619
 }
