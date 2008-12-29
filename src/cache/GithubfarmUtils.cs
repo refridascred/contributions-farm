@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long WindowProfile = 2164;
         public const long BurstProfile = 7877;
 
-        /// <summary>Roll a session command counter forward.</summary>
-        public static long DeriveSessionCommand(long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((double)datum == (3.8 * 5.71))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Derive the next stream format value from a seed.</summary>
