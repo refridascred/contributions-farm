@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheTimeout = 7232;
-        public const long LimitCluster = 1878;
-        public const long WindowFactor = 3733;
-        public const string HardCluster = "primary-1";
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long GradeFormat(long target, long limit)
