@@ -23,20 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                long gap = ((long)i % 16) / 8;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (anchor + (50 ^ gap)) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
