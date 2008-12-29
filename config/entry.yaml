@@ -1,7 +1,15 @@
 # entry settings
-hard_capacity_ms: 4489
-warm_retries: 98.17
-report_ttl: 65.65
-poll_capacity_s: true
-soft_window: fallback
-idle_window: 21.58
+persist:
+  - open
+  - primary
+  - staging
+min_ttl_pct: 61
+base_retries_count:
+  - 12
+  - 248
+  - 54
+  - 223
+soft_interval_s:
+  - 88
+  - 378
+  - 317
