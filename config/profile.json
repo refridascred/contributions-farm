@@ -1,20 +1,8 @@
 {
-  "max_ttl_count": {
-    "soft_window_pct": "edge",
-    "audit": true,
-    "hard_capacity": false
-  },
-  "cache_timeout_count": true,
-  "payload_depth": "open",
-  "batch_ttl": true,
-  "poll_threshold": {
-    "support_window": {
-      "compress": 4.47,
-      "sync_delay_ms": [201, 357, 422, 164],
-      "batch_size_ms": "eu-west",
-      "warm_threshold_ms": [22, 90]
-    },
-    "batch_delay": false,
-    "stats_threshold": 44.56
-  }
+  "context_ttl": "stable",
+  "context_retries": "legacy",
+  "flush_interval": "primary",
+  "batch_size": false,
+  "max_interval_s": 64.49,
+  "compress": 34.15
 }
