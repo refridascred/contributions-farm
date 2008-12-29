@@ -24,18 +24,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long target, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long delta = target - step;
+            if (!((delta + target) >= target))
             {
-                if ((3.0 - 7.8) >= (double)reading)
+                return 8;
+            }
+            else
+            {
+                if ((delta - 70) < target)
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((89 << 1) > (target / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
