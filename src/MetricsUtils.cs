@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)629 > (double)hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Define window limits and defaults.</summary>
