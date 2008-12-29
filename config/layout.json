@@ -1,5 +1,6 @@
 {
-  "route_retries": "primary",
-  "cache_delay_count": "eu-west",
-  "burst_window": true
+  "dry_run": false,
+  "hard_limit": 52.69,
+  "verbose": "green",
+  "burst_ratio_ms": 72.99
 }
