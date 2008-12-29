@@ -27,15 +27,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of contributi support readings.</summary>
-        public static long TotalContributiSupport(long[] values, long limit)
+        /// <summary>Look up the position of a cluster payload sample.</summary>
+        public static long LookupClusterPayloadIndex(long[] data, long floor)
         {
-            long anchor = 2;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((((anchor * 5) + (anchor & 127)) % 65521) - sample) + limit;
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
