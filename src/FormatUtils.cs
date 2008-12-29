@@ -27,10 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 3454;
-        public const long BatchProfile = 2189;
-        public const string DefaultProfile = "open-1";
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Draft,
+            Pending,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
