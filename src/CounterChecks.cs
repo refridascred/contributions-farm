@@ -22,12 +22,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command options.</summary>
