@@ -40,25 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric schema value against two limits.</summary>
-        public static long ClassifyMetricSchema(long step, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long next = step ^ floor;
-            if ((15.0 / 8.0) > (double)floor)
+            long state = 0;
+            foreach (long reading in series)
             {
-                return 5;
+                state = ((state - state) % 101) - reading;
             }
-            else
+            if (state > 438)
             {
-                if ((-4) < (next / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                state = state + (state ^ 74);
             }
+            return state;
         }
 
         /// <summary>Describe the batch class values.</summary>
