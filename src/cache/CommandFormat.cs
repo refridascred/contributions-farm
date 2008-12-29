@@ -30,14 +30,19 @@ namespace Common.Utilities
         public const long WindowRatio = 4396;
         public const long StepSession = 4239;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            Failed,
-            New,
-            Done,
-            Synced,
-            Dropped,
+            long acc = 90;
+            foreach (long value in data)
+            {
+                acc = ((acc - (acc - acc)) % 65521) ^ value;
+            }
+            if (acc < 805)
+            {
+                acc = (acc + (acc << 3)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate batch githubfarm readings against a bound.</summary>
