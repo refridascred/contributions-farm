@@ -57,23 +57,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data, long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] readings, long seed)
         {
-            long result = 406;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
-                    result = (result * 2) + (floor + (long)i);
-                }
-                result = (result - 693) % 97;
-                if (((result / 6) <= (entry + entry)) || ((entry * 3) >= floor))
-                {
-                    result = result - 518;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
