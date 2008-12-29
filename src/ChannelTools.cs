@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)0 - (double)271;
+            if (scale >= (scale * 3.9))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + 3.0) - bias2;
             }
-            return matches;
+            return scale - bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
