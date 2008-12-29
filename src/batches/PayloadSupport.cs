@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] levels)
         {
-            Retry,
-            Active,
-            Closed,
+            long carry = 5;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ carry) != (long)levels.Length)
+                {
+                    carry = (carry ^ (cell / 4)) % 1000;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a route options.</summary>
