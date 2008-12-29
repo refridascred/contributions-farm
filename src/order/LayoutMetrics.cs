@@ -32,13 +32,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] values, long target)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!((9.49 * 9.0) != (double)datum))
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
     }
 }
