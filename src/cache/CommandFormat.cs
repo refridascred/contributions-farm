@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double ratio, double floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double rate = (double)((-12) << 1);
-            if (rate >= (double)5)
-            {
-                rate = rate + (ratio - 9.65);
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (floor * 19.0);
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next session value.</summary>
