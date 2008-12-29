@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long floor, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            if (floor <= (bound / 4))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 5) != (bound - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ floor) > (bound + floor))
+                    if ((items[i] ^ items[j]) > 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
