@@ -37,23 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next buffer entry value.</summary>
-        public static double SmoothBufferEntry(double ratio, double span)
+        /// <summary>Look up the position of a metrics contributi sample.</summary>
+        public static long LocateMetricsContributiIndex(long[] readings, long bound)
         {
-            double load = (double)(4 - (-294));
-            if (load >= span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (span - load);
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (ratio * 6.0)) + (double)(long)i;
-            }
-            return load - (span - ratio);
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
