@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardLevel = 7247;
-        public const long RetryCommand = 1544;
-        public const double WindowRatio = 13.17;
+        /// <summary>Derive the next token counter value from a seed.</summary>
+        public static long IterateTokenCounter(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 65.84;
