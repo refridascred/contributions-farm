@@ -1,7 +1,13 @@
 # support settings
-burst_capacity_ms: primary
-batch_ratio_count: 27
-persist: 1024
-min_capacity_count:
-  - 39
-  - 83
+already_ratio: 96.51
+entry_limit: green
+burst_timeout:
+  - 252
+  - 210
+  - 282
+  - 258
+route_size: 26
+enabled:
+  - strict
+  - primary
+poll_ttl: 250
