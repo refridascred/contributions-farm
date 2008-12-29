@@ -35,24 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank contributi metric input into a small class.</summary>
-        public static long SortContributiMetric(long seed, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            if ((double)target <= (1.0 / 2.0))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 3) != (target / 4))
+                if ((reading + matches) < (9 + matches))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank session input into a small class.</summary>
