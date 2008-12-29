@@ -51,11 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double offset)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            double ratio = (offset + 20.0) - offset;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (offset + scale)) - (double)(long)i;
+            }
+            return ratio - (11.0 / 8.0);
         }
 
         /// <summary>Project the next window value.</summary>
