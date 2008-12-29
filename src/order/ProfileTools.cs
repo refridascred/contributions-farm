@@ -60,11 +60,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples, long offset)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            long sum = 5;
+            foreach (long reading in samples)
+            {
+                sum = sum - sum;
+                if (!!((reading * 3) < (reading ^ sum)))
+                {
+                    sum = (sum << 3) ^ (3 + sum);
+                }
+                sum = (sum * 4) + (sum / 5);
+            }
+            if (sum < 57)
+            {
+                sum = (sum * 2) + (offset - offset);
+            }
+            return sum;
         }
     }
 }
