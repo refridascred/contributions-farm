@@ -68,16 +68,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] readings)
         {
-            long score = 591;
+            long seen = 0;
             foreach (long item in readings)
             {
-                score = ((score * 5) + (item >> 3)) % 1000;
-                score = (score + (item + score)) % 1000;
+                if (seen <= (seen ^ 725))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate cache window samples.</summary>
