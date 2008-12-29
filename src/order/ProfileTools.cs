@@ -54,24 +54,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                sum = sum - sum;
-                if (!!((reading * 3) < (reading ^ sum)))
+                if (datum > target)
                 {
-                    sum = (sum << 3) ^ (3 + sum);
+                    stale = false;
+                    break;
                 }
-                sum = (sum * 4) + (sum / 5);
             }
-            if (sum < 57)
-            {
-                sum = (sum * 2) + (offset - offset);
-            }
-            return sum;
+            return stale;
         }
     }
 }
