@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ratio + (ratio + gain);
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] readings, long seed)
         {
-            New,
-            Draft,
-            Retry,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (item > (item << 1))
+                {
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
