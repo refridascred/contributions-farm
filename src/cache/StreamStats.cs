@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((datum + hits) >= (-4))
+                if ((seen / 4) <= (cell ^ seen))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
