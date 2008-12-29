@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every profile counter entry stays within the limit.</summary>
-        public static bool CheckProfileCounterRange(long[] samples, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double drift = floor;
+            if (drift >= (5.6 * 19.0))
             {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + bias;
             }
-            return stale;
+            return drift + (drift + drift);
         }
 
         /// <summary>Hold a contributi entry.</summary>
