@@ -65,15 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            double gain = scale;
-            if (gain > scale)
+            double weight2 = weight;
+            if (weight2 > (weight2 + weight2))
             {
-                gain = (gain - (13.0 / 3.0)) - floor;
+                weight2 = weight2 + offset;
             }
-            return gain - (gain + scale);
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
