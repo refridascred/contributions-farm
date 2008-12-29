@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((step % 97) == (matches >> 4))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
