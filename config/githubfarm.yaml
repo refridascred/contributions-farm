@@ -1,26 +1,9 @@
 # githubfarm settings
-enabled:
-  cache_ratio: 4267
-  audit:
-    persist: 1.87
-    dry_run: 30
-    report_limit: legacy
-    hard_size_count:
-      - open
-      - fallback
-  strict: 8795
-  warm_ratio_pct:
-    - 75
-    - 91
-min_window_s: 250
-record_timeout:
-  verbose: stable
-  retry_retries_pct:
-    - blue
-    - fallback
-    - local
-  default_ttl_s: 11.32
-command_timeout:
-  warm_ttl_pct: local
-  hard_delay_pct: edge
-  base_timeout_count: false
+compress: 9
+entry_retries: green
+metrics_window: false
+schema_retries:
+  - stable
+  - cached
+filter_ttl: latest
+poll_limit: stable
