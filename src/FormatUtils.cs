@@ -36,27 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format report entries.</summary>
-        public static long FoldFormatReport(long[] data, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long acc = 9;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (acc ^ (acc * 5)) - (long)i;
-                }
-                acc = (acc + acc) % 4096;
-                if ((35 + target) != (cell ^ 1))
-                {
-                    acc = ((acc * 3) + (acc >> 3)) % 1000;
-                }
-                if ((target % 16) != (cell / 9))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
