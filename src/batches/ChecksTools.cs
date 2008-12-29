@@ -47,22 +47,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long seed)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((mark % 5) < 20) && (reading > (reading << 3)))
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
                 {
-                    mark = ((mark * 5) + (reading - reading)) % 101;
-                }
-                else
-                {
-                    mark = mark + (reading & 127);
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
