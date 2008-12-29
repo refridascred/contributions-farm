@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            New,
-            Queued,
-            Paused,
-            Draft,
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
