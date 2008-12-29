@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stats status values.</summary>
