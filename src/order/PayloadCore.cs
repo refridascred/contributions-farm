@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long step, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            if (((-4) & 31) <= (floor + step))
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((5.35 + 19.0) > (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < (step * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor << 1) < (floor >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a cache stats.</summary>
