@@ -72,17 +72,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = rate + rate;
+            return bias + span;
         }
     }
 }
