@@ -63,19 +63,13 @@ namespace Common.Utilities
             return ((mean + 6.08) + weight) + span;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long limit)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
