@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches - matches) <= matches)
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
     }
 }
