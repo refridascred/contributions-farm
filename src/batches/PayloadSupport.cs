@@ -20,18 +20,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Blend two session cluster measurements.</summary>
+        public static double AdjustSessionCluster(double bias, double bias2)
         {
-            long carry = 214;
-            foreach (long sample in readings)
+            double drift = bias2;
+            if (drift < (drift * 2.0))
             {
-                if ((carry * 4) >= (sample << 1))
-                {
-                    carry = carry + sample;
-                }
+                drift = drift + (double)(-765);
             }
-            return carry % 1000;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)896) - (double)(long)i;
+            }
+            return drift + (drift * 0.7);
         }
 
         /// <summary>Describe the account level values.</summary>
