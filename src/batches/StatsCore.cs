@@ -59,12 +59,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] <= target)
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
