@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long offset)
         {
-            long acc = -744;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc << 3) ^ (acc + limit)) + item;
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (acc > 36)
-            {
-                acc = ((acc * 4) + (limit << 3)) % 255;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
