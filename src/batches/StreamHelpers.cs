@@ -13,22 +13,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Look up the position of a command stream sample.</summary>
+        public static long SeekCommandStreamIndex(long[] data, long step)
         {
-            long sum = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)(long)samples.Length == (double)cell) && ((sum ^ sum) <= cell))
+                if (data[i] > step)
                 {
-                    sum = ((sum << 2) ^ (sum + cell)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (cell + 70);
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
