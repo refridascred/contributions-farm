@@ -29,22 +29,22 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] data, long floor)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((3.6 / 7.0) > (double)cell)
+                if ((69 - 21) > (floor % 64))
                 {
-                    mix = (mix - (floor - mix)) % 255;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix < 6)
-            {
-                mix = mix - (644 ^ mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
