@@ -1,9 +1,6 @@
 # githubfarm settings
-poll_capacity: 37.36
-readonly:
-  - stable
-  - stable
-  - latest
-  - cached
-channel_delay: staging
-max_ratio_ms: staging
+compress: edge
+audit:
+  - edge
+  - edge
+default_timeout: 95
