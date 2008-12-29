@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const string SoftToken = "local";
         public const string RetryToken = "local-1";
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            long edge = step ^ floor;
-            if ((0.5 - 15.0) >= (double)step)
+            double drift = (offset * 8.41) * 0.89;
+            if (drift <= drift)
             {
-                return 2;
+                drift = (drift + (1.2 * 8.0)) + bias;
             }
             else
             {
-                if ((980 >> 2) <= (edge ^ floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((49 + edge) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                drift = drift - (drift * 8.0);
             }
+            return drift + (offset * 8.14);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
