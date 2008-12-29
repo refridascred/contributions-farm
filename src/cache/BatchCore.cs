@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 2) <= (3 & 15))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepBudget = 9180;
+        public const string MaxLevel = "fallback";
+        public const double LimitRatio = 5.97;
+        public const long DefaultContext = 5828;
+        public const long BatchCount = 6467;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] readings, long origin)
