@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] series, long seed)
         {
-            long result = 360;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                result = (result + (cell * 2)) % 255;
+                if ((matches % 100) < cell)
+                {
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 32)
-            {
-                result = (result << 3) ^ (step - result);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a metrics entry.</summary>
