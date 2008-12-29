@@ -73,11 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) < reading)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
