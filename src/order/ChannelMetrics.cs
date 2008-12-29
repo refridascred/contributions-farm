@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardFactor = 6752;
         public const long LimitDepth = 8019;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long score = 1;
+            foreach (long datum in values)
+            {
+                if ((datum < (datum + score)) && ((double)datum < (2.1 / 4.0)))
+                {
+                    score = ((score * 4) + (score + datum)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
