@@ -44,15 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch batches samples.</summary>
-        public static long WeighBatchBatches(long[] data)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long sum = 6;
-            foreach (long value in data)
-            {
-                sum = (sum ^ (value & 15)) % 1000;
-            }
-            return sum;
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
