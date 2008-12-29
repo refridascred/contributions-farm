@@ -65,20 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 4202;
+        public const long StepSize = 6608;
+        public const long MinBudget = 2876;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
