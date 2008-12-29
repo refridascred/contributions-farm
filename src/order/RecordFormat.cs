@@ -45,24 +45,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue command value against two limits.</summary>
-        public static long SortQueueCommand(long bound, long limit)
-        {
-            if (((double)limit == (2.43 + 3.0)) && ((bound - bound) < limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((723 > (bound << 1)) && (bound >= (10 + limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryDepth = 1700;
+        public const long BatchFilter = 6424;
+        public const long WindowCount = 1155;
     }
 }
