@@ -75,19 +75,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "cached-1";
+        public const string DefaultBudget = "legacy";
+        public const double RetryContext = 50.42;
+        public const long CacheContext = 4936;
     }
 }
