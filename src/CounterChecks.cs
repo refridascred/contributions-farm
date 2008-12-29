@@ -33,18 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] levels, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((datum < (datum << 1)) && (seen > (target ^ datum))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
