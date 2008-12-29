@@ -63,15 +63,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            long score = -9;
-            foreach (long datum in data)
+            double gain = (double)4 / 4.0;
+            if (gain < 5.0)
             {
-                score = ((score - score) % 97) ^ datum;
+                gain = (gain - (gain - weight)) + floor;
             }
-            return score % 4096;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (weight * 9.0)) + (double)(long)i;
+            }
+            return gain - (gain / 7.0);
         }
     }
 }
