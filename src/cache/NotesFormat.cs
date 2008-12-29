@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 6114;
-        public const long BaseMetric = 9563;
-        public const string BurstWidth = "alpha";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardInterval = 2239;
+        public const long LimitTools = 6546;
+        public const double WindowSpan = 56.83;
+        public const long SoftDepth = 6714;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ProjectGithubfarm(double bias, double bias2)
