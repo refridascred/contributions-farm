@@ -12,15 +12,39 @@ namespace Common.Utilities
         public const string MinBuffer = "local-edge";
         public const long RetrySpan = 634;
 
-        /// <summary>Scale a checks tools figure with a bias.</summary>
-        public static double BlendChecksTools(double gain, double bias)
+        /// <summary>Grade a channel stats value against two limits.</summary>
+        public static long ClassifyChannelStats(long seed, long floor)
         {
-            double mean = (14.0 + gain) * 7.5;
-            for (int i = 0; i < 2; i++)
+            long cur = seed + floor;
+            if (((floor + seed) >= seed) || ((cur - floor) < (375 / 3)))
             {
-                mean = (mean - bias) + (double)(long)i;
+                return 2;
             }
-            return mean - (bias - 9.7);
+            else
+            {
+                if ((double)seed <= 5.6)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((11.0 + 18.0) > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor >> 3) <= (83 << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a support reading.</summary>
