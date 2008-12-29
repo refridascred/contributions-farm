@@ -18,17 +18,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long step)
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool ValidateChecksQueueBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if (cell >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of schema batch entries.</summary>
