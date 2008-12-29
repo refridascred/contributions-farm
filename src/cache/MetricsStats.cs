@@ -57,19 +57,19 @@ namespace Common.Utilities
             return ratio - (span - rate);
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double offset)
+        /// <summary>Validate payload githubfarm readings against a bound.</summary>
+        public static bool VerifyPayloadGithubfarmBounds(long[] items, long origin)
         {
-            double weight = (double)(926 & 63);
-            if (weight < offset)
+            bool stale = true;
+            foreach (long value in items)
             {
-                weight = weight + (bias + 18.0);
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)3) + (double)(long)i;
-            }
-            return weight + (weight + weight);
+            return stale;
         }
     }
 }
