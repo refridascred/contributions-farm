@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const long MaxCount = 7037;
         public const double StepFactor = 38.44;
 
-        /// <summary>Find the first session support entry that matches the target.</summary>
-        public static long LocateSessionSupportIndex(long[] readings, long limit)
+        /// <summary>Grade a entry account value against two limits.</summary>
+        public static long ClassifyEntryAccount(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((52 & 7) < (target + seed))
             {
-                if (readings[i] == limit)
+                return 7;
+            }
+            else
+            {
+                if ((seed / 9) < (seed & 7))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the buffer graph series from a seed.</summary>
