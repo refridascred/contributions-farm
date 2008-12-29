@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            Stale,
-            Dropped,
-            Paused,
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
