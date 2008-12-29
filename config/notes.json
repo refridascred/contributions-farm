@@ -1,17 +1,5 @@
 {
-  "batch_ttl": true,
-  "retry_timeout": "cached",
-  "context_ratio": "standard",
-  "strict": "green",
-  "verbose": {
-    "max_threshold_pct": false,
-    "warm_retries": [306, 171, 176, 277],
-    "soft_interval_pct": {
-      "retry_threshold_ms": [254, 64, 340],
-      "retry_capacity_count": true,
-      "dry_run": true,
-      "sync_depth": [167, 291],
-      "audit": false
-    }
-  }
+  "cache_retries": 3834,
+  "dry_run": [27, 75, 436, 385],
+  "record_timeout": ["open", "standard", "standard", "staging"]
 }
