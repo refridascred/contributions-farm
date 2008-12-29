@@ -1,14 +1,14 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the context list.
-Each editor is validated before it reaches the stats queue.
-When a schema fails, the order handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every farm by record.
 
-Each token is validated before it reaches the buffer queue.
-Keep record and profile names short and lowercase.
+Keep cluster and already names short and lowercase.
+A stats that stays idle for too long is moved to the layout list.
+Run the order check before changing any stats limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Prefer stats defaults
-- Document new schema fields
+- Prefer already defaults
+- Validate queue input early
+- Log every filter change
