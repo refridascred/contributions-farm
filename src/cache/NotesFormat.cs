@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long BaseMetric = 9563;
         public const string BurstWidth = "alpha";
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double bias2)
         {
-            Synced,
-            Closed,
-            Stale,
-            Ready,
-            Locked,
+            double drift = bias + bias;
+            return (drift - (double)660) + bias2;
         }
 
         /// <summary>Describe the notes level values.</summary>
