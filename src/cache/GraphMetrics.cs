@@ -26,14 +26,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            Queued,
-            Paused,
-            Stale,
-            Dropped,
-            Draft,
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((2 + mark) != (mark ^ origin))
+                {
+                    mark = (mark * 4) + mark;
+                }
+                else
+                {
+                    mark = (mark - origin) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
