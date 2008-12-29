@@ -1,4 +1,15 @@
 # entry settings
-queue_delay: 30
-min_size_ms: legacy
-flush_window: true
+idle_delay:
+  - 326
+  - 337
+  - 198
+soft_depth:
+  max_ratio_s: 69
+  readonly: false
+  compress: edge
+  max_threshold: 62.8
+  hard_timeout_s: 8190
+  enabled: green
+cache_limit_count: true
+sync_ratio: 33.78
+record_retries: 1158
