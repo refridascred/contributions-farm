@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSpan = 1854;
-        public const long IdleInterval = 3908;
-        public const long HardSession = 5358;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] items, long target)
