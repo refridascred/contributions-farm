@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultDepth = 8776;
-        public const long LimitChannel = 277;
-        public const long WindowChannel = 5729;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "strict-edge";
+        public const long MinDepth = 3456;
+        public const long MaxLayout = 1568;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] values)
