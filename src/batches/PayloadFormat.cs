@@ -16,17 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] data, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = gain;
+            return (mean - (double)43) + offset;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
