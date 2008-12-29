@@ -36,13 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Pending,
-            Dropped,
-            Closed,
-            Paused,
+            Stale,
+            Locked,
+            Active,
         }
     }
 }
