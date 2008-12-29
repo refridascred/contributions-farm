@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
             public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up batches editor samples.</summary>
