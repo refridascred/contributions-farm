@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support counter entries that pass the check.</summary>
-        public static long CountSupportCounterGaps(long[] series)
+        /// <summary>Roll a farm queue counter forward.</summary>
+        public static long SeriesFarmQueue(long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum - datum) > datum)
-                {
-                    tally = tally + 2;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
