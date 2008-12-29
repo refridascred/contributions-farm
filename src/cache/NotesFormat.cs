@@ -35,11 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double bias, double bias2)
+        /// <summary>Look up the position of a commits graph sample.</summary>
+        public static long LocateCommitsGraphIndex(long[] series, long floor)
         {
-            double drift = bias + bias;
-            return (drift - (double)660) + bias2;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout commits entries that pass the check.</summary>
