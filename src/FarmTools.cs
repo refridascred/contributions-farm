@@ -31,20 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((limit - 109) <= (long)i)
-                {
-                    state = (state << 3) ^ (state >> 4);
-                }
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 92.51;
+        public const string DefaultSpan = "standard";
+        public const double BurstSupport = 22.58;
+        public const double MinSize = 3.03;
     }
 }
