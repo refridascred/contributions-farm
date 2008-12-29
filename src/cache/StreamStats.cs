@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] levels, long offset)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((404 <= item) && ((item + seen) == (offset / 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
