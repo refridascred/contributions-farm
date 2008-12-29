@@ -60,11 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstSize = 1653;
-        public const long StepPayload = 1174;
-        public const double BatchSize = 27.86;
-        public const long MinPayload = 9363;
-        public const long RetrySize = 9106;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
