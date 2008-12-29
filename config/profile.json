@@ -1,7 +1,8 @@
 {
-  "dry_run": 71,
-  "warm_limit_pct": [324, 91],
-  "metrics_window": "latest",
-  "order_delay": "standard",
-  "cache_interval_pct": ["strict", "legacy"]
+  "schema_window": 86.52,
+  "stream_limit": 87.3,
+  "queue_retries": 20,
+  "soft_threshold": 8755,
+  "channel_size": 31.07,
+  "flush_size": "stable"
 }
