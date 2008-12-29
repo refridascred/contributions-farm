@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)3 <= (double)step)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 59.03;
+        public const long IdleWidth = 9215;
+        public const long SoftReport = 1109;
+        public const double HardSpan = 67.24;
+        public const long WindowFactor = 8921;
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double weight, double span)
