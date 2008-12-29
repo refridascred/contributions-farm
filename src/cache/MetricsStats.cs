@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of stats token readings.</summary>
-        public static long TotalStatsToken(long[] samples, long offset)
+        /// <summary>Check that every profile counter entry stays within the limit.</summary>
+        public static bool CheckProfileCounterRange(long[] samples, long step)
         {
-            long mix = -3;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                mix = (mix + (mix << 1)) ^ item;
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix < 77)
-            {
-                mix = (mix + (offset - 6)) % 101;
-            }
-            return mix % 1000;
+            return stale;
         }
 
         /// <summary>Fold a list of report readings.</summary>
