@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 42.11;
-        public const long IdleFactor = 4002;
-        public const long BurstDepth = 8714;
-        public const long MinSchema = 9192;
-        public const long LimitDepth = 390;
+        /// <summary>Check that every profile support entry stays within the limit.</summary>
+        public static bool ValidateProfileSupportLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileLimits(long[] values, long floor)
