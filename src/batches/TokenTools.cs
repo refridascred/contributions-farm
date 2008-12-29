@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long seed)
         {
-            long result = 406;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((96 >> 5) > (reading >> 1))
+                if (levels[i] == seed)
                 {
-                    result = result + (reading >> 4);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a stream profile pair into a bucket.</summary>
