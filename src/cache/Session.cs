@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] values, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                acc = (acc * 4) + (long)i;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
