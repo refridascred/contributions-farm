@@ -63,12 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxFactor = "cached-1";
-        public const long SoftSpan = 5244;
-        public const double MaxSpan = 97.11;
-        public const long MinLevel = 8403;
-        public const long MinRoute = 2549;
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
         public static long MatchBatchContributiCount(long[] samples)
