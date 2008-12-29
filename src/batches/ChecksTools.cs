@@ -27,12 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 65.84;
-        public const double BaseDepth = 43.55;
-        public const string RetrySchema = "staging-v2";
-        public const long CacheSize = 3748;
-        public const long StepSchema = 7977;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Queued,
+            Paused,
+            Active,
+            Done,
+        }
 
         /// <summary>Grade a already record value against two limits.</summary>
         public static long RankAlreadyRecord(long step, long step2)
