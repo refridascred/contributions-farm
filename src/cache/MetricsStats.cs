@@ -56,18 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command checks readings against a rule.</summary>
-        public static long MeasureCommandChecksHits(long[] series)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((value + 465) <= (seen * 4)) && (value >= (value + value)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double drift = bias;
+            return drift - bias2;
         }
     }
 }
