@@ -71,21 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
