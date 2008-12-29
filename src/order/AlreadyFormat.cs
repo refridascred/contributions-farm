@@ -43,12 +43,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long floor)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
