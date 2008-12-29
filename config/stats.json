@@ -1,5 +1,8 @@
 {
-  "checks_retries": 47.67,
-  "min_size_pct": 1024,
-  "cache_limit_pct": ["edge", "staging", "green", "green"]
+  "support_depth": 500,
+  "warm_timeout_pct": "legacy",
+  "hard_ttl": 0.6,
+  "retry_delay": 100,
+  "max_ratio": 85.06,
+  "window_ttl": true
 }
