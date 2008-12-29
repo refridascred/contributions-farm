@@ -29,12 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchBudget = 7526;
-        public const long WindowBatch = 4041;
-        public const long DefaultBatch = 3935;
-        public const double CacheCount = 24.44;
-        public const long RetrySize = 4184;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Done,
+            Idle,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] samples)
