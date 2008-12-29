@@ -51,21 +51,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] <= target)
                 {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
