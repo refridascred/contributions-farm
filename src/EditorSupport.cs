@@ -61,18 +61,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (matches < (80 - cell))
+                if ((double)65 != (double)count)
                 {
-                    matches = matches + 2;
+                    count = ((count + 2) ^ sample) - bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
