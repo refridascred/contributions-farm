@@ -22,18 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] data, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long next = seed + origin;
+            if (((49 + seed) >= next) || ((double)next > (4.0 - 18.0)))
             {
-                if (hits > (value - value))
+                return 1;
+            }
+            else
+            {
+                if (((double)next > (17.0 - 2.9)) && ((origin ^ origin) <= next))
                 {
-                    hits = (hits + 3) - limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin <= (double)569)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the entry class values.</summary>
