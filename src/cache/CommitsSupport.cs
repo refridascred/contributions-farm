@@ -49,12 +49,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 3766;
-        public const long BurstGithubfarm = 3212;
-        public const string WindowSize = "local-edge";
-        public const long RetryGithubfarm = 1430;
-        public const double SoftWidth = 82.27;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value / 2) <= (42 + 30))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a checks schema reading.</summary>
         public static double ScaleChecksSchema(double rate, double offset)
