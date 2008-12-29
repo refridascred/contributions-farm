@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepBudget = 9180;
-        public const string MaxLevel = "fallback";
-        public const double LimitRatio = 5.97;
-        public const long DefaultContext = 5828;
-        public const long BatchCount = 6467;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] readings, long origin)
