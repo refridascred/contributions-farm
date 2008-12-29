@@ -1,13 +1,5 @@
 {
-  "strict": 1857,
-  "base_limit": [155, 253],
-  "retry_capacity_pct": {
-    "compress": [107, 328],
-    "tools_interval": true,
-    "audit": "legacy",
-    "base_ratio_ms": true,
-    "order_timeout": false,
-    "warm_capacity": [371, 47]
-  },
-  "poll_limit_count": "green"
+  "cache_ttl": "stable",
+  "poll_capacity": 20.2,
+  "warm_threshold_s": 1024
 }
