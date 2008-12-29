@@ -32,16 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream format value from a seed.</summary>
-        public static long IterateStreamFormat(long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc << 2) ^ (acc - 293)) % 101;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((bound - bound) == (33 ^ mix))
+                {
+                    break;
+                }
+                if (!((bound + mix) < (bound / 7)))
+                {
+                    mix = ((mix << 3) ^ (bound - bound)) % 4096;
+                }
+                mix = mix + (long)i;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
