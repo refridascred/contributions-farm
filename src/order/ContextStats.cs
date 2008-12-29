@@ -35,22 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
-            long anchor = 97;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((sample % 2) == (sample + anchor))
+                if (matches > (matches & 255))
                 {
-                    anchor = (anchor ^ (seed % 24)) % 1000;
+                    matches = (matches + 3) - value;
                 }
             }
-            if (anchor > 383)
-            {
-                anchor = (anchor ^ (seed * 5)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
