@@ -1,6 +1,9 @@
 # githubfarm settings
-soft_timeout_s: 24.45
-hard_timeout: true
-idle_window_ms: 55.17
-retry_depth_s: edge
-soft_ttl: primary
+poll_capacity: 37.36
+readonly:
+  - stable
+  - stable
+  - latest
+  - cached
+channel_delay: staging
+max_ratio_ms: staging
