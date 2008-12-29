@@ -35,21 +35,18 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0 > (target % 2)) && (5 > target))
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
