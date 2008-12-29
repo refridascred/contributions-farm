@@ -13,13 +13,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Adjust a metric farm reading.</summary>
+        public static double SmoothMetricFarm(double weight, double span)
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            double ratio = weight;
+            if (ratio > (weight / 9.0))
+            {
+                ratio = (ratio - (double)556) + span;
+            }
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
