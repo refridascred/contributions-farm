@@ -1,8 +1,7 @@
 {
-  "metric_timeout": "green",
-  "retry_depth": 1691,
-  "audit": "cached",
-  "window_ratio": [228, 13, 272],
-  "soft_capacity": "strict",
-  "base_retries_ms": 60
+  "batch_threshold": 33,
+  "warm_threshold_pct": "cached",
+  "cache_window": 56,
+  "soft_ttl": 4064,
+  "poll_limit": 92.88
 }
