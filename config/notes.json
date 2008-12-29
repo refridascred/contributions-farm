@@ -1,6 +1,6 @@
 {
-  "support_ttl": "stable",
-  "dry_run": 764,
-  "record_timeout": "staging",
-  "warm_capacity_count": "edge"
+  "default_size_ms": ["green", "primary", "cached"],
+  "flush_size_count": ["edge", "legacy", "edge"],
+  "buffer_delay": false,
+  "entry_window": 38
 }
