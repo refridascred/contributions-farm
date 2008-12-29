@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
+        public static long CountGithubfarmMetricsGaps(long[] samples, long bound)
         {
-            New,
-            Locked,
-            Stale,
-            Closed,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((bound > seen) && ((double)seen != (double)(long)samples.Length)) || ((item >> 3) < seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
