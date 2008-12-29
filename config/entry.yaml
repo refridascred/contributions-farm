@@ -1,17 +1,6 @@
 # entry settings
-stats_ratio: 92.77
-retry_interval_ms: 60
-max_retries_count: true
-batch_depth_pct:
-  warm_interval:
-    - 399
-    - 293
-    - 11
-    - 1
-  githubfarm_ttl: false
-  flush_ttl_ms: 7058
-  idle_interval: 60
-  max_limit_count: 96.06
-  format_depth: 36
-batch_timeout: true
-cache_timeout_s: 7684
+soft_retries: primary
+readonly: cached
+sync_capacity_pct:
+  - 469
+  - 366
