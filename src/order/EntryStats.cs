@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] samples, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!!((cell + tally) == (origin - 246)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
