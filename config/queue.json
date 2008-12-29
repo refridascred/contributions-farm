@@ -1,10 +1,12 @@
 {
-  "cache_interval": 59.7,
-  "idle_limit": 250,
-  "cache_delay_pct": {
-    "notes_retries": true,
-    "sync_capacity_ms": 48.83,
-    "flush_interval": 99
-  },
-  "audit": "legacy"
+  "soft_capacity_s": 98,
+  "counter_window": ["strict", "fallback"],
+  "editor_depth": 250,
+  "batch_delay": {
+    "profile_timeout": 1024,
+    "retry_delay_ms": "local",
+    "default_ratio_ms": "local",
+    "editor_window": 250,
+    "max_timeout_pct": 9
+  }
 }
