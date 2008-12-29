@@ -41,10 +41,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinWidth = "strict-1";
-        public const string DefaultWidth = "local-v2";
-        public const long MaxRatio = 8181;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksBounds(long[] series, long floor)
