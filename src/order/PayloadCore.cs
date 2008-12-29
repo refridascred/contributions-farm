@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] series, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            long total = 49;
-            foreach (long entry in series)
+            long mix = -3;
+            foreach (long value in samples)
             {
-                if ((total + bound) < (930 - 991))
+                if ((mix + mix) >= value)
                 {
-                    total = (total + entry) % 65521;
+                    mix = (mix + (mix % 2)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix << 3)) % 1000;
                 }
             }
-            if (total > 8)
+            if (mix < 7)
             {
-                total = ((total * 4) + (bound + bound)) % 65521;
+                mix = (mix ^ mix) % 97;
             }
-            return total;
+            return mix % 97;
         }
 
         /// <summary>Measure how many farm profile samples are out of range.</summary>
