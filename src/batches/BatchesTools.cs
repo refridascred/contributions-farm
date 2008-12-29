@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!(item > (327 << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstRatio = "open-edge";
+        public const long DefaultLevel = 9606;
+        public const long DefaultSupport = 8671;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] items, long seed)
