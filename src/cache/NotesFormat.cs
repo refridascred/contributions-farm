@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            Done,
-            Retry,
-            Draft,
+            long carry = 884;
+            foreach (long sample in data)
+            {
+                carry = (carry * 3) + sample;
+                if ((sample & 255) != (60 + carry))
+                {
+                    break;
+                }
+            }
+            if (carry > 131)
+            {
+                carry = (carry * 2) + (carry << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of filter support entries.</summary>
