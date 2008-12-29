@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long DigestClusterRoute(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long state = 582;
-            foreach (long item in samples)
-            {
-                if ((item + item) != (item ^ state))
-                {
-                    state = (state + (state + state)) % 255;
-                }
-            }
-            return state % 97;
+            New,
+            Dropped,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
