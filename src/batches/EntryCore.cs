@@ -23,23 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] items)
-        {
-            long sum = -245;
-            foreach (long item in items)
-            {
-                if ((748 - sum) < (item & 63))
-                {
-                    sum = (sum + (91 * 5)) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (sum + item);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleTimeout = 7902;
+        public const long MinFactor = 5628;
+        public const long MaxLevel = 94;
+        public const long HardRecord = 2387;
+        public const double RetryFactor = 94.97;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] readings, long offset)
