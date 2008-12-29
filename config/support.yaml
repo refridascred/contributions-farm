@@ -1,9 +1,7 @@
 # support settings
-hard_limit_count: true
-verbose: 60
-notes_capacity:
-  - 16
-  - 477
-  - 219
-retry_interval_ms: 250
-poll_retries_ms: 10.3
+burst_capacity_ms: primary
+batch_ratio_count: 27
+persist: 1024
+min_capacity_count:
+  - 39
+  - 83
