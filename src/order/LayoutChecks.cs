@@ -80,10 +80,28 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8722;
-        public const long CacheInterval = 6486;
-        public const string MaxLevel = "alpha";
-        public const long MinStats = 274;
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long FoldCacheWindow(long[] samples, long floor)
+        {
+            long acc = 158;
+            foreach (long reading in samples)
+            {
+                if (!(0 >= ((-3) + floor)))
+                {
+                    acc = ((acc * 5) + (floor >> 4)) % 65521;
+                    acc = acc + (754 << 3);
+                    continue;
+                }
+                if ((93 + reading) != (floor * 3))
+                {
+                    acc = (acc ^ (floor - floor)) % 97;
+                }
+                if ((acc + acc) < (reading / 4))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
