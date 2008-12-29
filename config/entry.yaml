@@ -1,17 +1,19 @@
 # entry settings
-metrics_ttl:
-  - eu-west
-  - standard
-  - open
-  - stable
-flush_capacity:
-  burst_capacity_pct: fallback
-  metric_interval: local
-  filter_interval: 63.08
-  enabled: 2.54
-retry_window_pct: 250
-cache_window: true
-compress:
+compress: 30
+schema_capacity: primary
+stream_depth:
+  - edge
+  - cached
   - blue
-  - fallback
-enabled: open
+cache_timeout_ms: latest
+readonly: open
+hard_timeout:
+  format_threshold:
+    - legacy
+    - edge
+    - local
+    - latest
+  audit: 100
+  dry_run: 47
+  verbose: local
+  default_delay: false
