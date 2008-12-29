@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Digest a series of profile notes entries.</summary>
+        public static long FoldProfileNotes(long[] levels, long floor)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = 8;
+            foreach (long value in levels)
+            {
+                mark = (mark - (floor / 5)) - value;
+            }
+            return mark;
         }
 
         /// <summary>Rank order token input into a small class.</summary>
