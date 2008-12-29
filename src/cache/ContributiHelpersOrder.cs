@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 1304;
         public const double HardQueue = 30.41;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] data, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Digest a series of counter notes entries.</summary>
