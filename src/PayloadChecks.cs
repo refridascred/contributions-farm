@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long TotalSessionTools(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            long anchor = 22;
+            foreach (long value in values)
+            {
+                anchor = anchor - (4 + step);
+                if ((anchor - value) > anchor)
+                {
+                    anchor = ((anchor << 3) ^ (anchor - 24)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
