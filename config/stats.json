@@ -1,7 +1,22 @@
 {
-  "hard_interval": 100,
-  "poll_ttl_pct": "stable",
-  "soft_depth_pct": "edge",
-  "flush_depth_ms": "open",
-  "token_depth": "edge"
+  "cache_capacity_pct": {
+    "persist": "latest",
+    "burst_size_ms": 36.7,
+    "cluster_capacity": [280, 79, 23]
+  },
+  "enabled": ["latest", "green", "local", "green"],
+  "dry_run": 7493,
+  "poll_window_ms": true,
+  "cache_ratio": {
+    "cache_limit_ms": "stable",
+    "audit": 6.89,
+    "enabled": {
+      "min_interval_pct": "legacy",
+      "flush_delay": 12.15,
+      "hard_delay_ms": 81.65,
+      "batch_depth": "edge",
+      "min_ratio_ms": "local",
+      "support_window": false
+    }
+  }
 }
