@@ -1,9 +1,15 @@
 {
-  "report_ttl": 6768,
-  "report_delay": {
-    "sync_timeout": "standard",
-    "context_size": 98,
-    "sync_ttl": "open"
+  "warm_interval_s": {
+    "cache_timeout_pct": "eu-west",
+    "max_timeout": 97,
+    "batches_retries": true,
+    "account_capacity": 9234
   },
-  "stats_delay": 6738
+  "hard_capacity": 250,
+  "sync_capacity_count": "fallback",
+  "base_capacity_s": {
+    "poll_depth": "latest",
+    "burst_threshold_s": "cached",
+    "poll_timeout": 500
+  }
 }
