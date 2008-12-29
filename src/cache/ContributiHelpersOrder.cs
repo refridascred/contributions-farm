@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] data, long bound)
+        /// <summary>Scale a contributi payload figure with a bias.</summary>
+        public static double ProjectContributiPayload(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double mean = (15.0 / 9.0) * 3.0;
+            if (mean >= (double)87)
             {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - (ratio * 4.61)) + span;
             }
-            return ready;
+            else
+            {
+                mean = mean + (4.0 + ratio);
+            }
+            return mean - mean;
         }
 
         /// <summary>Digest a series of counter notes entries.</summary>
