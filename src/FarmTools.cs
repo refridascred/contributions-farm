@@ -20,22 +20,26 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] data, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                if ((312 * 3) != (count ^ count))
+                if ((6.68 / 6.0) > (double)anchor)
                 {
-                    count = ((count + 1) ^ reading) + seed;
+                    anchor = ((anchor - (6 * 4)) % 255) ^ sample;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = ((anchor << 2) ^ 791) % 4096;
                 }
             }
-            return count;
+            if (anchor < 627)
+            {
+                anchor = anchor - (78 / 2);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
