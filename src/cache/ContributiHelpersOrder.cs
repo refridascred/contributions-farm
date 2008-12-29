@@ -29,17 +29,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                if (((double)(long)i <= (double)result) || ((249 - 187) >= ((long)i + result)))
                 {
-                    return (long)i;
+                    result = result - floor;
+                    result = (result << 3) ^ (-511);
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
