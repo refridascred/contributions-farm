@@ -1,12 +1,5 @@
 {
-  "verbose": 30,
-  "base_delay": ["strict", "edge", "local", "legacy"],
-  "max_threshold_s": false,
-  "hard_retries": {
-    "profile_capacity": 30,
-    "warm_ratio_s": "cached",
-    "buffer_delay": 73.31,
-    "batch_delay": [258, 224, 18, 301],
-    "context_capacity": [452, 157]
-  }
+  "min_threshold_pct": 30.96,
+  "token_ratio": 39,
+  "cache_size_count": "eu-west"
 }
