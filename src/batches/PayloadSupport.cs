@@ -22,24 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a session route pair into a bucket.</summary>
-        public static long GradeSessionRoute(long floor, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long bound)
         {
-            if ((offset >> 1) <= (offset - offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((13.0 * 3.96) >= (double)offset))
+                if (data[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
