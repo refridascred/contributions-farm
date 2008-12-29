@@ -1,12 +1,5 @@
 {
-  "hard_depth": "blue",
-  "retry_depth_pct": 250,
-  "record_ttl": "staging",
-  "poll_threshold_s": {
-    "already_capacity": "fallback",
-    "soft_ratio_s": "stable",
-    "min_ratio": 75
-  },
-  "farm_capacity": false,
-  "poll_timeout_s": 6.36
+  "checks_retries": 47.67,
+  "min_size_pct": 1024,
+  "cache_limit_pct": ["edge", "staging", "green", "green"]
 }
