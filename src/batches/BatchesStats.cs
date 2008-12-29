@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] items, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the order mode values.</summary>
