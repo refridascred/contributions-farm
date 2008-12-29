@@ -61,22 +61,12 @@ namespace Common.Utilities
         public const double BatchLevel = 25.06;
         public const long CacheTimeout = 6735;
 
-        /// <summary>Measure how many cache context samples are out of range.</summary>
-        public static long CountCacheContextGaps(long[] levels)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 5) <= entry)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
