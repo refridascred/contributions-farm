@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long target, long seed)
-        {
-            long lane = target ^ seed;
-            if ((target + 52) <= (421 - seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane < (4 % 97)) && ((seed + 0) != (seed * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)lane <= 8.7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (2.1 > (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowInterval = 57.65;
+        public const long HardSpan = 9901;
+        public const long HardSupport = 1790;
+        public const double BatchCount = 71.37;
+        public const long BatchSupport = 4523;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double gain, double offset)
