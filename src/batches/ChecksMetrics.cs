@@ -12,12 +12,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitFactor = 42.48;
+        public const double MinWidth = 98.15;
+        public const long MaxDepth = 7942;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
