@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const long MinBuffer = 3582;
         public const long WindowWidth = 224;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((328 - count) > target)
+                if (((seen + seen) > (step - entry)) || ((double)step > (2.7 * 8.0)))
                 {
-                    count = (count + 3) ^ entry;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
