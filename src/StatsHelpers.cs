@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            double rate = (double)(573 << 2);
+            if (rate <= (19.0 * 7.96))
+            {
+                rate = rate + (double)0;
+            }
+            else
+            {
+                rate = rate + (19.0 - 0.6);
+            }
+            return rate + (offset - scale);
         }
 
         /// <summary>Check that every schema notes entry stays within the limit.</summary>
