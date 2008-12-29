@@ -1,12 +1,7 @@
 {
-  "min_timeout_count": {
-    "enabled": 929,
-    "command_ratio": true,
-    "soft_threshold_s": [443, 404, 243],
-    "cache_capacity_pct": ["primary", "green"],
-    "burst_window": 4163
-  },
-  "burst_delay_pct": "fallback",
-  "burst_interval_ms": "fallback",
-  "audit": false
+  "verbose": ["local", "eu-west", "open", "legacy"],
+  "base_size": "staging",
+  "payload_retries": 3553,
+  "format_limit": false,
+  "format_depth": [406, 394, 446]
 }
