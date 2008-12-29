@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long offset2 = offset + target;
-            if (!((target + offset) != (offset2 / 9)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)284 <= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(5 <= (offset + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Hold a cache stats.</summary>
