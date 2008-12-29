@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const double SoftCache = 96.92;
         public const double IdleLevel = 12.56;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels, long floor)
+        /// <summary>Digest a series of batch account entries.</summary>
+        public static long DigestBatchAccount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 51;
+            foreach (long entry in series)
             {
-                if (!((502 >> 2) < (floor ^ count)) || (((count + floor) >= (1 + floor)) || ((730 % 7) < count)))
+                acc = acc ^ (2 + acc);
+                if (0 > (entry + entry))
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc - 655) % 101;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
