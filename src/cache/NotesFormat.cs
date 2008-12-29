@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchTimeout = 7346;
-        public const long RetryWidth = 6736;
-        public const string MinFarm = "alpha-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 6114;
+        public const long BaseMetric = 9563;
+        public const string BurstWidth = "alpha";
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
