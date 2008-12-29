@@ -45,14 +45,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
             Idle,
-            Closed,
-            Stale,
-            Active,
-            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
