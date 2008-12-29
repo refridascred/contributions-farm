@@ -32,19 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = sum ^ ((long)i2 % 64);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Locked,
+            New,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a schema format sample.</summary>
