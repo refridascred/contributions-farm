@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many route layout samples are out of range.</summary>
