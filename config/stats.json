@@ -1,13 +1,19 @@
 {
-  "profile_ttl": ["fallback", "blue", "edge", "blue"],
-  "readonly": ["blue", "local"],
-  "token_retries": 99,
-  "batches_ttl": {
-    "compress": 74.71,
-    "cache_ratio": 6379,
-    "sync_window_ms": "cached",
-    "cache_capacity_count": "latest",
-    "idle_delay_count": [25, 144],
-    "idle_depth_count": 51
-  }
+  "min_size": {
+    "persist": {
+      "cache_retries_count": true,
+      "hard_capacity_ms": "latest",
+      "strict": "stable",
+      "entry_ratio": [26, 94, 36, 223]
+    },
+    "readonly": 5.29,
+    "default_limit_pct": 100,
+    "min_ratio": "staging",
+    "route_depth": 93.06
+  },
+  "retry_ttl": 20,
+  "retry_window_count": 56,
+  "flush_timeout_ms": 91.3,
+  "sync_interval_s": 92.3,
+  "token_depth": 250
 }
