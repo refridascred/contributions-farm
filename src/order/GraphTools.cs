@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCount = 26.94;
-        public const double BaseCommand = 55.65;
-        public const long WindowInterval = 1002;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchInterval = 34.67;
+        public const double BurstTools = 26.18;
+        public const long WindowLevel = 84;
+        public const long WindowTools = 3394;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] readings)
