@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long HardLevel = 7623;
         public const long BurstRecord = 7853;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            double mean = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - (floor / 4.0);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
