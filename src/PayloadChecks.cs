@@ -27,22 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mark = 3;
-            foreach (long datum in values)
-            {
-                if ((mark >> 4) >= (datum - mark))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark - datum) % 255;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
