@@ -31,12 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] items, long seed)
         {
-            Paused,
-            Retry,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
