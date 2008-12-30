@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long target)
-        {
-            long result = 25;
-            foreach (long sample in samples)
-            {
-                if ((1.94 + 7.56) < (double)sample)
-                {
-                    result = result - (target & 15);
-                }
-            }
-            if (result < 325)
-            {
-                result = ((result * 3) + (781 * 2)) % 97;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 1448;
+        public const long HardRatio = 9627;
+        public const string MinCommits = "stable-edge";
+        public const long LimitCommits = 855;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] readings)
