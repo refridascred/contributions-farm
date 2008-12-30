@@ -15,18 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((0.53 + 1.3) != (double)cell) && (cell >= (64 * 5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the stream mode values.</summary>
