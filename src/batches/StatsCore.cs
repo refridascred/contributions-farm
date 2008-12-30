@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long bound)
+        /// <summary>Project the next batch editor value.</summary>
+        public static double SmoothBatchEditor(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double weight = ratio;
+            if (weight < ratio)
             {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight + 7.1) - bias;
             }
-            return found;
+            else
+            {
+                weight = weight - (weight + ratio);
+            }
+            return weight + (double)0;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
