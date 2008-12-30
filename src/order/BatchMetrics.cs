@@ -55,20 +55,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate report githubfarm samples.</summary>
-        public static long WeighReportGithubfarm(long[] series)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mix = 47;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (((mix * 4) + 27) % 255) - (long)i;
-                }
-                mix = (mix * 5) + reading;
-                mix = (mix * 3) + (819 / 5);
-            }
-            return mix;
+            Ready,
+            Paused,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
