@@ -30,11 +30,15 @@ namespace Common.Utilities
             return (weight + (double)14) + bias;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a account counter counter forward.</summary>
+        public static long SeriesAccountCounter(long bound)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
