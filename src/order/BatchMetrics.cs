@@ -79,17 +79,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 44;
+            foreach (long reading in values)
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (reading << 3)) % 97) + seed;
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
