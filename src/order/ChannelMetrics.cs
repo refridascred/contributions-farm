@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            Active,
-            Closed,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((-4) ^ seen) > (datum - datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
