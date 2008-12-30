@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            Synced,
+            Active,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
