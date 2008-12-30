@@ -1,13 +1,7 @@
 {
-  "base_depth": true,
-  "default_threshold_s": 99,
-  "burst_limit": "standard",
-  "idle_retries_s": {
-    "report_threshold": "staging",
-    "readonly": true,
-    "contributi_interval": 89.59,
-    "flush_threshold": "eu-west",
-    "flush_limit": 81,
-    "sync_timeout_ms": 2695
-  }
+  "editor_interval": 9710,
+  "cluster_ttl": 1024,
+  "cache_retries_pct": false,
+  "verbose": 85.21,
+  "dry_run": 3511
 }
