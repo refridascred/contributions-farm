@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count >= (bound % 64)) || ((count / 5) >= (77 + count)))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
