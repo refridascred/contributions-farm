@@ -47,10 +47,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepTimeout = "standard-1";
-        public const double RetryRatio = 10.71;
-        public const long SoftBatches = 6685;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long offset)
+        {
+            if ((origin & 15) <= (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset > (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((56 + 8) < (origin ^ origin)) && ((offset << 2) > (origin & 31)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin << 3) <= (origin / 3)) || ((double)offset != (6.93 - 4.9)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metrics checks reading by value.</summary>
         public static long SeekMetricsChecksIndex(long[] samples, long origin)
