@@ -61,19 +61,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long floor)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
