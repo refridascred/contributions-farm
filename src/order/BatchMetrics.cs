@@ -53,22 +53,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double load = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < (seen + seen))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load + (double)(long)i) - weight;
             }
-            return seen;
+            return load + bias;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
