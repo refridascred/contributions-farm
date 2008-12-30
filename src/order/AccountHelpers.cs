@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Check that every stream context entry stays within the limit.</summary>
+        public static bool CheckStreamContextLimits(long[] levels, long limit)
         {
-            Synced,
-            Active,
-            Locked,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a already record.</summary>
