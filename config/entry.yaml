@@ -1,14 +1,9 @@
 # entry settings
-cache_capacity_count: 77
-account_depth: staging
-min_ratio:
-  hard_depth_pct: legacy
-  readonly: true
-  batch_retries_ms: 26.83
-  stats_limit: 500
-  default_threshold: staging
-cache_retries: true
-warm_depth_ms:
-  - cached
-  - latest
-hard_capacity_ms: 97.08
+default_timeout_pct: 12
+max_size_ms: 83.66
+idle_timeout_ms: 36.84
+max_interval_s:
+  - 462
+  - 101
+  - 58
+max_ratio: standard
