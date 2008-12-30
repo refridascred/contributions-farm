@@ -52,18 +52,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long score = 2;
+            foreach (long cell in readings)
             {
-                if ((sample - matches) < (matches - sample))
+                if ((251 >> 3) > (score ^ (-94)))
                 {
-                    matches = matches + 3;
+                    score = ((score << 3) ^ (cell - 772)) + floor;
                 }
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Blend two filter measurements.</summary>
