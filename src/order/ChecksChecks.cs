@@ -33,19 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] data, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
