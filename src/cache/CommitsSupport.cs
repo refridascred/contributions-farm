@@ -39,14 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Dropped,
-            Draft,
-            Synced,
-            Active,
-            Done,
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
