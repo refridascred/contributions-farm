@@ -20,38 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long target, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            if (!((double)seed > (0.94 + 12.0)))
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target + seed) < (seed / 5)) && (target > (seed + 77)))
+                if (((-5) << 3) > target)
                 {
-                    return 8;
+                    mark = (mark + (target + target)) % 255;
                 }
-                else
-                {
-                    if (((seed + target) == (target << 1)) || ((6.9 / 4.0) >= (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-429) <= (seed - 8)) || ((10.0 + 1.84) < (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Count the cache format entries that pass the check.</summary>
