@@ -32,19 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of entry counter readings.</summary>
-        public static long FoldEntryCounter(long[] readings, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double rate, double floor)
         {
-            long anchor = -388;
-            foreach (long reading in readings)
+            double load = (double)(32 * 5);
+            if (load <= (double)97)
             {
-                anchor = ((anchor - (0 + target)) % 97) + reading;
-                if (!((2 - 37) >= (long)readings.Length))
-                {
-                    break;
-                }
+                load = (load - (double)714) - rate;
             }
-            return anchor % 97;
+            else
+            {
+                load = load + (load + load);
+            }
+            return load + (floor + floor);
         }
     }
 }
