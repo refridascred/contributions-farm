@@ -1,15 +1,24 @@
 # githubfarm settings
-max_retries_ms: 96.31
-max_retries: 96
-min_timeout_ms:
-  base_depth_ms:
-    queue_size: legacy
-    burst_depth_ms: strict
-    readonly: 5718
-  hard_capacity_s: 49.25
-  compress: primary
-  hard_ttl_count:
-    - local
+soft_timeout:
+  window_depth: 3673
+  dry_run:
+    dry_run:
+      - standard
+      - open
+    payload_ttl: false
+    context_depth: true
+    base_ratio: 33
+    verbose: 1685
+    soft_limit_ms: 43.37
+  default_delay: 95.4
+  default_interval:
     - open
-max_limit_count: 6454
-retry_threshold_ms: eu-west
+    - edge
+    - strict
+    - standard
+verbose: strict
+soft_size_count:
+  - 434
+  - 24
+  - 35
+  - 311
