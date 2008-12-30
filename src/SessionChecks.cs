@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const long MinLevel = 6219;
         public const long HardReport = 4751;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long target)
         {
-            Ready,
-            Active,
-            Stale,
+            long step = origin + target;
+            if ((double)step > (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target % 3) >= step) || ((88 + origin) < (step >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (6.3 <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - origin) > (origin + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
