@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Scale a layout already figure with a bias.</summary>
+        public static double AdjustLayoutAlready(double bias, double floor)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            double gain = (double)(76 - 28);
+            if (gain > floor)
+            {
+                gain = (gain - 17.0) + bias;
+            }
+            return gain + floor;
         }
 
         /// <summary>Locate a buffer order reading by value.</summary>
