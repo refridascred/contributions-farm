@@ -31,12 +31,17 @@ namespace Common.Utilities
         public const long LimitCommits = 69;
         public const string SoftCommits = "fallback";
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a cache metrics reading by value.</summary>
+        public static long LocateCacheMetricsIndex(long[] samples, long step)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
