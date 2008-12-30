@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Paused,
-            Pending,
-            Queued,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
