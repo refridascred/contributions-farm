@@ -62,17 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
