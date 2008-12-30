@@ -34,13 +34,14 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Retry,
-            Idle,
-            Closed,
+            Done,
+            Synced,
             New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Match up route samples.</summary>
