@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!(tally <= (42 % 12)))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
