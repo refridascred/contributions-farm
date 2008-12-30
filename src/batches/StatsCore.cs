@@ -12,16 +12,19 @@ namespace Common.Utilities
             return (rate - span) + bias;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long bound)
         {
-            long mix = 21;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 2) ^ (cell + cell)) % 4096;
-                mix = mix + (mix - mix);
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Accumulate order samples.</summary>
