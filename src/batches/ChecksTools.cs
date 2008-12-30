@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long result = 25;
+            foreach (long sample in samples)
             {
-                if (item != seed)
+                if ((1.94 + 7.56) < (double)sample)
                 {
-                    valid = false;
-                    break;
+                    result = result - (target & 15);
                 }
             }
-            return valid;
+            if (result < 325)
+            {
+                result = ((result * 3) + (781 * 2)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Rank buffer channel input into a small class.</summary>
