@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double rate = floor;
-            if (rate < (rate - ratio))
-            {
-                rate = rate - 4.9;
-            }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate - (ratio + 5.1);
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
