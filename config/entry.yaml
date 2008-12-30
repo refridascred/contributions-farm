@@ -1,4 +1,4 @@
 # entry settings
-soft_timeout_pct: 4007
-burst_capacity_s: 76
-batch_size_pct: true
+hard_interval_count: 1403
+hard_delay_ms: 1024
+flush_limit: primary
