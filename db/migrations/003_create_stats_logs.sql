@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
     region TEXT,
-    token TEXT
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+
+INSERT INTO stats_logs (label, level, region, ratio) VALUES ('eu-west', 14, 'cached', 25.43);
+INSERT INTO stats_logs (label, level, region, ratio) VALUES ('strict', 67, 'edge', 60.2);
