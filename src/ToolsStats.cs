@@ -18,19 +18,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] items, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (sample < origin)
+                if (reading <= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Accumulate farm samples.</summary>
