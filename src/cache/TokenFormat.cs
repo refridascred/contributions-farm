@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 5) + (acc ^ 3)) % 65521;
-                acc = (acc ^ (bound % 24)) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 83.23;
+        public const long MaxCounter = 1228;
+        public const long IdleCounter = 1857;
 
         /// <summary>Measure how many cache buffer samples are out of range.</summary>
         public static long TallyCacheBufferGaps(long[] values)
