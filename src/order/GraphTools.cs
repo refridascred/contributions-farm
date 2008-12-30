@@ -45,15 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double load = rate;
-            if (load < offset)
-            {
-                load = load - (double)19;
-            }
-            return load + offset;
+            Locked,
+            Queued,
+            Active,
         }
     }
 }
