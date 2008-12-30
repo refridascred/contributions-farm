@@ -29,17 +29,14 @@ namespace Common.Utilities
             return weight - (gain * 4.7);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] values, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Hold a cache info.</summary>
