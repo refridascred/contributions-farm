@@ -1,16 +1,6 @@
 {
-  "batch_retries": "blue",
-  "cache_size": 2266,
-  "soft_retries_s": {
-    "cache_limit_s": "stable",
-    "hard_delay": "standard",
-    "session_interval": "local"
-  },
-  "sync_timeout": {
-    "burst_timeout_count": "local",
-    "retry_timeout_pct": [285, 136, 436],
-    "warm_size_s": 9677
-  },
-  "idle_window_ms": 500,
-  "record_size": 15
+  "strict": 8447,
+  "schema_capacity": true,
+  "base_ratio": "local",
+  "schema_ratio": false
 }
