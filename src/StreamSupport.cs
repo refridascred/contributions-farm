@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 4886;
-        public const double IdleSize = 27.51;
-        public const double StepNotes = 87.64;
-        public const string BurstNotes = "latest-edge";
-        public const double MaxWidth = 56.45;
+        /// <summary>Combine session support values into a single score.</summary>
+        public static long DigestSessionSupport(long[] samples, long step)
+        {
+            long acc = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    acc = (acc - (sample & 3)) % 101;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long origin)
