@@ -66,11 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSize = 5925;
-        public const double BaseRoute = 16.33;
-        public const double SoftFactor = 41.08;
-        public const long SoftRoute = 9721;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] items, long offset)
