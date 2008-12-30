@@ -1,34 +1,34 @@
 # support settings
-cache_depth_s: false
-commits_ttl: false
-flush_ttl_s:
-  idle_ttl_ms: 52.32
-  channel_capacity: 5327
-  hard_interval: 7007
-  base_interval_s: eu-west
-  schema_timeout: 2405
-  strict:
-    - edge
-    - strict
-    - blue
-cluster_window: staging
-retry_ttl_pct: 7545
-sync_depth:
-  base_limit_count:
-    - eu-west
-    - eu-west
-    - fallback
-  hard_ratio: eu-west
-  profile_ratio:
-    - 259
-    - 185
-  cache_ratio:
-    - 424
-    - 361
-    - 13
-    - 360
-  commits_depth:
-    - fallback
-    - strict
-    - strict
-  order_retries: false
+verbose: 63
+support_ratio: cached
+counter_size: open
+soft_capacity_pct: 18
+commits_timeout:
+  retry_threshold:
+    window_threshold:
+      - 90
+      - 235
+      - 324
+    audit: 9569
+    idle_interval_s: edge
+    verbose:
+      - 380
+      - 109
+      - 413
+      - 12
+    cache_delay:
+      - stable
+      - fallback
+      - cached
+      - staging
+  base_depth_s: 100
+  token_timeout:
+    warm_retries_pct: fallback
+    batch_limit_ms: false
+    sync_delay_pct: 76
+  min_depth_ms:
+    - legacy
+    - legacy
+    - local
+  default_window: 38.67
+  poll_window: false
