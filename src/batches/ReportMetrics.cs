@@ -20,19 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long limit)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark << 2) ^ (0 + mark);
+                mark = mark + ((long)i + limit);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Hold a command header.</summary>
