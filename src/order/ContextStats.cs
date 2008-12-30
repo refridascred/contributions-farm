@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] samples, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine route values into a single score.</summary>
