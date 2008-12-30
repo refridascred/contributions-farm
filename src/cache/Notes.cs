@@ -47,19 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Active,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
