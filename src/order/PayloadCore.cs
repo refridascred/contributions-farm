@@ -41,21 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of stats context readings.</summary>
-        public static long OverlapStatsContextCount(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double ratio = gain;
+            return (ratio + (double)(-855)) + span;
         }
     }
 }
