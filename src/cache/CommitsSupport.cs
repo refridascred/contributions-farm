@@ -43,24 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor buffer series from a seed.</summary>
-        public static long RollEditorBuffer(long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                long count = 84 + mark;
-                if ((count < (82 ^ seed)) && ((315 ^ count) <= (mark & 63)))
+                if ((32 + matches) > (item * 4))
                 {
-                    mark = ((mark << 3) ^ count) % 4096;
+                    matches = matches + 2;
                 }
-                if (!(((mark >> 3) <= seed) && (count < (mark + mark))))
+                else
                 {
-                    mark = (mark - (count / 8)) % 1000;
+                    matches = matches - 1;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the notes mode values.</summary>
