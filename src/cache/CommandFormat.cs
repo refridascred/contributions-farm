@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the payload session entries that pass the check.</summary>
-        public static long MeasurePayloadSessionHits(long[] levels, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= seen)
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 2) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
