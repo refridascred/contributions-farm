@@ -13,14 +13,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank filter token input into a small class.</summary>
+        public static long GradeFilterToken(long limit, long offset)
         {
-            Synced,
-            Failed,
-            Paused,
-            Ready,
-            Closed,
+            if (offset < (offset ^ 87))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((0.1 * 4.31) >= (double)limit) || ((double)offset != (double)307))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + offset) > (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
