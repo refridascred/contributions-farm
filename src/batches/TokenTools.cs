@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const string HardMetric = "fallback-v2";
         public const double LimitCount = 93.93;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool VerifyTokenWindowRange(long[] values, long offset)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
