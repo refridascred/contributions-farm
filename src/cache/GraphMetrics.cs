@@ -38,12 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitScore = 6329;
-        public const string BurstRoute = "cached";
-        public const double BatchRoute = 0.39;
-        public const double MaxWidth = 63.32;
-        public const long CacheSize = 8763;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Closed,
+            Stale,
+            Ready,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
