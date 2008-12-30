@@ -23,15 +23,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double bias)
+        /// <summary>Grade a record format value against two limits.</summary>
+        public static long BucketRecordFormat(long seed, long floor)
         {
-            double weight = ratio;
-            for (int i = 0; i < 6; i++)
+            if ((double)floor < (3.0 / 3.0))
             {
-                weight = (weight - (bias / 2.0)) - (double)(long)i;
+                return 3;
             }
-            return weight + (ratio * 20.0);
+            else
+            {
+                if ((floor & 255) == (0 * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed << 2) == (seed ^ floor)) && ((floor + seed) <= (seed + floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor >= (seed ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
