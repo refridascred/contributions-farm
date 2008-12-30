@@ -22,37 +22,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank route window input into a small class.</summary>
-        public static long RankRouteWindow(long limit, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long target)
         {
-            long span = limit ^ bound;
-            if (limit >= (limit & 31))
+            long cur = limit ^ target;
+            if (!((limit - 57) <= (cur + 9)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (!((limit & 1) <= (bound ^ span)))
+                if ((cur / 9) <= cur)
                 {
                     return 6;
                 }
                 else
                 {
-                    if (((double)span > (double)limit) && (span >= bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((86 - bound) < 6)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
