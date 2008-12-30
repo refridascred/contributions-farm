@@ -40,18 +40,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch metric samples are out of range.</summary>
-        public static long TallyBatchMetricHits(long[] readings, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((step + step) > (step * 2))
             {
-                if ((1 - 813) > (item + tally))
+                return 3;
+            }
+            else
+            {
+                if (((seed ^ step) < (step / 9)) || (seed > (seed / 3)))
                 {
-                    tally = (tally + 2) - target;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step ^ step) > (248 + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.39 + 11.0) != (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
