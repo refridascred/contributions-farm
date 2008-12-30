@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] data)
         {
-            Retry,
-            Failed,
-            Dropped,
-            Queued,
-            Ready,
+            long score = 73;
+            foreach (long value in data)
+            {
+                if (((0 + 5) > ((-9) + value)) && ((value - score) < (score + score)))
+                {
+                    score = ((score * 4) + score) % 255;
+                }
+                else
+                {
+                    score = ((score * 2) + (score - (long)data.Length)) % 255;
+                }
+            }
+            if (score > 40)
+            {
+                score = score ^ 4;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate format stats samples.</summary>
