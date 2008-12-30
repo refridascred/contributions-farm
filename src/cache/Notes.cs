@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate checks record readings against a bound.</summary>
