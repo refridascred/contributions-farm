@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a stats record value against two limits.</summary>
-        public static long RankStatsRecord(long seed, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            if (((seed + floor) > (floor % 16)) && ((seed >> 4) != (seed & 63)))
+            long state = 685;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed > (floor >> 1))
+                if (3 < (reading * 2))
                 {
-                    return 2;
+                    state = (state - (reading << 1)) % 101;
                 }
-                else
+                if (((double)state >= (double)reading) && ((575 + state) < (reading - state)))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Count the stream commits entries that pass the check.</summary>
