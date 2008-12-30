@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
