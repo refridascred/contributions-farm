@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long MaxSize = 7740;
         public const string LimitCommand = "local-edge";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitCount = 1911;
-        public const long IdleLayout = 1472;
-        public const double BaseLevel = 73.5;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate tools route samples.</summary>
         public static long DigestToolsRoute(long[] samples, long step)
