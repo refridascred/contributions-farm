@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long LimitSpan = 8117;
         public const string SoftAlready = "alpha";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 79.99;
-        public const double IdleSchema = 11.44;
-        public const string SoftTimeout = "cached-edge";
-        public const double DefaultLevel = 2.54;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((534 + tally) > (reading << 1))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long floor, long target)
