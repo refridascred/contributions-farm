@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer support value.</summary>
-        public static double ProjectBufferSupport(double bias, double span)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long seed)
         {
-            double bias2 = bias + (bias * 7.0);
-            if (bias2 >= (double)212)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - (bias2 * 1.89)) + span;
+                if ((series[i] < seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
