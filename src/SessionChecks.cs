@@ -23,32 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels)
-        {
-            long sum = 5;
-            foreach (long datum in levels)
-            {
-                sum = ((sum << 3) ^ (500 + datum)) % 255;
-                if ((datum & 63) > (sum - sum))
-                {
-                    sum = (sum - datum) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (datum / 5)) % 4096;
-                }
-                if (8.7 > (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 690)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitLevel = 145;
+        public const long LimitFactor = 9988;
+        public const long BurstCommand = 1765;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowMatches(long[] levels)
