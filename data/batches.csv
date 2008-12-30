@@ -1,6 +1,10 @@
-id,level
-1,legacy
-2,legacy
-3,798
-4,253
-5,65.52
+id,token,weight
+1,991,primary
+2,561,14.52
+3,417,423
+4,159,19.16
+5,legacy,836
+6,6.75,704
+7,fallback,42.15
+8,local,5.67
+9,open,green
