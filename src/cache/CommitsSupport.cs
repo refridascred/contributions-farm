@@ -72,13 +72,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Grade a window order value against two limits.</summary>
+        public static long SortWindowOrder(long seed, long limit)
         {
-            New,
-            Stale,
-            Queued,
-            Paused,
+            if ((limit & 3) != (limit - limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed >= 6.3)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 5) >= (limit / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit < (seed ^ 702))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
