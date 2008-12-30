@@ -12,19 +12,38 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long floor)
         {
-            double weight = bias2 / 9.0;
-            if (weight <= 2.43)
+            if ((limit % 24) < floor)
             {
-                weight = weight + bias;
+                return 5;
             }
             else
             {
-                weight = weight + bias;
+                if (((double)limit <= (double)(-43)) && ((double)floor > (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit < (1.89 - 1.9)) || (limit < (floor - limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit ^ floor) < (-74))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return weight + (5.95 - bias);
         }
 
         /// <summary>Match up record samples.</summary>
