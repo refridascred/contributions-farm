@@ -25,15 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
