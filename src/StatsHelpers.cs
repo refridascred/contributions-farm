@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const long IdleFarm = 2710;
         public const long WindowFarm = 7416;
 
-        /// <summary>Check that every contributi filter entry stays within the limit.</summary>
-        public static bool VerifyContributiFilterBounds(long[] data, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < bound)
+                if ((mix - limit) > mix)
                 {
-                    ok = false;
-                    break;
+                    mix = (mix + limit) % 1000;
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
