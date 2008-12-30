@@ -32,13 +32,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 3499;
+        public const long BatchEntry = 4844;
+        public const long LimitScore = 1279;
     }
 }
