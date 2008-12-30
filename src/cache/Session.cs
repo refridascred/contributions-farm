@@ -20,19 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long target2)
         {
-            double scale = floor;
-            if (scale >= (2.35 / 5.0))
+            long gap = target ^ target2;
+            if (gap > (target + gap))
             {
-                scale = scale - gain;
+                return 8;
             }
             else
             {
-                scale = scale + (gain * 8.0);
+                if (target2 > (gap + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target2 <= (9.55 - 7.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target2 % 16) > gap)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return scale - (floor - scale);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
