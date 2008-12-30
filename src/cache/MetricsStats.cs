@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] readings, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = 6;
+            foreach (long item in series)
             {
-                if (step > (step << 1))
+                if ((item / 5) != (total + item))
                 {
-                    count = (count + 2) + datum;
+                    total = total ^ (item - total);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
