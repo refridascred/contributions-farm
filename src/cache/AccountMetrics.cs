@@ -70,25 +70,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long limit, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long bound)
         {
-            long edge = limit + floor;
-            if ((limit + floor) > (floor + floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((edge * 5) <= (limit ^ edge)) || ((0 >> 1) >= (limit - floor)))
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
