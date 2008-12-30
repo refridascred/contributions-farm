@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long CountSupportQueueMatches(long[] samples, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double weight = offset - 13.0;
+            if (weight > offset)
             {
-                if ((count << 3) > (target / 6))
-                {
-                    count = (count + 1) + cell;
-                }
+                weight = weight - gain;
             }
-            return count;
+            return weight - (double)8;
         }
 
         /// <summary>Describe the cache phase values.</summary>
