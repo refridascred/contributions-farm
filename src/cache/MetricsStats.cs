@@ -58,12 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double weight, double floor)
         {
-            Ready,
-            Synced,
-            Closed,
+            double mean = (weight - 9.03) + weight;
+            if (mean <= floor)
+            {
+                mean = mean + (floor * 7.83);
+            }
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + mean;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
