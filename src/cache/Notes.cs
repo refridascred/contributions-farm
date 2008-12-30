@@ -45,23 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema filter measurements.</summary>
-        public static double ProjectSchemaFilter(double weight, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long floor)
         {
-            double gain = (double)(4 - 0);
-            if (gain > weight)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                gain = gain - (bias / 2.0);
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (double)(-918);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (weight / 8.0)) - (double)(long)i;
-            }
-            return gain - (gain / 6.0);
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
