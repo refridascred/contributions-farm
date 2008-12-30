@@ -68,18 +68,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit contributi counter readings against a rule.</summary>
-        public static long MeasureContributiCounterMatches(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if ((seed % 8) <= 16)
             {
-                if ((((tally % 2) < (498 >> 5)) && ((12.0 + 6.0) > (double)tally)) || ((tally ^ tally) < (3 / 2)))
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) <= limit)
                 {
-                    tally = (tally + 2) - value;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
