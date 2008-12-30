@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate queue commits readings against a bound.</summary>
-        public static bool CheckQueueCommitsLimits(long[] samples, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
