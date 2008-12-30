@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache counter samples.</summary>
-        public static long PairCacheCounterCount(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -2;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (11.0 < (double)origin)
                 {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (((mix << 2) ^ (origin - (long)samples.Length)) % 97) + sample;
                 }
             }
-            return tally;
+            if (mix < 462)
+            {
+                mix = ((mix << 3) ^ (origin << 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the commits account series from a seed.</summary>
