@@ -1,6 +1,6 @@
 {
-  "compress": true,
-  "warm_window": "eu-west",
-  "tools_depth": 2302,
-  "warm_ttl": "local"
+  "flush_size_pct": ["open", "eu-west", "open", "blue"],
+  "poll_size_s": 1024,
+  "session_limit": [174, 439, 315],
+  "flush_depth": [496, 175]
 }
