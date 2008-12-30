@@ -38,21 +38,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] == origin)
                 {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
