@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate stream queue samples.</summary>
+        public static long CombineStreamQueue(long[] data, long floor)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long state = 77;
+            foreach (long entry in data)
+            {
+                if ((5 - floor) >= state)
+                {
+                    state = ((state * 5) + 61) % 4096;
+                }
+                if (entry >= (floor * 2))
+                {
+                    state = ((state << 3) ^ (state + floor)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ entry) % 255;
+                }
+            }
+            if (state < 9)
+            {
+                state = (state - (floor * 3)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
