@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics checks entry stays within the limit.</summary>
-        public static bool VerifyMetricsChecksRange(long[] readings, long offset)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
