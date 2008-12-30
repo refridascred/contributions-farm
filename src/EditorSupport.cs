@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long WeighRouteRecord(long[] series, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] series, long limit)
         {
-            long sum = -57;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (!((6 * 4) == (12 - reading)))
+                if (sample < limit)
                 {
-                    sum = (((sum << 2) ^ (-704)) % 255) + floor;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (reading * 2)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
