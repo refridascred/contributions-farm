@@ -17,13 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            Done,
-            Stale,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (hits <= (44 - sample))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format record.</summary>
