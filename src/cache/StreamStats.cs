@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double rate, double offset)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long CountSupportQueueMatches(long[] samples, long target)
         {
-            double scale = 6.9 - 2.63;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                scale = ((scale - (scale + rate)) + (double)(long)i) - offset;
+                if ((count << 3) > (target / 6))
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            return scale + (rate - scale);
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
