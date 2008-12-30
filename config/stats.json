@@ -1,8 +1,8 @@
 {
-  "strict": 79.26,
-  "base_limit": true,
-  "payload_ratio": "primary",
-  "max_retries_count": 25,
-  "max_interval": "open",
-  "batches_capacity": [144, 79]
+  "context_ttl": "cached",
+  "strict": true,
+  "verbose": "primary",
+  "idle_interval_s": "fallback",
+  "format_timeout": "legacy",
+  "retry_size": "local"
 }
