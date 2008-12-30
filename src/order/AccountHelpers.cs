@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleSpan = 35.35;
-        public const double HardCommand = 73.19;
-        public const long BatchTimeout = 8063;
+        /// <summary>Compare every pair of checks stream readings.</summary>
+        public static long MatchChecksStreamCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
