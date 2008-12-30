@@ -64,16 +64,21 @@ namespace Common.Utilities
         public const double BatchDepth = 95.05;
         public const double MaxReport = 90.69;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + target) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
