@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] samples, long seed)
+        /// <summary>Audit format commits readings against a rule.</summary>
+        public static long AuditFormatCommitsHits(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
+                if (!(((sample + step) < sample) && ((double)seen > (double)2)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
