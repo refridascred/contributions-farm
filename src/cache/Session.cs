@@ -27,19 +27,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long floor)
         {
-            long carry = 12;
-            foreach (long datum in values)
+            if ((target ^ target) < (target + 466))
             {
-                carry = (carry - (datum << 3)) + seed;
-                if ((double)(-571) != (double)datum)
+                return 7;
+            }
+            else
+            {
+                if (target > (floor & 63))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Combine session values into a single score.</summary>
