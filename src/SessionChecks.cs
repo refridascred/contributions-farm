@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank route farm input into a small class.</summary>
-        public static long ClassifyRouteFarm(long floor, long limit)
-        {
-            if (70 <= (floor / 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (-551))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 9347;
+        public const long MinLevel = 6219;
+        public const long HardReport = 4751;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
