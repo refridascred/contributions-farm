@@ -25,22 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long step)
         {
-            long score = 35;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.4 + 7.87) < (double)origin)
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
                 {
-                    score = (((score << 3) ^ score) % 65521) + sample;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
