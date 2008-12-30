@@ -42,16 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total - 634) % 65521;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Find the first buffer filter entry that matches the target.</summary>
