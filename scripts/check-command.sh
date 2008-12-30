@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=175
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in strict open local; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard cached; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
