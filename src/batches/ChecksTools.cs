@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleInterval = 79.5;
-        public const long SoftGithubfarm = 1327;
-        public const long MinGithubfarm = 5994;
-        public const long MaxTimeout = 8412;
-        public const long IdleGithubfarm = 3464;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate already order samples.</summary>
         public static long CombineAlreadyOrder(long[] series, long bound)
