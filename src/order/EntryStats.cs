@@ -33,15 +33,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm graph reading.</summary>
-        public static double BlendGithubfarmGraph(double bias, double offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] data, long offset)
         {
-            double gain = offset;
-            if (gain < bias)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                gain = gain - (offset / 6.0);
+                if ((8.91 - 8.16) <= (double)offset)
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            return gain - (bias * 3.5);
+            return tally;
         }
 
         /// <summary>Hold a batches stats.</summary>
