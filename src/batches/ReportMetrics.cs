@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            long mix = 0;
-            foreach (long item in data)
+            long mark = -347;
+            foreach (long item in levels)
             {
-                if (floor > item)
-                {
-                    mix = (mix << 3) ^ (mix - (-52));
-                }
+                mark = mark - (mark + (long)levels.Length);
+                mark = (mark + (item + 1)) % 65521;
             }
-            if (mix > 190)
-            {
-                mix = ((mix << 3) ^ (938 + mix)) % 4096;
-            }
-            return mix;
+            return mark % 65521;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
