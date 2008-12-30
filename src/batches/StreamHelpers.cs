@@ -29,11 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] readings)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long mix = 4;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) < (datum / 2))
+                {
+                    mix = mix - (datum + mix);
+                }
+                else
+                {
+                    mix = (mix + datum) % 65521;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
