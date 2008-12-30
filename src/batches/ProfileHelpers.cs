@@ -35,17 +35,39 @@ namespace Common.Utilities
         public const long CacheCount = 2409;
         public const long BurstRatio = 1134;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] readings, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = limit + seed;
+            if ((lane + (-5)) >= limit)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((0.1 - 4.8) != (double)limit) || ((18.0 / 9.0) != (double)limit))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit >> 2) != (534 / 4)) && ((seed ^ seed) < (508 + 8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((70 % 64) >= (seed + 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
