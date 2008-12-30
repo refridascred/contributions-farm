@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 4517;
+        public const double HardScore = 9.04;
+        public const long HardCluster = 7270;
+        public const long LimitCluster = 9871;
+        public const long SoftSpan = 3338;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long offset, long step)
