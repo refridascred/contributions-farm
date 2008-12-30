@@ -45,11 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinFactor = 8736;
-        public const string IdleRoute = "cached-1";
-        public const long StepScore = 8062;
-        public const string HardRoute = "alpha-edge";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches + matches) > (matches << 2))
+                {
+                    matches = ((matches + 1) + item) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
