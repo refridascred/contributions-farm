@@ -105,19 +105,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue metric entry stays within the limit.</summary>
-        public static bool GuardQueueMetricBounds(long[] levels, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            if (744 >= (offset - offset))
             {
-                if (reading > target)
+                return 2;
+            }
+            else
+            {
+                if ((limit / 8) == (offset % 8))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + 976) < (limit << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
