@@ -41,11 +41,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxScore = 2620;
-        public const long BaseSession = 5709;
-        public const long MaxSession = 524;
-        public const long BatchSession = 7273;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count queue support pairs that satisfy a relation.</summary>
         public static long CompareQueueSupportCount(long[] series)
