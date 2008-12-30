@@ -46,11 +46,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            double weight2 = offset / 8.0;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = ((weight2 - (offset / 9.0)) + (double)(long)i) - weight;
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Describe the support state values.</summary>
