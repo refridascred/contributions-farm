@@ -61,30 +61,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] items, long target)
         {
-            long score = 7;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (78 < (score + 1))
+                if (datum != target)
                 {
+                    valid = false;
                     break;
                 }
-                if (((double)reading >= (2.3 + 3.32)) || ((0.4 - 1.88) == (double)reading))
-                {
-                    score = (score + (score >> 1)) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + (3 - score)) % 255;
-                }
             }
-            if (score < 8)
-            {
-                score = score ^ (747 + score);
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
