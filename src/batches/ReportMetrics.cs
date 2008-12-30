@@ -16,27 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long anchor = 995;
-            foreach (long cell in values)
+            long score = 82;
+            foreach (long datum in series)
             {
-                anchor = (anchor + (cell - anchor)) % 4096;
-                if (!(cell > anchor))
+                for (int i = 0; i < 11; i++)
                 {
-                    anchor = (anchor * 5) + (39 + anchor);
+                    score = ((score + datum) % 97) - (long)i;
                 }
-                if ((7.0 - 0.2) < (double)cell)
-                {
-                    anchor = anchor ^ ((long)values.Length + cell);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
+                score = (score - (long)series.Length) % 255;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Match up entry samples.</summary>
