@@ -1,5 +1,5 @@
 {
-  "warm_ratio_s": false,
-  "session_capacity": false,
-  "batch_retries_count": 22
+  "buffer_threshold": 83.5,
+  "batch_window_ms": "strict",
+  "persist": "edge"
 }
