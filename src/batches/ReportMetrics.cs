@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (long)i;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
