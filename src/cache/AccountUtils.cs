@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            New,
-            Active,
-            Synced,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
