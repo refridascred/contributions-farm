@@ -54,22 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long DigestCommitsOrder(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long step)
         {
-            long total = 92;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)total >= (9.0 + 19.0))
+                if ((value + tally) != (step / 4))
                 {
-                    total = ((total << 3) ^ (total + item)) % 4096;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (total > 11)
-            {
-                total = total + (total * 3);
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Describe the notes level values.</summary>
