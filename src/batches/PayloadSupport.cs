@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            Done,
-            Retry,
-            Ready,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks record.</summary>
