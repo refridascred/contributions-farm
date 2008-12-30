@@ -63,12 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series)
         {
-            Ready,
-            Active,
-            Done,
+            long anchor = -828;
+            foreach (long datum in series)
+            {
+                if ((anchor - datum) < anchor)
+                {
+                    anchor = anchor - (anchor + 69);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate already samples.</summary>
