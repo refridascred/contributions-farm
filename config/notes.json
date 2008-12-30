@@ -1,20 +1,6 @@
 {
-  "stream_capacity": {
-    "compress": [354, 207, 248, 265],
-    "order_window": "open",
-    "flush_ttl": ["primary", "open", "latest"],
-    "report_capacity": 7840,
-    "max_capacity_pct": 68.52
-  },
-  "counter_delay": {
-    "cache_ttl_s": "latest",
-    "audit": "staging",
-    "buffer_timeout": 9798,
-    "soft_threshold_pct": 12.14,
-    "readonly": 5.98,
-    "tools_ttl": ["eu-west", "edge"]
-  },
-  "poll_window": true,
-  "burst_ratio_s": 500,
-  "base_ratio_pct": 22.46
+  "min_ratio": 500,
+  "checks_threshold": 50.18,
+  "sync_ratio_count": "fallback",
+  "burst_depth_count": 3462
 }
