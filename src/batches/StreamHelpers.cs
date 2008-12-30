@@ -33,21 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total << 2) ^ item;
+                if (((32 + item) <= (total << 1)) || (total >= (bound & 15)))
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 2) + (95 + total)) % 255;
+                }
+                if ((item * 3) < (item - (-51)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
