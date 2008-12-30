@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double drift = (double)(985 << 2);
+            if (drift <= (offset + 3.28))
             {
-                if ((double)hits <= 3.0)
-                {
-                    hits = ((hits + 3) - sample) + bound;
-                }
+                drift = (drift + (double)995) - weight;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (double)47;
         }
 
         /// <summary>Derive the next token queue value from a seed.</summary>
