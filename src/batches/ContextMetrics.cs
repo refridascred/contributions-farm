@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] series, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!(limit < (mix % 100)))
+                if (((floor + hits) >= (entry % 100)) && ((17.0 * 2.52) < (double)hits))
                 {
-                    mix = ((mix << 2) ^ (mix / 2)) % 4096;
+                    hits = hits + 3;
                 }
-                mix = ((mix * 5) + limit) % 101;
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit batch payload readings against a rule.</summary>
