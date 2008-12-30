@@ -30,13 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((step + 0) < 7)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order status values.</summary>
