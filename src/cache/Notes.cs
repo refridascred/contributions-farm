@@ -55,9 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 4342;
-        public const string DefaultCommits = "cached-1";
-        public const long MaxCommits = 8367;
+        /// <summary>Audit window editor readings against a rule.</summary>
+        public static long MeasureWindowEditorMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)target >= (double)891)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
