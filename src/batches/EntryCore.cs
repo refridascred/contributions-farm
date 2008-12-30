@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long step)
+        /// <summary>Match up report profile samples.</summary>
+        public static long CompareReportProfileCount(long[] series)
         {
-            long result = -1;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (((result + (result & 127)) % 97) + value) + step;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Describe the metric class values.</summary>
