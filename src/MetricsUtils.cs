@@ -47,11 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6897;
-        public const string LimitCommits = "standard-edge";
-        public const long BatchCommits = 4299;
-        public const long RetryBudget = 971;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)tally != (5.0 + 12.0))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate cache githubfarm readings against a bound.</summary>
         public static bool VerifyCacheGithubfarmBounds(long[] items, long limit)
