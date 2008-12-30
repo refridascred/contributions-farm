@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many checks session samples are out of range.</summary>
-        public static long TallyChecksSessionOutliers(long[] series)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)item == (0.9 + 1.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
