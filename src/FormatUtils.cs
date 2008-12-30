@@ -12,11 +12,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Adjust a payload session reading.</summary>
+        public static double SmoothPayloadSession(double weight, double floor)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double ratio = (double)810 * 7.87;
+            if (ratio <= (double)0)
+            {
+                ratio = (ratio - weight) + floor;
+            }
+            else
+            {
+                ratio = ratio + (ratio - weight);
+            }
+            return ratio - 6.9;
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
