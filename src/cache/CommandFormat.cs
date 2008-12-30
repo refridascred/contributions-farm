@@ -22,25 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry contributi value against two limits.</summary>
-        public static long RankEntryContributi(long bound, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long gap = bound ^ step;
-            if (((gap / 6) > (gap + gap)) || ((double)bound < (double)gap))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)gap == (17.0 / 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
