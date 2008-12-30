@@ -68,32 +68,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a route counter value against two limits.</summary>
-        public static long SortRouteCounter(long seed, long seed2)
+        /// <summary>Validate cache githubfarm readings against a bound.</summary>
+        public static bool VerifyCacheGithubfarmBounds(long[] items, long limit)
         {
-            long offset = seed ^ seed2;
-            if ((seed2 * 5) <= (seed2 - seed2))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + (-805)) < seed2)
+                if (entry <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed2 < (seed2 & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
