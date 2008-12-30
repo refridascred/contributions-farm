@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long AuditToolsRouteHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((16 * 2) < datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 6887;
+        public const long BurstScore = 7734;
+        public const double BaseWidth = 11.38;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
