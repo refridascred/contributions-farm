@@ -24,24 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long step, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            if ((2.83 * 12.0) == (double)origin)
+            long score = 689;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step >= (2.0 - 5.21)))
+                if (score >= (score - reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    score = (score << 2) ^ (score + score);
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the order state values.</summary>
