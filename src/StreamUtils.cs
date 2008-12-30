@@ -21,18 +21,10 @@ namespace Common.Utilities
         public const long WindowBudget = 2945;
         public const double DefaultFactor = 15.5;
 
-        /// <summary>Find the first entry tools entry that matches the target.</summary>
-        public static long SeekEntryToolsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "primary-edge";
+        public const long IdleMetrics = 8780;
+        public const string MaxWidth = "open-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryTimeout = 6826;
