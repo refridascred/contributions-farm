@@ -35,17 +35,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 7739;
+        public const long WindowSize = 8089;
+        public const string StepBudget = "cached-edge";
+        public const long MaxBudget = 5212;
+        public const string LimitRatio = "legacy";
     }
 }
