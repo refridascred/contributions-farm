@@ -28,9 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 8999;
-        public const long WindowLayout = 652;
-        public const long WindowDepth = 4946;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Idle,
+            Draft,
+            Done,
+        }
     }
 }
