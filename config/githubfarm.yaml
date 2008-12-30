@@ -1,8 +1,6 @@
 # githubfarm settings
-batch_window_ms: 66.81
-tools_delay:
-  - eu-west
-  - eu-west
-  - cached
-  - eu-west
-warm_timeout: true
+context_depth: legacy
+hard_ttl_count: 73
+cache_ttl: cached
+poll_interval_s: 30
+report_timeout: 78
