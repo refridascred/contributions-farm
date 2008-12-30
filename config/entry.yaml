@@ -1,17 +1,12 @@
 # entry settings
-cache_delay_pct: latest
-strict: 92.41
-flush_interval_pct:
-  idle_timeout: 500
-  persist: 250
-  hard_size: 100
-  account_timeout: true
-retry_capacity:
-  editor_window: green
-  strict: staging
-  context_retries:
-    - legacy
-    - fallback
-    - eu-west
-    - eu-west
-  hard_limit_ms: 9
+strict: 5
+layout_size: stable
+persist:
+  retry_capacity_ms:
+    - strict
+    - open
+  hard_limit: 83
+  stats_size: 100
+min_retries_count: 1024
+filter_capacity: staging
+sync_capacity_pct: true
