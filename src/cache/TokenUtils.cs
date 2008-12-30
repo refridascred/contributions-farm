@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 448;
-        public const long MinBudget = 3178;
-        public const long WindowFactor = 9051;
-        public const long MaxSize = 7740;
-        public const string LimitCommand = "local-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5723;
+        public const double StepContext = 59.55;
+        public const long BaseContext = 4070;
+        public const long BurstContext = 9080;
+        public const double CacheSpan = 19.38;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] levels, long origin)
