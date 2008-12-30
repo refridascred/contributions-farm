@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ratio2 - (ratio / 4.0);
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Pending,
-            Failed,
+            double scale = floor;
+            if (scale >= (2.35 / 5.0))
+            {
+                scale = scale - gain;
+            }
+            else
+            {
+                scale = scale + (gain * 8.0);
+            }
+            return scale - (floor - scale);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
