@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 213;
-        public const long CacheBudget = 1103;
-        public const double BatchCount = 1.22;
-        public const string StepSpan = "alpha";
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Done,
+            Active,
+            Idle,
+        }
 
         /// <summary>Validate githubfarm contributi readings against a bound.</summary>
         public static bool GuardGithubfarmContributiBounds(long[] items, long floor)
