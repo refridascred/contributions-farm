@@ -70,15 +70,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double drift = (double)78 * 4.1;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (((drift - 6.3) + (double)(long)i) - bias) - floor;
-            }
-            return drift + drift;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
