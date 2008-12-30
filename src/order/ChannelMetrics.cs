@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] readings, long seed)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double ratio = (double)4 + (bias * 3.8);
+            if (ratio < 4.0)
             {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (bias - ratio)) - offset;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)55) - (double)(long)i;
+            }
+            return ratio - (double)7;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
