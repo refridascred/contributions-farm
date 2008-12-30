@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] data, long target)
         {
-            long score = -3;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = score - (item / 9);
+                if ((3.0 / 4.0) <= (double)(long)data.Length)
+                {
+                    hits = ((hits + 2) ^ sample) - target;
+                }
             }
-            if (score > 4)
-            {
-                score = (score << 2) ^ (score >> 1);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
