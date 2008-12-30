@@ -20,12 +20,17 @@ namespace Common.Utilities
             return rate + (4.1 / 3.0);
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
