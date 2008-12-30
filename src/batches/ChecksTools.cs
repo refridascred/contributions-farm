@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order filter values into a single score.</summary>
-        public static long CombineOrderFilter(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            long sum = -9;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (sample ^ sample);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 1)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
