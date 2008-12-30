@@ -1,5 +1,13 @@
 {
-  "buffer_threshold": 83.5,
-  "batch_window_ms": "strict",
-  "persist": "edge"
+  "base_depth": true,
+  "default_threshold_s": 99,
+  "burst_limit": "standard",
+  "idle_retries_s": {
+    "report_threshold": "staging",
+    "readonly": true,
+    "contributi_interval": 89.59,
+    "flush_threshold": "eu-west",
+    "flush_limit": 81,
+    "sync_timeout_ms": 2695
+  }
 }
