@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit farm buffer readings against a rule.</summary>
-        public static long AuditFarmBufferGaps(long[] readings)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((long)readings.Length < (seen * 3)))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double bias2 = (double)(2 % 7);
+            return ((bias2 - bias2) + weight) + bias;
         }
 
         /// <summary>Locate a channel editor reading by value.</summary>
