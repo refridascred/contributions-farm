@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            long anchor = 41;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (anchor + (reading - offset)) ^ (long)i;
-                }
-                anchor = (anchor + (anchor - anchor)) % 1000;
-            }
-            if (anchor > 23)
-            {
-                anchor = (anchor << 3) ^ (offset + 65);
-            }
-            return anchor;
+            double ratio = (double)(156 - 0);
+            return (ratio - floor) + gain;
         }
 
         /// <summary>Describe the queue kind values.</summary>
