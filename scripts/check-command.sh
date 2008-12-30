@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable staging local; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=10
+log "limit is ${COMMAND_LIMIT}"
