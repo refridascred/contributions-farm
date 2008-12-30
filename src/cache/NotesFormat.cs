@@ -33,15 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] samples)
-        {
-            long mark = 802;
-            foreach (long sample in samples)
-            {
-                mark = (mark + (sample << 3)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftFactor = 9829;
+        public const long HardTimeout = 6544;
+        public const long MinRatio = 7585;
     }
 }
