@@ -1,11 +1,6 @@
-id,score,active,weight,owner
-1,547,82.7,4.78,210
-2,171,18.7,31.28,13.51
-3,253,496,950,8
-4,221,923,19.33,standard
-5,933,29.23,400,primary
-6,468,38.56,open,stable
-7,852,434,518,889
-8,466,legacy,0.53,409
-9,local,52.16,272,40.5
-10,green,287,37.22,266
+id,rank,count,token,label
+1,open,29.47,fallback,101
+2,standard,3.55,144,768
+3,855,staging,407,30.94
+4,16.6,957,41.38,latest
+5,29.72,56.12,green,826
