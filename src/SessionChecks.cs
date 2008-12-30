@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Active,
-            Ready,
-            Draft,
-            Dropped,
-            Synced,
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
