@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = bound - target;
+            if ((target << 2) >= span)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (span <= (target - span))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
