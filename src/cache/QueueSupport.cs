@@ -35,18 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] series, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((((bound >> 2) == (reading >> 4)) && ((reading + bound) > hits)) && ((reading / 5) >= bound))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            New,
+            Failed,
         }
     }
 }
