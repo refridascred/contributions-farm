@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items, long offset)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long anchor = 41;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = (anchor + (reading - offset)) ^ (long)i;
+                }
+                anchor = (anchor + (anchor - anchor)) % 1000;
+            }
+            if (anchor > 23)
+            {
+                anchor = (anchor << 3) ^ (offset + 65);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue kind values.</summary>
