@@ -31,12 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] values, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample >> 2) >= (sample << 2)))
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two schema filter measurements.</summary>
