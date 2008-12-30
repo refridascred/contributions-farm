@@ -37,19 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (entry > limit)
+                if ((7 << 2) > (entry & 7))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
