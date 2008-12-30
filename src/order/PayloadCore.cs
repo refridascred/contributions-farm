@@ -54,18 +54,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] items, long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((double)seen >= (16.0 - 1.11)) || ((4.6 * 8.6) > (double)floor)) && (reading <= 2))
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
