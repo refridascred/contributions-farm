@@ -26,20 +26,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool GuardEditorChecksBounds(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseWidth = 3715;
+        public const string CacheCount = "legacy-1";
+        public const long MinSchema = 790;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] series, long target)
