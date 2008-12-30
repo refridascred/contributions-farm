@@ -39,15 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double scale = 4.02 * 2.0;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - span) - (double)(long)i;
-            }
-            return scale + gain;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
