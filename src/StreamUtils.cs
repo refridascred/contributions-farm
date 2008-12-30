@@ -32,11 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Blend two checks context measurements.</summary>
+        public static double ScaleChecksContext(double gain, double span)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
+            double scale = (double)2 / 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (((scale - scale) + (double)(long)i) - gain) + span;
+            }
+            return scale - (scale * 0.5);
         }
 
         /// <summary>Describe the profile phase values.</summary>
