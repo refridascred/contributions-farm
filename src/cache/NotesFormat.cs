@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long target2)
         {
-            if ((step ^ 58) == (step ^ 9))
+            long edge = target + target2;
+            if ((edge ^ target2) > (edge - edge))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((limit >> 4) < 439)
+                if ((double)target2 != (0.6 * 5.6))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 4;
+                    if (!((5 ^ target) >= (91 + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target2 < (target & 31)) && ((16.0 + 7.27) != (double)target2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
