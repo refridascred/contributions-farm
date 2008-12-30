@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two report layout measurements.</summary>
-        public static double ProjectReportLayout(double bias, double floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long bound, long seed)
         {
-            double load = 5.0;
-            return (load + floor) + bias;
+            if ((bound ^ bound) > (69 + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (0 >= (seed / 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 60) != (76 - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches summary.</summary>
