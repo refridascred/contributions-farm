@@ -40,31 +40,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] values, long seed)
         {
-            if ((double)seed < 4.53)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 ^ (-202)) > seed)
+                if (datum < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 - origin) < (seed + 154))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
