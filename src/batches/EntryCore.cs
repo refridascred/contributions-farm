@@ -62,15 +62,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Audit entry token readings against a rule.</summary>
+        public static long MeasureEntryTokenHits(long[] data, long target)
         {
-            double scale2 = (double)(141 >> 5);
-            if (scale2 > (floor - scale2))
+            long count = 0;
+            foreach (long cell in data)
             {
-                scale2 = (scale2 + 1.6) - scale;
+                if (count <= (cell << 2))
+                {
+                    count = (count + 1) - target;
+                }
             }
-            return scale2 + (floor / 8.0);
+            return count;
         }
     }
 }
