@@ -1,5 +1,5 @@
 {
-  "min_window_count": 500,
-  "cache_interval_s": 1024,
-  "max_delay_pct": false
+  "min_depth_pct": 97,
+  "persist": "local",
+  "min_interval_count": "primary"
 }
