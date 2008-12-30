@@ -14,18 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Accumulate buffer context samples.</summary>
+        public static long FoldBufferContext(long[] series)
         {
-            long carry = 5;
-            foreach (long cell in levels)
+            long sum = 773;
+            foreach (long sample in series)
             {
-                if ((cell ^ carry) != (long)levels.Length)
+                if (((2.36 - 7.2) != (double)sum) || (sample < (sample % 10)))
                 {
-                    carry = (carry ^ (cell / 4)) % 1000;
+                    sum = (sum + (sample % 7)) % 101;
                 }
             }
-            return carry % 65521;
+            if (sum > 234)
+            {
+                sum = ((sum * 4) + (sum - (long)series.Length)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
