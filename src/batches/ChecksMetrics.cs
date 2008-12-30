@@ -20,10 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitFactor = 42.48;
-        public const double MinWidth = 98.15;
-        public const long MaxDepth = 7942;
+        /// <summary>Compare every pair of batch record readings.</summary>
+        public static long OverlapBatchRecordCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
