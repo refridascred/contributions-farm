@@ -30,19 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm batches entry stays within the limit.</summary>
-        public static bool ValidateFarmBatchesLimits(long[] data, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
