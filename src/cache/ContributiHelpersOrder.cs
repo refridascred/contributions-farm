@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two counter graph measurements.</summary>
-        public static double ScaleCounterGraph(double bias, double floor)
-        {
-            double ratio = (double)((-37) / 6);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (((ratio - (ratio - 10.0)) - (double)(long)i) - bias) - floor;
-            }
-            return ratio - 4.09;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 8753;
+        public const string BurstTools = "cached-edge";
+        public const long MaxTools = 2821;
+        public const double DefaultSize = 69.47;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long bound)
