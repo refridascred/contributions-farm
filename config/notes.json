@@ -1,12 +1,7 @@
 {
-  "context_delay": "local",
-  "base_size": {
-    "verbose": 79,
-    "max_limit_ms": "local",
-    "poll_retries_pct": 60,
-    "flush_size_count": 28.29,
-    "already_ratio": false,
-    "compress": ["standard", "edge", "fallback", "edge"]
-  },
-  "record_ttl": 51.05
+  "retry_capacity_count": 3456,
+  "hard_depth": "local",
+  "compress": ["stable", "open", "staging", "latest"],
+  "notes_capacity": ["green", "strict", "open"],
+  "readonly": false
 }
