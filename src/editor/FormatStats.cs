@@ -34,18 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (reading <= (matches + reading))
+                if ((double)seen < 1.6)
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 1) ^ cell) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
