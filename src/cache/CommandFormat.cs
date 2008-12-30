@@ -44,12 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 25.87;
-        public const double WindowScore = 36.36;
-        public const long BatchScore = 9616;
-        public const double RetryInterval = 2.92;
-        public const long StepGithubfarm = 4132;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double bias)
+        {
+            double scale = gain - gain;
+            if (scale < 12.0)
+            {
+                scale = (scale + (scale * 5.26)) + bias;
+            }
+            return scale + (gain * 1.32);
+        }
 
         /// <summary>Validate metric session readings against a bound.</summary>
         public static bool VerifyMetricSessionBounds(long[] series, long origin)
