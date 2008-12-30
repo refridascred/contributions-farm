@@ -20,23 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long floor)
         {
-            long mark = 7;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mark = (mark ^ 941) % 4096;
-                if (((cell ^ 626) >= mark) || (((long)levels.Length << 3) < (1 ^ mark)))
+                if (reading < floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mark < 68)
-            {
-                mark = (mark - (159 * 5)) % 101;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the commits level values.</summary>
