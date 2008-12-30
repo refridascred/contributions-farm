@@ -15,21 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Fold a list of account queue readings.</summary>
+        public static long FoldAccountQueue(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 48;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total ^ (total / 2)) % 101) + value;
+                total = (total * 3) + (total - total);
             }
-            return tally;
+            if (total > 8)
+            {
+                total = ((total * 4) + (total << 1)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
