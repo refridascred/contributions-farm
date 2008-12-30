@@ -29,23 +29,23 @@ namespace Common.Utilities
         public const long StepLevel = 1154;
         public const double CacheMetrics = 61.84;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            double drift = gain;
-            if (drift < (double)3)
+            long anchor = 4;
+            foreach (long sample in levels)
             {
-                drift = drift + (1.65 + drift);
+                if (!((sample ^ sample) != (343 & 1)))
+                {
+                    anchor = anchor ^ (sample >> 1);
+                }
+                anchor = anchor - sample;
+                if (!((sample - sample) < anchor))
+                {
+                    anchor = (anchor - (45 + sample)) % 255;
+                }
             }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (3.51 / 3.0)) + (double)(long)i;
-            }
-            return drift - (double)(-145);
+            return anchor;
         }
     }
 }
