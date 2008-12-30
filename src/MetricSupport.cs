@@ -13,18 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] levels, long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)levels.Length % 3) < (entry << 3))
+                if (data[i] > offset)
                 {
-                    tally = (tally + 3) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
