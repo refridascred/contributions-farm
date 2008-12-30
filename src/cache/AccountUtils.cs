@@ -16,18 +16,25 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit route command readings against a rule.</summary>
-        public static long AuditRouteCommandMatches(long[] series, long seed)
+        /// <summary>Rank profile farm input into a small class.</summary>
+        public static long RankProfileFarm(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long lane = offset + bound;
+            if ((19.0 - 3.6) == (double)lane)
             {
-                if ((((item - seed) < (seed + seed)) && ((matches - 776) > ((long)series.Length + 82))) || (((item << 1) > seed) && ((double)211 < (double)(long)series.Length)))
+                return 1;
+            }
+            else
+            {
+                if ((bound - bound) >= (offset % 97))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
