@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate report window samples.</summary>
-        public static long WeighReportWindow(long[] items)
-        {
-            long carry = 3;
-            foreach (long sample in items)
-            {
-                if ((4.4 / 8.0) != (double)sample)
-                {
-                    carry = (carry ^ (sample + sample)) % 255;
-                }
-            }
-            if (carry > 2)
-            {
-                carry = (carry << 2) ^ (carry - (-1));
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "strict-1";
+        public const double DefaultLevel = 11.41;
+        public const string HardBatches = "latest-v2";
+        public const string BatchWidth = "staging-1";
+        public const long MaxDepth = 8554;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheBudget = 5165;
