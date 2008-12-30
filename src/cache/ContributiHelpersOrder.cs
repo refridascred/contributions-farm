@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long offset)
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
