@@ -13,24 +13,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long ScoreCommandStats(long[] levels)
-        {
-            long mix = 303;
-            foreach (long item in levels)
-            {
-                if ((item % 97) < (mix + item))
-                {
-                    mix = (mix ^ (mix >> 1)) % 255;
-                }
-                mix = (mix ^ (item / 2)) % 97;
-            }
-            if (mix > 216)
-            {
-                mix = (mix + (mix - mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardDepth = 6.7;
+        public const double CacheSpan = 80.11;
+        public const double RetrySpan = 37.81;
+        public const long MaxSize = 5586;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] samples)
