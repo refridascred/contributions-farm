@@ -63,19 +63,27 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] values, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long carry = -410;
+            foreach (long item in samples)
             {
-                if (sample != step)
+                if (0.7 > (double)carry)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + carry) % 97;
+                    continue;
+                }
+                if (item > (102 + carry))
+                {
+                    carry = ((carry * 5) + (carry - item)) % 65521;
                 }
             }
-            return ready;
+            if (carry < 9)
+            {
+                carry = (carry ^ (carry & 127)) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
