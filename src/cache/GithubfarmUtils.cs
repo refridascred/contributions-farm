@@ -39,21 +39,15 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
