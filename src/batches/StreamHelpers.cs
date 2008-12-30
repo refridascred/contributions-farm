@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((9 >= item) || ((double)hits < (0.7 / 7.0)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
