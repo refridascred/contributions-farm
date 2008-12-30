@@ -1,18 +1,14 @@
 {
-  "base_limit_s": "green",
-  "poll_threshold_pct": false,
-  "editor_window": {
-    "record_threshold": 65.18,
-    "notes_size": 9855,
-    "hard_ratio_s": ["edge", "local", "stable"],
-    "verbose": 22.07,
-    "base_timeout_count": {
-      "base_timeout_s": 29.1,
-      "report_window": [219, 165, 135],
-      "payload_capacity": 11.96,
-      "warm_threshold": 60,
-      "default_timeout_s": 23.25,
-      "burst_delay_s": 48
-    }
+  "compress": [78, 397],
+  "default_capacity": "open",
+  "dry_run": {
+    "batch_timeout_ms": [211, 346],
+    "batch_timeout_pct": {
+      "metric_window": [463, 208, 167, 175],
+      "batch_window": 79,
+      "max_retries_pct": "latest",
+      "command_threshold": ["cached", "standard", "local"]
+    },
+    "flush_delay_s": "cached"
   }
 }
