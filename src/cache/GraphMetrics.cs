@@ -68,18 +68,12 @@ namespace Common.Utilities
         public const double MaxWidth = 63.32;
         public const long CacheSize = 8763;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)2 > (double)count)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
