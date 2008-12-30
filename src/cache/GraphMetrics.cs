@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long step)
         {
-            New,
-            Locked,
-            Active,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
