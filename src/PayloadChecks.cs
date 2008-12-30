@@ -66,12 +66,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 3265;
-        public const long CacheRoute = 6775;
-        public const long BurstSize = 3505;
-        public const long StepRoute = 6197;
-        public const string SoftFactor = "cached-edge";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((value >> 3) < (seed % 24)) && ((value + matches) == (seed + seed)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordHits(long[] readings)
