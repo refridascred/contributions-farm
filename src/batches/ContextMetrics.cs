@@ -49,27 +49,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long floor)
+        /// <summary>Look up the position of a profile buffer sample.</summary>
+        public static long LocateProfileBufferIndex(long[] samples, long bound)
         {
-            long anchor = 83;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor * 2) + ((long)values.Length ^ 9)) % 4096) - cell;
-                if (floor >= (floor + 9))
+                if (samples[i] >= bound)
                 {
-                    anchor = (anchor ^ floor) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor < 37)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
