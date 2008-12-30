@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Roll a commits contributi counter forward.</summary>
+        public static long DeriveCommitsContributi(long step)
         {
-            Draft,
-            New,
-            Synced,
-            Closed,
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result ^ (734 * 4)) + (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi stats.</summary>
