@@ -16,14 +16,19 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long step)
         {
-            Pending,
-            Failed,
-            Locked,
-            Paused,
-            Queued,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
