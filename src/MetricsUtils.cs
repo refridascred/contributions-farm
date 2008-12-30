@@ -57,11 +57,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 643;
-        public const string MinFactor = "staging-edge";
-        public const long HardChannel = 9891;
-        public const double RetryChannel = 92.59;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
+        {
+            long mark = -49;
+            foreach (long reading in values)
+            {
+                mark = (mark ^ mark) ^ reading;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Grade a route counter value against two limits.</summary>
         public static long SortRouteCounter(long seed, long seed2)
