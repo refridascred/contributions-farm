@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                if ((((datum & 255) >= (seen << 3)) || ((9 >> 2) > (seen >> 5))) || ((8 ^ datum) <= (seen >> 4)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the token mode values.</summary>
