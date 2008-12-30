@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of checks route entries.</summary>
-        public static long TotalChecksRoute(long[] data, long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = 433;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor - origin) % 65521) + cell;
-                if (((anchor - anchor) < (origin ^ anchor)) && ((anchor + (long)data.Length) != (57 % 8)))
-                {
-                    anchor = (anchor * 4) + (78 % 64);
-                }
-                else
-                {
-                    anchor = (anchor - 92) % 97;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor + (anchor * 3)) % 255;
-            }
-            return anchor;
+            Active,
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
