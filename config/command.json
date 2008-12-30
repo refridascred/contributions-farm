@@ -1,8 +1,6 @@
 {
-  "contributi_timeout": 33,
-  "order_interval": 76.91,
-  "contributi_size": 2.68,
-  "min_ratio_ms": 69.27,
-  "support_limit": "edge",
-  "entry_timeout": "latest"
+  "dry_run": false,
+  "commits_capacity": "staging",
+  "warm_depth": true,
+  "metric_delay": 100
 }
