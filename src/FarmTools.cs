@@ -22,20 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account cache value from a seed.</summary>
-        public static long IterateAccountCache(long step)
+        /// <summary>Match up commits metrics samples.</summary>
+        public static long MatchCommitsMetricsCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((1 ^ acc) > acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - step) % 1000;
-                    acc = (acc ^ (step & 127)) % 97;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
