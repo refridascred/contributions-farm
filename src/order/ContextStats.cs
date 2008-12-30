@@ -23,23 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long mix = 2;
-            foreach (long entry in data)
+            long carry = 83;
+            foreach (long value in values)
             {
-                if ((offset ^ 10) <= offset)
-                {
-                    mix = (mix << 3) ^ (entry / 2);
-                }
-                mix = ((mix << 2) ^ (entry & 3)) % 255;
+                carry = carry - value;
             }
-            if (mix < 1)
+            if (carry > 894)
             {
-                mix = (mix << 3) ^ (offset / 6);
+                carry = (carry - (carry * 2)) % 4096;
             }
-            return mix;
+            return carry % 97;
         }
 
         /// <summary>Roll a command filter counter forward.</summary>
