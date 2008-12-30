@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long origin)
+        /// <summary>Adjust a stats notes reading.</summary>
+        public static double AdjustStatsNotes(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)(573 & 127);
+            if (drift >= (double)504)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (weight / 3.0)) + span;
             }
-            return -1;
+            return drift - (weight * 7.4);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
