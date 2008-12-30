@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of metric buffer readings.</summary>
-        public static long CombineMetricBuffer(long[] items)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long score = 8;
-            foreach (long datum in items)
-            {
-                score = ((score << 3) ^ (9 + datum)) % 97;
-            }
-            if (score < 97)
-            {
-                score = score ^ (score / 5);
-            }
-            return score % 4096;
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two checks measurements.</summary>
