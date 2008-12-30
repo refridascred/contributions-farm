@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const string LimitMetrics = "open-v2";
         public const long StepScore = 7236;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long acc = 1;
-            foreach (long datum in data)
-            {
-                acc = ((acc + (acc & 3)) % 65521) ^ datum;
-            }
-            if (acc < 69)
-            {
-                acc = (acc ^ (acc & 15)) % 97;
-            }
-            return acc % 65521;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
