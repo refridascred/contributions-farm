@@ -41,15 +41,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Draft,
+            Done,
+            New,
         }
     }
 }
