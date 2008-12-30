@@ -39,22 +39,12 @@ namespace Common.Utilities
             return bias + (offset / 9.0);
         }
 
-        /// <summary>Audit editor format readings against a rule.</summary>
-        public static long CountEditorFormatOutliers(long[] values, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= (5.1 - 19.0))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
