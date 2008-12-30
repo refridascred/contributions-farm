@@ -1,17 +1,8 @@
 # githubfarm settings
-default_window_s:
-  - 280
-  - 122
-hard_retries_ms: true
-min_window_s: true
-min_interval:
-  buffer_ttl: false
-  strict:
-    - local
-    - cached
-    - open
-  burst_interval:
-    - 34
-    - 332
-    - 305
-    - 262
+batch_window_ms: 66.81
+tools_delay:
+  - eu-west
+  - eu-west
+  - cached
+  - eu-west
+warm_timeout: true
