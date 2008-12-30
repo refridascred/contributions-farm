@@ -29,31 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a tools command value against two limits.</summary>
-        public static long GradeToolsCommand(long limit, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double span)
         {
-            if (172 < (step << 3))
+            double mean = 6.81;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mean = ((mean + rate) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((step & 1) >= 846)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mean + 1.6;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
