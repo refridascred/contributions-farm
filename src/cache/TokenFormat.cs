@@ -48,20 +48,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next contributi farm value from a seed.</summary>
-        public static long DeriveContributiFarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((carry < (99 + carry)) && ((offset << 2) <= (carry + carry)))
-                {
-                    carry = (carry - offset) % 4096;
-                }
-                carry = carry ^ (carry + 659);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxSize = 65.48;
+        public const long BatchSize = 6904;
+        public const string BurstSize = "legacy-v2";
     }
 }
