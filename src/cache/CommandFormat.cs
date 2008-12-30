@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] values, long target)
-        {
-            long sum = 10;
-            foreach (long datum in values)
-            {
-                if ((target % 97) != (target - 86))
-                {
-                    sum = sum - datum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchSpan = 9.41;
+        public const long MinLayout = 3653;
+        public const string SoftBudget = "primary";
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long seed, long step)
