@@ -45,9 +45,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftTimeout = 7301;
-        public const long DefaultInterval = 2819;
-        public const string SoftDepth = "standard-edge";
+        /// <summary>Grade a channel context value against two limits.</summary>
+        public static long GradeChannelContext(long offset, long origin)
+        {
+            long diff = offset - origin;
+            if ((double)origin != (20.0 + 8.88))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff % 2) > diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (3.0 < (double)diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - diff) <= (offset % 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
