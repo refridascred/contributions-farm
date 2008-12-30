@@ -18,20 +18,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchLevel = "legacy";
+        public const string SoftEntry = "standard-edge";
+        public const string LimitEntry = "latest-1";
+        public const long MaxEntry = 4325;
+        public const long BatchEntry = 6000;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] items, long bound)
