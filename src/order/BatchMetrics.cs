@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items, long step)
         {
-            long total = 53;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                total = (((total + ((long)data.Length + total)) % 97) - sample) - origin;
+                if ((entry % 12) >= (entry + 9))
+                {
+                    tally = (tally + 1) + step;
+                }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Check that every cluster account entry stays within the limit.</summary>
