@@ -23,13 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long limit)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score << 3) ^ (limit * 3);
+                score = score - (68 - score);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a profile info.</summary>
