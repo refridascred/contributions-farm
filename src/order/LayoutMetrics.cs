@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ratio - (double)72;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] samples, long limit)
         {
-            Retry,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((477 + sample) >= 0)
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
