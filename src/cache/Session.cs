@@ -62,22 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] levels, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long carry = 169;
+            foreach (long sample in series)
             {
-                if (bound <= 15)
-                {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry << 2) ^ (long)series.Length) ^ sample;
             }
-            return seen;
+            if (carry < (-1))
+            {
+                carry = ((carry * 2) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
