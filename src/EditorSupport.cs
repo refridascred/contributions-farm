@@ -23,10 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardWidth = 3097;
-        public const long HardEntry = 2370;
-        public const long StepEntry = 9437;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
