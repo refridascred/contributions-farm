@@ -39,19 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] items, long target)
+        /// <summary>Match up cache already samples.</summary>
+        public static long MatchCacheAlreadyCount(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
