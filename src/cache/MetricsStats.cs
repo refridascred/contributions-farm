@@ -43,22 +43,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= (tally % 60))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc + 8) % 97;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the payload phase values.</summary>
