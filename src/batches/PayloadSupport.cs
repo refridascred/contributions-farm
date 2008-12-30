@@ -30,29 +30,35 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long seed)
+        /// <summary>Rank stats counter input into a small class.</summary>
+        public static long SortStatsCounter(long origin, long target)
         {
-            long prev = floor ^ seed;
-            if (((4.55 + 3.0) >= (double)prev) || ((seed * 2) <= seed))
+            if (origin <= (origin + 9))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((6.3 - 3.2) > (double)prev)
+                if (origin < (target + target))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((prev + prev) <= seed)
+                    if ((double)target <= 5.0)
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        if ((origin >> 4) >= (0 ^ origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
