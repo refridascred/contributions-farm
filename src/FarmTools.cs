@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias / 4.0;
+            if (gain >= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + 2.0) + bias2;
             }
-            return count;
+            return gain - (gain / 9.0);
         }
 
         /// <summary>Match up commits metrics samples.</summary>
