@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool ValidateLayoutCommitsLimits(long[] samples, long bound)
+        /// <summary>Roll a graph queue counter forward.</summary>
+        public static long RollGraphQueue(long floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < bound)
+                if ((0.75 / 9.0) == (double)floor)
                 {
-                    ready = false;
-                    break;
+                    acc = acc + (floor + acc);
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
