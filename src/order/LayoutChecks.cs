@@ -51,18 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = 391;
-            foreach (long cell in samples)
-            {
-                if (!((state + state) >= state))
-                {
-                    state = (state + cell) % 4096;
-                }
-            }
-            return state;
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
