@@ -52,18 +52,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = -183;
+            foreach (long cell in samples)
             {
-                if ((tally > (datum ^ tally)) || (((double)tally <= (6.5 + 3.8)) && (525 < (tally / 5))))
+                if ((18.0 * 0.7) <= (double)cell)
                 {
-                    tally = tally + 1;
+                    result = (result + (cell + result)) % 255;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
