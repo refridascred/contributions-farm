@@ -1,12 +1,16 @@
 {
-  "soft_capacity_s": 2,
-  "min_size_ms": false,
-  "poll_retries_pct": {
-    "strict": 12,
-    "max_ttl": "primary",
-    "max_limit_count": true
+  "batch_retries": "blue",
+  "cache_size": 2266,
+  "soft_retries_s": {
+    "cache_limit_s": "stable",
+    "hard_delay": "standard",
+    "session_interval": "local"
   },
-  "batch_timeout_count": "open",
-  "order_interval": 30,
-  "verbose": 83.42
+  "sync_timeout": {
+    "burst_timeout_count": "local",
+    "retry_timeout_pct": [285, 136, 436],
+    "warm_size_s": 9677
+  },
+  "idle_window_ms": 500,
+  "record_size": 15
 }
