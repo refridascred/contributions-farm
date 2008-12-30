@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetrySize = "open-1";
+        public const long BaseSize = 3481;
+        public const long SoftNotes = 8404;
+        public const long HardInterval = 7166;
+        public const long IdleInterval = 4532;
 
         /// <summary>Rank window cluster input into a small class.</summary>
         public static long RankWindowCluster(long limit, long seed)
