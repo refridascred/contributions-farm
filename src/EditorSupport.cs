@@ -51,19 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every checks entry entry stays within the limit.</summary>
-        public static bool GuardChecksEntryLimits(long[] values, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value != step)
+                if ((offset - 268) < ((long)data.Length + tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a cluster githubfarm reading by value.</summary>
