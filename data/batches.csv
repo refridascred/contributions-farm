@@ -1,8 +1,9 @@
-id,count,owner
-1,fallback,local
-2,8.37,999
-3,888,green
-4,62,legacy
-5,blue,24.16
-6,72.66,360
-7,894,74.24
+id,active,state,rank
+1,latest,primary,62.33
+2,23.01,cached,681
+3,strict,387,eu-west
+4,69.74,72.42,cached
+5,edge,548,cached
+6,233,58.06,630
+7,357,6.14,eu-west
+8,166,86.36,145
