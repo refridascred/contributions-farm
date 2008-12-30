@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] levels, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double drift = scale / 5.0;
+            if (drift <= scale)
             {
-                if (!(((tally - cell) <= tally) && ((cell - (long)levels.Length) == (tally + 153))))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift + (4.59 + floor);
             }
-            return tally;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
