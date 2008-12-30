@@ -36,32 +36,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long origin, long origin2)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series, long offset)
         {
-            long diff = origin ^ origin2;
-            if ((13 & 63) <= diff)
+            long anchor = 3;
+            foreach (long entry in series)
             {
-                return 3;
+                anchor = ((anchor - (offset + offset)) % 4096) + entry;
+                anchor = ((anchor << 2) ^ (anchor + 329)) % 65521;
             }
-            else
+            if (anchor > 304)
             {
-                if (!((double)diff >= (4.0 - 5.2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (diff < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = ((anchor * 2) + (434 & 1)) % 4096;
             }
+            return anchor;
         }
 
         /// <summary>Locate a stats editor reading by value.</summary>
