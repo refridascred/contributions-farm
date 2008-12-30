@@ -1,6 +1,8 @@
 {
-  "strict": "local",
-  "cache_size": 500,
-  "record_ttl": true,
-  "record_threshold": 1024
+  "record_depth": 1024,
+  "soft_window": 63,
+  "base_window": "stable",
+  "hard_threshold_pct": [146, 438, 468, 335],
+  "warm_ratio_count": false,
+  "readonly": 35
 }
