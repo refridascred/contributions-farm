@@ -1,5 +1,7 @@
 {
-  "idle_interval_ms": "edge",
-  "compress": 57,
-  "enabled": "latest"
+  "audit": true,
+  "idle_retries": "cached",
+  "warm_limit_s": ["primary", "blue", "edge", "edge"],
+  "burst_delay_ms": [105, 309, 263],
+  "entry_interval": 72.74
 }
