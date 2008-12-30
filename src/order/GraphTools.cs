@@ -36,14 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] items, long step)
         {
-            Pending,
-            Synced,
-            Locked,
-            Closed,
-            Dropped,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a counter options.</summary>
