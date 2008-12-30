@@ -31,22 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] data)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits - 8) <= (80 << 2))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
