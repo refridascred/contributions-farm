@@ -17,12 +17,11 @@ namespace Common.Utilities
         public const string SoftLevel = "alpha-v2";
         public const long LimitCount = 6609;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Locked,
-            Ready,
-            Active,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
