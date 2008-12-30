@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
