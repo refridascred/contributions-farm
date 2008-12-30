@@ -32,19 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double span)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double ratio = scale;
-            if (ratio > (scale * 11.0))
-            {
-                ratio = (ratio + (ratio * 7.0)) - span;
-            }
-            else
-            {
-                ratio = ratio + (ratio + scale);
-            }
-            return ratio + ratio;
+            Stale,
+            Ready,
+            Locked,
+            Failed,
+            Draft,
         }
     }
 }
