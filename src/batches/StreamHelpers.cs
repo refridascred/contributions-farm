@@ -50,19 +50,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two farm order measurements.</summary>
-        public static double BlendFarmOrder(double bias, double bias2)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            double drift = bias2 * 7.5;
-            if (drift < (double)955)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift - (drift / 7.0);
+                score = ((score * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (bias - bias2);
+            return score;
         }
     }
 }
