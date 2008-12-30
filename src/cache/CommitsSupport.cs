@@ -46,21 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue filter pairs that satisfy a relation.</summary>
-        public static long OverlapQueueFilterCount(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
