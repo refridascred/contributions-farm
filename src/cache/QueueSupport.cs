@@ -12,12 +12,11 @@ namespace Common.Utilities
             return weight + (double)958;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            New,
-            Ready,
-            Draft,
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
