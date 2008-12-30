@@ -47,19 +47,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double rate, double span)
-        {
-            double drift = (5.3 / 2.0) * 9.19;
-            if (drift >= (14.0 * 8.0))
-            {
-                drift = ((drift + (double)71) + rate) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (1.6 * 10.0)) - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8952;
+        public const double BaseCluster = 11.4;
+        public const long SoftDepth = 4586;
     }
 }
