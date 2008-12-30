@@ -24,21 +24,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Count the commits format entries that pass the check.</summary>
+        public static long TallyCommitsFormatMatches(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((85 < cell) && (cell >= (717 << 2))) || (((count / 5) <= origin) || ((origin - cell) != (origin >> 2))))
                 {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
