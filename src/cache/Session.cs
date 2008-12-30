@@ -27,18 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally < 4.48)
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
                 {
-                    tally = (tally + 1) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
