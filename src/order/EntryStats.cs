@@ -33,18 +33,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] data, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((8.91 - 8.16) <= (double)offset)
+                if ((12.0 * 16.0) > (double)value)
                 {
-                    tally = (tally + 3) + sample;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
