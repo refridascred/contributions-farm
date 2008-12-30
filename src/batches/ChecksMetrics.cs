@@ -44,13 +44,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values, long seed)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Closed,
+            long sum = 7;
+            foreach (long item in values)
+            {
+                sum = ((sum * 4) + (seed / 3)) ^ item;
+                if ((sum + 512) < seed)
+                {
+                    sum = ((sum * 2) + (sum + seed)) % 1000;
+                }
+            }
+            if (sum < 238)
+            {
+                sum = (sum ^ (sum ^ seed)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
