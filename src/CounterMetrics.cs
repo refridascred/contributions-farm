@@ -48,18 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double ratio2 = (double)(95 - 4);
+            if (ratio2 > (ratio2 - bias))
             {
-                if ((value < (value ^ value)) || !(count > (value + 158)))
-                {
-                    count = count + 1;
-                }
+                ratio2 = (ratio2 - (4.0 - bias)) - ratio;
             }
-            return count;
+            return ratio2 + (double)4;
         }
     }
 }
