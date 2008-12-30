@@ -22,12 +22,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinSize = "latest-v2";
-        public const long BaseFilter = 1695;
-        public const long MinFilter = 970;
-        public const long SoftFilter = 9018;
-        public const long IdleSpan = 7966;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
