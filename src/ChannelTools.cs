@@ -15,10 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 33.93;
-        public const string IdleMetric = "fallback-v2";
-        public const long RetryMetric = 8434;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double floor)
+        {
+            double gain = (bias * 8.39) - (double)(-468);
+            if (gain >= (bias * 0.73))
+            {
+                gain = gain + (bias * 8.98);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + floor;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long offset, long bound)
