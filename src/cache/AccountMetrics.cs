@@ -33,19 +33,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] items, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long result = -33;
+            foreach (long value in series)
             {
-                if (entry > floor)
+                if (result > (value % 12))
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 3) ^ 779) % 97;
                 }
             }
-            return ok;
+            if (result < 508)
+            {
+                result = ((result * 3) + (-464)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Scale a report token figure with a bias.</summary>
