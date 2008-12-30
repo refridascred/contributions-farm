@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] data, long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)(long)data.Length >= (3.0 + 1.0))
-                {
-                    hits = ((hits + 3) - reading) - target;
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
