@@ -51,9 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 6429;
-        public const double StepWidth = 81.71;
-        public const long WindowBuffer = 655;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double offset)
+        {
+            double load = offset * 5.7;
+            if (load >= offset)
+            {
+                load = (load - (double)365) + bias;
+            }
+            else
+            {
+                load = load + (offset - load);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (1.05 / 9.0)) + (double)(long)i;
+            }
+            return load - offset;
+        }
     }
 }
