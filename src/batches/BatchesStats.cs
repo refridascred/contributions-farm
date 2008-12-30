@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheInterval = "staging-v2";
-        public const long CacheStream = 6491;
-        public const long BurstStream = 1127;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7422;
+        public const double IdleChecks = 20.47;
+        public const long HardFactor = 4434;
+        public const long BaseChecks = 1758;
+        public const long MaxDepth = 5160;
 
         /// <summary>Blend two token queue measurements.</summary>
         public static double BlendTokenQueue(double gain, double bias)
