@@ -16,21 +16,15 @@ namespace Common.Utilities
         public const long HardInterval = 1864;
         public const long MinSpan = 9767;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 987;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (((result * 3) + (result - target)) % 65521) + datum;
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
