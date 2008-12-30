@@ -1,6 +1,6 @@
 {
-  "flush_timeout": "green",
-  "channel_timeout": 8.48,
-  "max_window_pct": 16.51,
-  "warm_depth": 1504
+  "account_limit": true,
+  "record_retries": 44,
+  "channel_limit": [284, 129, 258, 31],
+  "batch_retries_count": 3486
 }
