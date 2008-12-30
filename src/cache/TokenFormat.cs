@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > 6.48)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next contributi farm value from a seed.</summary>
