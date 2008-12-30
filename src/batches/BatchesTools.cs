@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const long StepRatio = 9630;
         public const long BaseSpan = 8324;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long step, long step2)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long step3 = step - step2;
-            if ((step ^ step2) > (7 % 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 / 7) != (step << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step3 ^ step3) != (step3 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate queue format readings against a bound.</summary>
