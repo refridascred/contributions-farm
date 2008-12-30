@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 3.5;
-        public const long BurstTimeout = 2643;
-        public const long BatchDepth = 9151;
-        public const long MinScore = 5873;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings)
+        {
+            long carry = 5;
+            foreach (long reading in readings)
+            {
+                carry = (carry + (carry & 255)) ^ reading;
+                if (7 >= (carry % 64))
+                {
+                    carry = (carry - (carry * 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (380 + 833)) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank support session input into a small class.</summary>
         public static long BucketSupportSession(long target, long target2)
