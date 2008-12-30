@@ -57,11 +57,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Roll a farm payload counter forward.</summary>
+        public static long StepFarmPayload(long seed)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
