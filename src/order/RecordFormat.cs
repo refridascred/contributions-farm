@@ -64,12 +64,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result - ((long)i * 2)) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
