@@ -38,15 +38,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a command filter counter forward.</summary>
-        public static long DeriveCommandFilter(long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] values, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
