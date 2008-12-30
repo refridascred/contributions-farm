@@ -31,22 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + matches) < (9 + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
