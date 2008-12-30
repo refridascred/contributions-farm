@@ -21,13 +21,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Done,
-            Retry,
-            Ready,
-            Paused,
+            Stale,
+            Locked,
+            Active,
+            New,
+            Pending,
         }
     }
 }
