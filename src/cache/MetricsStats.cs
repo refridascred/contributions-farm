@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double scale, double floor)
         {
-            Pending,
-            New,
-            Idle,
+            double weight = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + weight) + (double)(long)i) + scale;
+            }
+            return weight + (double)8;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
