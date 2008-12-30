@@ -72,13 +72,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Closed,
-            Pending,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 84.73;
+        public const long RetrySchema = 1434;
+        public const long BatchWidth = 7570;
+        public const long HardSchema = 2389;
     }
 }
