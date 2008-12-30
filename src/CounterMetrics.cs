@@ -34,20 +34,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Count account channel pairs that satisfy a relation.</summary>
+        public static long CompareAccountChannelCount(long[] samples)
         {
-            long result = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result + (value >> 3);
-                if (!((double)result < (double)48))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result + (result - value)) % 1000;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = result + (value - value);
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many already session samples are out of range.</summary>
