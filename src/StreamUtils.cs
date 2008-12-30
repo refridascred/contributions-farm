@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a commits contributi counter forward.</summary>
-        public static long DeriveCommitsContributi(long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((double)entry != (1.8 + 9.0))
                 {
-                    result = (result ^ (734 * 4)) + (long)i2;
+                    seen = seen + 1;
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a contributi stats.</summary>
