@@ -12,13 +12,24 @@ namespace Common.Utilities
             return drift + (bias + 2.1);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long target, long offset)
         {
-            Locked,
-            Done,
-            Stale,
-            Ready,
+            if (38 <= (target + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 97) > (offset << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
