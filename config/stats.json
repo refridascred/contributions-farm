@@ -1,10 +1,6 @@
 {
-  "cache_timeout_ms": {
-    "sync_ratio_s": "stable",
-    "enabled": "cached",
-    "strict": true,
-    "profile_retries": true
-  },
-  "sync_interval": "local",
-  "dry_run": true
+  "window_size": 3954,
+  "payload_size": "stable",
+  "hard_ttl_s": 39.81,
+  "hard_ratio": 3607
 }
