@@ -30,20 +30,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate entry stats readings against a bound.</summary>
-        public static bool VerifyEntryStatsRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 5306;
+        public const long RetryRatio = 5976;
+        public const double HardBudget = 85.13;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
