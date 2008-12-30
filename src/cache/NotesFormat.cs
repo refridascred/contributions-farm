@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
+        /// <summary>Validate editor report readings against a bound.</summary>
+        public static bool GuardEditorReportLimits(long[] samples, long origin)
         {
-            double weight = (offset + offset) * 2.0;
-            if (weight <= 0.4)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                weight = (weight + (4.96 * 9.0)) - bias;
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight / 6.0)) + (double)(long)i;
-            }
-            return weight - (offset - 9.0);
+            return valid;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
