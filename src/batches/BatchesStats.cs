@@ -33,11 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double bias)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            double weight = scale;
-            return (weight + (double)14) + bias;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a account counter counter forward.</summary>
