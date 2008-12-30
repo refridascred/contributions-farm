@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data, long origin)
         {
-            Ready,
-            Locked,
-            Retry,
+            long total = 53;
+            foreach (long sample in data)
+            {
+                total = (((total + ((long)data.Length + total)) % 97) - sample) - origin;
+            }
+            return total % 4096;
         }
 
         /// <summary>Locate a commits account reading by value.</summary>
