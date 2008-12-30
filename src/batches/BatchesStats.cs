@@ -35,10 +35,22 @@ namespace Common.Utilities
             return weight + (offset + weight);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 932;
-        public const long StepSize = 392;
-        public const long DefaultInterval = 6405;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double StepSchema = 90.02;
