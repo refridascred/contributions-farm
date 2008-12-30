@@ -64,24 +64,19 @@ namespace Common.Utilities
         public const double RetryInterval = 2.92;
         public const long StepGithubfarm = 4132;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long offset2)
+        /// <summary>Validate metric session readings against a bound.</summary>
+        public static bool VerifyMetricSessionBounds(long[] series, long origin)
         {
-            if (((offset + offset) == (offset2 - offset)) || ((offset2 - 3) >= (offset2 << 2)))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 >> 1) >= offset)
+                if (item <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
