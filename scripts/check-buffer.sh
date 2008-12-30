@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=38
-log "limit is ${BUFFER_LIMIT}"
-
-for item in primary edge; do
+for item in legacy edge; do
     log "checking ${item}"
 done
