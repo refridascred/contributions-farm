@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate layout format readings against a bound.</summary>
+        public static bool ValidateLayoutFormatBounds(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batch mode values.</summary>
