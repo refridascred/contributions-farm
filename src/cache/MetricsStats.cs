@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const long LimitSpan = 8117;
         public const string SoftAlready = "alpha";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((534 + tally) > (reading << 1))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBudget = 98.04;
+        public const double StepBatches = 0.06;
+        public const long LimitCount = 7887;
+        public const long CacheDepth = 2059;
+        public const long WindowWidth = 9730;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] series, long origin)
