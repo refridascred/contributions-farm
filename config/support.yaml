@@ -1,11 +1,17 @@
 # support settings
-cache_size:
-  commits_capacity: 27
-  base_timeout_pct: 1548
-  counter_capacity: false
-layout_retries: local
-sync_threshold:
-  - 30
-  - 348
-  - 229
-  - 344
+hard_interval: 6383
+dry_run: false
+batch_interval: 30
+idle_delay_pct:
+  - strict
+  - legacy
+sync_ttl:
+  cache_capacity_s: 100
+  sync_ratio: 64.16
+  hard_threshold_pct: cached
+  retry_retries_s:
+    - strict
+    - cached
+    - staging
+    - latest
+enabled: fallback
