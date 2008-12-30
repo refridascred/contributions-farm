@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowScore = 9857;
-        public const double BaseBudget = 21.48;
-        public const long HardEntry = 6904;
-        public const long SoftLevel = 8814;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 3141;
+        public const long MinChannel = 4558;
+        public const long BatchChannel = 3207;
+        public const long BurstFactor = 1138;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double gain, double floor)
