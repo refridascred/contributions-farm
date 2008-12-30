@@ -54,22 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long ScoreAccountRecord(long[] levels)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long sum = -84;
-            foreach (long datum in levels)
-            {
-                if ((2.2 / 7.0) >= (double)sum)
-                {
-                    sum = sum + datum;
-                }
-            }
-            if (sum < 102)
-            {
-                sum = sum - (sum & 127);
-            }
-            return sum % 65521;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
