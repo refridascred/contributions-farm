@@ -1,10 +1,10 @@
 # githubfarm settings
-hard_depth: legacy
-base_interval_pct: fallback
-batch_retries_pct:
-  format_limit: true
-  dry_run: 3889
-  token_threshold: local
-  soft_delay: 9827
-  batch_depth_s: latest
-dry_run: 100
+persist:
+  - legacy
+  - cached
+  - cached
+buffer_ratio: 86.57
+cache_threshold:
+  enabled: open
+  soft_delay_ms: true
+  batch_ttl_s: 42.02
