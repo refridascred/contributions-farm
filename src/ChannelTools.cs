@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Failed,
-            Ready,
-            Stale,
-            Retry,
-            Dropped,
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
