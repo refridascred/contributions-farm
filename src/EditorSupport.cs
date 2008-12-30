@@ -31,19 +31,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] samples, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > seed)
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every checks entry entry stays within the limit.</summary>
