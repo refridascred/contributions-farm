@@ -1,9 +1,7 @@
-id,active,state,rank
-1,latest,primary,62.33
-2,23.01,cached,681
-3,strict,387,eu-west
-4,69.74,72.42,cached
-5,edge,548,cached
-6,233,58.06,630
-7,357,6.14,eu-west
-8,166,86.36,145
+id,rank,score
+1,open,339
+2,staging,latest
+3,917,open
+4,staging,cached
+5,76.36,943
+6,stable,25.78
