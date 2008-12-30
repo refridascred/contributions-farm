@@ -1,14 +1,12 @@
 # Command notes
 
-Keep context and editor names short and lowercase.
-The report module keeps layout values in sync with the queue cache.
-
-When a metric fails, the metrics handler retries a few times before giving up.
-The contributi module keeps contributi values in sync with the cluster cache.
+Defaults for counter live in the config folder and can be overridden per environment.
+Run the metric check before changing any filter limits.
+Run the channel check before changing any route limits.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer batches defaults
-- Keep editor values small
-- Review payload limits each release
+- Document new githubfarm fields
+- Keep cluster values small
+- Prefer graph defaults
+- Log every order change
