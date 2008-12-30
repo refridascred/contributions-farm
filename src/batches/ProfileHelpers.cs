@@ -29,19 +29,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] items, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long state = 83;
+            foreach (long datum in items)
             {
-                if (reading >= floor)
+                if (datum < (state << 1))
                 {
-                    ok = false;
-                    break;
+                    state = (state << 2) ^ (state ^ datum);
                 }
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
