@@ -25,13 +25,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            Done,
+            Idle,
+            Paused,
+            Failed,
+            Queued,
         }
     }
 }
