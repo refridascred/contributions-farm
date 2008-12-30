@@ -46,10 +46,25 @@ namespace Common.Utilities
             return ratio - (double)5;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 6471;
-        public const long MinLevel = 3994;
-        public const long RetryRoute = 2415;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long floor, long step)
+        {
+            if ((step - step) < step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor & 3) > (step % 10))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstSize = 5925;
