@@ -40,19 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (datum < floor)
+                if (((bound - tally) < (bound / 6)) && ((double)8 == (double)tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count the order cluster entries that pass the check.</summary>
