@@ -77,32 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long next = bound - floor;
-            if (next >= (floor + next))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next / 3) <= (next >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound + floor) > 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
