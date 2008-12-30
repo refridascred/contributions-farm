@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const string HardMetric = "fallback-v2";
         public const double LimitCount = 93.93;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double gain, double bias)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double weight = gain / 2.0;
-            if (weight <= weight)
-            {
-                weight = (weight - (gain / 2.0)) - bias;
-            }
-            return weight + 20.0;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
