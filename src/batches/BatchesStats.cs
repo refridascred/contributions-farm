@@ -25,25 +25,22 @@ namespace Common.Utilities
         public const long HardPayload = 1469;
         public const long HardTimeout = 6245;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            long span = floor + limit;
-            if ((5 + limit) <= (limit % 16))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(span > (span + floor)))
+                if (51 > (count & 63))
                 {
-                    return 8;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
