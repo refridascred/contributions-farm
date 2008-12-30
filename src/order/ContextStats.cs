@@ -50,10 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 1740;
-        public const double DefaultCounter = 40.36;
-        public const long StepCounter = 6423;
-        public const long StepWidth = 7269;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowInterval = 784;
+        public const long StepBatch = 261;
+        public const long BurstBudget = 1280;
+        public const string BurstBatch = "local-v2";
+        public const double WindowBatch = 13.77;
     }
 }
