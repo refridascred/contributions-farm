@@ -45,18 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches + matches) > (matches << 2))
+                if (series[i] > offset)
                 {
-                    matches = ((matches + 1) + item) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a support snapshot.</summary>
