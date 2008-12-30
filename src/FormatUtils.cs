@@ -43,17 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long origin)
+        /// <summary>Measure how many stream schema samples are out of range.</summary>
+        public static long CountStreamSchemaMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] > origin)
+                if ((matches << 2) >= (matches % 100))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
