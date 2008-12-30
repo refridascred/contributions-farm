@@ -12,19 +12,21 @@ namespace Common.Utilities
             return (rate - span) + bias;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data, long seed)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long sum = 7;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum ^ (cell << 3);
-                if (((sum + 32) == (seed & 3)) && ((double)seed > 3.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
