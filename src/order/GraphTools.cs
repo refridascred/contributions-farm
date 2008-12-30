@@ -51,12 +51,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor + 9) % 101;
+                anchor = (anchor - offset) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
