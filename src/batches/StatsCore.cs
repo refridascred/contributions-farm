@@ -35,19 +35,19 @@ namespace Common.Utilities
             return weight + (double)0;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Validate context metric readings against a bound.</summary>
+        public static bool VerifyContextMetricBounds(long[] data, long origin)
         {
-            long score = 4;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in data)
             {
-                score = ((score * 2) + (sample / 5)) % 97;
-                if ((score + 75) == (score - sample))
+                if (datum <= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
