@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next queue commits value from a seed.</summary>
-        public static long DeriveQueueCommits(long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double rate, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            double scale = 6.9 - 2.63;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)carry > (double)(long)i))
-                {
-                    carry = (carry * 2) + (264 + floor);
-                }
-                if (carry >= 328)
-                {
-                    carry = ((carry * 5) + ((long)i - floor)) % 65521;
-                    carry = carry + (floor - (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                scale = ((scale - (scale + rate)) + (double)(long)i) - offset;
             }
-            return carry;
+            return scale + (rate - scale);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
