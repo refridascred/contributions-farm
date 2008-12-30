@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] series, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] data, long target)
         {
-            long result = 974;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = (result + (sample + origin)) % 97;
-                result = ((result * 2) + sample) % 255;
+                if ((double)(long)data.Length >= (3.0 + 1.0))
+                {
+                    hits = ((hits + 3) - reading) - target;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
