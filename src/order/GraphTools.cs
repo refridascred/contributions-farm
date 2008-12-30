@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a window metrics value against two limits.</summary>
-        public static long BucketWindowMetrics(long limit, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            long gap = limit ^ floor;
-            if ((floor > (limit / 2)) || ((14.0 + 9.0) > (double)limit))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit > (gap - floor)) && ((19 + 96) > (gap & 3)))
+                if ((entry - entry) > 2)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (gap <= (floor + gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor << 2) >= (1 / 9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
