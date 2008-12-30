@@ -61,21 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = rate;
+            if (rate2 <= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = (rate2 + (1.1 + rate2)) + bias;
             }
-            return matches;
+            return rate2 - (double)430;
         }
     }
 }
