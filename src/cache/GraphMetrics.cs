@@ -32,23 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric farm reading.</summary>
-        public static double SmoothMetricFarm(double weight, double span)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double ratio = weight;
-            if (ratio > (weight / 9.0))
-            {
-                ratio = (ratio - (double)556) + span;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - ratio;
+            Queued,
+            Pending,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the token phase values.</summary>
