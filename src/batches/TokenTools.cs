@@ -14,21 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of report payload readings.</summary>
-        public static long TotalReportPayload(long[] readings)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = 36;
-            foreach (long sample in readings)
-            {
-                long next = (998 + 40) ^ (sample - sample);
-                sum = (sum ^ next) % 1000;
-                sum = (sum - sample) % 97;
-                if ((sum ^ sum) >= (sum & 255))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
