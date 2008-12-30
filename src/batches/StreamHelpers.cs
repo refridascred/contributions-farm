@@ -73,11 +73,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 9107;
+        public const long BatchScore = 4741;
+        public const string BatchSpan = "cached";
+        public const double CacheLevel = 47.72;
     }
 }
