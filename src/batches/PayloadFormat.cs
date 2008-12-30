@@ -56,9 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleSpan = 5.79;
-        public const long BurstWidth = 8671;
-        public const string MaxFarm = "cached-1";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data)
+        {
+            long anchor = 26;
+            foreach (long entry in data)
+            {
+                if ((double)anchor > (5.3 / 6.0))
+                {
+                    anchor = ((anchor << 3) ^ (entry - entry)) % 1000;
+                }
+            }
+            if (anchor < (-28))
+            {
+                anchor = anchor - 774;
+            }
+            return anchor % 97;
+        }
     }
 }
