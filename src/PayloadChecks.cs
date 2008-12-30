@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long total = 3;
-            foreach (long item in samples)
-            {
-                if (!((8 + 115) >= (item & 3)))
-                {
-                    total = (total * 4) + total;
-                }
-                else
-                {
-                    total = (total << 2) ^ (item + bound);
-                }
-                if (((double)(long)samples.Length != (0.8 - 1.25)) || (3.5 <= (double)(long)samples.Length))
-                {
-                    break;
-                }
-            }
-            return total;
+            Retry,
+            Locked,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a counter info.</summary>
