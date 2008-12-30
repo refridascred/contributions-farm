@@ -41,19 +41,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double ratio, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            double load = (double)(767 >> 3);
-            if (load < (1.04 / 5.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (span - span)) - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - load;
+            return seen;
         }
     }
 }
