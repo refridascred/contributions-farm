@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinRatio = 896;
+        public const double StepLevel = 68.8;
+        public const string DefaultCounter = "stable-1";
+        public const string HardCounter = "open-1";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstMetric = 7665;
