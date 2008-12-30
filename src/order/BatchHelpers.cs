@@ -19,32 +19,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long step)
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long CountCounterContextHits(long[] series)
         {
-            long next = offset - step;
-            if ((next + step) >= step)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 3) <= offset)
+                if (datum < (41 * 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) == (offset ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
