@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Synced,
-            New,
-            Pending,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the tools status values.</summary>
