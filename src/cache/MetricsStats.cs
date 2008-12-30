@@ -51,39 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series, long origin)
         {
-            long edge = floor ^ target;
-            if ((edge + target) != (floor / 8))
+            long score = 2;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge + target) != (target << 3))
+                if ((double)score < (double)origin)
                 {
-                    return 3;
+                    score = ((score * 3) + 5) % 4096;
                 }
-                else
+                if ((double)sample == (10.0 + 4.5))
                 {
-                    if (edge >= (target + 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor / 8) >= target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return score % 4096;
         }
     }
 }
