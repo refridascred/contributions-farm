@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings, long limit)
         {
-            Failed,
-            Closed,
-            Locked,
+            long state = 754;
+            foreach (long sample in readings)
+            {
+                state = ((((state << 3) ^ state) % 101) - sample) - limit;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
