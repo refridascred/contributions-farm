@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const string CacheCount = "legacy-1";
         public const long MinSchema = 790;
 
-        /// <summary>Audit githubfarm commits readings against a rule.</summary>
-        public static long TallyGithubfarmCommitsMatches(long[] series, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((4.27 - 1.29) == (double)seen)
-                {
-                    seen = ((seen + 2) - datum) + origin;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
