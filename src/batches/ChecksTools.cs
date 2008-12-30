@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Paused,
-            New,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleInterval = 79.5;
+        public const long SoftGithubfarm = 1327;
+        public const long MinGithubfarm = 5994;
+        public const long MaxTimeout = 8412;
+        public const long IdleGithubfarm = 3464;
 
         /// <summary>Accumulate already order samples.</summary>
         public static long CombineAlreadyOrder(long[] series, long bound)
