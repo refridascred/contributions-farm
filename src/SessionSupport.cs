@@ -40,23 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long seed)
         {
-            double ratio = 6.0;
-            if (ratio > floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (double)809;
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - 4.52;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 5.0) + (double)(long)i;
-            }
-            return ratio + scale;
+            return -1;
         }
     }
 }
