@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine order filter values into a single score.</summary>
+        public static long CombineOrderFilter(long[] items)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Done,
+            long sum = -9;
+            foreach (long sample in items)
+            {
+                sum = sum ^ (sample ^ sample);
+            }
+            if (sum > 1)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stats summary.</summary>
