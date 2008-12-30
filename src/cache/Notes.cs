@@ -20,13 +20,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a order summary.</summary>
