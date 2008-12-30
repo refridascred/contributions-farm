@@ -60,18 +60,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long limit)
+        /// <summary>Measure how many commits report samples are out of range.</summary>
+        public static long AuditCommitsReportMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((reading + reading) >= (reading - reading))
+                if (entry <= (entry << 2))
                 {
-                    tally = (tally + 1) - limit;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
