@@ -45,17 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = rate;
+            if (load < offset)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - (double)19;
             }
-            return -1;
+            return load + offset;
         }
     }
 }
