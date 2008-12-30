@@ -58,18 +58,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((step - target) >= (target / 7))
             {
-                if ((datum * 5) < (datum / 8))
+                return 6;
+            }
+            else
+            {
+                if ((724 + 909) >= (step - step))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
