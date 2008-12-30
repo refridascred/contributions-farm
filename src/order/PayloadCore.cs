@@ -39,11 +39,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Classify a support stream pair into a bucket.</summary>
+        public static long BucketSupportStream(long origin, long target)
         {
-            double ratio = gain;
-            return (ratio + (double)(-855)) + span;
+            if ((target + target) != (target % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target & 127) >= origin) || ((double)target < 6.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((76 >> 3) != (target - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
