@@ -27,19 +27,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] levels, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (seed - acc)) % 4096;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Locate a account route reading by value.</summary>
