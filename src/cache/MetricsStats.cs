@@ -26,15 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double scale, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data)
         {
-            double weight = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = 391;
+            foreach (long entry in data)
             {
-                weight = ((weight + weight) + (double)(long)i) + scale;
+                if (entry > (carry << 3))
+                {
+                    carry = (carry * 2) + (long)data.Length;
+                }
             }
-            return weight + (double)8;
+            if (carry < 54)
+            {
+                carry = (carry << 2) ^ (carry * 3);
+            }
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
