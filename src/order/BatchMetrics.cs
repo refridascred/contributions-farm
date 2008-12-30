@@ -55,12 +55,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] readings, long seed)
         {
-            Active,
-            Failed,
-            Ready,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
