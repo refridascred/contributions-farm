@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseRatio = 8076;
+        public const double BatchFactor = 78.88;
+        public const long BaseBudget = 991;
+        public const string BatchContext = "open-1";
+        public const string BaseContext = "stable-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MinSize = "latest-v2";
