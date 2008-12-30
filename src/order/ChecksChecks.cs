@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
