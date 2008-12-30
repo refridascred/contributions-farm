@@ -55,14 +55,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Ready,
+            Retry,
             Paused,
-            Stale,
-            Draft,
             Synced,
+            Closed,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
