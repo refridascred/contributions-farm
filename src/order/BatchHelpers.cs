@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] readings, long step)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double rate = bias;
+            if (rate > (rate * 6.7))
             {
-                if ((((step + 8) >= (step + hits)) && ((3.2 / 9.0) < (3.5 - 19.0))) || (((hits << 1) >= (hits - datum)) && ((double)step < (double)995)))
-                {
-                    hits = hits + 2;
-                }
+                rate = rate - gain;
             }
-            return hits;
+            else
+            {
+                rate = rate + (0.12 - bias);
+            }
+            return rate + (4.1 / 3.0);
         }
 
         /// <summary>Combine route values into a single score.</summary>
