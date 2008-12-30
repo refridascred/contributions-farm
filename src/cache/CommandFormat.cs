@@ -57,21 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score ^ (offset << 1)) % 65521;
-                if ((double)(long)i > (double)offset)
-                {
-                    score = score + (score - (long)i);
-                    score = ((score << 2) ^ (score - offset)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
