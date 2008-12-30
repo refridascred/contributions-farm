@@ -45,32 +45,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long limit, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long bound = limit - floor;
-            if ((floor > (floor - floor)) || ((limit + limit) >= (bound >> 1)))
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                anchor = (anchor ^ (anchor * 4)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)bound != (1.8 - 7.9)) || (floor <= limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 5) <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
