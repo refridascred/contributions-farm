@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Derive the next context buffer value from a seed.</summary>
+        public static long SeriesContextBuffer(long offset)
         {
-            long acc = -97;
-            foreach (long entry in samples)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (((acc << 2) ^ (54 & 255)) % 97) + entry;
+                carry = ((carry << 2) ^ ((long)i % 64)) % 4096;
+                carry = (carry - (offset - offset)) % 255;
+                if ((0.7 / 2.0) <= 18.0)
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Adjust a checks reading.</summary>
