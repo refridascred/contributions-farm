@@ -12,12 +12,11 @@ namespace Common.Utilities
             return ((scale + scale) + ratio) + floor;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank report input into a small class.</summary>
