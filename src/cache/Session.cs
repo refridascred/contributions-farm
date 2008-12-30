@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] items, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mix = 65;
+            foreach (long datum in data)
             {
-                if (cell >= offset)
+                if (datum < (9 + datum))
                 {
-                    found = false;
-                    break;
+                    mix = mix - (mix + mix);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ mix;
                 }
             }
-            return found;
+            if (mix > 938)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
