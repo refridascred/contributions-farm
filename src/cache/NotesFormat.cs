@@ -33,9 +33,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftFactor = 9829;
-        public const long HardTimeout = 6544;
-        public const long MinRatio = 7585;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long target, long target2)
+        {
+            long diff = target + target2;
+            if ((101 < (diff / 8)) && (diff >= target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((diff / 4) >= (target2 - target2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
