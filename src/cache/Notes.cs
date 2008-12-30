@@ -20,21 +20,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
