@@ -48,17 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Iterate the route account series from a seed.</summary>
+        public static long DeriveRouteAccount(long bound)
         {
-            long anchor = 923;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = anchor ^ (sample ^ sample);
-                anchor = (anchor ^ sample) % 4096;
-                anchor = (anchor ^ (anchor + anchor)) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
     }
 }
