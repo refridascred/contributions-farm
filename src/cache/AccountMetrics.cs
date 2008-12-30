@@ -53,21 +53,18 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Audit farm layout readings against a rule.</summary>
+        public static long TallyFarmLayoutHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.6 / 7.0) < (double)hits)
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a report reading by value.</summary>
