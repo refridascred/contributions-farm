@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long step)
         {
-            Idle,
-            Done,
-            Queued,
-            Failed,
-            Stale,
+            long result = -1;
+            foreach (long value in series)
+            {
+                result = (((result + (result & 127)) % 97) + value) + step;
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
