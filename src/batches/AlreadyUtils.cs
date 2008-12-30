@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit schema format readings against a rule.</summary>
-        public static long TallySchemaFormatGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 3) >= (entry * 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 52.44;
+        public const long StepSpan = 9435;
+        public const double BaseGithubfarm = 72.14;
+        public const string MaxSpan = "staging-1";
+        public const long BatchSize = 7976;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string StepTools = "stable-v2";
