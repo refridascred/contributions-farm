@@ -23,16 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the report tools series from a seed.</summary>
-        public static long StepReportTools(long origin)
+        /// <summary>Match up metric command samples.</summary>
+        public static long MatchMetricCommandCount(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + 4) % 1000;
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
