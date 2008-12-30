@@ -1,17 +1,14 @@
 {
-  "batch_interval_ms": {
-    "audit": 0.95,
-    "flush_threshold_s": 60,
-    "compress": "green",
-    "checks_limit": {
-      "idle_depth_ms": false,
-      "compress": 15.53,
-      "counter_window": 8849,
-      "poll_threshold_ms": "staging",
-      "strict": true,
-      "sync_limit": 250
-    }
-  },
-  "record_size": 100,
-  "checks_window": 0.53
+  "report_depth": 49,
+  "batch_threshold_pct": "legacy",
+  "stats_delay": 30,
+  "stats_window": true,
+  "stream_ttl": ["green", "edge", "legacy", "eu-west"],
+  "compress": {
+    "batch_interval_s": 59,
+    "notes_timeout": 30,
+    "session_size": 250,
+    "compress": 6995,
+    "audit": "cached"
+  }
 }
