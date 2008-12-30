@@ -46,22 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 1495;
+        public const string StepDepth = "legacy-1";
+        public const double IdleBudget = 18.42;
+        public const string IdleFactor = "stable-edge";
+        public const long MaxScore = 1911;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] series)
