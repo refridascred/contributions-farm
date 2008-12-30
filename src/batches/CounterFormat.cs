@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate format farm samples.</summary>
-        public static long DigestFormatFarm(long[] series, long seed)
-        {
-            long score = -30;
-            foreach (long item in series)
-            {
-                score = (score * 2) + (seed / 7);
-                if ((62 ^ score) == (item + 836))
-                {
-                    break;
-                }
-            }
-            if (score > 110)
-            {
-                score = (score + (seed - seed)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 3.5;
+        public const long BurstTimeout = 2643;
+        public const long BatchDepth = 9151;
+        public const long MinScore = 5873;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepDepth = 42.13;
