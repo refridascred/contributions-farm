@@ -54,10 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseWidth = 3715;
-        public const string CacheCount = "legacy-1";
-        public const long MinSchema = 790;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items)
+        {
+            long total = 77;
+            foreach (long reading in items)
+            {
+                if ((total << 1) > reading)
+                {
+                    total = total - (total >> 4);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
