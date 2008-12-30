@@ -45,11 +45,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "staging-v2";
-        public const double HardInterval = 87.4;
-        public const long WindowEditor = 2693;
-        public const long BurstEditor = 1761;
+        /// <summary>Find the first record batches entry that matches the target.</summary>
+        public static long LocateRecordBatchesIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long ScoreProfile(long[] levels, long target)
