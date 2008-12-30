@@ -61,22 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long anchor = 26;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)anchor > (5.3 / 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (entry - entry)) % 1000;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < (-28))
-            {
-                anchor = anchor - 774;
-            }
-            return anchor % 97;
+            return matches;
         }
     }
 }
