@@ -46,12 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Failed,
-            Draft,
-            Pending,
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
