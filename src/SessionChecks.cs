@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 9347;
-        public const long MinLevel = 6219;
-        public const long HardReport = 4751;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)96 != (double)entry)
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
