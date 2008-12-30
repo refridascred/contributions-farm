@@ -1,13 +1,7 @@
 {
-  "min_interval_pct": 6.44,
-  "readonly": 98,
-  "batch_retries": 6280,
-  "account_interval": {
-    "order_interval": [28, 17, 198, 333],
-    "farm_interval": "staging",
-    "cache_limit": "open",
-    "githubfarm_size": 16
-  },
-  "compress": "blue",
-  "metrics_capacity": 88.7
+  "cache_capacity": "latest",
+  "format_interval": 62,
+  "burst_ratio_s": 500,
+  "soft_capacity": 91,
+  "default_retries": true
 }
