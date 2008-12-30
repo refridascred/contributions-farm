@@ -41,12 +41,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 19.19;
-        public const string WindowFactor = "legacy-v2";
-        public const long RetryWidth = 1725;
-        public const string CacheFilter = "alpha-edge";
-        public const string IdleTimeout = "stable-v2";
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] levels, long offset)
