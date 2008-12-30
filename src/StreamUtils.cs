@@ -36,32 +36,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a checks graph pair into a bucket.</summary>
-        public static long GradeChecksGraph(long target, long target2)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long edge = target + target2;
-            if ((target + target) >= (979 * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (edge < (1 + target2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge + edge) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the buffer queue entries that pass the check.</summary>
