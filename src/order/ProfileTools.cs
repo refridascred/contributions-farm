@@ -28,22 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((7.1 + 1.0) > (double)offset)
+                if (item <= bound)
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate profile samples.</summary>
