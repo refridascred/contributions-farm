@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftCount = 1140;
-        public const long RetryMetrics = 2355;
-        public const string HardMetrics = "stable-v2";
-        public const string StepScore = "fallback-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((7.9 * 3.0) <= (double)matches))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
