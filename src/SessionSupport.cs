@@ -23,18 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitSize = 44.83;
+        public const long MaxInterval = 557;
+        public const long BatchScore = 9861;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double scale, double floor)
