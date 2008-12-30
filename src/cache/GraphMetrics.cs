@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long floor, long target)
         {
-            long total = -6;
-            foreach (long item in readings)
+            long bound = floor ^ target;
+            if (target < (-594))
             {
-                if ((bound + item) < bound)
+                return 5;
+            }
+            else
+            {
+                if ((target ^ bound) != (floor + target))
                 {
-                    total = (total ^ (item & 1)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (!((702 - floor) <= (floor / 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((6.5 + 9.42) == (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total > 125)
-            {
-                total = (total * 5) + (total + bound);
-            }
-            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
