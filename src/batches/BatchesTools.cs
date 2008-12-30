@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "latest";
+        public const string HardBatches = "standard";
+        public const double CacheBatches = 43.74;
+        public const double MinBatches = 14.94;
+        public const string WindowScore = "fallback";
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
