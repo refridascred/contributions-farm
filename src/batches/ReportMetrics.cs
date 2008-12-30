@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] levels, long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((floor & 127) < (floor - entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Dropped,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate batches samples.</summary>
