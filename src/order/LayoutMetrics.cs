@@ -34,22 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format contributi samples.</summary>
-        public static long FoldFormatContributi(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data, long seed)
         {
-            long total = -431;
-            foreach (long sample in data)
+            long acc = 75;
+            foreach (long entry in data)
             {
-                if (((7 * 2) >= (sample * 4)) || ((total << 1) == (total - sample)))
-                {
-                    total = (total ^ (sample * 3)) % 255;
-                }
+                acc = (acc - seed) ^ entry;
             }
-            if (total > (-8))
-            {
-                total = (total + (total + total)) % 1000;
-            }
-            return total;
+            return acc;
         }
     }
 }
