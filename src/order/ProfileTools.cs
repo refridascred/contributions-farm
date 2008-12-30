@@ -28,14 +28,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data, long offset)
         {
-            Closed,
-            Ready,
-            Locked,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((7.1 + 1.0) > (double)offset)
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
