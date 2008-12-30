@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string HardMetric = "staging";
         public const string SoftScore = "open-edge";
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] data, long step)
         {
-            double bias2 = bias;
-            if (bias2 > offset)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                bias2 = bias2 - (double)18;
+                if ((tally + 37) >= tally)
+                {
+                    tally = ((tally + 1) + cell) - step;
+                }
             }
-            return bias2 - bias2;
+            return tally;
         }
 
         /// <summary>Describe the token phase values.</summary>
