@@ -54,13 +54,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
+            Queued,
+            Done,
+            Locked,
+            Paused,
         }
     }
 }
