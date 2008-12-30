@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string DefaultCounter = "stable-1";
         public const string HardCounter = "open-1";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 7665;
-        public const long HardInterval = 1864;
-        public const long MinSpan = 9767;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the profile contributi entries that pass the check.</summary>
         public static long TallyProfileContributiOutliers(long[] values, long origin)
