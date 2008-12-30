@@ -17,17 +17,13 @@ namespace Common.Utilities
         public const string SoftLevel = "alpha-v2";
         public const long LimitCount = 6609;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
