@@ -1,7 +1,13 @@
 {
-  "compress": true,
-  "verbose": "blue",
-  "cache_size_pct": 30.9,
-  "idle_window_pct": "edge",
-  "sync_window_count": "staging"
+  "burst_ratio_ms": {
+    "idle_depth_pct": ["staging", "fallback"],
+    "flush_window_pct": "staging",
+    "farm_depth": "stable",
+    "channel_depth": false
+  },
+  "warm_depth_pct": 500,
+  "soft_capacity": "standard",
+  "entry_interval": false,
+  "burst_ttl_ms": 4536,
+  "cache_delay": 75.91
 }
