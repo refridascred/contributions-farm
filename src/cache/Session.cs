@@ -47,12 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long AuditGithubfarmContributiHits(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)hits > (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
