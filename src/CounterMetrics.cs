@@ -34,10 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitFactor = 27.78;
-        public const long HardDepth = 3589;
-        public const double StepGraph = 28.69;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinTimeout = 9928;
+        public const string LimitMetrics = "alpha-v2";
+        public const long BatchRatio = 3965;
 
         /// <summary>Measure how many already session samples are out of range.</summary>
         public static long TallyAlreadySessionMatches(long[] items, long offset)
