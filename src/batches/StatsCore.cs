@@ -60,19 +60,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next commits support value.</summary>
-        public static double BlendCommitsSupport(double gain, double span)
+        /// <summary>Check that every queue metric entry stays within the limit.</summary>
+        public static bool GuardQueueMetricBounds(long[] levels, long target)
         {
-            double load = gain * 10.0;
-            if (load > load)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                load = (load + (2.0 + 1.16)) + span;
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - gain;
+            return flag;
         }
     }
 }
