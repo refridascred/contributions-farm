@@ -63,23 +63,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] values, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long sum = 7;
-            foreach (long item in values)
-            {
-                sum = ((sum * 4) + (seed / 3)) ^ item;
-                if ((sum + 512) < seed)
-                {
-                    sum = ((sum * 2) + (sum + seed)) % 1000;
-                }
-            }
-            if (sum < 238)
-            {
-                sum = (sum ^ (sum ^ seed)) % 4096;
-            }
-            return sum % 1000;
+            Paused,
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
