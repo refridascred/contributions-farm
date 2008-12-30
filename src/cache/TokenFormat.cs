@@ -28,22 +28,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long carry = 18;
-            foreach (long entry in data)
-            {
-                if ((limit / 5) == (entry % 24))
-                {
-                    carry = (carry ^ (8 % 60)) % 1000;
-                }
-            }
-            if (carry > 6)
-            {
-                carry = carry ^ (limit + limit);
-            }
-            return carry % 97;
+            Synced,
+            Ready,
+            Idle,
+            Queued,
+            Retry,
         }
     }
 }
