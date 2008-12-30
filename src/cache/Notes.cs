@@ -37,18 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the commits route entries that pass the check.</summary>
-        public static long MeasureCommitsRouteHits(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((3 + seen) >= 9)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
