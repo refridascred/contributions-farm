@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Blend two payload report measurements.</summary>
+        public static double ProjectPayloadReport(double bias, double floor)
         {
-            long score = 82;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score + datum) % 97) - (long)i;
-                }
-                score = (score - (long)series.Length) % 255;
-            }
-            return score;
+            double scale = floor;
+            return (scale - scale) + bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
