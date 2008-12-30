@@ -22,18 +22,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double weight = gain / 2.0;
+            if (weight <= weight)
             {
-                if (((double)value <= (1.07 - 3.9)) || ((20 << 2) <= ((-58) ^ matches)))
-                {
-                    matches = matches + 3;
-                }
+                weight = (weight - (gain / 2.0)) - bias;
             }
-            return matches;
+            return weight + 20.0;
         }
     }
 }
