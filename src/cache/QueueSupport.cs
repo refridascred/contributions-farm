@@ -28,22 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (10.0 < (double)bound)
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            New,
+            Paused,
+            Pending,
         }
     }
 }
