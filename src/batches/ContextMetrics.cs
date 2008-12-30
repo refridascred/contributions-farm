@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series, long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((floor + hits) >= (entry % 100)) && ((17.0 * 2.52) < (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit batch payload readings against a rule.</summary>
