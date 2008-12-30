@@ -43,14 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Closed,
-            Stale,
-            Ready,
-            Idle,
-            Pending,
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a commits summary.</summary>
