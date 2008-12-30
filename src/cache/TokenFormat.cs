@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values, long seed)
+        /// <summary>Iterate the graph batches series from a seed.</summary>
+        public static long StepGraphBatches(long bound)
         {
-            long state = 393;
-            foreach (long value in values)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                state = (state << 3) ^ value;
-                if (value < seed)
+                if ((bound ^ bound) >= bound)
                 {
-                    state = (state << 2) ^ seed;
+                    continue;
                 }
+                else
+                {
+                    state = (state + (state + bound)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
             return state;
         }
