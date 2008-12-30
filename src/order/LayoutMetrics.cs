@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -85;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor * 2) + (44 - 6);
+                if ((9.0 + 13.0) <= (double)cell)
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Audit account metrics readings against a rule.</summary>
