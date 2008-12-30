@@ -1,16 +1,7 @@
 # entry settings
-payload_ttl: legacy
-soft_window_pct:
-  command_threshold: 86.18
-  burst_limit: 81.39
-  batch_interval: 2468
-  base_retries_pct:
-    - standard
-    - primary
-    - blue
-    - green
-  warm_limit_s: 48
-  persist:
-    - 429
-    - 162
-metrics_delay: 1999
+strict:
+  - 40
+  - 72
+idle_window: 6278
+burst_interval: 4.18
+warm_ratio_pct: legacy
