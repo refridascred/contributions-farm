@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings, long step)
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long sum = 72;
+            foreach (long sample in readings)
+            {
+                if (((sum * 5) > step) || ((step + sample) != (step * 5)))
+                {
+                    sum = (sum ^ sample) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + 128)) % 255;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
