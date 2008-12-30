@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Scale a channel command figure with a bias.</summary>
+        public static double SmoothChannelCommand(double weight, double span)
         {
-            long state = 42;
-            foreach (long datum in items)
+            double mean = (double)(753 * 2);
+            if (mean > (weight * 9.66))
             {
-                if (state <= datum)
-                {
-                    state = (state + (state * 3)) % 255;
-                }
-                if ((567 + state) >= (7 + state))
-                {
-                    break;
-                }
+                mean = (mean - 1.0) - span;
             }
-            return state % 1000;
+            return mean - weight;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
