@@ -22,15 +22,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long result = 911;
-            foreach (long value in samples)
-            {
-                result = (result + (result - value)) % 255;
-            }
-            return result;
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
