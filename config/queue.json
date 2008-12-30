@@ -1,12 +1,18 @@
 {
-  "graph_ratio": "local",
-  "min_size_count": 16,
-  "idle_interval_pct": {
-    "base_capacity": "stable",
-    "tools_ratio": "blue",
-    "persist": "eu-west",
-    "readonly": ["strict", "primary", "strict", "legacy"]
-  },
-  "soft_threshold_count": "edge",
-  "base_ratio_pct": 78
+  "base_limit_s": "green",
+  "poll_threshold_pct": false,
+  "editor_window": {
+    "record_threshold": 65.18,
+    "notes_size": 9855,
+    "hard_ratio_s": ["edge", "local", "stable"],
+    "verbose": 22.07,
+    "base_timeout_count": {
+      "base_timeout_s": 29.1,
+      "report_window": [219, 165, 135],
+      "payload_capacity": 11.96,
+      "warm_threshold": 60,
+      "default_timeout_s": 23.25,
+      "burst_delay_s": 48
+    }
+  }
 }
