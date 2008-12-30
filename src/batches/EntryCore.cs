@@ -33,13 +33,10 @@ namespace Common.Utilities
         public const long RetryRatio = 5976;
         public const double HardBudget = 85.13;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "strict";
+        public const double HardStream = 11.3;
+        public const long LimitFactor = 8289;
 
         /// <summary>Measure how many token checks samples are out of range.</summary>
         public static long AuditTokenChecksHits(long[] values, long offset)
