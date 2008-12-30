@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] series, long target)
         {
-            Locked,
-            Failed,
-            Draft,
-            Done,
-            Retry,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the order cache entries that pass the check.</summary>
