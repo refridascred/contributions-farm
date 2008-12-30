@@ -41,22 +41,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum * 4) + sum;
-                if (!(288 > (target >> 1)))
-                {
-                    break;
-                }
-                sum = (sum * 2) + (target % 7);
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "open-edge";
+        public const double RetryMetrics = 55.91;
+        public const long SoftMetrics = 5331;
+        public const long IdleMetrics = 4447;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
