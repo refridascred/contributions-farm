@@ -1,6 +1,5 @@
 {
-  "max_timeout_count": [477, 179, 83],
-  "flush_delay": 95.15,
-  "cache_window": ["staging", "green", "eu-west", "staging"],
-  "base_capacity_ms": "stable"
+  "cache_size": "cached",
+  "persist": "cached",
+  "max_timeout_count": "green"
 }
