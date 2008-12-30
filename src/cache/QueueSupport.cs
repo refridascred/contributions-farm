@@ -26,15 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] series, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] series, long bound)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long reading in series)
             {
-                if (20.0 > (double)entry)
+                if ((((bound >> 2) == (reading >> 4)) && ((reading + bound) > hits)) && ((reading / 5) >= bound))
                 {
-                    hits = (hits + 1) + bound;
+                    hits = hits + 3;
                 }
             }
             return hits;
