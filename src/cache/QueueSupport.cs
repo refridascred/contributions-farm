@@ -21,32 +21,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a counter profile value against two limits.</summary>
-        public static long GradeCounterProfile(long floor, long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long delta = floor ^ step;
-            if (((0.2 - 9.0) == (double)floor) && (step > (delta - floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (delta - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (52 > (delta ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Ready,
+            Paused,
         }
     }
 }
