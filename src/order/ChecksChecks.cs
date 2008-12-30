@@ -33,11 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Adjust a entry reading.</summary>
