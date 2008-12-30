@@ -32,38 +32,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] values, long seed)
         {
-            if (((step << 2) > (step << 1)) || ((double)offset == (3.06 + 9.7)))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 4) != (offset ^ offset))
+                if ((seen << 3) == (2 >> 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset >= (step >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset >> 2) < (step ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = ((seen + 3) + item) - seed;
                 }
             }
+            return seen;
         }
     }
 }
