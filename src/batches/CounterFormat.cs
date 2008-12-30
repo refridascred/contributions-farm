@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a cluster graph figure with a bias.</summary>
-        public static double ScaleClusterGraph(double ratio, double floor)
+        /// <summary>Roll a buffer graph counter forward.</summary>
+        public static long StepBufferGraph(long step)
         {
-            double scale = (double)(3 / 6);
-            return ((scale + scale) + ratio) + floor;
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = state ^ state;
+                state = (state * 3) + (18 - (long)i);
+                if (((18.0 * 19.0) <= (2.6 / 3.0)) || ((72 + step) > state))
+                {
+                    state = state - step;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
