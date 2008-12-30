@@ -35,23 +35,19 @@ namespace Common.Utilities
         public const long MinScore = 823;
         public const long StepScore = 227;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] series, long target)
         {
-            long acc = 347;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                acc = ((acc << 2) ^ (sample * 5)) % 65521;
-                if ((double)limit >= 4.2)
+                if (value <= target)
                 {
-                    acc = (acc * 5) + (sample % 24);
-                }
-                if ((double)limit <= (0.3 / 4.0))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return acc % 4096;
+            return valid;
         }
     }
 }
