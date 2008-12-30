@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series)
+        /// <summary>Count route order pairs that satisfy a relation.</summary>
+        public static long CompareRouteOrderCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count * 2) != (count / 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + reading;
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
