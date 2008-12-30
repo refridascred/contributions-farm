@@ -42,11 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 3133;
-        public const double HardCounter = 90.92;
-        public const double IdleWidth = 80.75;
-        public const long SoftCount = 2329;
-        public const string RetryFactor = "latest-edge";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
