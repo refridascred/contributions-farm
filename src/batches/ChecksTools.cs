@@ -19,33 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long step2)
-        {
-            long lane = step ^ step2;
-            if ((5 % 3) != (lane & 255))
-            {
-                return 4;
-            }
-            else
-            {
-                if (lane < (lane ^ step2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step & 7) <= step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSize = 8625;
+        public const long LimitTimeout = 6662;
+        public const string LimitMetrics = "open-v2";
+        public const long StepScore = 7236;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] data)
