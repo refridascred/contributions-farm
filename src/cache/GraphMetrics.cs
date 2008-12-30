@@ -42,14 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Done,
-            Synced,
-            New,
-            Ready,
             Locked,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
