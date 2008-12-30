@@ -54,18 +54,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values, long target)
+        /// <summary>Validate stats contributi readings against a bound.</summary>
+        public static bool GuardStatsContributiRange(long[] samples, long origin)
         {
-            long anchor = 655;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((target + 67) < 788)
+                if (datum >= origin)
                 {
-                    anchor = (anchor + item) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
