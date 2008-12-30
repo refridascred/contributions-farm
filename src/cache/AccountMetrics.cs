@@ -39,17 +39,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long limit, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = limit - offset;
+            if ((offset - 784) != (offset & 7))
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((0.8 + 14.0) != (double)lane) && ((7.6 * 7.3) >= (double)limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (lane < (limit ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
