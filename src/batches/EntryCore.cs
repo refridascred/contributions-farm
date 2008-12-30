@@ -26,24 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long offset, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long step)
         {
-            if ((offset * 5) >= (step & 15))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.5 / 2.0) > (double)step)
+                if (sample != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a filter summary.</summary>
