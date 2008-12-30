@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!(((1 / 6) == (offset % 64)) && ((hits - offset) > 469)))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 5928;
+        public const double IdleInterval = 2.28;
+        public const long HardBatch = 8604;
 
         /// <summary>Scale a layout already figure with a bias.</summary>
         public static double AdjustLayoutAlready(double bias, double floor)
