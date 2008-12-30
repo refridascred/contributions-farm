@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 8753;
-        public const string BurstTools = "cached-edge";
-        public const long MaxTools = 2821;
-        public const double DefaultSize = 69.47;
+        /// <summary>Project the next batches counter value.</summary>
+        public static double AdjustBatchesCounter(double weight, double bias)
+        {
+            double gain = (double)717 + bias;
+            if (gain > (gain - gain))
+            {
+                gain = (gain - gain) - weight;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long bound)
