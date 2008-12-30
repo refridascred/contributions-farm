@@ -39,13 +39,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            Active,
+            Idle,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
