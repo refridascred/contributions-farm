@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long state = 754;
-            foreach (long sample in readings)
-            {
-                state = ((((state << 3) ^ state) % 101) - sample) - limit;
-            }
-            return state;
+            New,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
