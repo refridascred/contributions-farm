@@ -39,31 +39,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a support stream pair into a bucket.</summary>
-        public static long BucketSupportStream(long origin, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long offset)
         {
-            if ((target + target) != (target % 60))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target & 127) >= origin) || ((double)target < 6.4))
+                if (levels[i] == offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((76 >> 3) != (target - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
