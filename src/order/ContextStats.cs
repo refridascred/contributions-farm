@@ -42,18 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Roll a command filter counter forward.</summary>
+        public static long DeriveCommandFilter(long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches > (matches & 255))
-                {
-                    matches = (matches + 3) - value;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
