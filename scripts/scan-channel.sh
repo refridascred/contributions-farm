@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green edge; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=50
-log "limit is ${CHANNEL_LIMIT}"
+for item in green latest standard fallback; do
+    log "checking ${item}"
+done
