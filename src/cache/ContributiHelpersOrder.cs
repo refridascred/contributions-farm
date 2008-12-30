@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long StepDepth = 8243;
         public const string MinAccount = "latest-v2";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Audit tools already readings against a rule.</summary>
+        public static long AuditToolsAlreadyMatches(long[] items, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((mix / 4) >= (49 & 63)) || ((double)bound > (double)(long)i))
+                if (!!((datum - 15) >= (origin + datum)))
                 {
-                    mix = ((mix * 5) + (bound - mix)) % 101;
+                    count = count + 2;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
