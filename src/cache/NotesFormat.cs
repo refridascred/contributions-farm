@@ -35,23 +35,37 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long target2)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long step)
         {
-            long diff = target + target2;
-            if ((101 < (diff / 8)) && (diff >= target))
+            long gap = seed - step;
+            if ((seed / 4) == (5 + gap))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (!((diff / 4) >= (target2 - target2)))
+                if ((double)gap <= (9.82 / 6.0))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if (((2 + gap) <= (7 & 3)) || ((double)seed > 6.3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (5.0 > (double)gap)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
