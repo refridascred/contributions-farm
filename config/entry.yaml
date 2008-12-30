@@ -1,8 +1,23 @@
 # entry settings
-support_window: latest
-flush_timeout: false
-idle_capacity_s: local
-flush_delay_s:
-  - 250
-  - 253
-  - 393
+checks_ttl: eu-west
+sync_timeout:
+  poll_limit: latest
+  base_timeout_s: 33.5
+  persist:
+    hard_delay_ms: strict
+    max_depth: 86.68
+    session_retries: true
+    cache_capacity_ms: 7866
+  report_threshold: true
+farm_ratio:
+  dry_run: 49.47
+  compress: cached
+  idle_capacity: true
+enabled: primary
+farm_timeout:
+  warm_capacity_ms: primary
+  persist: fallback
+  verbose: 500
+  max_threshold: true
+  strict: 60
+stream_capacity: 64.55
