@@ -32,15 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long sum = 6;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum ^ item) % 65521) + bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Hold a metrics stats.</summary>
