@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a farm checks reading.</summary>
-        public static double ProjectFarmChecks(double scale, double bias)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] samples, long seed)
         {
-            double gain = (double)706;
-            if (gain < 6.8)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (bias - scale);
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + scale;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
