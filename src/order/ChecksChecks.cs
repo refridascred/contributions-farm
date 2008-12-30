@@ -35,15 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
