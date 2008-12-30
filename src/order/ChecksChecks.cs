@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long StepReport = 6708;
         public const string BaseReport = "cached";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Digest a series of graph channel entries.</summary>
+        public static long TotalGraphChannel(long[] values, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long score = 68;
+            foreach (long datum in values)
             {
-                if (((-5) << 3) > target)
+                if (!((double)datum != (double)origin))
                 {
-                    mark = (mark + (target + target)) % 255;
+                    score = score ^ (score - 983);
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            if (score < 214)
+            {
+                score = score ^ (508 * 5);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a context header.</summary>
