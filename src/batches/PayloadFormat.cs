@@ -25,23 +25,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long target)
         {
-            long edge = floor - target;
-            if ((edge * 2) >= (4 % 100))
+            long slot = step - target;
+            if (target >= (target * 3))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((282 * 5) < (target + 51))
+                if (step > (slot + target))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    return 5;
                 }
             }
         }
