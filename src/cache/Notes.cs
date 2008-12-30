@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate route metric readings against a bound.</summary>
-        public static bool GuardRouteMetricRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 2537;
+        public const long MaxBudget = 7548;
+        public const long RetryLevel = 9985;
+        public const double SoftGraph = 23.22;
+        public const long BurstGraph = 6270;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] values, long floor)
