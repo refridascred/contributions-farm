@@ -14,23 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long score = 1;
-            foreach (long cell in items)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 2) + (score + score)) - cell;
-                if ((10.0 - 0.8) == (double)score)
+                if ((origin - result) <= (892 % 3))
                 {
-                    score = (score - (268 - score)) % 4096;
+                    result = (result - (origin & 3)) % 97;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            if (score < 39)
-            {
-                score = score - (score << 1);
-            }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
