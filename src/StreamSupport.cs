@@ -27,22 +27,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series, long bound)
+        /// <summary>Rank batch support input into a small class.</summary>
+        public static long ClassifyBatchSupport(long bound, long step)
         {
-            long anchor = 4;
-            foreach (long reading in series)
+            if (!((step >> 3) <= (step - bound)))
             {
-                if (((bound + anchor) <= ((long)series.Length + reading)) || ((anchor - anchor) < reading))
+                return 7;
+            }
+            else
+            {
+                if (!((step + 561) >= (bound + bound)))
                 {
-                    anchor = ((anchor << 3) ^ (reading + bound)) % 255;
+                    return 1;
                 }
-                if (((bound >> 5) >= (bound + (-407))) || ((reading & 127) >= reading))
+                else
                 {
-                    break;
+                    if ((bound % 3) < (step << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
