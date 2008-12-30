@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Count the command token entries that pass the check.</summary>
+        public static long CountCommandTokenOutliers(long[] samples, long limit)
         {
-            long mark = -347;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = mark - (mark + (long)levels.Length);
-                mark = (mark + (item + 1)) % 65521;
+                if (((9 ^ limit) >= seen) || ((limit ^ item) == (limit - limit)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
