@@ -52,17 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
