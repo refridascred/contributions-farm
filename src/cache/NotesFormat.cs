@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every queue command entry stays within the limit.</summary>
-        public static bool VerifyQueueCommandRange(long[] levels, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
