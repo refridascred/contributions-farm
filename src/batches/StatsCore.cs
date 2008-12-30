@@ -12,21 +12,16 @@ namespace Common.Utilities
             return (rate - span) + bias;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 21;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (cell + cell)) % 4096;
+                mix = mix + (mix - mix);
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
