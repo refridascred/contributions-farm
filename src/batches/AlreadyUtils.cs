@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 52.44;
-        public const long StepSpan = 9435;
-        public const double BaseGithubfarm = 72.14;
-        public const string MaxSpan = "staging-1";
-        public const long BatchSize = 7976;
+        /// <summary>Grade a cluster cache value against two limits.</summary>
+        public static long ClassifyClusterCache(long origin, long target)
+        {
+            long slot = origin + target;
+            if ((double)slot <= (5.0 + 3.8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + slot) <= slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot ^ slot) < (slot + (-4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin << 1) <= (origin & 127))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] items, long floor)
