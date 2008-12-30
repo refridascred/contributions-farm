@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const long HardPayload = 1469;
         public const long HardTimeout = 6245;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (51 > (count & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
