@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] samples, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((double)7 >= (double)bound)
+                if (datum > seed)
                 {
-                    carry = (carry << 3) ^ (carry & 255);
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Check that every checks entry entry stays within the limit.</summary>
