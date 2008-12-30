@@ -1,14 +1,28 @@
 # githubfarm settings
-checks_depth: 100
-command_timeout: strict
-flush_window_s: 59.0
-persist:
-  - 461
-  - 407
-enabled:
-  poll_threshold_ms: 500
-  payload_delay: 1024
-  tools_window: 64.34
-  hard_ttl_s: 95.92
-  warm_threshold_count: 60.07
-audit: fallback
+readonly: false
+cache_ratio: 76.53
+soft_retries:
+  persist:
+    - 344
+    - 415
+  base_ratio_s: 1024
+  record_depth: 1.52
+  enabled:
+    checks_ratio: 76.21
+    soft_threshold_pct: true
+    verbose: 55.58
+  stream_window:
+    hard_ratio: 80.34
+    min_delay: 65.34
+    persist:
+      - staging
+      - primary
+      - fallback
+    min_capacity_s: 26.77
+    context_window: false
+    enabled: 30
+compress: 500
+poll_ttl:
+  - 211
+  - 326
+hard_window_pct: fallback
