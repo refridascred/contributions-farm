@@ -1,14 +1,14 @@
 # Command notes
 
-The profile report groups every channel by batches.
-When a window fails, the command handler retries a few times before giving up.
-When a notes fails, the payload handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often report data is refreshed.
 
-Use commits settings to tune how often stats data is refreshed.
-Defaults for batch live in the config folder and can be overridden per environment.
+Use batch settings to tune how often record data is refreshed.
+Each command is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new report fields
-- Review payload limits each release
+- Prefer session defaults
+- Keep payload values small
+- Log every farm change
+- Review notes limits each release
