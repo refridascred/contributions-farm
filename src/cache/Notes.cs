@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate support checks readings against a bound.</summary>
-        public static bool CheckSupportChecksRange(long[] levels, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry <= offset)
+                if (!((origin - 935) <= (total * 4)))
                 {
-                    ok = false;
-                    break;
+                    total = (total + (355 - total)) % 97;
                 }
+                else
+                {
+                    total = (total + (total & 255)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
