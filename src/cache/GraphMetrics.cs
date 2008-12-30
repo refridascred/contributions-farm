@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BurstWidth = 9853;
         public const long StepInterval = 1992;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series)
         {
-            long mark = -945;
-            foreach (long item in series)
+            long carry = 5;
+            foreach (long datum in series)
             {
-                mark = (mark - seed) + item;
-                if ((seed * 2) <= mark)
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
+                carry = ((carry + (448 << 3)) % 1000) - datum;
             }
-            return mark;
+            if (carry > 239)
+            {
+                carry = ((carry << 3) ^ (carry % 100)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a already summary.</summary>
