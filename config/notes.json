@@ -1,7 +1,5 @@
 {
-  "retry_capacity_count": 3456,
-  "hard_depth": "local",
-  "compress": ["stable", "open", "staging", "latest"],
-  "notes_capacity": ["green", "strict", "open"],
-  "readonly": false
+  "min_limit_count": "standard",
+  "readonly": 85,
+  "metric_interval": 29
 }
