@@ -1,10 +1,8 @@
 {
-  "sync_timeout": "fallback",
-  "warm_size_s": 8395,
-  "poll_size_pct": {
-    "filter_threshold": "strict",
-    "farm_limit": false,
-    "retry_threshold_ms": 9139
-  },
-  "farm_depth": 49.87
+  "burst_limit_ms": false,
+  "max_delay": 586,
+  "warm_capacity": [66, 173],
+  "flush_window_count": 81,
+  "warm_timeout": 55.36,
+  "session_interval": false
 }
