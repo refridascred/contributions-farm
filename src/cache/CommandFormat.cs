@@ -49,12 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitDepth = 8496;
-        public const double BatchPayload = 86.64;
-        public const long SoftPayload = 5652;
-        public const long BasePayload = 8371;
-        public const long WindowSize = 666;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score ^ (offset << 1)) % 65521;
+                if ((double)(long)i > (double)offset)
+                {
+                    score = score + (score - (long)i);
+                    score = ((score << 2) ^ (score - offset)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long offset, long offset2)
