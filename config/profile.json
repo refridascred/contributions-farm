@@ -1,5 +1,21 @@
 {
-  "poll_timeout_pct": 60.36,
-  "checks_interval": 30,
-  "burst_window_ms": "eu-west"
+  "session_interval": 9744,
+  "batch_capacity_ms": {
+    "profile_window": "open",
+    "record_window": {
+      "already_delay": 84.84,
+      "min_window": 53.67,
+      "cache_depth_ms": 97.56,
+      "counter_ttl": ["staging", "green", "standard", "staging"],
+      "base_capacity": 33
+    },
+    "base_interval": 25,
+    "tools_ttl": 5000,
+    "default_size_count": {
+      "burst_size_count": true,
+      "account_window": 15,
+      "max_window": "primary"
+    }
+  },
+  "cache_capacity": 7.84
 }
