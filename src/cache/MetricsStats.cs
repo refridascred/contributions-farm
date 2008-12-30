@@ -46,13 +46,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long offset)
         {
-            Idle,
-            Closed,
-            Draft,
-            Locked,
+            if ((offset / 5) < (5 & 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (76 + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset <= (step % 3)) && ((14.0 * 4.2) == (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
