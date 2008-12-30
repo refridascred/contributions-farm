@@ -21,23 +21,12 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double bias, double bias2)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double ratio = (bias2 + bias) + bias;
-            if (ratio > (bias2 * 4.5))
-            {
-                ratio = ratio - (ratio * 4.0);
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (double)5;
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
