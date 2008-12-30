@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long step, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)step == (1.99 * 1.6)) && (floor >= (floor + floor)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step > (0.5 - 6.5))
                 {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
