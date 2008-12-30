@@ -51,15 +51,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format queue counter forward.</summary>
-        public static long RollFormatQueue(long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            if ((15.0 - 6.5) < (double)origin)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((step - 7) < 611)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-5) - (-279)) != (origin >> 4)) || ((origin / 3) != (origin + 39)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
