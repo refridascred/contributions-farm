@@ -59,11 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinSpan = 7711;
-        public const long IdleProfile = 952;
-        public const string HardProfile = "standard-1";
-        public const double IdleRatio = 18.95;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] samples)
