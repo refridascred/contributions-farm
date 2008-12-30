@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate layout token readings against a bound.</summary>
-        public static bool GuardLayoutTokenLimits(long[] readings, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (datum != target)
+                if ((count + sample) < (sample ^ count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
