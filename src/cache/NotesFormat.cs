@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            Failed,
-            Pending,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((2.0 / 5.0) < (double)item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
