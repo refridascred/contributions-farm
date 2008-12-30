@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            double load = weight;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                load = ((load - load) + (double)(long)i) - span;
+                if (11.0 < (double)datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + weight;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
