@@ -50,23 +50,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a filter schema counter forward.</summary>
-        public static long RollFilterSchema(long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long mark = 189;
+            foreach (long value in readings)
             {
-                if ((double)result <= (2.0 / 7.0))
+                if (((long)readings.Length + mark) == (mark & 15))
                 {
-                    result = (result << 2) ^ (target << 2);
+                    mark = ((mark * 3) + ((-18) + (-59))) % 101;
                 }
-                else
+                if ((421 - mark) < mark)
                 {
-                    result = ((result << 3) ^ target) % 1000;
+                    mark = (mark * 3) + (value / 8);
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
     }
 }
