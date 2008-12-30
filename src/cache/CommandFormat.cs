@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8786;
         public const double HardTimeout = 88.24;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] series, long step)
+        /// <summary>Look up the position of a report batch sample.</summary>
+        public static long SeekReportBatchIndex(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > step)
+                if (levels[i] == floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
