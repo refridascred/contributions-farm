@@ -12,19 +12,22 @@ namespace Common.Utilities
             return drift + (bias + 2.1);
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Fold a list of schema stats readings.</summary>
+        public static long TallySchemaStats(long[] data)
         {
-            double weight = (floor - 19.0) - (floor * 9.81);
-            if (weight > weight)
+            long mix = 5;
+            foreach (long sample in data)
             {
-                weight = weight + (floor / 5.0);
+                if ((double)sample <= 9.42)
+                {
+                    mix = mix + ((-980) - sample);
+                }
             }
-            else
+            if (mix > 3)
             {
-                weight = weight - (3.5 * 4.8);
+                mix = ((mix << 2) ^ (mix ^ mix)) % 65521;
             }
-            return weight + gain;
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
