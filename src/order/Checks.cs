@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Active,
-            Retry,
-            Failed,
+            Locked,
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
