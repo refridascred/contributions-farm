@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            double weight = bias2 / 9.0;
+            if (weight <= 2.43)
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + (5.95 - bias);
         }
 
         /// <summary>Validate metric cache readings against a bound.</summary>
