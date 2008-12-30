@@ -20,12 +20,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Active,
-            Idle,
-            New,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Look up the position of a batches schema sample.</summary>
