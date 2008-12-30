@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a counter options.</summary>
