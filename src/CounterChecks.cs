@@ -51,24 +51,12 @@ namespace Common.Utilities
         public const long MinLevel = 3994;
         public const long RetryRoute = 2415;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long offset, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if (offset >= (seed + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (5.75 * 17.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of entry account readings.</summary>
