@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine buffer context values into a single score.</summary>
-        public static long TotalBufferContext(long[] series, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long floor)
         {
-            long mark = 3;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 % 100) == (seed - seed))
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
                 {
-                    mark = (((mark << 3) ^ (seed >> 2)) % 255) + entry;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + mark)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
