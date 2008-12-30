@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 88;
+            foreach (long cell in values)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                carry = (carry - carry) - cell;
+                carry = (carry - (carry % 64)) % 1000;
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
