@@ -38,20 +38,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a stats metrics counter forward.</summary>
-        public static long DeriveStatsMetrics(long target)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] series, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total << 2) ^ (65 % 60);
-                if (((target * 5) >= (target / 6)) || ((611 >> 2) < (long)i))
+                if (series[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
