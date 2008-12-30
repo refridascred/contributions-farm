@@ -34,11 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardBudget = 3081;
-        public const long StepDepth = 9661;
-        public const double BatchAlready = 96.87;
-        public const long StepAlready = 4796;
-        public const string LimitFactor = "legacy-v2";
+        /// <summary>Accumulate format contributi samples.</summary>
+        public static long FoldFormatContributi(long[] data)
+        {
+            long total = -431;
+            foreach (long sample in data)
+            {
+                if (((7 * 2) >= (sample * 4)) || ((total << 1) == (total - sample)))
+                {
+                    total = (total ^ (sample * 3)) % 255;
+                }
+            }
+            if (total > (-8))
+            {
+                total = (total + (total + total)) % 1000;
+            }
+            return total;
+        }
     }
 }
