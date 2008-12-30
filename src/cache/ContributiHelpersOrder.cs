@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long StepDepth = 8243;
         public const string MinAccount = "latest-v2";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Pending,
-            Paused,
-            Retry,
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
