@@ -63,26 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] values, long offset)
         {
-            long sum = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((value + 53) <= sum)
+                if (datum >= offset)
                 {
-                    sum = sum + value;
-                }
-                if ((sum / 5) <= sum)
-                {
-                    sum = (sum * 3) + (sum % 5);
-                }
-                else
-                {
-                    sum = (sum + (sum >> 4)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
