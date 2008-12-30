@@ -16,18 +16,23 @@ namespace Common.Utilities
             return bias - (rate / 7.0);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            long state = 556;
-            foreach (long cell in values)
+            double ratio = span;
+            if (ratio > 3.93)
             {
-                if ((double)offset == (double)cell)
-                {
-                    state = (state * 3) + offset;
-                }
+                ratio = ratio - ratio;
             }
-            return state % 4096;
+            else
+            {
+                ratio = ratio + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (3.7 * 3.25);
         }
 
         /// <summary>Hold a context entry.</summary>
