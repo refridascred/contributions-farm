@@ -51,22 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long state = 391;
+            foreach (long cell in samples)
             {
-                if (885 > (56 + seen))
+                if (!((state + state) >= state))
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state + cell) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
