@@ -52,14 +52,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long offset, long bound)
         {
-            Draft,
-            New,
-            Stale,
-            Synced,
-            Dropped,
+            long step = offset - bound;
+            if (step < (992 & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (0.99 / 9.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 3) == (step * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
