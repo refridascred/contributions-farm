@@ -34,13 +34,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Failed,
-            Stale,
-            Closed,
-            New,
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
