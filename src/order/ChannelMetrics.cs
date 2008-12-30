@@ -36,21 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 42;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ target) + entry;
             }
-            return seen;
+            if (acc > 30)
+            {
+                acc = (acc ^ (4 + target)) % 101;
+            }
+            return acc;
         }
     }
 }
