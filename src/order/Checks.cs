@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric route entries that pass the check.</summary>
-        public static long CountMetricRouteOutliers(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - datum) == (748 + (long)data.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
