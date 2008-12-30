@@ -1,10 +1,7 @@
-id,score,level,region,active
-1,primary,local,latest,961
-2,593,330,260,66.25
-3,427,45.64,45.89,338
-4,eu-west,30.38,blue,49.31
-5,536,624,87,edge
-6,156,74.04,973,998
-7,28.69,912,fallback,blue
-8,eu-west,cached,stable,897
-9,standard,42.86,70.24,660
+id,label,level
+1,412,local
+2,406,local
+3,edge,78.83
+4,34.37,48.61
+5,845,20.52
+6,blue,52.24
