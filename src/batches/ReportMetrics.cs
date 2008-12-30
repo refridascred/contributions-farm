@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Locked,
-            Pending,
-            Draft,
-            Idle,
-            Done,
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
