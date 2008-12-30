@@ -23,11 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a entry window figure with a bias.</summary>
-        public static double ScaleEntryWindow(double rate, double span)
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool VerifyChecksRecordBounds(long[] data, long offset)
         {
-            double gain = (double)(70 + 83);
-            return ((gain - (double)53) + rate) + span;
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the graph state values.</summary>
