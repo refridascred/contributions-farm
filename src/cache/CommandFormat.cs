@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seed + hits) < (seed / 2))
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
