@@ -1,16 +1,8 @@
 # githubfarm settings
-soft_limit_s: 97
-dry_run:
-  hard_window_pct:
-    githubfarm_depth: 500
-    hard_retries_pct: true
-    flush_depth_count: 88.1
-    sync_threshold_ms: 10
-    dry_run: edge
-    window_interval:
-      - stable
-      - fallback
-  soft_capacity: 54
-  max_interval: local
-max_threshold_count: true
-cache_timeout: 39.01
+readonly: edge
+base_timeout_ms: 45.17
+min_limit_s:
+  - edge
+  - blue
+  - stable
+hard_timeout_count: 1024
