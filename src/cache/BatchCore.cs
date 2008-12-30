@@ -24,17 +24,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (gain + offset) - offset;
+            if (scale > gain)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)73;
             }
-            return -1;
+            return scale + (scale - offset);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
