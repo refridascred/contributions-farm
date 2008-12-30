@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double scale, double floor)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Done,
+            double load = scale;
+            if (load < floor)
+            {
+                load = load - (double)76;
+            }
+            else
+            {
+                load = load - (double)2;
+            }
+            return load + (2.0 * 9.5);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
