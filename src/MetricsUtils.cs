@@ -57,26 +57,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile contributi pair into a bucket.</summary>
-        public static long BucketProfileContributi(long limit, long target)
-        {
-            long bound = limit ^ target;
-            if ((target / 3) <= (limit - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 100) >= (7 % 64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 643;
+        public const string MinFactor = "staging-edge";
+        public const long HardChannel = 9891;
+        public const double RetryChannel = 92.59;
 
         /// <summary>Grade a route counter value against two limits.</summary>
         public static long SortRouteCounter(long seed, long seed2)
