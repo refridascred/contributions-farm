@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Rank stats githubfarm input into a small class.</summary>
+        public static long RankStatsGithubfarm(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long delta = seed ^ seed2;
+            if (seed2 > (delta - delta))
             {
-                if ((0 - 91) != (22 ^ hits))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 <= (delta * 3)) && ((seed / 9) < (seed ^ seed2)))
                 {
-                    hits = (hits + 1) + cell;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
