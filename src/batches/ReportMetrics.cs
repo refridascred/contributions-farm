@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((((long)values.Length + item) > (38 + seen)) || ((seen & 255) < seen)) && ((4.36 + 9.9) < (double)item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a command header.</summary>
