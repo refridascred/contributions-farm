@@ -20,20 +20,14 @@ namespace Common.Utilities
             return rate2 + 5.0;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] readings, long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = -23;
-            foreach (long datum in readings)
-            {
-                score = (score + (21 * 2)) % 97;
-                score = (score ^ (offset + datum)) % 1000;
-            }
-            if (score > 41)
-            {
-                score = ((score << 3) ^ (offset & 255)) % 65521;
-            }
-            return score;
+            Ready,
+            Closed,
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
