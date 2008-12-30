@@ -27,21 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 12;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry - (datum << 3)) + seed;
+                if ((double)(-571) != (double)datum)
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine session values into a single score.</summary>
