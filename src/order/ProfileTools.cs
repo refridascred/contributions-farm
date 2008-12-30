@@ -47,11 +47,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 5331;
         public const long IdleMetrics = 4447;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long anchor = 923;
+            foreach (long sample in readings)
+            {
+                anchor = anchor ^ (sample ^ sample);
+                anchor = (anchor ^ sample) % 4096;
+                anchor = (anchor ^ (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
