@@ -33,15 +33,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
