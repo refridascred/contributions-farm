@@ -28,22 +28,19 @@ namespace Common.Utilities
         public const long LimitToken = 2022;
         public const double IdleWidth = 50.4;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] series)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool GuardEditorChecksBounds(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((matches - (-77)) == (matches - matches))
+                if (item > floor)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
