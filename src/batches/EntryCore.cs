@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Paused,
-            Idle,
-            New,
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate entry stats readings against a bound.</summary>
