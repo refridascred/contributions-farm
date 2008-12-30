@@ -1,7 +1,8 @@
 {
-  "commits_ratio": [361, 309, 37],
-  "idle_retries_pct": 3961,
-  "flush_size_count": false,
-  "metric_window": false,
-  "base_capacity_s": 62.44
+  "profile_ttl": "cached",
+  "queue_timeout": [323, 55, 407],
+  "sync_window_s": 60,
+  "compress": 50,
+  "audit": [141, 421, 316],
+  "support_window": "strict"
 }
