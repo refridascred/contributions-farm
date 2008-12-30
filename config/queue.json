@@ -1,11 +1,8 @@
 {
-  "stream_delay": true,
-  "tools_window": 59,
-  "retry_threshold_s": 4695,
-  "sync_retries_pct": 67,
-  "hard_retries_ms": {
-    "session_size": 32,
-    "readonly": 1398,
-    "soft_ratio": false
-  }
+  "report_delay": 250,
+  "compress": [2, 108],
+  "persist": ["fallback", "stable", "strict"],
+  "retry_limit_ms": 3354,
+  "retry_limit_count": [227, 275, 325],
+  "cache_timeout": true
 }
