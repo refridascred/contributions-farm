@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] series, long bound)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long TallyOrderCacheMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample != bound)
+                if (tally < (402 ^ entry))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
