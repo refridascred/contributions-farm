@@ -19,22 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metric route value against two limits.</summary>
-        public static long RankMetricRoute(long origin, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long step2)
         {
-            if (target < (target - origin))
+            long lane = step ^ step2;
+            if ((5 % 3) != (lane & 255))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((target < (target >> 4)) || ((double)origin == (10.0 - 4.8)))
+                if (lane < (lane ^ step2))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if ((step & 7) <= step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
