@@ -35,18 +35,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double load = gain;
+            if (load <= (gain * 9.09))
             {
-                if (value >= (value & 1))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - (double)911) + bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)80) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Accumulate channel format samples.</summary>
