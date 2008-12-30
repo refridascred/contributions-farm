@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally * 4) == (6 ^ tally))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next buffer support value.</summary>
