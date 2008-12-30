@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the metric notes entries that pass the check.</summary>
-        public static long TallyMetricNotesGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((tally * 4) < (floor >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - item;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
