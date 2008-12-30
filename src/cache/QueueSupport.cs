@@ -19,17 +19,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long origin)
+        /// <summary>Grade a counter profile value against two limits.</summary>
+        public static long GradeCounterProfile(long floor, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = floor ^ step;
+            if (((0.2 - 9.0) == (double)floor) && (step > (delta - floor)))
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (floor <= (delta - floor))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (52 > (delta ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
