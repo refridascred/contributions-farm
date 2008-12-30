@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] values, long offset)
         {
-            double weight2 = 1.0 / 2.0;
-            if (weight2 > (weight2 - bias))
+            bool found = true;
+            foreach (long sample in values)
             {
-                weight2 = (weight2 - (bias / 5.0)) + weight;
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (double)4) + (double)(long)i;
-            }
-            return weight2 + bias;
+            return found;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
