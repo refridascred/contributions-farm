@@ -14,12 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many metric order samples are out of range.</summary>
+        public static long CountMetricOrderMatches(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally ^ value) >= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
