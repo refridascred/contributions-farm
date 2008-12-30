@@ -40,18 +40,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long MeasureChannelBatchOutliers(long[] levels, long floor)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double mean = (double)(48 % 100);
+            for (int i = 0; i < 4; i++)
             {
-                if (tally >= (floor << 1))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                mean = ((mean + (mean - span)) + (double)(long)i) + scale;
             }
-            return tally;
+            return mean + (span / 6.0);
         }
     }
 }
