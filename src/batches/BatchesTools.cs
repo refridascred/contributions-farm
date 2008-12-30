@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "latest";
-        public const string HardBatches = "standard";
-        public const double CacheBatches = 43.74;
-        public const double MinBatches = 14.94;
-        public const string WindowScore = "fallback";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
