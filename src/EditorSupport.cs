@@ -54,12 +54,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every cache command entry stays within the limit.</summary>
+        public static bool CheckCacheCommandRange(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
