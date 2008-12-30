@@ -49,22 +49,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Combine counter batch values into a single score.</summary>
+        public static long TallyCounterBatch(long[] data)
         {
-            long mark = 189;
-            foreach (long value in readings)
+            long carry = 77;
+            foreach (long entry in data)
             {
-                if (((long)readings.Length + mark) == (mark & 15))
+                if ((entry << 3) > (entry + entry))
                 {
-                    mark = ((mark * 3) + ((-18) + (-59))) % 101;
-                }
-                if ((421 - mark) < mark)
-                {
-                    mark = (mark * 3) + (value / 8);
+                    carry = (carry + (entry * 5)) % 1000;
                 }
             }
-            return mark;
+            if (carry < 44)
+            {
+                carry = ((carry * 5) + (carry / 8)) % 255;
+            }
+            return carry;
         }
     }
 }
