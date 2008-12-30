@@ -29,16 +29,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels)
-        {
-            long state = 8;
-            foreach (long item in levels)
-            {
-                state = (state ^ (item * 3)) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinDepth = 85.79;
+        public const long RetryFormat = 7159;
+        public const string CacheFormat = "primary-edge";
+        public const string MaxScore = "fallback";
+        public const long IdleDepth = 9103;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long floor, long bound)
