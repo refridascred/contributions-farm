@@ -33,19 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of entry notes entries.</summary>
-        public static long CombineEntryNotes(long[] samples, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long carry = 245;
-            foreach (long entry in samples)
-            {
-                carry = ((carry << 3) ^ carry) - entry;
-                if (9.4 > (double)floor)
-                {
-                    carry = ((carry * 2) + floor) % 97;
-                }
-            }
-            return carry % 4096;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
