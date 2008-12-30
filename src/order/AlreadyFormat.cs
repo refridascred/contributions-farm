@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinRatio = 896;
-        public const double StepLevel = 68.8;
-        public const string DefaultCounter = "stable-1";
-        public const string HardCounter = "open-1";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] levels)
