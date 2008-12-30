@@ -19,15 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
