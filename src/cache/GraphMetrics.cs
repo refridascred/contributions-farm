@@ -42,13 +42,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count record context pairs that satisfy a relation.</summary>
+        public static long CompareRecordContextCount(long[] readings)
         {
-            Locked,
-            Retry,
-            Pending,
-            New,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
