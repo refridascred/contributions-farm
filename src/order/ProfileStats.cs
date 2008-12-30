@@ -37,22 +37,22 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            long mark = 9;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((mark % 60) <= datum)
+                if ((double)seen < (17.0 / 6.0))
                 {
-                    mark = (((mark * 2) + 1) % 1000) + target;
+                    seen = (seen + 2) + item;
                 }
                 else
                 {
-                    mark = (mark - (822 / 4)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
