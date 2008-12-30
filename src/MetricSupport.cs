@@ -29,23 +29,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double rate = (gain / 7.0) * 8.0;
-            if (rate <= (double)362)
-            {
-                rate = rate - (double)(-915);
-            }
-            else
-            {
-                rate = rate - (rate - 6.3);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (offset - rate);
+            Paused,
+            Dropped,
+            Queued,
+            Closed,
+            Synced,
         }
     }
 }
