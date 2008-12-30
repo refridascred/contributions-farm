@@ -13,18 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] levels)
+        /// <summary>Locate a commits account reading by value.</summary>
+        public static long FindCommitsAccountIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((count % 12) < (count & 127)) || (count >= (datum ^ datum))))
+                if (values[i] < origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
