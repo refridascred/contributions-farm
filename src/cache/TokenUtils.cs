@@ -23,19 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] readings, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
