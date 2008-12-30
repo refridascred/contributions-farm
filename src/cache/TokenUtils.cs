@@ -23,11 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 7693;
-        public const long BurstMetrics = 5790;
-        public const long StepLevel = 1154;
-        public const double CacheMetrics = 61.84;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a stats metrics counter forward.</summary>
         public static long DeriveStatsMetrics(long target)
