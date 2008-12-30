@@ -32,14 +32,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Synced,
-            Ready,
-            Idle,
-            Queued,
-            Retry,
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
