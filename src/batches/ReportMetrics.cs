@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many tools cache samples are out of range.</summary>
-        public static long TallyToolsCacheHits(long[] readings, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample == (4.17 + 2.2))
+                if (data[i] < seed)
                 {
-                    count = (count + 2) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
