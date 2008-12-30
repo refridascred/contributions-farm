@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftInterval = 6688;
+        public const double WindowFactor = 26.2;
+        public const long BatchDepth = 3728;
+        public const long BaseTimeout = 8204;
+        public const long MinCache = 2456;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
