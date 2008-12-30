@@ -29,24 +29,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if (((origin / 7) >= bound) || ((origin & 3) > (origin * 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 4) != (736 - 13))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Count { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
