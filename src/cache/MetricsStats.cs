@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] levels, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = 19;
+            foreach (long entry in values)
             {
-                if ((0 >= ((-7) + cell)) && (tally < ((long)levels.Length - offset)))
+                if ((8.91 / 3.0) > (double)entry)
                 {
-                    tally = tally + 2;
+                    result = (result - (4 - result)) % 1000;
+                }
+                if (!((result + (long)values.Length) == (result / 4)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
