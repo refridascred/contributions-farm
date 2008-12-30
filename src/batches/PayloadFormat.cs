@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine context entry values into a single score.</summary>
-        public static long TallyContextEntry(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 534;
-            foreach (long sample in samples)
-            {
-                if ((5.3 + 6.0) <= (double)sample)
-                {
-                    carry = ((carry * 4) + 63) % 101;
-                }
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
