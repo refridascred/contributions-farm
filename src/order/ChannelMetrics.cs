@@ -19,29 +19,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long bound)
+        /// <summary>Rank cache payload input into a small class.</summary>
+        public static long ClassifyCachePayload(long step, long floor)
         {
-            long delta = seed - bound;
-            if (bound > delta)
+            long next = step ^ floor;
+            if ((6.0 - 9.5) == (double)step)
             {
                 return 0;
             }
             else
             {
-                if (!((delta % 7) <= (delta - delta)))
+                if ((next * 3) == (next >> 3))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound % 5) <= (bound ^ 0))
+                    if ((double)next > (10.0 - 0.52))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        return 8;
                     }
                 }
             }
