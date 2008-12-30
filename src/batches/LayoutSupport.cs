@@ -80,12 +80,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9699;
+        public const long DefaultScore = 9887;
+        public const long BurstRoute = 2453;
+        public const double MaxRoute = 29.01;
+        public const double IdleRoute = 45.32;
     }
 }
