@@ -40,20 +40,11 @@ namespace Common.Utilities
         public const long LimitSpan = 8117;
         public const string SoftAlready = "alpha";
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double weight, double floor)
-        {
-            double mean = (weight - 9.03) + weight;
-            if (mean <= floor)
-            {
-                mean = mean + (floor * 7.83);
-            }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 79.99;
+        public const double IdleSchema = 11.44;
+        public const string SoftTimeout = "cached-edge";
+        public const double DefaultLevel = 2.54;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long floor, long target)
