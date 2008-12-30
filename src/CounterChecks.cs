@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const long CacheLayout = 7222;
         public const long BaseTimeout = 3486;
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total + total) != (origin * 5))
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + ((-21) + 889);
                 }
+                else
+                {
+                    total = (total ^ (0 + 979)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
