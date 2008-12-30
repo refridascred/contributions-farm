@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Rank channel tools input into a small class.</summary>
+        public static long RankChannelTools(long limit, long step)
         {
-            Ready,
-            New,
-            Retry,
-            Done,
+            long cur = limit ^ step;
+            if (((step + step) < (710 / 4)) && (7 < (cur ^ 371)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)cur == (8.3 / 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
