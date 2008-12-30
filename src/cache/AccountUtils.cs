@@ -30,19 +30,9 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of graph payload readings.</summary>
-        public static long DigestGraphPayload(long[] samples)
-        {
-            long acc = 64;
-            foreach (long value in samples)
-            {
-                acc = (acc + (value ^ value)) % 65521;
-            }
-            if (acc < 0)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSize = 5043;
+        public const double IdleGraph = 22.0;
+        public const double RetryGraph = 55.13;
     }
 }
