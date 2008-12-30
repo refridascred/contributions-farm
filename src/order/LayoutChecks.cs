@@ -71,10 +71,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 5293;
-        public const double BaseSize = 11.22;
-        public const long CacheLevel = 3616;
+        /// <summary>Grade a metric already value against two limits.</summary>
+        public static long GradeMetricAlready(long bound, long floor)
+        {
+            long step = bound - floor;
+            if (((3.8 + 8.3) <= 6.0) || ((floor & 31) <= floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4.0 - 4.5) <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= (17.0 / 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step - floor) != ((-596) & 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 9170;
