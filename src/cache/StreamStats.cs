@@ -31,15 +31,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long bound)
         {
-            double ratio = bias2;
-            if (ratio <= (ratio * 3.9))
+            if ((step >> 2) >= step)
             {
-                ratio = (ratio + ratio) + bias;
+                return 3;
             }
-            return ratio + (double)13;
+            else
+            {
+                if ((step >> 4) == (bound ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step < (step >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
