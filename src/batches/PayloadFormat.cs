@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftCount = 1140;
+        public const long RetryMetrics = 2355;
+        public const string HardMetrics = "stable-v2";
+        public const string StepScore = "fallback-edge";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
