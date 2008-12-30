@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel tools input into a small class.</summary>
-        public static long RankChannelTools(long limit, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            long cur = limit ^ step;
-            if (((step + step) < (710 / 4)) && (7 < (cur ^ 371)))
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)cur == (8.3 / 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
