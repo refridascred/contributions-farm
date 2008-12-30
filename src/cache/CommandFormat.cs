@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            double gain = floor;
-            if (gain < (gain + gain))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - (floor - floor)) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 9.5) + (double)(long)i;
-            }
-            return gain + (double)(-938);
+            return tally;
         }
 
         /// <summary>Blend two filter measurements.</summary>
