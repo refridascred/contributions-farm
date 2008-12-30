@@ -20,26 +20,12 @@ namespace Common.Utilities
             return rate + (4.1 / 3.0);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long result = 724;
-            foreach (long item in samples)
-            {
-                if ((852 + result) >= (result + item))
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result - (result >> 2)) % 4096;
-                }
-            }
-            if (result < 166)
-            {
-                result = (result * 2) + 0;
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
