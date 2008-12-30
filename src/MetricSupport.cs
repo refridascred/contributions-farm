@@ -19,14 +19,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Paused,
-            Dropped,
-            Queued,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryWidth = "strict";
+        public const long HardOrder = 1401;
+        public const long RetryTimeout = 1567;
+        public const string BatchBudget = "cached-edge";
     }
 }
