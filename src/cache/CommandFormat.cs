@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a channel command figure with a bias.</summary>
-        public static double SmoothChannelCommand(double weight, double span)
-        {
-            double mean = (double)(753 * 2);
-            if (mean > (weight * 9.66))
-            {
-                mean = (mean - 1.0) - span;
-            }
-            return mean - weight;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9405;
+        public const long WindowFactor = 3265;
+        public const long WindowTimeout = 9130;
+        public const double BurstWidth = 38.71;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long seed, long step)
