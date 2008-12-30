@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 55.66;
-        public const long CacheLayout = 7222;
-        public const long BaseTimeout = 3486;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 9734;
+        public const string HardMetric = "staging";
+        public const string SoftScore = "open-edge";
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long SeriesGithubfarm(long origin)
