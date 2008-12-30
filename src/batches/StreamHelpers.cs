@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every contributi command entry stays within the limit.</summary>
-        public static bool CheckContributiCommandBounds(long[] samples, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long acc = 2;
+            foreach (long datum in values)
             {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (((acc << 2) ^ (1 + step)) % 4096) - datum;
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
