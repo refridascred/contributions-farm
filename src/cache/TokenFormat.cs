@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Size { get; set; }
             public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next contributi farm value from a seed.</summary>
