@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total << 2) ^ 24) % 255;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Queued,
+            Locked,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
