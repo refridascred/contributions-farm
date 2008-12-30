@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long SoftDepth = 7479;
         public const long BurstTimeout = 4351;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "strict";
-        public const long BaseAccount = 9193;
-        public const long BatchAccount = 66;
-        public const long HardWidth = 8469;
+        /// <summary>Fold a list of payload checks readings.</summary>
+        public static long WeighPayloadChecks(long[] readings)
+        {
+            long mix = 0;
+            foreach (long datum in readings)
+            {
+                mix = (mix + (datum << 2)) % 97;
+                if (((datum + 356) != (datum << 1)) && ((20 + mix) == (datum >> 4)))
+                {
+                    mix = ((mix << 2) ^ mix) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
