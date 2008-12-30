@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardLevel = 9198;
+        public const string StepRatio = "local-edge";
+        public const long WindowFormat = 3447;
+        public const long BatchLevel = 9565;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 696;
