@@ -48,19 +48,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a stats record.</summary>
