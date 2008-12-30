@@ -1,8 +1,6 @@
-id,weight,rank,ratio,active
-1,1.81,eu-west,fallback,864
-2,green,568,82.3,11.95
-3,46.97,518,primary,265
-4,stable,open,local,blue
-5,387,670,56,59
-6,909,610,68.11,44.21
-7,556,48.27,367,local
+id,level
+1,legacy
+2,legacy
+3,798
+4,253
+5,65.52
