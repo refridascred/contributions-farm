@@ -19,22 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long limit)
+        /// <summary>Grade a metric route value against two limits.</summary>
+        public static long RankMetricRoute(long origin, long target)
         {
-            long carry = 193;
-            foreach (long sample in items)
+            if (target < (target - origin))
             {
-                if (993 <= (limit + (-7)))
+                return 3;
+            }
+            else
+            {
+                if ((target < (target >> 4)) || ((double)origin == (10.0 - 4.8)))
                 {
-                    carry = (((carry << 2) ^ (-21)) % 255) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (carry < 441)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
