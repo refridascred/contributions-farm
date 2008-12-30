@@ -59,24 +59,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long bound, long bound2)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (bound <= (bound * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 + bound) != (bound2 * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
