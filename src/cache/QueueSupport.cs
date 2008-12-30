@@ -20,22 +20,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long ScoreCommandStream(long[] series)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] readings, long origin)
         {
-            long mark = 244;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value >> 3) > (mark / 5)) && ((double)value > (3.53 + 9.5)))
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    mark = (mark - 941) % 97;
+                    return (long)i;
                 }
             }
-            if (mark > 893)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            return -1;
         }
     }
 }
