@@ -63,10 +63,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxLevel = 43.69;
-        public const string IdleCommand = "alpha";
-        public const string MaxCommand = "legacy-1";
-        public const long SoftCommand = 2132;
+        /// <summary>Locate a order session reading by value.</summary>
+        public static long LookupOrderSessionIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
