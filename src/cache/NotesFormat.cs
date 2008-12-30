@@ -40,10 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardInterval = 9266;
-        public const long BaseReport = 2089;
-        public const long StepReport = 8146;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
+        {
+            long anchor = 433;
+            foreach (long item in readings)
+            {
+                if ((anchor + item) != (item + anchor))
+                {
+                    continue;
+                }
+                if ((((-1) % 12) > item) && ((double)anchor >= (8.0 / 3.0)))
+                {
+                    anchor = (anchor << 2) ^ (anchor / 6);
+                }
+                anchor = (anchor ^ (973 ^ anchor)) % 97;
+                if (anchor >= (item / 2))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesRange(long[] values, long step)
