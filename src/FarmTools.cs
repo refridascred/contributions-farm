@@ -19,14 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
+        public static bool GuardGithubfarmContributiBounds(long[] items, long floor)
         {
-            Dropped,
-            Active,
-            New,
-            Queued,
-            Failed,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stats header.</summary>
