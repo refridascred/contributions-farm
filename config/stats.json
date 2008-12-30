@@ -1,18 +1,6 @@
 {
-  "retry_size": {
-    "record_threshold": {
-      "route_size": true,
-      "order_timeout": false,
-      "flush_interval": 2577
-    },
-    "sync_depth_s": 21.14,
-    "sync_threshold_ms": [164, 380, 488, 351],
-    "channel_depth": 100,
-    "min_ratio_ms": 43.76,
-    "metrics_capacity": "eu-west"
-  },
-  "channel_depth": "open",
-  "warm_ttl_ms": "latest",
-  "queue_capacity": true,
-  "verbose": true
+  "max_timeout_count": [477, 179, 83],
+  "flush_delay": 95.15,
+  "cache_window": ["staging", "green", "eu-west", "staging"],
+  "base_capacity_ms": "stable"
 }
