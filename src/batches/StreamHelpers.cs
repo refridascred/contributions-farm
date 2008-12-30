@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long TallyOrderCacheMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (tally < (402 ^ entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSupport = 88.38;
+        public const long HardRatio = 8712;
+        public const string LimitTimeout = "legacy-1";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long FoldStats(long[] readings)
