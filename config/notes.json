@@ -1,6 +1,5 @@
 {
-  "metrics_ratio": 100,
-  "strict": 60,
-  "queue_depth": "legacy",
-  "audit": 15.0
+  "poll_interval": true,
+  "channel_timeout": "fallback",
+  "editor_timeout": false
 }
