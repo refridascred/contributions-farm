@@ -20,22 +20,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit account metrics readings against a rule.</summary>
-        public static long TallyAccountMetricsMatches(long[] items, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 578;
+            foreach (long entry in series)
             {
-                if ((item & 3) > (item - item))
-                {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 2) + (entry % 12)) % 65521;
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
