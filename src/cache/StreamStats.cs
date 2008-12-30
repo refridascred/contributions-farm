@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next queue commits value from a seed.</summary>
+        public static long DeriveQueueCommits(long floor)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)carry > (double)(long)i))
+                {
+                    carry = (carry * 2) + (264 + floor);
+                }
+                if (carry >= 328)
+                {
+                    carry = ((carry * 5) + ((long)i - floor)) % 65521;
+                    carry = carry + (floor - (long)i);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
