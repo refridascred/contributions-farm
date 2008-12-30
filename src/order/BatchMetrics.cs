@@ -38,19 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Locate a buffer order reading by value.</summary>
+        public static long SeekBufferOrderIndex(long[] values, long floor)
         {
-            long acc = -227;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + value) % 65521;
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 1)
-            {
-                acc = acc - (41 / 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two counter measurements.</summary>
