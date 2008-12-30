@@ -32,15 +32,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two checks context measurements.</summary>
-        public static double ScaleChecksContext(double gain, double span)
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool GuardEntryAccountLimits(long[] readings, long origin)
         {
-            double scale = (double)2 / 5.0;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                scale = (((scale - scale) + (double)(long)i) - gain) + span;
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - (scale * 0.5);
+            return valid;
         }
 
         /// <summary>Describe the profile phase values.</summary>
