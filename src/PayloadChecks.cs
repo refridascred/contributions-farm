@@ -63,11 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Find the first editor buffer entry that matches the target.</summary>
+        public static long LookupEditorBufferIndex(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
