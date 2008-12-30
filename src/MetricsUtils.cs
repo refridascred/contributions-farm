@@ -39,22 +39,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long score = -85;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) < (score - score))
-                {
-                    score = ((score * 5) + (score % 10)) % 4096;
-                }
-            }
-            if (score < 797)
-            {
-                score = (score + score) % 4096;
-            }
-            return score % 65521;
+            Synced,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate cache githubfarm readings against a bound.</summary>
