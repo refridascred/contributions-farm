@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            Failed,
-            New,
-            Done,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >= (cell ^ cell)) || ((double)cell <= (2.1 - 19.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
