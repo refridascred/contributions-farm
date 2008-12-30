@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7422;
-        public const double IdleChecks = 20.47;
-        public const long HardFactor = 4434;
-        public const long BaseChecks = 1758;
-        public const long MaxDepth = 5160;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((item - 457) >= (tally & 31)) || !(7.0 >= (double)item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryMatches(long[] readings)
