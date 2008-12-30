@@ -1,8 +1,5 @@
 {
-  "flush_capacity_pct": 87.03,
-  "audit": false,
-  "commits_threshold": "local",
-  "cluster_limit": 37.15,
-  "default_depth_s": true,
-  "readonly": 41.08
+  "verbose": [468, 487],
+  "window_interval": true,
+  "soft_limit_s": false
 }
