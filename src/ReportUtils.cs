@@ -20,27 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
+        public static long AuditGithubfarmClusterHits(long[] levels, long limit)
         {
-            long state = 1;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                state = (state - (449 ^ 9)) % 101;
-                if (state < (state + entry))
+                if ((0 >> 3) < limit)
                 {
-                    state = (state << 3) ^ entry;
-                }
-                else
-                {
-                    state = ((state * 2) + (state ^ entry)) % 97;
+                    hits = (hits + 2) - reading;
                 }
             }
-            if (state > 97)
-            {
-                state = (state + (state ^ state)) % 255;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate format schema samples.</summary>
