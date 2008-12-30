@@ -36,11 +36,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 7739;
-        public const long WindowSize = 8089;
-        public const string StepBudget = "cached-edge";
-        public const long MaxBudget = 5212;
-        public const string LimitRatio = "legacy";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleSpan = 5.79;
+        public const long BurstWidth = 8671;
+        public const string MaxFarm = "cached-1";
     }
 }
