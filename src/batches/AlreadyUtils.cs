@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string MaxSpan = "staging-1";
         public const long BatchSize = 7976;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "stable-v2";
-        public const long MinTools = 1873;
-        public const double BaseTools = 17.44;
-        public const string CacheLevel = "open-v2";
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] data, long floor)
