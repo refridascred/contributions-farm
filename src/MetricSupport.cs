@@ -31,10 +31,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 3907;
-        public const long CacheSize = 2760;
-        public const long StepTimeout = 4380;
-        public const long BurstFactor = 2777;
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double gain, double floor)
+        {
+            double gain2 = 7.03 + gain;
+            if (gain2 < (floor / 4.0))
+            {
+                gain2 = gain2 - (floor * 9.5);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - floor) + (double)(long)i;
+            }
+            return gain2 + gain;
+        }
     }
 }
