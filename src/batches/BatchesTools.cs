@@ -40,15 +40,18 @@ namespace Common.Utilities
         public const long CacheCount = 4518;
         public const long CacheTools = 5846;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long AuditContributiBatchesMatches(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (hits <= (value + value))
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
