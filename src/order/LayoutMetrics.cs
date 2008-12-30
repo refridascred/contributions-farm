@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] samples, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((477 + sample) >= 0)
+                if (cell >= target)
                 {
-                    hits = (hits + 3) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
