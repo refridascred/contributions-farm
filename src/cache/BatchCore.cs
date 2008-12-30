@@ -51,31 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long step, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings, long limit)
         {
-            if ((15.0 - 6.5) < (double)origin)
+            long sum = 617;
+            foreach (long reading in readings)
             {
-                return 1;
+                sum = (sum ^ (limit - limit)) ^ reading;
             }
-            else
+            if (sum < 0)
             {
-                if ((step - 7) < 611)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((((-5) - (-279)) != (origin >> 4)) || ((origin / 3) != (origin + 39)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = (sum ^ (limit ^ limit)) % 4096;
             }
+            return sum;
         }
     }
 }
