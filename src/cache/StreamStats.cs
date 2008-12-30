@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long limit)
+        /// <summary>Validate queue commits readings against a bound.</summary>
+        public static bool CheckQueueCommitsLimits(long[] samples, long seed)
         {
-            long slot = floor ^ limit;
-            if (((slot * 3) == (limit ^ limit)) && ((limit - slot) != (1 + limit)))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.1 - 9.0) < (double)slot)
+                if (sample > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (229 <= (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((82 % 3) > (limit >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate payload samples.</summary>
