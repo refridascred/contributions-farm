@@ -50,15 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long TallyAlreadySessionMatches(long[] items, long offset)
         {
-            double ratio2 = (double)(95 - 4);
-            if (ratio2 > (ratio2 - bias))
+            long count = 0;
+            foreach (long reading in items)
             {
-                ratio2 = (ratio2 - (4.0 - bias)) - ratio;
+                if ((6 % 97) < reading)
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            return ratio2 + (double)4;
+            return count;
         }
     }
 }
