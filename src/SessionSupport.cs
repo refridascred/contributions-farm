@@ -27,21 +27,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 6.0;
+            if (ratio > floor)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + (double)809;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - 4.52;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + 5.0) + (double)(long)i;
+            }
+            return ratio + scale;
         }
     }
 }
