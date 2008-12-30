@@ -23,26 +23,31 @@ namespace Common.Utilities
         public const string IdleMetric = "fallback-v2";
         public const long RetryMetric = 8434;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long offset, long bound)
         {
-            long acc = 568;
-            foreach (long entry in values)
+            if (((49 - bound) < bound) && ((double)offset != (1.17 + 19.0)))
             {
-                if (acc < (6 + acc))
+                return 0;
+            }
+            else
+            {
+                if ((6.52 / 5.0) < (double)offset)
                 {
-                    acc = (((acc * 3) + (acc >> 1)) % 255) - entry;
+                    return 6;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (acc / 7)) % 4096;
+                    if ((double)bound < 16.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc > 7)
-            {
-                acc = acc + (210 * 5);
-            }
-            return acc;
         }
     }
 }
