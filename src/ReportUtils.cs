@@ -44,22 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 4253;
+        public const double SoftNotes = 67.94;
+        public const long StepInterval = 2624;
+        public const string BaseScore = "open";
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] samples, long step)
