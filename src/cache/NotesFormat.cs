@@ -33,11 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxBudget = 6142;
-        public const long BatchAccount = 2580;
-        public const long StepAccount = 1208;
-        public const long RetryBudget = 3558;
-        public const long BurstRatio = 6258;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] samples)
+        {
+            long mark = 802;
+            foreach (long sample in samples)
+            {
+                mark = (mark + (sample << 3)) % 1000;
+            }
+            return mark;
+        }
     }
 }
