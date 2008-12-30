@@ -1,28 +1,22 @@
 # entry settings
-strict:
-  order_depth: 2050
-  stream_window: 856
-  soft_ratio_pct: fallback
-  retry_timeout:
-    - 144
-    - 443
-    - 292
-  hard_limit_s: 66.04
-  channel_delay: 70
-idle_capacity:
-  dry_run: true
-  burst_window_pct:
-    - standard
-    - blue
-    - standard
-  retry_delay:
-    - strict
+contributi_ttl: 1961
+cache_delay_count: blue
+verbose:
+  format_window:
+    - edge
     - latest
-    - standard
-    - green
-  enabled: legacy
-  verbose: cached
-  base_limit: 34.7
-queue_ttl:
-  - 357
-  - 127
+  flush_capacity_count: 100
+  default_window_ms: staging
+  editor_size:
+    retry_capacity_s: 72.97
+    min_interval_s: 1024
+    readonly:
+      - staging
+      - staging
+      - legacy
+    burst_retries_s: stable
+    default_retries: blue
+stream_ratio:
+  - legacy
+  - cached
+  - edge
