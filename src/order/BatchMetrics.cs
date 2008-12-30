@@ -38,19 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] readings, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long state = -85;
-            foreach (long entry in readings)
+            long acc = -227;
+            foreach (long value in values)
             {
-                state = ((state ^ step) % 97) - entry;
+                acc = ((acc * 4) + value) % 65521;
             }
-            if (state < 91)
+            if (acc < 1)
             {
-                state = (state + (state + step)) % 4096;
+                acc = acc - (41 / 2);
             }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
