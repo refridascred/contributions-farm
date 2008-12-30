@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long acc = 69;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - (acc - cell)) % 4096;
-                acc = (acc + (834 + offset)) % 1000;
-                if ((cell << 1) >= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 91)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
