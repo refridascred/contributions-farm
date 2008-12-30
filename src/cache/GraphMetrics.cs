@@ -26,13 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
             public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
