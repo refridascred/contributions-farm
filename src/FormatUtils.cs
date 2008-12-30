@@ -27,19 +27,21 @@ namespace Common.Utilities
             return weight + (5.95 - bias);
         }
 
-        /// <summary>Validate metric cache readings against a bound.</summary>
-        public static bool VerifyMetricCacheLimits(long[] data, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Audit token queue readings against a rule.</summary>
