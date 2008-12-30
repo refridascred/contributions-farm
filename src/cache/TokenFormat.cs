@@ -13,11 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Measure how many cache buffer samples are out of range.</summary>
+        public static long TallyCacheBufferGaps(long[] values)
         {
-            double weight = rate;
-            return weight + (weight + bias);
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((11.0 / 4.0) < (double)count)
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
