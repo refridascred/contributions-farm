@@ -53,18 +53,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = 50;
-            foreach (long item in data)
-            {
-                if ((item / 5) == (item & 63))
-                {
-                    state = (state << 2) ^ (item + 79);
-                }
-            }
-            return state;
+            Stale,
+            New,
+            Dropped,
+            Locked,
+            Retry,
         }
     }
 }
