@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long carry = 88;
-            foreach (long cell in values)
-            {
-                carry = (carry - carry) - cell;
-                carry = (carry - (carry % 64)) % 1000;
-            }
-            return carry % 97;
+            Failed,
+            Ready,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
