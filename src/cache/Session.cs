@@ -27,39 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long target2)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long gap = target ^ target2;
-            if (gap > (target + gap))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target2 > (gap + target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target2 <= (9.55 - 7.8))
+                    if ((values[i] ^ values[j]) > 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target2 % 16) > gap)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
