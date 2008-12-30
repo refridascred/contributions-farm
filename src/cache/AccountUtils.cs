@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long limit)
         {
-            Queued,
-            Locked,
-            Stale,
-            Retry,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of account queue readings.</summary>
