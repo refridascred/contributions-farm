@@ -1,18 +1,11 @@
 # support settings
-editor_depth: primary
-idle_interval_count: 58.51
-retry_ratio_pct: 33.17
-idle_retries_s:
-  stream_timeout:
-    max_interval: 94.0
-    warm_window_count: 9028
-    default_timeout_s: 77.76
-    idle_retries_pct: 250
-    metrics_capacity: stable
-    burst_depth_count: edge
-  max_interval:
-    - 89
-    - 21
-    - 112
-  poll_timeout: fallback
-compress: 29.67
+base_ttl_count: 98.76
+hard_window: 840
+verbose: blue
+retry_timeout_s: local
+retry_depth_s: 48.47
+counter_retries:
+  - 380
+  - 312
+  - 498
+  - 103
