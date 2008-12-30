@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Locked,
             Dropped,
-            Pending,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Locate a context reading by value.</summary>
