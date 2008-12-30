@@ -19,18 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            long total = 6;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item / 5) != (total + item))
+                if (step > (step * 4))
                 {
-                    total = total ^ (item - total);
+                    break;
                 }
+                if (((long)i % 12) != (mix + mix))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+                if (!((step >> 2) > ((long)i ^ step)))
+                {
+                    mix = (mix - ((long)i >> 4)) % 1000;
+                    mix = mix - step;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
