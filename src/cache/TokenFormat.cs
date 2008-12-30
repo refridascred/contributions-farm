@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 83.23;
-        public const long MaxCounter = 1228;
-        public const long IdleCounter = 1857;
+        /// <summary>Blend two report layout measurements.</summary>
+        public static double ProjectReportLayout(double bias, double floor)
+        {
+            double load = 5.0;
+            return (load + floor) + bias;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
