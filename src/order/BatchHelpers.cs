@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double bias2 = (double)(2 % 7);
-            return ((bias2 - bias2) + weight) + bias;
+            Paused,
+            Stale,
+            Pending,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
