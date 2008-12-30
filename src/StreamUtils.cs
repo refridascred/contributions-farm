@@ -51,10 +51,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseFactor = 6026;
-        public const long RetryInterval = 9933;
-        public const long StepBudget = 319;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 76.79;
+        public const long MaxFarm = 2465;
+        public const string IdleFarm = "cached-edge";
+        public const long DefaultSpan = 1391;
+        public const long MinFarm = 4365;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values, long limit)
