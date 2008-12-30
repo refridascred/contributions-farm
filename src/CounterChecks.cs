@@ -24,12 +24,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a metric format reading by value.</summary>
+        public static long LookupMetricFormatIndex(long[] items, long origin)
         {
-            Ready,
-            Active,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
