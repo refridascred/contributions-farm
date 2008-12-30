@@ -54,13 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long AuditChecksBatchMatches(long[] items)
         {
-            Active,
-            Closed,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item * 2) < (seen << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
