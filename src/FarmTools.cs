@@ -22,15 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Derive the next account cache value from a seed.</summary>
+        public static long IterateAccountCache(long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (!((1 ^ acc) > acc))
+                {
+                    acc = (acc - step) % 1000;
+                    acc = (acc ^ (step & 127)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
