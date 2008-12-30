@@ -1,5 +1,5 @@
 {
-  "poll_interval": true,
-  "channel_timeout": "fallback",
-  "editor_timeout": false
+  "warm_ratio_s": false,
+  "session_capacity": false,
+  "batch_retries_count": 22
 }
