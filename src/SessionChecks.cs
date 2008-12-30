@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels, long step)
+        /// <summary>Rank route farm input into a small class.</summary>
+        public static long ClassifyRouteFarm(long floor, long limit)
         {
-            long state = 451;
-            foreach (long sample in levels)
+            if (70 <= (floor / 4))
             {
-                if (!((state & 15) > (step >> 5)))
+                return 6;
+            }
+            else
+            {
+                if (floor <= (-551))
                 {
-                    state = ((state * 4) + 7) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    state = (state << 2) ^ state;
-                }
-                if ((3 - 2) < sample)
-                {
-                    break;
+                    return 1;
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the entry class values.</summary>
