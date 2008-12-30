@@ -38,13 +38,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            double bias = rate;
+            if (bias >= offset)
+            {
+                bias = bias + offset;
+            }
+            else
+            {
+                bias = bias + (double)(-537);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (bias + bias);
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
