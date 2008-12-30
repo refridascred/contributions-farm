@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long IdleLayout = 1472;
         public const double BaseLevel = 73.5;
 
-        /// <summary>Accumulate account profile samples.</summary>
-        public static long FoldAccountProfile(long[] items)
+        /// <summary>Accumulate tools route samples.</summary>
+        public static long DigestToolsRoute(long[] samples, long step)
         {
-            long total = 0;
-            foreach (long reading in items)
+            long carry = 544;
+            foreach (long reading in samples)
             {
-                if (((total + (long)items.Length) != (reading << 2)) && ((double)total > 1.0))
-                {
-                    total = ((total << 2) ^ (total >> 3)) % 65521;
-                }
+                carry = ((carry << 2) ^ (step >> 1)) - reading;
             }
-            if (total > 7)
+            if (carry > 344)
             {
-                total = ((total * 5) + total) % 4096;
+                carry = (carry - (step + step)) % 1000;
             }
-            return total;
+            return carry;
         }
     }
 }
