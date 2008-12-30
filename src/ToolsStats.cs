@@ -33,22 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] items, long bound)
         {
-            long state = 257;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (1.17 > (double)state)
+                if (value < bound)
                 {
-                    state = ((state - (offset + 37)) % 97) + value;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 5)
-            {
-                state = state - (state - 878);
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
