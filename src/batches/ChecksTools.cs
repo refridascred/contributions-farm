@@ -33,11 +33,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSize = 8625;
-        public const long LimitTimeout = 6662;
-        public const string LimitMetrics = "open-v2";
-        public const long StepScore = 7236;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Closed,
+            Dropped,
+            Paused,
+            Done,
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
