@@ -33,12 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            Stale,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (5.7 - 4.7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
