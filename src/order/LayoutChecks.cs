@@ -69,12 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 6912;
-        public const string RetryInterval = "primary-v2";
-        public const long DefaultSupport = 3518;
-        public const long WindowSupport = 5674;
-        public const long MinSupport = 680;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long seed, long floor)
