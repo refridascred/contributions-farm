@@ -40,31 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long offset)
+        /// <summary>Accumulate window profile samples.</summary>
+        public static long CombineWindowProfile(long[] items, long floor)
         {
-            if (((-879) ^ floor) > 167)
+            long score = -7;
+            foreach (long item in items)
             {
-                return 0;
+                score = (score - (floor << 2)) ^ item;
             }
-            else
-            {
-                if (4.0 > (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor * 5) != (floor - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
