@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftTimeout = 6355;
-        public const string CacheProfile = "alpha-v2";
-        public const long LimitProfile = 6239;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long floor, long offset)
