@@ -44,19 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen - entry) >= (entry * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 86.19;
+        public const double CacheToken = 27.21;
+        public const long BatchToken = 9478;
 
         /// <summary>Count context batch pairs that satisfy a relation.</summary>
         public static long OverlapContextBatchCount(long[] levels)
