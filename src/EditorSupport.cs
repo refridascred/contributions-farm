@@ -67,21 +67,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((5.9 + 1.8) < (double)(long)i))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (floor + state);
+                    state = (state << 3) ^ floor;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
