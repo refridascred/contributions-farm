@@ -39,14 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Draft,
-            Dropped,
-            New,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 1740;
+        public const double DefaultCounter = 40.36;
+        public const long StepCounter = 6423;
+        public const long StepWidth = 7269;
     }
 }
