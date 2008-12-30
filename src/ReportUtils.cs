@@ -72,13 +72,17 @@ namespace Common.Utilities
             return drift + (double)795;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            Queued,
-            Retry,
-            Paused,
-            Dropped,
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor - (anchor - origin)) % 101;
+                anchor = ((anchor * 2) + (7 & 3)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
