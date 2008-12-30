@@ -57,19 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double drift = offset;
-            if (drift > (offset / 8.0))
-            {
-                drift = drift - (drift / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + (double)795;
+            Idle,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
