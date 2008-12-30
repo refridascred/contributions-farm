@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 7203;
-        public const double BurstMetric = 50.08;
-        public const string MaxMetric = "primary-v2";
-        public const long BaseMetric = 7095;
+        /// <summary>Digest a series of format buffer entries.</summary>
+        public static long CombineFormatBuffer(long[] samples)
+        {
+            long score = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry <= (1.6 + 7.8))
+                {
+                    score = (score * 3) + (score - score);
+                }
+                else
+                {
+                    score = (score - (entry % 24)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] samples, long bound)
