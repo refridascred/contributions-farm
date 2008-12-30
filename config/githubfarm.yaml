@@ -1,13 +1,7 @@
 # githubfarm settings
-route_ttl:
-  - primary
-  - legacy
-  - open
-poll_ratio: standard
-profile_depth:
-  - eu-west
-  - fallback
-  - standard
-  - cached
-min_interval_count: 100
-metrics_retries: 15
+persist: 500
+strict:
+  retry_retries: latest
+  token_depth: 100
+  batch_threshold: 352
+readonly: true
