@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitScore = 8774;
-        public const long DefaultStream = 1879;
-        public const long StepTimeout = 6671;
-        public const long StepLevel = 5347;
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of batch record readings.</summary>
         public static long OverlapBatchRecordCount(long[] readings)
