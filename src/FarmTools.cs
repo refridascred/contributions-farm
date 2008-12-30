@@ -38,19 +38,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] data, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long sum = 6;
+            foreach (long sample in levels)
             {
-                if (datum < target)
+                sum = sum - ((long)levels.Length + sample);
+                if (((sample * 5) < bound) || ((sample << 2) <= (sum + (long)levels.Length)))
                 {
-                    ready = false;
+                    sum = sum + (sum + sum);
+                }
+                sum = sum ^ (bound << 2);
+                if ((781 - sum) <= (2 + sum))
+                {
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
     }
 }
