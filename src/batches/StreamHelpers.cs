@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (floor > reading)
+                if ((double)seen >= (double)datum)
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stats info.</summary>
