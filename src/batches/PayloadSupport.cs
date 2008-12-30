@@ -14,12 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] levels, long seed)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((7.1 / 3.0) <= (double)(long)levels.Length)
+                {
+                    matches = ((matches + 3) ^ value) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank stats counter input into a small class.</summary>
