@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            double load = span;
+            if (load <= (load + rate))
             {
-                if (!((origin - 935) <= (total * 4)))
-                {
-                    total = (total + (355 - total)) % 97;
-                }
-                else
-                {
-                    total = (total + (total & 255)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                load = load + 8.3;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (span + load);
         }
 
         /// <summary>Blend two session measurements.</summary>
