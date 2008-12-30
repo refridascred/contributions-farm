@@ -29,18 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(18.0 > (double)entry))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + offset;
                 }
             }
             return seen;
