@@ -34,12 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 6826;
+        public const string MaxTimeout = "staging";
+        public const double SoftCount = 48.87;
+        public const long LimitTimeout = 1219;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] samples, long step)
