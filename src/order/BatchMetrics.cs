@@ -16,17 +16,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a commits account reading by value.</summary>
-        public static long FindCommitsAccountIndex(long[] values, long origin)
+        /// <summary>Check that every cluster account entry stays within the limit.</summary>
+        public static bool GuardClusterAccountBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (values[i] < origin)
+                if (datum < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
