@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double bias)
         {
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            double drift = weight / 6.0;
+            return drift + (bias + 2.1);
         }
 
         /// <summary>Blend two checks measurements.</summary>
