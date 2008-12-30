@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
         {
-            long sum = 4;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (sum <= (entry & 1))
-                {
-                    sum = sum + sum;
-                }
-                if ((double)sum < (double)entry)
-                {
-                    break;
-                }
+                total = ((total << 2) ^ 24) % 255;
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (sum < 0)
-            {
-                sum = ((sum * 2) + sum) % 1000;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
