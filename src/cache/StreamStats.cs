@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank stats githubfarm input into a small class.</summary>
-        public static long RankStatsGithubfarm(long seed, long seed2)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long limit)
         {
-            long delta = seed ^ seed2;
-            if (seed2 > (delta - delta))
+            long slot = floor ^ limit;
+            if (((slot * 3) == (limit ^ limit)) && ((limit - slot) != (1 + limit)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((seed2 <= (delta * 3)) && ((seed / 9) < (seed ^ seed2)))
+                if ((1.1 - 9.0) < (double)slot)
                 {
                     return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (229 <= (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((82 % 3) > (limit >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
