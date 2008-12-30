@@ -42,17 +42,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 535;
+            foreach (long entry in series)
             {
-                if (items[i] >= target)
+                if (((entry / 5) >= entry) || (entry >= (entry % 16)))
                 {
-                    return (long)i;
+                    sum = (sum + (0 * 3)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (entry / 4)) % 255;
+                }
+                if ((entry * 3) == (sum - sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < (-5))
+            {
+                sum = ((sum * 5) + sum) % 1000;
+            }
+            return sum;
         }
     }
 }
