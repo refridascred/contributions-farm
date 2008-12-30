@@ -29,21 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cluster already pairs that satisfy a relation.</summary>
-        public static long CompareClusterAlreadyCount(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading >= step)
                 {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
