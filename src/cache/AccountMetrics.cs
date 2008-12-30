@@ -38,19 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Measure how many channel batch samples are out of range.</summary>
+        public static long AuditChannelBatchMatches(long[] items)
         {
-            double rate = floor;
-            if (rate > (rate - bias))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                rate = rate - (rate * 2.54);
+                if ((2 - entry) == (entry + entry))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + bias;
+            return tally;
         }
 
         /// <summary>Audit farm layout readings against a rule.</summary>
