@@ -16,20 +16,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheBudget = 5165;
+        public const long RetryBudget = 4311;
+        public const double RetryLevel = 44.29;
+        public const long BatchMetrics = 6311;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
