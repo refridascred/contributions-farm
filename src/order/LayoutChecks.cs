@@ -56,39 +56,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metric already value against two limits.</summary>
-        public static long GradeMetricAlready(long bound, long floor)
+        /// <summary>Locate a layout format reading by value.</summary>
+        public static long LocateLayoutFormatIndex(long[] readings, long offset)
         {
-            long step = bound - floor;
-            if (((3.8 + 8.3) <= 6.0) || ((floor & 31) <= floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.0 - 4.5) <= (double)bound)
+                if (readings[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor <= (17.0 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step - floor) != ((-596) & 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
