@@ -17,11 +17,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 95.36;
-        public const long BaseSize = 287;
-        public const long RetryMetric = 8332;
-        public const long MinDepth = 286;
-        public const double MinMetric = 69.98;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
