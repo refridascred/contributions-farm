@@ -44,18 +44,13 @@ namespace Common.Utilities
             return gain - (bias * 3.5);
         }
 
-        /// <summary>Accumulate support metrics samples.</summary>
-        public static long CombineSupportMetrics(long[] data, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long carry = 62;
-            foreach (long entry in data)
-            {
-                if ((carry * 3) <= (0 % 7))
-                {
-                    carry = (((carry * 2) + target) % 97) - entry;
-                }
-            }
-            return carry;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
