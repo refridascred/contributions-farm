@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "open-v2";
-        public const double MaxSize = 78.12;
-        public const string CacheScore = "standard-v2";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstMetric = 7665;
