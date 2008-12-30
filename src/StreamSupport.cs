@@ -19,22 +19,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item - matches) >= 975)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
