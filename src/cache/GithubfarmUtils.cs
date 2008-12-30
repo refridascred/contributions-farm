@@ -42,11 +42,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleCount = 9727;
-        public const long LimitAccount = 3559;
-        public const double MaxAccount = 50.23;
-        public const string MinAccount = "staging-v2";
-        public const long StepRatio = 9476;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long step)
+        {
+            if (((step << 2) > (step << 1)) || ((double)offset == (3.06 + 9.7)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step * 4) != (offset ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset >= (step >> 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset >> 2) < (step ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
