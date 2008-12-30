@@ -1,5 +1,13 @@
 {
-  "min_limit_count": "standard",
-  "readonly": 85,
-  "metric_interval": 29
+  "notes_depth": "primary",
+  "account_timeout": 100,
+  "soft_threshold_ms": false,
+  "command_ttl": 49,
+  "min_retries_count": {
+    "buffer_delay": "fallback",
+    "soft_capacity_s": 250,
+    "batch_limit": [138, 5],
+    "strict": [275, 28, 14, 284]
+  },
+  "metrics_size": [326, 260, 161, 97]
 }
