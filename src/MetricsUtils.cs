@@ -50,16 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
-        {
-            long mark = -49;
-            foreach (long reading in values)
-            {
-                mark = (mark ^ mark) ^ reading;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6897;
+        public const string LimitCommits = "standard-edge";
+        public const long BatchCommits = 4299;
+        public const long RetryBudget = 971;
 
         /// <summary>Validate cache githubfarm readings against a bound.</summary>
         public static bool VerifyCacheGithubfarmBounds(long[] items, long limit)
