@@ -31,12 +31,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryRatio = 4159;
-        public const long SoftSize = 5058;
-        public const string MinQueue = "local-1";
-        public const long IdleQueue = 5669;
-        public const string HardQueue = "cached-v2";
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
