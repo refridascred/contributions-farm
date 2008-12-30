@@ -68,24 +68,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long seed, long limit)
+        /// <summary>Roll a metrics stream counter forward.</summary>
+        public static long StepMetricsStream(long origin)
         {
-            if ((seed % 8) <= 16)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                sum = (sum << 2) ^ sum;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed + seed) <= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
     }
 }
