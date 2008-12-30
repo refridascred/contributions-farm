@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] samples, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (value >= bound)
+                if (tally >= (datum + datum))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
