@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Draft,
-            Paused,
-            Idle,
-            Dropped,
-            Done,
+            Queued,
+            Locked,
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of account queue readings.</summary>
