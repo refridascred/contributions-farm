@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values, long step)
         {
-            long total = 544;
-            foreach (long sample in items)
+            long mix = 182;
+            foreach (long datum in values)
             {
-                if ((total + sample) <= total)
+                mix = mix ^ (mix >> 2);
+                if (((datum + 0) >= 986) && ((datum + step) >= (step & 15)))
                 {
-                    total = ((total << 2) ^ (total * 3)) % 65521;
+                    break;
                 }
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Describe the report mode values.</summary>
