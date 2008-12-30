@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double gain, double offset)
-        {
-            double ratio = (double)(5 - (-2));
-            if (ratio > (double)96)
-            {
-                ratio = (ratio + offset) + gain;
-            }
-            return ratio + (double)433;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSize = 571;
+        public const long BatchRoute = 1174;
+        public const long LimitRoute = 2994;
+        public const double MinRoute = 85.3;
+        public const long StepSpan = 1660;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] readings, long offset)
