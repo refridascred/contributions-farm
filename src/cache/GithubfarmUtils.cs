@@ -41,11 +41,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
