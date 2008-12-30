@@ -48,15 +48,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the route account series from a seed.</summary>
-        public static long DeriveRouteAccount(long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] levels, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
