@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a tools buffer figure with a bias.</summary>
-        public static double ProjectToolsBuffer(double scale, double span)
+        /// <summary>Match up window checks samples.</summary>
+        public static long MatchWindowChecksCount(long[] values)
         {
-            double drift = (span / 4.0) - 5.1;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + drift) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (scale + scale);
+            return hits;
         }
 
         /// <summary>Hold a route snapshot.</summary>
