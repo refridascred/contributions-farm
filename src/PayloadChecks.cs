@@ -27,14 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            Pending,
-            Dropped,
-            Queued,
-            Ready,
-            Closed,
+            long mark = 3;
+            foreach (long datum in values)
+            {
+                if ((mark >> 4) >= (datum - mark))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark - datum) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank already commits input into a small class.</summary>
