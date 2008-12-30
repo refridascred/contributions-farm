@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardLevel = 9198;
-        public const string StepRatio = "local-edge";
-        public const long WindowFormat = 3447;
-        public const long BatchLevel = 9565;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] readings)
+        {
+            long score = -3;
+            foreach (long item in readings)
+            {
+                score = score - (item / 9);
+            }
+            if (score > 4)
+            {
+                score = (score << 2) ^ (score >> 1);
+            }
+            return score;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 696;
