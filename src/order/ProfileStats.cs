@@ -45,15 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report tools samples.</summary>
-        public static long TallyReportTools(long[] samples)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long origin)
         {
-            long sum = 1;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (sum - 640)) ^ reading;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
