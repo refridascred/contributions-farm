@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up githubfarm session samples.</summary>
-        public static long MatchGithubfarmSessionCount(long[] items)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
