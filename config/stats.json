@@ -1,7 +1,6 @@
 {
-  "counter_size": true,
-  "dry_run": 400,
-  "flush_ratio_ms": "standard",
-  "order_capacity": [410, 107, 306, 144],
-  "batch_ratio_s": 50.42
+  "burst_timeout_pct": 77,
+  "soft_size": 27,
+  "checks_size": 2897,
+  "cache_ratio_count": [432, 70, 9, 280]
 }
