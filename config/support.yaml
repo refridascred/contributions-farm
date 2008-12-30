@@ -1,9 +1,5 @@
 # support settings
-default_retries_count:
-  - edge
-  - eu-west
-  - latest
-  - local
-dry_run: true
-default_capacity_count: 5.75
-burst_ratio: 60
+compress: true
+batch_threshold: false
+audit: 250
+strict: blue
