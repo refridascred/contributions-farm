@@ -93,18 +93,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading + (long)readings.Length) > reading) || ((reading ^ reading) > hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxLevel = 43.69;
+        public const string IdleCommand = "alpha";
+        public const string MaxCommand = "legacy-1";
+        public const long SoftCommand = 2132;
     }
 }
