@@ -22,24 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((double)bound >= (5.2 / 6.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound ^ (-3)) > (floor / 2)) || ((bound + bound) != (floor / 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a graph summary.</summary>
