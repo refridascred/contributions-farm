@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            New,
-            Pending,
-            Dropped,
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
