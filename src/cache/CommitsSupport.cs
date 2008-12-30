@@ -48,21 +48,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Combine route layout values into a single score.</summary>
+        public static long FoldRouteLayout(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound >> 5) >= (819 ^ 18))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum - (sum - (long)readings.Length)) % 1000) + item;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a stats record.</summary>
