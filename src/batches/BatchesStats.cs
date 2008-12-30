@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleInterval = 20.84;
-        public const string RetryEditor = "local-1";
-        public const long SoftEditor = 3024;
-        public const long CacheSize = 4282;
-        public const string DefaultEditor = "standard-edge";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
