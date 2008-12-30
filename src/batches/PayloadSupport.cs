@@ -34,38 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats counter input into a small class.</summary>
-        public static long SortStatsCounter(long origin, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            if (origin <= (origin + 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin < (target + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= 5.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) >= (0 ^ origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Paused,
+            New,
+            Closed,
+            Draft,
         }
     }
 }
