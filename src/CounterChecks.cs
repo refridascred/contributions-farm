@@ -27,19 +27,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool ValidateChecksQueueBounds(long[] readings, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double ratio = (bias2 + bias) + bias;
+            if (ratio > (bias2 * 4.5))
             {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - (ratio * 4.0);
             }
-            return ok;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (double)5;
         }
 
         /// <summary>Combine order values into a single score.</summary>
