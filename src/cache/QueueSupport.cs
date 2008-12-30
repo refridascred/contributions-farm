@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double WindowScore = 33.37;
         public const long WindowTimeout = 7490;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
+        public static bool CheckMetricsEditorLimits(long[] readings, long target)
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
