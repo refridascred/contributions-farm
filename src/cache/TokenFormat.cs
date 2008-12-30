@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first stream command entry that matches the target.</summary>
-        public static long LookupStreamCommandIndex(long[] values, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 393;
+            foreach (long value in values)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                state = (state << 3) ^ value;
+                if (value < seed)
                 {
-                    return (long)i;
+                    state = (state << 2) ^ seed;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a batches summary.</summary>
