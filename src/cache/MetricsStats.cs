@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const long BurstRoute = 1246;
         public const string MaxSpan = "strict";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
