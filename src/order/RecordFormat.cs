@@ -16,12 +16,18 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 3949;
-        public const long SoftBudget = 8592;
-        public const double MinWidth = 36.63;
-        public const string LimitSpan = "stable";
-        public const long WindowChecks = 9724;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every metrics checks entry stays within the limit.</summary>
         public static bool VerifyMetricsChecksRange(long[] readings, long offset)
