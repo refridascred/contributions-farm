@@ -43,13 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "local-edge";
+        public const long BaseLevel = 7067;
+        public const long MinAlready = 3939;
+        public const long CacheLevel = 4249;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] levels, long limit)
