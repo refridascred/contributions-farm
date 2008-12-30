@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long TallyBatchesWindowOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!((hits / 4) >= value))
+                if (!((item / 7) < (seen ^ item)))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
