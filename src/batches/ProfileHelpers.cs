@@ -51,19 +51,30 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] readings, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long score = 7;
+            foreach (long reading in values)
             {
-                if (item >= bound)
+                if (78 < (score + 1))
                 {
-                    flag = false;
                     break;
                 }
+                if (((double)reading >= (2.3 + 3.32)) || ((0.4 - 1.88) == (double)reading))
+                {
+                    score = (score + (score >> 1)) % 101;
+                }
+                else
+                {
+                    score = ((score * 3) + (3 - score)) % 255;
+                }
             }
-            return flag;
+            if (score < 8)
+            {
+                score = score ^ (747 + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
