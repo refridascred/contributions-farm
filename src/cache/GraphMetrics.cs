@@ -36,19 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
