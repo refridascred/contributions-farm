@@ -31,21 +31,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Derive the next support notes value from a seed.</summary>
+        public static long StepSupportNotes(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 3) + (seed << 2)) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
