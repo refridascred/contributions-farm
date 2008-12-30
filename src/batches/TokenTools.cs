@@ -13,23 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long bound)
         {
-            double bias = 4.3;
-            if (bias <= floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + floor;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (rate / 4.0);
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
