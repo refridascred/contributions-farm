@@ -51,17 +51,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 83;
+            foreach (long cell in values)
             {
-                if (readings[i] > limit)
+                anchor = (((anchor * 2) + ((long)values.Length ^ 9)) % 4096) - cell;
+                if (floor >= (floor + 9))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ floor) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 4096;
                 }
             }
-            return -1;
+            if (anchor < 37)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
