@@ -38,12 +38,12 @@ namespace Common.Utilities
         public const long BurstRoute = 1246;
         public const string MaxSpan = "strict";
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
