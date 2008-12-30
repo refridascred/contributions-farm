@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 3082;
         public const string WindowFactor = "stable-edge";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((hits * 2) < ((-268) + value)) && ((763 + 2) > value))
+                if (samples[i] == step)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
