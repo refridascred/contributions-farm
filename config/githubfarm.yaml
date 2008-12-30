@@ -1,4 +1,5 @@
 # githubfarm settings
-default_timeout_count: stable
-queue_depth: local
-batch_interval: 9503
+batch_size: blue
+min_limit_ms: 67.97
+flush_size: eu-west
+sync_interval_s: 725
