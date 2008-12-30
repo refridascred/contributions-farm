@@ -1,19 +1,10 @@
 {
-  "stats_threshold": 1024,
-  "strict": {
-    "warm_window_ms": true,
-    "order_retries": {
-      "base_interval_ms": "blue",
-      "min_ttl_ms": "cached",
-      "soft_interval": 250,
-      "poll_ttl": 500
-    },
-    "soft_threshold": 5,
-    "burst_threshold": "standard",
-    "min_size_ms": 90.52
+  "base_ratio": "strict",
+  "burst_capacity": {
+    "farm_limit": true,
+    "context_timeout": 69,
+    "min_depth": "stable"
   },
-  "burst_delay": "latest",
-  "compress": "latest",
-  "batch_size": "green",
-  "persist": "strict"
+  "soft_threshold_s": 100,
+  "min_capacity_pct": 82.64
 }
