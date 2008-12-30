@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values, long step)
-        {
-            long mix = 182;
-            foreach (long datum in values)
-            {
-                mix = mix ^ (mix >> 2);
-                if (((datum + 0) >= 986) && ((datum + step) >= (step & 15)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 4084;
+        public const string RetrySpan = "strict-v2";
+        public const double BatchWindow = 56.63;
+        public const string IdleWindow = "latest-v2";
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
