@@ -1,10 +1,14 @@
 # githubfarm settings
+checks_depth: 100
+command_timeout: strict
+flush_window_s: 59.0
 persist:
-  - legacy
-  - cached
-  - cached
-buffer_ratio: 86.57
-cache_threshold:
-  enabled: open
-  soft_delay_ms: true
-  batch_ttl_s: 42.02
+  - 461
+  - 407
+enabled:
+  poll_threshold_ms: 500
+  payload_delay: 1024
+  tools_window: 64.34
+  hard_ttl_s: 95.92
+  warm_threshold_count: 60.07
+audit: fallback
