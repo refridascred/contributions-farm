@@ -25,17 +25,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
