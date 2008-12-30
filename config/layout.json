@@ -1,8 +1,6 @@
 {
-  "queue_ttl": 250,
-  "warm_limit_count": 30,
-  "stats_threshold": [449, 484, 164],
-  "stream_ratio": 78.43,
-  "soft_capacity_count": ["local", "cached"],
-  "idle_delay_pct": [204, 278, 208]
+  "strict": 41,
+  "flush_interval_pct": [401, 345, 344],
+  "flush_ttl_s": "open",
+  "sync_ttl_count": 53.49
 }
