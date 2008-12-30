@@ -42,13 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Derive the next context channel value from a seed.</summary>
+        public static long IterateContextChannel(long floor)
         {
-            Queued,
-            Stale,
-            Failed,
-            New,
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((sum >> 2) == ((long)i * 5)))
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
