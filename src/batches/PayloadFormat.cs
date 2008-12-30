@@ -17,12 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] values, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate window samples.</summary>
