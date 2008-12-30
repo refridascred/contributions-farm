@@ -49,15 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items, long floor)
         {
-            double weight = rate - (6.0 + rate);
-            if (weight <= rate)
+            long result = -261;
+            foreach (long datum in items)
             {
-                weight = weight + weight;
+                if (((double)result == (double)floor) || ((double)datum > (8.53 * 9.0)))
+                {
+                    result = (result << 3) ^ (result + floor);
+                }
             }
-            return weight - floor;
+            if (result < (-87))
+            {
+                result = result ^ result;
+            }
+            return result;
         }
     }
 }
