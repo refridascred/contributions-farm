@@ -62,12 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
+        public static long TallyGithubfarmMetricsOutliers(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((4.79 - 5.0) == (double)target) && (seen < (736 & 3)))
+                {
+                    seen = (seen + 2) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
