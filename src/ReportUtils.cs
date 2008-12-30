@@ -10,18 +10,38 @@ namespace Common.Utilities
         public const double StepEditor = 97.26;
         public const double CacheEditor = 58.61;
 
-        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
-        public static long AuditGithubfarmClusterHits(long[] levels, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if (origin <= (origin + origin))
             {
-                if ((0 >> 3) < limit)
+                return 7;
+            }
+            else
+            {
+                if (((9.0 * 5.61) <= (double)floor) || ((double)floor != (double)origin))
                 {
-                    hits = (hits + 2) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if (((13.0 * 17.0) <= (double)floor) && ((origin >> 2) > floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate format schema samples.</summary>
