@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long AuditFormatCommitsHits(long[] items, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!(((sample + step) < sample) && ((double)seen > (double)2)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the cache status values.</summary>
