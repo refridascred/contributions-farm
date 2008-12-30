@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long floor)
         {
-            long offset2 = offset - limit;
-            if ((limit - limit) >= 803)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(limit < (limit << 3)))
+                if (items[i] > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset < (685 >> 3)) && (offset < (limit ^ offset2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + limit) != (limit & 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
