@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next queue schema value from a seed.</summary>
+        public static long RollQueueSchema(long target)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = anchor + 8;
+                if ((33 * 5) >= (target + anchor))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + target) % 101;
+                }
+                anchor = (anchor + (anchor - (long)i)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
