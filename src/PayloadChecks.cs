@@ -44,17 +44,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first editor buffer entry that matches the target.</summary>
-        public static long LookupEditorBufferIndex(long[] levels, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the notes state values.</summary>
