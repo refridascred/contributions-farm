@@ -32,12 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many layout batch samples are out of range.</summary>
+        public static long CountLayoutBatchHits(long[] readings, long floor)
         {
-            Synced,
-            Idle,
-            Locked,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((floor ^ floor) >= (floor - 487)) || ((count + floor) > (count * 2)))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
