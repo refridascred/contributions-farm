@@ -1,15 +1,4 @@
 # githubfarm settings
-support_window: standard
-strict: 1024
-metrics_ttl:
-  - legacy
-  - edge
-  - latest
-  - cached
-token_threshold: 50.09
-report_ttl:
-  - edge
-  - stable
-  - local
-  - blue
-payload_interval: false
+default_timeout_count: stable
+queue_depth: local
+batch_interval: 9503
