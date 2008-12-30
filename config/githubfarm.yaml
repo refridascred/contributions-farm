@@ -1,7 +1,20 @@
 # githubfarm settings
-idle_interval_ms: 6222
-idle_ratio_pct: 81
-counter_threshold: 100
-poll_retries: 29
-batch_retries_count: 6
-verbose: 23.42
+flush_ttl_pct:
+  compress: true
+  farm_window: cached
+  format_timeout: 1024
+  sync_size_pct: true
+  enabled: 39
+  tools_depth:
+    - 350
+    - 419
+audit:
+  - 275
+  - 237
+  - 90
+  - 386
+editor_ttl:
+  - edge
+  - green
+  - local
+idle_limit_count: false
