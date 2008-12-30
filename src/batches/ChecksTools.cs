@@ -43,19 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = 30;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = ((total ^ (total >> 1)) + (long)i) + bound;
-                }
-                total = total - (item >> 3);
-            }
-            return total % 1000;
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
