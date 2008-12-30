@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] data, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
