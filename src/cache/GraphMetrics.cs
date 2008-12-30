@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a window report pair into a bucket.</summary>
-        public static long BucketWindowReport(long seed, long step)
-        {
-            if (((seed - step) > step) || ((double)seed < (8.14 - 9.39)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) < (41 / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - step) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "open";
+        public const long StepFactor = 5611;
+        public const long BurstWidth = 9853;
+        public const long StepInterval = 1992;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
