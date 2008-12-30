@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
             public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
