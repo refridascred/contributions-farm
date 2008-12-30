@@ -37,20 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long anchor = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - (offset + offset)) % 4096) + entry;
-                anchor = ((anchor << 2) ^ (anchor + 329)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor > 304)
-            {
-                anchor = ((anchor * 2) + (434 & 1)) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Locate a stats editor reading by value.</summary>
