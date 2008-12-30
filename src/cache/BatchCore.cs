@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items, long bound)
         {
-            if ((8 + 665) >= limit)
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((17.0 * 5.0) == (double)seed)
+                if ((969 + bound) >= (1 + count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
