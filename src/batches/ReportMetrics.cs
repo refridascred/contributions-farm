@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long floor)
         {
-            New,
-            Dropped,
-            Pending,
-            Draft,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
