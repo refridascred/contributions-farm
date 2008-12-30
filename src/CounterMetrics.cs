@@ -34,22 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count account channel pairs that satisfy a relation.</summary>
-        public static long CompareAccountChannelCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitFactor = 27.78;
+        public const long HardDepth = 3589;
+        public const double StepGraph = 28.69;
 
         /// <summary>Measure how many already session samples are out of range.</summary>
         public static long TallyAlreadySessionMatches(long[] items, long offset)
