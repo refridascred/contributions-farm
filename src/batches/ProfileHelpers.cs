@@ -44,39 +44,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items, long bound)
         {
-            long lane = limit + seed;
-            if ((lane + (-5)) >= limit)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((0.1 - 4.8) != (double)limit) || ((18.0 / 9.0) != (double)limit))
+                if ((bound - reading) != (1 + 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit >> 2) != (534 / 4)) && ((seed ^ seed) < (508 + 8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((70 % 64) >= (seed + 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
