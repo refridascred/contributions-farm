@@ -14,32 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long seed, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double rate, double span)
         {
-            long prev = seed + step;
-            if ((prev & 3) != (step << 3))
+            double mean = 7.2 * 6.05;
+            if (mean >= (1.3 * 8.0))
             {
-                return 0;
+                mean = mean - (rate * 4.2);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((step ^ prev) >= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= (step / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = (mean + (rate - span)) + (double)(long)i;
             }
+            return mean + rate;
         }
 
         /// <summary>Audit layout githubfarm readings against a rule.</summary>
