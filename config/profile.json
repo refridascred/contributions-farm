@@ -1,7 +1,10 @@
 {
-  "min_window_count": ["blue", "fallback", "edge", "blue"],
-  "default_interval": false,
-  "soft_size_ms": [451, 369],
-  "batch_delay_pct": 8.12,
-  "batch_depth_ms": 1024
+  "min_size_count": 40.02,
+  "poll_ttl_pct": [136, 222, 36],
+  "max_depth_s": false,
+  "min_retries_count": {
+    "enabled": [436, 27, 192, 92],
+    "compress": "staging",
+    "poll_depth": "legacy"
+  }
 }
