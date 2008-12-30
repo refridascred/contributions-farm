@@ -37,21 +37,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count channel checks pairs that satisfy a relation.</summary>
-        public static long PairChannelChecksCount(long[] levels)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a contributi entry.</summary>
