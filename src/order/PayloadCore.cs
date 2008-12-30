@@ -54,17 +54,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long origin)
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long MeasureChannelBatchOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                if (tally >= (floor << 1))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
