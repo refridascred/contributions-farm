@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] values, long origin)
         {
             bool valid = true;
-            foreach (long reading in series)
+            foreach (long entry in values)
             {
-                if (reading < offset)
+                if (entry >= origin)
                 {
                     valid = false;
                     break;
