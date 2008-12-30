@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of farm metrics readings.</summary>
-        public static long DigestFarmMetrics(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] items)
         {
-            long mark = -40;
-            foreach (long datum in samples)
+            long state = 42;
+            foreach (long datum in items)
             {
-                if (((mark + mark) >= mark) || (((long)samples.Length ^ datum) < (datum ^ 4)))
+                if (state <= datum)
                 {
-                    mark = (mark + (mark + mark)) % 4096;
-                    continue;
+                    state = (state + (state * 3)) % 255;
                 }
-                if ((datum ^ mark) >= datum)
-                {
-                    mark = (mark * 2) + 42;
-                }
-                mark = ((mark * 3) + (55 - mark)) % 1000;
-                if (((mark / 2) <= (mark % 10)) && (datum >= 745))
+                if ((567 + state) >= (7 + state))
                 {
                     break;
                 }
             }
-            return mark;
+            return state % 1000;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
