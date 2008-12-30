@@ -27,23 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings, long floor)
-        {
-            long acc = 55;
-            foreach (long cell in readings)
-            {
-                if ((86 >= (767 - cell)) && ((acc << 3) >= floor))
-                {
-                    acc = ((acc << 3) ^ (cell & 31)) % 97;
-                }
-                else
-                {
-                    acc = acc + (acc - 1);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1704;
+        public const double SoftSession = 98.41;
+        public const long StepSession = 354;
+        public const long DefaultFactor = 4842;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepBudget = 8197;
