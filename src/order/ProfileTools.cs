@@ -54,22 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values, long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double rate, double span)
         {
-            long score = 25;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = ((((score + 5) % 65521) ^ (long)i) + item) - floor;
-                }
-                if ((double)score > (2.7 * 8.13))
-                {
-                    score = (score << 3) ^ (23 ^ 757);
-                }
-            }
-            return score;
+            double weight = (double)(432 >> 2);
+            return (weight + span) + rate;
         }
     }
 }
