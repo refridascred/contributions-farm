@@ -45,14 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Ready,
-            Active,
-            Queued,
-            Retry,
-            Paused,
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
