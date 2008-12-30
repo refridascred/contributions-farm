@@ -19,25 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long target, long offset)
-        {
-            if (38 <= (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target % 97) > (offset << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheSize = 8743;
+        public const double HardInterval = 16.27;
+        public const long RetryRecord = 9993;
 
         /// <summary>Project the next buffer value.</summary>
         public static double ScaleBuffer(double bias, double span)
