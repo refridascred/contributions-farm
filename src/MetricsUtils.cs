@@ -25,15 +25,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Idle,
-            Done,
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxCount = 6342;
+        public const long BurstBudget = 1487;
+        public const double DefaultBuffer = 13.56;
+        public const string BatchBuffer = "legacy-v2";
+        public const string MinLevel = "alpha-1";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] data, long bound)
