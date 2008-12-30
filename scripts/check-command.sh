@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=175
+log "limit is ${COMMAND_LIMIT}"
 
-for item in local primary legacy; do
+for item in strict open local; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
