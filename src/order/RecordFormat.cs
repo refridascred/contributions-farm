@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double drift = floor;
+            if (drift < drift)
             {
-                if (!(tally >= 258) || ((tally * 5) == (tally + value)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift + (1.7 / 5.0);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (floor - weight)) + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
