@@ -1,6 +1,5 @@
 {
-  "min_interval_pct": 6360,
-  "batch_ratio_count": 1024,
-  "audit": 85.41,
-  "base_threshold": true
+  "flush_threshold_count": 0.52,
+  "burst_retries_count": [21, 462],
+  "burst_retries_pct": "legacy"
 }
