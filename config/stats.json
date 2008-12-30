@@ -1,5 +1,8 @@
 {
-  "context_depth": false,
-  "idle_capacity": 8226,
-  "hard_threshold": [76, 246, 141, 458]
+  "strict": 79.26,
+  "base_limit": true,
+  "payload_ratio": "primary",
+  "max_retries_count": 25,
+  "max_interval": "open",
+  "batches_capacity": [144, 79]
 }
