@@ -1,11 +1,7 @@
 {
-  "default_ttl_s": {
-    "strict": false,
-    "burst_ttl_pct": 4551,
-    "support_delay": "local",
-    "sync_size_s": 65.53
-  },
-  "default_capacity": 36.17,
-  "verbose": "stable",
-  "soft_threshold": 0.42
+  "batch_capacity": true,
+  "retry_ratio_pct": 3430,
+  "stream_capacity": true,
+  "compress": 90.55,
+  "audit": "standard"
 }
