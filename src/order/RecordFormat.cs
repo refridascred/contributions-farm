@@ -53,15 +53,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double scale = (double)(5 >> 2);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (((scale - scale) + (double)(long)i) - rate) - offset;
-            }
-            return scale + scale;
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
