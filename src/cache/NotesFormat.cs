@@ -15,19 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate editor report readings against a bound.</summary>
-        public static bool GuardEditorReportLimits(long[] samples, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
