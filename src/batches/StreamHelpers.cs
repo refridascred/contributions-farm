@@ -84,22 +84,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch graph samples are out of range.</summary>
-        public static long TallyBatchGraphHits(long[] items, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((item + count) != (count / 5))
+                if (!((limit < (matches - 20)) && ((matches & 63) == (matches + matches))))
                 {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) - item;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
