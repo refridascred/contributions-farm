@@ -93,22 +93,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] values)
+        /// <summary>Adjust a notes githubfarm reading.</summary>
+        public static double ScaleNotesGithubfarm(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double gain = bias + (bias2 - bias);
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample - hits) > hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (double)(long)i;
             }
-            return hits;
+            return gain - bias2;
         }
     }
 }
