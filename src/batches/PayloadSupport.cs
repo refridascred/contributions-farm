@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstCount = 5577;
-        public const double StepRatio = 95.84;
-        public const long MaxLevel = 6654;
-        public const string SoftStream = "strict-edge";
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
