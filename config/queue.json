@@ -1,5 +1,18 @@
 {
-  "hard_delay": 15,
-  "compress": "edge",
-  "verbose": 93
+  "farm_interval": {
+    "base_capacity_s": 80.39,
+    "poll_limit_s": 3.42,
+    "soft_ttl": [378, 386, 111],
+    "dry_run": {
+      "readonly": ["cached", "staging", "latest"],
+      "idle_window": 2324,
+      "githubfarm_limit": 100,
+      "verbose": "fallback",
+      "session_size": 7
+    },
+    "poll_threshold": true,
+    "default_delay_pct": "strict"
+  },
+  "cache_threshold_count": ["blue", "staging", "fallback", "edge"],
+  "max_threshold": "latest"
 }
