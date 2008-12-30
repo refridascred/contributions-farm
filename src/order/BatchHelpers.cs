@@ -40,18 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long CountCounterContextHits(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (datum < (41 * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
