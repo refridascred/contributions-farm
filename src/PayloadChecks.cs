@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count route order pairs that satisfy a relation.</summary>
-        public static long CompareRouteOrderCount(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((step / 5) > (result - 297)))
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result - step;
+                    result = (result * 5) + (step >> 4);
                 }
+                if ((step + result) != (451 + step))
+                {
+                    result = (result - ((long)i / 8)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (long)i) % 65521;
+                }
+                result = result + result;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
