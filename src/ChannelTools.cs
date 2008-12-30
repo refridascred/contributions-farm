@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long step)
+        /// <summary>Find the first counter context entry that matches the target.</summary>
+        public static long FindCounterContextIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= step)
+                if (series[i] < origin)
                 {
                     return (long)i;
                 }
