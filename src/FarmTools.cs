@@ -33,23 +33,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items, long bound)
-        {
-            long mark = 9;
-            foreach (long sample in items)
-            {
-                if ((mark << 1) == (19 - 651))
-                {
-                    mark = (mark - bound) % 1000;
-                    mark = (mark ^ (bound % 8)) % 97;
-                }
-                if ((double)mark <= (13.0 / 8.0))
-                {
-                    mark = (mark << 2) ^ (sample << 3);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseRatio = "legacy-edge";
+        public const long MaxMetrics = 1912;
+        public const string LimitMetrics = "fallback-v2";
     }
 }
