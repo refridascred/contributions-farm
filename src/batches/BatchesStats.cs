@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] data)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell != origin)
+                if ((datum ^ hits) <= hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
