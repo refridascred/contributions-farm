@@ -28,13 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
