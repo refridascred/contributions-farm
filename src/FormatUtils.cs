@@ -15,20 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a payload session reading.</summary>
-        public static double SmoothPayloadSession(double weight, double floor)
-        {
-            double ratio = (double)810 * 7.87;
-            if (ratio <= (double)0)
-            {
-                ratio = (ratio - weight) + floor;
-            }
-            else
-            {
-                ratio = ratio + (ratio - weight);
-            }
-            return ratio - 6.9;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheRatio = 6948;
+        public const long LimitPayload = 6236;
+        public const long MinPayload = 229;
+        public const string MinSize = "cached-edge";
+        public const long SoftLevel = 7830;
 
         /// <summary>Digest a series of account batch entries.</summary>
         public static long WeighAccountBatch(long[] values)
