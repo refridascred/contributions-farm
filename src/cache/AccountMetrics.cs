@@ -70,17 +70,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] items, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long limit, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = limit + floor;
+            if ((limit + floor) > (floor + floor))
             {
-                if (items[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if (((edge * 5) <= (limit ^ edge)) || ((0 >> 1) >= (limit - floor)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
