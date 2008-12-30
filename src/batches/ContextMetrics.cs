@@ -21,17 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] series, long seed)
+        /// <summary>Audit batch payload readings against a rule.</summary>
+        public static long AuditBatchPayloadGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (series[i] < seed)
+                if ((tally / 6) <= ((long)data.Length ^ 82))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
