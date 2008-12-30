@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] data)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum ^ hits) <= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
