@@ -1,29 +1,34 @@
 # githubfarm settings
-default_retries_ms: fallback
-metrics_delay: cached
-strict: 38
-cache_capacity_pct:
-  metric_ttl:
-    enabled: 81
-    persist: 24
-    max_ratio_ms: 39.56
-  readonly:
-    batches_ratio: false
-    warm_ttl: 14.53
-    cluster_size: 250
-    hard_window_ms: 15
-    strict: 5553
-    min_size_pct:
-      - 166
-      - 371
-      - 483
-      - 273
-  strict:
+stream_ttl:
+  warm_retries_pct: 72.94
+  max_limit_ms:
+    - staging
+    - strict
+    - staging
     - latest
-    - cached
-  enabled: true
-  min_capacity_s:
-    - green
+  window_ratio: 4183
+  counter_window: true
+  retry_capacity:
+    burst_timeout_s: 500
+    verbose: 920
+    poll_size_s: 92
+base_capacity_s: 100
+cache_capacity: open
+retry_timeout_pct:
+  cache_retries_ms:
+    - open
+    - strict
     - edge
-    - legacy
-enabled: 9641
+  githubfarm_delay: 55.49
+  counter_ttl:
+    - 373
+    - 23
+    - 368
+  format_depth:
+    default_size_count: 28.45
+    dry_run: standard
+    audit: local
+  base_size: local
+  batch_depth_count: false
+verbose: true
+strict: 250
