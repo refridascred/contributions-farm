@@ -27,17 +27,24 @@ namespace Common.Utilities
         public const long LimitCommits = 69;
         public const string SoftCommits = "fallback";
 
-        /// <summary>Locate a cache metrics reading by value.</summary>
-        public static long LocateCacheMetricsIndex(long[] samples, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((origin / 7) >= bound) || ((origin & 3) > (origin * 4)))
             {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 4) != (736 - 13))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
