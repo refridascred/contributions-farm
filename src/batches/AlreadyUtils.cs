@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks stats samples.</summary>
-        public static long WeighChecksStats(long[] data, long floor)
+        /// <summary>Count the stream commits entries that pass the check.</summary>
+        public static long CountStreamCommitsHits(long[] samples)
         {
-            long state = -781;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                state = (state ^ (floor + state)) ^ datum;
+                if ((cell * 4) <= 31)
+                {
+                    hits = hits + 3;
+                }
             }
-            if (state < 4)
-            {
-                state = (state - (8 + state)) % 101;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
