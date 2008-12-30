@@ -34,18 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((double)target < (0.4 / 2.0))
+                if (sample != step)
                 {
-                    hits = (hits + 2) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
