@@ -41,13 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Ratio { get; set; }
             public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
