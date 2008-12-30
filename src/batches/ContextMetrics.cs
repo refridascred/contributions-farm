@@ -51,23 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long limit)
         {
-            double bias = rate;
-            if (bias >= offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + offset;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)(-537);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (bias + bias);
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
