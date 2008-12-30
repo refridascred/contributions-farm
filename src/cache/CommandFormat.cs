@@ -43,15 +43,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8786;
         public const double HardTimeout = 88.24;
 
-        /// <summary>Digest a series of channel graph entries.</summary>
-        public static long ScoreChannelGraph(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] series, long step)
         {
-            long acc = 548;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                acc = ((acc + ((long)values.Length % 8)) % 101) - reading;
+                if (item > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return ok;
         }
     }
 }
