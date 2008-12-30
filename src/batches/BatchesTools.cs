@@ -29,9 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "open-v2";
-        public const long LimitPayload = 842;
-        public const long IdleTimeout = 622;
+        /// <summary>Validate queue format readings against a bound.</summary>
+        public static bool GuardQueueFormatBounds(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
