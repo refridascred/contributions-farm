@@ -23,17 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score << 3) ^ (limit * 3);
-                score = score - (68 - score);
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Failed,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a profile info.</summary>
