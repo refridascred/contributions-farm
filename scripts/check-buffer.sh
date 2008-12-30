@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge local stable; do
+mode="${1:-latest}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached edge local; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=444
-log "limit is ${BUFFER_LIMIT}"
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
