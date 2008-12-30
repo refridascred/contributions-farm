@@ -29,19 +29,17 @@ namespace Common.Utilities
             return weight - (gain * 4.7);
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] values, long floor)
         {
-            double load = gain;
-            if (load <= (gain * 9.09))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - (double)911) + bias;
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)80) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Accumulate channel format samples.</summary>
