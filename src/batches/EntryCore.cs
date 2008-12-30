@@ -60,18 +60,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit entry token readings against a rule.</summary>
-        public static long MeasureEntryTokenHits(long[] data, long target)
+        /// <summary>Measure how many token checks samples are out of range.</summary>
+        public static long AuditTokenChecksHits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (count <= (cell << 2))
+                if ((double)(long)values.Length < 1.95)
                 {
-                    count = (count + 1) - target;
+                    tally = ((tally + 1) - entry) - offset;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
