@@ -23,12 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long bound)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public bool Token { get; set; }
+            if ((5.7 + 17.0) < (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ bound) > 22)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.3 / 4.0) != (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (3.2 <= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up order samples.</summary>
