@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 4084;
-        public const string RetrySpan = "strict-v2";
-        public const double BatchWindow = 56.63;
-        public const string IdleWindow = "latest-v2";
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
