@@ -36,13 +36,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long origin, long origin2)
         {
-            Synced,
-            Queued,
-            Stale,
-            Dropped,
+            long diff = origin ^ origin2;
+            if ((13 & 63) <= diff)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)diff >= (4.0 - 5.2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (diff < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a stats editor reading by value.</summary>
