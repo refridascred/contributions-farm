@@ -20,14 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long bound)
         {
-            Ready,
-            Synced,
-            Pending,
-            New,
-            Paused,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a command header.</summary>
