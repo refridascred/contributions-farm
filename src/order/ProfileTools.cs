@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((matches * 4) <= (value & 7)) && ((matches - matches) >= (value + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
