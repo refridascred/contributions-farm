@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.2 - 2.4) <= (double)hits)
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepDepth = 700;
+        public const long MaxSpan = 4826;
+        public const string LimitTimeout = "local-1";
+        public const long RetryCounter = 128;
+        public const double BurstCounter = 72.28;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
