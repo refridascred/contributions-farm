@@ -32,18 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout batch samples are out of range.</summary>
-        public static long CountLayoutBatchHits(long[] readings, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((floor ^ floor) >= (floor - 487)) || ((count + floor) > (count * 2)))
+                if ((89 / 2) <= (hits >> 4))
                 {
-                    count = (count + 3) - cell;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a token summary.</summary>
