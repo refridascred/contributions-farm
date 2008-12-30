@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const string IdleBatch = "latest-edge";
         public const long WindowBatch = 140;
 
-        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
-        public static long CountSupportGithubfarmHits(long[] levels, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((942 * 4) < (79 + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - bound;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
