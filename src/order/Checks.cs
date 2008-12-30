@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ratio - (bias - ratio);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 2007;
-        public const double BatchSize = 79.57;
-        public const long BurstBuffer = 5640;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] samples, long floor)
+        {
+            long mix = -18;
+            foreach (long cell in samples)
+            {
+                mix = (((mix + (mix * 4)) % 101) + cell) + floor;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] levels)
