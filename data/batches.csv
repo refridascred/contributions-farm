@@ -1,6 +1,8 @@
-id,rank,count,token,label
-1,open,29.47,fallback,101
-2,standard,3.55,144,768
-3,855,staging,407,30.94
-4,16.6,957,41.38,latest
-5,29.72,56.12,green,826
+id,count,owner
+1,fallback,local
+2,8.37,999
+3,888,green
+4,62,legacy
+5,blue,24.16
+6,72.66,360
+7,894,74.24
