@@ -80,18 +80,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits - 231) < datum)
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
