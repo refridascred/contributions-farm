@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=441
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=222
 log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in primary latest fallback; do
-    log "checking ${item}"
-done
