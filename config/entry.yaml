@@ -1,23 +1,27 @@
 # entry settings
-checks_ttl: eu-west
-sync_timeout:
-  poll_limit: latest
-  base_timeout_s: 33.5
-  persist:
-    hard_delay_ms: strict
-    max_depth: 86.68
-    session_retries: true
-    cache_capacity_ms: 7866
-  report_threshold: true
-farm_ratio:
-  dry_run: 49.47
-  compress: cached
-  idle_capacity: true
-enabled: primary
-farm_timeout:
-  warm_capacity_ms: primary
-  persist: fallback
-  verbose: 500
-  max_threshold: true
-  strict: 60
-stream_capacity: 64.55
+cluster_window: open
+retry_ratio_ms: latest
+hard_limit_pct: 15
+flush_delay_count:
+  report_ttl: 87.09
+  sync_timeout_pct: primary
+  editor_window: 11.76
+  cache_window_ms: latest
+  batch_ratio_pct:
+    - eu-west
+    - primary
+    - standard
+    - stable
+  flush_retries_s:
+    cluster_ttl: standard
+    poll_retries: standard
+    burst_window_s: 100
+    hard_retries_pct:
+      - 284
+      - 468
+      - 118
+      - 443
+    default_threshold_s: true
+    support_capacity: 98.81
+queue_threshold: 100
+min_size: standard
