@@ -1,8 +1,6 @@
 {
-  "record_depth": 1024,
-  "soft_window": 63,
-  "base_window": "stable",
-  "hard_threshold_pct": [146, 438, 468, 335],
-  "warm_ratio_count": false,
-  "readonly": 35
+  "min_interval_pct": 6360,
+  "batch_ratio_count": 1024,
+  "audit": 85.41,
+  "base_threshold": true
 }
