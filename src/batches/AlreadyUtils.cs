@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((entry * 4) < (entry << 3))
+                if ((bound + bound) == (sample - bound))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
