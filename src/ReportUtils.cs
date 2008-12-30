@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "local-v2";
-        public const double HardScore = 79.27;
-        public const long HardLevel = 7978;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long seed, long offset)
+        {
+            if (!(7 >= (offset ^ seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + offset) >= (484 & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.0 - 0.44) >= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed > (offset - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long floor, long origin)
