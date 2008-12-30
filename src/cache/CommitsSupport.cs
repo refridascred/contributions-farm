@@ -29,11 +29,18 @@ namespace Common.Utilities
             return ratio + (offset / 5.0);
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double bias, double floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            double ratio = (double)97 * 7.56;
-            return (ratio - bias) + floor;
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally + tally) > (value * 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the editor buffer series from a seed.</summary>
