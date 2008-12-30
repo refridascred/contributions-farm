@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const long StepLevel = 1154;
         public const double CacheMetrics = 61.84;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            double drift = gain;
+            if (drift < (double)3)
+            {
+                drift = drift + (1.65 + drift);
+            }
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (3.51 / 3.0)) + (double)(long)i;
+            }
+            return drift - (double)(-145);
         }
     }
 }
