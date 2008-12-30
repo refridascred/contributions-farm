@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "strict-1";
-        public const double DefaultLevel = 11.41;
-        public const string HardBatches = "latest-v2";
-        public const string BatchWidth = "staging-1";
-        public const long MaxDepth = 8554;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            New,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheBudget = 5165;
