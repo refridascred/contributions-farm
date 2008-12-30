@@ -39,12 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 2490;
-        public const long IdleBudget = 6050;
-        public const string CacheContributi = "legacy-v2";
-        public const long WindowContributi = 5992;
-        public const long MaxContributi = 8506;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double bias2)
+        {
+            double ratio = bias2;
+            if (ratio <= (ratio * 3.9))
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            return ratio + (double)13;
+        }
 
         /// <summary>Combine already record values into a single score.</summary>
         public static long TallyAlreadyRecord(long[] values, long origin)
