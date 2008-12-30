@@ -33,14 +33,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Done,
-            Idle,
-            Paused,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "open-v2";
+        public const long LimitPayload = 842;
+        public const long IdleTimeout = 622;
     }
 }
