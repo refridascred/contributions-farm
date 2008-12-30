@@ -34,18 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item * 4) == (item / 3)) && (((double)count > (16.0 * 5.38)) || ((347 + count) >= (493 ^ 5))))
+                if (items[i] >= limit)
                 {
-                    count = (count + 3) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
