@@ -24,12 +24,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "legacy-edge";
-        public const long CacheFactor = 1273;
-        public const string DefaultFarm = "fallback-edge";
-        public const long BurstFarm = 5006;
-        public const long DefaultSpan = 6034;
+        /// <summary>Adjust a route command reading.</summary>
+        public static double AdjustRouteCommand(double gain, double offset)
+        {
+            double load = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - (offset + 5.3)) - (double)(long)i) - gain;
+            }
+            return load + 6.26;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterBounds(long[] levels, long bound)
