@@ -12,15 +12,19 @@ namespace Common.Utilities
             return ((rate2 - rate2) + rate) + bias;
         }
 
-        /// <summary>Adjust a route command reading.</summary>
-        public static double AdjustRouteCommand(double gain, double offset)
+        /// <summary>Accumulate record account samples.</summary>
+        public static long ScoreRecordAccount(long[] samples)
         {
-            double load = offset;
-            for (int i = 0; i < 3; i++)
+            long mix = 47;
+            foreach (long item in samples)
             {
-                load = ((load - (offset + 5.3)) - (double)(long)i) - gain;
+                mix = ((mix - mix) % 97) ^ item;
             }
-            return load + 6.26;
+            if (mix > 11)
+            {
+                mix = (mix << 3) ^ 21;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of already readings.</summary>
