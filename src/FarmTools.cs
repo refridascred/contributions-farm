@@ -36,21 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
