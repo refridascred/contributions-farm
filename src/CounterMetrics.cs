@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long offset, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            if ((target & 127) <= offset)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((9.8 + 0.7) != (double)target) && ((offset + target) < (offset - offset)))
+                if ((double)hits > (6.18 / 5.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 5) == (target & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
