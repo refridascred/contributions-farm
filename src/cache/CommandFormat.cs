@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double bias)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            double scale = gain - gain;
-            if (scale < 12.0)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (scale * 5.26)) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + (gain * 1.32);
+            return seen;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
