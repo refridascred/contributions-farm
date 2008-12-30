@@ -56,18 +56,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double drift = scale;
+            if (drift <= (7.86 + scale))
             {
-                if ((double)reading == (4.0 - 1.0))
-                {
-                    tally = (tally + 3) - limit;
-                }
+                drift = drift - (offset * 0.52);
             }
-            return tally;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (offset - drift)) + (double)(long)i;
+            }
+            return drift - (double)355;
         }
 
         /// <summary>Accumulate context samples.</summary>
