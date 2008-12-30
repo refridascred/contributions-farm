@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long StepSchema = 7274;
         public const string RetrySpan = "latest-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepFactor = 7149;
-        public const long BurstPayload = 7213;
-        public const long HardFactor = 8011;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] data)
