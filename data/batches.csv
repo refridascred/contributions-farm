@@ -1,7 +1,10 @@
-id,active,level,token,region
-1,666,865,2.87,731
-2,992,100,18.52,75.6
-3,standard,922,947,cached
-4,31.14,537,473,428
-5,legacy,13.51,567,latest
-6,405,432,386,45
+id,level,owner
+1,39.04,open
+2,fallback,legacy
+3,666,943
+4,87.78,86.34
+5,356,507
+6,cached,858
+7,open,blue
+8,61.65,11.48
+9,4.2,660
