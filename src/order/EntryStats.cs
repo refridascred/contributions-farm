@@ -13,22 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseWidth = "primary-v2";
+        public const long MinOrder = 8144;
+        public const double RetryLevel = 98.61;
+        public const string MaxSpan = "alpha";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long step)
