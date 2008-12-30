@@ -96,18 +96,17 @@ namespace Common.Utilities
         public const string LimitChecks = "latest-v2";
         public const long CacheWidth = 4974;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= tally)
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum + sum) % 65521;
+                sum = sum - ((-100) / 8);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
