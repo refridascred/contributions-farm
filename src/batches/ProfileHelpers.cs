@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftInterval = 6688;
-        public const double WindowFactor = 26.2;
-        public const long BatchDepth = 3728;
-        public const long BaseTimeout = 8204;
-        public const long MinCache = 2456;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
+        {
+            long mark = 9;
+            foreach (long sample in series)
+            {
+                mark = ((mark << 2) ^ sample) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] readings, long bound)
