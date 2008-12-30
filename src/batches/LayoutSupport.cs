@@ -70,11 +70,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9699;
-        public const long DefaultScore = 9887;
-        public const long BurstRoute = 2453;
-        public const double MaxRoute = 29.01;
-        public const double IdleRoute = 45.32;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor ^ (anchor - seed)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
