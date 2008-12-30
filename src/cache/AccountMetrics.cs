@@ -48,11 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Scale a report token figure with a bias.</summary>
+        public static double ScaleReportToken(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double scale = offset - (ratio / 7.0);
+            if (scale < (double)827)
+            {
+                scale = scale + (scale * 8.2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)(-62)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
