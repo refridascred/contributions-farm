@@ -42,19 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] data, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading != bound)
+                if ((step * 2) == ((long)i % 24))
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 2) ^ 7) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
     }
 }
