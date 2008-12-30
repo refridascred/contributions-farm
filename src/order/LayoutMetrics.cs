@@ -28,18 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm report samples are out of range.</summary>
-        public static long TallyFarmReportGaps(long[] data)
+        /// <summary>Look up the position of a batches schema sample.</summary>
+        public static long SeekBatchesSchemaIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + seen) > (item + 976))
+                if (values[i] <= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
