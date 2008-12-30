@@ -16,21 +16,18 @@ namespace Common.Utilities
             return bias - (rate / 7.0);
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 556;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)offset == (double)cell)
                 {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state * 3) + offset;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
