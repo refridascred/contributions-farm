@@ -51,13 +51,11 @@ namespace Common.Utilities
         public const long MinLevel = 3994;
         public const long RetryRoute = 2415;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSize = 5925;
+        public const double BaseRoute = 16.33;
+        public const double SoftFactor = 41.08;
+        public const long SoftRoute = 9721;
 
         /// <summary>Compare every pair of entry account readings.</summary>
         public static long OverlapEntryAccountCount(long[] data)
