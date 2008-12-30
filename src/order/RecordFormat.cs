@@ -53,24 +53,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            double scale = (double)(5 >> 2);
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound >> 1) > (long)i)
-                {
-                    sum = (sum + ((long)i + bound)) % 1000;
-                    sum = (sum ^ (long)i) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 4) + bound;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                scale = (((scale - scale) + (double)(long)i) - rate) - offset;
             }
-            return sum;
+            return scale + scale;
         }
     }
 }
