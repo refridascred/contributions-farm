@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 0;
+            foreach (long item in data)
             {
-                sum = sum ^ (long)i;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (floor > item)
+                {
+                    mix = (mix << 3) ^ (mix - (-52));
+                }
             }
-            return sum;
+            if (mix > 190)
+            {
+                mix = ((mix << 3) ^ (938 + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
