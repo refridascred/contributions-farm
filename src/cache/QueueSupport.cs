@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every payload context entry stays within the limit.</summary>
-        public static bool VerifyPayloadContextBounds(long[] items, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (sample <= offset)
+                if ((item + item) <= count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit payload counter readings against a rule.</summary>
