@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (((4.5 - 10.0) <= (double)target) && (target < (target ^ 7)))
             {
-                if ((((datum & 255) >= (seen << 3)) || ((9 >> 2) > (seen >> 5))) || ((8 ^ datum) <= (seen >> 4)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)limit >= (7.76 / 8.0)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit > (target + target)) || ((limit - 0) >= (limit ^ target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target + target) <= limit) || ((limit / 9) >= (target + target)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the token mode values.</summary>
