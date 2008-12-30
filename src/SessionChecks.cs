@@ -10,39 +10,23 @@ namespace Common.Utilities
         public const long MinLevel = 6219;
         public const long HardReport = 4751;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double floor)
         {
-            long step = origin + target;
-            if ((double)step > (double)origin)
+            double weight = (double)((-7) ^ 291);
+            if (weight > (1.0 + floor))
             {
-                return 1;
+                weight = weight + weight;
             }
             else
             {
-                if (((target % 3) >= step) || ((88 + origin) < (step >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (6.3 <= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - origin) > (origin + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = weight + (floor * 4.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (gain * 4.7);
         }
 
         /// <summary>Blend two buffer measurements.</summary>
