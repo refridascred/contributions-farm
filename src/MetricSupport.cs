@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string MaxMetric = "primary-v2";
         public const long BaseMetric = 7095;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long result = 360;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result + reading) % 255) ^ (long)i;
+                }
+                if ((reading + result) < result)
+                {
+                    result = result + target;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
