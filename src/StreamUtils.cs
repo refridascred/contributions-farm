@@ -62,22 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally - limit) <= (entry / 6))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
