@@ -15,18 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data, long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((((count % 7) > count) || (floor >= (count & 127))) || !((datum << 3) <= (count - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
