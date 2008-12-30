@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long StepSchema = 7274;
         public const string RetrySpan = "latest-edge";
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Project the next support token value.</summary>
+        public static double ProjectSupportToken(double weight, double offset)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            double ratio = weight;
+            if (ratio > (offset / 2.0))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - offset) - (double)(long)i;
+            }
+            return ratio + (offset / 5.0);
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
