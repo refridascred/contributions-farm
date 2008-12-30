@@ -47,18 +47,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = 12;
+            foreach (long sample in samples)
             {
-                if ((30 - 233) > (hits >> 5))
+                if ((double)step == (double)sample)
                 {
-                    hits = (hits + 1) + entry;
+                    mark = ((mark << 2) ^ (sample << 3)) % 255;
                 }
             }
-            return hits;
+            if (mark > 453)
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
