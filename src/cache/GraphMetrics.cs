@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + count) >= datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
