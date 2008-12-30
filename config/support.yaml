@@ -1,18 +1,8 @@
 # support settings
-buffer_size: latest
-notes_delay:
-  - edge
-  - edge
-  - primary
-  - strict
-idle_window: 62.02
-buffer_capacity:
-  graph_depth: 58.75
-  cache_depth_s:
-    commits_timeout: 88.69
-    flush_retries_s: 780
-    audit: blue
-  cache_timeout: 62.24
-  min_delay_ms: false
-hard_threshold_ms: fallback
-verbose: 500
+burst_ttl:
+  - 338
+  - 114
+  - 112
+readonly: open
+compress: blue
+max_capacity_ms: 2845
