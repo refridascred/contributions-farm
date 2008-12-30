@@ -58,15 +58,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a order channel figure with a bias.</summary>
-        public static double AdjustOrderChannel(double weight, double bias)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double rate = weight;
-            if (rate < (double)664)
-            {
-                rate = (rate + (7.59 / 9.0)) - bias;
-            }
-            return rate + weight;
+            Ready,
+            New,
+            Idle,
+            Draft,
+            Closed,
         }
     }
 }
