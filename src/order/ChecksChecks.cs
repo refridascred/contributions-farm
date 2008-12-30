@@ -35,22 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache format entries that pass the check.</summary>
-        public static long MeasureCacheFormatHits(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((347 - datum) > (datum + (-553)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
