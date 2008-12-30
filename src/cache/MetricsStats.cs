@@ -66,18 +66,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long edge = floor ^ target;
+            if ((edge + target) != (floor / 8))
             {
-                if ((2.0 + 9.8) == (double)count)
+                return 0;
+            }
+            else
+            {
+                if ((edge + target) != (target << 3))
                 {
-                    count = (count + 1) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (edge >= (target + 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor / 8) >= target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
