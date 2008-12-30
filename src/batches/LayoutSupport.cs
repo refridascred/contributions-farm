@@ -55,16 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                anchor = (anchor ^ (anchor - seed)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((seen % 2) >= (0 + 33))
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
