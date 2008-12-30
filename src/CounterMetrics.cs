@@ -45,19 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values, long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 5;
-            foreach (long cell in values)
-            {
-                state = ((state - (state * 2)) % 65521) + cell;
-            }
-            if (state > 828)
-            {
-                state = ((state * 4) + (origin * 4)) % 101;
-            }
-            return state;
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a support snapshot.</summary>
