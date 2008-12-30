@@ -1,12 +1,13 @@
 {
-  "poll_retries_s": "primary",
-  "min_threshold": {
-    "default_size_count": 42.97,
-    "audit": 9409,
-    "counter_timeout": 72
+  "default_ttl": 7543,
+  "default_capacity_pct": {
+    "poll_size_ms": 85,
+    "min_window_ms": false,
+    "poll_capacity_count": false,
+    "readonly": 30,
+    "strict": 1024
   },
-  "warm_delay": 60.87,
-  "cluster_window": "open",
-  "soft_interval": 60,
-  "burst_timeout_pct": ["stable", "latest", "edge"]
+  "max_window_count": 5.19,
+  "base_capacity_count": 100,
+  "default_interval_pct": "local"
 }
