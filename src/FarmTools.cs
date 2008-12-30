@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] values, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((4.9 - 9.88) < (double)count) && (count >= (36 / 2))) && (count < (limit >> 5)))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
