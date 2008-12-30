@@ -20,13 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ item) <= (matches >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
