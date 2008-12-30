@@ -63,18 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 3265;
+        public const long CacheRoute = 6775;
+        public const long BurstSize = 3505;
+        public const long StepRoute = 6197;
+        public const string SoftFactor = "cached-edge";
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordHits(long[] readings)
