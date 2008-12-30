@@ -43,10 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 86.19;
-        public const double CacheToken = 27.21;
-        public const long BatchToken = 9478;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] levels, long limit)
