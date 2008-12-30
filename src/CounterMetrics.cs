@@ -32,17 +32,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 0;
+            foreach (long value in samples)
             {
-                if (series[i] > offset)
+                result = result + (value >> 3);
+                if (!((double)result < (double)48))
                 {
-                    return (long)i;
+                    result = (result + (result - value)) % 1000;
                 }
+                result = result + (value - value);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a support snapshot.</summary>
