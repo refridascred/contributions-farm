@@ -1,9 +1,5 @@
 {
-  "strict": {
-    "readonly": "cached",
-    "record_capacity": 67,
-    "retry_interval_count": 60
-  },
-  "verbose": 53,
-  "burst_capacity": ["cached", "cached", "latest", "latest"]
+  "batch_ttl": ["edge", "latest"],
+  "idle_limit_pct": false,
+  "command_depth": false
 }
