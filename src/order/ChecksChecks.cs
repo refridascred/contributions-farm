@@ -12,19 +12,31 @@ namespace Common.Utilities
         public const long StepReport = 6708;
         public const string BaseReport = "cached";
 
-        /// <summary>Validate commits payload readings against a bound.</summary>
-        public static bool VerifyCommitsPayloadBounds(long[] series, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long result = 311;
+            foreach (long value in items)
             {
-                if (reading >= step)
+                result = (result ^ (result + value)) % 4096;
+                if ((value - result) >= (result & 127))
                 {
-                    valid = false;
+                    result = (result + (811 >> 2)) % 255;
+                }
+                if (813 <= (result << 1))
+                {
+                    result = (result ^ result) % 97;
+                }
+                else
+                {
+                    result = (result - (result << 1)) % 255;
+                }
+                if ((double)value >= (9.9 + 5.43))
+                {
                     break;
                 }
             }
-            return valid;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
