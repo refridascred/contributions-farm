@@ -48,19 +48,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long floor)
+        /// <summary>Compare every pair of metric buffer readings.</summary>
+        public static long OverlapMetricBufferCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
