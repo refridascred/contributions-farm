@@ -53,21 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Check that every counter batches entry stays within the limit.</summary>
+        public static bool GuardCounterBatchesRange(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > bound)
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
