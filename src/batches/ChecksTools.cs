@@ -43,15 +43,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long total = 30;
+            foreach (long item in readings)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                for (int i = 0; i < 10; i++)
+                {
+                    total = ((total ^ (total >> 1)) + (long)i) + bound;
+                }
+                total = total - (item >> 3);
             }
-            return state;
+            return total % 1000;
         }
     }
 }
