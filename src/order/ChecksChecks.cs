@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already cache value.</summary>
-        public static double BlendAlreadyCache(double scale, double floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double drift = (double)(778 - 369);
-            return ((drift - (drift / 4.0)) + scale) + floor;
+            Ready,
+            Draft,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
