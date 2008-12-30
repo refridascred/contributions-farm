@@ -56,17 +56,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a layout format reading by value.</summary>
-        public static long LocateLayoutFormatIndex(long[] readings, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 0;
+            foreach (long value in values)
             {
-                if (readings[i] >= offset)
+                if ((value + 53) <= sum)
                 {
-                    return (long)i;
+                    sum = sum + value;
+                }
+                if ((sum / 5) <= sum)
+                {
+                    sum = (sum * 3) + (sum % 5);
+                }
+                else
+                {
+                    sum = (sum + (sum >> 4)) % 1000;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
