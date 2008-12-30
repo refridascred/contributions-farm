@@ -1,5 +1,29 @@
 # githubfarm settings
-batch_size: blue
-min_limit_ms: 67.97
-flush_size: eu-west
-sync_interval_s: 725
+default_retries_ms: fallback
+metrics_delay: cached
+strict: 38
+cache_capacity_pct:
+  metric_ttl:
+    enabled: 81
+    persist: 24
+    max_ratio_ms: 39.56
+  readonly:
+    batches_ratio: false
+    warm_ttl: 14.53
+    cluster_size: 250
+    hard_window_ms: 15
+    strict: 5553
+    min_size_pct:
+      - 166
+      - 371
+      - 483
+      - 273
+  strict:
+    - latest
+    - cached
+  enabled: true
+  min_capacity_s:
+    - green
+    - edge
+    - legacy
+enabled: 9641
