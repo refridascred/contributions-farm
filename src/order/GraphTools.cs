@@ -51,17 +51,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] data, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                anchor = (anchor + 9) % 101;
-                anchor = (anchor - offset) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (((12 + bound) > (6 + matches)) || ((double)bound != (8.4 + 1.78)))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
