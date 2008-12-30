@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series, long floor)
         {
-            double drift = weight / 6.0;
-            return drift + (bias + 2.1);
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (floor >= (sample - sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
