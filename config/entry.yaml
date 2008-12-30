@@ -1,7 +1,14 @@
 # entry settings
-retry_capacity_pct: staging
-farm_limit:
-  - green
-  - blue
-payload_threshold: 18
-strict: 30
+cache_capacity_count: 77
+account_depth: staging
+min_ratio:
+  hard_depth_pct: legacy
+  readonly: true
+  batch_retries_ms: 26.83
+  stats_limit: 500
+  default_threshold: staging
+cache_retries: true
+warm_depth_ms:
+  - cached
+  - latest
+hard_capacity_ms: 97.08
