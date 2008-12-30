@@ -19,19 +19,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double drift = (double)((-32) / 7);
-            if (drift <= 0.32)
-            {
-                drift = drift - (weight / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift - bias)) + (double)(long)i;
-            }
-            return drift + (4.94 * 3.0);
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
