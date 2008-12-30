@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            Retry,
-            New,
-            Locked,
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)result <= (double)425)
+                {
+                    result = (result * 5) + ((long)i >> 4);
+                }
+                else
+                {
+                    result = result - (target % 16);
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter options.</summary>
