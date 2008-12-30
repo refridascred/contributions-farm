@@ -35,39 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long bound2)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long step = bound + bound2;
-            if (!((step / 7) < (bound - bound2)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((2 & 63) <= (step / 2)) && ((bound2 + bound2) <= (step % 24)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound2) >= bound2)
+                    if ((data[i] + data[j]) > 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound2 > bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
