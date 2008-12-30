@@ -81,18 +81,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!(((double)count < 7.0) && ((count + datum) >= (datum & 127))))
+                if (entry < step)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
