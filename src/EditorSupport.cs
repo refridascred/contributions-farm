@@ -31,17 +31,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every checks entry entry stays within the limit.</summary>
