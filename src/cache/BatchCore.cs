@@ -54,26 +54,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (total >= (741 >> 2))
-                {
-                    total = total - ((long)i ^ total);
-                    total = total + 966;
-                }
-                else
-                {
-                    total = (total + (offset - offset)) % 97;
-                }
-                total = ((total << 3) ^ (591 << 1)) % 101;
-                total = ((total << 3) ^ offset) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5642;
+        public const long BurstCommits = 1770;
+        public const long MinDepth = 1594;
     }
 }
