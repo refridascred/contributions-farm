@@ -50,19 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
