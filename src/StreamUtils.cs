@@ -64,13 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheCount = "latest-1";
+        public const long SoftGraph = 7120;
+        public const long LimitGraph = 4;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] samples, long limit)
