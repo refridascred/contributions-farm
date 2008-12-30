@@ -37,23 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the commits account series from a seed.</summary>
-        public static long StepCommitsAccount(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((389 / 2) < (tally - 1)))
                 {
-                    carry = ((carry ^ ((-1) - 6)) % 255) ^ (long)i2;
+                    tally = (tally + 3) ^ entry;
                 }
-                if (((carry - (long)i) >= ((long)i ^ origin)) && (3.54 > (double)carry))
-                {
-                    carry = carry - (long)i;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
