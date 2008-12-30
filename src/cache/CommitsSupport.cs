@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long seed)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + (seed / 5)) % 1000;
-                if (!((15.0 + 4.0) < (double)sample))
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
                 {
-                    acc = acc - (sample ^ acc);
-                    acc = (acc + (acc + 9)) % 1000;
+                    return (long)i;
                 }
-                acc = acc - sample;
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
