@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every stream context entry stays within the limit.</summary>
-        public static bool CheckStreamContextLimits(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleSpan = 35.35;
+        public const double HardCommand = 73.19;
+        public const long BatchTimeout = 8063;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
