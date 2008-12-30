@@ -65,22 +65,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long result = -33;
-            foreach (long value in series)
-            {
-                if (result > (value % 12))
-                {
-                    result = ((result << 3) ^ 779) % 97;
-                }
-            }
-            if (result < 508)
-            {
-                result = ((result * 3) + (-464)) % 255;
-            }
-            return result % 65521;
+            Draft,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Scale a report token figure with a bias.</summary>
