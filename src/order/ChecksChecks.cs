@@ -36,9 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8952;
-        public const double BaseCluster = 11.4;
-        public const long SoftDepth = 4586;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score ^ (floor ^ (long)i)) % 4096) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
