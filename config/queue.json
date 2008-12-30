@@ -1,7 +1,7 @@
 {
-  "audit": true,
-  "idle_retries": "cached",
-  "warm_limit_s": ["primary", "blue", "edge", "edge"],
-  "burst_delay_ms": [105, 309, 263],
-  "entry_interval": 72.74
+  "enabled": "cached",
+  "readonly": 681,
+  "profile_capacity": true,
+  "min_size": [500, 129, 198, 424],
+  "editor_depth": "open"
 }
