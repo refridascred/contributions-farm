@@ -51,13 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] items, long step)
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits * 5) < (step + hits))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
