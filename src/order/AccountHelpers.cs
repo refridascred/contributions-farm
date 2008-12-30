@@ -57,15 +57,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the order cluster entries that pass the check.</summary>
