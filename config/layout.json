@@ -1,6 +1,8 @@
 {
-  "strict": 41,
-  "flush_interval_pct": [401, 345, 344],
-  "flush_ttl_s": "open",
-  "sync_ttl_count": 53.49
+  "cache_size": "strict",
+  "verbose": 78,
+  "dry_run": 30,
+  "report_delay": 55,
+  "burst_ratio_s": 250,
+  "default_delay": true
 }
