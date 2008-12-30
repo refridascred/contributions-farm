@@ -42,14 +42,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Derive the next token queue value from a seed.</summary>
+        public static long RollTokenQueue(long step)
         {
-            Retry,
-            Dropped,
-            Pending,
-            Paused,
-            Active,
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score << 3) ^ (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
