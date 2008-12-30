@@ -42,19 +42,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batch stream entry stays within the limit.</summary>
-        public static bool ValidateBatchStreamLimits(long[] samples, long target)
+        /// <summary>Count channel record pairs that satisfy a relation.</summary>
+        public static long OverlapChannelRecordCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a filter schema counter forward.</summary>
