@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const long HardInterval = 7166;
         public const long IdleInterval = 4532;
 
-        /// <summary>Rank window cluster input into a small class.</summary>
-        public static long RankWindowCluster(long limit, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            long delta = limit + seed;
-            if ((seed / 6) <= (delta * 3))
+            double rate = floor;
+            if (rate < (rate - ratio))
             {
-                return 5;
+                rate = rate - 4.9;
             }
             else
             {
-                if ((seed < (delta + 850)) || (((-2) ^ delta) > (delta - delta)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed & 7) > delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)(-511) >= (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                rate = rate - floor;
             }
+            return rate - (ratio + 5.1);
         }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
