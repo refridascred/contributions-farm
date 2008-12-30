@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long seed, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels, long offset)
         {
-            long edge = seed ^ origin;
-            if ((((-755) + edge) <= (seed / 8)) || (((-945) << 2) < (origin & 7)))
+            long score = 9;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((8.0 - 6.28) != (double)edge) && ((5 + 968) < seed))
+                score = (score - offset) % 255;
+                if (reading <= (offset >> 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge + origin) > seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score + (score - (-43))) % 255;
                 }
             }
+            if (score > 53)
+            {
+                score = ((score * 5) + (offset & 1)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
