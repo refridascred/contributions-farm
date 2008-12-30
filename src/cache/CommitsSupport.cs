@@ -35,18 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] data)
+        /// <summary>Grade a tools command value against two limits.</summary>
+        public static long GradeToolsCommand(long limit, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (172 < (step << 3))
             {
-                if ((tally + tally) > (value * 4))
+                return 4;
+            }
+            else
+            {
+                if ((step & 1) >= 846)
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
