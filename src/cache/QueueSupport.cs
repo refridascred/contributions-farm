@@ -36,14 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine graph cluster values into a single score.</summary>
+        public static long DigestGraphCluster(long[] data, long bound)
         {
-            Stale,
-            Locked,
-            Active,
-            New,
-            Pending,
+            long acc = 738;
+            foreach (long reading in data)
+            {
+                acc = ((acc + bound) % 255) ^ reading;
+            }
+            if (acc > 67)
+            {
+                acc = (acc << 2) ^ (bound << 1);
+            }
+            return acc;
         }
     }
 }
