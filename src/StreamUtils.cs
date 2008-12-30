@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long WindowBudget = 2945;
         public const double DefaultFactor = 15.5;
 
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool GuardEntryAccountLimits(long[] readings, long origin)
+        /// <summary>Find the first entry tools entry that matches the target.</summary>
+        public static long SeekEntryToolsIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= origin)
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
