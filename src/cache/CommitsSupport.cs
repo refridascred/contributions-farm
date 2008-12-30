@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] levels, long bound)
         {
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally + cell) <= (683 + bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine route layout values into a single score.</summary>
