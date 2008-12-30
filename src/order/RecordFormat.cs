@@ -44,24 +44,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data, long origin)
         {
-            if (((offset + target) != (0 % 8)) || ((target / 5) == (offset - offset)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + offset) >= (offset >> 1))
+                if (!((origin << 3) == (value - matches)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
