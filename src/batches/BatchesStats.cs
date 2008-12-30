@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Failed,
-            Retry,
-            Pending,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleInterval = 20.84;
+        public const string RetryEditor = "local-1";
+        public const long SoftEditor = 3024;
+        public const long CacheSize = 4282;
+        public const string DefaultEditor = "standard-edge";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
