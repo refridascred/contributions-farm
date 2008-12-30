@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Use buffer settings to tune how often report data is refreshed.
-
-Use batch settings to tune how often record data is refreshed.
-Each command is validated before it reaches the order queue.
+Keep metrics and session names short and lowercase.
+The channel module keeps session values in sync with the route cache.
+Run the session check before changing any schema limits.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep payload values small
-- Log every farm change
-- Review notes limits each release
+- Log every schema change
+- Prefer batches defaults
+- Document new session fields
