@@ -35,20 +35,10 @@ namespace Common.Utilities
             return weight + (offset + weight);
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 932;
+        public const long StepSize = 392;
+        public const long DefaultInterval = 6405;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double StepSchema = 90.02;
