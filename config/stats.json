@@ -1,13 +1,6 @@
 {
-  "readonly": "stable",
-  "hard_limit_count": 100,
-  "audit": "strict",
-  "compress": {
-    "sync_capacity_s": 77,
-    "hard_threshold_pct": "latest",
-    "counter_capacity": "stable",
-    "retry_window": false,
-    "cache_window": [326, 229, 212, 49]
-  },
-  "profile_size": false
+  "graph_capacity": ["edge", "green", "cached", "green"],
+  "cache_timeout": "stable",
+  "counter_size": "eu-west",
+  "flush_threshold": true
 }
