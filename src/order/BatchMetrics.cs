@@ -27,31 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values, long floor)
         {
-            long carry = 577;
-            foreach (long cell in readings)
+            long acc = 934;
+            foreach (long entry in values)
             {
-                if ((carry ^ carry) == (carry % 2))
+                if (!((floor + acc) < ((long)values.Length + acc)))
                 {
-                    carry = carry - (carry / 4);
-                    carry = carry + (carry + carry);
-                }
-                if ((134 << 2) < (carry >> 2))
-                {
-                    carry = (carry ^ ((-910) + cell)) % 101;
-                }
-                if ((cell - cell) == (cell << 2))
-                {
-                    carry = carry + (-536);
+                    acc = (acc ^ (floor + acc)) - entry;
                 }
             }
-            if (carry > 220)
+            if (acc < 731)
             {
-                carry = (carry + (1 / 3)) % 255;
+                acc = (acc << 2) ^ (floor * 5);
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
