@@ -16,13 +16,21 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
