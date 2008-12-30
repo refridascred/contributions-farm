@@ -47,12 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Paused,
-            Pending,
-            Ready,
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
