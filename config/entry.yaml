@@ -1,4 +1,36 @@
 # entry settings
-hard_interval_count: 1403
-hard_delay_ms: 1024
-flush_limit: primary
+token_retries:
+  - strict
+  - staging
+  - legacy
+  - strict
+stats_timeout: true
+cache_window_s: true
+readonly:
+  route_size:
+    - 88
+    - 379
+    - 299
+    - 12
+  farm_window: 5152
+  audit:
+    max_threshold_pct: 30
+    verbose:
+      - 100
+      - 28
+      - 384
+      - 209
+    soft_window_s: open
+  batch_capacity: 88.88
+  sync_capacity_count:
+    flush_delay_s: fallback
+    cluster_threshold: edge
+    profile_window: 13.44
+    default_ratio_ms: 71.86
+    verbose: standard
+    cache_retries:
+      - 483
+      - 320
+      - 383
+  graph_threshold: 500
+max_size_ms: green
