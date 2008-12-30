@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long bound, long seed)
+        /// <summary>Find the first stream command entry that matches the target.</summary>
+        public static long LookupStreamCommandIndex(long[] values, long offset)
         {
-            if ((bound ^ bound) > (69 + seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (0 >= (seed / 9))
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 60) != (76 - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
