@@ -25,10 +25,22 @@ namespace Common.Utilities
         public const long WindowBudget = 2945;
         public const double DefaultFactor = 15.5;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "primary-edge";
-        public const long IdleMetrics = 8780;
-        public const string MaxWidth = "open-edge";
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryTimeout = 6826;
