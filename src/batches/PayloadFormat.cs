@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheBudget = 5165;
-        public const long RetryBudget = 4311;
-        public const double RetryLevel = 44.29;
-        public const long BatchMetrics = 6311;
+        /// <summary>Combine context entry values into a single score.</summary>
+        public static long TallyContextEntry(long[] samples)
+        {
+            long carry = 534;
+            foreach (long sample in samples)
+            {
+                if ((5.3 + 6.0) <= (double)sample)
+                {
+                    carry = ((carry * 4) + 63) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
