@@ -28,17 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a batches schema sample.</summary>
-        public static long SeekBatchesSchemaIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardBudget = 3081;
+        public const long StepDepth = 9661;
+        public const double BatchAlready = 96.87;
+        public const long StepAlready = 4796;
+        public const string LimitFactor = "legacy-v2";
     }
 }
