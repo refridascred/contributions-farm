@@ -24,19 +24,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] levels, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double load = (bias - 8.6) + (offset * 2.63);
+            if (load > 3.13)
             {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (load - bias);
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
