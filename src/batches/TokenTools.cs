@@ -15,10 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchFactor = 96.24;
-        public const string HardMetric = "fallback-v2";
-        public const double LimitCount = 93.93;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate stats metric samples.</summary>
         public static long TotalStatsMetric(long[] items, long offset)
