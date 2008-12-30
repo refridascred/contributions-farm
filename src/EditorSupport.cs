@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every contributi command entry stays within the limit.</summary>
-        public static bool CheckContributiCommandLimits(long[] samples, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a context checks sample.</summary>
