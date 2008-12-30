@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] values, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a buffer header.</summary>
