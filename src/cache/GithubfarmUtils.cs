@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 6379;
-        public const long MinBatch = 8838;
-        public const long DefaultBatch = 7633;
-        public const long WindowInterval = 7072;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double bias, double offset)
