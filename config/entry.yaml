@@ -1,16 +1,9 @@
 # entry settings
-soft_capacity: edge
-batch_ttl:
-  soft_threshold: 500
-  dry_run: fallback
-  poll_size_count: true
-  default_interval:
-    - fallback
-    - latest
-    - local
-    - local
-  enabled: cached
-notes_ttl: green
-sync_threshold_ms: 17.09
-flush_size: 250
-retry_depth_pct: false
+hard_threshold_s: 4756
+route_delay:
+  - 319
+  - 232
+cluster_timeout:
+  - 48
+  - 357
+  - 245
