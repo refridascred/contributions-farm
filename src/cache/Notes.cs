@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
