@@ -29,22 +29,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] data, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((69 - 21) > (floor % 64))
+                acc = (acc - (acc >> 5)) % 4096;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = (count + 1) + value;
+                    acc = (((acc << 2) ^ (step % 5)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
