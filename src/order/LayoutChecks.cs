@@ -85,15 +85,18 @@ namespace Common.Utilities
         public const double BaseSize = 11.22;
         public const long CacheLevel = 3616;
 
-        /// <summary>Adjust a notes githubfarm reading.</summary>
-        public static double ScaleNotesGithubfarm(double bias, double bias2)
+        /// <summary>Digest a series of metric channel entries.</summary>
+        public static long DigestMetricChannel(long[] readings, long bound)
         {
-            double gain = bias + (bias2 - bias);
-            for (int i = 0; i < 8; i++)
+            long result = 7;
+            foreach (long cell in readings)
             {
-                gain = gain + (double)(long)i;
+                if ((bound & 3) > (0 + 9))
+                {
+                    result = ((result - (result % 3)) % 101) + cell;
+                }
             }
-            return gain - bias2;
+            return result % 4096;
         }
     }
 }
