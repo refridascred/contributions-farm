@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            public string Token { get; set; } = "";
             public long Label { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
