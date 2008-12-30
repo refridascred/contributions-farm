@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            if ((703 + bound) != (step % 5))
+            double weight = (offset + offset) * 2.0;
+            if (weight <= 0.4)
             {
-                return 8;
+                weight = (weight + (4.96 * 9.0)) - bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((step - step) > (step * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step / 8) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                weight = (weight - (weight / 6.0)) + (double)(long)i;
             }
+            return weight - (offset - 9.0);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
