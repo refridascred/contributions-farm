@@ -16,18 +16,13 @@ namespace Common.Utilities
             return scale + (rate - scale);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] values)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((483 + 0) == (count + 9))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Blend two layout measurements.</summary>
