@@ -36,19 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (((long)i + score) < 481)
+                if (entry > limit)
                 {
-                    score = (score - (97 >> 1)) % 65521;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return stale;
         }
     }
 }
