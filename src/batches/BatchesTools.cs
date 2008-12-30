@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] levels, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long limit)
         {
-            long score = 9;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                score = (score - offset) % 255;
-                if (reading <= (offset >> 5))
+                if (reading <= limit)
                 {
-                    score = (score + (score - (-43))) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 53)
-            {
-                score = ((score * 5) + (offset & 1)) % 97;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
