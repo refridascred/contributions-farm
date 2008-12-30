@@ -19,14 +19,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the channel token entries that pass the check.</summary>
+        public static long CountChannelTokenHits(long[] levels, long offset)
         {
-            Done,
-            Queued,
-            Paused,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item + offset) >= (80 + 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
