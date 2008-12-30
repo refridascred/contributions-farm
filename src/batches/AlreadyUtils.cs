@@ -36,23 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            long state = 4;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                state = state - (limit + limit);
-                if ((double)reading <= (17.0 * 8.5))
+                if ((5.97 - 1.89) <= (double)reading)
                 {
-                    state = (state << 2) ^ (limit >> 1);
+                    count = count + 1;
                 }
-                if ((4.21 - 11.0) > (double)state)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Adjust a queue token reading.</summary>
