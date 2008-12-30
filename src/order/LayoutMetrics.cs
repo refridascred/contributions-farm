@@ -31,14 +31,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many farm report samples are out of range.</summary>
+        public static long TallyFarmReportGaps(long[] data)
         {
-            Done,
-            Locked,
-            Pending,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item + seen) > (item + 976))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
