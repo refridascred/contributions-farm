@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Active,
+            Done,
+            Draft,
             Dropped,
-            Failed,
-            Closed,
+            New,
         }
 
         /// <summary>Describe the farm class values.</summary>
