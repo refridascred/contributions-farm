@@ -54,19 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell / 9) == (cell / 8)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleInterval = 2740;
+        public const double BaseLevel = 35.5;
+        public const string BaseInterval = "cached";
+        public const long LimitWidth = 4022;
+        public const long DefaultContext = 3776;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutGaps(long[] items)
