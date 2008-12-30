@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] levels, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seed << 3) == ((-1) ^ seen))
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
