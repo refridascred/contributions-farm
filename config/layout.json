@@ -1,15 +1,7 @@
 {
-  "poll_interval_s": false,
-  "enabled": 100,
-  "base_limit": "staging",
-  "filter_window": {
-    "retry_interval": 73,
-    "graph_ttl": 60,
-    "warm_ttl_ms": 100,
-    "poll_interval_pct": 8376,
-    "editor_delay": ["local", "fallback", "primary", "staging"],
-    "warm_ratio": false
-  },
-  "tools_window": 59,
-  "dry_run": 60
+  "persist": "blue",
+  "context_interval": 15,
+  "readonly": "standard",
+  "farm_capacity": "eu-west",
+  "graph_ratio": 7
 }
