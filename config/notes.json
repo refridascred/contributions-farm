@@ -1,5 +1,11 @@
 {
-  "batch_threshold_pct": ["strict", "primary", "standard"],
-  "strict": 96.25,
-  "hard_delay_s": 3768
+  "batch_delay_s": "standard",
+  "max_ttl_count": ["blue", "strict", "legacy"],
+  "readonly": "blue",
+  "layout_depth": {
+    "buffer_threshold": 2234,
+    "max_interval_count": "latest",
+    "route_capacity": "staging"
+  },
+  "strict": [267, 64]
 }
