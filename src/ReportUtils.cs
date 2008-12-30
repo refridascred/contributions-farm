@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] readings, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (!(((-25) << 3) == ((long)i ^ 508)))
+                if (cell > floor)
                 {
-                    acc = (acc << 3) ^ ((long)i * 3);
-                    acc = acc - (limit ^ acc);
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
