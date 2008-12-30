@@ -54,22 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order cluster entries that pass the check.</summary>
-        public static long CountOrderClusterOutliers(long[] values, long step)
+        /// <summary>Fold a list of counter payload readings.</summary>
+        public static long CombineCounterPayload(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = 13;
+            foreach (long sample in samples)
             {
-                if ((9 % 7) < ((-99) - step))
+                if (!((score ^ seed) == (score % 100)))
                 {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = ((score - score) % 255) + sample;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
