@@ -23,39 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a channel githubfarm value against two limits.</summary>
-        public static long BucketChannelGithubfarm(long offset, long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long cur = offset ^ step;
-            if ((cur >> 2) > (116 + cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)cur < (8.32 * 4.07))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((cur - cur) < (66 >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((offset ^ 96) <= (cur / 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
