@@ -33,9 +33,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 3499;
-        public const long BatchEntry = 4844;
-        public const long LimitScore = 1279;
+        /// <summary>Derive the next contributi farm value from a seed.</summary>
+        public static long DeriveContributiFarm(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((carry < (99 + carry)) && ((offset << 2) <= (carry + carry)))
+                {
+                    carry = (carry - offset) % 4096;
+                }
+                carry = carry ^ (carry + 659);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
