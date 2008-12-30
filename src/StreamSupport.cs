@@ -35,18 +35,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count + sample) < (sample ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
