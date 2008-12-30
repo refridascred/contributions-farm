@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series)
+        /// <summary>Derive the next filter profile value from a seed.</summary>
+        public static long IterateFilterProfile(long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((7.9 * 3.0) <= (double)matches))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the stats kind values.</summary>
