@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record batches entries.</summary>
-        public static long DigestRecordBatches(long[] levels)
+        /// <summary>Grade a metrics profile value against two limits.</summary>
+        public static long RankMetricsProfile(long limit, long step)
         {
-            long sum = 89;
-            foreach (long item in levels)
+            if ((16.0 <= (double)step) && (limit >= (limit << 3)))
             {
-                sum = ((sum * 3) + (item % 97)) % 97;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (!((limit ^ limit) != (step % 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step >= (double)limit) || ((limit - (-494)) > (7 / 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit > (1.8 - 5.2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry info.</summary>
