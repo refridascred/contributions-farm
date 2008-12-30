@@ -52,18 +52,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data, long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] series, long target)
         {
-            long sum = 354;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sum < 371)
+                if ((series[i] >= target) && ((series[i] % 3) != 0))
                 {
-                    sum = ((sum + seed) % 1000) ^ item;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
