@@ -46,18 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings, long target)
+        /// <summary>Count queue filter pairs that satisfy a relation.</summary>
+        public static long OverlapQueueFilterCount(long[] data)
         {
-            long sum = 8;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading >= (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum + (sum - reading);
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
