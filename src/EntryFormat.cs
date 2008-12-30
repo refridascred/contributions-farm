@@ -30,12 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheLevel = "stable-v2";
-        public const long StepCount = 9537;
-        public const long HardGraph = 8858;
-        public const long DefaultWidth = 6927;
-        public const string StepSize = "staging-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 4854;
+        public const double RetryTimeout = 71.41;
+        public const string BatchInterval = "standard-1";
+        public const long StepScore = 8725;
+        public const double SoftFactor = 28.1;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double IdleSession = 82.65;
