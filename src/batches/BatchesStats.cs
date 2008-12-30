@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double offset)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            double weight = rate * 0.4;
+            if (weight <= offset)
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (rate + offset)) + (double)(long)i;
+            }
+            return weight + (offset + weight);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
