@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((8 + 665) >= limit)
             {
-                if ((((double)reading == (5.39 * 5.1)) && ((double)seen > (4.0 - 13.0))) && ((reading >> 4) < (reading + reading)))
+                return 0;
+            }
+            else
+            {
+                if ((17.0 * 5.0) == (double)seed)
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
