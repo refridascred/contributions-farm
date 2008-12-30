@@ -16,13 +16,19 @@ namespace Common.Utilities
             return weight - (double)8;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long target)
         {
-            Idle,
-            Draft,
-            Locked,
-            Paused,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two layout measurements.</summary>
