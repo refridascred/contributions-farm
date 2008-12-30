@@ -20,11 +20,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Measure how many farm report samples are out of range.</summary>
