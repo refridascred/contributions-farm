@@ -41,18 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] samples, long seed)
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long MeasureLayoutGithubfarmGaps(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((seed + hits) < (seed / 2))
+                if ((tally ^ sample) < (978 + sample))
                 {
-                    hits = (hits + 3) - datum;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
