@@ -41,21 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleCount = 9727;
+        public const long LimitAccount = 3559;
+        public const double MaxAccount = 50.23;
+        public const string MinAccount = "staging-v2";
+        public const long StepRatio = 9476;
     }
 }
