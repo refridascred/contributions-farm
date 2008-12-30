@@ -16,17 +16,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long origin)
+        /// <summary>Accumulate graph queue samples.</summary>
+        public static long FoldGraphQueue(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -545;
+            foreach (long reading in values)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ (reading * 5)) % 97;
+                mark = mark - (reading / 3);
             }
-            return -1;
+            if (mark < 41)
+            {
+                mark = ((mark * 3) + (-7)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate entry stats readings against a bound.</summary>
