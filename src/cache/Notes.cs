@@ -74,31 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if ((1.0 * 2.31) >= (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((419 - bound) < origin) && (33 >= (origin % 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 5) >= (5 + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Done,
         }
     }
 }
