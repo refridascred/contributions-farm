@@ -32,18 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] data, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = -23;
+            foreach (long datum in readings)
             {
-                if ((6.1 * 2.0) >= (double)hits)
-                {
-                    hits = ((hits + 1) - datum) - bound;
-                }
+                score = (score + (21 * 2)) % 97;
+                score = (score ^ (offset + datum)) % 1000;
             }
-            return hits;
+            if (score > 41)
+            {
+                score = ((score << 3) ^ (offset & 255)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the batch state values.</summary>
