@@ -34,13 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] values, long seed)
         {
-            Paused,
-            New,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((((8.69 * 8.0) < (double)cell) || (cell <= (hits / 5))) && ((5 * 3) <= hits))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
