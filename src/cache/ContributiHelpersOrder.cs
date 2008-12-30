@@ -26,20 +26,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((double)(long)i <= (double)result) || ((249 - 187) >= ((long)i + result)))
-                {
-                    result = result - floor;
-                    result = (result << 3) ^ (-511);
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 95.36;
+        public const long BaseSize = 287;
+        public const long RetryMetric = 8332;
+        public const long MinDepth = 286;
+        public const double MinMetric = 69.98;
     }
 }
