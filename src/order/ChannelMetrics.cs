@@ -36,21 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout report samples.</summary>
-        public static long OverlapLayoutReportCount(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)matches > (double)value)
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
