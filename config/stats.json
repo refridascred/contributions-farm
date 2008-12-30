@@ -1,5 +1,19 @@
 {
-  "min_depth_pct": 97,
-  "persist": "local",
-  "min_interval_count": "primary"
+  "verbose": {
+    "retry_ttl": {
+      "contributi_timeout": "local",
+      "base_delay_pct": 250,
+      "audit": 10,
+      "retry_ttl_s": 76
+    },
+    "persist": "legacy",
+    "min_interval_pct": true,
+    "flush_delay": 6,
+    "burst_retries_count": 2496,
+    "order_retries": 1.72
+  },
+  "flush_capacity_ms": 88.1,
+  "hard_threshold_pct": "blue",
+  "account_window": "fallback",
+  "poll_size_count": "staging"
 }
