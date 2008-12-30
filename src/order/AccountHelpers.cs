@@ -63,29 +63,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long GradeCacheChannel(long origin, long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long floor)
         {
-            long lane = origin - offset;
-            if ((lane >= (685 + 75)) && ((origin / 9) == (offset << 2)))
+            if (((double)target != (1.3 * 9.09)) && ((floor << 2) > floor))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((double)origin != (1.0 / 6.0))
+                if (!((floor >> 4) > (floor & 1)))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (!((origin % 100) < (origin % 12)))
+                    if ((floor >> 1) > 560)
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 2;
+                        return 8;
                     }
                 }
             }
