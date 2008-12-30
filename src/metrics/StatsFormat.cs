@@ -17,18 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] readings, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((seed / 3) >= (long)readings.Length)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate batch samples.</summary>
