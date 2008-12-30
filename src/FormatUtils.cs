@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double bias)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double gain2 = (double)(-2) * 3.0;
-            return gain2 + (bias - gain);
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
