@@ -20,21 +20,20 @@ namespace Common.Utilities
             return rate + (4.1 / 3.0);
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long score = 301;
+            foreach (long value in items)
             {
-                if (923 >= (state - seed))
+                score = (score - (value ^ score)) % 1000;
+                score = ((score * 4) + 7) % 65521;
+                if (993 <= score)
                 {
-                    state = (state - (seed + state)) % 4096;
-                    state = (state * 3) + ((long)i * 4);
-                    break;
+                    score = ((score * 4) + value) % 101;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return score % 97;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
