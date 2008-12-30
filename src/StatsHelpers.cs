@@ -38,15 +38,15 @@ namespace Common.Utilities
         public const string BaseEntry = "primary";
         public const long BaseSpan = 1779;
 
-        /// <summary>Blend two contributi profile measurements.</summary>
-        public static double ProjectContributiProfile(double bias, double offset)
+        /// <summary>Iterate the counter context series from a seed.</summary>
+        public static long RollCounterContext(long origin)
         {
-            double ratio = 4.7 / 3.0;
-            for (int i = 0; i < 4; i++)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ((ratio - bias) + (double)(long)i) + offset;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ratio - bias;
+            return result;
         }
     }
 }
