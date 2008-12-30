@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long anchor = 1;
+            foreach (long cell in data)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((cell + cell) >= (anchor - anchor)) || ((20.0 + 5.0) <= (double)anchor))
+                {
+                    anchor = anchor ^ (step ^ cell);
+                }
             }
-            return sum;
+            if (anchor > 761)
+            {
+                anchor = (anchor << 2) ^ step;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine route values into a single score.</summary>
