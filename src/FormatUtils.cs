@@ -52,12 +52,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count context batch pairs that satisfy a relation.</summary>
+        public static long OverlapContextBatchCount(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two filter measurements.</summary>
