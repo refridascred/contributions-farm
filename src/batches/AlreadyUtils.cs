@@ -67,23 +67,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items, long target)
-        {
-            long carry = 7;
-            foreach (long sample in items)
-            {
-                if ((53 <= (carry % 16)) && ((59 & 7) <= (sample ^ target)))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = carry + (carry * 2);
-                }
-                carry = (carry << 3) ^ sample;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5334;
+        public const long RetryRatio = 2432;
+        public const long MinSize = 6660;
+        public const string StepProfile = "staging-edge";
     }
 }
