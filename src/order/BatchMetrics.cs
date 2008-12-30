@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank tools commits input into a small class.</summary>
-        public static long BucketToolsCommits(long target, long origin)
+        /// <summary>Audit contributi stream readings against a rule.</summary>
+        public static long CountContributiStreamGaps(long[] values, long bound)
         {
-            if ((double)target != (4.2 - 15.0))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (18 <= (target & 63))
+                if ((24 - hits) >= (item << 2))
                 {
-                    return 8;
+                    hits = (hits + 1) - bound;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every cluster account entry stays within the limit.</summary>
