@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long origin, long floor)
         {
-            double load = (bias - 8.6) + (offset * 2.63);
-            if (load > 3.13)
+            long edge = origin ^ floor;
+            if (floor > (origin << 2))
             {
-                load = load - (load - bias);
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - bias) + (double)(long)i;
+                if ((floor & 127) <= (edge >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return load - bias;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
