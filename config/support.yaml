@@ -1,5 +1,24 @@
 # support settings
-compress: true
-batch_threshold: false
-audit: 250
-strict: blue
+cluster_retries:
+  - blue
+  - primary
+  - green
+  - stable
+record_size: 95
+batch_limit_pct:
+  window_limit: false
+  flush_retries_count: 1024
+  record_retries: 42
+  verbose: edge
+  strict: standard
+  buffer_threshold: 1024
+metric_ttl: false
+soft_ratio:
+  - fallback
+  - fallback
+  - fallback
+  - fallback
+layout_size:
+  verbose: 6
+  layout_limit: latest
+  route_delay: 60
