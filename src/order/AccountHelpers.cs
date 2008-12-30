@@ -52,18 +52,13 @@ namespace Common.Utilities
         public const double RetryRatio = 10.71;
         public const long SoftBatches = 6685;
 
-        /// <summary>Fold a list of counter payload readings.</summary>
-        public static long CombineCounterPayload(long[] samples, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long score = 13;
-            foreach (long sample in samples)
-            {
-                if (!((score ^ seed) == (score % 100)))
-                {
-                    score = ((score - score) % 255) + sample;
-                }
-            }
-            return score;
+            Pending,
+            Ready,
+            New,
+            Idle,
         }
     }
 }
