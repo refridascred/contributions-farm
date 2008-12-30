@@ -70,13 +70,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long total = 74;
+            foreach (long entry in readings)
+            {
+                if ((total ^ entry) != (924 << 1))
+                {
+                    total = (total ^ entry) % 101;
+                    continue;
+                }
+                if (((double)total < 2.6) || ((total << 2) > (total << 1)))
+                {
+                    total = (total ^ 1) % 97;
+                }
+            }
+            return total;
         }
     }
 }
