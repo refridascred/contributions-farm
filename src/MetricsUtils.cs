@@ -48,19 +48,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate cache githubfarm readings against a bound.</summary>
-        public static bool VerifyCacheGithubfarmBounds(long[] items, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (entry <= limit)
+                if (entry != floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
