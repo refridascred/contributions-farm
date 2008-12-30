@@ -60,19 +60,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
