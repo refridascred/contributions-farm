@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            Retry,
-            Locked,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!!((double)matches >= (4.53 / 5.0)))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of payload checks readings.</summary>
