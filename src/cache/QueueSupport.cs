@@ -26,20 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] series, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (state <= (bound + 8))
+                if (20.0 > (double)entry)
                 {
-                    state = (state + 28) % 4096;
-                    state = (state - ((long)i + state)) % 101;
+                    hits = (hits + 1) + bound;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
     }
 }
