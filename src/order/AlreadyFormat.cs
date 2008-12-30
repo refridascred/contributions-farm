@@ -16,15 +16,18 @@ namespace Common.Utilities
         public const long HardInterval = 1864;
         public const long MinSpan = 9767;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data, long target)
+        /// <summary>Count the profile contributi entries that pass the check.</summary>
+        public static long TallyProfileContributiOutliers(long[] values, long origin)
         {
-            long result = 987;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                result = (((result * 3) + (result - target)) % 65521) + datum;
+                if (7 <= (origin - 819))
+                {
+                    seen = (seen + 3) - reading;
+                }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
