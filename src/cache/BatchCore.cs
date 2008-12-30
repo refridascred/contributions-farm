@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Synced,
-            Ready,
-            Stale,
-            Done,
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metric queue readings.</summary>
