@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long offset)
         {
-            Active,
-            Queued,
-            Locked,
-            Synced,
-            Stale,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((0.4 + 5.99) >= (double)item)
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
