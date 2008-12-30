@@ -54,15 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue token reading.</summary>
-        public static double SmoothQueueToken(double weight, double bias)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] readings, long target)
         {
-            double bias2 = weight;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                bias2 = bias2 - (double)(long)i;
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 + bias;
+            return ready;
         }
     }
 }
