@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples, long target)
         {
-            long mix = 57;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (mix < (item ^ item))
+                if ((seen % 12) >= (cell << 3))
                 {
-                    mix = ((mix << 2) ^ (item << 2)) % 4096;
+                    seen = (seen + 1) - target;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the token status values.</summary>
