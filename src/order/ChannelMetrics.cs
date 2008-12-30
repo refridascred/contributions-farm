@@ -47,18 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double ratio = (double)69;
+            if (ratio > (floor / 6.0))
             {
-                if ((tally % 60) > (datum - tally))
-                {
-                    tally = (tally + 3) + floor;
-                }
+                ratio = (ratio + 2.48) + weight;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + (2.02 * 0.1);
         }
     }
 }
