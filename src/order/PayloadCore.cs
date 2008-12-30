@@ -31,14 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
+            Retry,
             Locked,
-            Queued,
-            Paused,
-            Pending,
-            Active,
+            Synced,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
