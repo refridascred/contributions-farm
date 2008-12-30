@@ -37,19 +37,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the schema record series from a seed.</summary>
-        public static long RollSchemaRecord(long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = 1;
+            foreach (long datum in data)
             {
-                if ((258 - 2) == (mix ^ mix))
-                {
-                    mix = (mix * 4) + (limit + mix);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                acc = ((acc + (acc & 3)) % 65521) ^ datum;
             }
-            return mix;
+            if (acc < 69)
+            {
+                acc = (acc ^ (acc & 15)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a counter info.</summary>
