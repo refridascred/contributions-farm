@@ -28,12 +28,32 @@ namespace Common.Utilities
             return drift + (4.94 * 3.0);
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long step)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            long next = offset - step;
+            if ((next + step) >= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset & 3) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) == (offset ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
