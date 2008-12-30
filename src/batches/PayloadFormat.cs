@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Fold a list of notes order readings.</summary>
+        public static long CombineNotesOrder(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 89;
+            foreach (long datum in levels)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - (datum % 24)) - floor;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
