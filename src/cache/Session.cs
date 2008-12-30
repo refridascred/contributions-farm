@@ -15,12 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseRatio = 8076;
-        public const double BatchFactor = 78.88;
-        public const long BaseBudget = 991;
-        public const string BatchContext = "open-1";
-        public const string BaseContext = "stable-v2";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((((count % 7) > count) || (floor >= (count & 127))) || !((datum << 3) <= (count - count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MinSize = "latest-v2";
