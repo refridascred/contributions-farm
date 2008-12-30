@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double gain = (bias * 8.39) - (double)(-468);
-            if (gain >= (bias * 0.73))
-            {
-                gain = gain + (bias * 8.98);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + floor;
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
