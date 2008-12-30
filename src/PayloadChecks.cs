@@ -63,13 +63,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            Failed,
-            Draft,
-            Retry,
-            Dropped,
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((result + result) >= ((long)i << 3)) && ((3.6 - 0.8) == (double)origin))
+                {
+                    result = result + (result + result);
+                    break;
+                }
+                else
+                {
+                    result = result ^ result;
+                }
+                if ((result >> 2) <= ((long)i * 2))
+                {
+                    result = (result ^ result) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
