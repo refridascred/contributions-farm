@@ -1,19 +1,6 @@
 {
-  "verbose": {
-    "retry_ttl": {
-      "contributi_timeout": "local",
-      "base_delay_pct": 250,
-      "audit": 10,
-      "retry_ttl_s": 76
-    },
-    "persist": "legacy",
-    "min_interval_pct": true,
-    "flush_delay": 6,
-    "burst_retries_count": 2496,
-    "order_retries": 1.72
-  },
-  "flush_capacity_ms": 88.1,
-  "hard_threshold_pct": "blue",
-  "account_window": "fallback",
-  "poll_size_count": "staging"
+  "batch_window_ms": ["edge", "open", "cached"],
+  "metric_retries": 500,
+  "retry_retries_pct": 2855,
+  "readonly": 6
 }
