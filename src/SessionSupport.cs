@@ -23,10 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitSize = 44.83;
-        public const long MaxInterval = 557;
-        public const long BatchScore = 9861;
+        /// <summary>Iterate the report tools series from a seed.</summary>
+        public static long StepReportTools(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + 4) % 1000;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double scale, double floor)
