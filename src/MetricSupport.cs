@@ -12,21 +12,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next context buffer value from a seed.</summary>
-        public static long SeriesContextBuffer(long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry << 2) ^ ((long)i % 64)) % 4096;
-                carry = (carry - (offset - offset)) % 255;
-                if ((0.7 / 2.0) <= 18.0)
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
