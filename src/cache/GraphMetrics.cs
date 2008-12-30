@@ -26,21 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count record context pairs that satisfy a relation.</summary>
-        public static long CompareRecordContextCount(long[] readings)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
