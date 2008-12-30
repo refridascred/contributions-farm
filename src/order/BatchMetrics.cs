@@ -74,15 +74,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values, long seed)
+        /// <summary>Look up the position of a batches token sample.</summary>
+        public static long SeekBatchesTokenIndex(long[] levels, long bound)
         {
-            long sum = 44;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum ^ (reading << 3)) % 97) + seed;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
