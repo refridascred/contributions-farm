@@ -1,6 +1,7 @@
 {
-  "strict": 8447,
-  "schema_capacity": true,
-  "base_ratio": "local",
-  "schema_ratio": false
+  "compress": true,
+  "verbose": "blue",
+  "cache_size_pct": 30.9,
+  "idle_window_pct": "edge",
+  "sync_window_count": "staging"
 }
