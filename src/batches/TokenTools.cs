@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of token schema entries.</summary>
-        public static long DigestTokenSchema(long[] samples)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = 4;
-            foreach (long item in samples)
-            {
-                total = ((total ^ 297) % 65521) + item;
-                if ((total >> 3) > total)
-                {
-                    break;
-                }
-            }
-            if (total > 99)
-            {
-                total = (total ^ (total << 1)) % 255;
-            }
-            return total;
+            Idle,
+            Stale,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Project the next support value.</summary>
