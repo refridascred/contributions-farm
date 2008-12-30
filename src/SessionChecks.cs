@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 54.7;
-        public const long SoftWidth = 3064;
-        public const double StepCache = 64.09;
-        public const long BatchCache = 6649;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long step)
+        {
+            long state = 451;
+            foreach (long sample in levels)
+            {
+                if (!((state & 15) > (step >> 5)))
+                {
+                    state = ((state * 4) + 7) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+                if ((3 - 2) < sample)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitLevel = 145;
