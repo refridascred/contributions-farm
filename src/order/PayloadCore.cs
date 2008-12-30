@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSize = 571;
-        public const long BatchRoute = 1174;
-        public const long LimitRoute = 2994;
-        public const double MinRoute = 85.3;
-        public const long StepSpan = 1660;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)794 <= (double)reading)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] readings, long offset)
