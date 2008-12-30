@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] values, long seed)
+        /// <summary>Fold a list of route entry readings.</summary>
+        public static long DigestRouteEntry(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mark = -73;
+            foreach (long value in values)
             {
-                if ((((8.69 * 8.0) < (double)cell) || (cell <= (hits / 5))) && ((5 * 3) <= hits))
+                if (value <= (mark - (long)values.Length))
                 {
-                    hits = (hits + 1) - seed;
+                    mark = (mark + (value << 3)) - floor;
                 }
             }
-            return hits;
+            if (mark > 62)
+            {
+                mark = mark + (81 << 2);
+            }
+            return mark % 4096;
         }
     }
 }
