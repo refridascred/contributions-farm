@@ -52,18 +52,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long score = 2;
-            foreach (long cell in readings)
-            {
-                if ((251 >> 3) > (score ^ (-94)))
-                {
-                    score = ((score << 3) ^ (cell - 772)) + floor;
-                }
-            }
-            return score % 4096;
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Blend two filter measurements.</summary>
