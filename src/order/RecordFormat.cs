@@ -45,16 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (acc - (long)i)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
