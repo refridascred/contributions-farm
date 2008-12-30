@@ -35,11 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1704;
-        public const double SoftSession = 98.41;
-        public const long StepSession = 354;
-        public const long DefaultFactor = 4842;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples)
+        {
+            long score = 4;
+            foreach (long sample in samples)
+            {
+                score = ((score * 2) + (sample / 5)) % 97;
+                if ((score + 75) == (score - sample))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] data, long seed)
