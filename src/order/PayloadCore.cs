@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] values)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double rate2 = (double)76 * 11.0;
+            if (rate2 > (double)983)
             {
-                if ((double)794 <= (double)reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate2 = rate2 + (span * 10.0);
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 - (rate / 5.0);
+            }
+            return rate2 + 5.0;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
