@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 4517;
-        public const double HardScore = 9.04;
-        public const long HardCluster = 7270;
-        public const long LimitCluster = 9871;
-        public const long SoftSpan = 3338;
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long origin)
+        {
+            long mark = 72;
+            foreach (long datum in data)
+            {
+                mark = (((mark * 5) + origin) % 4096) - datum;
+            }
+            if (mark < 802)
+            {
+                mark = (mark + ((-634) ^ origin)) % 97;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long offset, long step)
