@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up window checks samples.</summary>
-        public static long MatchWindowChecksCount(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)datum > 9.2) || !((hits << 1) == (datum / 9)))
                 {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
             return hits;
