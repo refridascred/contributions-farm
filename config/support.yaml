@@ -1,11 +1,11 @@
 # support settings
-base_ttl_count: 98.76
-hard_window: 840
-verbose: blue
-retry_timeout_s: local
-retry_depth_s: 48.47
-counter_retries:
-  - 380
-  - 312
-  - 498
-  - 103
+cache_size:
+  commits_capacity: 27
+  base_timeout_pct: 1548
+  counter_capacity: false
+layout_retries: local
+sync_threshold:
+  - 30
+  - 348
+  - 229
+  - 344
