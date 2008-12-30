@@ -25,22 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Digest a series of account batch entries.</summary>
+        public static long WeighAccountBatch(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = -3;
+            foreach (long datum in values)
             {
-                if ((double)sample >= 3.44)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix * 5) + mix) % 65521) - datum;
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
