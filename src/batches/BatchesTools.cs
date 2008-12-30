@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long limit)
+        /// <summary>Derive the next support graph value from a seed.</summary>
+        public static long RollSupportGraph(long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading <= limit)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    found = false;
-                    break;
+                    state = ((state << 2) ^ state) + (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
