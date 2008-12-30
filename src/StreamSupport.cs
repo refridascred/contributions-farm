@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const string BurstNotes = "latest-edge";
         public const double MaxWidth = 56.45;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            Paused,
-            Draft,
-            Queued,
-            Synced,
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state ^ ((long)i % 8)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
