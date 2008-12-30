@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the graph batches series from a seed.</summary>
-        public static long StepGraphBatches(long bound)
+        /// <summary>Scale a tools buffer figure with a bias.</summary>
+        public static double ProjectToolsBuffer(double scale, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            double drift = (span / 4.0) - 5.1;
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound ^ bound) >= bound)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state + (state + bound)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return state;
+            return drift - (scale + scale);
         }
 
         /// <summary>Hold a route snapshot.</summary>
