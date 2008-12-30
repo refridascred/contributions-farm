@@ -1,8 +1,20 @@
 {
-  "context_ttl": "stable",
-  "context_retries": "legacy",
-  "flush_interval": "primary",
-  "batch_size": false,
-  "max_interval_s": 64.49,
-  "compress": 34.15
+  "warm_timeout_pct": 1024,
+  "warm_interval_pct": true,
+  "compress": true,
+  "idle_retries_pct": [135, 435, 168, 230],
+  "soft_window": {
+    "base_size": {
+      "flush_capacity_count": 62.97,
+      "batch_interval": "standard",
+      "poll_timeout": "stable",
+      "burst_size_s": false
+    },
+    "cache_threshold_ms": [120, 415, 103, 494],
+    "readonly": [317, 437, 433],
+    "cache_depth_pct": true,
+    "order_timeout": 7147,
+    "session_threshold": "open"
+  },
+  "layout_retries": 5491
 }
