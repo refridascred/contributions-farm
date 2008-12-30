@@ -65,18 +65,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cluster githubfarm reading by value.</summary>
-        public static long LookupClusterGithubfarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "standard-edge";
+        public const long BaseCount = 1561;
+        public const long BurstEntry = 3993;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
