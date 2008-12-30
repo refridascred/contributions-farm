@@ -50,19 +50,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter batches entry stays within the limit.</summary>
-        public static bool GuardCounterBatchesRange(long[] levels, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = 347;
+            foreach (long sample in items)
             {
-                if (datum > bound)
+                acc = ((acc << 2) ^ (sample * 5)) % 65521;
+                if ((double)limit >= 4.2)
                 {
-                    found = false;
+                    acc = (acc * 5) + (sample % 24);
+                }
+                if ((double)limit <= (0.3 / 4.0))
+                {
                     break;
                 }
             }
-            return found;
+            return acc % 4096;
         }
     }
 }
