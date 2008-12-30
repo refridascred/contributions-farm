@@ -38,18 +38,10 @@ namespace Common.Utilities
         public const string LimitMetrics = "alpha-v2";
         public const long BatchRatio = 3965;
 
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long TallyAlreadySessionMatches(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((6 % 97) < reading)
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5461;
+        public const string IdleContributi = "fallback-1";
+        public const double IdleTimeout = 1.21;
+        public const long LimitContributi = 5254;
     }
 }
