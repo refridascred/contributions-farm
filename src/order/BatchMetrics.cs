@@ -64,18 +64,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits - 231) < datum)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
