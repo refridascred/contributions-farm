@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 9395;
+        public const long WindowRecord = 4646;
+        public const long SoftTimeout = 4114;
+        public const double StepRecord = 49.04;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
