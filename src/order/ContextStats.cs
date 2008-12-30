@@ -19,13 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values, long step)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long sum = 893;
+            foreach (long datum in values)
+            {
+                if ((datum + 6) == ((-28) * 2))
+                {
+                    sum = ((sum * 2) + step) % 4096;
+                }
+                else
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                if (((490 + datum) <= 5) && (sum > (step + step)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up cluster samples.</summary>
