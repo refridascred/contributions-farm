@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultWidth = 9636;
-        public const long HardReport = 3189;
-        public const long SoftTimeout = 6764;
-        public const long StepReport = 6708;
-        public const string BaseReport = "cached";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 16.43;
+        public const long WindowWidth = 5198;
+        public const long IdleLevel = 5895;
+        public const string BurstChannel = "fallback-edge";
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueLimits(long[] data, long seed)
