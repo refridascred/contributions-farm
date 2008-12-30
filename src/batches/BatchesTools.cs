@@ -25,13 +25,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Queued,
-            Done,
-            Locked,
-            Paused,
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
     }
 }
