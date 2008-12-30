@@ -44,22 +44,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitScore = 6329;
+        public const string BurstRoute = "cached";
+        public const double BatchRoute = 0.39;
+        public const double MaxWidth = 63.32;
+        public const long CacheSize = 8763;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricMatches(long[] series)
