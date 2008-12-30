@@ -48,13 +48,12 @@ namespace Common.Utilities
         public const double IdleBudget = 31.66;
         public const long BatchTools = 8326;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a support summary.</summary>
