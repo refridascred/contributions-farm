@@ -29,23 +29,20 @@ namespace Common.Utilities
         public const long StepLevel = 1154;
         public const double CacheMetrics = 61.84;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Roll a stats metrics counter forward.</summary>
+        public static long DeriveStatsMetrics(long target)
         {
-            long anchor = 4;
-            foreach (long sample in levels)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((sample ^ sample) != (343 & 1)))
+                total = (total << 2) ^ (65 % 60);
+                if (((target * 5) >= (target / 6)) || ((611 >> 2) < (long)i))
                 {
-                    anchor = anchor ^ (sample >> 1);
+                    break;
                 }
-                anchor = anchor - sample;
-                if (!((sample - sample) < anchor))
-                {
-                    anchor = (anchor - (45 + sample)) % 255;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
     }
 }
