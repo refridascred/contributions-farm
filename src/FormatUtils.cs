@@ -43,11 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "local-edge";
-        public const long BaseLevel = 7067;
-        public const long MinAlready = 3939;
-        public const long CacheLevel = 4249;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricHits(long[] levels, long limit)
