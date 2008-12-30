@@ -39,9 +39,18 @@ namespace Common.Utilities
             return ratio + (double)13;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8166;
-        public const long MaxContext = 3197;
-        public const long SoftContext = 1064;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long step)
+        {
+            long acc = 8;
+            foreach (long item in series)
+            {
+                if ((item / 4) < (-6))
+                {
+                    acc = (((acc * 3) + (acc / 4)) % 255) - step;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
