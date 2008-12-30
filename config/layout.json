@@ -1,12 +1,15 @@
 {
-  "queue_ttl": 31.52,
-  "cache_size": {
-    "flush_ttl_count": 97.96,
-    "metrics_retries": 95.2,
-    "enabled": true,
-    "strict": 10.29,
-    "default_limit_s": [495, 127, 285, 133]
+  "min_window": "eu-west",
+  "idle_capacity_s": {
+    "poll_size": true,
+    "compress": 80.69,
+    "batch_ratio_ms": "edge",
+    "base_threshold": {
+      "warm_size_pct": "latest",
+      "warm_interval_count": "stable",
+      "burst_window_s": 5439
+    },
+    "metric_interval": 4971
   },
-  "persist": ["green", "edge"],
-  "profile_timeout": 17.8
+  "default_threshold": 74
 }
