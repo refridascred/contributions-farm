@@ -37,17 +37,12 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Locate a buffer order reading by value.</summary>
-        public static long SeekBufferOrderIndex(long[] values, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
