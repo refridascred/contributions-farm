@@ -1,18 +1,7 @@
 {
-  "sync_size": false,
-  "queue_retries": {
-    "max_window_pct": [342, 326],
-    "readonly": {
-      "record_timeout": false,
-      "idle_limit_count": 15,
-      "default_interval": 36.13,
-      "cache_ttl_count": 1024
-    },
-    "sync_ratio_ms": 66.48,
-    "warm_capacity_ms": false,
-    "batch_ttl_s": "fallback",
-    "counter_threshold": ["open", "fallback", "staging", "local"]
-  },
-  "audit": ["strict", "green"],
-  "schema_ttl": "legacy"
+  "retry_delay_s": 25.39,
+  "persist": "eu-west",
+  "sync_ttl_s": 250,
+  "flush_ratio_count": "legacy",
+  "base_limit_ms": 250
 }
