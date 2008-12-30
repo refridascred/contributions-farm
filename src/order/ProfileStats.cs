@@ -45,17 +45,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftTimeout = 7301;
+        public const long DefaultInterval = 2819;
+        public const string SoftDepth = "standard-edge";
     }
 }
