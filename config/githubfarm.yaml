@@ -1,17 +1,10 @@
 # githubfarm settings
-readonly: staging
-commits_delay: 15
-burst_threshold_s:
-  audit:
-    - 81
-    - 326
-    - 344
-    - 394
-  verbose: primary
-  batch_ratio: false
-  commits_window:
-    - fallback
-    - staging
-  readonly: staging
-burst_limit_ms: edge
-batch_ratio_s: 51
+hard_depth: legacy
+base_interval_pct: fallback
+batch_retries_pct:
+  format_limit: true
+  dry_run: 3889
+  token_threshold: local
+  soft_delay: 9827
+  batch_depth_s: latest
+dry_run: 100
