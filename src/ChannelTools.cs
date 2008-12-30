@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Stale,
+            Pending,
+            Failed,
+            Locked,
+            Paused,
             Queued,
-            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
