@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double mean = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - (floor / 4.0);
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
