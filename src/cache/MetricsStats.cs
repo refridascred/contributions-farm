@@ -26,28 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (step > (step * 4))
-                {
-                    break;
-                }
-                if (((long)i % 12) != (mix + mix))
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-                if (!((step >> 2) > ((long)i ^ step)))
-                {
-                    mix = (mix - ((long)i >> 4)) % 1000;
-                    mix = mix - step;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
