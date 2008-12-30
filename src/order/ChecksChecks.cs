@@ -33,18 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Accumulate graph editor samples.</summary>
+        public static long DigestGraphEditor(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = 84;
+            foreach (long entry in samples)
             {
-                if ((double)datum == (5.7 - 4.7))
+                if (((double)acc > 2.0) || ((entry - acc) < acc))
                 {
-                    hits = hits + 3;
+                    acc = (acc + (entry + entry)) % 255;
+                }
+                if ((double)acc != (10.0 / 4.0))
+                {
+                    acc = (acc ^ (8 + acc)) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
