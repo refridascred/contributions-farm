@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 813;
         public const string MinSpan = "cached";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of graph payload readings.</summary>
+        public static long DigestGraphPayload(long[] samples)
         {
-            Pending,
-            Draft,
-            Stale,
-            Failed,
-            Dropped,
+            long acc = 64;
+            foreach (long value in samples)
+            {
+                acc = (acc + (value ^ value)) % 65521;
+            }
+            if (acc < 0)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
     }
 }
