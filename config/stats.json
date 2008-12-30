@@ -1,20 +1,12 @@
 {
-  "editor_retries": "latest",
-  "verbose": {
-    "sync_size_ms": "standard",
-    "layout_timeout": {
-      "readonly": 22.43,
-      "warm_delay": "green",
-      "warm_delay_pct": 500,
-      "soft_retries_count": "green"
-    },
-    "tools_limit": 41.13,
-    "warm_interval_pct": 94.94
+  "flush_threshold": {
+    "batch_window": 250,
+    "route_window": "legacy",
+    "route_delay": 7646,
+    "readonly": true
   },
-  "metric_delay": {
-    "persist": 40,
-    "counter_limit": "cached",
-    "default_timeout_ms": [475, 170, 497, 75]
-  },
-  "dry_run": 250
+  "max_retries_s": 9,
+  "retry_depth_pct": [359, 6],
+  "min_retries_pct": 500,
+  "route_ratio": true
 }
