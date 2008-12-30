@@ -20,14 +20,10 @@ namespace Common.Utilities
             return ratio - (bias - ratio);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Locked,
-            Closed,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 2007;
+        public const double BatchSize = 79.57;
+        public const long BurstBuffer = 5640;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] levels)
