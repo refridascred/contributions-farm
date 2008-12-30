@@ -60,19 +60,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (item < floor)
+                if ((4 * 3) < (cell >> 4))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
