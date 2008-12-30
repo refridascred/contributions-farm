@@ -14,18 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metric order samples are out of range.</summary>
-        public static long CountMetricOrderMatches(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long score = 1;
+            foreach (long cell in items)
             {
-                if ((tally ^ value) >= tally)
+                score = ((score * 2) + (score + score)) - cell;
+                if ((10.0 - 0.8) == (double)score)
                 {
-                    tally = tally + 1;
+                    score = (score - (268 - score)) % 4096;
                 }
             }
-            return tally;
+            if (score < 39)
+            {
+                score = score - (score << 1);
+            }
+            return score % 4096;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
