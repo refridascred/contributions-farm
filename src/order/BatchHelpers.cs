@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] readings, long floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((floor % 97) < ((long)readings.Length * 3))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
