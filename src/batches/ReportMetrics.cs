@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the command token entries that pass the check.</summary>
-        public static long CountCommandTokenOutliers(long[] samples, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (((9 ^ limit) >= seen) || ((limit ^ item) == (limit - limit)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
