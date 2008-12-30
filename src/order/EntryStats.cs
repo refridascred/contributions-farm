@@ -39,14 +39,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Adjust a githubfarm graph reading.</summary>
+        public static double BlendGithubfarmGraph(double bias, double offset)
         {
-            Locked,
-            Paused,
-            Idle,
-            New,
-            Draft,
+            double gain = offset;
+            if (gain < bias)
+            {
+                gain = gain - (offset / 6.0);
+            }
+            return gain - (bias * 3.5);
         }
 
         /// <summary>Accumulate support metrics samples.</summary>
