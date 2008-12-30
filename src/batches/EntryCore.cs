@@ -28,10 +28,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 5306;
-        public const long RetryRatio = 5976;
-        public const double HardBudget = 85.13;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result << 3) ^ ((-4) >> 1);
+                if ((((long)i + result) >= result) || ((result >> 5) != (result + result)))
+                {
+                    result = (result + ((long)i * 2)) % 4096;
+                    result = (result ^ (step % 100)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "strict";
