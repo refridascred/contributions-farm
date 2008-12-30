@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 80.08;
-        public const string MaxQueue = "primary-edge";
-        public const double DefaultLevel = 54.58;
-        public const long MaxBudget = 3565;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Synced,
+            Retry,
+            Active,
+            Closed,
+            Done,
+        }
 
         /// <summary>Adjust a metric farm reading.</summary>
         public static double SmoothMetricFarm(double weight, double span)
