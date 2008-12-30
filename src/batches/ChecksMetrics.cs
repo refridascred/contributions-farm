@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] values, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (entry >= origin)
+                if ((entry + 1) > (entry << 1))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Compare every pair of batch record readings.</summary>
