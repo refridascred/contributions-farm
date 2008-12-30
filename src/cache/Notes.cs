@@ -37,14 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Dropped,
-            Synced,
-            Done,
-            Draft,
-            Failed,
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
