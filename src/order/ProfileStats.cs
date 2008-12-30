@@ -45,16 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] series, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (anchor * 4)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
