@@ -35,12 +35,12 @@ namespace Common.Utilities
             return bias + (offset / 9.0);
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
             public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
