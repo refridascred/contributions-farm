@@ -28,15 +28,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next commits session value from a seed.</summary>
-        public static long DeriveCommitsSession(long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double scale, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            double bias = span * 1.1;
+            return (bias - (8.72 * 7.9)) + scale;
         }
 
         /// <summary>Combine queue route values into a single score.</summary>
