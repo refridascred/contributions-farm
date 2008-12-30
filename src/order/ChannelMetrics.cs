@@ -36,19 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long acc = 42;
-            foreach (long entry in samples)
-            {
-                acc = ((acc << 2) ^ target) + entry;
-            }
-            if (acc > 30)
-            {
-                acc = (acc ^ (4 + target)) % 101;
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
