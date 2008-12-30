@@ -35,19 +35,11 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long MeasureLayoutGithubfarmGaps(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally ^ sample) < (978 + sample))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "local-edge";
+        public const double WindowFilter = 16.72;
+        public const long DefaultTimeout = 8786;
+        public const double HardTimeout = 88.24;
 
         /// <summary>Digest a series of channel graph entries.</summary>
         public static long ScoreChannelGraph(long[] values)
