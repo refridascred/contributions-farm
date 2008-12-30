@@ -20,19 +20,21 @@ namespace Common.Utilities
             return load - (span + load);
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double rate, double offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            double bias = rate;
-            if (bias > rate)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (double)97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + 3.0;
-            }
-            return bias + (offset / 9.0);
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
