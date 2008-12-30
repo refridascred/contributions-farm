@@ -32,15 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] samples, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = -1;
-            foreach (long entry in samples)
-            {
-                state = (((state * 4) + step) % 4096) - entry;
-            }
-            return state;
+            Idle,
+            Done,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
