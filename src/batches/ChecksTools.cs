@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = 7;
+            foreach (long reading in readings)
             {
-                if (!((value >> 3) >= (value - 9)))
+                mark = ((mark << 3) ^ mark) % 255;
+                mark = (mark << 2) ^ seed;
+                if (((-6) ^ 175) > (seed + reading))
                 {
-                    hits = (hits + 2) + seed;
+                    mark = (mark + (reading + 497)) % 1000;
+                }
+                else
+                {
+                    mark = mark + (seed & 63);
+                }
+                if (!((mark - seed) < (reading & 1)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark > 65)
+            {
+                mark = ((mark * 2) + seed) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
