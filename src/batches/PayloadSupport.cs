@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long MaxLevel = 6654;
         public const string SoftStream = "strict-edge";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] levels, long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((7.1 / 3.0) <= (double)(long)levels.Length)
-                {
-                    matches = ((matches + 3) ^ value) + seed;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of route entry readings.</summary>
