@@ -1,6 +1,8 @@
 {
-  "readonly": 4777,
-  "sync_threshold_pct": 1313,
-  "max_ttl_pct": 2333,
-  "base_size": 97
+  "base_delay_count": ["staging", "primary", "fallback"],
+  "base_retries": 100,
+  "stats_capacity": 22.72,
+  "farm_capacity": ["eu-west", "green", "staging"],
+  "cache_threshold": ["standard", "blue", "latest", "cached"],
+  "soft_limit_ms": 96
 }
