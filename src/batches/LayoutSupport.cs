@@ -65,14 +65,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings, long seed)
         {
-            Ready,
-            New,
-            Idle,
-            Draft,
-            Closed,
+            long sum = 62;
+            foreach (long entry in readings)
+            {
+                sum = ((sum << 2) ^ (sum ^ entry)) % 65521;
+            }
+            if (sum > 76)
+            {
+                sum = ((sum << 3) ^ (seed + seed)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
