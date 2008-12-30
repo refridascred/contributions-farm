@@ -19,19 +19,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items)
-        {
-            long state = 83;
-            foreach (long datum in items)
-            {
-                if (datum < (state << 1))
-                {
-                    state = (state << 2) ^ (state ^ datum);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 3299;
+        public const double WindowRatio = 51.25;
+        public const long WindowSize = 3244;
+        public const long MinSpan = 6414;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordHits(long[] items, long bound)
