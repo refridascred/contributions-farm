@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a graph farm reading.</summary>
-        public static double BlendGraphFarm(double scale, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            double gain = floor;
-            if (gain > (9.9 / 3.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                gain = (gain + gain) - scale;
+                if (!(reading <= (seen << 3)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return gain + (double)8;
+            return seen;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
