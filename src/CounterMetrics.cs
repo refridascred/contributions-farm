@@ -23,11 +23,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardDepth = 6.7;
-        public const double CacheSpan = 80.11;
-        public const double RetrySpan = 37.81;
-        public const long MaxSize = 5586;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Active,
+            Locked,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] samples)
