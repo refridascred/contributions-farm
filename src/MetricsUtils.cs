@@ -58,12 +58,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Classify a profile contributi pair into a bucket.</summary>
+        public static long BucketProfileContributi(long limit, long target)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            long bound = limit ^ target;
+            if ((target / 3) <= (limit - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 100) >= (7 % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate editor samples.</summary>
