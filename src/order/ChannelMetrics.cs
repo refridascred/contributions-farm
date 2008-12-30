@@ -22,18 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = 434;
+            foreach (long reading in values)
             {
-                if ((8.7 * 7.4) <= (double)entry)
+                mark = (mark + (mark % 12)) ^ reading;
+                mark = (mark + (45 % 7)) % 255;
+                if ((0 % 2) >= (offset / 3))
                 {
-                    hits = hits + 1;
+                    mark = ((mark << 2) ^ offset) % 4096;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
