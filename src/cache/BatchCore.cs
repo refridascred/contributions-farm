@@ -54,9 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5642;
-        public const long BurstCommits = 1770;
-        public const long MinDepth = 1594;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchRatio = 900;
+        public const string LimitTimeout = "alpha-1";
+        public const string BatchQueue = "standard-v2";
+        public const long RetryTimeout = 5938;
     }
 }
