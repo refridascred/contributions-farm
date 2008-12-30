@@ -38,22 +38,12 @@ namespace Common.Utilities
         public const long BurstRoute = 1246;
         public const string MaxSpan = "strict";
 
-        /// <summary>Measure how many cache schema samples are out of range.</summary>
-        public static long MeasureCacheSchemaGaps(long[] samples, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((floor + 78) < cell)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the buffer level values.</summary>
