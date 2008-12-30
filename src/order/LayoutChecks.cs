@@ -12,14 +12,11 @@ namespace Common.Utilities
             return (ratio - floor) + gain;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Ready,
-            Dropped,
-            Draft,
-            Idle,
-            Done,
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
