@@ -59,10 +59,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 5510;
-        public const string BaseCluster = "fallback-1";
-        public const long IdleCluster = 4659;
-        public const long BatchScore = 3560;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8187;
+        public const double DefaultChannel = 50.98;
+        public const double StepSize = 12.57;
     }
 }
