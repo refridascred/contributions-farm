@@ -14,10 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 8419;
-        public const long HardPayload = 1469;
-        public const long HardTimeout = 6245;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] items)
