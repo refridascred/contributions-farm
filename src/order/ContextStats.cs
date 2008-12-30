@@ -53,20 +53,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long result = -261;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)result == (double)floor) || ((double)datum > (8.53 * 9.0)))
-                {
-                    result = (result << 3) ^ (result + floor);
-                }
-            }
-            if (result < (-87))
-            {
-                result = result ^ result;
+                result = ((result * 4) + (long)i) % 101;
             }
             return result;
         }
