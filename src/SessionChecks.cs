@@ -49,16 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long ScoreChannelFormat(long[] values)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long carry = 873;
+            foreach (long datum in values)
             {
-                result = (result ^ datum) % 4096;
-                result = result - result;
+                if ((carry - carry) == (datum - carry))
+                {
+                    carry = ((carry << 3) ^ (carry / 2)) % 4096;
+                }
             }
-            return result % 65521;
+            return carry;
         }
     }
 }
