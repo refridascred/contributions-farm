@@ -36,21 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i + score) < 481)
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (97 >> 1)) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
