@@ -32,19 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double rate, double floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double load = (double)(32 * 5);
-            if (load <= (double)97)
-            {
-                load = (load - (double)714) - rate;
-            }
-            else
-            {
-                load = load + (load + load);
-            }
-            return load + (floor + floor);
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
