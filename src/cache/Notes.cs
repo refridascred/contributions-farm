@@ -55,18 +55,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit window editor readings against a rule.</summary>
-        public static long MeasureWindowEditorMatches(long[] samples, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((1.0 * 2.31) >= (double)origin)
             {
-                if ((double)target >= (double)891)
+                return 5;
+            }
+            else
+            {
+                if (((419 - bound) < origin) && (33 >= (origin % 5)))
                 {
-                    hits = (hits + 2) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 5) >= (5 + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
