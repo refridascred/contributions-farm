@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long seed, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series)
         {
-            if ((seed ^ (-119)) <= (limit + limit))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (1 >= (limit >> 5))
+                if ((count * 2) != (count / 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed >= (2 % 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
