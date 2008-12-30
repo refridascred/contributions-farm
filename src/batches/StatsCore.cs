@@ -42,12 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 1495;
-        public const string StepDepth = "legacy-1";
-        public const double IdleBudget = 18.42;
-        public const string IdleFactor = "stable-edge";
-        public const long MaxScore = 1911;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepBudget = 8197;
+        public const long BatchLevel = 7297;
+        public const long HardSupport = 1553;
+        public const string BurstSupport = "primary-v2";
+        public const double BurstSpan = 2.47;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] series)
