@@ -21,13 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the batch kind values.</summary>
