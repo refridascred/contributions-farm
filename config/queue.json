@@ -1,7 +1,7 @@
 {
-  "enabled": "cached",
-  "readonly": 681,
-  "profile_capacity": true,
-  "min_size": [500, 129, 198, 424],
-  "editor_depth": "open"
+  "readonly": 68.91,
+  "queue_limit": "primary",
+  "command_depth": 7200,
+  "soft_interval_pct": "standard",
+  "max_depth_pct": 2850
 }
