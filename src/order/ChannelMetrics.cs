@@ -36,13 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Match up layout report samples.</summary>
+        public static long OverlapLayoutReportCount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
