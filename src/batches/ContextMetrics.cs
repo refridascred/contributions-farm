@@ -20,22 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long carry = 90;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)carry > (3.8 * 4.88)) && ((6 + carry) >= (sample + sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 3) ^ sample) % 4096;
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 169)
-            {
-                carry = ((carry * 5) + (long)data.Length) % 97;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
