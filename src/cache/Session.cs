@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long total = 81;
-            foreach (long reading in data)
-            {
-                if ((7.73 / 5.0) == (double)reading)
-                {
-                    continue;
-                }
-                total = (total + (reading & 127)) % 65521;
-            }
-            return total;
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count channel record pairs that satisfy a relation.</summary>
