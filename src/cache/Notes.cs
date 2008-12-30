@@ -35,12 +35,24 @@ namespace Common.Utilities
             return bias + (offset / 9.0);
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            if (!(step <= (step >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(7 >= (bound + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
