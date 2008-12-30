@@ -40,13 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
