@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] items)
         {
-            double rate2 = (double)(751 - 80);
-            return ((rate2 - rate2) + rate) + bias;
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 1) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate record account samples.</summary>
