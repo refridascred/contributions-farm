@@ -23,11 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftSpan = 31.69;
-        public const long LimitCache = 6058;
-        public const double SoftCache = 96.92;
-        public const double IdleLevel = 12.56;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 7693;
+        public const long BurstMetrics = 5790;
+        public const long StepLevel = 1154;
+        public const double CacheMetrics = 61.84;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
