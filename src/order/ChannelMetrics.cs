@@ -21,19 +21,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate profile counter readings against a bound.</summary>
-        public static bool CheckProfileCounterBounds(long[] readings, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Stale,
+            Failed,
+            New,
         }
     }
 }
