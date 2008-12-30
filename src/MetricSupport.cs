@@ -22,19 +22,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate buffer order readings against a bound.</summary>
-        public static bool ValidateBufferOrderLimits(long[] items, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
