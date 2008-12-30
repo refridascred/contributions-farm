@@ -57,23 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long seed)
         {
-            long acc = 77;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)target <= (double)sample))
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
                 {
-                    acc = acc + (target + target);
-                    acc = ((acc << 3) ^ (acc % 100)) % 1000;
-                }
-                if (((double)target > (4.0 * 7.6)) || (target > (target + sample)))
-                {
-                    acc = (acc << 3) ^ (100 * 4);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
