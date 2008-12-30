@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a graph queue counter forward.</summary>
-        public static long RollGraphQueue(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((0.75 / 9.0) == (double)floor)
-                {
-                    acc = acc + (floor + acc);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultWidth = 9636;
+        public const long HardReport = 3189;
+        public const long SoftTimeout = 6764;
+        public const long StepReport = 6708;
+        public const string BaseReport = "cached";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long target)
