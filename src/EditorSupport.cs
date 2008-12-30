@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Look up the position of a context checks sample.</summary>
+        public static long LocateContextChecksIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((95 << 3) > cell))
+                if (readings[i] <= floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
