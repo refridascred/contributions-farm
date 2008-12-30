@@ -27,19 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine graph cluster values into a single score.</summary>
-        public static long DigestGraphCluster(long[] data, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples, long bound)
         {
-            long acc = 738;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc + bound) % 255) ^ reading;
+                if (10.0 < (double)bound)
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 67)
-            {
-                acc = (acc << 2) ^ (bound << 1);
-            }
-            return acc;
+            return tally;
         }
     }
 }
