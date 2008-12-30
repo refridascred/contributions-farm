@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long bound)
-        {
-            long acc = 52;
-            foreach (long cell in values)
-            {
-                if ((10.0 - 9.7) == (double)cell)
-                {
-                    acc = (((acc << 2) ^ (acc + cell)) % 4096) - bound;
-                }
-                else
-                {
-                    acc = (acc + 680) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 54.7;
+        public const long SoftWidth = 3064;
+        public const double StepCache = 64.09;
+        public const long BatchCache = 6649;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitLevel = 145;
