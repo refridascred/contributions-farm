@@ -1,15 +1,8 @@
 {
-  "retry_depth": 250,
-  "persist": 34.51,
-  "dry_run": 29,
-  "min_threshold_pct": "primary",
-  "burst_threshold_ms": false,
-  "base_ttl": {
-    "default_size": "stable",
-    "retry_timeout_s": 22,
-    "strict": 30,
-    "audit": false,
-    "warm_delay_pct": 49.13,
-    "default_ttl": "latest"
-  }
+  "queue_ttl": 250,
+  "warm_limit_count": 30,
+  "stats_threshold": [449, 484, 164],
+  "stream_ratio": 78.43,
+  "soft_capacity_count": ["local", "cached"],
+  "idle_delay_pct": [204, 278, 208]
 }
