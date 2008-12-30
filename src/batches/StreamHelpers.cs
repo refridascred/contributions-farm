@@ -23,15 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            double ratio = (double)((-544) >> 4);
-            if (ratio > (double)4)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + rate) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (double)(-77);
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
