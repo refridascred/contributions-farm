@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long step)
         {
-            New,
-            Locked,
-            Dropped,
-            Active,
-            Failed,
+            if ((step ^ 58) == (step ^ 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 4) < 439)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the tools status values.</summary>
