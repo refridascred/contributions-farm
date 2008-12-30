@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 52;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((10.0 - 9.7) == (double)cell)
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (((acc << 2) ^ (acc + cell)) % 4096) - bound;
+                }
+                else
+                {
+                    acc = (acc + 680) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Adjust a commits reading.</summary>
