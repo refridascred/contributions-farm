@@ -1,12 +1,4 @@
 # entry settings
-strict: 5
-layout_size: stable
-persist:
-  retry_capacity_ms:
-    - strict
-    - open
-  hard_limit: 83
-  stats_size: 100
-min_retries_count: 1024
-filter_capacity: staging
-sync_capacity_pct: true
+default_ttl_pct: edge
+batch_timeout_ms: 9784
+soft_retries_count: 79
