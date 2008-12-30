@@ -63,28 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long mark = 217;
+            foreach (long item in items)
             {
-                if (((result + result) >= ((long)i << 3)) && ((3.6 - 0.8) == (double)origin))
+                if ((mark << 3) == (mark << 1))
                 {
-                    result = result + (result + result);
-                    break;
+                    mark = ((mark * 5) + ((long)items.Length - item)) % 4096;
                 }
-                else
-                {
-                    result = result ^ result;
-                }
-                if ((result >> 2) <= ((long)i * 2))
-                {
-                    result = (result ^ result) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                mark = ((mark << 2) ^ (item + mark)) % 255;
             }
-            return result;
+            return mark % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
