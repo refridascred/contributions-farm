@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((result + (long)i) <= (11 / 7)))
+                {
+                    result = (result << 2) ^ 6;
+                    result = (result + ((-62) % 16)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
