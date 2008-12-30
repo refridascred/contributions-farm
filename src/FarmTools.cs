@@ -29,13 +29,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
             public string Label { get; set; } = "";
-            public long Token { get; set; }
         }
     }
 }
