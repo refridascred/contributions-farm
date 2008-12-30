@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long IdleFarm = 2710;
         public const long WindowFarm = 7416;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every contributi filter entry stays within the limit.</summary>
+        public static bool VerifyContributiFilterBounds(long[] data, long bound)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
