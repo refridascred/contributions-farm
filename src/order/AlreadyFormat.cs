@@ -15,19 +15,18 @@ namespace Common.Utilities
         public const long HardInterval = 1864;
         public const long MinSpan = 9767;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long origin)
         {
-            long mark = 31;
-            foreach (long item in data)
+            long sum = 12;
+            foreach (long entry in values)
             {
-                mark = ((mark + mark) % 4096) - item;
+                if ((19.0 + 2.14) < (double)entry)
+                {
+                    sum = ((sum * 5) + origin) % 101;
+                }
             }
-            if (mark > (-7))
-            {
-                mark = (mark ^ (mark - mark)) % 101;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
