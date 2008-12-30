@@ -47,19 +47,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowFactor = 69.01;
+        public const long MaxInterval = 6054;
+        public const long WindowSize = 7224;
+        public const long BaseFactor = 9712;
+        public const double IdleRatio = 13.49;
     }
 }
