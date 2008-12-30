@@ -45,25 +45,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long limit, long limit2)
+        /// <summary>Blend two schema filter measurements.</summary>
+        public static double ProjectSchemaFilter(double weight, double bias)
         {
-            long prev = limit ^ limit2;
-            if (((3 & 255) > (prev >> 4)) && ((double)limit >= 5.3))
+            double gain = (double)(4 - 0);
+            if (gain > weight)
             {
-                return 8;
+                gain = gain - (bias / 2.0);
             }
             else
             {
-                if ((477 < limit) && (limit <= (limit + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                gain = gain - (double)(-918);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (weight / 8.0)) - (double)(long)i;
+            }
+            return gain - (gain / 6.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
