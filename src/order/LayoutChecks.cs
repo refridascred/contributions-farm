@@ -26,38 +26,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long floor, long origin)
+        /// <summary>Iterate the commits account series from a seed.</summary>
+        public static long StepCommitsAccount(long origin)
         {
-            if ((origin - floor) > floor)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 3) >= (origin ^ floor))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 3;
+                    carry = ((carry ^ ((-1) - 6)) % 255) ^ (long)i2;
                 }
-                else
+                if (((carry - (long)i) >= ((long)i ^ origin)) && (3.54 > (double)carry))
                 {
-                    if ((origin - origin) < (origin % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor << 1) >= origin) && ((origin / 6) == (origin * 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = carry - (long)i;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
