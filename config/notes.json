@@ -1,7 +1,15 @@
 {
-  "hard_timeout": 87.46,
-  "hard_threshold_count": 250,
-  "retry_limit": "staging",
-  "dry_run": true,
-  "order_ratio": "fallback"
+  "poll_window_count": {
+    "compress": 60,
+    "flush_interval_count": "green",
+    "contributi_depth": "eu-west"
+  },
+  "idle_timeout_count": 19,
+  "soft_capacity_count": {
+    "poll_retries_count": "primary",
+    "sync_ratio": 8579,
+    "cache_window_s": true
+  },
+  "batch_depth_s": [179, 159],
+  "cache_limit_ms": [383, 384, 464]
 }
