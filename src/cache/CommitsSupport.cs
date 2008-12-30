@@ -17,18 +17,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!(sample <= (hits & 63)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double ratio = (double)97 * 7.56;
+            return (ratio - bias) + floor;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
