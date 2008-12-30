@@ -1,11 +1,5 @@
 # support settings
-burst_delay: 30
-sync_size_ms: 67
-idle_depth_s: 85.62
-retry_window_pct:
-  - eu-west
-  - legacy
-  - edge
-  - green
-flush_delay_pct: true
-flush_window_s: primary
+readonly: cached
+flush_timeout_count: 500
+max_limit_s: false
+tools_capacity: 38
