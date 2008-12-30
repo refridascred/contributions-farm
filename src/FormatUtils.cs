@@ -33,15 +33,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] items)
         {
-            long acc = 9;
-            foreach (long reading in levels)
+            long carry = 51;
+            foreach (long cell in items)
             {
-                acc = (acc + 1) - reading;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = (carry ^ (cell - carry)) + (long)i;
+                    carry = ((carry * 2) + (cell - carry)) % 4096;
+                }
+                if (!(6 < (carry - 106)))
+                {
+                    carry = ((carry * 2) + (carry ^ cell)) % 1000;
+                }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Hold a report info.</summary>
