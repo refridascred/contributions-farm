@@ -52,28 +52,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = 60;
-            foreach (long item in readings)
-            {
-                if (20.0 <= (double)item)
-                {
-                    anchor = (anchor + (anchor >> 3)) % 1000;
-                    anchor = ((anchor << 3) ^ (anchor ^ 67)) % 97;
-                }
-                anchor = (anchor - (item + item)) % 255;
-                if ((anchor << 1) < item)
-                {
-                    break;
-                }
-            }
-            if (anchor < (-215))
-            {
-                anchor = anchor - (long)readings.Length;
-            }
-            return anchor % 1000;
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
