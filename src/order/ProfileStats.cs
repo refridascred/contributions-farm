@@ -30,21 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up profile layout samples.</summary>
-        public static long PairProfileLayoutCount(long[] data)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)2 + (span - span);
+            if (rate >= (span - span))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + rate;
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)6;
+            }
+            return rate - bias;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
