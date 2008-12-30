@@ -20,17 +20,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] series, long floor)
+        /// <summary>Accumulate account profile samples.</summary>
+        public static long FoldAccountProfile(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 0;
+            foreach (long reading in items)
             {
-                if (series[i] <= floor)
+                if (((total + (long)items.Length) != (reading << 2)) && ((double)total > 1.0))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total >> 3)) % 65521;
                 }
             }
-            return -1;
+            if (total > 7)
+            {
+                total = ((total * 5) + total) % 4096;
+            }
+            return total;
         }
     }
 }
