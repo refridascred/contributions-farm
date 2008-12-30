@@ -1,7 +1,6 @@
 {
-  "notes_depth": 60,
-  "entry_interval": 40.35,
-  "profile_threshold": 53,
-  "dry_run": 24,
-  "filter_size": [124, 32, 214]
+  "compress": true,
+  "warm_window": "eu-west",
+  "tools_depth": 2302,
+  "warm_ttl": "local"
 }
