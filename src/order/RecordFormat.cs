@@ -31,18 +31,19 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data, long seed)
+        /// <summary>Check that every metrics checks entry stays within the limit.</summary>
+        public static bool VerifyMetricsChecksRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!((237 + cell) != (cell << 3)))
+                if (item < offset)
                 {
-                    seen = (seen + 2) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the commits mode values.</summary>
