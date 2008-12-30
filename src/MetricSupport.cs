@@ -22,12 +22,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 2) == (cell & 7))
+                {
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
