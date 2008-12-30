@@ -40,22 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] readings, long step)
         {
-            long acc = 934;
-            foreach (long entry in values)
+            long state = -85;
+            foreach (long entry in readings)
             {
-                if (!((floor + acc) < ((long)values.Length + acc)))
-                {
-                    acc = (acc ^ (floor + acc)) - entry;
-                }
+                state = ((state ^ step) % 97) - entry;
             }
-            if (acc < 731)
+            if (state < 91)
             {
-                acc = (acc << 2) ^ (floor * 5);
+                state = (state + (state + step)) % 4096;
             }
-            return acc;
+            return state % 65521;
         }
 
         /// <summary>Describe the commits state values.</summary>
