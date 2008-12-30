@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long limit)
         {
-            long bound = target ^ offset;
-            if ((offset & 1) > bound)
+            long result = -14;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset ^ offset) > 705) || ((target & 15) > (target & 255)))
+                if (reading >= (limit * 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + offset) != (offset + target)) || ((offset >> 1) != (bound - target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) < offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = (result ^ (result << 3)) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Accumulate window profile samples.</summary>
