@@ -60,19 +60,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batches support figure with a bias.</summary>
-        public static double SmoothBatchesSupport(double weight, double offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            double rate = 0.34;
-            if (rate >= weight)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                rate = (rate + (double)4) + offset;
+                state = (state + state) % 1000;
+                state = ((state * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - weight) - (double)(long)i;
-            }
-            return rate - (double)0;
+            return state;
         }
     }
 }
