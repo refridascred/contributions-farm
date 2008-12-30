@@ -35,11 +35,22 @@ namespace Common.Utilities
             return scale + (scale - offset);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 9077;
-        public const double BaseTimeout = 87.48;
-        public const double LimitFilter = 2.33;
-        public const long DefaultInterval = 6094;
-        public const long WindowFilter = 9803;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen - seen) < (offset % 64))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
