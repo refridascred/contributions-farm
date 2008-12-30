@@ -28,39 +28,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a already stream pair into a bucket.</summary>
-        public static long GradeAlreadyStream(long target, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] readings, long offset)
         {
-            long edge = target ^ limit;
-            if (((30 + 3) > edge) && (limit > (limit + target)))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge - 88) < (limit << 2))
+                if (cell > (offset % 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit == (7.3 / 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((51 - edge) >= (860 + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
