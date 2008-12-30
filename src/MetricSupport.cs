@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string MaxMetric = "primary-v2";
         public const long BaseMetric = 7095;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples, long bound)
         {
-            long result = 360;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((count >= (bound % 64)) || ((count / 5) >= (77 + count)))
                 {
-                    result = ((result + reading) % 255) ^ (long)i;
-                }
-                if ((reading + result) < result)
-                {
-                    result = result + target;
+                    count = (count + 1) - cell;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
