@@ -44,13 +44,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long target)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            if (((offset + target) != (0 % 8)) || ((target / 5) == (offset - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + offset) >= (offset >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a checks record.</summary>
