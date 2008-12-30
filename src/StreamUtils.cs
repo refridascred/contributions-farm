@@ -58,10 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheCount = "latest-1";
-        public const long SoftGraph = 7120;
-        public const long LimitGraph = 4;
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long MeasureBufferQueueGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (count <= ((long)levels.Length - 8))
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] samples, long limit)
