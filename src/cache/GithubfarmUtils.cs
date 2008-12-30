@@ -32,32 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long limit, long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            long cur = limit + floor;
-            if ((cur + (-22)) < (limit << 1))
+            double ratio = scale;
+            if (ratio > (scale * 11.0))
             {
-                return 3;
+                ratio = (ratio + (ratio * 7.0)) - span;
             }
             else
             {
-                if ((limit * 4) == (825 << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(cur < (limit % 100)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio + (ratio + scale);
             }
+            return ratio + ratio;
         }
     }
 }
