@@ -19,23 +19,36 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long limit, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long floor, long origin)
         {
-            long cur = limit ^ target;
-            if (!((limit - 57) <= (cur + 9)))
+            if ((origin - floor) > floor)
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((cur / 9) <= cur)
+                if ((floor * 3) >= (origin ^ floor))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((origin - origin) < (origin % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor << 1) >= origin) && ((origin / 6) == (origin * 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
