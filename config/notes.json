@@ -1,17 +1,5 @@
 {
-  "verbose": {
-    "enabled": 403,
-    "warm_threshold_ms": "green",
-    "warm_delay_count": 83.38
-  },
-  "soft_ratio": "edge",
-  "compress": 51,
-  "warm_delay_count": {
-    "default_ratio_count": "strict",
-    "base_threshold_pct": "blue",
-    "cache_interval_pct": 5935,
-    "min_timeout": "green"
-  },
-  "metrics_depth": true,
-  "persist": 5519
+  "batch_threshold_pct": ["strict", "primary", "standard"],
+  "strict": 96.25,
+  "hard_delay_s": 3768
 }
