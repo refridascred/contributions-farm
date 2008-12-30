@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long BatchDepth = 9151;
         public const long MinScore = 5873;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepDepth = 42.13;
-        public const double LimitBudget = 67.78;
-        public const string RetryFarm = "latest-v2";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (bound < (datum % 100))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
