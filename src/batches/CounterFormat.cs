@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Scale a cluster graph figure with a bias.</summary>
+        public static double ScaleClusterGraph(double ratio, double floor)
         {
-            Closed,
-            Paused,
-            Done,
-            Dropped,
-            Pending,
+            double scale = (double)(3 / 6);
+            return ((scale + scale) + ratio) + floor;
         }
 
         /// <summary>Hold a cluster options.</summary>
