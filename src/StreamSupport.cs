@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine session support values into a single score.</summary>
-        public static long DigestSessionSupport(long[] samples, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long target)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long score = -2;
+            foreach (long value in series)
             {
-                if (sample > step)
+                score = (score ^ (target & 63)) % 97;
+                if (!(((-464) ^ score) < (value & 7)))
                 {
-                    acc = (acc - (sample & 3)) % 101;
+                    score = (score - (13 >> 5)) % 255;
                 }
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Describe the route level values.</summary>
