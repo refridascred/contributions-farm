@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const double BatchDepth = 95.05;
         public const double MaxReport = 90.69;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (sample != target)
+                if (item != seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
