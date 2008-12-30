@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            long state = 91;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state % 64) < (18 * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state << 2) ^ origin) % 4096;
-                }
-                else
-                {
-                    state = (state - (origin + 549)) % 4096;
-                }
-                if ((sample ^ 7) <= ((long)samples.Length * 5))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
