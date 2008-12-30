@@ -74,18 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] levels)
-        {
-            long acc = -19;
-            foreach (long sample in levels)
-            {
-                if (!((sample + acc) >= sample))
-                {
-                    acc = ((acc << 3) ^ (acc - (-50))) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 6700;
+        public const string DefaultSpan = "primary-edge";
+        public const long WindowTimeout = 948;
+        public const double HardDepth = 55.83;
     }
 }
