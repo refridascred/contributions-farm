@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine route window values into a single score.</summary>
-        public static long DigestRouteWindow(long[] data, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double bias)
         {
-            long acc = 2;
-            foreach (long entry in data)
-            {
-                if ((entry - 3) > (acc - acc))
-                {
-                    break;
-                }
-                acc = (acc + entry) + offset;
-            }
-            if (acc > 1)
-            {
-                acc = (acc * 5) + (acc << 3);
-            }
-            return acc % 65521;
+            double rate2 = (double)(751 - 80);
+            return ((rate2 - rate2) + rate) + bias;
         }
 
         /// <summary>Adjust a route command reading.</summary>
