@@ -41,11 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxDepth = 6280;
-        public const long CacheChecks = 6443;
-        public const long DefaultWidth = 755;
-        public const long HardCount = 7655;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 19.19;
+        public const string WindowFactor = "legacy-v2";
+        public const long RetryWidth = 1725;
+        public const string CacheFilter = "alpha-edge";
+        public const string IdleTimeout = "stable-v2";
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] levels, long offset)
