@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of farm report readings.</summary>
-        public static long WeighFarmReport(long[] values, long target)
-        {
-            long score = 703;
-            foreach (long item in values)
-            {
-                if ((0 ^ target) < (item << 2))
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 213;
+        public const long CacheBudget = 1103;
+        public const double BatchCount = 1.22;
+        public const string StepSpan = "alpha";
 
         /// <summary>Validate githubfarm contributi readings against a bound.</summary>
         public static bool GuardGithubfarmContributiBounds(long[] items, long floor)
