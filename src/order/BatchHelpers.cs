@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] levels, long floor)
+        /// <summary>Audit farm buffer readings against a rule.</summary>
+        public static long AuditFarmBufferGaps(long[] readings)
         {
-            long mark = 686;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 2) + (mark - 211)) % 65521;
-                if (((cell + cell) == (mark / 6)) || (floor >= (floor ^ cell)))
+                if (!((long)readings.Length < (seen * 3)))
                 {
-                    mark = (mark + (9 - floor)) % 65521;
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Locate a channel editor reading by value.</summary>
