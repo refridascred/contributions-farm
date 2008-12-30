@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] items, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (entry != step)
+                if ((matches - (-77)) == (matches - matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
