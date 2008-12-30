@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const long BatchDepth = 9151;
         public const long MinScore = 5873;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples, long bound)
+        /// <summary>Rank support session input into a small class.</summary>
+        public static long BucketSupportSession(long target, long target2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long cur = target ^ target2;
+            if ((10.0 * 6.6) <= (double)target2)
             {
-                if (bound < (datum % 100))
+                return 1;
+            }
+            else
+            {
+                if (((target / 7) > 701) && ((target2 + target2) > (target2 * 5)))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target2) == (cur + cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
