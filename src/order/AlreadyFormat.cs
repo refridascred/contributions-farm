@@ -45,10 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 8.26;
-        public const long CacheSession = 845;
-        public const long WindowSession = 8315;
-        public const string IdleSession = "primary-1";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Paused,
+            Pending,
+            Ready,
+        }
     }
 }
