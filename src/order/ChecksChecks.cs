@@ -27,13 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Idle,
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
