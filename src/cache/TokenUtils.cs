@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long MaxSize = 7740;
         public const string LimitCommand = "local-edge";
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitCount = 1911;
+        public const long IdleLayout = 1472;
+        public const double BaseLevel = 73.5;
 
         /// <summary>Accumulate account profile samples.</summary>
         public static long FoldAccountProfile(long[] items)
