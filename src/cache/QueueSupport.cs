@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long bound)
+        /// <summary>Check that every payload context entry stays within the limit.</summary>
+        public static bool VerifyPayloadContextBounds(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (values[i] == bound)
+                if (sample <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
