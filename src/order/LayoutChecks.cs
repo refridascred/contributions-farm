@@ -24,15 +24,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of commits already readings.</summary>
-        public static long FoldCommitsAlready(long[] samples, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            long carry = 13;
-            foreach (long value in samples)
+            if (((4.0 / 5.0) != (double)origin) && ((double)origin < (double)622))
             {
-                carry = (((carry << 3) ^ (value << 1)) % 255) + step;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((double)860 < (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((20.0 * 5.14) > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
