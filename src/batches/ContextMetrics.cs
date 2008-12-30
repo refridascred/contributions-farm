@@ -47,21 +47,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count queue support pairs that satisfy a relation.</summary>
-        public static long CompareQueueSupportCount(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > offset)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
