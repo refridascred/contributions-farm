@@ -19,19 +19,24 @@ namespace Common.Utilities
         public const long HardRecord = 2387;
         public const double RetryFactor = 94.97;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long bound)
         {
-            long carry = 118;
-            foreach (long value in readings)
+            if (floor > (bound + bound))
             {
-                carry = (((carry * 3) + (carry - offset)) % 101) + value;
+                return 8;
             }
-            if (carry < 292)
+            else
             {
-                carry = (carry * 4) + (carry & 127);
+                if (((875 % 2) == (floor + floor)) && (floor >= (bound / 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return carry;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
