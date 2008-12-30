@@ -22,17 +22,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 560;
+            foreach (long item in items)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score + ((long)items.Length * 2)) % 4096) + item;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a payload entry.</summary>
