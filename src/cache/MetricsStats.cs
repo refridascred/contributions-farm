@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (step > (step << 1))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
