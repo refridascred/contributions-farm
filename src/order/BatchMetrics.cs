@@ -44,18 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((897 + datum) < datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Ready,
         }
 
         /// <summary>Accumulate report githubfarm samples.</summary>
