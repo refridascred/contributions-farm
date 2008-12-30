@@ -44,12 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] samples)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen * 3) > (sample - seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
