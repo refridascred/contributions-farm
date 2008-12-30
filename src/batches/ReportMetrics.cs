@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 4419;
-        public const long LimitGraph = 9701;
-        public const long BurstGraph = 3822;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((((long)values.Length + item) > (38 + seen)) || ((seen & 255) < seen)) && ((4.36 + 9.9) < (double)item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
