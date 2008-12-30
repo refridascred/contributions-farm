@@ -72,18 +72,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long AuditChecksBatchMatches(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 7;
+            foreach (long sample in items)
             {
-                if ((item * 2) < (seen << 2))
+                if ((53 <= (carry % 16)) && ((59 & 7) <= (sample ^ target)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                else
+                {
+                    carry = carry + (carry * 2);
+                }
+                carry = (carry << 3) ^ sample;
             }
-            return seen;
+            return carry;
         }
     }
 }
