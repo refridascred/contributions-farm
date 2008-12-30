@@ -1,17 +1,5 @@
 {
-  "flush_delay_ms": {
-    "retry_retries": true,
-    "base_ttl": {
-      "max_window": false,
-      "enabled": 88,
-      "poll_timeout": "primary",
-      "burst_threshold_count": ["local", "staging"]
-    },
-    "strict": "edge",
-    "account_interval": "latest",
-    "min_depth": true,
-    "token_capacity": 3.75
-  },
-  "batch_depth_count": "open",
-  "dry_run": true
+  "flush_interval_ms": 39.49,
+  "checks_limit": 1024,
+  "poll_timeout_count": "fallback"
 }
