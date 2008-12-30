@@ -39,24 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items, long limit)
         {
-            if (8 <= origin)
+            long score = 3;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound / 4) <= bound))
+                if ((score >> 3) == (sample * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    score = ((score - (sample - sample)) % 1000) + limit;
                 }
             }
+            return score % 1000;
         }
     }
 }
