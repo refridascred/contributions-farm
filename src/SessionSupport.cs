@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] values, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long sum = 74;
+            foreach (long value in levels)
             {
-                if (sample < offset)
+                if (((step << 2) == (value + step)) && ((step * 2) > (value + sum)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum << 2) ^ (sum >> 4);
                 }
             }
-            return found;
+            if (sum > 8)
+            {
+                sum = (sum ^ (step ^ sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
