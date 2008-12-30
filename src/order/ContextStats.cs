@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] series, long origin)
         {
-            long anchor = 1;
-            foreach (long cell in data)
+            long result = 974;
+            foreach (long sample in series)
             {
-                if (((cell + cell) >= (anchor - anchor)) || ((20.0 + 5.0) <= (double)anchor))
-                {
-                    anchor = anchor ^ (step ^ cell);
-                }
+                result = (result + (sample + origin)) % 97;
+                result = ((result * 2) + sample) % 255;
             }
-            if (anchor > 761)
-            {
-                anchor = (anchor << 2) ^ step;
-            }
-            return anchor % 1000;
+            return result;
         }
 
         /// <summary>Describe the queue status values.</summary>
