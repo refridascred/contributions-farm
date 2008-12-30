@@ -16,19 +16,15 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] samples, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double bias = ratio;
+            if (bias < (3.23 - ratio))
             {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + (bias * 1.2)) - floor;
             }
-            return stale;
+            return bias - (double)291;
         }
 
         /// <summary>Describe the profile mode values.</summary>
