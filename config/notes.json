@@ -1,20 +1,6 @@
 {
-  "hard_depth": "blue",
-  "enabled": ["green", "staging"],
-  "soft_depth_count": {
-    "cache_size": {
-      "readonly": true,
-      "sync_delay": [96, 257],
-      "batch_size_pct": 64.94,
-      "metric_retries": false,
-      "schema_retries": true,
-      "max_ttl_s": 1024
-    },
-    "default_ratio_count": true,
-    "batch_limit": true,
-    "retry_threshold_count": 11.89,
-    "context_limit": 98.67
-  },
-  "readonly": 52.74,
-  "audit": false
+  "cluster_limit": 71,
+  "burst_interval_s": 66.34,
+  "flush_timeout_s": "cached",
+  "retry_timeout_count": true
 }
