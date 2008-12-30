@@ -49,23 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Audit cache window readings against a rule.</summary>
+        public static long CountCacheWindowHits(long[] samples, long step)
         {
-            double load = offset * 5.7;
-            if (load >= offset)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                load = (load - (double)365) + bias;
+                if (!((count ^ datum) >= count))
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load + (offset - load);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (1.05 / 9.0)) + (double)(long)i;
-            }
-            return load - offset;
+            return count;
         }
     }
 }
