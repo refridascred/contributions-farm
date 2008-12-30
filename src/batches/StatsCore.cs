@@ -65,17 +65,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)78 * 4.1;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = (((drift - 6.3) + (double)(long)i) - bias) - floor;
             }
-            return -1;
+            return drift + drift;
         }
     }
 }
