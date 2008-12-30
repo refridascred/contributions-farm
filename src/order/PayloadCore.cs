@@ -31,11 +31,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 8462;
-        public const string StepScore = "primary-v2";
-        public const long BurstBudget = 5245;
-        public const double BurstToken = 15.91;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Locked,
+            Queued,
+            Paused,
+            Pending,
+            Active,
+        }
 
         /// <summary>Compare every pair of stats context readings.</summary>
         public static long OverlapStatsContextCount(long[] levels)
