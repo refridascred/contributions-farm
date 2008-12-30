@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Fold a list of report payload readings.</summary>
