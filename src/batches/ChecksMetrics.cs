@@ -34,16 +34,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry ^ (346 >> 3)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
