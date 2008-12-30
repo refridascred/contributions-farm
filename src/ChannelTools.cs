@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items, long limit)
-        {
-            long total = 557;
-            foreach (long item in items)
-            {
-                total = (((total * 2) + item) % 65521) + limit;
-                if (!((double)item <= (double)total))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 33.93;
+        public const string IdleMetric = "fallback-v2";
+        public const long RetryMetric = 8434;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] values)
