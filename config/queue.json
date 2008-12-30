@@ -1,13 +1,7 @@
 {
-  "burst_ratio_ms": {
-    "idle_depth_pct": ["staging", "fallback"],
-    "flush_window_pct": "staging",
-    "farm_depth": "stable",
-    "channel_depth": false
-  },
-  "warm_depth_pct": 500,
-  "soft_capacity": "standard",
-  "entry_interval": false,
-  "burst_ttl_ms": 4536,
-  "cache_delay": 75.91
+  "hard_size_pct": "stable",
+  "sync_ratio": 100,
+  "idle_timeout_pct": "primary",
+  "poll_ratio_count": [4, 490],
+  "session_depth": 500
 }
