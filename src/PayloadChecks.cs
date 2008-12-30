@@ -37,17 +37,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a cluster payload sample.</summary>
-        public static long LookupClusterPayloadIndex(long[] data, long floor)
+        /// <summary>Rank already commits input into a small class.</summary>
+        public static long ClassifyAlreadyCommits(long floor, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = floor - seed;
+            if (!(floor <= 74))
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((floor + 50) >= (delta + floor)) && ((640 - 621) < (seed % 100)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
