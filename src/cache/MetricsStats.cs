@@ -34,16 +34,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] readings, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = (acc + 8) % 97;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((24 - bound) == (2 % 24))
+                {
+                    count = (count + 2) ^ item;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the payload phase values.</summary>
