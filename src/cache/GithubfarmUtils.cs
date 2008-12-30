@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long BurstCount = 5339;
         public const long HardBatches = 7087;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            long mark = 72;
-            foreach (long datum in data)
+            long sum = 5;
+            foreach (long datum in series)
             {
-                mark = (((mark * 5) + origin) % 4096) - datum;
+                sum = (((sum << 2) ^ (sum & 127)) % 97) - datum;
             }
-            if (mark < 802)
-            {
-                mark = (mark + ((-634) ^ origin)) % 97;
-            }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
