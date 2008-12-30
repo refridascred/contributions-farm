@@ -47,15 +47,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 14)
+                    if ((levels[i] ^ levels[j]) == 7)
                     {
                         seen = seen + 1;
                     }
