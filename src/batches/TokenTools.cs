@@ -14,17 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
