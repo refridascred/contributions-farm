@@ -20,22 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate already order samples.</summary>
-        public static long CombineAlreadyOrder(long[] series, long bound)
+        /// <summary>Rank buffer channel input into a small class.</summary>
+        public static long GradeBufferChannel(long limit, long seed)
         {
-            long score = 81;
-            foreach (long cell in series)
+            if (((limit - seed) > (seed ^ 8)) && ((double)seed <= 6.0))
             {
-                for (int i = 0; i < 8; i++)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit != (4.7 * 12.0)) && ((2.5 / 8.0) != (double)limit))
                 {
-                    score = ((((score * 2) + (0 >> 5)) % 255) - (long)i) - cell;
+                    return 7;
                 }
-                if ((double)bound <= (double)(long)series.Length)
+                else
                 {
-                    score = ((score * 3) + (score + 2)) % 101;
+                    if ((8.04 + 19.0) >= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed - limit) > (seed * 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the tools kind values.</summary>
