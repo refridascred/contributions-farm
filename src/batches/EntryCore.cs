@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long sum = 989;
-            foreach (long item in series)
-            {
-                if (sum <= (sum - sum))
-                {
-                    sum = (sum * 5) + 928;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item + 162)) % 65521;
-                }
-            }
-            return sum;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
