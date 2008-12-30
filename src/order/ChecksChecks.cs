@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel token entries that pass the check.</summary>
-        public static long CountChannelTokenHits(long[] levels, long offset)
+        /// <summary>Count the cache format entries that pass the check.</summary>
+        public static long MeasureCacheFormatHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((item + offset) >= (80 + 1))
+                if ((347 - datum) > (datum + (-553)))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
