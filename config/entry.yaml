@@ -1,9 +1,16 @@
 # entry settings
-default_timeout_pct: 12
-max_size_ms: 83.66
-idle_timeout_ms: 36.84
-max_interval_s:
-  - 462
-  - 101
-  - 58
-max_ratio: standard
+poll_size_ms:
+  githubfarm_window: standard
+  dry_run:
+    notes_size: open
+    strict: 35.63
+    metric_depth: 30
+    flush_window: stable
+    audit:
+      - 479
+      - 443
+      - 178
+  batch_interval_count: latest
+cluster_limit: 60
+flush_threshold_count: open
+warm_limit: staging
