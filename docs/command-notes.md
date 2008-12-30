@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Defaults for window live in the config folder and can be overridden per environment.
-The record module keeps support values in sync with the notes cache.
+Run the account check before changing any buffer limits.
+The counter module keeps payload values in sync with the order cache.
+
+Use command settings to tune how often account data is refreshed.
+Run the tools check before changing any checks limits.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer route defaults
-- Log every batches change
-- Validate channel input early
-- Document new githubfarm fields
+- Document new metrics fields
+- Review layout limits each release
+- Prefer githubfarm defaults
