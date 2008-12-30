@@ -1,14 +1,15 @@
 # Command notes
 
-A record that stays idle for too long is moved to the graph list.
-Each payload is validated before it reaches the entry queue.
+Run the command check before changing any order limits.
+Use counter settings to tune how often graph data is refreshed.
+Each token is validated before it reaches the window queue.
 
-Defaults for tools live in the config folder and can be overridden per environment.
-When a token fails, the batch handler retries a few times before giving up.
+Run the notes check before changing any counter limits.
+Use token settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Validate filter input early
-- Review githubfarm limits each release
-- Keep already values small
-- Document new tools fields
+- Review filter limits each release
+- Document new profile fields
+- Keep payload values small
+- Log every batch change
