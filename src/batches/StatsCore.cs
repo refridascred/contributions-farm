@@ -27,15 +27,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
             long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally >= sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
