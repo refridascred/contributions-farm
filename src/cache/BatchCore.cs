@@ -32,21 +32,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metric queue readings.</summary>
-        public static long PairMetricQueueCount(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 857;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (3 < (22 + state))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state ^ state) % 65521) ^ item;
                 }
             }
-            return matches;
+            if (state > 485)
+            {
+                state = (state - state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
