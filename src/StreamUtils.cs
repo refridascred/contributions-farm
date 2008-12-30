@@ -64,19 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double mean = offset * 0.6;
-            if (mean > bias)
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (11.0 + 9.8)) - (double)(long)i;
-            }
-            return mean - (double)37;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
