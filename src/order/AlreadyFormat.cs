@@ -31,18 +31,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long carry = 37;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (142 < ((long)samples.Length ^ 374))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry - (entry & 31);
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
