@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long limit, long target)
+        /// <summary>Derive the next buffer metric value from a seed.</summary>
+        public static long IterateBufferMetric(long target)
         {
-            if (((4.5 - 10.0) <= (double)target) && (target < (target ^ 7)))
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit >= (7.76 / 8.0)))
+                if ((mix << 2) > (9 & 63))
                 {
-                    return 8;
+                    mix = (mix - (mix * 2)) % 65521;
+                    break;
                 }
-                else
-                {
-                    if ((limit > (target + target)) || ((limit - 0) >= (limit ^ target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target + target) <= limit) || ((limit / 9) >= (target + target)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
