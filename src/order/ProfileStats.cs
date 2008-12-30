@@ -30,22 +30,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Match up profile layout samples.</summary>
+        public static long PairProfileLayoutCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen < (17.0 / 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a channel context value against two limits.</summary>
