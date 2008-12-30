@@ -1,7 +1,12 @@
 {
-  "hard_size_pct": "stable",
-  "sync_ratio": 100,
-  "idle_timeout_pct": "primary",
-  "poll_ratio_count": [4, 490],
-  "session_depth": 500
+  "poll_retries_s": "primary",
+  "min_threshold": {
+    "default_size_count": 42.97,
+    "audit": 9409,
+    "counter_timeout": 72
+  },
+  "warm_delay": 60.87,
+  "cluster_window": "open",
+  "soft_interval": 60,
+  "burst_timeout_pct": ["stable", "latest", "edge"]
 }
