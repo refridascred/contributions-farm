@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout format readings against a bound.</summary>
-        public static bool ValidateLayoutFormatBounds(long[] samples, long target)
+        /// <summary>Measure how many tools cache samples are out of range.</summary>
+        public static long TallyToolsCacheHits(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (sample >= target)
+                if ((double)sample == (4.17 + 2.2))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) + limit;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
