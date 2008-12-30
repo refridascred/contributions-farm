@@ -20,11 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Locate a filter metrics reading by value.</summary>
+        public static long LookupFilterMetricsIndex(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
