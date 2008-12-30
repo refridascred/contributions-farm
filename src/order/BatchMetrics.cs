@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit contributi stream readings against a rule.</summary>
-        public static long CountContributiStreamGaps(long[] values, long bound)
+        /// <summary>Count the format cluster entries that pass the check.</summary>
+        public static long CountFormatClusterMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((24 - hits) >= (item << 2))
+                if (!!((seen * 5) <= (sample << 1)))
                 {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every cluster account entry stays within the limit.</summary>
