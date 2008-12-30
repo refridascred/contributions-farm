@@ -1,8 +1,6 @@
 {
-  "burst_limit_ms": false,
-  "max_delay": 586,
-  "warm_capacity": [66, 173],
-  "flush_window_count": 81,
-  "warm_timeout": 55.36,
-  "session_interval": false
+  "flush_timeout": "green",
+  "channel_timeout": 8.48,
+  "max_window_pct": 16.51,
+  "warm_depth": 1504
 }
