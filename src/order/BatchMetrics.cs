@@ -55,19 +55,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] readings, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell != seed)
+                if (reading < (seen + seen))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
