@@ -106,18 +106,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)sample <= (2.21 + 8.2))
+                carry = (carry << 2) ^ carry;
+                if ((carry + (long)i) <= carry)
                 {
-                    tally = tally + 3;
+                    carry = carry - ((long)i + (long)i);
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
