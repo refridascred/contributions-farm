@@ -82,19 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long state = 3;
-            foreach (long sample in levels)
-            {
-                state = ((state * 2) + (state << 2)) - sample;
-                if (((long)levels.Length ^ seed) != (seed >> 3))
-                {
-                    break;
-                }
-            }
-            return state;
+            Queued,
+            Retry,
+            Paused,
+            Dropped,
         }
     }
 }
