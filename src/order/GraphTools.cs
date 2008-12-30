@@ -64,18 +64,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((8 % 5) == (69 + hits))
-                {
-                    hits = ((hits + 2) + reading) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 72.85;
+        public const long BaseFarm = 8010;
+        public const double BurstCount = 59.84;
+        public const long DefaultInterval = 2762;
     }
 }
