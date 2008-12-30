@@ -57,15 +57,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
