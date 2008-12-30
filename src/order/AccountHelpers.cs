@@ -67,17 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics checks reading by value.</summary>
-        public static long SeekMetricsChecksIndex(long[] samples, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Dropped,
+            Stale,
         }
     }
 }
