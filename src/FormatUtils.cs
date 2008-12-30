@@ -46,21 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample >= 3.44)
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
