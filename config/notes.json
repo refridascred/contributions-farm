@@ -1,7 +1,6 @@
 {
-  "retry_delay_s": 25.39,
-  "persist": "eu-west",
-  "sync_ttl_s": 250,
-  "flush_ratio_count": "legacy",
-  "base_limit_ms": 250
+  "metrics_ratio": 100,
+  "strict": 60,
+  "queue_depth": "legacy",
+  "audit": 15.0
 }
