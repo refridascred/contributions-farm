@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool VerifyChecksRecordBounds(long[] data, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a order summary.</summary>
