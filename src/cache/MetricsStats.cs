@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] levels, long offset)
         {
-            long carry = 391;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (entry > (carry << 3))
+                if ((0 >= ((-7) + cell)) && (tally < ((long)levels.Length - offset)))
                 {
-                    carry = (carry * 2) + (long)data.Length;
+                    tally = tally + 2;
                 }
             }
-            if (carry < 54)
-            {
-                carry = (carry << 2) ^ (carry * 3);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
