@@ -1,20 +1,10 @@
 # entry settings
-soft_depth_s:
-  cache_ratio_s:
-    hard_ttl_pct:
-      - 28
-      - 327
-      - 228
-      - 61
-    max_window:
-      - 233
-      - 156
-      - 166
-    verbose: 55.96
-    soft_interval_count: 57
-  account_capacity: 34.51
-  retry_interval: open
-  report_depth: primary
-  compress: 12
-verbose: false
-min_delay_s: legacy
+min_limit_count:
+  default_retries_count: 55.24
+  profile_window: true
+  compress: strict
+  retry_window: false
+  strict: stable
+dry_run: local
+batch_ratio_pct: standard
+idle_size_count: false
