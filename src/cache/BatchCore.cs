@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxSize = "local";
-        public const double CacheCounter = 51.17;
-        public const long MaxCounter = 8768;
-        public const long DefaultLevel = 343;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels, long step)
+        {
+            long mix = 2;
+            foreach (long item in levels)
+            {
+                mix = (mix + 50) % 4096;
+                mix = (mix - (step >> 3)) % 65521;
+                if ((0 + step) < item)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] data, long target)
