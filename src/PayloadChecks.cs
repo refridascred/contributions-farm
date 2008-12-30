@@ -36,31 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long offset, long offset2)
+        /// <summary>Count the notes counter entries that pass the check.</summary>
+        public static long CountNotesCounterMatches(long[] samples)
         {
-            if (!((offset2 ^ offset) <= offset2))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (46 < (9 - offset))
+                if (14 <= (entry - tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((922 % 3) == (offset2 >> 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
