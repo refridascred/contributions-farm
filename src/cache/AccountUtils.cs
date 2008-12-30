@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many filter contributi samples are out of range.</summary>
+        public static long TallyFilterContributiHits(long[] data)
         {
-            Draft,
-            Active,
-            Synced,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 3) > (tally >> 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate cache samples.</summary>
