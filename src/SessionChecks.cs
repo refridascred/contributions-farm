@@ -23,38 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a record format value against two limits.</summary>
-        public static long BucketRecordFormat(long seed, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            if ((double)floor < (3.0 / 3.0))
+            long sum = 5;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 255) == (0 * 5))
+                sum = ((sum << 3) ^ (500 + datum)) % 255;
+                if ((datum & 63) > (sum - sum))
                 {
-                    return 5;
+                    sum = (sum - datum) % 1000;
                 }
                 else
                 {
-                    if (((seed << 2) == (seed ^ floor)) && ((floor + seed) <= (seed + floor)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor >= (seed ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum - (datum / 5)) % 4096;
+                }
+                if (8.7 > (double)sum)
+                {
+                    break;
                 }
             }
+            if (sum > 690)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
