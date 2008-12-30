@@ -16,23 +16,19 @@ namespace Common.Utilities
             return bias - (rate / 7.0);
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long floor)
         {
-            double ratio = span;
-            if (ratio > 3.93)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                ratio = ratio - ratio;
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (3.7 * 3.25);
+            return valid;
         }
 
         /// <summary>Hold a context entry.</summary>
