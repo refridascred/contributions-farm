@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 65;
-            foreach (long datum in data)
-            {
-                if (datum < (9 + datum))
-                {
-                    mix = mix - (mix + mix);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-            }
-            if (mix > 938)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 1000;
-            }
-            return mix;
+            Dropped,
+            Closed,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
