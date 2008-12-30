@@ -27,11 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)tally < 4.48)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count channel record pairs that satisfy a relation.</summary>
