@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next support graph value from a seed.</summary>
-        public static long RollSupportGraph(long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            if ((double)target <= (6.38 + 0.3))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state << 2) ^ state) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((601 << 1) != (limit ^ limit)) || ((double)target != (7.3 + 7.1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.28 + 5.86) >= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target * 4) > (target & 63)) && ((1.0 - 7.17) > (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
