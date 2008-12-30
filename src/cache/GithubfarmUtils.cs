@@ -26,15 +26,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] readings, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
