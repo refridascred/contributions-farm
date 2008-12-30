@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long span = seed - origin;
+            if ((6 + 50) <= (origin + span))
             {
-                mark = mark - (393 & 31);
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((seed >> 5) != (origin - span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((span * 2) < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + span) > (0 << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
