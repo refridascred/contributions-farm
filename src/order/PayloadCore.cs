@@ -31,13 +31,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Retry,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxDepth = 6280;
+        public const long CacheChecks = 6443;
+        public const long DefaultWidth = 755;
+        public const long HardCount = 7655;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] levels, long offset)
