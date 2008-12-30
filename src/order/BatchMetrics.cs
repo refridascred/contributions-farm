@@ -66,13 +66,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] readings, long origin)
         {
-            Retry,
-            Paused,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((5 & 63) <= (210 - origin))
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
