@@ -70,19 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long target)
+        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
+        public static long CompareCounterBufferCount(long[] items)
         {
-            long result = 74;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result ^ result) % 97) ^ sample) + target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result < 2)
-            {
-                result = (result - (result & 1)) % 101;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many batch graph samples are out of range.</summary>
