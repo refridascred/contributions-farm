@@ -1,12 +1,18 @@
 {
-  "sync_retries_ms": "local",
-  "enabled": true,
-  "base_timeout_count": 8451,
-  "dry_run": {
-    "dry_run": "blue",
-    "hard_interval": false,
-    "context_capacity": "cached",
-    "order_retries": 35.86,
-    "notes_delay": ["strict", "green", "latest"]
-  }
+  "dry_run": "legacy",
+  "record_timeout": {
+    "farm_interval": [412, 176],
+    "soft_ratio": [387, 225, 465],
+    "burst_ratio": 25,
+    "soft_interval_s": "legacy",
+    "retry_window_ms": 500,
+    "audit": {
+      "idle_depth": ["local", "local", "primary"],
+      "githubfarm_size": "edge",
+      "hard_interval_ms": true,
+      "order_depth": "blue"
+    }
+  },
+  "cache_capacity_pct": 33.63,
+  "strict": 8127
 }
