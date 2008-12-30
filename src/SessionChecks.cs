@@ -27,10 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitLevel = 145;
-        public const long LimitFactor = 9988;
-        public const long BurstCommand = 1765;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Ready,
+            Active,
+            Stale,
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowMatches(long[] levels)
