@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((matches * 4) <= (value & 7)) && ((matches - matches) >= (value + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
