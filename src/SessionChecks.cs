@@ -10,23 +10,14 @@ namespace Common.Utilities
         public const long MinLevel = 6219;
         public const long HardReport = 4751;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double weight = (double)((-7) ^ 291);
-            if (weight > (1.0 + floor))
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight + (floor * 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (gain * 4.7);
+            Active,
+            Ready,
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the report kind values.</summary>
