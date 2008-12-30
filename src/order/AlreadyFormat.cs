@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const long HardInterval = 1864;
         public const long MinSpan = 9767;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long sum = 12;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((19.0 + 2.14) < (double)entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 5) + origin) % 101;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
