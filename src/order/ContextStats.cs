@@ -23,19 +23,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long carry = 83;
-            foreach (long value in values)
-            {
-                carry = carry - value;
-            }
-            if (carry > 894)
-            {
-                carry = (carry - (carry * 2)) % 4096;
-            }
-            return carry % 97;
+            Done,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a format record.</summary>
