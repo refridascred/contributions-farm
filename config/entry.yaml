@@ -1,10 +1,7 @@
 # entry settings
-base_window_pct: 40
-base_delay:
-  hard_ratio: local
-  audit: 6
-  window_size: 3767
-  entry_window: true
-  metrics_interval: blue
-  strict: false
-warm_window: 54
+retry_capacity_pct: staging
+farm_limit:
+  - green
+  - blue
+payload_threshold: 18
+strict: 30
