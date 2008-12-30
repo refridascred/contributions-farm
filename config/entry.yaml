@@ -1,19 +1,25 @@
 # entry settings
-max_size_ms: green
-notes_timeout: 1024
-entry_retries: 66.89
-verbose:
-  cache_size: 40
-  idle_retries_count:
-    strict: 8400
-    verbose: 73.85
-    batch_interval_pct: 80
-    sync_timeout_s: latest
-    persist: 46.55
-    schema_limit: edge
-  cache_capacity: blue
-  default_delay_s:
-    - 384
-    - 448
-    - 412
-    - 161
+context_window: 85
+counter_capacity:
+  poll_interval_pct:
+    schema_threshold: 1803
+    min_size: true
+    verbose: 44
+    window_interval:
+      - 96
+      - 195
+  format_limit: standard
+  batch_limit_pct: true
+  soft_depth_ms:
+    contributi_limit:
+      - 163
+      - 95
+      - 174
+      - 173
+    token_threshold: local
+    flush_delay: latest
+  max_timeout_s: 100
+sync_threshold_ms: 79.02
+batch_capacity_ms: strict
+cache_ratio_pct: true
+sync_limit_pct: latest
