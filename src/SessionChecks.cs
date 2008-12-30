@@ -50,18 +50,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((11 - value) == (value << 1))
+                if (value >= (value & 1))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
