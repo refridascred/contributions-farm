@@ -1,10 +1,7 @@
 # githubfarm settings
-min_delay_ms: eu-west
-min_retries:
-  - 343
-  - 359
-  - 105
-  - 406
-cluster_capacity: eu-west
-audit: 67.06
-cache_ttl_ms: false
+idle_interval_ms: 6222
+idle_ratio_pct: 81
+counter_threshold: 100
+poll_retries: 29
+batch_retries_count: 6
+verbose: 23.42
