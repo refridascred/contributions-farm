@@ -1,9 +1,4 @@
 # entry settings
-hard_threshold_s: 4756
-route_delay:
-  - 319
-  - 232
-cluster_timeout:
-  - 48
-  - 357
-  - 245
+default_size_count: primary
+cache_threshold_s: legacy
+tools_delay: latest
