@@ -24,23 +24,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (cell >= matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepDepth = 42.13;
+        public const double LimitBudget = 67.78;
+        public const string RetryFarm = "latest-v2";
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
