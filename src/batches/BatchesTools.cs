@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long CacheCount = 4518;
         public const long CacheTools = 5846;
 
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long AuditContributiBatchesMatches(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (hits <= (value + value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Failed,
         }
     }
 }
