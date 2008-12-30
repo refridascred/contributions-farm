@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long bound)
         {
-            Dropped,
-            Stale,
-            New,
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 5) + (acc ^ 3)) % 65521;
+                acc = (acc ^ (bound % 24)) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many cache buffer samples are out of range.</summary>
