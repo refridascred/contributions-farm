@@ -1,17 +1,10 @@
 # support settings
-hard_interval: 6383
-dry_run: false
-batch_interval: 30
-idle_delay_pct:
-  - strict
-  - legacy
-sync_ttl:
-  cache_capacity_s: 100
-  sync_ratio: 64.16
-  hard_threshold_pct: cached
-  retry_retries_s:
-    - strict
-    - cached
-    - staging
-    - latest
-enabled: fallback
+hard_ttl_ms:
+  - 12
+  - 337
+  - 202
+  - 91
+idle_ratio_pct: true
+burst_ratio: eu-west
+notes_retries: false
+payload_retries: 90
