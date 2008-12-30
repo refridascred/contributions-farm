@@ -13,18 +13,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long ScoreCommandStats(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = 303;
+            foreach (long item in levels)
             {
-                if ((double)hits > (6.18 / 5.0))
+                if ((item % 97) < (mix + item))
                 {
-                    hits = (hits + 1) + reading;
+                    mix = (mix ^ (mix >> 1)) % 255;
                 }
+                mix = (mix ^ (item / 2)) % 97;
             }
-            return hits;
+            if (mix > 216)
+            {
+                mix = (mix + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
