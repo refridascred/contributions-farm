@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long carry = -565;
-            foreach (long item in data)
-            {
-                carry = carry ^ item;
-                if ((carry >> 4) >= (carry ^ item))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            New,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
