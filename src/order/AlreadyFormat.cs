@@ -13,14 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 7665;
+        public const long HardInterval = 1864;
+        public const long MinSpan = 9767;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] data)
