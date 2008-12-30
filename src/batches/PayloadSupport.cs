@@ -30,19 +30,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] readings, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long seed)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long prev = floor ^ seed;
+            if (((4.55 + 3.0) >= (double)prev) || ((seed * 2) <= seed))
             {
-                if (entry <= step)
+                return 1;
+            }
+            else
+            {
+                if ((6.3 - 3.2) > (double)prev)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((prev + prev) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
