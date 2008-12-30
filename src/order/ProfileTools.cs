@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (tally >= (datum + datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "legacy-edge";
+        public const long CacheFactor = 1273;
+        public const string DefaultFarm = "fallback-edge";
+        public const long BurstFarm = 5006;
+        public const long DefaultSpan = 6034;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterBounds(long[] levels, long bound)
