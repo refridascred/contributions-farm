@@ -53,11 +53,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowFactor = 69.01;
-        public const long MaxInterval = 6054;
-        public const long WindowSize = 7224;
-        public const long BaseFactor = 9712;
-        public const double IdleRatio = 13.49;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((bound >> 1) > (long)i)
+                {
+                    sum = (sum + ((long)i + bound)) % 1000;
+                    sum = (sum ^ (long)i) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 4) + bound;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
