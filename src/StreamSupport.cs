@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] items, long step)
         {
-            long score = -2;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                score = (score ^ (target & 63)) % 97;
-                if (!(((-464) ^ score) < (value & 7)))
+                if (entry <= step)
                 {
-                    score = (score - (13 >> 5)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Describe the route level values.</summary>
