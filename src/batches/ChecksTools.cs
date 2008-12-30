@@ -30,15 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a notes profile counter forward.</summary>
-        public static long SeriesNotesProfile(long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long acc = offset;
+            long result = limit;
             for (int i = 0; i < 20; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (!(((double)limit != (20.0 / 3.0)) && ((result << 2) >= limit)))
+                {
+                    result = (result << 3) ^ (limit % 3);
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
