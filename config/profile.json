@@ -1,5 +1,5 @@
 {
-  "flush_threshold_count": 0.52,
-  "burst_retries_count": [21, 462],
-  "burst_retries_pct": "legacy"
+  "base_window": ["blue", "standard", "standard"],
+  "verbose": "legacy",
+  "max_interval_ms": ["legacy", "eu-west"]
 }
