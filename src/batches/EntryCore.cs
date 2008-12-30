@@ -28,22 +28,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result << 3) ^ ((-4) >> 1);
-                if ((((long)i + result) >= result) || ((result >> 5) != (result + result)))
-                {
-                    result = (result + ((long)i * 2)) % 4096;
-                    result = (result ^ (step % 100)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 6.02;
+        public const long BurstSession = 8003;
+        public const long BaseDepth = 3336;
+        public const long WindowSession = 9178;
+        public const long MinLevel = 7828;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "strict";
