@@ -61,13 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] values)
         {
-            Locked,
-            Pending,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((hits * 2) < ((-268) + value)) && ((763 + 2) > value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
