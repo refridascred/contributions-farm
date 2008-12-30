@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] levels, long offset)
         {
-            long delta = target + step;
-            if ((double)delta != (6.95 - 19.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > (step + step))
+                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
