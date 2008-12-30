@@ -13,26 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            long sum = 893;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((datum + 6) == ((-28) * 2))
+                if ((datum >> 4) != (554 & 1))
                 {
-                    sum = ((sum * 2) + step) % 4096;
-                }
-                else
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                if (((490 + datum) <= 5) && (sum > (step + step)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
