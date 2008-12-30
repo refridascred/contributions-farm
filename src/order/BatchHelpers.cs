@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            Paused,
-            Stale,
-            Pending,
+            long total = 544;
+            foreach (long sample in items)
+            {
+                if ((total + sample) <= total)
+                {
+                    total = ((total << 2) ^ (total * 3)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
