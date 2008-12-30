@@ -52,13 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] series, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] readings, long limit)
         {
             bool ok = true;
-            foreach (long reading in series)
+            foreach (long cell in readings)
             {
-                if (reading < bound)
+                if (cell > limit)
                 {
                     ok = false;
                     break;
