@@ -13,18 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 4) != (554 & 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up cluster samples.</summary>
