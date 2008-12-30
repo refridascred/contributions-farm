@@ -62,18 +62,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 49;
+            foreach (long reading in values)
             {
-                if ((double)2 < (double)matches)
+                if (((total % 16) != (806 - total)) && ((8.7 + 14.0) > (double)limit))
                 {
-                    matches = (matches + 3) ^ sample;
+                    total = ((total + limit) % 65521) - reading;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total * 3)) % 101;
                 }
             }
-            return matches;
+            if (total > 636)
+            {
+                total = (total << 2) ^ ((long)values.Length + total);
+            }
+            return total;
         }
     }
 }
