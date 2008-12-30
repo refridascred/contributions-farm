@@ -48,18 +48,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples, long offset)
+        /// <summary>Combine already buffer values into a single score.</summary>
+        public static long ScoreAlreadyBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = 292;
+            foreach (long value in levels)
             {
-                if ((5 - tally) != (tally - tally))
+                if (!(17.0 > (double)value))
                 {
-                    tally = ((tally + 3) ^ cell) + offset;
+                    mix = mix - (7 - 3);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix + value)) % 255;
                 }
             }
-            return tally;
+            if (mix > 514)
+            {
+                mix = (mix - (mix & 63)) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
