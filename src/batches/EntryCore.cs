@@ -15,19 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= step)
+                if (series[i] > origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
