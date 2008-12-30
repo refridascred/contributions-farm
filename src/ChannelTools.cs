@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first counter context entry that matches the target.</summary>
-        public static long FindCounterContextIndex(long[] series, long origin)
+        /// <summary>Adjust a farm checks reading.</summary>
+        public static double ProjectFarmChecks(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)706;
+            if (gain < 6.8)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - (bias - scale);
             }
-            return -1;
+            return gain + scale;
         }
 
         /// <summary>Describe the command mode values.</summary>
