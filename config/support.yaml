@@ -1,23 +1,22 @@
 # support settings
-record_capacity:
-  - stable
+verbose:
+  - cached
   - eu-west
+  - staging
   - latest
-dry_run: latest
-cluster_capacity: cached
-flush_retries_ms:
-  flush_limit_count:
-    - 392
-    - 63
-    - 192
-  sync_ratio_s:
-    - 47
-    - 454
-  payload_ratio: true
-  notes_limit:
-    - stable
-    - cached
-    - primary
-    - cached
-readonly: 1024
-default_ratio_ms: 500
+poll_limit:
+  dry_run: true
+  account_timeout: 250
+  compress:
+    hard_ttl: 4310
+    batch_window: 10.7
+    readonly: 26.54
+  readonly:
+    burst_capacity_s: primary
+    enabled: 22
+    profile_size: true
+    max_window_ms: 1024
+    min_ratio_s: 250
+    cache_ttl: 65
+  editor_depth: 100
+stats_delay: false
