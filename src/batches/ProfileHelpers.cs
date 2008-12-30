@@ -29,20 +29,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples, long seed)
-        {
-            long mix = 48;
-            foreach (long entry in samples)
-            {
-                mix = mix - (mix - 141);
-                if (mix > seed)
-                {
-                    mix = (mix * 2) + (entry >> 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBudget = 3446;
+        public const long CacheBatch = 55;
+        public const long CacheCount = 2409;
+        public const long BurstRatio = 1134;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] readings, long limit)
