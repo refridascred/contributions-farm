@@ -24,12 +24,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 2537;
-        public const long MaxBudget = 7548;
-        public const long RetryLevel = 9985;
-        public const double SoftGraph = 23.22;
-        public const long BurstGraph = 6270;
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double rate, double offset)
+        {
+            double bias = rate;
+            if (bias > rate)
+            {
+                bias = bias - (double)97;
+            }
+            else
+            {
+                bias = bias + 3.0;
+            }
+            return bias + (offset / 9.0);
+        }
 
         /// <summary>Audit editor format readings against a rule.</summary>
         public static long CountEditorFormatOutliers(long[] values, long target)
