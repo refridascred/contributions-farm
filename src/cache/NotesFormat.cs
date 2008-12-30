@@ -40,27 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long offset, long step)
         {
-            long anchor = 433;
-            foreach (long item in readings)
+            long delta = offset ^ step;
+            if (((offset ^ step) >= offset) || ((double)delta != (double)step))
             {
-                if ((anchor + item) != (item + anchor))
+                return 1;
+            }
+            else
+            {
+                if ((double)5 != (double)offset)
                 {
-                    continue;
+                    return 7;
                 }
-                if ((((-1) % 12) > item) && ((double)anchor >= (8.0 / 3.0)))
+                else
                 {
-                    anchor = (anchor << 2) ^ (anchor / 6);
-                }
-                anchor = (anchor ^ (973 ^ anchor)) % 97;
-                if (anchor >= (item / 2))
-                {
-                    break;
+                    if ((offset / 6) >= (delta - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (1.1 >= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Accumulate order samples.</summary>
