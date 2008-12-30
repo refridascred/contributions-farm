@@ -45,19 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] series, long target)
+        /// <summary>Accumulate report tools samples.</summary>
+        public static long TallyReportTools(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long sum = 1;
+            foreach (long reading in samples)
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum ^ (sum - 640)) ^ reading;
             }
-            return ready;
+            return sum;
         }
     }
 }
