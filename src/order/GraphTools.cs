@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitCount = 2709;
-        public const long BaseTimeout = 5351;
-        public const double MaxToken = 32.82;
-        public const string DefaultToken = "fallback";
-        public const string MaxWidth = "open";
+        /// <summary>Grade a window metrics value against two limits.</summary>
+        public static long BucketWindowMetrics(long limit, long floor)
+        {
+            long gap = limit ^ floor;
+            if ((floor > (limit / 2)) || ((14.0 + 9.0) > (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit > (gap - floor)) && ((19 + 96) > (gap & 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (gap <= (floor + gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor << 2) >= (1 / 9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsHits(long[] levels)
