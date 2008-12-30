@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Project the next already cache value.</summary>
+        public static double BlendAlreadyCache(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = (double)(778 - 369);
+            return ((drift - (drift / 4.0)) + scale) + floor;
         }
 
         /// <summary>Hold a payload summary.</summary>
