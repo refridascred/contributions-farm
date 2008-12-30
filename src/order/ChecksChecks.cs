@@ -48,27 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            long sum = 1;
-            foreach (long sample in samples)
+            double load = (double)(125 - 49);
+            if (load >= (gain - load))
             {
-                if ((98 < ((long)samples.Length % 16)) && ((limit & 63) < (8 >> 1)))
-                {
-                    sum = (sum * 2) + (sample + limit);
-                    sum = (sum - (sum << 2)) % 101;
-                }
-                if ((sample + sum) == (51 ^ 420))
-                {
-                    sum = (sum - (limit ^ limit)) % 65521;
-                }
+                load = (load + (double)(-288)) + offset;
             }
-            if (sum > 451)
+            for (int i = 0; i < 3; i++)
             {
-                sum = sum ^ (sum % 60);
+                load = (load + 7.0) - (double)(long)i;
             }
-            return sum % 65521;
+            return load - (9.23 / 2.0);
         }
     }
 }
