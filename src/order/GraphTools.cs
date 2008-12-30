@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((9.39 / 9.0) < (7.0 * 5.64))
+                if (((sample + sample) != (sample << 1)) && ((sample % 3) != (sample + (long)values.Length)))
                 {
-                    matches = (matches + 3) + cell;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
