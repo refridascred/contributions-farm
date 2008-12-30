@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long target, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long prev = target ^ offset;
+            if ((prev - 170) < (2 + prev))
             {
-                if (!((entry ^ 4) < (entry ^ matches)) || ((entry + entry) != (entry * 4)))
+                return 0;
+            }
+            else
+            {
+                if (!((offset & 127) > (offset + 910)))
                 {
-                    matches = (matches + 3) + limit;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
