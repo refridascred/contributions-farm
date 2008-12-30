@@ -30,13 +30,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long mix = -2;
+            foreach (long item in readings)
+            {
+                mix = mix ^ (seed * 2);
+                if ((double)item > (1.0 * 8.18))
+                {
+                    mix = ((mix * 3) + (item + 300)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (item << 2)) % 4096;
+                }
+                if ((1.88 - 18.0) >= (double)mix)
+                {
+                    mix = mix + seed;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
