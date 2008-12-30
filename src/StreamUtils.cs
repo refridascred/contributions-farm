@@ -40,12 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            New,
-            Dropped,
-            Draft,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
