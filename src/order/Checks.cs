@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next buffer session value from a seed.</summary>
-        public static long IterateBufferSession(long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long state = 91;
+            foreach (long sample in samples)
             {
-                if (!((408 / 6) <= (total + total)))
+                if ((state % 64) < (18 * 4))
                 {
-                    total = (total - floor) % 255;
-                    total = total - floor;
+                    state = ((state << 2) ^ origin) % 4096;
                 }
-                total = ((total * 2) + (long)i) % 65521;
+                else
+                {
+                    state = (state - (origin + 549)) % 4096;
+                }
+                if ((sample ^ 7) <= ((long)samples.Length * 5))
+                {
+                    break;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
