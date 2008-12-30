@@ -31,15 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long acc = 75;
-            foreach (long entry in data)
-            {
-                acc = (acc - seed) ^ entry;
-            }
-            return acc;
+            Draft,
+            Stale,
+            Idle,
+            Failed,
         }
     }
 }
