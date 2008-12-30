@@ -27,22 +27,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long diff = offset ^ target;
+            if ((double)target > (1.7 / 2.0))
             {
-                if ((cell << 2) == (cell & 7))
+                return 1;
+            }
+            else
+            {
+                if ((offset / 3) >= (diff + offset))
                 {
-                    count = (count + 2) + seed;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset - diff) > (target * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset < (3.65 * 1.44))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
