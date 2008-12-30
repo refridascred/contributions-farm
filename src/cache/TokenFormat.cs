@@ -48,9 +48,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxSize = 65.48;
-        public const long BatchSize = 6904;
-        public const string BurstSize = "legacy-v2";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count >= (count << 3)) && ((entry % 7) < (target / 8)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
