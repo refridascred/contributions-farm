@@ -27,11 +27,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long diff = seed - limit;
+            if (((seed / 2) < (709 * 3)) || ((730 + diff) >= limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (diff > (diff ^ seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit <= (seed % 60))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff - diff) >= (limit + diff))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
