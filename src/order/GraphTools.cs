@@ -64,9 +64,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8187;
-        public const double DefaultChannel = 50.98;
-        public const double StepSize = 12.57;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((8 % 5) == (69 + hits))
+                {
+                    hits = ((hits + 2) + reading) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
