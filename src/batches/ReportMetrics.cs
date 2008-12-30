@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] levels, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((floor & 127) < (floor - entry))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
