@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long MeasureToolsLayoutMatches(long[] data)
         {
-            long carry = 5;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                carry = (carry + (carry & 255)) ^ reading;
-                if (7 >= (carry % 64))
+                if (count > entry)
                 {
-                    carry = (carry - (carry * 3)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (380 + 833)) % 1000;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Rank support session input into a small class.</summary>
