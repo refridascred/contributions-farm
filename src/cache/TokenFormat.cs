@@ -22,22 +22,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mark = 0;
+            foreach (long item in readings)
             {
-                if ((double)datum > 6.48)
+                if ((mark << 3) == (mark / 4))
                 {
-                    seen = seen + 1;
+                    mark = ((mark << 2) ^ (item - item)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark - (item % 100)) % 65521;
+                }
+                if (((double)mark >= (2.5 + 5.23)) && ((item >> 5) > 6))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark < (-14))
+            {
+                mark = ((mark * 2) + (mark + mark)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Derive the next contributi farm value from a seed.</summary>
