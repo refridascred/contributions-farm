@@ -37,10 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryWidth = "strict";
-        public const long HardOrder = 1401;
-        public const long RetryTimeout = 1567;
-        public const string BatchBudget = "cached-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 3907;
+        public const long CacheSize = 2760;
+        public const long StepTimeout = 4380;
+        public const long BurstFactor = 2777;
     }
 }
