@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Synced,
+            Active,
+            Retry,
             Failed,
-            Stale,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
