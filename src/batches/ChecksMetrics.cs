@@ -45,19 +45,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long target)
+        /// <summary>Count channel checks pairs that satisfy a relation.</summary>
+        public static long PairChannelChecksCount(long[] levels)
         {
-            long mix = 346;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix - mix) + item) + target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix < 1)
-            {
-                mix = (mix * 5) + 139;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
