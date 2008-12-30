@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] readings, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor % 97) < ((long)readings.Length * 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
