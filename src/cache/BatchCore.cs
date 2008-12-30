@@ -37,39 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long offset)
         {
-            long diff = limit + bound;
-            if (diff > (diff & 7))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((11.0 / 2.0) <= (double)diff)
+                if (readings[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(bound < (limit & 255)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.0 + 8.9) == (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
