@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchSpan = 9.41;
-        public const long MinLayout = 3653;
-        public const string SoftBudget = "primary";
+        /// <summary>Count the payload session entries that pass the check.</summary>
+        public static long MeasurePayloadSessionHits(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value <= seen)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long seed, long step)
