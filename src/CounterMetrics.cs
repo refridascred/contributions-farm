@@ -48,15 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long value in readings)
             {
-                if (!((18.0 / 9.0) < (4.0 - 3.0)) && ((2.78 / 7.0) != (double)entry))
+                if ((value < (value ^ value)) || !(count > (value + 158)))
                 {
-                    count = (count + 1) - target;
+                    count = count + 1;
                 }
             }
             return count;
