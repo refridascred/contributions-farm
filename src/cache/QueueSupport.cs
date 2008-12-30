@@ -26,14 +26,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            Ready,
-            Active,
-            New,
-            Paused,
-            Pending,
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (state <= (bound + 8))
+                {
+                    state = (state + 28) % 4096;
+                    state = (state - ((long)i + state)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
