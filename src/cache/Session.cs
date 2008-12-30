@@ -49,22 +49,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine counter batch values into a single score.</summary>
-        public static long TallyCounterBatch(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long limit)
         {
-            long carry = 77;
-            foreach (long entry in data)
+            if ((limit % 12) == (limit % 3))
             {
-                if ((entry << 3) > (entry + entry))
+                return 7;
+            }
+            else
+            {
+                if ((limit - target) < target)
                 {
-                    carry = (carry + (entry * 5)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (carry < 44)
-            {
-                carry = ((carry * 5) + (carry / 8)) % 255;
-            }
-            return carry;
         }
     }
 }
