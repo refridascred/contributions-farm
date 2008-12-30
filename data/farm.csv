@@ -1,7 +1,9 @@
-id,region,count,state,rank
-1,854,573,staging,437
-2,30.26,556,7.93,staging
-3,35.67,734,886,local
-4,edge,697,43.52,67.45
-5,blue,172,14.08,cached
-6,860,86.66,strict,99
+id,ratio,active,token
+1,898,green,61.9
+2,74.0,231,890
+3,844,70.73,523
+4,green,blue,821
+5,68.71,92,668
+6,13,598,eu-west
+7,stable,cached,39
+8,stable,550,31.28
