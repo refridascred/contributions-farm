@@ -43,16 +43,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            long total = 43;
-            foreach (long datum in samples)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total ^ (-341)) - datum;
-                total = (total + (target >> 4)) % 101;
+                sum = (sum * 4) + sum;
+                if (!(288 > (target >> 1)))
+                {
+                    break;
+                }
+                sum = (sum * 2) + (target % 7);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
