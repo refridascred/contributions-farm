@@ -43,14 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long floor)
         {
-            Pending,
-            Queued,
-            Paused,
-            New,
-            Done,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a order channel figure with a bias.</summary>
