@@ -34,13 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long CountTokenQueueGaps(long[] samples, long origin)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!(count > (item ^ count)) && ((origin % 2) > (88 / 7)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
