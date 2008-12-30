@@ -66,11 +66,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            Active,
+            Closed,
+            Stale,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
