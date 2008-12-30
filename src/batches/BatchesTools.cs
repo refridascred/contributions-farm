@@ -24,12 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardWidth = 4882;
-        public const long IdleTools = 8526;
-        public const double HardTools = 29.21;
-        public const long CacheCount = 4518;
-        public const long CacheTools = 5846;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCount = 7161;
+        public const long IdleWidth = 5545;
+        public const long MaxCommits = 8036;
+        public const long LimitCommits = 69;
+        public const string SoftCommits = "fallback";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
