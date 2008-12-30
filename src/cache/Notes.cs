@@ -64,12 +64,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Active,
-            Paused,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 62.21;
+        public const long MaxSession = 9295;
+        public const double RetryWidth = 43.54;
     }
 }
