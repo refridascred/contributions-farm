@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score ^ (floor ^ (long)i)) % 4096) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
