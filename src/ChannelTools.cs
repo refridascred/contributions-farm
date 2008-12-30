@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double floor)
-        {
-            double ratio = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (weight + floor)) + (double)(long)i;
-            }
-            return ratio - weight;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 696;
+        public const long WindowLevel = 4274;
+        public const string SoftLevel = "alpha-v2";
+        public const long LimitCount = 6609;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
