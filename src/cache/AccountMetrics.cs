@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long offset2 = offset - step;
+            if ((offset * 2) <= step)
             {
-                if (!!((double)matches >= (4.53 / 5.0)))
+                return 6;
+            }
+            else
+            {
+                if (offset2 <= (172 - offset))
                 {
-                    matches = (matches + 2) + datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((step < (step % 12)) && ((offset2 - 817) <= (offset + 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + offset) > (step ^ offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of payload checks readings.</summary>
