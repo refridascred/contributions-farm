@@ -1,6 +1,18 @@
 {
-  "flush_size_pct": ["open", "eu-west", "open", "blue"],
-  "poll_size_s": 1024,
-  "session_limit": [174, 439, 315],
-  "flush_depth": [496, 175]
+  "retry_size": {
+    "record_threshold": {
+      "route_size": true,
+      "order_timeout": false,
+      "flush_interval": 2577
+    },
+    "sync_depth_s": 21.14,
+    "sync_threshold_ms": [164, 380, 488, 351],
+    "channel_depth": 100,
+    "min_ratio_ms": 43.76,
+    "metrics_capacity": "eu-west"
+  },
+  "channel_depth": "open",
+  "warm_ttl_ms": "latest",
+  "queue_capacity": true,
+  "verbose": true
 }
