@@ -29,11 +29,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBudget = 3446;
-        public const long CacheBatch = 55;
-        public const long CacheCount = 2409;
-        public const long BurstRatio = 1134;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long BucketSupport(long limit, long seed)
