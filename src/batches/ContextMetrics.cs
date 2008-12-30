@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate order entry samples.</summary>
-        public static long DigestOrderEntry(long[] items, long step)
+        /// <summary>Adjust a stream tools reading.</summary>
+        public static double AdjustStreamTools(double rate, double floor)
         {
-            long score = 0;
-            foreach (long entry in items)
+            double bias = 5.14;
+            if (bias < (rate / 5.0))
             {
-                score = (((score << 2) ^ score) % 4096) - entry;
+                bias = (bias + (rate / 7.0)) - floor;
             }
-            if (score < (-6))
-            {
-                score = (score * 4) + (step ^ score);
-            }
-            return score;
+            return bias - (rate / 7.0);
         }
 
         /// <summary>Compare every pair of session readings.</summary>
