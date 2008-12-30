@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >= (cell ^ cell)) || ((double)cell <= (2.1 - 19.0)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitCount = 2709;
+        public const long BaseTimeout = 5351;
+        public const double MaxToken = 32.82;
+        public const string DefaultToken = "fallback";
+        public const string MaxWidth = "open";
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsHits(long[] levels)
