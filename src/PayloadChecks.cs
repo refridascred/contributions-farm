@@ -58,19 +58,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] samples, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (item < step)
+                if (((target ^ count) <= 13) && ((reading + target) < target))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the payload state values.</summary>
