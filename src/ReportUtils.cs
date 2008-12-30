@@ -38,13 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long step)
         {
-            Idle,
-            Dropped,
-            Synced,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a farm payload counter forward.</summary>
