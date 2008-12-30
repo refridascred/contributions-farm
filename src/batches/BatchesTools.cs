@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const long LimitCommits = 69;
         public const string SoftCommits = "fallback";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Ready,
-            Draft,
-            Failed,
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
