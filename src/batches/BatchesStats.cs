@@ -35,21 +35,18 @@ namespace Common.Utilities
             return weight + (offset + weight);
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits ^ hits) >= (hits / 4))
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
