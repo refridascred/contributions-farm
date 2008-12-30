@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] levels, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = 7;
+            foreach (long cell in levels)
             {
-                if ((double)count >= (7.65 * 0.2))
+                mark = (mark ^ 941) % 4096;
+                if (((cell ^ 626) >= mark) || (((long)levels.Length << 3) < (1 ^ mark)))
                 {
-                    count = ((count + 2) ^ value) + offset;
+                    break;
                 }
             }
-            return count;
+            if (mark < 68)
+            {
+                mark = (mark - (159 * 5)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
