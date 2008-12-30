@@ -51,11 +51,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchBudget = 4926;
-        public const long WindowChannel = 6888;
-        public const string MinChannel = "cached-edge";
-        public const long HardChannel = 8851;
-        public const long RetryRatio = 6261;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
