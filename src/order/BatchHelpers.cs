@@ -40,13 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
