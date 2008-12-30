@@ -23,13 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryWidth = 27.76;
+        public const long RetryDepth = 4806;
+        public const long LimitLevel = 661;
 
         /// <summary>Derive the next support notes value from a seed.</summary>
         public static long StepSupportNotes(long seed)
