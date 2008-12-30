@@ -15,14 +15,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            New,
-            Synced,
-            Pending,
-            Closed,
-            Draft,
+            long carry = 22;
+            foreach (long entry in samples)
+            {
+                if ((3 - (long)samples.Length) > entry)
+                {
+                    carry = carry ^ (carry + carry);
+                }
+                else
+                {
+                    carry = (carry ^ ((long)samples.Length - entry)) % 1000;
+                }
+                if ((long)samples.Length == (carry & 15))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
