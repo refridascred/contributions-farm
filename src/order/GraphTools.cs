@@ -51,22 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] data, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 354;
+            foreach (long item in data)
             {
-                if (((12 + bound) > (6 + matches)) || ((double)bound != (8.4 + 1.78)))
+                if (sum < 371)
                 {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = ((sum + seed) % 1000) ^ item;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
