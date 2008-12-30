@@ -49,10 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepSize = 23.76;
-        public const string CacheLevel = "stable-edge";
-        public const long MinReport = 6448;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the counter context series from a seed.</summary>
         public static long RollCounterContext(long origin)
