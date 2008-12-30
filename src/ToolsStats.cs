@@ -42,12 +42,22 @@ namespace Common.Utilities
         public const long WindowChannel = 3713;
         public const long BurstChannel = 1543;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 9239;
-        public const long HardCount = 3977;
-        public const string WindowSize = "cached-edge";
-        public const string LimitChecks = "latest-v2";
-        public const long CacheWidth = 4974;
+        /// <summary>Match up already payload samples.</summary>
+        public static long CompareAlreadyPayloadCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long limit)
