@@ -1,8 +1,17 @@
 # githubfarm settings
-readonly: edge
-base_timeout_ms: 45.17
-min_limit_s:
-  - edge
-  - blue
-  - stable
-hard_timeout_count: 1024
+stats_ttl: eu-west
+githubfarm_ttl:
+  sync_capacity: 60
+  enabled: fallback
+  base_ratio_ms: 4075
+  counter_window: 61
+hard_window_count:
+  min_retries_count: local
+  min_retries_pct: false
+  farm_limit: open
+  layout_threshold: true
+  support_limit: 2620
+batch_ratio: 67.91
+soft_retries_count:
+  - 393
+  - 144
