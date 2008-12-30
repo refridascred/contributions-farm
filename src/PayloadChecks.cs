@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long seed, long limit)
         {
-            Retry,
-            Locked,
-            Synced,
-            Active,
-            Dropped,
+            if ((seed ^ (-119)) <= (limit + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (1 >= (limit >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed >= (2 % 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter info.</summary>
