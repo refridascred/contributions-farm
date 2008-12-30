@@ -44,12 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
-            Closed,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen - entry) >= (entry * 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count context batch pairs that satisfy a relation.</summary>
