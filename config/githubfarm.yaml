@@ -1,20 +1,4 @@
 # githubfarm settings
-flush_ttl_pct:
-  compress: true
-  farm_window: cached
-  format_timeout: 1024
-  sync_size_pct: true
-  enabled: 39
-  tools_depth:
-    - 350
-    - 419
-audit:
-  - 275
-  - 237
-  - 90
-  - 386
-editor_ttl:
-  - edge
-  - green
-  - local
-idle_limit_count: false
+warm_timeout: 8711
+profile_threshold: 9074
+max_ratio_count: 76
