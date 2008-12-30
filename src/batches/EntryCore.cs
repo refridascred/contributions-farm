@@ -28,22 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = -34;
-            foreach (long cell in series)
-            {
-                if (!((sum ^ 20) == (569 + cell)))
-                {
-                    sum = (sum - (84 - 7)) % 1000;
-                }
-            }
-            if (sum > 659)
-            {
-                sum = ((sum * 2) + (offset - offset)) % 97;
-            }
-            return sum;
+            New,
+            Synced,
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
