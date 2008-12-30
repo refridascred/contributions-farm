@@ -31,9 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 98.94;
-        public const string MaxCommand = "alpha-1";
-        public const long RetryCommand = 1921;
+        /// <summary>Combine support githubfarm values into a single score.</summary>
+        public static long TotalSupportGithubfarm(long[] series)
+        {
+            long mark = 642;
+            foreach (long datum in series)
+            {
+                if (!(7.22 > (double)datum))
+                {
+                    mark = mark + (8 + (-2));
+                }
+            }
+            if (mark < 858)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 97;
+            }
+            return mark % 97;
+        }
     }
 }
