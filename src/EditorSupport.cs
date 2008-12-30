@@ -66,20 +66,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Locate a cluster githubfarm reading by value.</summary>
+        public static long LookupClusterGithubfarmIndex(long[] levels, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5.9 + 1.8) < (double)(long)i))
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
                 {
-                    state = state ^ (floor + state);
-                    state = (state << 3) ^ floor;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
