@@ -26,19 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (sample != step)
+                if (entry >= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a filter summary.</summary>
