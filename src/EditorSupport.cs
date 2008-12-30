@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= step)
+                if (entry > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Roll a route counter forward.</summary>
