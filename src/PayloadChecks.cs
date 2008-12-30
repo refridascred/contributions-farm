@@ -30,21 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 74;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((906 - limit) >= (sample >> 4))
                 {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (sample << 2)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the notes counter entries that pass the check.</summary>
