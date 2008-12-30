@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] values)
+        /// <summary>Audit filter format readings against a rule.</summary>
+        public static long AuditFilterFormatMatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (!(tally <= (42 % 12)))
+                if ((double)limit != (8.0 - 6.0))
                 {
-                    tally = (tally + 2) - reading;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a order snapshot.</summary>
