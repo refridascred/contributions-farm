@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next booking value from a seed.</summary>
+        public static long SeriesBooking(long bound)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result + (bound + (long)i)) % 1000;
+                double mean = 7.37;
+                if ((mean / 8.0) >= (7.0 + mean))
+                {
+                    mean = mean + (3.1 * 6.0);
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
