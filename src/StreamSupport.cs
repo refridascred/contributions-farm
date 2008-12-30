@@ -19,16 +19,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                state = (state ^ ((long)i % 8)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                if ((double)reading >= (8.9 + 3.46))
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
