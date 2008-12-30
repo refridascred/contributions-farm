@@ -33,31 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] data, long target)
         {
-            if ((target + target) < (target ^ target))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target != (1.97 - 19.0))
+                if (datum < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 - target) > 0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
