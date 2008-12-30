@@ -1,14 +1,14 @@
 # Command notes
 
-Run the account check before changing any buffer limits.
-The counter module keeps payload values in sync with the order cache.
+Keep context and editor names short and lowercase.
+The report module keeps layout values in sync with the queue cache.
 
-Use command settings to tune how often account data is refreshed.
-Run the tools check before changing any checks limits.
-Defaults for notes live in the config folder and can be overridden per environment.
+When a metric fails, the metrics handler retries a few times before giving up.
+The contributi module keeps contributi values in sync with the cluster cache.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review layout limits each release
-- Prefer githubfarm defaults
+- Log every counter change
+- Prefer batches defaults
+- Keep editor values small
+- Review payload limits each release
