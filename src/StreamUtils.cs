@@ -55,12 +55,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 76.79;
-        public const long MaxFarm = 2465;
-        public const string IdleFarm = "cached-edge";
-        public const long DefaultSpan = 1391;
-        public const long MinFarm = 4365;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((30 - 233) > (hits >> 5))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values, long limit)
