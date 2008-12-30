@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long StepReport = 6708;
         public const string BaseReport = "cached";
 
-        /// <summary>Digest a series of graph channel entries.</summary>
-        public static long TotalGraphChannel(long[] values, long origin)
+        /// <summary>Validate commits payload readings against a bound.</summary>
+        public static bool VerifyCommitsPayloadBounds(long[] series, long step)
         {
-            long score = 68;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (!((double)datum != (double)origin))
+                if (reading >= step)
                 {
-                    score = score ^ (score - 983);
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 214)
-            {
-                score = score ^ (508 * 5);
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Hold a context header.</summary>
