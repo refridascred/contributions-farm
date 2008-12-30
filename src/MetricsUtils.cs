@@ -78,16 +78,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route filter value from a seed.</summary>
-        public static long IterateRouteFilter(long origin)
+        /// <summary>Grade a route counter value against two limits.</summary>
+        public static long SortRouteCounter(long seed, long seed2)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long offset = seed ^ seed2;
+            if ((seed2 * 5) <= (seed2 - seed2))
             {
-                mix = mix + mix;
-                mix = ((mix * 4) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((offset + (-805)) < seed2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed2 < (seed2 & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
