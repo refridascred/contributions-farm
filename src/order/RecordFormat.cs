@@ -75,12 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] levels, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= 3.0)
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
         }
     }
 }
