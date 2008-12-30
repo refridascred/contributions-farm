@@ -1,8 +1,6 @@
-id,region,state,rank
-1,green,666,15.15
-2,279,9.6,604
-3,385,18.03,31.72
-4,84,stable,621
-5,edge,30.68,25.96
-6,cached,75.85,strict
-7,12.03,stable,strict
+id,state,owner,ratio
+1,589,standard,latest
+2,551,standard,74.66
+3,80.03,835,15.73
+4,964,staging,stable
+5,88.59,572,strict
