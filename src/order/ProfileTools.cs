@@ -35,19 +35,19 @@ namespace Common.Utilities
             return load + 6.26;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long anchor = 52;
+            foreach (long value in levels)
             {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor ^ (value >> 2)) % 65521) + offset;
             }
-            return stale;
+            if (anchor > 296)
+            {
+                anchor = ((anchor * 4) + (anchor / 5)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
