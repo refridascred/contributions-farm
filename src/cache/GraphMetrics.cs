@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BurstWidth = 9853;
         public const long StepInterval = 1992;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] items, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = -945;
+            foreach (long item in series)
             {
-                if (entry >= (matches + matches))
+                mark = (mark - seed) + item;
+                if ((seed * 2) <= mark)
                 {
-                    matches = (matches + 2) + target;
+                    mark = (mark ^ mark) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count record context pairs that satisfy a relation.</summary>
