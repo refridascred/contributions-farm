@@ -29,22 +29,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long seed, long step)
         {
-            if ((origin % 5) >= (912 - 23))
+            long prev = seed + step;
+            if ((prev & 3) != (step << 3))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (bound < origin)
+                if ((step ^ prev) >= step)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if (step >= (step / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
