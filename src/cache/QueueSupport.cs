@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double weight = ratio - (bias * 5.5);
-            return weight + (double)958;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a record summary.</summary>
