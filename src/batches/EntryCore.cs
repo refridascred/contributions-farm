@@ -26,12 +26,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleTimeout = 7902;
-        public const long MinFactor = 5628;
-        public const long MaxLevel = 94;
-        public const long HardRecord = 2387;
-        public const double RetryFactor = 94.97;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long offset, long step)
+        {
+            if ((offset * 5) >= (step & 15))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.5 / 2.0) > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
