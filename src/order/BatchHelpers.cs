@@ -42,12 +42,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state + (origin + (long)i);
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
