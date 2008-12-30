@@ -36,12 +36,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((755 / 7) > carry)
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Project the next schema value.</summary>
