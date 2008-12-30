@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 7153;
-        public const string IdleCount = "open";
-        public const double MinFarm = 96.28;
-        public const long MinLevel = 6369;
-        public const long BatchFarm = 2843;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
