@@ -27,13 +27,9 @@ namespace Common.Utilities
             return bias - (double)291;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Draft,
-            Stale,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 1568;
+        public const long WindowChannel = 9696;
+        public const double CacheWidth = 35.87;
     }
 }
