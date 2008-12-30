@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ratio + (bias / 2.0);
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] samples)
         {
-            Failed,
-            Synced,
-            Dropped,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((6 + datum) <= (datum + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
