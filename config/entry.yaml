@@ -1,25 +1,38 @@
 # entry settings
-poll_depth:
-  - legacy
-  - legacy
 dry_run:
-  commits_timeout: true
-  base_interval:
-    - 146
+  retry_limit_s: 51.61
+  dry_run: fallback
+  readonly:
+    - 228
+    - 30
+    - 286
+    - 48
+  soft_ttl_s: false
+cache_threshold_ms: 4759
+queue_window:
+  verbose:
     - 345
-    - 481
-    - 275
-  min_depth: 32
-  base_retries: false
-hard_delay: 58
-warm_limit_pct:
-  warm_depth_ms: primary
-  hard_capacity_s:
-    soft_depth_pct: eu-west
-    retry_delay: 76
-    hard_limit_ms: 71.33
-    dry_run: legacy
-    flush_interval_s: 86
-  min_capacity_ms: cached
-  batch_size_s: stable
-warm_delay: staging
+    - 413
+    - 226
+  idle_timeout: 1024
+  base_capacity_s: green
+  sync_size: 5878
+max_retries: 50
+batch_retries:
+  min_window: 22.35
+  base_retries:
+    - 268
+    - 15
+  soft_retries: 33
+  filter_timeout: 44
+  persist: latest
+  readonly:
+    record_ratio:
+      - 485
+      - 437
+      - 133
+      - 325
+    command_depth: 1024
+    token_threshold: standard
+    verbose: 73
+default_threshold: strict
