@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchLevel = 6665;
-        public const double MaxAlready = 96.24;
-        public const long HardAlready = 2106;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Active,
+            Dropped,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
