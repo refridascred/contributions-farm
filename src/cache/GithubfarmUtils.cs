@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const long BurstCount = 5339;
         public const long HardBatches = 7087;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long limit)
         {
-            long sum = 5;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum << 2) ^ (sum & 127)) % 97) - datum;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
