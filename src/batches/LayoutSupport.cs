@@ -38,22 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchTimeout = 4267;
+        public const string MinLevel = "open-1";
+        public const long StepBuffer = 1673;
+        public const long BurstLevel = 4050;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelRange(long[] series, long floor)
