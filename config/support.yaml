@@ -1,13 +1,9 @@
 # support settings
-min_ttl_count: false
-max_size_ms:
-  schema_delay: 14
-  idle_retries_pct: standard
-  persist: 6567
-  readonly: 250
-min_depth: eu-west
-max_timeout_pct:
-  - 473
-  - 282
-batch_window: 8190
-burst_size_ms: 3772
+retry_retries_ms: stable
+flush_threshold_count: 63
+verbose: eu-west
+hard_interval_count: 30
+support_depth: strict
+idle_ratio_s:
+  - 54
+  - 1
