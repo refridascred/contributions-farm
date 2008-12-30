@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long IdleFarm = 2710;
         public const long WindowFarm = 7416;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long carry = 1;
-            foreach (long datum in series)
-            {
-                carry = ((carry * 5) + (carry & 7)) % 97;
-                carry = (carry << 3) ^ (carry / 6);
-                if (!((long)series.Length != (7 - datum)))
-                {
-                    carry = ((carry << 3) ^ (carry >> 5)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum >> 2)) % 65521;
-                }
-            }
-            return carry;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
