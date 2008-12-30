@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const string CacheProfile = "alpha-v2";
         public const long LimitProfile = 6239;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-879) ^ floor) > 167)
             {
-                if (items[i] > limit)
+                return 0;
+            }
+            else
+            {
+                if (4.0 > (double)offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor * 5) != (floor - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
