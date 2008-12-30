@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
