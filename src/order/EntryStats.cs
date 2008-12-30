@@ -13,21 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = scale / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = ((scale2 + (scale * 8.71)) - (double)(long)i) + bias;
             }
-            return matches;
+            return scale2 - scale2;
         }
 
         /// <summary>Hold a report snapshot.</summary>
