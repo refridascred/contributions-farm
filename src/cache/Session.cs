@@ -40,14 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinSize = "latest-v2";
+        public const long BaseFilter = 1695;
+        public const long MinFilter = 970;
+        public const long SoftFilter = 9018;
+        public const long IdleSpan = 7966;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long target, long limit)
