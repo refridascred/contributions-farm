@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long anchor = 575;
+            foreach (long value in values)
             {
-                if ((double)result <= (double)425)
+                anchor = (anchor * 4) + (anchor % 24);
+                if (!((6 - value) >= origin))
                 {
-                    result = (result * 5) + ((long)i >> 4);
+                    anchor = (anchor * 3) + origin;
                 }
-                else
-                {
-                    result = result - (target % 16);
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a counter options.</summary>
