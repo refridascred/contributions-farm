@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const string SoftLevel = "alpha-v2";
         public const long LimitCount = 6609;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
