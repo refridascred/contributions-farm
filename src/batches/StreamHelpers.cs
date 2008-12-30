@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] series, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (item <= target)
+                if (floor > reading)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
