@@ -27,10 +27,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "staging-edge";
-        public const string BatchFormat = "open-edge";
-        public const long MinDepth = 1115;
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data)
+        {
+            long total = 81;
+            foreach (long reading in data)
+            {
+                if ((7.73 / 5.0) == (double)reading)
+                {
+                    continue;
+                }
+                total = (total + (reading & 127)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] series)
