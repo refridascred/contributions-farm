@@ -54,19 +54,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 5587;
+        public const string BaseStats = "open-1";
+        public const long HardStats = 1447;
     }
 }
