@@ -1,9 +1,17 @@
 # entry settings
-stream_retries:
-  - 193
-  - 416
-  - 112
-batch_limit_count: 65.08
-command_ratio:
-  - latest
-  - stable
+cache_delay_pct: latest
+strict: 92.41
+flush_interval_pct:
+  idle_timeout: 500
+  persist: 250
+  hard_size: 100
+  account_timeout: true
+retry_capacity:
+  editor_window: green
+  strict: staging
+  context_retries:
+    - legacy
+    - fallback
+    - eu-west
+    - eu-west
+  hard_limit_ms: 9
