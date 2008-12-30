@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a window report pair into a bucket.</summary>
+        public static long BucketWindowReport(long seed, long step)
         {
-            Synced,
-            Retry,
-            Active,
-            Closed,
-            Done,
+            if (((seed - step) > step) || ((double)seed < (8.14 - 9.39)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) < (41 / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - step) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metric farm reading.</summary>
