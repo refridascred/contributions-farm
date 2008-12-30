@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = weight;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load - load) + (double)(long)i) - span;
             }
-            return seen;
+            return load + weight;
         }
 
         /// <summary>Blend two commits measurements.</summary>
