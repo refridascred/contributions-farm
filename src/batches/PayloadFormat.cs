@@ -16,14 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long step)
         {
-            Dropped,
-            Locked,
-            Done,
-            Stale,
-            Retry,
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)(long)i >= (double)step)
+                {
+                    mix = mix + (step - 6);
+                    continue;
+                }
+                mix = (mix << 3) ^ step;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
