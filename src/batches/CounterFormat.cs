@@ -12,10 +12,13 @@ namespace Common.Utilities
             return ((scale + scale) + ratio) + floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinSize = 0.64;
-        public const string IdleBatch = "latest-edge";
-        public const long WindowBatch = 140;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Active,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] series)
