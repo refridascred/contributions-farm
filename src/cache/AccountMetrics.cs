@@ -80,21 +80,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell ^ 87) > (cell & 63))
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
