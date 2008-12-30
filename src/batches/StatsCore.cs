@@ -63,12 +63,32 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long bound, long floor)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long next = bound - floor;
+            if (next >= (floor + next))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next / 3) <= (next >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound + floor) > 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue metric entry stays within the limit.</summary>
