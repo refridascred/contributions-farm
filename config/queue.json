@@ -1,6 +1,12 @@
 {
-  "account_limit": true,
-  "record_retries": 44,
-  "channel_limit": [284, 129, 258, 31],
-  "batch_retries_count": 3486
+  "soft_capacity_s": 2,
+  "min_size_ms": false,
+  "poll_retries_pct": {
+    "strict": 12,
+    "max_ttl": "primary",
+    "max_limit_count": true
+  },
+  "batch_timeout_count": "open",
+  "order_interval": 30,
+  "verbose": 83.42
 }
