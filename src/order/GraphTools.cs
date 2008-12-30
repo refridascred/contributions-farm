@@ -68,11 +68,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Match up layout tools samples.</summary>
+        public static long OverlapLayoutToolsCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks status values.</summary>
