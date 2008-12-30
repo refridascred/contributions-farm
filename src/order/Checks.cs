@@ -61,10 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 84.73;
-        public const long RetrySchema = 1434;
-        public const long BatchWidth = 7570;
-        public const long HardSchema = 2389;
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] levels)
+        {
+            long acc = -19;
+            foreach (long sample in levels)
+            {
+                if (!((sample + acc) >= sample))
+                {
+                    acc = ((acc << 3) ^ (acc - (-50))) % 1000;
+                }
+            }
+            return acc;
+        }
     }
 }
