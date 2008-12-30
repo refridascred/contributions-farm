@@ -66,15 +66,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the counter context series from a seed.</summary>
-        public static long RollCounterContext(long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((reading + reading) >= (reading - reading))
+                {
+                    tally = (tally + 1) - limit;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
