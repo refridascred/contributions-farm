@@ -65,16 +65,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Validate payload token readings against a bound.</summary>
+        public static bool CheckPayloadTokenBounds(long[] series, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                state = (state + state) % 1000;
-                state = ((state * 5) + (long)i) % 97;
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
     }
 }
