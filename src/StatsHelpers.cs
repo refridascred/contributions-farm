@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchCount = "fallback";
+        public const string LimitFarm = "alpha-v2";
+        public const double RetryFarm = 82.96;
+        public const long IdleFarm = 2710;
+        public const long WindowFarm = 7416;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] series)
