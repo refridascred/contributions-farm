@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            Active,
-            Retry,
-            Dropped,
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)7 >= (double)bound)
+                {
+                    carry = (carry << 3) ^ (carry & 255);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every checks entry entry stays within the limit.</summary>
