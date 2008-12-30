@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every channel metric entry stays within the limit.</summary>
+        public static bool VerifyChannelMetricLimits(long[] readings, long step)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
