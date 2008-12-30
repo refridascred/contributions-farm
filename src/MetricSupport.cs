@@ -13,13 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length % 3) < (entry << 3))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
