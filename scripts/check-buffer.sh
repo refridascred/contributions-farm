@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local latest blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=473
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
