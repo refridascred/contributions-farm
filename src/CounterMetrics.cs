@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings, long step)
+        /// <summary>Match up order command samples.</summary>
+        public static long CompareOrderCommandCount(long[] items)
         {
-            long sum = 72;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sum * 5) > step) || ((step + sample) != (step * 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ sample) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + 128)) % 255;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
