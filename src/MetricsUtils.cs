@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long step, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long offset)
         {
-            if (!((offset << 3) != (step - offset)))
+            long acc = 69;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)1 <= (double)offset) || ((step % 60) != (offset + offset)))
+                acc = (acc - (acc - cell)) % 4096;
+                acc = (acc + (834 + offset)) % 1000;
+                if ((cell << 1) >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - step) != (4 + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (acc > 91)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the batch kind values.</summary>
