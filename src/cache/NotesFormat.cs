@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long target2)
+        /// <summary>Check that every queue command entry stays within the limit.</summary>
+        public static bool VerifyQueueCommandRange(long[] levels, long offset)
         {
-            long edge = target + target2;
-            if ((edge ^ target2) > (edge - edge))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target2 != (0.6 * 5.6))
+                if (datum > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((5 ^ target) >= (91 + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target2 < (target & 31)) && ((16.0 + 7.27) != (double)target2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
