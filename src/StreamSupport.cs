@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 50.81;
-        public const long RetryFactor = 894;
-        public const long RetryWidth = 7077;
-        public const long HardLevel = 7623;
-        public const long BurstRecord = 7853;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double BlendFormat(double rate, double floor)
