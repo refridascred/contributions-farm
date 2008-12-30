@@ -24,18 +24,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metric cache entries that pass the check.</summary>
-        public static long AuditMetricCacheHits(long[] values)
+        /// <summary>Rank route window input into a small class.</summary>
+        public static long RankRouteWindow(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long span = limit ^ bound;
+            if (limit >= (limit & 31))
             {
-                if ((6.3 * 7.24) == (double)matches)
+                return 4;
+            }
+            else
+            {
+                if (!((limit & 1) <= (bound ^ span)))
                 {
-                    matches = (matches + 1) - value;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)span > (double)limit) && (span >= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((86 - bound) < 6)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
