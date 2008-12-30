@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            double drift = scale - (double)595;
+            if (drift < (drift + span))
+            {
+                drift = drift - (scale / 3.0);
+            }
+            return drift + (scale * 3.4);
         }
 
         /// <summary>Blend two filter measurements.</summary>
