@@ -74,20 +74,10 @@ namespace Common.Utilities
         public const long MaxEntry = 4325;
         public const long BatchEntry = 6000;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepLevel = 9465;
+        public const long WindowChannel = 3713;
+        public const long BurstChannel = 1543;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardChecks = 9239;
