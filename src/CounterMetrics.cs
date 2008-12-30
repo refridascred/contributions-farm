@@ -42,22 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 5;
+            foreach (long cell in values)
             {
-                if ((seen * 3) > (sample - seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state - (state * 2)) % 65521) + cell;
             }
-            return seen;
+            if (state > 828)
+            {
+                state = ((state * 4) + (origin * 4)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of record readings.</summary>
