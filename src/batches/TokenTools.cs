@@ -35,19 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] levels, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (entry <= target)
+                if (((double)value <= (1.07 - 3.9)) || ((20 << 2) <= ((-58) ^ matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
