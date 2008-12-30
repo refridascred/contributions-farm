@@ -86,11 +86,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Grade a window stats value against two limits.</summary>
+        public static long ClassifyWindowStats(long limit, long origin)
         {
-            double bias = 12.0;
-            return ((bias - 18.0) + gain) + offset;
+            long diff = limit + origin;
+            if ((2.0 * 3.23) > (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit >= (double)57)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - diff) == (8 ^ diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
