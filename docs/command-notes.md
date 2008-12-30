@@ -1,10 +1,10 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the filter list.
-When a context fails, the report handler retries a few times before giving up.
+The contributi module keeps account values in sync with the githubfarm cache.
+The support report groups every tools by order.
 
 ## Guidelines
 
-- Log every stream change
-- Keep metrics values small
-- Prefer session defaults
+- Review queue limits each release
+- Log every context change
+- Validate layout input early
