@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 8204;
         public const long MinCache = 2456;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] readings, long bound)
         {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
