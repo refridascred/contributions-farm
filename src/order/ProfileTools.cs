@@ -59,9 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 13.86;
-        public const double BaseCluster = 25.68;
-        public const string MaxScore = "strict";
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
