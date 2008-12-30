@@ -23,38 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            if ((5.7 + 17.0) < (double)bound)
+            double ratio = (double)((-544) >> 4);
+            if (ratio > (double)4)
             {
-                return 7;
+                ratio = (ratio + rate) + offset;
             }
-            else
-            {
-                if ((step ^ bound) > 22)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.3 / 4.0) != (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (3.2 <= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return ratio + (double)(-77);
         }
 
         /// <summary>Match up order samples.</summary>
