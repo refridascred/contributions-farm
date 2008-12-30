@@ -1,6 +1,7 @@
 {
-  "graph_capacity": ["edge", "green", "cached", "green"],
-  "cache_timeout": "stable",
-  "counter_size": "eu-west",
-  "flush_threshold": true
+  "notes_depth": 60,
+  "entry_interval": 40.35,
+  "profile_threshold": 53,
+  "dry_run": 24,
+  "filter_size": [124, 32, 214]
 }
