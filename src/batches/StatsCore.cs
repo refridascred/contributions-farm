@@ -50,12 +50,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchRatio = "legacy-v2";
-        public const long DefaultNotes = 9610;
-        public const long SoftSpan = 7121;
-        public const string MinNotes = "standard-edge";
-        public const long DefaultTimeout = 9603;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long offset)
+        {
+            if (!((double)limit <= 8.43))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit / 4) <= (0 & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - limit) >= (offset - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long BucketSchema(long bound, long floor)
