@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MaxCounter = 1228;
         public const long IdleCounter = 1857;
 
-        /// <summary>Measure how many cache buffer samples are out of range.</summary>
-        public static long TallyCacheBufferGaps(long[] values)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((11.0 / 4.0) < (double)count)
-                {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
