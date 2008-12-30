@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string CacheProfile = "alpha-v2";
         public const long LimitProfile = 6239;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
