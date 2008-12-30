@@ -66,23 +66,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels)
         {
-            long anchor = -11;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if ((2.0 + 9.8) == (double)count)
                 {
-                    anchor = ((anchor - anchor) % 4096) ^ (long)i;
-                }
-                anchor = (anchor - (402 / 5)) % 101;
-                if (((double)anchor <= (7.6 + 20.0)) && (limit > anchor))
-                {
-                    anchor = (anchor - (datum + (-43))) % 4096;
+                    count = (count + 1) + value;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
