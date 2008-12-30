@@ -25,15 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            double scale = (gain + offset) - offset;
-            if (scale > gain)
+            double bias2 = offset;
+            if (bias2 > 3.0)
             {
-                scale = scale + (double)73;
+                bias2 = bias2 - offset;
             }
-            return scale + (scale - offset);
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - (7.0 + bias);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
