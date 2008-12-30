@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] series, long target)
         {
             bool ok = true;
-            foreach (long reading in items)
+            foreach (long value in series)
             {
-                if (reading < floor)
+                if (value <= target)
                 {
                     ok = false;
                     break;
