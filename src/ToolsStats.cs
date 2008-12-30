@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long offset)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            long bound = target ^ offset;
+            if ((offset & 1) > bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset ^ offset) > 705) || ((target & 15) > (target & 255)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound + offset) != (offset + target)) || ((offset >> 1) != (bound - target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) < offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
