@@ -1,17 +1,10 @@
 {
-  "verbose": 2975,
-  "cache_interval": "strict",
-  "flush_interval_s": {
-    "hard_window_s": {
-      "editor_size": 6051,
-      "cluster_interval": 100,
-      "checks_interval": "stable",
-      "dry_run": 8245,
-      "enabled": "legacy",
-      "soft_depth_ms": 49.3
-    },
-    "stats_size": "standard",
-    "token_ratio": 17,
-    "max_window_count": "standard"
-  }
+  "cache_timeout_ms": {
+    "sync_ratio_s": "stable",
+    "enabled": "cached",
+    "strict": true,
+    "profile_retries": true
+  },
+  "sync_interval": "local",
+  "dry_run": true
 }
