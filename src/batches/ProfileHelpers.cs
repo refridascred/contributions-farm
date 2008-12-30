@@ -72,15 +72,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            double gain = (double)(632 / 3);
+            if (gain < offset)
             {
-                state = ((state * 4) + (long)i) % 101;
+                gain = (gain - (gain / 2.0)) - weight;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (offset - gain)) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
