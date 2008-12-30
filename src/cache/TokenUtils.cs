@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long BurstContext = 9080;
         public const double CacheSpan = 19.38;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] levels, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate tools route samples.</summary>
