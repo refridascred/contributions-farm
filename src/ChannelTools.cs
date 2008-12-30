@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const string SoftLevel = "alpha-v2";
         public const long LimitCount = 6609;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] items, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > floor)
+                if (levels[i] > floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
