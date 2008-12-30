@@ -43,12 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples, long offset)
         {
-            Done,
-            Draft,
-            Stale,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((5 - tally) != (tally - tally))
+                {
+                    tally = ((tally + 3) ^ cell) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
