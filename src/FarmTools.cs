@@ -26,13 +26,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 60.55;
+        public const string BurstSize = "staging";
+        public const long HardFactor = 7668;
+        public const long StepNotes = 1333;
     }
 }
