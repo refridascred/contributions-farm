@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BurstScore = 7734;
         public const double BaseWidth = 11.38;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] series, long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double span)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double ratio = (double)(442 + 983);
+            if (ratio < (span + rate))
             {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - (ratio * 12.0);
             }
-            return ready;
+            return ratio - rate;
         }
 
         /// <summary>Hold a counter entry.</summary>
