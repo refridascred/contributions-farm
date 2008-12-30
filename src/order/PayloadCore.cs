@@ -40,15 +40,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double scale, double span)
-        {
-            double mean = (double)(48 % 100);
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + (mean - span)) + (double)(long)i) + scale;
-            }
-            return mean + (span / 6.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 9661;
+        public const long MinSpan = 7850;
+        public const long BaseCount = 2415;
+        public const string IdleFilter = "strict-edge";
     }
 }
