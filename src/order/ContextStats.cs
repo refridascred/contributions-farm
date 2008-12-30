@@ -20,18 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item ^ item) <= (matches >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up cluster samples.</summary>
