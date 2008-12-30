@@ -1,7 +1,6 @@
-id,owner,region,active,state
-1,565,213,520,35.08
-2,24,28.36,89.12,11.53
-3,481,122,141,legacy
-4,93.0,97.97,green,local
-5,915,41.98,837,92
-6,eu-west,773,570,123
+id,state,region
+1,20.86,553
+2,blue,staging
+3,607,fallback
+4,815,924
+5,primary,cached
