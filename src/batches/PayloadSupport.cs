@@ -14,38 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long offset, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if ((9.9 - 2.1) <= (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((target + offset) >= offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target >= (35 - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
