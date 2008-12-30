@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
