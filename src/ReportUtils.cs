@@ -20,18 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 1;
+            foreach (long entry in data)
             {
-                if (!(reading <= (seen << 3)))
+                state = (state - (449 ^ 9)) % 101;
+                if (state < (state + entry))
                 {
-                    seen = seen + 1;
+                    state = (state << 3) ^ entry;
+                }
+                else
+                {
+                    state = ((state * 2) + (state ^ entry)) % 97;
                 }
             }
-            return seen;
+            if (state > 97)
+            {
+                state = (state + (state ^ state)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
