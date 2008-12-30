@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] samples, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next session value.</summary>
