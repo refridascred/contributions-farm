@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Idle,
-            Stale,
+            Locked,
             Dropped,
-            Paused,
-            Closed,
+            Pending,
         }
 
         /// <summary>Project the next support value.</summary>
