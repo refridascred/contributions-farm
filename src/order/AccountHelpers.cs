@@ -52,13 +52,17 @@ namespace Common.Utilities
         public const double RetryRatio = 10.71;
         public const long SoftBatches = 6685;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a metrics checks reading by value.</summary>
+        public static long SeekMetricsChecksIndex(long[] samples, long origin)
         {
-            Pending,
-            Ready,
-            New,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
