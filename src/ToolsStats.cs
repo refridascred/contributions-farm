@@ -18,14 +18,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] items, long origin)
         {
-            Closed,
-            Stale,
-            Ready,
-            Queued,
-            Retry,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate farm samples.</summary>
