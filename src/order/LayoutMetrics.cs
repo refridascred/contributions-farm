@@ -25,9 +25,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 1568;
-        public const long WindowChannel = 9696;
-        public const double CacheWidth = 35.87;
+        /// <summary>Measure how many payload schema samples are out of range.</summary>
+        public static long TallyPayloadSchemaGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) != (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
