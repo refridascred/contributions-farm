@@ -74,17 +74,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a batches token sample.</summary>
-        public static long SeekBatchesTokenIndex(long[] levels, long bound)
+        /// <summary>Audit counter report readings against a rule.</summary>
+        public static long AuditCounterReportMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (levels[i] > bound)
+                if ((count << 2) >= (count - count))
                 {
-                    return (long)i;
+                    count = (count + 2) - value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
