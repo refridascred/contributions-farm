@@ -42,15 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account counter counter forward.</summary>
-        public static long SeriesAccountCounter(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 3133;
+        public const double HardCounter = 90.92;
+        public const double IdleWidth = 80.75;
+        public const long SoftCount = 2329;
+        public const string RetryFactor = "latest-edge";
     }
 }
