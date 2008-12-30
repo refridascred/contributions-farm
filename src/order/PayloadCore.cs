@@ -54,17 +54,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] levels, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] == offset)
+                if ((((double)seen >= (16.0 - 1.11)) || ((4.6 * 8.6) > (double)floor)) && (reading <= 2))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
