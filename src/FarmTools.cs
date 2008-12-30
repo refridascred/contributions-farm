@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long seed)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            long result = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
