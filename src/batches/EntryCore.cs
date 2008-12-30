@@ -19,24 +19,12 @@ namespace Common.Utilities
         public const long HardRecord = 2387;
         public const double RetryFactor = 94.97;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if (floor > (bound + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((875 % 2) == (floor + floor)) && (floor >= (bound / 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
