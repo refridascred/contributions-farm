@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double scale2 = (7.06 - scale) + (floor - floor);
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - (scale / 4.0)) - (double)(long)i;
-            }
-            return scale2 - 5.3;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
