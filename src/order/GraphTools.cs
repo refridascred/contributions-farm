@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchRatio = 346;
-        public const long LimitToken = 2022;
-        public const double IdleWidth = 50.4;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.39 / 9.0) < (7.0 * 5.64))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
         public static bool GuardEditorChecksBounds(long[] values, long floor)
