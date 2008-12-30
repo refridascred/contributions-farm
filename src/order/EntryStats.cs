@@ -56,13 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
