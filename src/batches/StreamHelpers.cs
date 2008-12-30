@@ -77,10 +77,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 9107;
-        public const long BatchScore = 4741;
-        public const string BatchSpan = "cached";
-        public const double CacheLevel = 47.72;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
