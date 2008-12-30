@@ -1,7 +1,5 @@
 {
-  "tools_size": false,
-  "hard_interval_ms": false,
-  "batch_depth_count": ["eu-west", "standard", "legacy"],
-  "readonly": "green",
-  "account_retries": false
+  "poll_timeout_pct": 60.36,
+  "checks_interval": 30,
+  "burst_window_ms": "eu-west"
 }
