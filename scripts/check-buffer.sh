@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in green fallback blue eu-west; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-BUFFER_LIMIT=350
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
