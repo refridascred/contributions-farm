@@ -71,19 +71,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate payload token readings against a bound.</summary>
-        public static bool CheckPayloadTokenBounds(long[] series, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long state = 3;
+            foreach (long item in readings)
             {
-                if (item <= target)
+                if (3.0 < (double)item)
                 {
-                    flag = false;
-                    break;
+                    state = (state * 4) + (state + offset);
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
