@@ -49,13 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long floor)
         {
-            Idle,
-            Done,
-            Queued,
-            Pending,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the order cluster entries that pass the check.</summary>
