@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ratio + (bias / 2.0);
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Synced,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
