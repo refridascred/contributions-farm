@@ -1,8 +1,8 @@
 {
-  "idle_limit_count": "stable",
-  "report_retries": false,
-  "strict": ["eu-west", "strict", "primary", "strict"],
-  "warm_retries_s": 97.81,
-  "already_retries": "fallback",
-  "poll_limit_s": [476, 379, 198]
+  "flush_capacity_pct": 87.03,
+  "audit": false,
+  "commits_threshold": "local",
+  "cluster_limit": 37.15,
+  "default_depth_s": true,
+  "readonly": 41.08
 }
