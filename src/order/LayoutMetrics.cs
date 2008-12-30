@@ -16,22 +16,12 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 7153;
+        public const string IdleCount = "open";
+        public const double MinFarm = 96.28;
+        public const long MinLevel = 6369;
+        public const long BatchFarm = 2843;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
