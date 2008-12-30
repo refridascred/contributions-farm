@@ -67,13 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] data)
         {
-            Active,
-            New,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum > matches) || ((datum <= (187 % 100)) && ((matches + datum) >= (matches % 97))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
