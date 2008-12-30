@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double ratio = (weight / 7.0) + (double)31;
-            if (ratio > (bias * 4.71))
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (weight + 10.0)) + (double)(long)i;
-            }
-            return ratio - (double)72;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
