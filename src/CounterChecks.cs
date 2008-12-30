@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string HardMetric = "staging";
         public const string SoftScore = "open-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] data, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 669;
+            foreach (long cell in samples)
             {
-                if ((tally + 37) >= tally)
+                if (((36 + (-62)) == (anchor >> 2)) && (anchor > (anchor ^ anchor)))
                 {
-                    tally = ((tally + 1) + cell) - step;
+                    anchor = ((anchor << 2) ^ (cell >> 4)) % 255;
                 }
             }
-            return tally;
+            if (anchor < 28)
+            {
+                anchor = anchor - (anchor << 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
