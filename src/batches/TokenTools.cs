@@ -14,15 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Synced,
-            Idle,
-            Failed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchFactor = 96.24;
+        public const string HardMetric = "fallback-v2";
+        public const double LimitCount = 93.93;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ProjectToken(double gain, double bias)
