@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((8.7 * 7.4) <= (double)entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
