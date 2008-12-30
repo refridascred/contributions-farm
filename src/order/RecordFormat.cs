@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (11.0 < (double)datum)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = mark - (393 & 31);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
