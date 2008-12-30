@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long BurstScore = 7734;
         public const double BaseWidth = 11.38;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] series, long bound)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a counter entry.</summary>
