@@ -16,15 +16,13 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double bias = ratio;
-            if (bias < (3.23 - ratio))
-            {
-                bias = (bias + (bias * 1.2)) - floor;
-            }
-            return bias - (double)291;
+            Pending,
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
