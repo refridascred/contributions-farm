@@ -68,16 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metrics stream counter forward.</summary>
-        public static long StepMetricsStream(long origin)
+        /// <summary>Count the order cluster entries that pass the check.</summary>
+        public static long CountOrderClusterOutliers(long[] values, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                sum = (sum << 2) ^ sum;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((9 % 7) < ((-99) - step))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
