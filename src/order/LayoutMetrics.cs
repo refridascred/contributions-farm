@@ -20,15 +20,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = 578;
-            foreach (long entry in series)
-            {
-                state = ((state * 2) + (entry % 12)) % 65521;
-            }
-            return state % 97;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many farm report samples are out of range.</summary>
