@@ -1,34 +1,13 @@
 # support settings
-verbose: 63
-support_ratio: cached
-counter_size: open
-soft_capacity_pct: 18
-commits_timeout:
-  retry_threshold:
-    window_threshold:
-      - 90
-      - 235
-      - 324
-    audit: 9569
-    idle_interval_s: edge
-    verbose:
-      - 380
-      - 109
-      - 413
-      - 12
-    cache_delay:
-      - stable
-      - fallback
-      - cached
-      - staging
-  base_depth_s: 100
-  token_timeout:
-    warm_retries_pct: fallback
-    batch_limit_ms: false
-    sync_delay_pct: 76
-  min_depth_ms:
-    - legacy
-    - legacy
-    - local
-  default_window: 38.67
-  poll_window: false
+support_delay: latest
+githubfarm_delay: true
+min_threshold_pct: 100
+base_depth: false
+batch_depth_pct:
+  - green
+  - staging
+compress:
+  - 262
+  - 361
+  - 326
+  - 301
