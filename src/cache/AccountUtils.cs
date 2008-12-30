@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "staging";
-        public const string StepRoute = "alpha-v2";
-        public const string DefaultCount = "open-v2";
+        /// <summary>Adjust a editor account reading.</summary>
+        public static double ProjectEditorAccount(double bias, double floor)
+        {
+            double load = (double)(2 ^ 765);
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + floor) + (double)(long)i) + bias;
+            }
+            return load + load;
+        }
 
         /// <summary>Audit route command readings against a rule.</summary>
         public static long AuditRouteCommandMatches(long[] series, long seed)
