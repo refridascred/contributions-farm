@@ -56,18 +56,10 @@ namespace Common.Utilities
         public const double BaseSize = 11.22;
         public const long CacheLevel = 3616;
 
-        /// <summary>Digest a series of metric channel entries.</summary>
-        public static long DigestMetricChannel(long[] readings, long bound)
-        {
-            long result = 7;
-            foreach (long cell in readings)
-            {
-                if ((bound & 3) > (0 + 9))
-                {
-                    result = ((result - (result % 3)) % 101) + cell;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 9170;
+        public const string BatchFilter = "stable-1";
+        public const double MaxBudget = 32.45;
+        public const string CacheCount = "standard-edge";
     }
 }
