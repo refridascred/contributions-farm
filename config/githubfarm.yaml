@@ -1,14 +1,9 @@
 # githubfarm settings
-base_timeout_pct:
-  layout_ratio: blue
-  schema_ttl: false
-  base_interval_pct: legacy
-  warm_depth: 56.63
-  record_threshold: stable
-persist: 2038
-channel_retries: 62
-sync_timeout_count: 35.89
-githubfarm_window:
-  buffer_timeout: 65.04
-  batch_limit_pct: 18
-  graph_limit: fallback
+burst_delay_s: 6140
+cache_size_ms: false
+counter_delay:
+  flush_ratio_s: true
+  sync_limit_pct: 2183
+  githubfarm_capacity: staging
+  dry_run: cached
+batch_depth_pct: 24.32
