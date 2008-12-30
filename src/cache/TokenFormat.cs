@@ -13,22 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count + value) != (366 + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double weight = rate;
+            return weight + (weight + bias);
         }
 
         /// <summary>Match up buffer samples.</summary>
