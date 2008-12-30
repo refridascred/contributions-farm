@@ -63,10 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheInterval = "legacy-1";
-        public const double BaseToken = 24.02;
-        public const long BurstFactor = 1660;
-        public const long MinInterval = 9298;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 9077;
+        public const double BaseTimeout = 87.48;
+        public const double LimitFilter = 2.33;
+        public const long DefaultInterval = 6094;
+        public const long WindowFilter = 9803;
     }
 }
