@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long TallyBatchesWindowOutliers(long[] series, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (!((item / 7) < (seen ^ item)))
+                if (entry > origin)
                 {
-                    seen = (seen + 3) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate editor report readings against a bound.</summary>
