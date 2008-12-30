@@ -45,22 +45,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long mark = 33;
-            foreach (long cell in items)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((mark ^ (mark >> 1)) % 255) - (long)i;
-                }
-                if ((((-22) + cell) > cell) && ((double)cell < (0.68 + 3.2)))
-                {
-                    mark = mark - (6 << 2);
-                }
+                acc = ((acc * 3) + (acc - (long)i)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
