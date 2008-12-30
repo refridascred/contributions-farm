@@ -54,19 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] readings, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
