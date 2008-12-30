@@ -40,19 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] items, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if (offset2 > offset)
             {
-                if (entry < floor)
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ offset2) < 577)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.8 * 6.19) > (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset2 > (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
