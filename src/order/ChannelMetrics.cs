@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context channel value from a seed.</summary>
-        public static long IterateContextChannel(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!((sum >> 2) == ((long)i * 5)))
+                if ((tally % 60) > (datum - tally))
                 {
-                    sum = sum - sum;
+                    tally = (tally + 3) + floor;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
     }
 }
