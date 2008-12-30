@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items, long step)
+        /// <summary>Rank tools commits input into a small class.</summary>
+        public static long BucketToolsCommits(long target, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((double)target != (4.2 - 15.0))
             {
-                if ((entry % 12) >= (entry + 9))
+                return 1;
+            }
+            else
+            {
+                if (18 <= (target & 63))
                 {
-                    tally = (tally + 1) + step;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every cluster account entry stays within the limit.</summary>
