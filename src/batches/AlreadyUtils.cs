@@ -30,24 +30,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] series, long bound)
         {
-            if ((step - target) >= (target / 7))
+            bool ok = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((724 + 909) >= (step - step))
+                if (reading < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
