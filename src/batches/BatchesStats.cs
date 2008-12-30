@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long CountPayloadEntryOutliers(long[] levels, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((seed + matches) < (27 - matches))
+                if (datum <= bound)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
