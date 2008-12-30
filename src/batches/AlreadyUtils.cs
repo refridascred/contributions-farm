@@ -21,13 +21,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] items, long floor)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
