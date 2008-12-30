@@ -48,14 +48,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Active,
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 73.06;
+        public const long DefaultDepth = 9629;
+        public const double BatchTools = 41.85;
 
         /// <summary>Adjust a format reading.</summary>
         public static double SmoothFormat(double weight, double offset)
