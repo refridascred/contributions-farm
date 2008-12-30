@@ -46,12 +46,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 52.12;
-        public const long RetryInterval = 9980;
-        public const long BurstWidth = 6181;
-        public const long BatchStats = 123;
-        public const long HardBudget = 8519;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowCluster = 5510;
