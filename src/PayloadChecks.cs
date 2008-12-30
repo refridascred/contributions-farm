@@ -70,22 +70,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] series, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((value >> 3) < (seed % 24)) && ((value + matches) == (seed + seed)))
+                if (bound >= (bound + bound))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
