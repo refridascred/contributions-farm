@@ -12,25 +12,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long edge = origin ^ floor;
-            if (floor > (origin << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 127) <= (edge >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Active,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Accumulate session samples.</summary>
