@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            Active,
-            Stale,
-            Pending,
-            Draft,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches + value) == (matches & 63))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter info.</summary>
