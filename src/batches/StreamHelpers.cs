@@ -49,12 +49,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first record batches entry that matches the target.</summary>
-        public static long LocateRecordBatchesIndex(long[] data, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] == step)
+                if (items[i] <= seed)
                 {
                     return (long)i;
                 }
