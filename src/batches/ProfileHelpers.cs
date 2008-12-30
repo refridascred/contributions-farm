@@ -53,12 +53,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long acc = 77;
+            foreach (long sample in items)
+            {
+                if (!((double)target <= (double)sample))
+                {
+                    acc = acc + (target + target);
+                    acc = ((acc << 3) ^ (acc % 100)) % 1000;
+                }
+                if (((double)target > (4.0 * 7.6)) || (target > (target + sample)))
+                {
+                    acc = (acc << 3) ^ (100 * 4);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
