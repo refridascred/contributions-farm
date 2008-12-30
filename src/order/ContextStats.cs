@@ -43,10 +43,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSize = 6150;
-        public const long SoftBudget = 5172;
-        public const long LimitCount = 1220;
-        public const long BatchRatio = 2161;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Draft,
+            Dropped,
+            New,
+            Queued,
+            Retry,
+        }
     }
 }
