@@ -76,18 +76,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] values, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((6 + seen) == (seen ^ seen))
-                {
-                    seen = ((seen + 1) + sample) + offset;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a order session reading by value.</summary>
