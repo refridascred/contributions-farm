@@ -23,11 +23,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchFactor = 9620;
-        public const long WindowCount = 7516;
-        public const long WindowEntry = 7898;
-        public const double SoftEntry = 95.24;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] data)
