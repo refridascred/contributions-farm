@@ -29,14 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate entry stats readings against a bound.</summary>
+        public static bool VerifyEntryStatsRange(long[] readings, long offset)
         {
-            New,
-            Synced,
-            Locked,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
