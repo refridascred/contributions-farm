@@ -62,11 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)2 < (double)matches)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
