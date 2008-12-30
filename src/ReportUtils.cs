@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 4215;
-        public const double StepEditor = 97.26;
-        public const double CacheEditor = 58.61;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "local-v2";
+        public const double HardScore = 79.27;
+        public const long HardLevel = 7978;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long floor, long origin)
