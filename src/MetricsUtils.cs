@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Locked,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchLevel = 6665;
+        public const double MaxAlready = 96.24;
+        public const long HardAlready = 2106;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
