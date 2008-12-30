@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
