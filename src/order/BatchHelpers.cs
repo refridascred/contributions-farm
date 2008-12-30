@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] >= offset)
+                if ((((step + 8) >= (step + hits)) && ((3.2 / 9.0) < (3.5 - 19.0))) || (((hits << 1) >= (hits - datum)) && ((double)step < (double)995)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
