@@ -67,18 +67,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] data)
+        /// <summary>Classify a cache channel pair into a bucket.</summary>
+        public static long GradeCacheChannel(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long lane = origin - offset;
+            if ((lane >= (685 + 75)) && ((origin / 9) == (offset << 2)))
             {
-                if ((datum > matches) || ((datum <= (187 % 100)) && ((matches + datum) >= (matches % 97))))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin != (1.0 / 6.0))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin % 100) < (origin % 12)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
