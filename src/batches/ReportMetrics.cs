@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowLevel = 7580;
-        public const long MinDepth = 9514;
-        public const long DefaultLevel = 498;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Active,
+            Stale,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Check that every channel metric entry stays within the limit.</summary>
         public static bool VerifyChannelMetricLimits(long[] readings, long step)
