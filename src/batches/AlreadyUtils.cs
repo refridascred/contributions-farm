@@ -74,20 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc - (acc >> 5)) % 4096;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc << 2) ^ (step % 5)) % 1000) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
