@@ -22,19 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double rate, double span)
+        /// <summary>Grade a entry contributi value against two limits.</summary>
+        public static long RankEntryContributi(long bound, long step)
         {
-            double mean = 7.2 * 6.05;
-            if (mean >= (1.3 * 8.0))
+            long gap = bound ^ step;
+            if (((gap / 6) > (gap + gap)) || ((double)bound < (double)gap))
             {
-                mean = mean - (rate * 4.2);
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + (rate - span)) + (double)(long)i;
+                if ((double)gap == (17.0 / 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mean + rate;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
