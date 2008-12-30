@@ -14,17 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] data, long offset)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long TallyPayloadRecordOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] > offset)
+                if ((datum - step) > (79 * 4))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
