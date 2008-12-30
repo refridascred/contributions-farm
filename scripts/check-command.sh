@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+COMMAND_LIMIT=253
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-green}"
 case "${mode}" in
-    eu-west)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in primary latest fallback; do
-    log "checking ${item}"
-done
