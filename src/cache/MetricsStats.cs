@@ -33,13 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels, long limit)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (tally % 60))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload phase values.</summary>
