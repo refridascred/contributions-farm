@@ -14,11 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)hits <= (4.5 / 9.0))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
