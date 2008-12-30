@@ -32,18 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] levels, long floor)
+        /// <summary>Fold a list of entry counter readings.</summary>
+        public static long FoldEntryCounter(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long anchor = -388;
+            foreach (long reading in readings)
             {
-                if ((cell / 4) < (floor + floor))
+                anchor = ((anchor - (0 + target)) % 97) + reading;
+                if (!((2 - 37) >= (long)readings.Length))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
     }
 }
