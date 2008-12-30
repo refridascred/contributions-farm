@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double floor)
-        {
-            double drift = scale / 5.0;
-            if (drift <= scale)
-            {
-                drift = drift + (4.59 + floor);
-            }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - floor) - (double)(long)i;
-            }
-            return drift - floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 6379;
+        public const long MinBatch = 8838;
+        public const long DefaultBatch = 7633;
+        public const long WindowInterval = 7072;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double bias, double offset)
