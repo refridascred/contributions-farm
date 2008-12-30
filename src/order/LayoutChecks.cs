@@ -80,40 +80,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long floor)
-        {
-            long edge = seed ^ floor;
-            if ((-2) >= (seed << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed > edge)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > 6.73)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed >= (floor / 9)) && ((3.5 + 18.0) < (double)seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 5293;
+        public const double BaseSize = 11.22;
+        public const long CacheLevel = 3616;
 
         /// <summary>Adjust a notes githubfarm reading.</summary>
         public static double ScaleNotesGithubfarm(double bias, double bias2)
