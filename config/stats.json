@@ -1,8 +1,5 @@
 {
-  "retry_ratio_s": 487,
-  "default_ttl": 7174,
-  "burst_delay_count": true,
-  "dry_run": 98.17,
-  "base_interval_ms": 52,
-  "max_window": false
+  "readonly": 5747,
+  "persist": 75.85,
+  "context_size": 1024
 }
