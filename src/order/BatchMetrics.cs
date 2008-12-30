@@ -69,11 +69,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleWidth = 7875;
-        public const double DefaultBuffer = 89.57;
-        public const string MaxDepth = "open-1";
-        public const long BatchBuffer = 3838;
-        public const string LimitSpan = "cached";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long origin, long bound)
+        {
+            if ((origin / 7) != (bound / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound - 2) <= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin <= (origin + bound)) || ((double)origin <= (10.0 + 2.4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
