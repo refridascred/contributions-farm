@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 11.11;
-        public const long WindowToken = 9037;
-        public const long WindowCount = 7557;
+        /// <summary>Fold a list of buffer channel readings.</summary>
+        public static long DigestBufferChannel(long[] data, long floor)
+        {
+            long carry = 258;
+            foreach (long item in data)
+            {
+                if (((floor - item) == (item << 3)) || (194 >= item))
+                {
+                    carry = carry + item;
+                }
+                if ((floor >> 5) <= 737)
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Scale a entry window figure with a bias.</summary>
         public static double ScaleEntryWindow(double rate, double span)
