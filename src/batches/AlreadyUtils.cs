@@ -90,22 +90,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((5.97 - 1.89) <= (double)reading)
+                if ((datum * 5) < (datum / 8))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
