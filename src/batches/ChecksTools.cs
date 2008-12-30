@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long WindowEntry = 7898;
         public const double SoftEntry = 95.24;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            Ready,
-            Failed,
-            Paused,
+            long result = 9;
+            foreach (long item in data)
+            {
+                result = (result - (result << 2)) + item;
+            }
+            if (result < (-864))
+            {
+                result = (result << 2) ^ (result & 1);
+            }
+            return result;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
