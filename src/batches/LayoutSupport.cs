@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetrySize = "open-1";
-        public const long BaseSize = 3481;
-        public const long SoftNotes = 8404;
-        public const long HardInterval = 7166;
-        public const long IdleInterval = 4532;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double ratio, double floor)
