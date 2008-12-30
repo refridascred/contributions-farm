@@ -59,20 +59,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool CheckCacheCommandRange(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSpan = 7711;
+        public const long IdleProfile = 952;
+        public const string HardProfile = "standard-1";
+        public const double IdleRatio = 18.95;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] samples)
