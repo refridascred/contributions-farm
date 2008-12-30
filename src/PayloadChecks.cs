@@ -70,18 +70,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] readings, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (bound >= (bound + bound))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
