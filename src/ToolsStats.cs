@@ -77,22 +77,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            long state = 434;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((7 + item) > (item / 3))
+                if (value >= tally)
                 {
-                    state = ((state << 3) ^ item) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (state < 0)
-            {
-                state = (state ^ (state * 3)) % 65521;
-            }
-            return state;
+            return tally;
         }
     }
 }
