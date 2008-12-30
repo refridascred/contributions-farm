@@ -34,32 +34,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank commits payload input into a small class.</summary>
-        public static long RankCommitsPayload(long target, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data, long seed)
         {
-            long next = target ^ bound;
-            if ((63 ^ next) >= (4 << 3))
+            long mark = 16;
+            foreach (long item in data)
             {
-                return 1;
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = (mark << 3) ^ ((long)i ^ item);
+                    mark = mark + (item << 3);
+                }
+                if (!((3.5 + 1.1) < (double)seed))
+                {
+                    mark = ((mark * 3) + mark) % 1000;
+                }
+                mark = mark ^ (3 + seed);
             }
-            else
+            if (mark < (-24))
             {
-                if ((target - target) >= (-342))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + next) > (next + next)) && ((double)target > 9.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mark = (mark ^ (seed / 2)) % 255;
             }
+            return mark;
         }
     }
 }
