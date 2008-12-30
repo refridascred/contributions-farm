@@ -63,27 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long limit)
         {
-            long carry = -410;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (0.7 > (double)carry)
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
                 {
-                    carry = (carry + carry) % 97;
-                    continue;
-                }
-                if (item > (102 + carry))
-                {
-                    carry = ((carry * 5) + (carry - item)) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry ^ (carry & 127)) % 97;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
