@@ -25,25 +25,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels, long origin)
         {
-            long slot = step - target;
-            if (target >= (target * 3))
+            long state = 72;
+            foreach (long entry in levels)
             {
-                return 1;
+                state = (state + (entry ^ origin)) % 101;
             }
-            else
+            if (state > 62)
             {
-                if (step > (slot + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                state = (state + state) % 65521;
             }
+            return state;
         }
 
         /// <summary>Match up layout samples.</summary>
