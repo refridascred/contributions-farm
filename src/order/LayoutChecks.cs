@@ -24,31 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Count the metric cache entries that pass the check.</summary>
+        public static long AuditMetricCacheHits(long[] values)
         {
-            if (((4.0 / 5.0) != (double)origin) && ((double)origin < (double)622))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)860 < (double)offset)
+                if ((6.3 * 7.24) == (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((20.0 * 5.14) > (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
