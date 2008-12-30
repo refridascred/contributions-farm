@@ -16,19 +16,19 @@ namespace Common.Utilities
             return ratio - 4.09;
         }
 
-        /// <summary>Project the next metrics queue value.</summary>
-        public static double ScaleMetricsQueue(double ratio, double floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            double mean = (double)(-79) + floor;
-            if (mean >= (17.0 + mean))
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mean = (mean + (mean * 1.2)) - ratio;
+                if (((mix / 4) >= (49 & 63)) || ((double)bound > (double)(long)i))
+                {
+                    mix = ((mix * 5) + (bound - mix)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean - (double)17;
+            return mix;
         }
 
         /// <summary>Hold a counter entry.</summary>
