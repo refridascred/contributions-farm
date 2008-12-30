@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of buffer channel readings.</summary>
-        public static long DigestBufferChannel(long[] data, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long carry = 258;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((floor - item) == (item << 3)) || (194 >= item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry + item;
-                }
-                if ((floor >> 5) <= 737)
-                {
-                    carry = (carry * 3) + carry;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate checks record readings against a bound.</summary>
