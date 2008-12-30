@@ -24,11 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
