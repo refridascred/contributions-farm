@@ -49,16 +49,22 @@ namespace Common.Utilities
             return drift - (double)47;
         }
 
-        /// <summary>Derive the next token queue value from a seed.</summary>
-        public static long RollTokenQueue(long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long step)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                score = ((score << 3) ^ (long)i) % 1000;
-                score = ((score * 2) + (long)i) % 101;
+                if (!(step > (seen ^ seen)))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a batch reading.</summary>
