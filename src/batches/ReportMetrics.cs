@@ -19,28 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context farm samples.</summary>
-        public static long CombineContextFarm(long[] values)
-        {
-            long mark = -42;
-            foreach (long sample in values)
-            {
-                if (!(((811 + sample) >= (3 >> 3)) || ((mark >> 2) <= 870)))
-                {
-                    mark = (mark << 3) ^ (mark - sample);
-                    mark = mark - (sample * 3);
-                }
-                if (!((sample << 3) >= sample))
-                {
-                    mark = (mark << 3) ^ (sample - 357);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ sample) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 4419;
+        public const long LimitGraph = 9701;
+        public const long BurstGraph = 3822;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long step)
