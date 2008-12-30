@@ -53,26 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter farm readings.</summary>
-        public static long TallyCounterFarm(long[] values, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long step)
         {
-            long mix = 5;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((step ^ step) < (mix << 1))
+                if (item < step)
                 {
-                    mix = (mix - 548) - datum;
-                }
-                else
-                {
-                    mix = (mix + ((long)values.Length << 3)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 73)
-            {
-                mix = ((mix * 2) + step) % 255;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
