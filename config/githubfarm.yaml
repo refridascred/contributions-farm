@@ -1,6 +1,4 @@
 # githubfarm settings
-context_depth: legacy
-hard_ttl_count: 73
-cache_ttl: cached
-poll_interval_s: 30
-report_timeout: 78
+poll_capacity: 1333
+batch_interval: 1024
+warm_size: 98
