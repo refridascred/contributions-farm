@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.4 + 5.99) >= (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - offset;
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
