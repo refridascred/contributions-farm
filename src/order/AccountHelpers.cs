@@ -26,18 +26,16 @@ namespace Common.Utilities
             return (bias - (8.72 * 7.9)) + scale;
         }
 
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long CountSchemaBufferGaps(long[] items)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample / 5) == (sample * 5))
-                {
-                    matches = matches + 1;
-                }
+                total = (total - 634) % 65521;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
