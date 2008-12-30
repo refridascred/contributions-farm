@@ -55,15 +55,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double gain2 = (double)429 - floor;
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (double)495) - (double)(long)i;
-            }
-            return gain2 + gain;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
