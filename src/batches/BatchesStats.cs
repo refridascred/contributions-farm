@@ -37,18 +37,22 @@ namespace Common.Utilities
             return weight + (offset + weight);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long acc = -11;
+            foreach (long reading in readings)
             {
-                if ((hits ^ hits) >= (hits / 4))
+                if (acc <= (reading % 8))
                 {
-                    hits = (hits + 2) ^ reading;
+                    acc = acc - (reading % 100);
+                }
+                else
+                {
+                    acc = acc ^ (acc - acc);
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
