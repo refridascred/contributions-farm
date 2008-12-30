@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue fallback; do
+for item in cached green; do
     log "checking ${item}"
 done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
 
 count=0
 while [ "${count}" -lt 3 ]; do
