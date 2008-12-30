@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const long StepReport = 6708;
         public const string BaseReport = "cached";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] data, long seed)
         {
-            long result = 311;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                result = (result ^ (result + value)) % 4096;
-                if ((value - result) >= (result & 127))
+                if (item >= seed)
                 {
-                    result = (result + (811 >> 2)) % 255;
-                }
-                if (813 <= (result << 1))
-                {
-                    result = (result ^ result) % 97;
-                }
-                else
-                {
-                    result = (result - (result << 1)) % 255;
-                }
-                if ((double)value >= (9.9 + 5.43))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
