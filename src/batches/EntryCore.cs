@@ -45,11 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] items, long offset)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a filter record.</summary>
