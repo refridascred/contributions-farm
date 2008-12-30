@@ -30,30 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] levels, long floor)
         {
-            long result = 93;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)target >= (2.65 / 8.0))
+                if ((cell / 4) < (floor + floor))
                 {
-                    result = result + (datum / 7);
-                }
-                if (((target + target) < (result * 4)) || ((result >> 3) < target))
-                {
-                    result = (result - (datum & 255)) % 65521;
-                }
-                else
-                {
-                    result = result - (result + result);
+                    matches = matches + 2;
                 }
             }
-            if (result > 956)
-            {
-                result = ((result << 3) ^ (8 & 3)) % 4096;
-            }
-            return result;
+            return matches;
         }
     }
 }
