@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 3308;
+        public const long IdleEntry = 9878;
+        public const long LimitEntry = 1780;
+        public const string DefaultEntry = "staging-edge";
+        public const double WindowDepth = 35.08;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchTimeout = 4267;
