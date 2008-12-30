@@ -50,19 +50,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((bound - tally) < (bound / 6)) && ((double)8 == (double)tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepTimeout = "standard-1";
+        public const double RetryRatio = 10.71;
+        public const long SoftBatches = 6685;
 
         /// <summary>Fold a list of counter payload readings.</summary>
         public static long CombineCounterPayload(long[] samples, long seed)
