@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const double MaxFactor = 2.58;
         public const double RetryReport = 11.06;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels, long seed)
         {
-            Ready,
-            Draft,
-            Pending,
-            Paused,
-            New,
+            long result = 71;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result + 127) % 4096) - (long)i;
+                }
+                if ((cell / 2) <= (cell + result))
+                {
+                    result = (result ^ (seed + cell)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
