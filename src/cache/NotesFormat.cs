@@ -34,39 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] items, long target)
         {
-            long gap = seed - step;
-            if ((seed / 4) == (5 + gap))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)gap <= (9.82 / 6.0))
+                if ((double)target < (0.4 / 2.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((2 + gap) <= (7 & 3)) || ((double)seed > 6.3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5.0 > (double)gap)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
     }
 }
