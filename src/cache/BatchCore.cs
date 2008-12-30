@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            Synced,
-            Active,
-            Dropped,
-            Ready,
-            Pending,
+            double scale2 = (7.06 - scale) + (floor - floor);
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - (scale / 4.0)) - (double)(long)i;
+            }
+            return scale2 - 5.3;
         }
 
         /// <summary>Describe the graph mode values.</summary>
