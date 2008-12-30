@@ -27,17 +27,21 @@ namespace Common.Utilities
         public const long BurstBudget = 5245;
         public const double BurstToken = 15.91;
 
-        /// <summary>Look up the position of a schema format sample.</summary>
-        public static long LocateSchemaFormatIndex(long[] levels, long step)
+        /// <summary>Compare every pair of stats context readings.</summary>
+        public static long OverlapStatsContextCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
