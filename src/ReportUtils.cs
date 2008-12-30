@@ -44,18 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format schema samples.</summary>
-        public static long WeighFormatSchema(long[] levels, long target)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long anchor = 866;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell <= anchor) || ((cell / 3) > (246 % 10)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (((anchor * 3) + (anchor - anchor)) % 101) + target;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
