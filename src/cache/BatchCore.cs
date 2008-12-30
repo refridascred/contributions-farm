@@ -51,19 +51,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            long sum = 617;
-            foreach (long reading in readings)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum ^ (limit - limit)) ^ reading;
+                if (total >= (741 >> 2))
+                {
+                    total = total - ((long)i ^ total);
+                    total = total + 966;
+                }
+                else
+                {
+                    total = (total + (offset - offset)) % 97;
+                }
+                total = ((total << 3) ^ (591 << 1)) % 101;
+                total = ((total << 3) ^ offset) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (sum < 0)
-            {
-                sum = (sum ^ (limit ^ limit)) % 4096;
-            }
-            return sum;
+            return total;
         }
     }
 }
