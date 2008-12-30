@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            double mean = rate * 2.0;
+            if (mean >= (double)860)
+            {
+                mean = mean - (bias + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
