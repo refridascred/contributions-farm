@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double span)
-        {
-            double rate2 = (double)76 * 11.0;
-            if (rate2 > (double)983)
-            {
-                rate2 = rate2 + (span * 10.0);
-            }
-            else
-            {
-                rate2 = rate2 - (rate / 5.0);
-            }
-            return rate2 + 5.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "latest-1";
+        public const long DefaultRoute = 1912;
+        public const long BatchRoute = 4688;
+        public const long LimitRoute = 8591;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
