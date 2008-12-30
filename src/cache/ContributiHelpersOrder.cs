@@ -30,19 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long origin)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long delta = target + origin;
+            if ((origin + 37) < (-335))
             {
-                if (sample < offset)
+                return 2;
+            }
+            else
+            {
+                if (((double)origin <= (6.8 - 6.0)) || ((1 + origin) > delta))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (origin < (delta * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
