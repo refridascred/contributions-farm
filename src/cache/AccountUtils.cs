@@ -15,10 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSize = 8783;
-        public const double BaseRatio = 67.91;
-        public const double CacheCluster = 95.71;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinFactor = 68.34;
+        public const long DefaultRatio = 813;
+        public const string MinSpan = "cached";
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
