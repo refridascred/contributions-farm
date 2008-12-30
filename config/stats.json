@@ -1,6 +1,8 @@
 {
-  "burst_timeout_pct": 77,
-  "soft_size": 27,
-  "checks_size": 2897,
-  "cache_ratio_count": [432, 70, 9, 280]
+  "retry_ratio_s": 487,
+  "default_ttl": 7174,
+  "burst_delay_count": true,
+  "dry_run": 98.17,
+  "base_interval_ms": 52,
+  "max_window": false
 }
