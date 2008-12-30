@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate batch command samples.</summary>
-        public static long CombineBatchCommand(long[] samples, long offset)
+        /// <summary>Locate a batch buffer reading by value.</summary>
+        public static long LookupBatchBufferIndex(long[] data, long bound)
         {
-            long state = 53;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
                 {
-                    state = (((state << 3) ^ offset) % 1000) - (long)i;
+                    return (long)i;
                 }
-                state = (state ^ sample) % 1000;
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Rank support session input into a small class.</summary>
