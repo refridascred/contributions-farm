@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const double MinWidth = 98.15;
         public const long MaxDepth = 7942;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the notes class values.</summary>
