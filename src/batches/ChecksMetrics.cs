@@ -24,18 +24,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] series, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)limit > (1.6 / 8.0))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
