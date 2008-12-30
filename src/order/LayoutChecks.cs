@@ -45,15 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
