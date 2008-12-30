@@ -19,23 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long acc = -9;
-            foreach (long reading in samples)
-            {
-                acc = (acc ^ reading) % 97;
-                if (!((double)reading < 6.2))
-                {
-                    acc = (acc + (acc + reading)) % 1000;
-                }
-                if ((3 ^ acc) == (reading & 255))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
