@@ -1,7 +1,10 @@
 # githubfarm settings
-persist: 500
-strict:
-  retry_retries: latest
-  token_depth: 100
-  batch_threshold: 352
-readonly: true
+min_timeout: true
+channel_limit: 30
+retry_depth: true
+audit: 38.73
+command_ratio: 16
+flush_threshold_pct:
+  - stable
+  - local
+  - edge
