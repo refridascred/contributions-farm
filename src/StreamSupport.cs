@@ -26,12 +26,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Pending,
-            Active,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 98.94;
+        public const string MaxCommand = "alpha-1";
+        public const long RetryCommand = 1921;
     }
 }
