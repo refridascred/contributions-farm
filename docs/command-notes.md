@@ -1,11 +1,15 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the stream list.
-Run the cluster check before changing any contributi limits.
+The channel report groups every layout by command.
+The account module keeps route values in sync with the tools cache.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+Run the githubfarm check before changing any channel limits.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every report by report.
 
 ## Guidelines
 
-- Document new layout fields
-- Validate entry input early
-- Prefer account defaults
-- Keep cluster values small
+- Document new batch fields
+- Keep stats values small
+- Review metrics limits each release
