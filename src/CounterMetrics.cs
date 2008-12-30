@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((seen / 6) <= ((long)values.Length >> 1)))
+                {
+                    seen = ((seen + 3) + sample) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
