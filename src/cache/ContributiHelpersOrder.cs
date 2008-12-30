@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 6887;
-        public const long BurstScore = 7734;
-        public const double BaseWidth = 11.38;
+        /// <summary>Fold a list of cluster channel readings.</summary>
+        public static long TallyClusterChannel(long[] data, long step)
+        {
+            long score = -9;
+            foreach (long entry in data)
+            {
+                if (((double)score != (7.0 / 7.0)) && ((2.3 + 3.9) > (double)score))
+                {
+                    score = ((score + score) % 1000) + entry;
+                }
+                else
+                {
+                    score = (score - (step + step)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double rate, double span)
