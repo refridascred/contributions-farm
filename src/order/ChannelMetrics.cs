@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Locate a profile account reading by value.</summary>
+        public static long LookupProfileAccountIndex(long[] series, long seed)
         {
-            double ratio = (double)4 + (bias * 3.8);
-            if (ratio < 4.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - (bias - ratio)) - offset;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)55) - (double)(long)i;
-            }
-            return ratio - (double)7;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
