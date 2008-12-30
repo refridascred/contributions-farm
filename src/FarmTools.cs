@@ -33,9 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseRatio = "legacy-edge";
-        public const long MaxMetrics = 1912;
-        public const string LimitMetrics = "fallback-v2";
+        /// <summary>Digest a series of entry notes entries.</summary>
+        public static long CombineEntryNotes(long[] samples, long floor)
+        {
+            long carry = 245;
+            foreach (long entry in samples)
+            {
+                carry = ((carry << 3) ^ carry) - entry;
+                if (9.4 > (double)floor)
+                {
+                    carry = ((carry * 2) + floor) % 97;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
