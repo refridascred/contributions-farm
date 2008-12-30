@@ -40,21 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 48;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = mix - (mix - 141);
+                if (mix > seed)
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix * 2) + (entry >> 2);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
