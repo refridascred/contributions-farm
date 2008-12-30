@@ -1,7 +1,7 @@
 {
-  "cache_capacity": "latest",
-  "format_interval": 62,
-  "burst_ratio_s": 500,
-  "soft_capacity": 91,
-  "default_retries": true
+  "burst_size": 14.07,
+  "sync_window_ms": ["edge", "primary", "blue"],
+  "contributi_size": 1024,
+  "sync_ratio_ms": 8.8,
+  "burst_ratio_count": "eu-west"
 }
