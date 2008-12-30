@@ -55,19 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric session readings against a bound.</summary>
-        public static bool VerifyMetricSessionBounds(long[] series, long origin)
+        /// <summary>Digest a series of channel graph entries.</summary>
+        public static long ScoreChannelGraph(long[] values)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long acc = 548;
+            foreach (long reading in values)
             {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc + ((long)values.Length % 8)) % 101) - reading;
             }
-            return ok;
+            return acc % 1000;
         }
     }
 }
