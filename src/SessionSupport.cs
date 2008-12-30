@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long score = 3;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((score >> 3) == (sample * 3))
-                {
-                    score = ((score - (sample - sample)) % 1000) + limit;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score % 1000;
+            return acc;
         }
     }
 }
