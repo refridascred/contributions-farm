@@ -13,13 +13,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series)
         {
-            Stale,
-            Closed,
-            Pending,
-            Queued,
+            long carry = 1;
+            foreach (long datum in series)
+            {
+                carry = ((carry * 5) + (carry & 7)) % 97;
+                carry = (carry << 3) ^ (carry / 6);
+                if (!((long)series.Length != (7 - datum)))
+                {
+                    carry = ((carry << 3) ^ (carry >> 5)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum >> 2)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
