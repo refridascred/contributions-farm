@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 8658;
-        public const long BatchEditor = 160;
-        public const long HardEditor = 3641;
-        public const string BurstSize = "open-v2";
-        public const long IdleEditor = 1910;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit route command readings against a rule.</summary>
         public static long AuditRouteCommandMatches(long[] series, long seed)
