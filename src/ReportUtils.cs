@@ -56,38 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double offset)
         {
-            if ((step + step) > (step * 2))
+            double drift = offset;
+            if (drift > (offset / 8.0))
             {
-                return 3;
+                drift = drift - (drift / 3.0);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((seed ^ step) < (step / 9)) || (seed > (seed / 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step ^ step) > (248 + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.39 + 11.0) != (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift + gain) + (double)(long)i;
             }
+            return drift + (double)795;
         }
 
         /// <summary>Describe the token level values.</summary>
