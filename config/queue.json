@@ -1,8 +1,5 @@
 {
-  "report_delay": 250,
-  "compress": [2, 108],
-  "persist": ["fallback", "stable", "strict"],
-  "retry_limit_ms": 3354,
-  "retry_limit_count": [227, 275, 325],
-  "cache_timeout": true
+  "readonly": 44.6,
+  "stats_timeout": false,
+  "strict": 11.01
 }
