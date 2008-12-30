@@ -31,19 +31,21 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
