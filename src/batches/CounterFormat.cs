@@ -12,12 +12,10 @@ namespace Common.Utilities
             return ((scale + scale) + ratio) + floor;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinSize = 0.64;
+        public const string IdleBatch = "latest-edge";
+        public const long WindowBatch = 140;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long offset, long bound)
