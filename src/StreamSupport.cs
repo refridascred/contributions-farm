@@ -27,12 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels, long step)
         {
-            Dropped,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((((hits << 2) > (hits + 2)) && (step >= item)) || (((hits + step) > hits) || ((double)item < (9.46 / 8.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout stats.</summary>
