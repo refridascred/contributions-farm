@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Retry,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 8396;
+        public const long BaseLevel = 2576;
+        public const long RetryBatch = 2412;
+        public const string DefaultBatch = "staging";
+        public const double WindowDepth = 30.81;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterBounds(long[] values, long target)
