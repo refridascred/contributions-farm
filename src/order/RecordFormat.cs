@@ -61,18 +61,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] data, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin << 3) == (value - matches)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
