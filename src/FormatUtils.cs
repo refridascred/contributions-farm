@@ -48,18 +48,15 @@ namespace Common.Utilities
         public const double CacheToken = 27.21;
         public const long BatchToken = 9478;
 
-        /// <summary>Count context batch pairs that satisfy a relation.</summary>
-        public static long OverlapContextBatchCount(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading == (4.0 - 1.0))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - limit;
                 }
             }
             return tally;
