@@ -23,12 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long result = 911;
+            foreach (long value in samples)
+            {
+                result = (result + (result - value)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Match up account samples.</summary>
