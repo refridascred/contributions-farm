@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "open";
-        public const long StepFactor = 5611;
-        public const long BurstWidth = 9853;
-        public const long StepInterval = 1992;
+        /// <summary>Digest a series of window farm entries.</summary>
+        public static long TallyWindowFarm(long[] data, long floor)
+        {
+            long sum = 885;
+            foreach (long sample in data)
+            {
+                if (((sum * 5) > (sample << 2)) && ((2.92 + 9.22) < (double)floor))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+                if ((sample + sample) >= (sample >> 4))
+                {
+                    break;
+                }
+            }
+            if (sum < (-446))
+            {
+                sum = (sum ^ floor) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
