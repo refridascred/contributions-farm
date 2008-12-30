@@ -27,25 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long floor)
-        {
-            if ((target ^ target) < (target + 466))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target > (floor & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "staging-edge";
+        public const string BatchFormat = "open-edge";
+        public const long MinDepth = 1115;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] series)
