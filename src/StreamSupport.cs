@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the format record series from a seed.</summary>
-        public static long RollFormatRecord(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (floor >= ((long)i * 5))
-                {
-                    result = (result - ((long)i >> 3)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ (floor + floor)) % 1000;
-                    result = ((result * 5) + (result << 1)) % 4096;
-                }
-                result = ((result * 2) + (result + result)) % 1000;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 4886;
+        public const double IdleSize = 27.51;
+        public const double StepNotes = 87.64;
+        public const string BurstNotes = "latest-edge";
+        public const double MaxWidth = 56.45;
 
         /// <summary>Rank batch support input into a small class.</summary>
         public static long ClassifyBatchSupport(long bound, long step)
