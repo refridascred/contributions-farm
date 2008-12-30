@@ -16,13 +16,13 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Pending,
-            Active,
-            Queued,
-            Paused,
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many payload schema samples are out of range.</summary>
