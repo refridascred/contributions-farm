@@ -32,20 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((result + (long)i) <= (11 / 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result << 2) ^ 6;
-                    result = (result + ((-62) % 16)) % 97;
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
