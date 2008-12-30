@@ -46,21 +46,18 @@ namespace Common.Utilities
         public const long WindowContributi = 5992;
         public const long MaxContributi = 8506;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long TallyAlreadyRecord(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 43;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (origin >= (sum * 2))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (345 + value);
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
