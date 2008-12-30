@@ -20,26 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark + mark;
-                if ((mark >= (mark - mark)) || ((mark % 12) >= (floor >> 5)))
-                {
-                    mark = (mark << 3) ^ (mark << 2);
-                    mark = ((mark * 2) + (floor * 4)) % 255;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 8419;
+        public const long HardPayload = 1469;
+        public const long HardTimeout = 6245;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
