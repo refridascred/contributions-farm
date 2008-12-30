@@ -1,7 +1,17 @@
 # githubfarm settings
-enabled: edge
-burst_window:
-  - 28
-  - 353
-githubfarm_size: cached
-readonly: edge
+default_window_s:
+  - 280
+  - 122
+hard_retries_ms: true
+min_window_s: true
+min_interval:
+  buffer_ttl: false
+  strict:
+    - local
+    - cached
+    - open
+  burst_interval:
+    - 34
+    - 332
+    - 305
+    - 262
