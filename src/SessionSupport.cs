@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings, long step)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            long sum = 6;
+            foreach (long sample in readings)
+            {
+                sum = (sum << 2) ^ (step + sum);
+                if (sum > (sample ^ sample))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Project the next buffer support value.</summary>
