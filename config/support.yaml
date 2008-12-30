@@ -1,5 +1,14 @@
 # support settings
-readonly: cached
-flush_timeout_count: 500
-max_limit_s: false
-tools_capacity: 38
+batch_delay_count: local
+support_threshold: 18
+poll_ttl:
+  stats_threshold: true
+  warm_timeout_s: 36
+  cache_window: latest
+  cache_ratio_s: blue
+  idle_window_count: true
+  report_delay: 32.85
+default_timeout_ms: green
+audit:
+  - stable
+  - edge
