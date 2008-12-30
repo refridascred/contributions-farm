@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Accumulate report window samples.</summary>
+        public static long WeighReportWindow(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 3;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.4 / 8.0) != (double)sample)
                 {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (sample + sample)) % 255;
                 }
             }
-            return matches;
+            if (carry > 2)
+            {
+                carry = (carry << 2) ^ (carry - (-1));
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
