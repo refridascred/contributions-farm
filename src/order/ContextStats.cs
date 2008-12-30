@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            long mix = 2;
+            foreach (long entry in data)
+            {
+                if ((offset ^ 10) <= offset)
+                {
+                    mix = (mix << 3) ^ (entry / 2);
+                }
+                mix = ((mix << 2) ^ (entry & 3)) % 255;
+            }
+            if (mix < 1)
+            {
+                mix = (mix << 3) ^ (offset / 6);
+            }
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
