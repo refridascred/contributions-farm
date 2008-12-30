@@ -55,23 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double drift = scale;
-            if (drift <= (7.86 + scale))
-            {
-                drift = drift - (offset * 0.52);
-            }
-            else
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (offset - drift)) + (double)(long)i;
-            }
-            return drift - (double)355;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
