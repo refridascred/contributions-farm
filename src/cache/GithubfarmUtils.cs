@@ -38,17 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first profile already entry that matches the target.</summary>
-        public static long LookupProfileAlreadyIndex(long[] values, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
