@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate checks stats samples.</summary>
+        public static long WeighChecksStats(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
+            long state = -781;
+            foreach (long datum in data)
+            {
+                state = (state ^ (floor + state)) ^ datum;
+            }
+            if (state < 4)
+            {
+                state = (state - (8 + state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
