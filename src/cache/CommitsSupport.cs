@@ -22,15 +22,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long offset)
         {
-            double load = 1.07;
-            if (load >= (6.5 / 4.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load - load) - gain) - span;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)803;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
