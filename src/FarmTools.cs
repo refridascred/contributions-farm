@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Closed,
             Active,
-            Retry,
-            Draft,
-            Failed,
+            Queued,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
