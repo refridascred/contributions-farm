@@ -73,21 +73,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 434;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((7 + item) > (item / 3))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 3) ^ item) % 1000;
                 }
             }
-            return seen;
+            if (state < 0)
+            {
+                state = (state ^ (state * 3)) % 65521;
+            }
+            return state;
         }
     }
 }
