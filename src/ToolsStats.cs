@@ -89,19 +89,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window entry readings against a rule.</summary>
-        public static long TallyWindowEntryMatches(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((1.0 / 7.0) <= (double)target)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 9239;
+        public const long HardCount = 3977;
+        public const string WindowSize = "cached-edge";
+        public const string LimitChecks = "latest-v2";
+        public const long CacheWidth = 4974;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesHits(long[] items)
