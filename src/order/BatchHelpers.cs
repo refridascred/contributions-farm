@@ -36,21 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream contributi readings.</summary>
-        public static long OverlapStreamContributiCount(long[] samples)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
