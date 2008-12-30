@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 4215;
+        public const double StepEditor = 97.26;
+        public const double CacheEditor = 58.61;
 
         /// <summary>Audit githubfarm cluster readings against a rule.</summary>
         public static long AuditGithubfarmClusterHits(long[] levels, long limit)
