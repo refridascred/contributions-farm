@@ -20,17 +20,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] series)
+        public static long MeasureGraphMatches(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)reading >= (8.9 + 3.46))
+                if ((item - matches) >= 975)
                 {
-                    count = count + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
