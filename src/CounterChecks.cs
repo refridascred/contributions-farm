@@ -42,13 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long result = 2;
+            foreach (long value in values)
+            {
+                result = (result + (result - value)) % 255;
+            }
+            if (result < 3)
+            {
+                result = (result - (result ^ result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
