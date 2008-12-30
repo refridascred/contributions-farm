@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of format buffer entries.</summary>
-        public static long CombineFormatBuffer(long[] samples)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long score = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (1.6 + 7.8))
-                {
-                    score = (score * 3) + (score - score);
-                }
-                else
-                {
-                    score = (score - (entry % 24)) % 101;
-                }
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
