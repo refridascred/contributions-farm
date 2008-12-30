@@ -30,12 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchLevel = "legacy";
-        public const string SoftEntry = "standard-edge";
-        public const string LimitEntry = "latest-1";
-        public const long MaxEntry = 4325;
-        public const long BatchEntry = 6000;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double bias, double floor)
