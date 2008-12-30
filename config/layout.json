@@ -1,8 +1,13 @@
 {
-  "profile_ttl": "cached",
-  "queue_timeout": [323, 55, 407],
-  "sync_window_s": 60,
-  "compress": 50,
-  "audit": [141, 421, 316],
-  "support_window": "strict"
+  "sync_depth": "eu-west",
+  "enabled": {
+    "hard_capacity_s": 58,
+    "retry_limit_count": 70.25,
+    "idle_ttl": "blue",
+    "default_capacity_count": 500
+  },
+  "burst_window": 1024,
+  "verbose": 73.64,
+  "retry_limit_count": "eu-west",
+  "max_ratio": 1024
 }
