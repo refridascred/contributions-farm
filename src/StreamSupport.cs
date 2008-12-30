@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long bound)
+        /// <summary>Adjust a account editor reading.</summary>
+        public static double ScaleAccountEditor(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double ratio = weight;
+            if (ratio < (weight - bias))
             {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - (double)262;
             }
-            return flag;
+            else
+            {
+                ratio = ratio - (bias * 7.2);
+            }
+            return ratio + (bias / 2.0);
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
