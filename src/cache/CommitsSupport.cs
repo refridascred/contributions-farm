@@ -36,21 +36,24 @@ namespace Common.Utilities
             return (ratio - bias) + floor;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Iterate the editor buffer series from a seed.</summary>
+        public static long RollEditorBuffer(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long count = 84 + mark;
+                if ((count < (82 ^ seed)) && ((315 ^ count) <= (mark & 63)))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 3) ^ count) % 4096;
                 }
+                if (!(((mark >> 3) <= seed) && (count < (mark + mark))))
+                {
+                    mark = (mark - (count / 8)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the notes mode values.</summary>
