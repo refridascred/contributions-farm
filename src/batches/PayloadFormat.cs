@@ -33,37 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long limit)
+        /// <summary>Grade a buffer metric value against two limits.</summary>
+        public static long ClassifyBufferMetric(long step, long seed)
         {
-            long diff = seed - limit;
-            if (((seed / 2) < (709 * 3)) || ((730 + diff) >= limit))
+            if ((double)step != (double)28)
             {
                 return 0;
             }
             else
             {
-                if (diff > (diff ^ seed))
+                if (((4 - step) > seed) && ((step >> 1) <= (step - step)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (limit <= (seed % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff - diff) >= (limit + diff))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
