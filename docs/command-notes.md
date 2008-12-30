@@ -1,10 +1,14 @@
 # Command notes
 
-The contributi module keeps account values in sync with the githubfarm cache.
-The support report groups every tools by order.
+Run the commits check before changing any profile limits.
+Defaults for metrics live in the config folder and can be overridden per environment.
+
+Each context is validated before it reaches the farm queue.
+The cache report groups every queue by profile.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every context change
-- Validate layout input early
+- Document new format fields
+- Validate profile input early
+- Prefer channel defaults
