@@ -54,12 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleInterval = 2740;
-        public const double BaseLevel = 35.5;
-        public const string BaseInterval = "cached";
-        public const long LimitWidth = 4022;
-        public const long DefaultContext = 3776;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultDepth = 7751;
+        public const long BatchStats = 6690;
+        public const long LimitTimeout = 9893;
+        public const string StepBudget = "alpha-v2";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutGaps(long[] items)
