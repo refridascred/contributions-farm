@@ -1,24 +1,10 @@
 # githubfarm settings
-soft_timeout:
-  window_depth: 3673
-  dry_run:
-    dry_run:
-      - standard
-      - open
-    payload_ttl: false
-    context_depth: true
-    base_ratio: 33
-    verbose: 1685
-    soft_limit_ms: 43.37
-  default_delay: 95.4
-  default_interval:
-    - open
-    - edge
-    - strict
-    - standard
-verbose: strict
-soft_size_count:
-  - 434
-  - 24
-  - 35
-  - 311
+min_delay_ms: eu-west
+min_retries:
+  - 343
+  - 359
+  - 105
+  - 406
+cluster_capacity: eu-west
+audit: 67.06
+cache_ttl_ms: false
