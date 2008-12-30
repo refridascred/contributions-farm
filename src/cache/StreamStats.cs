@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Scale a entry order figure with a bias.</summary>
+        public static double ProjectEntryOrder(double gain, double bias)
         {
-            double weight = offset - 13.0;
-            if (weight > offset)
+            double drift = bias;
+            if (drift >= drift)
             {
-                weight = weight - gain;
+                drift = drift + (2.0 / 9.0);
             }
-            return weight - (double)8;
+            else
+            {
+                drift = drift + 5.6;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (gain / 9.0)) - (double)(long)i;
+            }
+            return drift + 8.7;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
