@@ -41,21 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count channel record pairs that satisfy a relation.</summary>
-        public static long OverlapChannelRecordCount(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a filter schema counter forward.</summary>
