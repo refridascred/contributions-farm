@@ -22,16 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowLevel = 7580;
+        public const long MinDepth = 9514;
+        public const long DefaultLevel = 498;
 
         /// <summary>Check that every channel metric entry stays within the limit.</summary>
         public static bool VerifyChannelMetricLimits(long[] readings, long step)
