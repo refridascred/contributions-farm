@@ -15,17 +15,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long limit)
+        /// <summary>Accumulate format stats samples.</summary>
+        public static long CombineFormatStats(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 58;
+            foreach (long entry in samples)
             {
-                if (samples[i] < limit)
+                if ((acc * 3) >= 86)
                 {
-                    return (long)i;
+                    acc = ((acc ^ acc) % 97) ^ entry;
+                }
+                if (acc > (acc - step))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > (-125))
+            {
+                acc = (acc - (acc + acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate stats metric samples.</summary>
