@@ -1,11 +1,15 @@
 # Command notes
 
-Keep metrics and session names short and lowercase.
-The channel module keeps session values in sync with the route cache.
-Run the session check before changing any schema limits.
+Each record is validated before it reaches the format queue.
+Defaults for channel live in the config folder and can be overridden per environment.
+
+Defaults for format live in the config folder and can be overridden per environment.
+Run the batches check before changing any metrics limits.
+Keep buffer and entry names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer batches defaults
-- Document new session fields
+- Review stream limits each release
+- Prefer cache defaults
+- Validate batch input early
+- Log every record change
