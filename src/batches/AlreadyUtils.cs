@@ -36,22 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long state = 4;
+            foreach (long reading in readings)
             {
-                if (!((long)i > acc))
+                state = state - (limit + limit);
+                if ((double)reading <= (17.0 * 8.5))
                 {
-                    acc = (acc + (acc ^ 12)) % 97;
-                    continue;
+                    state = (state << 2) ^ (limit >> 1);
                 }
-                acc = (acc + ((long)i >> 5)) % 1000;
-                acc = (acc + (acc ^ offset)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((4.21 - 11.0) > (double)state)
+                {
+                    break;
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Adjust a queue token reading.</summary>
