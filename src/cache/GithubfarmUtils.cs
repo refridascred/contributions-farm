@@ -30,18 +30,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] values, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long cur = limit + floor;
+            if ((cur + (-22)) < (limit << 1))
             {
-                if ((seen << 3) == (2 >> 3))
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) == (825 << 1))
                 {
-                    seen = ((seen + 3) + item) - seed;
+                    return 8;
+                }
+                else
+                {
+                    if (!(cur < (limit % 100)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
