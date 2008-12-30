@@ -47,39 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel context value against two limits.</summary>
-        public static long GradeChannelContext(long offset, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            long diff = offset - origin;
-            if ((double)origin != (20.0 + 8.88))
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((diff % 2) > diff)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (3.0 < (double)diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - diff) <= (offset % 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
