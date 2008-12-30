@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge strict primary; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 8); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached open staging; do
+    log "checking ${item}"
+done
