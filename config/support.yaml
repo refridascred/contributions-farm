@@ -1,8 +1,6 @@
 # support settings
-burst_ttl:
-  - 338
-  - 114
-  - 112
-readonly: open
-compress: blue
-max_capacity_ms: 2845
+hard_size: latest
+session_capacity: standard
+contributi_retries: 6027
+min_ttl_pct: stable
+compress: 7
