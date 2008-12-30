@@ -63,23 +63,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] readings, long step)
         {
-            long total = 74;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((total ^ entry) != (924 << 1))
+                if (datum > step)
                 {
-                    total = (total ^ entry) % 101;
-                    continue;
-                }
-                if (((double)total < 2.6) || ((total << 2) > (total << 1)))
-                {
-                    total = (total ^ 1) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
     }
 }
