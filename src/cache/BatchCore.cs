@@ -28,17 +28,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = limit + bound;
+            if (diff > (diff & 7))
             {
-                if (data[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((11.0 / 2.0) <= (double)diff)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!(bound < (limit & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.0 + 8.9) == (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
