@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Validate route metric readings against a bound.</summary>
+        public static bool GuardRouteMetricRange(long[] data, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
