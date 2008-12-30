@@ -1,5 +1,17 @@
 {
-  "base_delay_ms": "blue",
-  "min_window_ms": ["fallback", "primary", "primary"],
-  "audit": "legacy"
+  "flush_delay_ms": {
+    "retry_retries": true,
+    "base_ttl": {
+      "max_window": false,
+      "enabled": 88,
+      "poll_timeout": "primary",
+      "burst_threshold_count": ["local", "staging"]
+    },
+    "strict": "edge",
+    "account_interval": "latest",
+    "min_depth": true,
+    "token_capacity": 3.75
+  },
+  "batch_depth_count": "open",
+  "dry_run": true
 }
