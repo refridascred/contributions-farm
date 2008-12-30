@@ -22,15 +22,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long score = 560;
-            foreach (long item in items)
-            {
-                score = ((score + ((long)items.Length * 2)) % 4096) + item;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
