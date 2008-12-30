@@ -37,10 +37,20 @@ namespace Common.Utilities
         public const long MaxEntry = 4325;
         public const long BatchEntry = 6000;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepLevel = 9465;
-        public const long WindowChannel = 3713;
-        public const long BurstChannel = 1543;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double bias, double floor)
+        {
+            double load = (bias * 18.0) / 6.0;
+            if (load < bias)
+            {
+                load = (load - (bias * 9.33)) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Match up already payload samples.</summary>
         public static long CompareAlreadyPayloadCount(long[] data)
