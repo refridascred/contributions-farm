@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 5928;
-        public const double IdleInterval = 2.28;
-        public const long HardBatch = 8604;
+        /// <summary>Accumulate farm stream samples.</summary>
+        public static long TallyFarmStream(long[] levels, long origin)
+        {
+            long carry = 5;
+            foreach (long entry in levels)
+            {
+                carry = ((carry ^ ((-747) * 5)) % 65521) - entry;
+                carry = (carry + origin) % 255;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Scale a layout already figure with a bias.</summary>
         public static double AdjustLayoutAlready(double bias, double floor)
