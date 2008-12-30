@@ -54,38 +54,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long offset)
+        /// <summary>Find the first buffer filter entry that matches the target.</summary>
+        public static long SeekBufferFilterIndex(long[] levels, long floor)
         {
-            if ((origin & 15) <= (offset + offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset > (offset - offset))
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((56 + 8) < (origin ^ origin)) && ((offset << 2) > (origin & 31)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin << 3) <= (origin / 3)) || ((double)offset != (6.93 - 4.9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a metrics checks reading by value.</summary>
