@@ -66,17 +66,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor - (anchor - origin)) % 101;
-                anchor = ((anchor * 2) + (7 & 3)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
