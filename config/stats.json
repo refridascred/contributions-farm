@@ -1,6 +1,5 @@
 {
-  "window_size": 3954,
-  "payload_size": "stable",
-  "hard_ttl_s": 39.81,
-  "hard_ratio": 3607
+  "context_depth": false,
+  "idle_capacity": 8226,
+  "hard_threshold": [76, 246, 141, 458]
 }
