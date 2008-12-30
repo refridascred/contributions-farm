@@ -47,18 +47,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = -85;
+            foreach (long sample in readings)
             {
-                if ((double)tally != (5.0 + 12.0))
+                if ((sample ^ sample) < (score - score))
                 {
-                    tally = (tally + 1) - cell;
+                    score = ((score * 5) + (score % 10)) % 4096;
                 }
             }
-            return tally;
+            if (score < 797)
+            {
+                score = (score + score) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Validate cache githubfarm readings against a bound.</summary>
