@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
-        public static bool CheckMetricsEditorLimits(long[] readings, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = 0;
+            foreach (long sample in readings)
             {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc ^ step) - sample;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the editor phase values.</summary>
