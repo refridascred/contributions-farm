@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next commits session value from a seed.</summary>
