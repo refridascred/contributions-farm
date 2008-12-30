@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            long span = bound - target;
-            if ((target << 2) >= span)
+            double weight2 = 1.0 / 2.0;
+            if (weight2 > (weight2 - bias))
             {
-                return 3;
+                weight2 = (weight2 - (bias / 5.0)) + weight;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (span <= (target - span))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                weight2 = (weight2 - (double)4) + (double)(long)i;
             }
+            return weight2 + bias;
         }
 
         /// <summary>Hold a route summary.</summary>
