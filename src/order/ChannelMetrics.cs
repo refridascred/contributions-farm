@@ -29,22 +29,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Validate profile counter readings against a bound.</summary>
+        public static bool CheckProfileCounterBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((double)sample > (1.32 - 8.0))
+                if (item < seed)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
