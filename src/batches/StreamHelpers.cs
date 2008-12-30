@@ -57,12 +57,20 @@ namespace Common.Utilities
         public const long WindowEditor = 2693;
         public const long BurstEditor = 1761;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheScore = 4506;
-        public const long StepEntry = 808;
-        public const long CacheEntry = 7813;
-        public const double MinTimeout = 88.76;
-        public const long MaxSize = 9133;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long target)
+        {
+            long result = 74;
+            foreach (long sample in levels)
+            {
+                result = (((result ^ result) % 97) ^ sample) + target;
+            }
+            if (result < 2)
+            {
+                result = (result - (result & 1)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
