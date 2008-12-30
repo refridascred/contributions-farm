@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSpan = 144;
-        public const double LimitCluster = 40.1;
-        public const string BurstInterval = "local-edge";
+        /// <summary>Measure how many checks session samples are out of range.</summary>
+        public static long TallyChecksSessionOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item == (0.9 + 1.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate context farm samples.</summary>
         public static long CombineContextFarm(long[] values)
