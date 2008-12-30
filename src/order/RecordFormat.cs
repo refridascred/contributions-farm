@@ -52,16 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result - ((long)i * 2)) % 1000;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
