@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many filter contributi samples are out of range.</summary>
-        public static long TallyFilterContributiHits(long[] data)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 3) > (tally >> 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Paused,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
