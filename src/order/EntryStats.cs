@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items)
         {
-            Draft,
-            Active,
-            New,
+            long state = 36;
+            foreach (long cell in items)
+            {
+                if ((cell >> 3) == (cell + 27))
+                {
+                    state = (state ^ (long)items.Length) % 4096;
+                }
+            }
+            if (state < 37)
+            {
+                state = state - (state ^ (long)items.Length);
+            }
+            return state;
         }
 
         /// <summary>Grade a channel githubfarm value against two limits.</summary>
