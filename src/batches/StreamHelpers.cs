@@ -47,10 +47,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 5428;
-        public const double IdleBudget = 31.66;
-        public const long BatchTools = 8326;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches ^ value) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheScore = 4506;
