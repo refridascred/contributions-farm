@@ -64,18 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((4 * 3) < (cell >> 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
