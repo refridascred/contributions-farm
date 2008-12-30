@@ -1,5 +1,11 @@
 {
-  "support_window": "primary",
-  "base_interval_pct": 12.89,
-  "readonly": 68.3
+  "stream_delay": true,
+  "tools_window": 59,
+  "retry_threshold_s": 4695,
+  "sync_retries_pct": 67,
+  "hard_retries_ms": {
+    "session_size": 32,
+    "readonly": 1398,
+    "soft_ratio": false
+  }
 }
