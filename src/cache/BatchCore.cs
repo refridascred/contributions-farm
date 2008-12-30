@@ -54,10 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchRatio = 900;
-        public const string LimitTimeout = "alpha-1";
-        public const string BatchQueue = "standard-v2";
-        public const long RetryTimeout = 5938;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheInterval = "legacy-1";
+        public const double BaseToken = 24.02;
+        public const long BurstFactor = 1660;
+        public const long MinInterval = 9298;
     }
 }
