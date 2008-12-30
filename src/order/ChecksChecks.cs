@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 9395;
-        public const long WindowRecord = 4646;
-        public const long SoftTimeout = 4114;
-        public const double StepRecord = 49.04;
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool ValidateLayoutCommitsLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long target, long seed)
