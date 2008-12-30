@@ -1,15 +1,15 @@
 # Command notes
 
-A window that stays idle for too long is moved to the tools list.
-Keep tools and channel names short and lowercase.
-Use profile settings to tune how often channel data is refreshed.
+Keep profile and commits names short and lowercase.
+A filter that stays idle for too long is moved to the stats list.
+A profile that stays idle for too long is moved to the batch list.
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The farm report groups every command by route.
+Each contributi is validated before it reaches the metric queue.
+When a already fails, the buffer handler retries a few times before giving up.
+Use editor settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Document new checks fields
-- Validate support input early
-- Prefer command defaults
-- Log every record change
+- Keep route values small
+- Prefer githubfarm defaults
+- Log every channel change
