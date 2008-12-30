@@ -49,18 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context graph entry that matches the target.</summary>
-        public static long LocateContextGraphIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepSize = 23.76;
+        public const string CacheLevel = "stable-edge";
+        public const long MinReport = 6448;
 
         /// <summary>Iterate the counter context series from a seed.</summary>
         public static long RollCounterContext(long origin)
