@@ -1,13 +1,9 @@
 # entry settings
-sync_retries_s: 76.81
-burst_depth: 46.08
-cache_ratio:
-  warm_threshold:
-    - 261
-    - 20
-  default_window_ms: 500
-  farm_delay: 3.25
-  readonly: 1441
-record_depth: standard
-verbose: 92.5
-dry_run: 9.0
+stream_retries:
+  - 193
+  - 416
+  - 112
+batch_limit_count: 65.08
+command_ratio:
+  - latest
+  - stable
