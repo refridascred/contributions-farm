@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] readings, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Locked,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Validate editor report readings against a bound.</summary>
