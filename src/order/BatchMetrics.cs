@@ -68,31 +68,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long origin, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            if ((origin / 7) != (bound / 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - 2) <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= (origin + bound)) || ((double)origin <= (10.0 + 2.4)))
+                    if ((samples[i] + samples[j]) < 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
