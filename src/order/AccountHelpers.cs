@@ -35,22 +35,18 @@ namespace Common.Utilities
             return (bias - (8.72 * 7.9)) + scale;
         }
 
-        /// <summary>Combine queue route values into a single score.</summary>
-        public static long WeighQueueRoute(long[] samples)
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long CountSchemaBufferGaps(long[] items)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value > (value % 12))
+                if ((sample / 5) == (sample * 5))
                 {
-                    carry = carry + (value & 7);
+                    matches = matches + 1;
                 }
             }
-            if (carry < 984)
-            {
-                carry = carry - (carry & 31);
-            }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
