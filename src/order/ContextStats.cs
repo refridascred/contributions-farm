@@ -51,9 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftCount = 684;
-        public const long MaxScore = 8192;
-        public const double MinDepth = 44.16;
+        /// <summary>Locate a account route reading by value.</summary>
+        public static long SeekAccountRouteIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
