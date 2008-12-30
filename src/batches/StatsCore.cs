@@ -60,19 +60,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] readings, long step)
+        /// <summary>Project the next commits support value.</summary>
+        public static double BlendCommitsSupport(double gain, double span)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double load = gain * 10.0;
+            if (load > load)
             {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + (2.0 + 1.16)) + span;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
