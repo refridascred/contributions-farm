@@ -23,19 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen % 12) >= (cell << 3))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchRatio = 346;
+        public const long LimitToken = 2022;
+        public const double IdleWidth = 50.4;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmGaps(long[] series)
