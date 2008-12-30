@@ -1,16 +1,4 @@
 # entry settings
-poll_threshold_ms:
-  sync_depth_pct: 78
-  readonly: 69
-  retry_retries: standard
-  schema_threshold:
-    enabled: 24.25
-    burst_capacity_count: 7491
-    batch_ttl: 6344
-filter_capacity: 94
-default_interval: true
-flush_limit_count:
-  - primary
-  - cached
-  - fallback
-  - edge
+soft_timeout_pct: 4007
+burst_capacity_s: 76
+batch_size_pct: true
