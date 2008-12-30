@@ -62,18 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] values, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen > (11.0 + 1.3))
-                {
-                    seen = ((seen + 2) + datum) + step;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
