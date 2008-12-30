@@ -30,19 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] levels, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!(((double)limit != (20.0 / 3.0)) && ((result << 2) >= limit)))
+                if ((matches + matches) >= matches)
                 {
-                    result = (result << 3) ^ (limit % 3);
+                    matches = ((matches + 1) ^ entry) + origin;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
