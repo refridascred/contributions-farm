@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long seed)
         {
-            double rate = span;
-            return (rate - span) + bias;
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
