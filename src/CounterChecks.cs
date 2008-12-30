@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long CacheLayout = 7222;
         public const long BaseTimeout = 3486;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
