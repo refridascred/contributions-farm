@@ -66,9 +66,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 5587;
-        public const string BaseStats = "open-1";
-        public const long HardStats = 1447;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items, long limit)
+        {
+            long anchor = -11;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((anchor - anchor) % 4096) ^ (long)i;
+                }
+                anchor = (anchor - (402 / 5)) % 101;
+                if (((double)anchor <= (7.6 + 20.0)) && (limit > anchor))
+                {
+                    anchor = (anchor - (datum + (-43))) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
