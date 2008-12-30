@@ -38,18 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel batch samples are out of range.</summary>
-        public static long AuditChannelBatchMatches(long[] items)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((2 - entry) == (entry + entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit farm layout readings against a rule.</summary>
