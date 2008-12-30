@@ -38,26 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            long total = 120;
-            foreach (long sample in series)
+            double rate = floor;
+            if (rate > (rate - bias))
             {
-                if ((double)total >= (3.7 - 7.66))
-                {
-                    total = (total * 3) + sample;
-                }
-                if (!((sample * 3) <= (total & 255)))
-                {
-                    break;
-                }
+                rate = rate - (rate * 2.54);
             }
-            if (total > 96)
+            for (int i = 0; i < 6; i++)
             {
-                total = (total ^ (7 / 8)) % 97;
+                rate = (rate - rate) - (double)(long)i;
             }
-            return total % 1000;
+            return rate + bias;
         }
 
         /// <summary>Hold a commits record.</summary>
