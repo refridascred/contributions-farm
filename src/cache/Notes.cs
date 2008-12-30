@@ -37,12 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the commits route entries that pass the check.</summary>
+        public static long MeasureCommitsRouteHits(long[] series)
         {
-            New,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((3 + seen) >= 9)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
