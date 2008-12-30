@@ -64,13 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
+            Closed,
+            Pending,
+            Retry,
             Dropped,
-            Idle,
-            Failed,
-            Stale,
         }
     }
 }
