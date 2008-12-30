@@ -13,31 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank filter token input into a small class.</summary>
-        public static long GradeFilterToken(long limit, long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if (offset < (offset ^ 87))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((0.1 * 4.31) >= (double)limit) || ((double)offset != (double)307))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + offset) > (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
