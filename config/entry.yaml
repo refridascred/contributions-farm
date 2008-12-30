@@ -1,27 +1,16 @@
 # entry settings
-cluster_window: open
-retry_ratio_ms: latest
-hard_limit_pct: 15
-flush_delay_count:
-  report_ttl: 87.09
-  sync_timeout_pct: primary
-  editor_window: 11.76
-  cache_window_ms: latest
-  batch_ratio_pct:
-    - eu-west
-    - primary
+payload_ttl: legacy
+soft_window_pct:
+  command_threshold: 86.18
+  burst_limit: 81.39
+  batch_interval: 2468
+  base_retries_pct:
     - standard
-    - stable
-  flush_retries_s:
-    cluster_ttl: standard
-    poll_retries: standard
-    burst_window_s: 100
-    hard_retries_pct:
-      - 284
-      - 468
-      - 118
-      - 443
-    default_threshold_s: true
-    support_capacity: 98.81
-queue_threshold: 100
-min_size: standard
+    - primary
+    - blue
+    - green
+  warm_limit_s: 48
+  persist:
+    - 429
+    - 162
+metrics_delay: 1999
