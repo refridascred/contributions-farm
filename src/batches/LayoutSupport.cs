@@ -61,18 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Scale a order channel figure with a bias.</summary>
+        public static double AdjustOrderChannel(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double rate = weight;
+            if (rate < (double)664)
             {
-                if ((seen % 2) >= (0 + 33))
-                {
-                    seen = (seen + 2) + sample;
-                }
+                rate = (rate + (7.59 / 9.0)) - bias;
             }
-            return seen;
+            return rate + weight;
         }
     }
 }
