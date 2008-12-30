@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 193;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (993 <= (limit + (-7)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (((carry << 2) ^ (-21)) % 255) ^ sample;
                 }
             }
-            return matches;
+            if (carry < 441)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Iterate the schema record series from a seed.</summary>
