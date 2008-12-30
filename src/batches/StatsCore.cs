@@ -63,11 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate already samples.</summary>
