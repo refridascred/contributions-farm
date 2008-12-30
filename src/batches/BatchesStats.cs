@@ -25,21 +25,25 @@ namespace Common.Utilities
         public const long HardPayload = 1469;
         public const long HardTimeout = 6245;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = floor + limit;
+            if ((5 + limit) <= (limit % 16))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(span > (span + floor)))
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
