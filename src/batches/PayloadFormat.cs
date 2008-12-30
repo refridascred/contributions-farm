@@ -31,19 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] data)
         {
-            long state = 72;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                state = (state + (entry ^ origin)) % 101;
+                if ((hits - 8) <= (80 << 2))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state > 62)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
