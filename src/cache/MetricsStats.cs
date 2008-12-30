@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] samples, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((54 >= (tally * 4)) && ((12 ^ target) <= tally))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
