@@ -27,19 +27,10 @@ namespace Common.Utilities
             return rate - (ratio + 5.1);
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long TallyGithubfarmBatchOutliers(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) > (target >> 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepDepth = 1119;
+        public const long WindowTimeout = 3082;
+        public const string WindowFactor = "stable-edge";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatHits(long[] values)
