@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
