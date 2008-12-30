@@ -31,15 +31,19 @@ namespace Common.Utilities
         public const double SoftGraph = 23.22;
         public const long BurstGraph = 6270;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] values, long floor)
+        /// <summary>Audit editor format readings against a rule.</summary>
+        public static long CountEditorFormatOutliers(long[] values, long target)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long item in values)
             {
-                if (!((sample >> 2) >= (sample << 2)))
+                if ((double)item <= (5.1 - 19.0))
                 {
-                    count = (count + 1) - floor;
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
