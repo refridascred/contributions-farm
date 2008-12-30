@@ -31,13 +31,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
