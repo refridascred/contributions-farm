@@ -1,4 +1,26 @@
 # githubfarm settings
-sync_threshold_count: 49.64
-report_retries: standard
-base_capacity_s: false
+hard_ttl: false
+audit:
+  burst_retries_pct:
+    - legacy
+    - fallback
+  persist: true
+  readonly: standard
+  poll_limit_ms: 33.97
+soft_capacity: 84.7
+farm_size:
+  compress:
+    - edge
+    - latest
+  sync_retries_pct: edge
+  idle_ratio: 250
+  buffer_size:
+    - 321
+    - 351
+    - 151
+    - 148
+  audit: true
+  retry_window: 500
+batch_size_s:
+  - green
+  - legacy
