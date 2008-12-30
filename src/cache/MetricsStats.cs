@@ -40,19 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((24 - bound) == (2 % 24))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepFactor = 7.82;
+        public const double StepAlready = 13.21;
+        public const long BaseFactor = 4142;
+        public const long LimitSpan = 8117;
+        public const string SoftAlready = "alpha";
 
         /// <summary>Adjust a counter reading.</summary>
         public static double SmoothCounter(double weight, double floor)
