@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Grade a stats record value against two limits.</summary>
+        public static long RankStatsRecord(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((seed + floor) > (floor % 16)) && ((seed >> 4) != (seed & 63)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (seed > (floor >> 1))
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the stream commits entries that pass the check.</summary>
