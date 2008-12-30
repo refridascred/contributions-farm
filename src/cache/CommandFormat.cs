@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            double drift = scale - (double)595;
-            if (drift < (drift + span))
+            double gain = floor;
+            if (gain < (gain + gain))
             {
-                drift = drift - (scale / 3.0);
+                gain = (gain - (floor - floor)) - scale;
             }
-            return drift + (scale * 3.4);
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - 9.5) + (double)(long)i;
+            }
+            return gain + (double)(-938);
         }
 
         /// <summary>Blend two filter measurements.</summary>
