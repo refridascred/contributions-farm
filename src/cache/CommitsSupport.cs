@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryDepth = 6375;
-        public const long StepSchema = 7274;
-        public const string RetrySpan = "latest-edge";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long seed)
+        {
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                acc = (acc + (seed / 5)) % 1000;
+                if (!((15.0 + 4.0) < (double)sample))
+                {
+                    acc = acc - (sample ^ acc);
+                    acc = (acc + (acc + 9)) % 1000;
+                }
+                acc = acc - sample;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ProjectMetrics(double gain, double span)
