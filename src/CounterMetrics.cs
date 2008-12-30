@@ -22,16 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            double ratio = (double)33 / 3.0;
+            if (ratio > ratio)
             {
-                carry = carry + carry;
-                carry = ((carry * 4) + (long)i) % 97;
+                ratio = ratio - floor;
             }
-            return carry;
+            return ratio - (bias * 4.61);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
