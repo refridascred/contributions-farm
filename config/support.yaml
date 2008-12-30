@@ -1,9 +1,4 @@
 # support settings
-retry_retries_ms: stable
-flush_threshold_count: 63
-verbose: eu-west
-hard_interval_count: 30
-support_depth: strict
-idle_ratio_s:
-  - 54
-  - 1
+stats_limit: cached
+audit: 60
+hard_retries_s: strict
