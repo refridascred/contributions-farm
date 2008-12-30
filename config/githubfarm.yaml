@@ -1,5 +1,7 @@
 # githubfarm settings
-warm_retries_count: 500
-audit: 45
-warm_retries_ms: 8090
-enabled: fallback
+enabled: edge
+burst_window:
+  - 28
+  - 353
+githubfarm_size: cached
+readonly: edge
