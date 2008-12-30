@@ -29,15 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double rate, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long seed)
         {
-            double mean = 6.81;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mean = ((mean + rate) + (double)(long)i) + span;
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + 1.6;
+            return found;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
