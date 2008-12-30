@@ -51,17 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long floor)
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long DigestCommitsOrder(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 92;
+            foreach (long item in values)
             {
-                if (readings[i] > floor)
+                if ((double)total >= (9.0 + 19.0))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (total + item)) % 4096;
                 }
             }
-            return -1;
+            if (total > 11)
+            {
+                total = total + (total * 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the notes level values.</summary>
