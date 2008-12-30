@@ -45,21 +45,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of metric buffer readings.</summary>
-        public static long OverlapMetricBufferCount(long[] samples)
+        /// <summary>Locate a stats editor reading by value.</summary>
+        public static long SeekStatsEditorIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
