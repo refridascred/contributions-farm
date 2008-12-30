@@ -1,6 +1,11 @@
-id,state,owner,ratio
-1,589,standard,latest
-2,551,standard,74.66
-3,80.03,835,15.73
-4,964,staging,stable
-5,88.59,572,strict
+id,score,count
+1,89.95,72
+2,77.77,28.95
+3,334,501
+4,718,90
+5,legacy,78.35
+6,22.92,746
+7,773,cached
+8,63.91,eu-west
+9,latest,21
+10,59.96,255
