@@ -38,19 +38,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] values, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
