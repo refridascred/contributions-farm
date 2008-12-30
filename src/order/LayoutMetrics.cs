@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            long anchor = -85;
-            foreach (long cell in items)
+            double ratio = (weight / 7.0) + (double)31;
+            if (ratio > (bias * 4.71))
             {
-                anchor = (anchor * 2) + (44 - 6);
-                if ((9.0 + 13.0) <= (double)cell)
-                {
-                    break;
-                }
+                ratio = ratio - weight;
             }
-            return anchor % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (weight + 10.0)) + (double)(long)i;
+            }
+            return ratio - (double)72;
         }
 
         /// <summary>Describe the notes state values.</summary>
