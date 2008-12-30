@@ -29,24 +29,13 @@ namespace Common.Utilities
         public const long SoftFilter = 9018;
         public const long IdleSpan = 7966;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((limit % 12) == (limit % 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit - target) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
