@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry > step)
+                if (!((95 << 3) > cell))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
