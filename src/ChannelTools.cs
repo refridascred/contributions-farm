@@ -28,13 +28,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long acc = 568;
+            foreach (long entry in values)
+            {
+                if (acc < (6 + acc))
+                {
+                    acc = (((acc * 3) + (acc >> 1)) % 255) - entry;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc / 7)) % 4096;
+                }
+            }
+            if (acc > 7)
+            {
+                acc = acc + (210 * 5);
+            }
+            return acc;
         }
     }
 }
