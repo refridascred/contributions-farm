@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ratio + (bias / 2.0);
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((hits * 5) != (offset - hits)) || (((hits * 4) <= (hits / 8)) && ((hits << 3) < (0 >> 4))))
                 {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate layout token readings against a bound.</summary>
