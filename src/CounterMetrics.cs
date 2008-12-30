@@ -23,13 +23,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long origin)
         {
-            Active,
-            Locked,
-            Dropped,
-            Synced,
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = carry + carry;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
