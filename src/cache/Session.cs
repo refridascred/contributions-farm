@@ -42,19 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Check that every batch stream entry stays within the limit.</summary>
+        public static bool ValidateBatchStreamLimits(long[] samples, long target)
         {
-            long carry = 169;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                carry = ((carry << 2) ^ (long)series.Length) ^ sample;
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < (-1))
-            {
-                carry = ((carry * 2) + carry) % 1000;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
