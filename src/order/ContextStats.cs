@@ -46,15 +46,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSize = 6150;
+        public const long SoftBudget = 5172;
+        public const long LimitCount = 1220;
+        public const long BatchRatio = 2161;
     }
 }
