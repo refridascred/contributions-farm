@@ -54,22 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value + tally) != (step / 4))
+                if ((items[i] < step) && ((items[i] % 2) != 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
