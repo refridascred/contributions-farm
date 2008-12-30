@@ -22,12 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxCount = 6342;
-        public const long BurstBudget = 1487;
-        public const double DefaultBuffer = 13.56;
-        public const string BatchBuffer = "legacy-v2";
-        public const string MinLevel = "alpha-1";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
+        {
+            if ((double)bound >= (5.2 / 6.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound ^ (-3)) > (floor / 2)) || ((bound + bound) != (floor / 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] data, long bound)
