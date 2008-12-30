@@ -52,11 +52,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
