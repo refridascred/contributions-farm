@@ -41,12 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Active,
+            Draft,
         }
     }
 }
