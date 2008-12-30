@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const long StepSchema = 7274;
         public const string RetrySpan = "latest-edge";
 
-        /// <summary>Project the next support token value.</summary>
-        public static double ProjectSupportToken(double weight, double offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            double ratio = weight;
-            if (ratio > (offset / 2.0))
+            double load = 1.07;
+            if (load >= (6.5 / 4.0))
             {
-                ratio = ratio - ratio;
+                load = ((load - load) - gain) - span;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - offset) - (double)(long)i;
-            }
-            return ratio + (offset / 5.0);
+            return load + (double)803;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
