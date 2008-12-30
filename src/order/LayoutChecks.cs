@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long floor)
         {
-            double ratio = (double)(156 - 0);
-            return (ratio - floor) + gain;
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(floor < value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter info.</summary>
