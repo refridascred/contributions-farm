@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftTimeout = 3582;
-        public const string SoftGraph = "local-v2";
-        public const long BurstRatio = 1699;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowScore = 9857;
+        public const double BaseBudget = 21.48;
+        public const long HardEntry = 6904;
+        public const long SoftLevel = 8814;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double gain, double floor)
