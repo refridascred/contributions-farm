@@ -45,18 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((7.0 * 19.0) != (double)hits)
+                if (!((18.0 / 9.0) < (4.0 - 3.0)) && ((2.78 / 7.0) != (double)entry))
                 {
-                    hits = (hits + 1) - item;
+                    count = (count + 1) - target;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
