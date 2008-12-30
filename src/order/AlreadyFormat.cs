@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((48 << 2) == (matches + matches))
+                {
+                    matches = ((matches + 2) ^ datum) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
