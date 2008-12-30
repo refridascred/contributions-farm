@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Scale a farm entry figure with a bias.</summary>
+        public static double AdjustFarmEntry(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias;
+            if (ratio >= (ratio - ratio))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - (double)560) + weight;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (bias - ratio);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
