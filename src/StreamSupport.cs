@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ratio + (bias / 2.0);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] items, long offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((hits * 5) != (offset - hits)) || (((hits * 4) <= (hits / 8)) && ((hits << 3) < (0 >> 4))))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate layout token readings against a bound.</summary>
