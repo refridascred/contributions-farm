@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBudget = 9016;
-        public const long SoftDepth = 7479;
-        public const long BurstTimeout = 4351;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Retry,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Fold a list of payload checks readings.</summary>
         public static long WeighPayloadChecks(long[] readings)
