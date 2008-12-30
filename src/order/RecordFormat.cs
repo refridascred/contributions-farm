@@ -16,20 +16,12 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double floor)
-        {
-            double drift = floor;
-            if (drift < drift)
-            {
-                drift = drift + (1.7 / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (floor - weight)) + (double)(long)i;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 3949;
+        public const long SoftBudget = 8592;
+        public const double MinWidth = 36.63;
+        public const string LimitSpan = "stable";
+        public const long WindowChecks = 9724;
 
         /// <summary>Check that every metrics checks entry stays within the limit.</summary>
         public static bool VerifyMetricsChecksRange(long[] readings, long offset)
