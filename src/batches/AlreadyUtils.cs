@@ -40,38 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long offset2)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if (offset2 > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ offset2) < 577)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.8 * 6.19) > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset2 > (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
