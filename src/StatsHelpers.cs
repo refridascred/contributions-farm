@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Queued,
-            New,
-            Paused,
-            Synced,
-            Dropped,
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
