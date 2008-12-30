@@ -24,19 +24,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            double bias = 4.3;
+            if (bias <= floor)
             {
-                if ((origin - result) <= (892 % 3))
-                {
-                    result = (result - (origin & 3)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                bias = bias + floor;
             }
-            return result;
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (rate / 4.0);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
