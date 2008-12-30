@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] series, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
