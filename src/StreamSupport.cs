@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const string BurstNotes = "latest-edge";
         public const double MaxWidth = 56.45;
 
-        /// <summary>Rank batch support input into a small class.</summary>
-        public static long ClassifyBatchSupport(long bound, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            if (!((step >> 3) <= (step - bound)))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step + 561) >= (bound + bound)))
+                if ((((4 << 2) != (tally % 97)) || ((sample >> 1) > (tally >> 3))) && ((double)tally != (2.63 * 4.79)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 3) < (step << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the context state values.</summary>
