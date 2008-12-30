@@ -1,16 +1,51 @@
 # entry settings
-poll_size_ms:
-  githubfarm_window: standard
-  dry_run:
-    notes_size: open
-    strict: 35.63
-    metric_depth: 30
-    flush_window: stable
-    audit:
-      - 479
-      - 443
-      - 178
-  batch_interval_count: latest
-cluster_limit: 60
-flush_threshold_count: open
-warm_limit: staging
+min_timeout_s:
+  batch_timeout: cached
+  readonly: 7.43
+  commits_interval: false
+  account_ratio: green
+  session_window: 55
+persist:
+  poll_interval_count: 3477
+  warm_threshold_count:
+    - eu-west
+    - eu-west
+  flush_threshold:
+    hard_window_pct: 8338
+    window_delay: latest
+    buffer_depth: 33.84
+    compress: eu-west
+  sync_retries:
+    - 63
+    - 447
+    - 220
+  graph_delay: 62.17
+order_depth:
+  cache_size:
+    hard_interval: true
+    default_threshold: green
+    default_timeout_ms:
+      - edge
+      - green
+    poll_capacity_ms:
+      - 87
+      - 422
+      - 134
+    verbose: 68.28
+    batch_threshold_ms: false
+  sync_retries: 97.49
+  min_timeout_count:
+    flush_depth_s: true
+    farm_ratio: 72
+    burst_interval: cached
+  schema_limit:
+    - staging
+    - green
+    - blue
+    - open
+  commits_size: legacy
+hard_capacity_pct: true
+report_threshold: standard
+githubfarm_capacity:
+  - staging
+  - latest
