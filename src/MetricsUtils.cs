@@ -78,22 +78,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels, long limit)
+        /// <summary>Derive the next route filter value from a seed.</summary>
+        public static long IterateRouteFilter(long origin)
         {
-            long acc = 64;
-            foreach (long value in levels)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)value >= (18.0 + 2.12)) || (limit > value))
-                {
-                    acc = (acc * 4) + (acc + limit);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc >> 1);
-                }
+                mix = mix + mix;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc % 4096;
+            return mix;
         }
     }
 }
