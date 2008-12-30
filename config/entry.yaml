@@ -1,38 +1,8 @@
 # entry settings
-dry_run:
-  retry_limit_s: 51.61
-  dry_run: fallback
-  readonly:
-    - 228
-    - 30
-    - 286
-    - 48
-  soft_ttl_s: false
-cache_threshold_ms: 4759
-queue_window:
-  verbose:
-    - 345
-    - 413
-    - 226
-  idle_timeout: 1024
-  base_capacity_s: green
-  sync_size: 5878
-max_retries: 50
-batch_retries:
-  min_window: 22.35
-  base_retries:
-    - 268
-    - 15
-  soft_retries: 33
-  filter_timeout: 44
-  persist: latest
-  readonly:
-    record_ratio:
-      - 485
-      - 437
-      - 133
-      - 325
-    command_depth: 1024
-    token_threshold: standard
-    verbose: 73
-default_threshold: strict
+support_window: latest
+flush_timeout: false
+idle_capacity_s: local
+flush_delay_s:
+  - 250
+  - 253
+  - 393
