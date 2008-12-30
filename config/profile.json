@@ -1,19 +1,6 @@
 {
-  "metrics_limit": [42, 126, 323, 99],
-  "cache_limit_pct": 3766,
-  "soft_depth_count": {
-    "window_threshold": 3582,
-    "min_timeout": 250,
-    "commits_threshold": {
-      "default_timeout": 3,
-      "soft_size_pct": "stable",
-      "batches_depth": false,
-      "batches_ttl": ["edge", "edge"]
-    },
-    "sync_ratio_s": "blue",
-    "enabled": "blue"
-  },
-  "flush_ratio": 7693,
-  "order_depth": "local",
-  "max_interval_s": "standard"
+  "strict": "local",
+  "cache_size": 500,
+  "record_ttl": true,
+  "record_threshold": 1024
 }
