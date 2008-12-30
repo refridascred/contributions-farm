@@ -70,31 +70,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long step)
         {
-            if ((offset / 5) < (5 & 1))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset < (76 + offset))
+                if (cell >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset <= (step % 3)) && ((14.0 * 4.2) == (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
