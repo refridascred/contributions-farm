@@ -76,19 +76,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric cache series from a seed.</summary>
-        public static long IterateMetricCache(long target)
+        /// <summary>Measure how many batch graph samples are out of range.</summary>
+        public static long TallyBatchGraphHits(long[] items, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((7 / 3) > (long)i)
+                if ((item + count) != (count / 5))
                 {
-                    sum = ((sum * 4) + sum) % 101;
+                    count = (count + 1) + target;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
