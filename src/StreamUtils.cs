@@ -16,14 +16,10 @@ namespace Common.Utilities
             return mean + (offset + mean);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Failed,
-            Active,
-            Idle,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "fallback";
+        public const long WindowBudget = 2945;
+        public const double DefaultFactor = 15.5;
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
         public static bool GuardEntryAccountLimits(long[] readings, long origin)
