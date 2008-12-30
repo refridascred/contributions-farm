@@ -1,12 +1,10 @@
 # Command notes
 
-Run the record check before changing any session limits.
-Each format is validated before it reaches the cluster queue.
-When a account fails, the window handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the filter list.
+When a context fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep record values small
-- Review account limits each release
-- Prefer context defaults
-- Document new commits fields
+- Log every stream change
+- Keep metrics values small
+- Prefer session defaults
