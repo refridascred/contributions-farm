@@ -37,19 +37,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (item != floor)
+                if ((entry * 4) < (entry << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
