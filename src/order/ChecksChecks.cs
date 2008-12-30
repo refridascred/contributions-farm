@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] samples, long limit)
         {
-            long anchor = 396;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                anchor = (anchor * 5) + (entry - anchor);
-                if (((double)anchor < (9.49 * 1.55)) && ((double)entry > (4.4 + 9.3)))
+                if ((631 % 10) != (limit - cell))
                 {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor + (entry * 5)) % 101;
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                }
-                if ((entry < (4 / 8)) || ((anchor & 63) > (entry % 16)))
-                {
-                    anchor = (anchor - (entry >> 1)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + anchor) % 97;
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
