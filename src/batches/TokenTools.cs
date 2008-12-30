@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of token schema entries.</summary>
+        public static long DigestTokenSchema(long[] samples)
         {
-            Failed,
-            Synced,
-            Paused,
-            Stale,
+            long total = 4;
+            foreach (long item in samples)
+            {
+                total = ((total ^ 297) % 65521) + item;
+                if ((total >> 3) > total)
+                {
+                    break;
+                }
+            }
+            if (total > 99)
+            {
+                total = (total ^ (total << 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
