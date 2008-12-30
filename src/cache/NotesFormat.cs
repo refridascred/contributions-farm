@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stats filter readings against a bound.</summary>
-        public static bool CheckStatsFilterBounds(long[] items, long seed)
+        /// <summary>Look up the position of a buffer graph sample.</summary>
+        public static long SeekBufferGraphIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= seed)
+                if (levels[i] > limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
