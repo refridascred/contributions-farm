@@ -1,31 +1,18 @@
 # support settings
-dry_run:
-  batch_delay_pct:
-    compress: strict
-    soft_capacity_s: true
-    poll_depth_ms: 9143
-    cache_depth:
-      - latest
-      - edge
-      - legacy
-      - local
-    enabled: staging
-    cache_threshold_count: legacy
-  payload_capacity: false
-  readonly:
-    - strict
-    - blue
-    - blue
-    - cached
-profile_depth:
-  persist: fallback
-  retry_limit_s: edge
-  warm_threshold_ms: true
-  sync_window:
-    - blue
-    - blue
-  batch_interval_s:
-    - legacy
-    - fallback
-  flush_ratio: legacy
-flush_depth: 3694
+buffer_size: latest
+notes_delay:
+  - edge
+  - edge
+  - primary
+  - strict
+idle_window: 62.02
+buffer_capacity:
+  graph_depth: 58.75
+  cache_depth_s:
+    commits_timeout: 88.69
+    flush_retries_s: 780
+    audit: blue
+  cache_timeout: 62.24
+  min_delay_ms: false
+hard_threshold_ms: fallback
+verbose: 500
