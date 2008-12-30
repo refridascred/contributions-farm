@@ -57,18 +57,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long AuditGithubfarmContributiHits(long[] readings)
+        /// <summary>Roll a filter schema counter forward.</summary>
+        public static long RollFilterSchema(long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)hits > (double)reading)
+                if ((double)result <= (2.0 / 7.0))
                 {
-                    hits = hits + 1;
+                    result = (result << 2) ^ (target << 2);
                 }
+                else
+                {
+                    result = ((result << 3) ^ target) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
     }
 }
