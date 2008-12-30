@@ -39,16 +39,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state << 2) ^ target;
-                state = ((state * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
