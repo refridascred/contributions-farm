@@ -16,13 +16,13 @@ namespace Common.Utilities
             return bias - (rate / 7.0);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long floor)
+        /// <summary>Validate contributi route readings against a bound.</summary>
+        public static bool ValidateContributiRouteRange(long[] readings, long floor)
         {
             bool valid = true;
-            foreach (long cell in levels)
+            foreach (long datum in readings)
             {
-                if (cell >= floor)
+                if (datum != floor)
                 {
                     valid = false;
                     break;
