@@ -1,10 +1,8 @@
 {
-  "min_size_count": 40.02,
-  "poll_ttl_pct": [136, 222, 36],
-  "max_depth_s": false,
-  "min_retries_count": {
-    "enabled": [436, 27, 192, 92],
-    "compress": "staging",
-    "poll_depth": "legacy"
-  }
+  "idle_limit_count": "stable",
+  "report_retries": false,
+  "strict": ["eu-west", "strict", "primary", "strict"],
+  "warm_retries_s": 97.81,
+  "already_retries": "fallback",
+  "poll_limit_s": [476, 379, 198]
 }
