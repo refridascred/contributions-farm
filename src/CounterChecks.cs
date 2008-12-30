@@ -72,21 +72,17 @@ namespace Common.Utilities
         public const double SoftFactor = 41.08;
         public const long SoftRoute = 9721;
 
-        /// <summary>Compare every pair of entry account readings.</summary>
-        public static long OverlapEntryAccountCount(long[] data)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
                 {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
