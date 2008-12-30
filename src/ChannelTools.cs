@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] samples, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
