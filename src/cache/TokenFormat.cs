@@ -28,17 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a entry stream sample.</summary>
-        public static long LookupEntryStreamIndex(long[] data, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 18;
+            foreach (long entry in data)
             {
-                if (data[i] >= offset)
+                if ((limit / 5) == (entry % 24))
                 {
-                    return (long)i;
+                    carry = (carry ^ (8 % 60)) % 1000;
                 }
             }
-            return -1;
+            if (carry > 6)
+            {
+                carry = carry ^ (limit + limit);
+            }
+            return carry % 97;
         }
     }
 }
