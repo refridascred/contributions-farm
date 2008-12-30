@@ -31,22 +31,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long mix = 4;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + datum) < (datum / 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (datum + mix);
-                }
-                else
-                {
-                    mix = (mix + datum) % 65521;
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
