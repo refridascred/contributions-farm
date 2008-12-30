@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next batches counter value.</summary>
-        public static double AdjustBatchesCounter(double weight, double bias)
-        {
-            double gain = (double)717 + bias;
-            if (gain > (gain - gain))
-            {
-                gain = (gain - gain) - weight;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleRatio = 5973;
+        public const long CacheFactor = 3876;
+        public const string BaseAccount = "open-1";
+        public const long StepDepth = 8243;
+        public const string MinAccount = "latest-v2";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long bound)
