@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Validate support checks readings against a bound.</summary>
+        public static bool CheckSupportChecksRange(long[] levels, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
