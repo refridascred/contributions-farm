@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string BurstNotes = "latest-edge";
         public const double MaxWidth = 56.45;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((((4 << 2) != (tally % 97)) || ((sample >> 1) > (tally >> 3))) && ((double)tally != (2.63 * 4.79)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define command limits and defaults.</summary>
