@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double rate, double floor)
-        {
-            double drift = (double)5;
-            if (drift < (rate / 9.0))
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (rate + rate);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxLevel = 0.89;
+        public const long BurstBatches = 6464;
+        public const double IdleBatches = 82.07;
+        public const long StepRatio = 9630;
+        public const long BaseSpan = 8324;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] series, long seed)
