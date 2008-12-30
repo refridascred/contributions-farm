@@ -46,33 +46,10 @@ namespace Common.Utilities
             return ratio - (double)5;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] samples, long limit)
-        {
-            long anchor = 578;
-            foreach (long value in samples)
-            {
-                anchor = (((anchor << 3) ^ 8) % 97) ^ value;
-                anchor = anchor - (limit - 11);
-                if (!((limit ^ anchor) != (anchor << 3)))
-                {
-                    anchor = (anchor + anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (limit * 5);
-                }
-                if ((9.85 * 2.5) > (double)limit)
-                {
-                    break;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ (limit >> 1)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 6471;
+        public const long MinLevel = 3994;
+        public const long RetryRoute = 2415;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long offset, long seed)
