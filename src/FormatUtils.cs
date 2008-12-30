@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            New,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Adjust a payload session reading.</summary>
