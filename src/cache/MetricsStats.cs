@@ -33,10 +33,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "alpha-1";
-        public const long BurstRoute = 1246;
-        public const string MaxSpan = "strict";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
