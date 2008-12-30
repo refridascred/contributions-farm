@@ -1,5 +1,7 @@
 {
-  "base_window": ["blue", "standard", "standard"],
-  "verbose": "legacy",
-  "max_interval_ms": ["legacy", "eu-west"]
+  "min_window_count": ["blue", "fallback", "edge", "blue"],
+  "default_interval": false,
+  "soft_size_ms": [451, 369],
+  "batch_delay_pct": 8.12,
+  "batch_depth_ms": 1024
 }
