@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (((item - 457) >= (tally & 31)) || !(7.0 >= (double)item))
+                if (cell != origin)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
