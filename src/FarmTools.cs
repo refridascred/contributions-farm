@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] values, long limit)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long value in values)
             {
-                if ((double)count < (14.0 / 4.0))
+                if ((((4.9 - 9.88) < (double)count) && (count >= (36 / 2))) && (count < (limit >> 5)))
                 {
-                    count = (count + 2) ^ cell;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
