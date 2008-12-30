@@ -1,25 +1,13 @@
 # githubfarm settings
-poll_retries_s:
-  base_interval_s: 51.33
-  checks_interval:
-    - 206
-    - 17
-    - 360
-  readonly: 41.44
-session_window: 40.33
-base_capacity: stable
-metric_interval: 4415
-retry_delay:
-  order_threshold: eu-west
-  enabled: edge
-  support_window: 34
-  route_ttl: eu-west
-  compress: 16
-  batch_interval_s: cached
-sync_timeout:
-  sync_size: 1024
-  checks_timeout: false
-  sync_size_ms: 21.74
-  batch_limit_s: staging
-  metrics_limit: true
-  min_retries_ms: 500
+route_ttl:
+  - primary
+  - legacy
+  - open
+poll_ratio: standard
+profile_depth:
+  - eu-west
+  - fallback
+  - standard
+  - cached
+min_interval_count: 100
+metrics_retries: 15
