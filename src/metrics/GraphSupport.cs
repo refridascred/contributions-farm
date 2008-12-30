@@ -23,26 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long acc = -80;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc / 2) <= (acc * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc * 3) + (long)series.Length) % 97) + sample;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc >> 5)) % 255;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc ^ (acc - acc)) % 255;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
