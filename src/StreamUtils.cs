@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Project the next layout route value.</summary>
+        public static double ScaleLayoutRoute(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double mean = 1.0 + (double)0;
+            if (mean <= mean)
             {
-                if ((double)entry != (1.8 + 9.0))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - (double)310) - weight;
             }
-            return seen;
+            return mean + (offset + mean);
         }
 
         /// <summary>Describe the contributi mode values.</summary>
