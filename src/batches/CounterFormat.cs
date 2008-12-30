@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support session input into a small class.</summary>
-        public static long BucketSupportSession(long target, long target2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long cur = target ^ target2;
-            if ((10.0 * 6.6) <= (double)target2)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target / 7) > 701) && ((target2 + target2) > (target2 * 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + target2) == (cur + cur))
+                    if ((samples[i] + samples[j]) == 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank report input into a small class.</summary>
