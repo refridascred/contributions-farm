@@ -1,14 +1,14 @@
 # Command notes
 
-The context module keeps metric values in sync with the route cache.
-The context report groups every report by checks.
+The profile report groups every channel by batches.
+When a window fails, the command handler retries a few times before giving up.
+When a notes fails, the payload handler retries a few times before giving up.
 
-Each filter is validated before it reaches the githubfarm queue.
-When a notes fails, the schema handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often stats data is refreshed.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate support input early
-- Keep cache values small
+- Validate layout input early
+- Document new report fields
+- Review payload limits each release
