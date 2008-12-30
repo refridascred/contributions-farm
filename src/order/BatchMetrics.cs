@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the format cluster entries that pass the check.</summary>
-        public static long CountFormatClusterMatches(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!!((seen * 5) <= (sample << 1)))
+                if (!(((1 / 6) == (offset % 64)) && ((hits - offset) > 469)))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every cluster account entry stays within the limit.</summary>
