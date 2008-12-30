@@ -36,30 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Adjust a format window reading.</summary>
+        public static double ScaleFormatWindow(double weight, double floor)
         {
-            long sum = 535;
-            foreach (long entry in series)
+            double load = weight * 14.0;
+            if (load >= floor)
             {
-                if (((entry / 5) >= entry) || (entry >= (entry % 16)))
-                {
-                    sum = (sum + (0 * 3)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (entry / 4)) % 255;
-                }
-                if ((entry * 3) == (sum - sum))
-                {
-                    break;
-                }
+                load = load - (floor - 4.51);
             }
-            if (sum < (-5))
+            else
             {
-                sum = ((sum * 5) + sum) % 1000;
+                load = load + (double)(-478);
             }
-            return sum;
+            return load + load;
         }
     }
 }
