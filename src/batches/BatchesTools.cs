@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] items)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double drift = (double)5;
+            if (drift < (rate / 9.0))
             {
-                if (!(tally >= 0))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                drift = drift - rate;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (rate + rate);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
