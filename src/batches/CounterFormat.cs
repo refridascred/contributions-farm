@@ -22,12 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many counter report samples are out of range.</summary>
+        public static long TallyCounterReportOutliers(long[] values, long floor)
         {
-            Active,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample <= (matches << 2)) && ((sample / 4) == (817 >> 4)))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
