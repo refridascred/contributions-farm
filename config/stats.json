@@ -1,5 +1,11 @@
 {
-  "cache_size": "cached",
-  "persist": "cached",
-  "max_timeout_count": "green"
+  "metric_ttl": {
+    "audit": 6287,
+    "command_retries": "local",
+    "max_ttl_count": true,
+    "max_interval_pct": 60
+  },
+  "max_capacity": 60,
+  "default_window_count": 500,
+  "account_capacity": "edge"
 }
