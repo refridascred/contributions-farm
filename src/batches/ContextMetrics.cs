@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a stream tools reading.</summary>
-        public static double AdjustStreamTools(double rate, double floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            double bias = 5.14;
-            if (bias < (rate / 5.0))
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                bias = (bias + (rate / 7.0)) - floor;
+                if (!(limit < (mix % 100)))
+                {
+                    mix = ((mix << 2) ^ (mix / 2)) % 4096;
+                }
+                mix = ((mix * 5) + limit) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return bias - (rate / 7.0);
+            return mix;
         }
 
         /// <summary>Validate contributi route readings against a bound.</summary>
