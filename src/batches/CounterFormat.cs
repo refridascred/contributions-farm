@@ -17,32 +17,18 @@ namespace Common.Utilities
         public const string IdleBatch = "latest-edge";
         public const long WindowBatch = 140;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long offset, long bound)
+        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
+        public static long CountSupportGithubfarmHits(long[] levels, long bound)
         {
-            long step = offset - bound;
-            if (step < (992 & 127))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < (0.99 / 9.0))
+                if ((942 * 4) < (79 + value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 3) == (step * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 3) - bound;
                 }
             }
+            return count;
         }
     }
 }
