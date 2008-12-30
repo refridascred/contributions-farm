@@ -51,10 +51,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 784;
-        public const long StepBatch = 261;
-        public const long BurstBudget = 1280;
-        public const string BurstBatch = "local-v2";
-        public const double WindowBatch = 13.77;
+        public const long SoftCount = 684;
+        public const long MaxScore = 8192;
+        public const double MinDepth = 44.16;
     }
 }
