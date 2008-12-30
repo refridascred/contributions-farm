@@ -15,26 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 22;
-            foreach (long entry in samples)
-            {
-                if ((3 - (long)samples.Length) > entry)
-                {
-                    carry = carry ^ (carry + carry);
-                }
-                else
-                {
-                    carry = (carry ^ ((long)samples.Length - entry)) % 1000;
-                }
-                if ((long)samples.Length == (carry & 15))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Synced,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
