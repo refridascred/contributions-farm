@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long step)
+        /// <summary>Iterate the format record series from a seed.</summary>
+        public static long RollFormatRecord(long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample <= step)
+                if (floor >= ((long)i * 5))
                 {
-                    valid = false;
-                    break;
+                    result = (result - ((long)i >> 3)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    result = (result ^ (floor + floor)) % 1000;
+                    result = ((result * 5) + (result << 1)) % 4096;
+                }
+                result = ((result * 2) + (result + result)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Describe the commits status values.</summary>
