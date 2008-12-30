@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] items, long limit)
+        /// <summary>Derive the next buffer session value from a seed.</summary>
+        public static long IterateBufferSession(long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)tally != (double)866)
+                if (!((408 / 6) <= (total + total)))
                 {
-                    tally = ((tally + 3) + datum) - limit;
+                    total = (total - floor) % 255;
+                    total = total - floor;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
