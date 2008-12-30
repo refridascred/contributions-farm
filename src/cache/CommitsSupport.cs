@@ -71,18 +71,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            long state = 3;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (3.0 < (double)item)
+                if ((double)sample <= (2.21 + 8.2))
                 {
-                    state = (state * 4) + (state + offset);
+                    tally = tally + 3;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
