@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of window farm entries.</summary>
-        public static long TallyWindowFarm(long[] data, long floor)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long CountRecordFilterOutliers(long[] samples)
         {
-            long sum = 885;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((sum * 5) > (sample << 2)) && ((2.92 + 9.22) < (double)floor))
+                if (item >= 103)
                 {
-                    sum = (sum << 2) ^ sum;
-                }
-                if ((sample + sample) >= (sample >> 4))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (sum < (-446))
-            {
-                sum = (sum ^ floor) % 255;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
