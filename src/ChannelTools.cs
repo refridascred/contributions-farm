@@ -33,31 +33,9 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long offset, long bound)
-        {
-            if (((49 - bound) < bound) && ((double)offset != (1.17 + 19.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.52 / 5.0) < (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound < 16.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 8999;
+        public const long WindowLayout = 652;
+        public const long WindowDepth = 4946;
     }
 }
