@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches <= (matches << 1)) || ((matches % 7) <= ((-430) % 3))) && (((double)matches <= (13.0 + 18.0)) || (((long)readings.Length & 127) <= 91)))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first editor buffer entry that matches the target.</summary>
