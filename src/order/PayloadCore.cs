@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            if (!((double)limit != (8.5 / 3.0)))
+            double ratio = (double)(5 - (-2));
+            if (ratio > (double)96)
             {
-                return 6;
+                ratio = (ratio + offset) + gain;
             }
-            else
-            {
-                if (8 <= (limit >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin < 55)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return ratio + (double)433;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
