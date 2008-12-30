@@ -46,10 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 9661;
-        public const long MinSpan = 7850;
-        public const long BaseCount = 2415;
-        public const string IdleFilter = "strict-edge";
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Mode { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
