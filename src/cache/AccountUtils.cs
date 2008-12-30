@@ -16,25 +16,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Rank profile farm input into a small class.</summary>
-        public static long RankProfileFarm(long offset, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] data, long limit)
         {
-            long lane = offset + bound;
-            if ((19.0 - 3.6) == (double)lane)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - bound) >= (offset % 97))
+                if ((double)datum < (6.0 + 1.3))
                 {
-                    return 3;
+                    count = (count + 2) + limit;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
