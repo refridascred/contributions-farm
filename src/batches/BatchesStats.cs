@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long CacheStream = 6491;
         public const long BurstStream = 1127;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] data, long target)
+        /// <summary>Blend two token queue measurements.</summary>
+        public static double BlendTokenQueue(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 4.1 * 2.43;
+            if (ratio > (ratio / 2.0))
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio / 6.0)) + bias;
             }
-            return -1;
+            return ratio - gain;
         }
 
         /// <summary>Project the next contributi value.</summary>
