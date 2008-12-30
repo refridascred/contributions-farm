@@ -70,11 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            double bias = rate + rate;
-            return bias + span;
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading + (long)readings.Length) > reading) || ((reading ^ reading) > hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
