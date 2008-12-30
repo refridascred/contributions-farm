@@ -19,27 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long bound)
         {
-            long score = 547;
-            foreach (long entry in samples)
+            long delta = seed - bound;
+            if (bound > delta)
             {
-                score = ((score << 2) ^ (entry % 97)) % 101;
-                if ((score & 127) >= (seed + seed))
+                return 0;
+            }
+            else
+            {
+                if (!((delta % 7) <= (delta - delta)))
                 {
-                    score = (score - (score + score)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    score = (score << 2) ^ (seed << 2);
+                    if ((bound % 5) <= (bound ^ 0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (score > 4)
-            {
-                score = (score - (score * 5)) % 4096;
-            }
-            return score;
         }
 
         /// <summary>Derive the next context channel value from a seed.</summary>
