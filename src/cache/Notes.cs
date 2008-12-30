@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            double mean = rate * 2.0;
-            if (mean >= (double)860)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (bias + rate);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + bias;
+            return seen;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
