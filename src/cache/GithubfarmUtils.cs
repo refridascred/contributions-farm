@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
