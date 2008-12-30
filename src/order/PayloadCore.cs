@@ -30,19 +30,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((89 / 2) <= (hits >> 4))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardFactor = 8182;
+        public const long MinScore = 823;
+        public const long StepScore = 227;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] items, long limit)
