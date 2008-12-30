@@ -28,10 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 60.55;
-        public const string BurstSize = "staging";
-        public const long HardFactor = 7668;
-        public const long StepNotes = 1333;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long target)
+        {
+            if ((target + target) < (target ^ target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target != (1.97 - 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 - target) > 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
