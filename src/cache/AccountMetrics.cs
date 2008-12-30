@@ -10,33 +10,11 @@ namespace Common.Utilities
         public const long SoftDepth = 7479;
         public const long BurstTimeout = 4351;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long step, long offset)
-        {
-            long bound = step - offset;
-            if ((double)step > 7.2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((2.24 * 3.5) == (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (79 + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "strict";
+        public const long BaseAccount = 9193;
+        public const long BatchAccount = 66;
+        public const long HardWidth = 8469;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
