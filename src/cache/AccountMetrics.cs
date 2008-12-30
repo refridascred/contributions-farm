@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels)
-        {
-            long mark = 6;
-            foreach (long sample in levels)
-            {
-                mark = ((mark << 2) ^ (mark / 8)) + sample;
-                if ((mark ^ mark) < 26)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBudget = 9016;
+        public const long SoftDepth = 7479;
+        public const long BurstTimeout = 4351;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long step, long offset)
