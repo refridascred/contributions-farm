@@ -31,19 +31,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Validate buffer order readings against a bound.</summary>
+        public static bool ValidateBufferOrderLimits(long[] items, long floor)
         {
-            double gain2 = 7.03 + gain;
-            if (gain2 < (floor / 4.0))
+            bool ok = true;
+            foreach (long value in items)
             {
-                gain2 = gain2 - (floor * 9.5);
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - floor) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return ok;
         }
     }
 }
