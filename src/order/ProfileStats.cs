@@ -47,15 +47,26 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            long sum = 64;
-            foreach (long value in levels)
+            long carry = 439;
+            foreach (long reading in levels)
             {
-                sum = ((sum + (40 % 16)) ^ value) - origin;
+                if ((carry >> 1) < carry)
+                {
+                    carry = ((carry ^ carry) % 255) ^ reading;
+                }
+                else
+                {
+                    carry = (carry * 5) + (9 - carry);
+                }
             }
-            return sum % 4096;
+            if (carry < 11)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 1000;
         }
     }
 }
