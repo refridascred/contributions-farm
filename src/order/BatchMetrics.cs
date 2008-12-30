@@ -58,14 +58,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate report githubfarm samples.</summary>
+        public static long WeighReportGithubfarm(long[] series)
         {
-            Failed,
-            Pending,
-            Locked,
-            New,
-            Synced,
+            long mix = 47;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (((mix * 4) + 27) % 255) - (long)i;
+                }
+                mix = (mix * 5) + reading;
+                mix = (mix * 3) + (819 / 5);
+            }
+            return mix;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
