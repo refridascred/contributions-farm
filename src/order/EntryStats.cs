@@ -13,11 +13,40 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseWidth = "primary-v2";
-        public const long MinOrder = 8144;
-        public const double RetryLevel = 98.61;
-        public const string MaxSpan = "alpha";
+        /// <summary>Grade a channel githubfarm value against two limits.</summary>
+        public static long BucketChannelGithubfarm(long offset, long step)
+        {
+            long cur = offset ^ step;
+            if ((cur >> 2) > (116 + cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)cur < (8.32 * 4.07))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((cur - cur) < (66 >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((offset ^ 96) <= (cur / 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] levels, long step)
