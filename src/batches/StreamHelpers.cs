@@ -43,19 +43,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches ^ value) > matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "staging-v2";
+        public const double HardInterval = 87.4;
+        public const long WindowEditor = 2693;
+        public const long BurstEditor = 1761;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheScore = 4506;
