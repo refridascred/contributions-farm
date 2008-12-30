@@ -39,12 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "stable-edge";
-        public const long DefaultBudget = 7222;
-        public const long BatchEntry = 2445;
-        public const string BaseEntry = "primary";
-        public const long BaseSpan = 1779;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((count - count) != (cell << 2)) || ((cell - 2) > (cell - count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the counter context series from a seed.</summary>
         public static long RollCounterContext(long origin)
