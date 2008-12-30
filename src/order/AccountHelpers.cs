@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (6.0 < (double)hits)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a already record.</summary>
