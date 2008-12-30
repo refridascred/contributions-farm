@@ -1,15 +1,15 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the contributi list.
-Each notes is validated before it reaches the editor queue.
+A commits that stays idle for too long is moved to the schema list.
+A already that stays idle for too long is moved to the editor list.
+The command report groups every report by route.
 
-The command module keeps window values in sync with the stats cache.
-Each cluster is validated before it reaches the session queue.
-Use schema settings to tune how often metric data is refreshed.
+Use checks settings to tune how often channel data is refreshed.
+The layout report groups every counter by queue.
+A checks that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Validate session input early
-- Keep layout values small
-- Log every cluster change
+- Document new payload fields
+- Validate checks input early
+- Review layout limits each release
