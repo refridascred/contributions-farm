@@ -1,10 +1,7 @@
 # githubfarm settings
-min_timeout: true
-channel_limit: 30
-retry_depth: true
-audit: 38.73
-command_ratio: 16
-flush_threshold_pct:
-  - stable
-  - local
-  - edge
+flush_capacity: 28.07
+readonly: false
+poll_depth:
+  - 148
+  - 462
+batch_delay_s: eu-west
