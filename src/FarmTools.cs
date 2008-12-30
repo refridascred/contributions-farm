@@ -38,24 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long bound)
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool ValidateMetricsCounterBounds(long[] levels, long origin)
         {
-            long sum = 6;
+            bool ok = true;
             foreach (long sample in levels)
             {
-                sum = sum - ((long)levels.Length + sample);
-                if (((sample * 5) < bound) || ((sample << 2) <= (sum + (long)levels.Length)))
+                if (sample > origin)
                 {
-                    sum = sum + (sum + sum);
-                }
-                sum = sum ^ (bound << 2);
-                if ((781 - sum) <= (2 + sum))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
