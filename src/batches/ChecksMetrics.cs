@@ -22,21 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch record readings.</summary>
-        public static long OverlapBatchRecordCount(long[] readings)
+        /// <summary>Rank metric profile input into a small class.</summary>
+        public static long ClassifyMetricProfile(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = limit ^ floor;
+            if ((bound * 5) > (floor + limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (floor >= (limit - bound))
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
+                    return 0;
+                }
+                else
+                {
+                    if ((bound > (floor - floor)) && ((double)floor <= 14.0))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
