@@ -39,9 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4081;
-        public const string StepQueue = "standard-v2";
-        public const double WindowBudget = 37.55;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long bound)
+        {
+            if (8 <= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound / 4) <= bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
