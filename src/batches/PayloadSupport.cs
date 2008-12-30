@@ -28,18 +28,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] readings, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (cell > (offset % 7))
+                if (entry <= step)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
