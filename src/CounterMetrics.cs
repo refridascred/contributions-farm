@@ -17,22 +17,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] levels, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long offset, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((target & 127) <= offset)
             {
-                if (((long)levels.Length & 1) < (tally * 2))
+                return 0;
+            }
+            else
+            {
+                if (((9.8 + 0.7) != (double)target) && ((offset + target) < (offset - offset)))
                 {
-                    tally = ((tally + 2) + datum) + target;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((target * 5) == (target & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
