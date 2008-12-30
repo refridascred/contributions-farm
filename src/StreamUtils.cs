@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next layout route value.</summary>
-        public static double ScaleLayoutRoute(double weight, double offset)
+        /// <summary>Derive the next order token value from a seed.</summary>
+        public static long IterateOrderToken(long origin)
         {
-            double mean = 1.0 + (double)0;
-            if (mean <= mean)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean - (double)310) - weight;
+                if ((origin + total) >= (origin + (-3)))
+                {
+                    total = ((total << 2) ^ origin) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mean + (offset + mean);
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
