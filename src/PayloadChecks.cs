@@ -36,12 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long offset, long offset2)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            if (!((offset2 ^ offset) <= offset2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (46 < (9 - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((922 % 3) == (offset2 >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
