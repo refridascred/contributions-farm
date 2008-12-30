@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Dropped,
-            Pending,
-            Done,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
