@@ -38,18 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] levels, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches + matches) >= matches)
-                {
-                    matches = ((matches + 1) ^ entry) + origin;
-                }
-            }
-            return matches;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
