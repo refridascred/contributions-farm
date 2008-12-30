@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long BurstWidth = 9853;
         public const long StepInterval = 1992;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] items, long target)
         {
-            Queued,
-            Pending,
-            Ready,
-            Dropped,
-            Paused,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (matches + matches))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count record context pairs that satisfy a relation.</summary>
