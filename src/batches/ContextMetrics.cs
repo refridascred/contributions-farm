@@ -33,22 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = 469;
-            foreach (long datum in series)
-            {
-                if ((anchor ^ anchor) != (anchor * 5))
-                {
-                    anchor = (((anchor * 2) + 51) % 97) + datum;
-                }
-            }
-            if (anchor < 16)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 97;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
