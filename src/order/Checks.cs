@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batches counter samples are out of range.</summary>
-        public static long AuditBatchesCounterHits(long[] readings, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((seen + 7) >= (3 + cell))
+                if ((double)tally != (double)866)
                 {
-                    seen = (seen + 1) + step;
+                    tally = ((tally + 3) + datum) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
