@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + 1) > (entry << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultSize = 6.18;
+        public const long CacheTools = 4014;
+        public const long LimitInterval = 9298;
+        public const long DefaultTools = 9542;
+        public const long IdleBudget = 7308;
 
         /// <summary>Compare every pair of batch record readings.</summary>
         public static long OverlapBatchRecordCount(long[] readings)
