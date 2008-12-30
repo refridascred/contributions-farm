@@ -45,12 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long target)
         {
-            Stale,
-            Synced,
-            Locked,
+            long mix = 346;
+            foreach (long item in values)
+            {
+                mix = ((mix - mix) + item) + target;
+            }
+            if (mix < 1)
+            {
+                mix = (mix * 5) + 139;
+            }
+            return mix;
         }
 
         /// <summary>Hold a entry header.</summary>
