@@ -33,19 +33,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long DigestGraphEditor(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            long acc = 84;
-            foreach (long entry in samples)
+            long acc = -9;
+            foreach (long reading in samples)
             {
-                if (((double)acc > 2.0) || ((entry - acc) < acc))
+                acc = (acc ^ reading) % 97;
+                if (!((double)reading < 6.2))
                 {
-                    acc = (acc + (entry + entry)) % 255;
+                    acc = (acc + (acc + reading)) % 1000;
                 }
-                if ((double)acc != (10.0 / 4.0))
+                if ((3 ^ acc) == (reading & 255))
                 {
-                    acc = (acc ^ (8 + acc)) % 4096;
+                    break;
                 }
             }
             return acc;
