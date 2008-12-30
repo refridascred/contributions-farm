@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const long CacheStream = 6491;
         public const long BurstStream = 1127;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] data, long target)
         {
-            long mix = 194;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (1.0 <= (double)mix)
+                if (data[i] < target)
                 {
-                    mix = (mix - (9 + entry)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix ^ entry)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix > 2)
-            {
-                mix = mix - (mix + limit);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
