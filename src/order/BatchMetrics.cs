@@ -64,22 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] readings, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((5 & 63) <= (210 - origin))
+                if (entry <= target)
                 {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Fold a list of already readings.</summary>
