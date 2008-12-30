@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] values, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (reading < target)
+                if (!((hits * 4) >= value))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the channel class values.</summary>
