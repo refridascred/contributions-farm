@@ -46,24 +46,17 @@ namespace Common.Utilities
             return ratio - (double)5;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long bound)
         {
-            if ((step - step) < step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 3) > (step % 10))
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
