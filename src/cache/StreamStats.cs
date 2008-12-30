@@ -41,18 +41,9 @@ namespace Common.Utilities
             return ratio + (double)13;
         }
 
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long TallyAlreadyRecord(long[] values, long origin)
-        {
-            long sum = 43;
-            foreach (long value in values)
-            {
-                if (origin >= (sum * 2))
-                {
-                    sum = sum + (345 + value);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8166;
+        public const long MaxContext = 3197;
+        public const long SoftContext = 1064;
     }
 }
