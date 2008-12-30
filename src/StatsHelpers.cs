@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string BaseEntry = "primary";
         public const long BaseSpan = 1779;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long floor)
+        /// <summary>Blend two contributi profile measurements.</summary>
+        public static double ProjectContributiProfile(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 4.7 / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - bias) + (double)(long)i) + offset;
             }
-            return -1;
+            return ratio - bias;
         }
     }
 }
