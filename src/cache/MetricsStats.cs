@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((1.9 - 2.0) <= (double)value)
+                if (!((entry ^ 4) < (entry ^ matches)) || ((entry + entry) != (entry * 4)))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
