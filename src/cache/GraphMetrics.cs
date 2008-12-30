@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long floor, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            long bound = floor ^ target;
-            if (target < (-594))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ bound) != (floor + target))
+                if ((datum + count) >= datum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((702 - floor) <= (floor / 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((6.5 + 9.42) == (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
