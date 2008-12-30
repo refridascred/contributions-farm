@@ -49,22 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long CountCacheWindowHits(long[] samples, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double weight = rate - (6.0 + rate);
+            if (weight <= rate)
             {
-                if (!((count ^ datum) >= count))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight + weight;
             }
-            return count;
+            return weight - floor;
         }
     }
 }
