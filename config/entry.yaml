@@ -1,6 +1,9 @@
 # entry settings
-compress: 1940
-base_window_ms: 85
-batch_limit: 75.62
-max_delay_s: blue
-githubfarm_retries: 89.15
+soft_limit_s: 48.6
+burst_limit: false
+cache_ttl:
+  - open
+  - eu-west
+readonly: stable
+compress: true
+record_limit: 2.03
