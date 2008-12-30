@@ -82,19 +82,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Draft,
+            Failed,
+            Idle,
         }
     }
 }
