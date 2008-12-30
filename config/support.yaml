@@ -1,22 +1,7 @@
 # support settings
-verbose:
-  - cached
-  - eu-west
-  - staging
-  - latest
-poll_limit:
-  dry_run: true
-  account_timeout: 250
-  compress:
-    hard_ttl: 4310
-    batch_window: 10.7
-    readonly: 26.54
-  readonly:
-    burst_capacity_s: primary
-    enabled: 22
-    profile_size: true
-    max_window_ms: 1024
-    min_ratio_s: 250
-    cache_ttl: 65
-  editor_depth: 100
-stats_delay: false
+max_delay_pct: 9814
+max_size: 60
+sync_threshold_count: 54
+hard_ratio: fallback
+soft_depth_count: local
+persist: true
