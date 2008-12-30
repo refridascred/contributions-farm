@@ -1,6 +1,6 @@
 {
-  "cluster_limit": 71,
-  "burst_interval_s": 66.34,
-  "flush_timeout_s": "cached",
-  "retry_timeout_count": true
+  "graph_timeout": false,
+  "hard_window_s": "open",
+  "audit": 62.38,
+  "cache_ratio": "stable"
 }
