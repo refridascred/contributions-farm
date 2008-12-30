@@ -1,26 +1,17 @@
 # githubfarm settings
-hard_ttl: false
-audit:
-  burst_retries_pct:
-    - legacy
+readonly: staging
+commits_delay: 15
+burst_threshold_s:
+  audit:
+    - 81
+    - 326
+    - 344
+    - 394
+  verbose: primary
+  batch_ratio: false
+  commits_window:
     - fallback
-  persist: true
-  readonly: standard
-  poll_limit_ms: 33.97
-soft_capacity: 84.7
-farm_size:
-  compress:
-    - edge
-    - latest
-  sync_retries_pct: edge
-  idle_ratio: 250
-  buffer_size:
-    - 321
-    - 351
-    - 151
-    - 148
-  audit: true
-  retry_window: 500
-batch_size_s:
-  - green
-  - legacy
+    - staging
+  readonly: staging
+burst_limit_ms: edge
+batch_ratio_s: 51
