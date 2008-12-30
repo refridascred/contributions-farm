@@ -20,19 +20,32 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long score = 5;
-            foreach (long sample in items)
+            long bound = step - offset;
+            if ((double)step > 7.2)
             {
-                score = (score ^ (9 / 5)) + sample;
+                return 6;
             }
-            if (score > (-14))
+            else
             {
-                score = score ^ (score << 1);
+                if (!((2.24 * 3.5) == (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (79 + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
