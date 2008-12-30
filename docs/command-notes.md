@@ -1,15 +1,15 @@
 # Command notes
 
-Each record is validated before it reaches the format queue.
-Defaults for channel live in the config folder and can be overridden per environment.
+A metrics that stays idle for too long is moved to the contributi list.
+Each notes is validated before it reaches the editor queue.
 
-Defaults for format live in the config folder and can be overridden per environment.
-Run the batches check before changing any metrics limits.
-Keep buffer and entry names short and lowercase.
+The command module keeps window values in sync with the stats cache.
+Each cluster is validated before it reaches the session queue.
+Use schema settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer cache defaults
-- Validate batch input early
-- Log every record change
+- Prefer layout defaults
+- Validate session input early
+- Keep layout values small
+- Log every cluster change
