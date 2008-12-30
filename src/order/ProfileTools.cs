@@ -41,11 +41,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "open-edge";
-        public const double RetryMetrics = 55.91;
-        public const long SoftMetrics = 5331;
-        public const long IdleMetrics = 4447;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Retry,
+            Dropped,
+            Pending,
+            Paused,
+            Active,
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] readings)
