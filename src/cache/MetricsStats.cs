@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long target, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] samples, long target)
         {
-            long prev = target ^ offset;
-            if ((prev - 170) < (2 + prev))
+            long anchor = 19;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset & 127) > (offset + 910)))
+                if ((anchor - value) <= (value & 255))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    anchor = ((anchor << 3) ^ (anchor ^ target)) % 97;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
