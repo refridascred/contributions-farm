@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Check that every contributi command entry stays within the limit.</summary>
+        public static bool CheckContributiCommandLimits(long[] samples, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
