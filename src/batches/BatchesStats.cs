@@ -44,19 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format window reading.</summary>
-        public static double ScaleFormatWindow(double weight, double floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long origin)
         {
-            double load = weight * 14.0;
-            if (load >= floor)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                load = load - (floor - 4.51);
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)(-478);
-            }
-            return load + load;
+            return ready;
         }
     }
 }
