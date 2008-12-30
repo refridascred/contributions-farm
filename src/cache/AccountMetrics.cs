@@ -53,12 +53,14 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            Pending,
+            Synced,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
