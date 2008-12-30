@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data, long bound)
         {
-            long anchor = 52;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor ^ (value >> 2)) % 65521) + offset;
+                if ((double)hits <= 3.0)
+                {
+                    hits = ((hits + 3) - sample) + bound;
+                }
             }
-            if (anchor > 296)
-            {
-                anchor = ((anchor * 4) + (anchor / 5)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Derive the next token queue value from a seed.</summary>
