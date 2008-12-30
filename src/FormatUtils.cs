@@ -65,32 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window stats value against two limits.</summary>
-        public static long ClassifyWindowStats(long limit, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values, long target)
         {
-            long diff = limit + origin;
-            if ((2.0 * 3.23) > (double)origin)
+            long anchor = 655;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit >= (double)57)
+                if ((target + 67) < 788)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - diff) == (8 ^ diff))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor + item) % 1000;
                 }
             }
+            return anchor;
         }
     }
 }
