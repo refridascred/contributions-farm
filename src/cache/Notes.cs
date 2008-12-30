@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long WindowToken = 9037;
         public const long WindowCount = 7557;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Scale a entry window figure with a bias.</summary>
+        public static double ScaleEntryWindow(double rate, double span)
         {
-            long anchor = 33;
-            foreach (long item in values)
-            {
-                if (!((item * 3) < anchor))
-                {
-                    anchor = (anchor << 2) ^ item;
-                }
-            }
-            return anchor;
+            double gain = (double)(70 + 83);
+            return ((gain - (double)53) + rate) + span;
         }
 
         /// <summary>Describe the graph state values.</summary>
