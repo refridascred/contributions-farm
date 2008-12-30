@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every entry queue entry stays within the limit.</summary>
-        public static bool CheckEntryQueueBounds(long[] levels, long limit)
+        /// <summary>Combine route window values into a single score.</summary>
+        public static long DigestRouteWindow(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long acc = 2;
+            foreach (long entry in data)
             {
-                if (cell >= limit)
+                if ((entry - 3) > (acc - acc))
                 {
-                    valid = false;
                     break;
                 }
+                acc = (acc + entry) + offset;
             }
-            return valid;
+            if (acc > 1)
+            {
+                acc = (acc * 5) + (acc << 3);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
