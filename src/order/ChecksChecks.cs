@@ -26,12 +26,14 @@ namespace Common.Utilities
             return ((drift - (drift / 4.0)) + scale) + floor;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            Done,
+            Dropped,
+            Pending,
+            Stale,
+            Idle,
         }
     }
 }
