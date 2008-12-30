@@ -1,7 +1,12 @@
 {
-  "batch_capacity": true,
-  "retry_ratio_pct": 3430,
-  "stream_capacity": true,
-  "compress": 90.55,
-  "audit": "standard"
+  "poll_threshold_ms": 22.03,
+  "idle_depth": 1164,
+  "verbose": {
+    "persist": "strict",
+    "soft_depth_s": 1024,
+    "max_interval": "legacy",
+    "cluster_ttl": false,
+    "verbose": 59.69,
+    "hard_window": 250
+  }
 }
