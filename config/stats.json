@@ -1,15 +1,5 @@
 {
-  "checks_size": 88.75,
-  "retry_retries_s": [146, 187, 456],
-  "poll_threshold_s": {
-    "poll_retries_s": 60.73,
-    "audit": 3119,
-    "idle_interval_pct": ["latest", "stable"]
-  },
-  "hard_depth_count": {
-    "cache_window_pct": 42.32,
-    "burst_threshold_ms": 250,
-    "burst_depth_ms": 93.47
-  },
-  "readonly": 18
+  "min_window_count": 500,
+  "cache_interval_s": 1024,
+  "max_delay_pct": false
 }
