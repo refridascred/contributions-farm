@@ -1,8 +1,12 @@
 {
-  "base_delay_count": ["staging", "primary", "fallback"],
-  "base_retries": 100,
-  "stats_capacity": 22.72,
-  "farm_capacity": ["eu-west", "green", "staging"],
-  "cache_threshold": ["standard", "blue", "latest", "cached"],
-  "soft_limit_ms": 96
+  "context_delay": "local",
+  "base_size": {
+    "verbose": 79,
+    "max_limit_ms": "local",
+    "poll_retries_pct": 60,
+    "flush_size_count": 28.29,
+    "already_ratio": false,
+    "compress": ["standard", "edge", "fallback", "edge"]
+  },
+  "record_ttl": 51.05
 }
