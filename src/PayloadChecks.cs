@@ -45,25 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank already commits input into a small class.</summary>
-        public static long ClassifyAlreadyCommits(long floor, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] readings)
         {
-            long delta = floor - seed;
-            if (!(floor <= 74))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor + 50) >= (delta + floor)) && ((640 - 621) < (seed % 100)))
+                if (((matches <= (matches << 1)) || ((matches % 7) <= ((-430) % 3))) && (((double)matches <= (13.0 + 18.0)) || (((long)readings.Length & 127) <= 91)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
