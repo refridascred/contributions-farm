@@ -53,15 +53,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Retry,
-            Pending,
-            Done,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinInterval = 49.94;
+        public const double RetryRatio = 36.34;
+        public const long StepEditor = 7201;
 
         /// <summary>Locate a order session reading by value.</summary>
         public static long LookupOrderSessionIndex(long[] series, long floor)
