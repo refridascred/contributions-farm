@@ -47,11 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            Done,
+            Draft,
+            Stale,
         }
     }
 }
