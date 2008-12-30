@@ -13,15 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double bias)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            double scale2 = scale / 8.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = ((scale2 + (scale * 8.71)) - (double)(long)i) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale2 - scale2;
+            return seen;
         }
 
         /// <summary>Hold a report snapshot.</summary>
