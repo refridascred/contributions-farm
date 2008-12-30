@@ -57,18 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long offset)
         {
-            long result = -183;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((18.0 * 0.7) <= (double)cell)
+                if (cell != offset)
                 {
-                    result = (result + (cell + result)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
