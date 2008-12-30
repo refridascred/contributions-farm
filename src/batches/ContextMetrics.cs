@@ -66,17 +66,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a route batch reading by value.</summary>
-        public static long LocateRouteBatchIndex(long[] items, long offset)
+        /// <summary>Count queue support pairs that satisfy a relation.</summary>
+        public static long CompareQueueSupportCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
