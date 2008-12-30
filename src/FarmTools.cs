@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] items)
         {
-            New,
-            Synced,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((1.0 / 3.0) > (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
