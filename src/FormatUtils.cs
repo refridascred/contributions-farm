@@ -12,38 +12,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long origin)
         {
-            if ((limit % 24) < floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit <= (double)(-43)) && ((double)floor > (double)limit))
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit < (1.89 - 1.9)) || (limit < (floor - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit ^ floor) < (-74))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
