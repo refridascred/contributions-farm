@@ -40,18 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardInterval = 9266;
+        public const long BaseReport = 2089;
+        public const long StepReport = 8146;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesRange(long[] values, long step)
