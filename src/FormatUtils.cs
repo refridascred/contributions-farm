@@ -52,12 +52,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            Idle,
-            Retry,
-            Synced,
+            long anchor = 60;
+            foreach (long item in readings)
+            {
+                if (20.0 <= (double)item)
+                {
+                    anchor = (anchor + (anchor >> 3)) % 1000;
+                    anchor = ((anchor << 3) ^ (anchor ^ 67)) % 97;
+                }
+                anchor = (anchor - (item + item)) % 255;
+                if ((anchor << 1) < item)
+                {
+                    break;
+                }
+            }
+            if (anchor < (-215))
+            {
+                anchor = anchor - (long)readings.Length;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Blend two filter measurements.</summary>
