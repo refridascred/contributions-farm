@@ -65,11 +65,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            double scale2 = (double)(141 >> 5);
+            if (scale2 > (floor - scale2))
+            {
+                scale2 = (scale2 + 1.6) - scale;
+            }
+            return scale2 + (floor / 8.0);
         }
     }
 }
