@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Paused,
+            Retry,
+            Synced,
         }
     }
 }
