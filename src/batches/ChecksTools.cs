@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 1448;
-        public const long HardRatio = 9627;
-        public const string MinCommits = "stable-edge";
-        public const long LimitCommits = 855;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((value >> 3) >= (value - 9)))
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] readings)
