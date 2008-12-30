@@ -35,13 +35,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryRatio = 4159;
+        public const long SoftSize = 5058;
+        public const string MinQueue = "local-1";
+        public const long IdleQueue = 5669;
+        public const string HardQueue = "cached-v2";
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
