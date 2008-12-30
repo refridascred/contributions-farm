@@ -30,27 +30,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long offset)
         {
-            long mix = -2;
-            foreach (long item in readings)
+            long sum = -34;
+            foreach (long cell in series)
             {
-                mix = mix ^ (seed * 2);
-                if ((double)item > (1.0 * 8.18))
+                if (!((sum ^ 20) == (569 + cell)))
                 {
-                    mix = ((mix * 3) + (item + 300)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (item << 2)) % 4096;
-                }
-                if ((1.88 - 18.0) >= (double)mix)
-                {
-                    mix = mix + seed;
+                    sum = (sum - (84 - 7)) % 1000;
                 }
             }
-            return mix % 65521;
+            if (sum > 659)
+            {
+                sum = ((sum * 2) + (offset - offset)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
