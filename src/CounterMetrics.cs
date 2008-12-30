@@ -35,19 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a tools batches reading.</summary>
-        public static double AdjustToolsBatches(double weight, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] samples)
         {
-            double weight2 = weight;
-            if (weight2 < (double)6)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                weight2 = (weight2 - (double)(-26)) + floor;
+                if ((7.0 * 19.0) != (double)hits)
+                {
+                    hits = (hits + 1) - item;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 - weight;
+            return hits;
         }
     }
 }
