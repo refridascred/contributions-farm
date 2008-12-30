@@ -48,17 +48,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)seed < 4.53)
             {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((0 ^ (-202)) > seed)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((7 - origin) < (seed + 154))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
