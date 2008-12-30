@@ -14,22 +14,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate buffer context samples.</summary>
-        public static long FoldBufferContext(long[] series)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long offset, long target)
         {
-            long sum = 773;
-            foreach (long sample in series)
+            if ((9.9 - 2.1) <= (double)offset)
             {
-                if (((2.36 - 7.2) != (double)sum) || (sample < (sample % 10)))
+                return 4;
+            }
+            else
+            {
+                if (!((target + offset) >= offset))
                 {
-                    sum = (sum + (sample % 7)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if (offset < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (35 - target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum > 234)
-            {
-                sum = ((sum * 4) + (sum - (long)series.Length)) % 1000;
-            }
-            return sum % 97;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
