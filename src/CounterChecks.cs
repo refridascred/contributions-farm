@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const string HardMetric = "staging";
         public const string SoftScore = "open-edge";
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            double bias2 = bias;
+            if (bias2 > offset)
             {
-                if ((total + total) != (origin * 5))
-                {
-                    total = total + ((-21) + 889);
-                }
-                else
-                {
-                    total = (total ^ (0 + 979)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                bias2 = bias2 - (double)18;
             }
-            return total;
+            return bias2 - bias2;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
