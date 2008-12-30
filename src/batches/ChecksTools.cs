@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Iterate the schema record series from a seed.</summary>
+        public static long RollSchemaRecord(long limit)
         {
-            long result = 9;
-            foreach (long item in data)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result - (result << 2)) + item;
+                if ((258 - 2) == (mix ^ mix))
+                {
+                    mix = (mix * 4) + (limit + mix);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (result < (-864))
-            {
-                result = (result << 2) ^ (result & 1);
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a counter info.</summary>
