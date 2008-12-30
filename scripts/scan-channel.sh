@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge primary green eu-west; do
+for item in staging local cached fallback; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
