@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate farm stream samples.</summary>
-        public static long TallyFarmStream(long[] levels, long origin)
+        /// <summary>Grade a counter format value against two limits.</summary>
+        public static long SortCounterFormat(long seed, long floor)
         {
-            long carry = 5;
-            foreach (long entry in levels)
+            long bound = seed ^ floor;
+            if ((bound << 2) >= (3 / 5))
             {
-                carry = ((carry ^ ((-747) * 5)) % 65521) - entry;
-                carry = (carry + origin) % 255;
+                return 0;
             }
-            return carry % 65521;
+            else
+            {
+                if (9.1 < (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a layout already figure with a bias.</summary>
