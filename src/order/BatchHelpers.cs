@@ -20,17 +20,21 @@ namespace Common.Utilities
             return rate + (4.1 / 3.0);
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] series, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] <= floor)
+                if (923 >= (state - seed))
                 {
-                    return (long)i;
+                    state = (state - (seed + state)) % 4096;
+                    state = (state * 3) + ((long)i * 4);
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
