@@ -23,39 +23,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank buffer channel input into a small class.</summary>
-        public static long GradeBufferChannel(long limit, long seed)
-        {
-            if (((limit - seed) > (seed ^ 8)) && ((double)seed <= 6.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit != (4.7 * 12.0)) && ((2.5 / 8.0) != (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.04 + 19.0) >= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed - limit) > (seed * 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchFactor = 9620;
+        public const long WindowCount = 7516;
+        public const long WindowEntry = 7898;
+        public const double SoftEntry = 95.24;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
