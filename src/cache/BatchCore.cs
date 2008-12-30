@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double scale, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            double drift = floor;
+            if (drift > (scale - scale))
+            {
+                drift = drift - floor;
+            }
+            else
+            {
+                drift = drift - (7.54 * 5.01);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)22;
         }
 
         /// <summary>Hold a metric header.</summary>
