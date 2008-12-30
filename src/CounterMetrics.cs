@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long origin)
         {
-            Queued,
-            Locked,
-            Paused,
-            New,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
