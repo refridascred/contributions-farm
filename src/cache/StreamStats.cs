@@ -58,18 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long step)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long acc = 8;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item / 4) < (-6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (((acc * 3) + (acc / 4)) % 255) - step;
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return matches;
         }
     }
 }
