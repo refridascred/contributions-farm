@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (value <= target)
+                if ((483 + 0) == (count + 9))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
