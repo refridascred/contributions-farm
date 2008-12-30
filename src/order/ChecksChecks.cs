@@ -41,19 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double ratio, double span)
         {
-            double load = (double)(125 - 49);
-            if (load >= (gain - load))
+            double load = (double)(767 >> 3);
+            if (load < (1.04 / 5.0))
             {
-                load = (load + (double)(-288)) + offset;
+                load = (load + (span - span)) - ratio;
             }
             for (int i = 0; i < 3; i++)
             {
-                load = (load + 7.0) - (double)(long)i;
+                load = load + (double)(long)i;
             }
-            return load - (9.23 / 2.0);
+            return load - load;
         }
     }
 }
