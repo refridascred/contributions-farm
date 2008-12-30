@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of profile format readings.</summary>
-        public static long MatchProfileFormatCount(long[] items)
+        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBufferLimits(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < origin)
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
