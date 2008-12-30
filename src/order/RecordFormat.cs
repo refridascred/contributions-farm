@@ -63,18 +63,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = 50;
+            foreach (long item in data)
             {
-                if (value >= (90 << 1))
+                if ((item / 5) == (item & 63))
                 {
-                    tally = tally + 3;
+                    state = (state << 2) ^ (item + 79);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
