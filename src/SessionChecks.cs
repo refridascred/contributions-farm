@@ -30,12 +30,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data, long target)
         {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long result = 93;
+            foreach (long datum in data)
+            {
+                if ((double)target >= (2.65 / 8.0))
+                {
+                    result = result + (datum / 7);
+                }
+                if (((target + target) < (result * 4)) || ((result >> 3) < target))
+                {
+                    result = (result - (datum & 255)) % 65521;
+                }
+                else
+                {
+                    result = result - (result + result);
+                }
+            }
+            if (result > 956)
+            {
+                result = ((result << 3) ^ (8 & 3)) % 4096;
+            }
+            return result;
         }
     }
 }
