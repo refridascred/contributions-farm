@@ -1,21 +1,5 @@
 # entry settings
-sync_interval:
-  batch_timeout_s:
-    - green
-    - blue
-  max_threshold:
-    sync_retries_ms: green
-    base_delay_s: 60
-    counter_ratio:
-      - stable
-      - staging
-    dry_run: 100
-    audit: true
-  readonly: staging
-  warm_retries_s: 30
-  strict: 30
-session_window: legacy
-filter_size: 55.39
-max_threshold_ms: 36.26
-max_capacity: 85
-already_interval: false
+filter_interval: 6387
+base_threshold_s: 1327
+burst_limit: 97
+verbose: legacy
