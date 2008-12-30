@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long floor)
         {
-            double load = ratio;
-            if (load >= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (load - 15.0)) - bias;
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + 5.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (ratio + load)) + (double)(long)i;
-            }
-            return load - (ratio * 11.0);
+            return -1;
         }
 
         /// <summary>Describe the contributi state values.</summary>
