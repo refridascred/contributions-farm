@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 341;
+        public const double DefaultFilter = 42.4;
+        public const long IdleFilter = 3604;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] levels, long bound)
