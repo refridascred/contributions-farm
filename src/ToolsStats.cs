@@ -59,17 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + sum) % 65521;
-                sum = sum - ((-100) / 8);
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
