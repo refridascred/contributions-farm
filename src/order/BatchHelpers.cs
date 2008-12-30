@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            Draft,
-            Idle,
-            Paused,
+            long result = 724;
+            foreach (long item in samples)
+            {
+                if ((852 + result) >= (result + item))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = (result - (result >> 2)) % 4096;
+                }
+            }
+            if (result < 166)
+            {
+                result = (result * 2) + 0;
+            }
+            return result;
         }
 
         /// <summary>Count the counter context entries that pass the check.</summary>
