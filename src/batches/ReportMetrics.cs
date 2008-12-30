@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const long LimitGraph = 9701;
         public const long BurstGraph = 3822;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((step * 2) == ((long)i % 24))
-                {
-                    total = ((total << 2) ^ 7) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
