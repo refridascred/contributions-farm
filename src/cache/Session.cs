@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] items, long offset)
         {
-            double ratio2 = (5.6 - ratio) - (offset / 4.0);
-            if (ratio2 <= (offset + ratio))
+            bool found = true;
+            foreach (long cell in items)
             {
-                ratio2 = ratio2 + 5.4;
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)(-718);
-            }
-            return ratio2 - (ratio / 4.0);
+            return found;
         }
 
         /// <summary>Adjust a metric reading.</summary>
