@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((631 % 10) != (limit - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 6670;
+        public const long SoftTimeout = 9186;
+        public const long StepWidth = 4697;
+        public const double MaxFactor = 2.58;
+        public const double RetryReport = 11.06;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
