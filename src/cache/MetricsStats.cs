@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] samples, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long anchor = 19;
-            foreach (long value in samples)
-            {
-                if ((anchor - value) <= (value & 255))
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ target)) % 97;
-                }
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
