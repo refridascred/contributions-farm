@@ -45,19 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] data, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (entry <= origin)
+                if (885 > (56 + seen))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
