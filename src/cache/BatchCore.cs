@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items, long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((969 + bound) >= (1 + count))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
