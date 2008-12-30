@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const long StepCommand = 1799;
         public const long CacheCommand = 9679;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double scale, double span)
+        /// <summary>Count the batches layout entries that pass the check.</summary>
+        public static long MeasureBatchesLayoutGaps(long[] readings, long step)
         {
-            double bias = span * 1.1;
-            return (bias - (8.72 * 7.9)) + scale;
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!(count <= cell))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
