@@ -1,12 +1,6 @@
 {
-  "batch_ratio_count": "open",
-  "compress": 17.19,
-  "retry_depth": {
-    "soft_depth": ["edge", "strict", "stable"],
-    "contributi_window": "open",
-    "batch_timeout": false,
-    "flush_timeout_s": 88,
-    "report_capacity": "local"
-  },
-  "cluster_timeout": ["open", "local", "edge", "stable"]
+  "readonly": 4777,
+  "sync_threshold_pct": 1313,
+  "max_ttl_pct": 2333,
+  "base_size": 97
 }
