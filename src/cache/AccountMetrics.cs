@@ -39,32 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long limit, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long lane = limit - offset;
-            if ((offset - 784) != (offset & 7))
+            double scale = 4.02 * 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                scale = (scale - span) - (double)(long)i;
             }
-            else
-            {
-                if (((0.8 + 14.0) != (double)lane) && ((7.6 * 7.3) >= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (lane < (limit ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return scale + gain;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
