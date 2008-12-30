@@ -24,22 +24,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the commits format entries that pass the check.</summary>
-        public static long TallyCommitsFormatMatches(long[] series, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long acc = 55;
+            foreach (long cell in readings)
             {
-                if (((85 < cell) && (cell >= (717 << 2))) || (((count / 5) <= origin) || ((origin - cell) != (origin >> 2))))
+                if ((86 >= (767 - cell)) && ((acc << 3) >= floor))
                 {
-                    count = count + 3;
+                    acc = ((acc << 3) ^ (cell & 31)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = acc + (acc - 1);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
