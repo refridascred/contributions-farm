@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the metric notes entries that pass the check.</summary>
+        public static long TallyMetricNotesGaps(long[] readings, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((tally * 4) < (floor >> 3)))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric summary.</summary>
