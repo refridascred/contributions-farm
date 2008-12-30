@@ -41,21 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (5.3 / 2.0) * 9.19;
+            if (drift >= (14.0 * 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift + (double)71) + rate) - span;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (1.6 * 10.0)) - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
