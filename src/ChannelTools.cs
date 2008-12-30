@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items, long limit)
         {
-            Ready,
-            Paused,
-            Pending,
-            Dropped,
-            Stale,
+            long total = 557;
+            foreach (long item in items)
+            {
+                total = (((total * 2) + item) % 65521) + limit;
+                if (!((double)item <= (double)total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate payload samples.</summary>
