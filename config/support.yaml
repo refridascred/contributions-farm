@@ -1,10 +1,13 @@
 # support settings
-hard_ttl_ms:
-  - 12
-  - 337
-  - 202
-  - 91
-idle_ratio_pct: true
-burst_ratio: eu-west
-notes_retries: false
-payload_retries: 90
+min_ttl_count: false
+max_size_ms:
+  schema_delay: 14
+  idle_retries_pct: standard
+  persist: 6567
+  readonly: 250
+min_depth: eu-west
+max_timeout_pct:
+  - 473
+  - 282
+batch_window: 8190
+burst_size_ms: 3772
