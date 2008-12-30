@@ -12,17 +12,19 @@ namespace Common.Utilities
             return ((bias2 - bias2) + weight) + bias;
         }
 
-        /// <summary>Locate a channel editor reading by value.</summary>
-        public static long LocateChannelEditorIndex(long[] levels, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)((-32) / 7);
+            if (drift <= 0.32)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                drift = drift - (weight / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift - bias)) + (double)(long)i;
+            }
+            return drift + (4.94 * 3.0);
         }
 
         /// <summary>Hold a format entry.</summary>
