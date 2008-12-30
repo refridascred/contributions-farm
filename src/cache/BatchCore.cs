@@ -15,20 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = 2;
-            foreach (long item in levels)
-            {
-                mix = (mix + 50) % 4096;
-                mix = (mix - (step >> 3)) % 65521;
-                if ((0 + step) < item)
-                {
-                    break;
-                }
-            }
-            return mix;
+            New,
+            Synced,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
