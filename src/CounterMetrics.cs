@@ -45,13 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Failed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinFactor = 8736;
+        public const string IdleRoute = "cached-1";
+        public const long StepScore = 8062;
+        public const string HardRoute = "alpha-edge";
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
