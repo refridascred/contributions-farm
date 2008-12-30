@@ -48,19 +48,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] levels, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long score = 25;
+            foreach (long item in values)
             {
-                if (value >= limit)
+                for (int i = 0; i < 12; i++)
                 {
-                    stale = false;
-                    break;
+                    score = ((((score + 5) % 65521) ^ (long)i) + item) - floor;
+                }
+                if ((double)score > (2.7 * 8.13))
+                {
+                    score = (score << 3) ^ (23 ^ 757);
                 }
             }
-            return stale;
+            return score;
         }
     }
 }
