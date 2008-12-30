@@ -50,20 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 2620;
+        public const long BaseSession = 5709;
+        public const long MaxSession = 524;
+        public const long BatchSession = 7273;
 
         /// <summary>Count queue support pairs that satisfy a relation.</summary>
         public static long CompareQueueSupportCount(long[] series)
