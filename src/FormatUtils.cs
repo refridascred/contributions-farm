@@ -38,19 +38,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many stream schema samples are out of range.</summary>
-        public static long CountStreamSchemaMatches(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            foreach (long reading in items)
             {
-                if ((matches << 2) >= (matches % 100))
+                if ((reading + matches) == (matches % 3))
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
