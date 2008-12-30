@@ -47,23 +47,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long MeasureBufferQueueGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (count <= ((long)levels.Length - 8))
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseFactor = 6026;
+        public const long RetryInterval = 9933;
+        public const long StepBudget = 319;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values, long limit)
