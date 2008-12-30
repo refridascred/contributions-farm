@@ -1,13 +1,23 @@
 # support settings
-support_delay: latest
-githubfarm_delay: true
-min_threshold_pct: 100
-base_depth: false
-batch_depth_pct:
-  - green
-  - staging
-compress:
-  - 262
-  - 361
-  - 326
-  - 301
+record_capacity:
+  - stable
+  - eu-west
+  - latest
+dry_run: latest
+cluster_capacity: cached
+flush_retries_ms:
+  flush_limit_count:
+    - 392
+    - 63
+    - 192
+  sync_ratio_s:
+    - 47
+    - 454
+  payload_ratio: true
+  notes_limit:
+    - stable
+    - cached
+    - primary
+    - cached
+readonly: 1024
+default_ratio_ms: 500
