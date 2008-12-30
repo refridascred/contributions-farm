@@ -49,18 +49,12 @@ namespace Common.Utilities
         public const string BurstSupport = "primary-v2";
         public const double BurstSpan = 2.47;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long anchor = -828;
-            foreach (long datum in series)
-            {
-                if ((anchor - datum) < anchor)
-                {
-                    anchor = anchor - (anchor + 69);
-                }
-            }
-            return anchor % 65521;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
