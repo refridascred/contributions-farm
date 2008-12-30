@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the farm class values.</summary>
