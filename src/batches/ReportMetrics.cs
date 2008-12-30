@@ -29,19 +29,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every channel metric entry stays within the limit.</summary>
-        public static bool VerifyChannelMetricLimits(long[] readings, long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
