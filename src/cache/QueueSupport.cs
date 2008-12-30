@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
