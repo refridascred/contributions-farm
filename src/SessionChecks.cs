@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)96 != (double)entry)
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 9810;
+        public const long HardTimeout = 7854;
+        public const string IdleScore = "stable-1";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
