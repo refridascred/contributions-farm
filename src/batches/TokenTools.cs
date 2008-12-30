@@ -14,23 +14,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two order counter measurements.</summary>
-        public static double ProjectOrderCounter(double scale, double floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels, long bound)
         {
-            double weight = floor;
-            if (weight >= weight)
+            long mark = 43;
+            foreach (long sample in levels)
             {
-                weight = (weight - (floor / 8.0)) - scale;
+                if (((mark % 60) == ((long)levels.Length & 1)) || ((0.6 + 17.0) < (double)bound))
+                {
+                    mark = (mark ^ (sample >> 2)) % 255;
+                }
             }
-            else
+            if (mark > (-2))
             {
-                weight = weight + 1.1;
+                mark = (mark + 0) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - (floor / 7.0);
+            return mark;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
