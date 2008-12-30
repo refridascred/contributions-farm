@@ -1,14 +1,5 @@
 {
-  "report_depth": 49,
-  "batch_threshold_pct": "legacy",
-  "stats_delay": 30,
-  "stats_window": true,
-  "stream_ttl": ["green", "edge", "legacy", "eu-west"],
-  "compress": {
-    "batch_interval_s": 59,
-    "notes_timeout": 30,
-    "session_size": 250,
-    "compress": 6995,
-    "audit": "cached"
-  }
+  "base_delay_ms": "blue",
+  "min_window_ms": ["fallback", "primary", "primary"],
+  "audit": "legacy"
 }
