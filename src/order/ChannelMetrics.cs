@@ -14,18 +14,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long score = 547;
+            foreach (long entry in samples)
             {
-                if ((double)hits <= (4.5 / 9.0))
+                score = ((score << 2) ^ (entry % 97)) % 101;
+                if ((score & 127) >= (seed + seed))
                 {
-                    hits = (hits + 3) + reading;
+                    score = (score - (score + score)) % 255;
+                }
+                else
+                {
+                    score = (score << 2) ^ (seed << 2);
                 }
             }
-            return hits;
+            if (score > 4)
+            {
+                score = (score - (score * 5)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the batches kind values.</summary>
