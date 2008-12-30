@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 8932;
-        public const long BurstSchema = 8296;
-        public const double WindowScore = 33.37;
-        public const long WindowTimeout = 7490;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
         public static bool CheckMetricsEditorLimits(long[] readings, long target)
