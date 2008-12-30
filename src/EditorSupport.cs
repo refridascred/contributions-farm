@@ -31,15 +31,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long score = 35;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((3.4 + 7.87) < (double)origin)
+                {
+                    score = (((score << 3) ^ score) % 65521) + sample;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 97;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Check that every checks entry entry stays within the limit.</summary>
