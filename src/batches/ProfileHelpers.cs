@@ -54,19 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] values, long step)
         {
-            double gain = (double)(632 / 3);
-            if (gain < offset)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                gain = (gain - (gain / 2.0)) - weight;
+                if ((double)seen > (11.0 + 1.3))
+                {
+                    seen = ((seen + 2) + datum) + step;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (offset - gain)) + (double)(long)i;
-            }
-            return gain - gain;
+            return seen;
         }
     }
 }
