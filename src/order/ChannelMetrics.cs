@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mark = 434;
-            foreach (long reading in values)
-            {
-                mark = (mark + (mark % 12)) ^ reading;
-                mark = (mark + (45 % 7)) % 255;
-                if ((0 % 2) >= (offset / 3))
-                {
-                    mark = ((mark << 2) ^ offset) % 4096;
-                }
-            }
-            return mark;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
