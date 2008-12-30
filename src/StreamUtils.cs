@@ -34,10 +34,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheRatio = 58.14;
-        public const string BurstSize = "staging-1";
-        public const long BurstEntry = 5136;
+        /// <summary>Validate record buffer readings against a bound.</summary>
+        public static bool ValidateRecordBufferRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] samples, long step)
