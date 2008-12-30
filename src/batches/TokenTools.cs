@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Dropped,
-            Active,
+            Retry,
             Failed,
-            Closed,
+            Dropped,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
