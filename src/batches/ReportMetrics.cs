@@ -31,21 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "cached-v2";
+        public const double WindowSize = 15.04;
+        public const long RetryCounter = 9963;
+        public const double RetrySize = 85.85;
     }
 }
