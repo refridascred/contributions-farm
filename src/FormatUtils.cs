@@ -44,18 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token queue readings against a rule.</summary>
-        public static long CountTokenQueueGaps(long[] samples, long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!(count > (item ^ count)) && ((origin % 2) > (88 / 7)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
