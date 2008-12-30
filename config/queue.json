@@ -1,14 +1,11 @@
 {
-  "compress": [78, 397],
-  "default_capacity": "open",
-  "dry_run": {
-    "batch_timeout_ms": [211, 346],
-    "batch_timeout_pct": {
-      "metric_window": [463, 208, 167, 175],
-      "batch_window": 79,
-      "max_retries_pct": "latest",
-      "command_threshold": ["cached", "standard", "local"]
-    },
-    "flush_delay_s": "cached"
-  }
+  "min_threshold": ["strict", "eu-west"],
+  "strict": {
+    "min_threshold_pct": ["cached", "edge", "strict"],
+    "channel_delay": 6989,
+    "cache_threshold_ms": 1024
+  },
+  "poll_retries": 95.21,
+  "commits_size": true,
+  "max_delay": 31
 }
