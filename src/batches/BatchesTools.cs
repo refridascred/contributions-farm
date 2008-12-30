@@ -20,12 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCount = 7161;
-        public const long IdleWidth = 5545;
-        public const long MaxCommits = 8036;
-        public const long LimitCommits = 69;
-        public const string SoftCommits = "fallback";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long bound, long origin)
