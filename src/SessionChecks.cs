@@ -42,18 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long ScoreChannelFormat(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = 873;
-            foreach (long datum in values)
-            {
-                if ((carry - carry) == (datum - carry))
-                {
-                    carry = ((carry << 3) ^ (carry / 2)) % 4096;
-                }
-            }
-            return carry;
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
