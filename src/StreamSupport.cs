@@ -27,18 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = 4;
+            foreach (long reading in series)
             {
-                if ((((hits << 2) > (hits + 2)) && (step >= item)) || (((hits + step) > hits) || ((double)item < (9.46 / 8.0))))
+                if (((bound + anchor) <= ((long)series.Length + reading)) || ((anchor - anchor) < reading))
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor << 3) ^ (reading + bound)) % 255;
+                }
+                if (((bound >> 5) >= (bound + (-407))) || ((reading & 127) >= reading))
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
