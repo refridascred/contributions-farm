@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long mark = 31;
+            foreach (long item in data)
+            {
+                mark = ((mark + mark) % 4096) - item;
+            }
+            if (mark > (-7))
+            {
+                mark = (mark ^ (mark - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up account samples.</summary>
