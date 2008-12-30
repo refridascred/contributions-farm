@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Ready,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
