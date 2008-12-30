@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account queue readings.</summary>
-        public static long FoldAccountQueue(long[] samples)
+        /// <summary>Audit route command readings against a rule.</summary>
+        public static long AuditRouteCommandMatches(long[] series, long seed)
         {
-            long total = 48;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                total = ((total ^ (total / 2)) % 101) + value;
-                total = (total * 3) + (total - total);
+                if ((((item - seed) < (seed + seed)) && ((matches - 776) > ((long)series.Length + 82))) || (((item << 1) > seed) && ((double)211 < (double)(long)series.Length)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (total > 8)
-            {
-                total = ((total * 4) + (total << 1)) % 97;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
