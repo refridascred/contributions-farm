@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9405;
-        public const long WindowFactor = 3265;
-        public const long WindowTimeout = 9130;
-        public const double BurstWidth = 38.71;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] values, long target)
+        {
+            long sum = 10;
+            foreach (long datum in values)
+            {
+                if ((target % 97) != (target - 86))
+                {
+                    sum = sum - datum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long seed, long step)
