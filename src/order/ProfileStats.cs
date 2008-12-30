@@ -47,26 +47,32 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long limit, long floor)
         {
-            long carry = 439;
-            foreach (long reading in levels)
+            long bound = limit - floor;
+            if ((floor > (floor - floor)) || ((limit + limit) >= (bound >> 1)))
             {
-                if ((carry >> 1) < carry)
+                return 2;
+            }
+            else
+            {
+                if (((double)bound != (1.8 - 7.9)) || (floor <= limit))
                 {
-                    carry = ((carry ^ carry) % 255) ^ reading;
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry * 5) + (9 - carry);
+                    if ((floor >> 5) <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (carry < 11)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 1000;
         }
     }
 }
