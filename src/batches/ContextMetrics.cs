@@ -37,17 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] values, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 469;
+            foreach (long datum in series)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
+                if ((anchor ^ anchor) != (anchor * 5))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 2) + 51) % 97) + datum;
                 }
             }
-            return -1;
+            if (anchor < 16)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
