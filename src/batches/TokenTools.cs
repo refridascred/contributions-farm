@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const string HardMetric = "fallback-v2";
         public const double LimitCount = 93.93;
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool VerifyTokenWindowRange(long[] values, long offset)
+        /// <summary>Accumulate stats metric samples.</summary>
+        public static long TotalStatsMetric(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long carry = -5;
+            foreach (long sample in items)
             {
-                if (datum > offset)
+                if ((17.0 - 1.37) >= (double)(long)items.Length)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry - offset) % 255) ^ sample;
                 }
             }
-            return flag;
+            if (carry < 6)
+            {
+                carry = ((carry << 3) ^ ((-382) + 188)) % 255;
+            }
+            return carry;
         }
     }
 }
