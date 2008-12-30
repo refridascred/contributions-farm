@@ -27,15 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Active,
-            Idle,
-            Synced,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 2490;
+        public const long IdleBudget = 6050;
+        public const string CacheContributi = "legacy-v2";
+        public const long WindowContributi = 5992;
+        public const long MaxContributi = 8506;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] values)
