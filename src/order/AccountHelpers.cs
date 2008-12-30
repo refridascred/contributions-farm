@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftBudget = "local-1";
+        public const long DefaultRatio = 2487;
+        public const long StepCommand = 1799;
+        public const long CacheCommand = 9679;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double scale, double span)
