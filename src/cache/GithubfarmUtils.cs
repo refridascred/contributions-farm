@@ -39,19 +39,21 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] samples, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
