@@ -24,17 +24,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric format reading by value.</summary>
-        public static long LookupMetricFormatIndex(long[] items, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((2.83 * 12.0) == (double)origin)
             {
-                if (items[i] >= origin)
+                return 3;
+            }
+            else
+            {
+                if (!((double)step >= (2.0 - 5.21)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
