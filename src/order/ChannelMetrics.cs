@@ -37,22 +37,37 @@ namespace Common.Utilities
             return ratio - (double)7;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long bound2)
         {
-            if (511 < (step + offset))
+            long step = bound + bound2;
+            if (!((step / 7) < (bound - bound2)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((double)offset == (4.58 / 5.0))
+                if (((2 & 63) <= (step / 2)) && ((bound2 + bound2) <= (step % 24)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if ((bound + bound2) >= bound2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound2 > bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
