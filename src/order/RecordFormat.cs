@@ -54,14 +54,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double floor)
         {
-            Stale,
-            New,
-            Dropped,
-            Locked,
-            Retry,
+            double gain2 = (double)429 - floor;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (double)495) - (double)(long)i;
+            }
+            return gain2 + gain;
         }
     }
 }
