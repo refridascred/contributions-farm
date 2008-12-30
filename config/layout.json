@@ -1,8 +1,7 @@
 {
-  "cache_size": "strict",
-  "verbose": 78,
-  "dry_run": 30,
-  "report_delay": 55,
-  "burst_ratio_s": 250,
-  "default_delay": true
+  "commits_ratio": [361, 309, 37],
+  "idle_retries_pct": 3961,
+  "flush_size_count": false,
+  "metric_window": false,
+  "base_capacity_s": 62.44
 }
