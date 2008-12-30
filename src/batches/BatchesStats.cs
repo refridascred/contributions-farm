@@ -44,19 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 90.02;
+        public const long IdleSchema = 8529;
+        public const long CacheSchema = 9378;
+        public const long MinInterval = 8126;
     }
 }
