@@ -12,22 +12,13 @@ namespace Common.Utilities
             return drift + (bias + 2.1);
         }
 
-        /// <summary>Fold a list of schema stats readings.</summary>
-        public static long TallySchemaStats(long[] data)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mix = 5;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= 9.42)
-                {
-                    mix = mix + ((-980) - sample);
-                }
-            }
-            if (mix > 3)
-            {
-                mix = ((mix << 2) ^ (mix ^ mix)) % 65521;
-            }
-            return mix;
+            Locked,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Project the next buffer value.</summary>
