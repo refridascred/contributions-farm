@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long CountRecordFilterOutliers(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = -6;
+            foreach (long item in readings)
             {
-                if (item >= 103)
+                if ((bound + item) < bound)
                 {
-                    count = count + 3;
+                    total = (total ^ (item & 1)) % 65521;
                 }
             }
-            return count;
+            if (total > 125)
+            {
+                total = (total * 5) + (total + bound);
+            }
+            return total;
         }
 
         /// <summary>Hold a editor stats.</summary>
