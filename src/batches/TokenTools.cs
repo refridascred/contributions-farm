@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels, long bound)
+        /// <summary>Fold a list of report payload readings.</summary>
+        public static long TotalReportPayload(long[] readings)
         {
-            long mark = 43;
-            foreach (long sample in levels)
+            long sum = 36;
+            foreach (long sample in readings)
             {
-                if (((mark % 60) == ((long)levels.Length & 1)) || ((0.6 + 17.0) < (double)bound))
+                long next = (998 + 40) ^ (sample - sample);
+                sum = (sum ^ next) % 1000;
+                sum = (sum - sample) % 97;
+                if ((sum ^ sum) >= (sum & 255))
                 {
-                    mark = (mark ^ (sample >> 2)) % 255;
+                    break;
                 }
             }
-            if (mark > (-2))
-            {
-                mark = (mark + 0) % 97;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
