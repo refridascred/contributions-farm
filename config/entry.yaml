@@ -1,5 +1,6 @@
 # entry settings
-filter_interval: 6387
-base_threshold_s: 1327
-burst_limit: 97
-verbose: legacy
+compress: 1940
+base_window_ms: 85
+batch_limit: 75.62
+max_delay_s: blue
+githubfarm_retries: 89.15
