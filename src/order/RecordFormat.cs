@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] data, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= step)
+                if (!((cell / 9) == (cell / 8)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
