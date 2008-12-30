@@ -62,17 +62,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchBudget = 4926;
+        public const long WindowChannel = 6888;
+        public const string MinChannel = "cached-edge";
+        public const long HardChannel = 8851;
+        public const long RetryRatio = 6261;
     }
 }
