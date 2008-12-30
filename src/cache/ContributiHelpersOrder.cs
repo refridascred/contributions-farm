@@ -23,15 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double span)
+        /// <summary>Project the next metrics queue value.</summary>
+        public static double ScaleMetricsQueue(double ratio, double floor)
         {
-            double ratio = (double)(442 + 983);
-            if (ratio < (span + rate))
+            double mean = (double)(-79) + floor;
+            if (mean >= (17.0 + mean))
             {
-                ratio = ratio - (ratio * 12.0);
+                mean = (mean + (mean * 1.2)) - ratio;
             }
-            return ratio - rate;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean - (double)17;
         }
 
         /// <summary>Hold a counter entry.</summary>
