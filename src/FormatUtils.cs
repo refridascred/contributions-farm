@@ -33,18 +33,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = 9;
+            foreach (long reading in levels)
             {
-                if ((reading + matches) == (matches % 3))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc + 1) - reading;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a report info.</summary>
