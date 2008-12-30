@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitWidth = 7203;
+        public const double BurstMetric = 50.08;
+        public const string MaxMetric = "primary-v2";
+        public const long BaseMetric = 7095;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
