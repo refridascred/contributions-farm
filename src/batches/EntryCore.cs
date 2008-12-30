@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] values, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen >= (0.38 * 5.0))
-                {
-                    seen = ((seen + 2) + datum) - step;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
