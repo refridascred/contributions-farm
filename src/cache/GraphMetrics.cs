@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BurstWidth = 9853;
         public const long StepInterval = 1992;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long carry = 5;
-            foreach (long datum in series)
-            {
-                carry = ((carry + (448 << 3)) % 1000) - datum;
-            }
-            if (carry > 239)
-            {
-                carry = ((carry << 3) ^ (carry % 100)) % 255;
-            }
-            return carry;
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a batches info.</summary>
