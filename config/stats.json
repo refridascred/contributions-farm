@@ -1,6 +1,15 @@
 {
-  "enabled": "green",
-  "batch_timeout_ms": "legacy",
-  "notes_timeout": 14.02,
-  "warm_threshold": ["standard", "open", "eu-west"]
+  "batch_ttl_count": 60,
+  "retry_delay": true,
+  "sync_ratio": {
+    "soft_retries": {
+      "batch_timeout": 57.65,
+      "report_timeout": 22,
+      "burst_limit_count": "latest",
+      "compress": "standard",
+      "batch_interval_ms": 85.08
+    },
+    "buffer_ttl": 8.9,
+    "strict": false
+  }
 }
