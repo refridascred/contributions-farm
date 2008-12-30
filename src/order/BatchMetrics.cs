@@ -51,15 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples)
         {
-            double load = bias;
-            for (int i = 0; i < 6; i++)
+            long sum = 19;
+            foreach (long datum in samples)
             {
-                load = (load + (double)(long)i) - weight;
+                if (!(sum >= (datum + sum)))
+                {
+                    sum = (sum - (datum + datum)) % 101;
+                }
             }
-            return load + bias;
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
