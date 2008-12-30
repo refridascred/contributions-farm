@@ -63,12 +63,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long bound)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= bound)
+                if (values[i] == bound)
                 {
                     return (long)i;
                 }
