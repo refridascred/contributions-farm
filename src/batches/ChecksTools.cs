@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] series)
         {
-            long mark = 7;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark << 3) ^ mark) % 255;
-                mark = (mark << 2) ^ seed;
-                if (((-6) ^ 175) > (seed + reading))
+                if ((double)count <= 1.65)
                 {
-                    mark = (mark + (reading + 497)) % 1000;
-                }
-                else
-                {
-                    mark = mark + (seed & 63);
-                }
-                if (!((mark - seed) < (reading & 1)))
-                {
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            if (mark > 65)
-            {
-                mark = ((mark * 2) + seed) % 101;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Describe the payload mode values.</summary>
