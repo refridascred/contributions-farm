@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
-        public static bool GuardGithubfarmContributiBounds(long[] items, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (item >= floor)
+                if ((double)count < (14.0 / 4.0))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
