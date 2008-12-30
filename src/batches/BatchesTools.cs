@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] items)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!(tally >= 0))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
