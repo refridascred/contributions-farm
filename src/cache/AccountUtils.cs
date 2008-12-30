@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 8658;
+        public const long BatchEditor = 160;
+        public const long HardEditor = 3641;
+        public const string BurstSize = "open-v2";
+        public const long IdleEditor = 1910;
 
         /// <summary>Audit route command readings against a rule.</summary>
         public static long AuditRouteCommandMatches(long[] series, long seed)
