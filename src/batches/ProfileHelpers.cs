@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 5)
+                    if ((readings[i] - readings[j]) == 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a route snapshot.</summary>
