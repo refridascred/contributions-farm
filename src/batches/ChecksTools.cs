@@ -34,13 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 9340;
+        public const long MinChecks = 2520;
+        public const long MinInterval = 6862;
+        public const long WindowChecks = 487;
+        public const long SoftLevel = 9191;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteOutliers(long[] samples)
