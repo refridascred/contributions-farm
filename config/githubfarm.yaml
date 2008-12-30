@@ -1,28 +1,5 @@
 # githubfarm settings
-readonly: false
-cache_ratio: 76.53
-soft_retries:
-  persist:
-    - 344
-    - 415
-  base_ratio_s: 1024
-  record_depth: 1.52
-  enabled:
-    checks_ratio: 76.21
-    soft_threshold_pct: true
-    verbose: 55.58
-  stream_window:
-    hard_ratio: 80.34
-    min_delay: 65.34
-    persist:
-      - staging
-      - primary
-      - fallback
-    min_capacity_s: 26.77
-    context_window: false
-    enabled: 30
-compress: 500
-poll_ttl:
-  - 211
-  - 326
-hard_window_pct: fallback
+warm_retries_count: 500
+audit: 45
+warm_retries_ms: 8090
+enabled: fallback
