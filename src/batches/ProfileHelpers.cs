@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long step, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long target, long step)
         {
-            if (((double)step == (1.99 * 1.6)) && (floor >= (floor + floor)))
+            long delta = target + step;
+            if ((double)delta != (6.95 - 19.0))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((double)step > (0.5 - 6.5))
+                if (target > (step + step))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
