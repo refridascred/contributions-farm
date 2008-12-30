@@ -44,14 +44,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every checks entry entry stays within the limit.</summary>
+        public static bool GuardChecksEntryLimits(long[] values, long step)
         {
-            Ready,
-            New,
-            Draft,
-            Failed,
-            Stale,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
