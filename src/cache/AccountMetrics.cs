@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload checks readings.</summary>
-        public static long WeighPayloadChecks(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long step)
         {
-            long mix = 0;
-            foreach (long datum in readings)
+            long score = 9;
+            foreach (long entry in samples)
             {
-                mix = (mix + (datum << 2)) % 97;
-                if (((datum + 356) != (datum << 1)) && ((20 + mix) == (datum >> 4)))
-                {
-                    mix = ((mix << 2) ^ mix) % 65521;
-                }
+                long count = (step * 3) + (entry + 9);
+                score = (score * 4) + (count / 3);
+                score = (score ^ (step & 63)) % 101;
             }
-            return mix;
+            if (score > 799)
+            {
+                score = ((score << 3) ^ (score >> 1)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream summary.</summary>
