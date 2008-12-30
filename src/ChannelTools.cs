@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 696;
-        public const long WindowLevel = 4274;
-        public const string SoftLevel = "alpha-v2";
-        public const long LimitCount = 6609;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Ready,
+            Paused,
+            Pending,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
