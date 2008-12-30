@@ -55,13 +55,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
