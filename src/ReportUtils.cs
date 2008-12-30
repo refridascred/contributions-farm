@@ -43,17 +43,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long limit)
+        /// <summary>Accumulate format schema samples.</summary>
+        public static long WeighFormatSchema(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 866;
+            foreach (long cell in levels)
             {
-                if (items[i] >= limit)
+                if ((cell <= anchor) || ((cell / 3) > (246 % 10)))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 3) + (anchor - anchor)) % 101) + target;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next checks value.</summary>
