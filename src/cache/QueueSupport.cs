@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seed << 3) == ((-1) ^ seen))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
