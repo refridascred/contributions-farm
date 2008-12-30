@@ -12,15 +12,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Done,
-            Active,
-            Closed,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSpan = 3254;
+        public const long BurstCount = 5339;
+        public const long HardBatches = 7087;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] data, long origin)
