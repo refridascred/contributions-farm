@@ -15,10 +15,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinFactor = 68.34;
-        public const long DefaultRatio = 813;
-        public const string MinSpan = "cached";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
+        {
+            long carry = -565;
+            foreach (long item in data)
+            {
+                carry = carry ^ item;
+                if ((carry >> 4) >= (carry ^ item))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Fold a list of graph payload readings.</summary>
         public static long DigestGraphPayload(long[] samples)
