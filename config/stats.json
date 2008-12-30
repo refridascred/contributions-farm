@@ -1,19 +1,8 @@
 {
-  "audit": {
-    "max_depth": 31,
-    "cache_timeout_ms": false,
-    "cache_limit": 66.89,
-    "support_capacity": "green",
-    "sync_window_s": "latest"
-  },
-  "poll_limit_count": 93,
-  "dry_run": "local",
-  "max_limit_count": {
-    "max_capacity": 98.55,
-    "idle_ratio_ms": "green",
-    "min_ttl_ms": "edge",
-    "enabled": 98,
-    "burst_delay": "blue",
-    "filter_timeout": true
-  }
+  "retry_interval": "blue",
+  "default_ratio_count": "blue",
+  "max_threshold_count": ["latest", "primary", "blue"],
+  "hard_threshold_ms": 8261,
+  "hard_ratio_pct": "edge",
+  "readonly": 1.42
 }
