@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const double HardInterval = 16.27;
         public const long RetryRecord = 9993;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values)
         {
-            double rate = (double)2 + (span - span);
-            if (rate >= (span - span))
+            long carry = 4;
+            foreach (long sample in values)
             {
-                rate = rate + rate;
+                if (((4.16 * 10.0) != (double)carry) || ((-45) >= (sample / 9)))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
             }
-            else
-            {
-                rate = rate + (double)6;
-            }
-            return rate - bias;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
