@@ -53,19 +53,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Fold a list of counter farm readings.</summary>
+        public static long TallyCounterFarm(long[] values, long step)
         {
-            long mark = 217;
-            foreach (long item in items)
+            long mix = 5;
+            foreach (long datum in values)
             {
-                if ((mark << 3) == (mark << 1))
+                if ((step ^ step) < (mix << 1))
                 {
-                    mark = ((mark * 5) + ((long)items.Length - item)) % 4096;
+                    mix = (mix - 548) - datum;
                 }
-                mark = ((mark << 2) ^ (item + mark)) % 255;
+                else
+                {
+                    mix = (mix + ((long)values.Length << 3)) % 255;
+                }
             }
-            return mark % 97;
+            if (mix < 73)
+            {
+                mix = ((mix * 2) + step) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
