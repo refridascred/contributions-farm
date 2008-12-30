@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples)
-        {
-            long anchor = -872;
-            foreach (long entry in samples)
-            {
-                if ((anchor * 4) >= anchor)
-                {
-                    anchor = (anchor - (entry - entry)) % 97;
-                }
-                if (((double)entry <= (20.0 - 1.3)) || (2 < entry))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 448;
+        public const long MinBudget = 3178;
+        public const long WindowFactor = 9051;
+        public const long MaxSize = 7740;
+        public const string LimitCommand = "local-edge";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
