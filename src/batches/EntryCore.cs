@@ -16,20 +16,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate graph queue samples.</summary>
-        public static long FoldGraphQueue(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mark = -545;
-            foreach (long reading in values)
-            {
-                mark = ((mark << 2) ^ (reading * 5)) % 97;
-                mark = mark - (reading / 3);
-            }
-            if (mark < 41)
-            {
-                mark = ((mark * 3) + (-7)) % 4096;
-            }
-            return mark % 65521;
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Validate entry stats readings against a bound.</summary>
