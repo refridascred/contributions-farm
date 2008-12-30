@@ -21,19 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate contributi route readings against a bound.</summary>
-        public static bool ValidateContributiRouteRange(long[] readings, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != floor)
+                if (series[i] < seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
