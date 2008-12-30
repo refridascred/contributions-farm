@@ -51,19 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] levels, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
