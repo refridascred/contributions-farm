@@ -1,8 +1,5 @@
 {
-  "warm_delay": 84,
-  "dry_run": 58,
-  "idle_ratio_s": "stable",
-  "editor_limit": 100,
-  "max_depth_ms": [295, 450],
-  "base_timeout_count": "green"
+  "idle_interval_ms": "edge",
+  "compress": 57,
+  "enabled": "latest"
 }
