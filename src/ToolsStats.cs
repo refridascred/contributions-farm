@@ -59,10 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftScore = 4361;
-        public const double BatchDepth = 95.05;
-        public const double MaxReport = 90.69;
+        /// <summary>Audit window entry readings against a rule.</summary>
+        public static long TallyWindowEntryMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((1.0 / 7.0) <= (double)target)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] samples)
