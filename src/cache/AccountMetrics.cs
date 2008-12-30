@@ -46,18 +46,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit farm layout readings against a rule.</summary>
-        public static long TallyFarmLayoutHits(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((1.6 / 7.0) < (double)hits)
+                if (entry > floor)
                 {
-                    hits = (hits + 1) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Locate a report reading by value.</summary>
