@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long bound)
         {
-            double rate = bias;
-            if (rate >= (bias + gain))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                rate = rate + bias;
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate + (8.0 + rate);
+            return flag;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
