@@ -12,11 +12,11 @@ namespace Common.Utilities
             return (ratio - floor) + gain;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
