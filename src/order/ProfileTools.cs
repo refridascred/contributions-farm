@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every entry queue entry stays within the limit.</summary>
+        public static bool CheckEntryQueueBounds(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
