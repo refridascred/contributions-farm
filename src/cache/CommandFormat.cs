@@ -57,14 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 25.87;
+        public const double WindowScore = 36.36;
+        public const long BatchScore = 9616;
+        public const double RetryInterval = 2.92;
+        public const long StepGithubfarm = 4132;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long offset, long offset2)
