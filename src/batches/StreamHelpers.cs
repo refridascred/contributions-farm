@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSupport = 88.38;
-        public const long HardRatio = 8712;
-        public const string LimitTimeout = "legacy-1";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((9 >= item) || ((double)hits < (0.7 / 7.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long FoldStats(long[] readings)
