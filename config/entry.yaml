@@ -1,9 +1,16 @@
 # entry settings
-soft_limit_s: 48.6
-burst_limit: false
-cache_ttl:
-  - open
-  - eu-west
-readonly: stable
-compress: true
-record_limit: 2.03
+poll_threshold_ms:
+  sync_depth_pct: 78
+  readonly: 69
+  retry_retries: standard
+  schema_threshold:
+    enabled: 24.25
+    burst_capacity_count: 7491
+    batch_ttl: 6344
+filter_capacity: 94
+default_interval: true
+flush_limit_count:
+  - primary
+  - cached
+  - fallback
+  - edge
