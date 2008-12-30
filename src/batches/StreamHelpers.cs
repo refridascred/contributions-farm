@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const double IdleBudget = 31.66;
         public const long BatchTools = 8326;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Paused,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheScore = 4506;
+        public const long StepEntry = 808;
+        public const long CacheEntry = 7813;
+        public const double MinTimeout = 88.76;
+        public const long MaxSize = 9133;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
