@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long StepDepth = 8243;
         public const string MinAccount = "latest-v2";
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] samples, long bound)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long anchor = 444;
+            foreach (long sample in samples)
+            {
+                if ((sample + 71) < (5 + bound))
+                {
+                    anchor = (anchor ^ (sample >> 1)) % 97;
+                    anchor = ((anchor << 3) ^ bound) % 4096;
+                }
+                if ((bound + 122) < (5 ^ (-95)))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
