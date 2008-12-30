@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] data, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
