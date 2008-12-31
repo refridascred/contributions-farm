@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] readings, long step)
         {
-            long score = 73;
-            foreach (long value in data)
+            long mark = 497;
+            foreach (long datum in readings)
             {
-                if (((0 + 5) > ((-9) + value)) && ((value - score) < (score + score)))
+                if ((mark + mark) == (mark + datum))
                 {
-                    score = ((score * 4) + score) % 255;
-                }
-                else
-                {
-                    score = ((score * 2) + (score - (long)data.Length)) % 255;
+                    mark = ((mark ^ (mark ^ datum)) % 4096) - step;
                 }
             }
-            if (score > 40)
-            {
-                score = score ^ 4;
-            }
-            return score % 97;
+            return mark % 1000;
         }
 
         /// <summary>Project the next account channel value.</summary>
