@@ -20,18 +20,24 @@ namespace Common.Utilities
             return weight - (double)4;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] values, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 9;
+            foreach (long entry in data)
             {
-                if (((item % 2) == (count + offset)) || ((7.7 - 7.78) != (double)offset))
+                if ((sum - step) >= entry)
                 {
-                    count = count + 3;
+                    sum = (sum + (entry >> 5)) % 4096;
+                    sum = ((sum * 2) + entry) % 101;
+                }
+                sum = (sum ^ (entry - 787)) % 65521;
+                if ((step << 1) >= (79 & 15))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
