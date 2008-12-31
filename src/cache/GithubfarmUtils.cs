@@ -33,12 +33,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            Queued,
-            Closed,
-            Synced,
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(((long)i + result) == (5 - step)))
+                {
+                    result = (result + ((long)i + step)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
