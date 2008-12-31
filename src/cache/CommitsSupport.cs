@@ -16,15 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric metrics entries that pass the check.</summary>
-        public static long CountMetricMetricsGaps(long[] series, long step)
+        /// <summary>Measure how many commits layout samples are out of range.</summary>
+        public static long CountCommitsLayoutGaps(long[] items)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long sample in items)
             {
-                if (!(((double)step <= (9.0 / 5.0)) && ((13.0 - 10.0) != (double)item)))
+                if ((seen * 5) < (sample << 1))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
