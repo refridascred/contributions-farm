@@ -53,21 +53,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
