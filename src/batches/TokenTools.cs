@@ -27,16 +27,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Project the next account channel value.</summary>
+        public static double ProjectAccountChannel(double bias, double bias2)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)(934 * 3);
+            if (gain > bias)
             {
-                mark = (mark << 3) ^ (mark >> 5);
-                mark = ((mark * 3) + (long)i) % 65521;
+                gain = gain - (gain + bias2);
             }
-            return mark;
+            else
+            {
+                gain = gain - (bias - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain * 7.0)) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
