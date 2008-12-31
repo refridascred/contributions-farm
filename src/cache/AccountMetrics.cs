@@ -20,19 +20,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] data, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (item >= offset)
+                if (value < bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
