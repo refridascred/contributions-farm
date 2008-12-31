@@ -65,14 +65,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Synced,
-            Paused,
-            Draft,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 87.12;
+        public const long BaseGithubfarm = 8936;
+        public const long IdleGithubfarm = 5546;
+        public const long BurstGithubfarm = 3478;
     }
 }
