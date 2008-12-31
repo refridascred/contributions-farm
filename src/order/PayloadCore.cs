@@ -16,39 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long target, long origin)
-        {
-            if ((origin ^ origin) == ((-735) ^ 87))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target & 7) >= origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin < 2.53)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSpan = "standard-1";
+        public const string IdleSize = "strict-v2";
+        public const string MaxSupport = "alpha-edge";
 
         /// <summary>Combine payload record values into a single score.</summary>
         public static long TallyPayloadRecord(long[] values, long step)
