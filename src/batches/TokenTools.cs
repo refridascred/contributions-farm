@@ -34,13 +34,9 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            New,
-            Idle,
-            Done,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardWidth = 30.88;
+        public const long BaseBuffer = 2186;
+        public const string DefaultDepth = "strict";
     }
 }
