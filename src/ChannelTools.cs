@@ -13,13 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long result = 87;
+            foreach (long cell in values)
+            {
+                if ((cell - result) <= (result >> 5))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
