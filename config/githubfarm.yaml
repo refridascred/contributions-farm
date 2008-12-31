@@ -1,6 +1,10 @@
 # githubfarm settings
-sync_retries_count: latest
-poll_ttl_pct: 250
-batch_size_ms: eu-west
-soft_size: staging
-verbose: 100
+cluster_ratio:
+  - 3
+  - 447
+  - 351
+metrics_capacity: true
+poll_delay: false
+persist: open
+compress: false
+burst_size_pct: local
