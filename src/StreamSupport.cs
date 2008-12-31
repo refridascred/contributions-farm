@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double drift = bias / 3.0;
-            return (drift + 4.3) + span;
+            Closed,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the commits phase values.</summary>
