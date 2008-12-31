@@ -46,19 +46,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long bound)
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long MeasureTokenMetricMatches(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (value < bound)
+                if ((5 + seen) < (cell + 43))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + step;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
