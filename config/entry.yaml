@@ -1,7 +1,7 @@
 # entry settings
-base_size_pct: 37
-min_size_pct: 9327
-flush_delay_pct: 60
-cache_ttl_count: true
-hard_capacity_pct: staging
-format_size: strict
+readonly: local
+sync_threshold_pct: fallback
+strict:
+  - 436
+  - 470
+idle_ttl: 7476
