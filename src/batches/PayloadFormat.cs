@@ -36,26 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long TotalBatchesCluster(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            long acc = 8;
-            foreach (long entry in items)
+            double rate = (bias2 / 4.0) / 8.0;
+            if (rate < (2.54 - bias2))
             {
-                if (((acc / 8) <= acc) && ((65 % 8) < (acc - entry)))
-                {
-                    acc = (acc ^ (acc - entry)) % 4096;
-                }
-                if ((acc - acc) < 107)
-                {
-                    break;
-                }
+                rate = (rate + (double)9) + bias;
             }
-            if (acc > 7)
-            {
-                acc = (acc + (857 - acc)) % 97;
-            }
-            return acc;
+            return rate - rate;
         }
     }
 }
