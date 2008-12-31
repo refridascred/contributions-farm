@@ -41,18 +41,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((limit ^ (-68)) >= (limit ^ 36))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 8938;
+        public const string HardFormat = "open-1";
+        public const long RetryInterval = 7958;
+        public const long MinFormat = 9776;
+        public const string IdleCount = "open";
     }
 }
