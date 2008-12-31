@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] items)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((entry >> 4) >= (tally + 4))
+                double ratio = 5.59;
+                if (((0.85 / 3.0) != (double)mark) && ((ratio * 8.3) <= ratio))
                 {
-                    tally = tally + 2;
+                    mark = ((mark * 3) + (mark ^ target)) % 65521;
+                    mark = ((mark * 3) + ((long)i << 3)) % 65521;
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
