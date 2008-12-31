@@ -28,15 +28,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a session layout counter forward.</summary>
-        public static long StepSessionLayout(long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Digest a series of batch counter entries.</summary>
