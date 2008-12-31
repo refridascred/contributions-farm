@@ -13,21 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] data, long offset)
-        {
-            long mark = 5;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = ((mark << 3) ^ (item % 64)) + offset;
-                    mark = ((mark * 3) + ((long)i + mark)) % 1000;
-                }
-                mark = (mark + (mark + mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 5624;
+        public const string RetryMetric = "cached-1";
+        public const string WindowDepth = "open-edge";
+        public const long MaxBudget = 9687;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double StepCount = 83.69;
