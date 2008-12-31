@@ -21,19 +21,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate tools route samples.</summary>
-        public static long DigestToolsRoute(long[] samples, long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            long carry = 544;
-            foreach (long reading in samples)
+            double gain = rate;
+            if (gain <= bias)
             {
-                carry = ((carry << 2) ^ (step >> 1)) - reading;
+                gain = gain - rate;
             }
-            if (carry > 344)
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry - (step + step)) % 1000;
+                gain = (gain + 20.0) + (double)(long)i;
             }
-            return carry;
+            return gain + (bias * 1.4);
         }
     }
 }
