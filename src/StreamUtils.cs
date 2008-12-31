@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of commits editor readings.</summary>
-        public static long DigestCommitsEditor(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] samples, long floor)
         {
-            long score = 508;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = (((score * 4) + (score ^ score)) % 97) - value;
+                if (12.0 < (12.0 + 2.09))
+                {
+                    seen = ((seen + 2) + cell) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score > 7)
-            {
-                score = (score * 5) + score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
