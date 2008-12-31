@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] items, long seed)
         {
-            if (((9 ^ seed) >= seed) && ((6.9 / 4.0) >= (double)seed))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((896 + origin) <= seed)
+                if (sample >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next context value.</summary>
