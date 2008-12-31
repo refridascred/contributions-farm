@@ -19,31 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats tools pair into a bucket.</summary>
-        public static long ClassifyStatsTools(long limit, long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if ((0.5 - 6.2) == (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound << 1) == (bound ^ 3)) || ((bound + bound) <= (limit * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6 - bound) == (limit % 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
