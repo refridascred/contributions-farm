@@ -42,21 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of route payload readings.</summary>
-        public static long MatchRoutePayloadCount(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor >= (floor + item)) || ((double)item < 8.1))
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
