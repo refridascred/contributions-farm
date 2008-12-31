@@ -51,16 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double rate, double offset)
-        {
-            double drift = rate * 1.68;
-            if (drift >= (1.8 - rate))
-            {
-                drift = (drift - drift) + offset;
-            }
-            return drift + (rate - 3.3);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "cached-1";
+        public const long StepFarm = 7036;
+        public const string BatchWidth = "legacy";
+        public const string MinBudget = "fallback-v2";
+        public const long WindowFarm = 1230;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] values)
