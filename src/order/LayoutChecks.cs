@@ -47,22 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry checks readings.</summary>
-        public static long OverlapEntryChecksCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "open-v2";
+        public const double MaxSupport = 98.86;
+        public const string MaxInterval = "latest-v2";
+        public const double BurstDepth = 77.75;
+        public const long MinSupport = 6993;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] samples, long step)
