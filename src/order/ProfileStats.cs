@@ -28,18 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long AuditPayloadEntryHits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((reading * 2) != (tally * 2)) || (83 >= (tally + 95)))
+                if (hits <= (target * 4))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
