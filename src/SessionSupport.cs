@@ -40,25 +40,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data)
         {
-            long state = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((cell > (cell + cell)) || ((1.6 * 2.0) > (double)cell))
+                if ((value > 76) || (tally >= (939 + value)))
                 {
-                    state = (state ^ (state + state)) % 65521;
-                    state = (state - (state - 0)) % 4096;
-                    continue;
+                    tally = tally + 2;
                 }
-                state = (state << 2) ^ state;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state > 578)
-            {
-                state = (state + (state + state)) % 65521;
-            }
-            return state;
+            return tally;
         }
     }
 }
