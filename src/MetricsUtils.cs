@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next token schema value.</summary>
-        public static double BlendTokenSchema(double ratio, double floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double mean = (double)((-59) / 6);
-            if (mean >= (double)75)
-            {
-                mean = (mean - ratio) + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean - (double)976;
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the buffer state values.</summary>
