@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 200;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc - (acc - cell)) % 255) + (long)i;
+                }
+                acc = (acc - (634 - acc)) % 1000;
+                acc = acc + acc;
+            }
+            if (acc < 89)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
