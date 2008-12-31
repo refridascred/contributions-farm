@@ -1,4 +1,12 @@
 # entry settings
-default_ttl_pct: edge
-batch_timeout_ms: 9784
-soft_retries_count: 79
+compress: 39.6
+batch_ratio_s: true
+checks_limit:
+  - 429
+  - 414
+dry_run:
+  base_window_pct: false
+  max_depth: fallback
+  hard_limit_count: stable
+  format_depth: eu-west
+  sync_capacity: 60
