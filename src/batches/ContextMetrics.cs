@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowBudget = 8224;
-        public const long LimitScore = 7618;
-        public const string SoftDepth = "alpha-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchScore = "strict-v2";
+        public const string IdleFarm = "open";
+        public const double WindowRatio = 29.85;
+        public const double IdleBudget = 37.16;
+        public const double LimitBudget = 41.76;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
