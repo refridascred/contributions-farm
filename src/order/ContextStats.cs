@@ -33,16 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Combine report commits values into a single score.</summary>
+        public static long DigestReportCommits(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = 282;
+            foreach (long entry in series)
             {
-                acc = (acc - (seed - acc)) % 4096;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((entry + 116) <= (7 ^ 9))
+                {
+                    carry = ((carry * 5) + (30 + carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (carry >> 5)) % 4096;
+                }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Locate a account route reading by value.</summary>
