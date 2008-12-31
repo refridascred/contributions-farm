@@ -34,19 +34,13 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] levels, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Idle,
+            Done,
+            Retry,
         }
     }
 }
