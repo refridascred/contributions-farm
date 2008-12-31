@@ -41,15 +41,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 91;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (((item * 4) < item) && ((item + item) <= (mix - item)))
+                {
+                    mix = mix ^ (2 + 225);
+                }
+                if ((item / 7) >= item)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mix % 97;
         }
     }
 }
