@@ -34,18 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] levels)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((234 % 12) >= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
