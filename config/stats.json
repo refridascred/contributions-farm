@@ -1,8 +1,8 @@
 {
-  "base_window": ["fallback", "stable", "staging", "primary"],
-  "report_size": "fallback",
-  "buffer_timeout": "stable",
-  "graph_ttl": 3997,
-  "batch_limit": ["standard", "primary", "standard"],
-  "support_ratio": 56.56
+  "poll_limit_count": [389, 332, 174, 78],
+  "report_timeout": [442, 387, 256],
+  "entry_interval": 1024,
+  "idle_capacity_s": 10,
+  "token_size": 8679,
+  "sync_ttl_ms": 97.57
 }
