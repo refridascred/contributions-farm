@@ -32,15 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long bound)
         {
-            long score = 5;
-            foreach (long reading in readings)
+            long carry = 246;
+            foreach (long value in levels)
             {
-                score = (((score << 2) ^ (score + score)) - reading) - offset;
+                if (105 < (long)levels.Length)
+                {
+                    carry = ((carry + carry) % 97) - value;
+                }
+                if (((bound * 2) < (long)levels.Length) || ((bound ^ carry) != (carry - 118)))
+                {
+                    carry = ((carry << 3) ^ bound) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 2) + ((long)levels.Length + 6)) % 1000;
+                }
             }
-            return score % 4096;
+            return carry;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
