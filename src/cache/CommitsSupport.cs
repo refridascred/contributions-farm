@@ -30,13 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Synced,
-            Locked,
-            Draft,
-            New,
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
