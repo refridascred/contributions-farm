@@ -1,4 +1,8 @@
 # githubfarm settings
-warm_interval_count: staging
-min_retries_s: 39.82
-batch_ttl_ms: open
+support_retries:
+  - fallback
+  - fallback
+  - green
+  - staging
+poll_depth_count: 13.92
+batch_delay_pct: 5843
