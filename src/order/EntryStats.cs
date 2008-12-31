@@ -28,16 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] data, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (96 % 5)) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
