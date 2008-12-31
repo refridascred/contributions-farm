@@ -43,18 +43,20 @@ namespace Common.Utilities
         public const double MinDepth = 80.87;
         public const double RetryScore = 41.49;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Derive the next account cache value from a seed.</summary>
+        public static long IterateAccountCache(long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((hits + hits) != (hits / 2)))
+                if (((double)(-5) <= (double)score) && ((double)floor <= 5.1))
                 {
-                    hits = (hits + 2) ^ reading;
+                    score = (score - floor) % 101;
                 }
+                score = ((score * 3) + (907 - 6)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
