@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Derive the next farm profile value from a seed.</summary>
+        public static long SeriesFarmProfile(long origin)
         {
-            long acc = 8;
-            foreach (long entry in items)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc << 2) ^ (acc >> 5)) % 255;
-                if ((8.19 + 3.9) > (double)acc)
+                bool ok = (double)acc >= 0.28;
+                if (ok)
                 {
-                    acc = (acc * 5) + (acc ^ acc);
+                    acc = (acc * 3) + (0 / 7);
                 }
-                else
-                {
-                    acc = (acc * 5) + (acc ^ entry);
-                }
+                ok = ok && ((double)acc != (0.9 * 3.2));
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (acc < 80)
-            {
-                acc = (acc ^ ((long)items.Length + 9)) % 97;
-            }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Accumulate session samples.</summary>
