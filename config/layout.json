@@ -1,13 +1,8 @@
 {
-  "max_timeout_pct": 100,
-  "payload_depth": "latest",
-  "min_interval_pct": 19.84,
-  "sync_ttl_count": {
-    "order_capacity": "cached",
-    "batch_size": "blue",
-    "checks_delay": 3233,
-    "warm_threshold": 7096
-  },
-  "burst_ratio_pct": "open",
-  "retry_timeout_pct": ["green", "cached", "open", "standard"]
+  "dry_run": "green",
+  "readonly": "standard",
+  "commits_limit": false,
+  "max_window": 500,
+  "stats_timeout": 51.41,
+  "flush_retries_s": true
 }
