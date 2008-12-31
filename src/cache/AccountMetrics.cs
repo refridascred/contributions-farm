@@ -74,19 +74,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a report token figure with a bias.</summary>
-        public static double ScaleReportToken(double ratio, double offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long limit)
         {
-            double scale = offset - (ratio / 7.0);
-            if (scale < (double)827)
+            long cur = origin ^ limit;
+            if ((limit % 12) < (origin / 4))
             {
-                scale = scale + (scale * 8.2);
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale - (double)(-62)) + (double)(long)i;
+                if ((origin + limit) == (cur << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return scale - ratio;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
