@@ -1,21 +1,8 @@
 # entry settings
-warm_window_pct:
-  notes_depth: 67
-  burst_limit:
-    - 85
-    - 2
-    - 10
-  editor_window: primary
-  sync_size_count: staging
-  max_limit_pct: 250
-idle_ttl: stable
-dry_run:
-  idle_delay_ms: 1.93
-  warm_delay: local
-  verbose: 3346
-  idle_timeout_s:
-    - 447
-    - 296
-    - 195
-    - 381
-retry_window_s: cached
+warm_depth_s:
+  - 492
+  - 322
+  - 257
+  - 473
+stream_size: latest
+batch_ratio: 100
