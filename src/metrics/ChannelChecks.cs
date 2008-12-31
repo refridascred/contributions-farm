@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] items, long origin)
         {
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (cell >= (count - 2))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter summary.</summary>
