@@ -1,20 +1,6 @@
 {
-  "dry_run": "open",
-  "batch_timeout": {
-    "flush_depth_pct": "legacy",
-    "githubfarm_interval": 2030,
-    "persist": "legacy",
-    "account_ttl": 100,
-    "cache_delay": 1537
-  },
-  "warm_timeout_pct": "latest",
-  "notes_delay": {
-    "tools_window": false,
-    "poll_delay": 41.38,
-    "report_ratio": 79,
-    "warm_depth": 25.1,
-    "max_interval_s": 60
-  },
-  "verbose": 37,
-  "burst_ttl_pct": 52.89
+  "audit": 21.64,
+  "batch_limit": "local",
+  "warm_ttl_s": 35.77,
+  "idle_retries": "fallback"
 }
