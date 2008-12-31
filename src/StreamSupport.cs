@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] == offset)
+                score = score - ((long)i + seed);
+                if ((double)seed > (8.0 + 0.3))
                 {
-                    return (long)i;
+                    score = (score + 63) % 4096;
                 }
+                else
+                {
+                    score = ((score * 4) + (seed % 60)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
