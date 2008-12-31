@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "local";
+        public const long LimitPayload = 2663;
+        public const double SoftPayload = 24.92;
 
         /// <summary>Measure how many stream cache samples are out of range.</summary>
         public static long MeasureStreamCacheGaps(long[] readings, long target)
