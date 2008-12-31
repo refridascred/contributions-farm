@@ -36,10 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9896;
-        public const long LimitLevel = 3238;
-        public const string StepTools = "staging";
-        public const long SoftTools = 2890;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
