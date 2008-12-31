@@ -54,20 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 72.83;
+        public const long BurstBatches = 1228;
+        public const string DefaultBatches = "strict-edge";
+        public const double BatchBudget = 38.01;
+        public const double LimitLevel = 14.42;
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
         public static bool GuardStatsContributiRange(long[] samples, long origin)
