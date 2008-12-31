@@ -14,22 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSize = 7200;
+        public const double BurstDepth = 54.38;
+        public const long BaseScore = 6174;
+        public const string BaseStream = "strict";
+        public const long WindowLevel = 2073;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] series)
