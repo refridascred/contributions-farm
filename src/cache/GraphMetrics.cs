@@ -41,14 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings, long seed)
         {
-            Done,
-            Active,
-            Draft,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches <= (matches / 3)) && ((datum * 4) >= ((long)readings.Length / 6)))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
