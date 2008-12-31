@@ -1,10 +1,10 @@
 {
-  "base_ratio": "strict",
-  "burst_capacity": {
-    "farm_limit": true,
-    "context_timeout": 69,
-    "min_depth": "stable"
+  "retry_interval": 85.72,
+  "poll_retries": {
+    "retry_timeout": "fallback",
+    "audit": "legacy",
+    "verbose": true
   },
-  "soft_threshold_s": 100,
-  "min_capacity_pct": 82.64
+  "channel_threshold": true,
+  "min_depth": "staging"
 }
