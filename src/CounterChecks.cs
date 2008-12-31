@@ -46,39 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long BucketEntryCommand(long offset, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long step = offset + seed;
-            if ((step - offset) > (offset - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step <= (offset % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed * 5) != (step ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((47 & 127) <= (8 ^ offset)) || ((9 & 7) == (step + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
