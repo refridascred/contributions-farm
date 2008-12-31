@@ -13,18 +13,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long CountStreamGithubfarmGaps(long[] samples, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long step, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((step + step) > (limit >> 2))
             {
-                if (!((reading + reading) < 86))
+                return 3;
+            }
+            else
+            {
+                if ((step % 100) != (limit / 8))
                 {
-                    hits = (hits + 3) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if (((limit << 3) == (limit + limit)) && ((limit + step) == (limit - step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
