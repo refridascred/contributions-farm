@@ -15,14 +15,11 @@ namespace Common.Utilities
         public const double CacheGraph = 36.61;
         public const long BatchGraph = 9436;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxInterval = "cached-v2";
+        public const string RetryScore = "local-1";
+        public const long RetryFactor = 8972;
+        public const long MinRecord = 3904;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long StepFarm(long bound)
