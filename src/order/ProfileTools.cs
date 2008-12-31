@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the buffer editor entries that pass the check.</summary>
-        public static long MeasureBufferEditorOutliers(long[] values, long offset)
+        /// <summary>Count session stats pairs that satisfy a relation.</summary>
+        public static long OverlapSessionStatsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((15.0 >= (double)offset) && ((offset & 31) > (tally % 8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
