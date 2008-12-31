@@ -21,22 +21,22 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long target)
         {
-            if ((double)limit >= (double)7)
+            if ((double)target >= (2.6 * 1.64))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((double)step <= (8.79 - 2.7)) || ((step << 2) >= (step - limit)))
+                if (!((double)target == (4.0 / 2.0)))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    return 8;
                 }
             }
         }
