@@ -34,12 +34,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstCount = 5063;
-        public const long BaseFormat = 906;
-        public const long BatchFormat = 5149;
-        public const double BaseSize = 0.1;
-        public const long DefaultDepth = 5852;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long bound)
+        {
+            long diff = origin ^ bound;
+            if (((87 - origin) > diff) && (diff <= origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin == (7.0 + 19.0)) || ((8.0 * 8.35) == (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(origin > (origin >> 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
