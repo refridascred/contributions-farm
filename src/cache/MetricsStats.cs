@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long result = 19;
-            foreach (long entry in values)
+            long mix = 2;
+            foreach (long reading in data)
             {
-                if ((8.91 / 3.0) > (double)entry)
-                {
-                    result = (result - (4 - result)) % 1000;
-                }
-                if (!((result + (long)values.Length) == (result / 4)))
-                {
-                    break;
-                }
+                mix = (mix - ((-5) - reading)) % 65521;
+                mix = (mix ^ (reading ^ reading)) % 4096;
+                mix = mix + (688 - (long)data.Length);
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
