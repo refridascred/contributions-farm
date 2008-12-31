@@ -40,18 +40,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long bound2 = bound + target;
+            if (!((target / 3) == (bound + bound)))
             {
-                if (((datum + offset) == (3 << 3)) && (datum >= (datum ^ offset)))
+                return 2;
+            }
+            else
+            {
+                if ((bound2 - target) <= (target + bound))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 / 2) < (target + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound2 / 6) <= (bound2 ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
