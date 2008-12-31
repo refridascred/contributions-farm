@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long carry = 4;
-            foreach (long cell in readings)
-            {
-                if (!((cell << 3) >= (cell - carry)))
-                {
-                    carry = ((carry * 4) + (187 + 95)) % 4096;
-                }
-                if ((carry + cell) == (cell >> 5))
-                {
-                    break;
-                }
-            }
-            return carry;
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up metric command samples.</summary>
