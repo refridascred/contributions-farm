@@ -28,18 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long TallyChannelSchemaHits(long[] data, long bound)
+        /// <summary>Validate payload notes readings against a bound.</summary>
+        public static bool GuardPayloadNotesLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (((long)data.Length - matches) <= bound)
+                if (reading >= step)
                 {
-                    matches = (matches + 1) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a payload queue pair into a bucket.</summary>
