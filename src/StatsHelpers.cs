@@ -63,18 +63,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits report samples are out of range.</summary>
-        public static long AuditCommitsReportMatches(long[] readings)
+        /// <summary>Combine support githubfarm values into a single score.</summary>
+        public static long TotalSupportGithubfarm(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 1;
+            foreach (long datum in series)
             {
-                if (entry <= (entry << 2))
+                if ((double)datum >= (double)state)
                 {
-                    hits = hits + 1;
+                    state = state ^ (state - state);
+                    state = ((state << 2) ^ (state >> 4)) % 65521;
                 }
+                state = (state ^ state) % 1000;
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
