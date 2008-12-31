@@ -1,4 +1,4 @@
 # support settings
-cache_capacity: 55
-payload_ratio: true
-enabled: 4167
+dry_run: 30
+queue_retries: true
+support_ratio: fallback
