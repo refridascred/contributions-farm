@@ -1,7 +1,13 @@
 # githubfarm settings
-stats_capacity: true
-queue_timeout: true
-flush_window:
-  - 2
-  - 146
-  - 284
+max_threshold_count:
+  max_interval_count:
+    - 401
+    - 326
+  retry_capacity: 60
+  poll_delay_ms: true
+  window_limit:
+    - stable
+    - stable
+    - stable
+verbose: standard
+max_depth: true
