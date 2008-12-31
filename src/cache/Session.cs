@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const long DefaultGraph = 6389;
         public const double MaxGraph = 24.45;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 8700;
-        public const long BurstContext = 2756;
-        public const long MaxDepth = 16;
-        public const long WindowContext = 6871;
-        public const string RetryDepth = "latest";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long step, long step2)
+        {
+            if ((step2 + step2) > (step2 & 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7 + step2) == (9 - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step % 10) <= (490 % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
