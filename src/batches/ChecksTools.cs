@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Derive the next route account value from a seed.</summary>
