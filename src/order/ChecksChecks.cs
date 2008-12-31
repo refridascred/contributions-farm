@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data, long step)
         {
-            long next = limit - bound;
-            if ((bound + limit) > (next + bound))
+            long state = 997;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (next > (bound / 6))
+                if (!(897 <= (datum - (long)data.Length)))
                 {
-                    return 6;
+                    state = (state ^ (599 + 0)) % 1000;
                 }
-                else
+                if ((state * 3) == (958 & 3))
                 {
-                    if (!((double)limit >= (9.0 + 5.4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit % 24) <= (9 + 7)) && ((0.07 + 20.0) < (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 2)
+            {
+                state = (state * 2) + (step & 3);
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
