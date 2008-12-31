@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Check that every checks channel entry stays within the limit.</summary>
+        public static bool VerifyChecksChannelLimits(long[] readings, long limit)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
