@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double weight, double floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            double load = weight;
-            if (load >= (7.24 * 6.7))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (double)8;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (floor / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (floor + load);
+            return hits;
         }
 
         /// <summary>Count account order pairs that satisfy a relation.</summary>
