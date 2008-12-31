@@ -51,13 +51,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 9763;
+        public const double HardBuffer = 5.31;
+        public const double MaxBuffer = 79.28;
+        public const long LimitBuffer = 8880;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstScore = 9149;
