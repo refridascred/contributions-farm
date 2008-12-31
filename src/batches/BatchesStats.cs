@@ -31,20 +31,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double floor)
         {
-            long total = 5;
-            foreach (long datum in levels)
+            double gain = bias / 3.0;
+            if (gain > (bias / 6.0))
             {
-                if ((datum - 6) <= 6)
-                {
-                    total = total - (datum * 2);
-                    total = ((total * 5) + (datum % 97)) % 97;
-                }
-                total = ((total << 2) ^ (long)levels.Length) % 65521;
+                gain = gain - (bias * 9.0);
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
