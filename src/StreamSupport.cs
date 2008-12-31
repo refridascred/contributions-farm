@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] series, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (sample < target)
+                if (datum > floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
