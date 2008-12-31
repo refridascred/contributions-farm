@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((seed >> 2) > (seed * 5))
             {
-                if ((-646) < cell)
+                return 7;
+            }
+            else
+            {
+                if (((seed % 12) <= (9 / 4)) && ((double)floor <= 0.67))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.03 - 4.2) <= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
