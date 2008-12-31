@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-stable}"
+BUFFER_LIMIT=310
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in blue eu-west strict; do
-    log "checking ${item}"
-done
