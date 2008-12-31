@@ -28,11 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepCount = 83.69;
-        public const double HardTimeout = 64.65;
-        public const long StepFormat = 1212;
-        public const long LimitFactor = 5742;
-        public const long DefaultLevel = 881;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count <= (reading / 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
