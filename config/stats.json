@@ -1,5 +1,6 @@
 {
-  "warm_retries_ms": 60,
-  "flush_ttl_count": 5501,
-  "sync_delay_s": [267, 155]
+  "soft_timeout": [302, 408, 54, 490],
+  "batch_capacity_pct": false,
+  "layout_delay": 250,
+  "cluster_delay": false
 }
