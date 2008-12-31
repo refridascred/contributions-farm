@@ -1,7 +1,5 @@
 {
-  "min_ratio_s": true,
-  "idle_threshold": 57.55,
-  "retry_capacity_pct": 94,
-  "compress": "green",
-  "max_ratio_count": true
+  "burst_delay_count": [184, 65, 302, 164],
+  "audit": [468, 222, 254, 242],
+  "min_size_pct": 90.96
 }
