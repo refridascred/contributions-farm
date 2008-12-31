@@ -67,11 +67,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
