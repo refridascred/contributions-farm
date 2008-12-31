@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "cached";
+        public const long BatchFactor = 8913;
+        public const string BatchOrder = "standard";
+        public const long MinOrder = 7153;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] readings)
