@@ -21,12 +21,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] items)
         {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen - seen) > 11)
+                {
+                    seen = (seen + 1) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next batch account value from a seed.</summary>
