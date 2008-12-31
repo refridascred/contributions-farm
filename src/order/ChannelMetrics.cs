@@ -28,19 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items, long bound)
         {
-            long mix = 92;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix * 5) + reading) % 65521;
+                if ((double)datum < (double)bound)
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mix < 116)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix;
+            return seen;
         }
     }
 }
