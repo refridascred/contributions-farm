@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryCount = "strict";
-        public const double BaseFormat = 54.33;
-        public const long BaseRatio = 2056;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)value < (17.0 / 8.0))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double ratio, double offset)
