@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 5590;
+        public const long HardQueue = 4855;
+        public const long DefaultQueue = 586;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] samples, long bound)
