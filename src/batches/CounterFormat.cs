@@ -28,13 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] values, long limit)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Retry,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
