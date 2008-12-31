@@ -48,14 +48,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items)
         {
-            Ready,
-            Pending,
-            Draft,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((((double)count >= (double)cell) && ((double)count != (13.0 * 7.0))) || (count <= (count + cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a stream metrics pair into a bucket.</summary>
