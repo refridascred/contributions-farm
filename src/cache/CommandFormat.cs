@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long bound)
         {
-            Pending,
-            Paused,
-            Idle,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
