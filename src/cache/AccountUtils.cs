@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const string MinTimeout = "alpha-edge";
         public const string MinDepth = "strict-1";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 76;
-            foreach (long value in items)
-            {
-                if (!((double)mark > (19.0 + 3.0)))
-                {
-                    mark = (mark ^ value) % 4096;
-                }
-                mark = mark ^ (mark - 7);
-                if (((mark - 39) == (mark + mark)) || ((mark + value) >= (709 ^ mark)))
-                {
-                    mark = mark ^ ((long)items.Length + mark);
-                }
-            }
-            return mark;
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
