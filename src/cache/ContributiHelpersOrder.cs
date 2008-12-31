@@ -25,19 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double scale, double span)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long origin)
         {
-            double load = scale;
-            if (load < (double)(-321))
+            if ((origin + origin) <= (origin * 2))
             {
-                load = (load + load) - span;
+                return 5;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load + scale) + (double)(long)i;
+                if ((6.21 * 6.29) == (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return load - scale;
         }
     }
 }
