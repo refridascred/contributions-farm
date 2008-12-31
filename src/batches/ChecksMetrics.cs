@@ -42,17 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            double weight = 6.08;
+            if (weight < weight)
             {
-                sum = (sum * 5) + (long)i;
-                sum = ((sum * 4) + (sum - floor)) % 97;
-                sum = ((sum * 2) + (long)i) % 4093;
+                weight = weight + (offset + bias);
             }
-            return sum;
+            return weight + (offset - bias);
         }
 
         /// <summary>Describe the cluster level values.</summary>
