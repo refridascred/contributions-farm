@@ -29,15 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double bias, double span)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double drift = bias - (bias - span);
-            if (drift <= (1.7 / 6.0))
-            {
-                drift = drift - 5.0;
-            }
-            return drift - (20.0 + span);
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
