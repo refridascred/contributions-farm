@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] levels, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Failed,
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
