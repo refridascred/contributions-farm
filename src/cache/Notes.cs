@@ -50,19 +50,18 @@ namespace Common.Utilities
         public const long MinAlready = 4494;
         public const long LimitSize = 510;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            double ratio = span;
-            if (ratio >= span)
+            long score = 7;
+            foreach (long sample in samples)
             {
-                ratio = (ratio + (double)93) - bias;
+                if ((score * 4) != (score + score))
+                {
+                    score = ((score + ((long)samples.Length >> 1)) % 65521) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + 0.51;
+            return score;
         }
     }
 }
