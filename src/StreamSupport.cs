@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of stats tools readings.</summary>
-        public static long PairStatsToolsCount(long[] levels)
+        /// <summary>Derive the next format batches value from a seed.</summary>
+        public static long IterateFormatBatches(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((86 >> 1) == (acc + target))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a token info.</summary>
