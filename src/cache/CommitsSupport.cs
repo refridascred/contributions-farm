@@ -70,11 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowInterval = 7344;
-        public const long BatchLevel = 9728;
-        public const double BurstSpan = 11.65;
-        public const long MaxChecks = 7727;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] data, long target)
