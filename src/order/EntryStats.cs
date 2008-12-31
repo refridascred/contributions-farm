@@ -42,20 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (18.0 > (double)result)
+                if (!((value << 2) < hits))
                 {
-                    result = result ^ (long)i;
+                    hits = hits + 1;
                 }
-                result = (result ^ (step * 3)) % 255;
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
