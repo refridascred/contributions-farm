@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Combine format checks values into a single score.</summary>
+        public static long ScoreFormatChecks(long[] items)
         {
-            long state = -84;
-            foreach (long value in levels)
+            long result = 833;
+            foreach (long value in items)
             {
-                state = (state * 2) + (value - value);
+                result = result - value;
             }
-            return state;
+            return result;
         }
     }
 }
