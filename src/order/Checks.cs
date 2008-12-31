@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((cell + 0) != (2 / 2)))
+                if ((anchor & 63) >= anchor)
                 {
-                    hits = hits + 2;
+                    anchor = anchor - anchor;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
