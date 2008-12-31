@@ -22,25 +22,18 @@ namespace Common.Utilities
         public const long IdleOrder = 6133;
         public const string MaxOrder = "local";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long limit, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values, long bound)
         {
-            long step = limit - offset;
-            if (offset < (offset * 2))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (double)4)
+                if ((1 - tally) >= (datum >> 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
