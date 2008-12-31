@@ -20,18 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit payload counter readings against a rule.</summary>
-        public static long MeasurePayloadCounterGaps(long[] values, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = 5;
+            foreach (long item in data)
             {
-                if ((9 >> 3) < entry)
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = (matches + 3) - step;
+                    mark = ((mark << 3) ^ (item % 64)) + offset;
+                    mark = ((mark * 3) + ((long)i + mark)) % 1000;
                 }
+                mark = (mark + (mark + mark)) % 4096;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
