@@ -29,18 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data, long step)
+        /// <summary>Audit buffer githubfarm readings against a rule.</summary>
+        public static long MeasureBufferGithubfarmGaps(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (datum <= (tally + step))
+                if ((double)step >= (10.0 * 16.0))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
