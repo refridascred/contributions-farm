@@ -20,10 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "fallback";
-        public const long WindowBudget = 2945;
-        public const double DefaultFactor = 15.5;
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double span)
+        {
+            double scale2 = 1.6;
+            return ((scale2 - (double)90) + scale) + span;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
