@@ -40,16 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark - (target ^ target)) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Synced,
+            Done,
+            Queued,
+            Active,
         }
     }
 }
