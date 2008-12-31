@@ -56,22 +56,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 2602;
         public const long MaxBatch = 1579;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] series)
+        /// <summary>Look up the position of a already stream sample.</summary>
+        public static long LookupAlreadyStreamIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)sample > (double)sample))
+                if ((data[i] <= target) && ((data[i] % 2) != 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
