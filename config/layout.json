@@ -1,7 +1,8 @@
 {
-  "default_depth_count": 69,
-  "poll_retries_s": ["fallback", "stable", "local"],
-  "report_capacity": 95.68,
-  "idle_size": ["latest", "standard", "green", "latest"],
-  "flush_ratio_pct": "blue"
+  "dry_run": 46,
+  "idle_timeout_ms": "edge",
+  "min_interval_s": 7371,
+  "metrics_limit": "edge",
+  "idle_ttl_ms": 99,
+  "flush_delay_pct": false
 }
