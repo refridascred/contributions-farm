@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit account record readings against a rule.</summary>
-        public static long CountAccountRecordGaps(long[] data)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((-1) ^ 318) == (20 - tally))
-                {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
