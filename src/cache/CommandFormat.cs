@@ -14,16 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a schema metric counter forward.</summary>
-        public static long SeriesSchemaMetric(long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc ^ (acc >> 4)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
