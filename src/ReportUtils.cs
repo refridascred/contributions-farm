@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit queue stream readings against a rule.</summary>
-        public static long MeasureQueueStreamMatches(long[] items, long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((hits % 100) >= (hits & 3)))
-                {
-                    hits = ((hits + 2) + value) + origin;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a account session value against two limits.</summary>
