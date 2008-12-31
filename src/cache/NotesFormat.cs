@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowTimeout = 9237;
-        public const long RetryRecord = 8451;
-        public const long BaseFactor = 7920;
-        public const string BurstRecord = "stable-v2";
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Active,
+            Paused,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Roll a profile queue counter forward.</summary>
         public static long StepProfileQueue(long step)
