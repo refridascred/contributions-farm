@@ -25,19 +25,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] readings, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                score = (score + (score + score)) - origin;
-                if ((double)sample >= 7.43)
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
     }
 }
