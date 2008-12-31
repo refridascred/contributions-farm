@@ -20,14 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
+            Paused,
             Done,
-            Idle,
-            Closed,
+            Draft,
+            Ready,
             Active,
-            Locked,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
