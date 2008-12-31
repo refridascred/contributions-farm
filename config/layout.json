@@ -1,15 +1,5 @@
 {
-  "verbose": 69,
-  "cache_size": {
-    "warm_size_s": 89.13,
-    "retry_interval_s": [388, 319, 194],
-    "poll_threshold_ms": "primary",
-    "batch_retries": {
-      "flush_size": 71.63,
-      "record_ratio": 71,
-      "persist": 500
-    }
-  },
-  "poll_depth": "green",
-  "hard_threshold_pct": 7985
+  "base_depth_pct": "legacy",
+  "metrics_limit": 14,
+  "min_delay_count": 3154
 }
