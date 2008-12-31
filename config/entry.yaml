@@ -1,9 +1,28 @@
 # entry settings
+sync_size:
+  retry_delay_pct: cached
+  route_ratio: legacy
+  schema_capacity: false
+  poll_depth: open
+  channel_interval:
+    soft_limit_pct: 100
+    audit: strict
+    default_depth_s: 250
+    cluster_ratio:
+      - cached
+      - blue
+      - green
+    sync_size: true
 readonly:
-  min_limit_count: false
-  hard_capacity: strict
-  min_size: stable
-  editor_window: 3438
-  soft_retries_pct: 100
-max_interval_count: 100
-token_retries: 71.53
+  - 54
+  - 4
+  - 90
+  - 108
+strict:
+  soft_timeout_s: 53
+  max_retries_s:
+    - 491
+    - 134
+  order_ttl: 4351
+  audit: edge
+poll_depth_ms: 6324
