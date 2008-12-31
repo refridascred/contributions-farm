@@ -52,21 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of context cache readings.</summary>
-        public static long CompareContextCacheCount(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits << 2) != (seed ^ entry))
                 {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
