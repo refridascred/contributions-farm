@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
+            Active,
             New,
             Dropped,
-            Stale,
-            Retry,
+            Failed,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
