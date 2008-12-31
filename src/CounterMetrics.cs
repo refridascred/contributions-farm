@@ -40,24 +40,10 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long bound)
-        {
-            if (!((seed << 3) > (seed % 97)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound > (seed >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleScore = 2998;
+        public const long StepCache = 8618;
+        public const string MinScore = "strict";
+        public const long BurstSize = 9997;
     }
 }
