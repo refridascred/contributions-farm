@@ -39,19 +39,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double ratio = (double)(9 & 1);
-            if (ratio <= (double)550)
-            {
-                ratio = ratio - (ratio * 9.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio - (bias - ratio);
+            Ready,
+            Done,
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
