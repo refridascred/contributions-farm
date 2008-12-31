@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseBudget = 5526;
-        public const long BurstSession = 6154;
-        public const long BatchSession = 8717;
-        public const string BatchScore = "open-1";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading * 2) != (tally * 2)) || (83 >= (tally + 95)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchRange(long[] values, long target)
