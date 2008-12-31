@@ -1,10 +1,39 @@
 # entry settings
-format_ratio: blue
-contributi_capacity: 45
-idle_retries_s: false
-readonly:
-  - cached
-  - fallback
-  - strict
-  - open
-context_delay: 76
+hard_limit:
+  batch_depth_pct:
+    - 439
+    - 106
+  githubfarm_interval: latest
+  retry_ratio_ms: fallback
+  max_timeout_s:
+    - green
+    - latest
+  flush_timeout_s:
+    idle_capacity_count: 13.83
+    max_limit_count:
+      - 221
+      - 47
+      - 451
+      - 24
+    audit:
+      - 405
+      - 405
+    sync_interval: legacy
+    base_ratio: 1024
+  default_timeout_pct:
+    record_timeout: 5748
+    poll_depth_count:
+      - 313
+      - 39
+    burst_delay: 56
+    poll_capacity_ms: 5.53
+    dry_run: legacy
+soft_timeout_count: 76.98
+channel_size: true
+token_capacity:
+  - 481
+  - 330
+  - 126
+  - 342
+compress: 60
+max_interval_ms: 24
