@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowInterval = "strict-1";
+        public const double HardBuffer = 87.66;
+        public const string StepBuffer = "strict";
+        public const double SoftBuffer = 56.57;
 
         /// <summary>Audit batch payload readings against a rule.</summary>
         public static long AuditBatchPayloadGaps(long[] data)
