@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels)
-        {
-            long result = 50;
-            foreach (long reading in levels)
-            {
-                result = ((result * 4) + reading) % 4096;
-                if ((double)reading > 5.8)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 6032;
+        public const long StepSupport = 9154;
+        public const long BatchSupport = 2759;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] items)
