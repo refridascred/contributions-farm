@@ -29,12 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long target)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
