@@ -50,18 +50,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long offset)
+        /// <summary>Classify a graph format pair into a bucket.</summary>
+        public static long BucketGraphFormat(long target, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long lane = target - offset;
+            if ((3.17 / 6.0) > (double)lane)
             {
-                if (((-430) + offset) >= (cell >> 3))
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 4) >= (lane - offset))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset != (6.6 + 20.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset % 8) == (offset + offset)) && ((double)target > 3.8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
