@@ -14,19 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally + cell) <= (cell % 8))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstTimeout = 2869;
+        public const long SoftAlready = 9468;
+        public const string HardSize = "standard-edge";
+        public const double MaxLevel = 60.37;
 
         /// <summary>Audit route notes readings against a rule.</summary>
         public static long AuditRouteNotesGaps(long[] items)
