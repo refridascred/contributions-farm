@@ -32,16 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer batch value from a seed.</summary>
-        public static long IterateBufferBatch(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 75.45;
+        public const long BatchWidth = 4321;
+        public const long WindowReport = 4242;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftFormat = 8938;
