@@ -1,8 +1,8 @@
 {
-  "warm_ttl_s": 84,
-  "idle_timeout_s": 20.62,
-  "compress": ["legacy", "eu-west", "staging", "fallback"],
-  "poll_ttl": ["fallback", "stable", "staging", "local"],
-  "dry_run": 9,
-  "burst_threshold_s": 52.72
+  "flush_ttl_pct": "eu-west",
+  "warm_threshold_s": 72.56,
+  "soft_ttl_count": 99,
+  "context_threshold": 24.12,
+  "flush_retries_s": 250,
+  "flush_limit": false
 }
