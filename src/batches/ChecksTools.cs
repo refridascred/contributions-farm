@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (((origin + origin) <= origin) && ((origin2 - origin) == (origin2 + origin)))
             {
-                if ((double)count <= 1.65)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= (5.8 - 6.3))
                 {
-                    count = (count + 2) + datum;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
