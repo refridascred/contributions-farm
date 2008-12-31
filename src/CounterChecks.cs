@@ -57,18 +57,14 @@ namespace Common.Utilities
         public const double BatchGithubfarm = 47.86;
         public const long MinInterval = 4586;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)cell == (double)step) || ((step + seen) < step))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Locked,
+            New,
+            Closed,
         }
     }
 }
