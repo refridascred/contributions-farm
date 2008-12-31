@@ -104,28 +104,29 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long step)
         {
-            if (744 >= (offset - offset))
+            long diff = origin - step;
+            if ((step + 917) == (origin - diff))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((limit / 8) == (offset % 8))
+                if ((double)step < 3.5)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit + 976) < (limit << 3))
+                    if (7.0 <= (double)step)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        return 4;
                     }
                 }
             }
