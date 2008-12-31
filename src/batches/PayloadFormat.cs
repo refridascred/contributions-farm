@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const long StepMetric = 495;
         public const long LimitMetric = 7327;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long carry = 246;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (105 < (long)levels.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry + carry) % 97) - value;
-                }
-                if (((bound * 2) < (long)levels.Length) || ((bound ^ carry) != (carry - 118)))
-                {
-                    carry = ((carry << 3) ^ bound) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 2) + ((long)levels.Length + 6)) % 1000;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a session info.</summary>
