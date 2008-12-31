@@ -30,14 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] readings, long bound)
         {
-            Locked,
-            Pending,
-            Failed,
-            Retry,
-            Closed,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
