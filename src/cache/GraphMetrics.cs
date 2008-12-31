@@ -30,14 +30,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            Queued,
-            Synced,
-            Idle,
-            Stale,
-            Dropped,
+            double bias = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias - (bias - bias)) - (double)(long)i) - rate;
+            }
+            return bias + (double)37;
         }
 
         /// <summary>Describe the stats kind values.</summary>
