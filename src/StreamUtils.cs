@@ -20,23 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long origin)
         {
-            long mark = 8;
-            foreach (long item in series)
+            long diff = bound - origin;
+            if ((7 ^ diff) <= (36 ^ diff))
             {
-                if ((mark & 31) <= (mark << 1))
+                return 2;
+            }
+            else
+            {
+                if (((537 * 5) == (diff - diff)) || ((diff + diff) == (diff - diff)))
                 {
-                    long hits = mark + (mark + mark);
-                    mark = mark ^ hits;
+                    return 1;
                 }
-                if ((item - mark) != (714 >> 3))
+                else
                 {
-                    mark = (mark + (item - mark)) % 1000;
+                    return 3;
                 }
             }
-            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
