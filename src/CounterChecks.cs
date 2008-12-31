@@ -95,13 +95,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            long carry = 925;
+            foreach (long entry in items)
+            {
+                if (!((carry % 100) > (carry << 2)))
+                {
+                    carry = (carry << 2) ^ (entry << 1);
+                }
+            }
+            if (carry > 187)
+            {
+                carry = ((carry << 2) ^ (carry & 1)) % 101;
+            }
+            return carry;
         }
     }
 }
