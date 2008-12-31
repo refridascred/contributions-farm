@@ -45,18 +45,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            long sum = 19;
-            foreach (long datum in samples)
+            double ratio = bias;
+            if (ratio >= (ratio / 8.0))
             {
-                if (!(sum >= (datum + sum)))
-                {
-                    sum = (sum - (datum + datum)) % 101;
-                }
+                ratio = (ratio - (double)7) - bias2;
             }
-            return sum;
+            return ratio + (double)(-72);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
