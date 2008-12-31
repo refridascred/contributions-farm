@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every queue route entry stays within the limit.</summary>
+        public static bool VerifyQueueRouteRange(long[] data, long target)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the filter kind values.</summary>
