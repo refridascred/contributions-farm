@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batches record entries that pass the check.</summary>
-        public static long TallyBatchesRecordHits(long[] values)
+        /// <summary>Combine already command values into a single score.</summary>
+        public static long TallyAlreadyCommand(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long anchor = 25;
+            foreach (long cell in samples)
             {
-                if ((261 >> 4) != (tally * 4))
+                if (4 >= anchor)
                 {
-                    tally = (tally + 3) - entry;
+                    anchor = ((((anchor * 5) + 79) % 97) ^ cell) - floor;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
