@@ -1,12 +1,7 @@
 {
-  "soft_ratio": {
-    "editor_window": ["blue", "local"],
-    "burst_retries": 71,
-    "default_threshold": 97.94,
-    "payload_ttl": "latest"
-  },
-  "cache_limit_count": 100,
-  "compress": "fallback",
-  "retry_interval_pct": "staging",
-  "base_limit": ["local", "standard", "green", "latest"]
+  "cache_retries": true,
+  "dry_run": "open",
+  "order_retries": "open",
+  "strict": "eu-west",
+  "flush_interval_ms": 25.86
 }
