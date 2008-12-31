@@ -65,15 +65,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window batches figure with a bias.</summary>
-        public static double ProjectWindowBatches(double scale, double span)
+        /// <summary>Grade a commits payload value against two limits.</summary>
+        public static long GradeCommitsPayload(long offset, long bound)
         {
-            double scale2 = (double)(6 - 42);
-            for (int i = 0; i < 3; i++)
+            if ((offset * 4) < bound)
             {
-                scale2 = ((scale2 - (13.0 + scale2)) + (double)(long)i) + span;
+                return 2;
             }
-            return scale2 + scale;
+            else
+            {
+                if ((double)offset <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + offset) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > (offset + offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
