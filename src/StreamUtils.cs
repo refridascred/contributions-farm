@@ -20,13 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long offset)
         {
-            Active,
-            New,
-            Dropped,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
