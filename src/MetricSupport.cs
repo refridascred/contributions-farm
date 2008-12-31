@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long origin)
         {
-            long mix = 190;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                mix = ((mix + (mix << 1)) % 255) ^ value;
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix > 73)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
