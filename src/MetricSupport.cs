@@ -29,12 +29,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long offset)
         {
-            Stale,
-            Active,
-            Pending,
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (offset >= total)
+                {
+                    total = (total ^ (total + offset)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
