@@ -1,12 +1,17 @@
 {
-  "record_timeout": "primary",
-  "retry_retries_s": {
-    "audit": true,
-    "commits_window": "latest",
-    "enabled": "local",
-    "notes_ratio": 28.39,
-    "checks_depth": "standard"
+  "base_depth": {
+    "record_ttl": {
+      "cache_ratio_count": 881,
+      "poll_limit_s": 100,
+      "cache_retries": 500
+    },
+    "commits_limit": "eu-west",
+    "batch_capacity_count": 250,
+    "compress": [129, 382],
+    "readonly": 30,
+    "audit": "strict"
   },
-  "metric_timeout": "fallback",
-  "verbose": 30.82
+  "filter_threshold": "local",
+  "cache_interval_pct": "blue",
+  "soft_limit": [452, 490, 204, 162]
 }
