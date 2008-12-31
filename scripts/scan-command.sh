@@ -7,21 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in primary legacy strict cached; do
-    log "checking ${item}"
-done
