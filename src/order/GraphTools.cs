@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - entry) > 2)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
