@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long step)
         {
-            long offset2 = offset - step;
-            if ((offset * 2) <= step)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset2 <= (172 - offset))
+                if (sample != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step < (step % 12)) && ((offset2 - 817) <= (offset + 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + offset) > (step ^ offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
