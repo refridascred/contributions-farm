@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster options.</summary>
