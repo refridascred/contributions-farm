@@ -50,19 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long offset)
+        /// <summary>Blend two cache cluster measurements.</summary>
+        public static double ScaleCacheCluster(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double weight2 = weight;
+            if (weight2 > 1.68)
             {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 - (double)72;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - floor) - (double)(long)i;
+            }
+            return weight2 + (double)612;
         }
     }
 }
