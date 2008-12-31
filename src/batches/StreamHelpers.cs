@@ -53,17 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] items, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (items[i] <= seed)
+                if (!(matches < (target % 16)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
