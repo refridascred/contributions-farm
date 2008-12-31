@@ -27,13 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result ^ (result << 1)) % 4096;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
