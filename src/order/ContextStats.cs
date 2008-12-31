@@ -32,15 +32,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double ratio, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            double load = (ratio * 7.2) - 9.3;
-            for (int i = 0; i < 2; i++)
+            double rate2 = (double)(-1) + (double)8;
+            if (rate2 >= 3.8)
             {
-                load = ((load - (double)1) + (double)(long)i) - offset;
+                rate2 = (rate2 - rate) - offset;
             }
-            return load - (ratio / 9.0);
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Hold a window options.</summary>
