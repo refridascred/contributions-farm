@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] readings, long limit)
         {
-            double drift = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift + (rate + offset)) + (double)(long)i;
+                if ((hits >> 1) >= (limit * 4))
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
