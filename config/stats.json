@@ -1,8 +1,8 @@
 {
-  "flush_ttl_pct": "eu-west",
-  "warm_threshold_s": 72.56,
-  "soft_ttl_count": 99,
-  "context_threshold": 24.12,
-  "flush_retries_s": 250,
-  "flush_limit": false
+  "already_ttl": 8321,
+  "warm_capacity_pct": 1024,
+  "retry_limit": 90,
+  "warm_threshold": 93,
+  "verbose": "staging",
+  "dry_run": "open"
 }
