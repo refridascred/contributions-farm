@@ -22,11 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Match up account tools samples.</summary>
+        public static long OverlapAccountToolsCount(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
