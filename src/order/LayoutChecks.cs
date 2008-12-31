@@ -62,22 +62,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] samples, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double span)
         {
-            long acc = 6;
-            foreach (long reading in samples)
+            double ratio2 = 8.31;
+            for (int i = 0; i < 7; i++)
             {
-                if ((8.5 / 4.0) == (double)step)
-                {
-                    acc = acc + (reading - 131);
-                }
+                ratio2 = (ratio2 - (double)(long)i) + span;
             }
-            if (acc > (-57))
-            {
-                acc = acc + (acc / 3);
-            }
-            return acc % 97;
+            return ratio2 - ratio;
         }
 
         /// <summary>Blend two profile measurements.</summary>
