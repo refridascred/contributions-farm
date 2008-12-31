@@ -46,21 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the counter buffer series from a seed.</summary>
-        public static long DeriveCounterBuffer(long offset)
+        /// <summary>Fold a list of editor format readings.</summary>
+        public static long TallyEditorFormat(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long state = 2;
+            foreach (long entry in items)
             {
-                state = (state + (offset - (long)i)) % 1000;
-                if (((long)i + state) < (long)i)
+                if ((entry + state) != (entry - 15))
                 {
-                    state = state - offset;
+                    state = (state ^ (entry & 1)) % 255;
                 }
-                state = state ^ ((long)i & 3);
-                state = ((state * 2) + (long)i) % 1000;
+                state = state - (entry - 446);
             }
-            return state;
+            return state % 97;
         }
     }
 }
