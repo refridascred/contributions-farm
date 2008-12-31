@@ -34,22 +34,21 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long WeighTokenTools(long[] readings)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            long score = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((222 / 3) >= (datum - datum)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (datum << 2)) % 97;
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > (-78))
-            {
-                score = ((score << 2) ^ (score - score)) % 4096;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
