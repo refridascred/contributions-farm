@@ -16,22 +16,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] data, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((double)datum < (6.0 + 1.3))
+                if (value >= limit)
                 {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
