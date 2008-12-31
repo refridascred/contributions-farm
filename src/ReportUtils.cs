@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Find the first checks contributi entry that matches the target.</summary>
+        public static long LocateChecksContributiIndex(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 2) ^ (score & 63)) % 65521;
-                score = (score * 4) + score;
-                score = ((score * 3) + (long)i) % 97;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a account session value against two limits.</summary>
