@@ -66,12 +66,18 @@ namespace Common.Utilities
         public const long IdleEditor = 779;
         public const long BatchEditor = 61;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((1 - value) <= (64 << 1))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
     }
 }
