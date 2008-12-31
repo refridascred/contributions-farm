@@ -27,10 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultBudget = 87.94;
-        public const long BaseEntry = 7359;
-        public const long BatchTimeout = 6372;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
