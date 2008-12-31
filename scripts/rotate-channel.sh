@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest local primary; do
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=212
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict fallback; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=409
-log "limit is ${CHANNEL_LIMIT}"
