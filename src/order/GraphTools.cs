@@ -27,18 +27,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Grade a counter metrics value against two limits.</summary>
+        public static long ClassifyCounterMetrics(long seed, long offset)
         {
-            long total = 77;
-            foreach (long reading in items)
+            long diff = seed - offset;
+            if (((8.87 / 5.0) >= (double)diff) || (seed <= (offset / 6)))
             {
-                if ((total << 1) > reading)
+                return 4;
+            }
+            else
+            {
+                if (((offset ^ seed) != (seed * 3)) || ((2.0 + 3.3) <= (double)offset))
                 {
-                    total = total - (total >> 4);
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - offset) != (seed & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the queue mode values.</summary>
