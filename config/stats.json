@@ -1,5 +1,5 @@
 {
-  "batch_delay_s": [139, 98],
-  "channel_interval": 46,
-  "burst_ttl": [230, 408, 494, 363]
+  "warm_retries_ms": 60,
+  "flush_ttl_count": 5501,
+  "sync_delay_s": [267, 155]
 }
