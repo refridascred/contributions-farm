@@ -104,22 +104,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] values)
         {
-            long carry = 925;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!((carry % 100) > (carry << 2)))
+                if ((hits + hits) <= (entry * 2))
                 {
-                    carry = (carry << 2) ^ (entry << 1);
+                    hits = hits + 2;
                 }
             }
-            if (carry > 187)
-            {
-                carry = ((carry << 2) ^ (carry & 1)) % 101;
-            }
-            return carry;
+            return hits;
         }
     }
 }
