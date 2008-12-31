@@ -53,25 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream metrics pair into a bucket.</summary>
-        public static long BucketStreamMetrics(long target, long step)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double bias, double floor)
         {
-            long step2 = target ^ step;
-            if (target >= (step2 + step2))
+            double mean = bias - floor;
+            if (mean > floor)
             {
-                return 4;
+                mean = mean + (double)63;
             }
             else
             {
-                if (((double)step != (6.94 / 5.0)) && ((double)step != (9.0 * 3.62)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                mean = mean - floor;
             }
+            return mean - (5.67 * 1.72);
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
