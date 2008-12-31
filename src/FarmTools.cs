@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftFactor = 6844;
-        public const long SoftSupport = 4923;
-        public const long BaseDepth = 5212;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 58.27;
+        public const long HardRatio = 3907;
+        public const string BaseLevel = "stable-v2";
+        public const long CacheTimeout = 5812;
+        public const double RetryWidth = 32.3;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinCache = 71.61;
