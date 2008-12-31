@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((4 ^ step) == (53 - tally)) || ((tally * 3) > (tally / 5)))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
