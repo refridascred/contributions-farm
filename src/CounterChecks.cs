@@ -52,21 +52,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate payload format samples.</summary>
-        public static long CombinePayloadFormat(long[] values, long seed)
-        {
-            long state = 3;
-            foreach (long datum in values)
-            {
-                state = (state - datum) - seed;
-                state = (state << 3) ^ (89 + datum);
-            }
-            if (state > 60)
-            {
-                state = state + 1;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseScore = 56.17;
+        public const double BatchGithubfarm = 47.86;
+        public const long MinInterval = 4586;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] samples, long step)
