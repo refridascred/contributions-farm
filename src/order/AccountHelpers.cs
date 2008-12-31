@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading / 5) >= (3 - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of window buffer readings.</summary>
