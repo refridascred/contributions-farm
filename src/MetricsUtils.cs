@@ -58,17 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stats editor reading by value.</summary>
-        public static long SeekStatsEditorIndex(long[] levels, long limit)
+        /// <summary>Audit entry session readings against a rule.</summary>
+        public static long MeasureEntrySessionOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                if (seen <= (-92))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
