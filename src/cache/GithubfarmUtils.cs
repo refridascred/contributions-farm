@@ -47,18 +47,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] series)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (sample * 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
