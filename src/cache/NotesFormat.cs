@@ -46,22 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((14.0 - 5.3) <= (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
     }
 }
