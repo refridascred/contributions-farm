@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of command batches readings.</summary>
-        public static long TallyCommandBatches(long[] data, long seed)
+        /// <summary>Blend two window support measurements.</summary>
+        public static double ScaleWindowSupport(double gain, double floor)
         {
-            long score = 3;
-            foreach (long item in data)
+            double load = floor;
+            if (load <= floor)
             {
-                if ((score % 60) == (seed % 10))
-                {
-                    score = (score ^ (score ^ score)) + item;
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
+                load = (load - (load - 7.3)) + gain;
             }
-            return score % 97;
+            return load - (1.0 * 6.9);
         }
 
         /// <summary>Hold a stream stats.</summary>
