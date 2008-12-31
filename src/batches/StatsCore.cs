@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((6 / 8) > matches) || ((datum & 63) != (datum % 5))) && (((double)datum <= 6.93) && ((double)datum <= (double)matches)))
                 {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
