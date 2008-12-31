@@ -33,10 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleScore = 8661;
-        public const long SoftSpan = 352;
-        public const long BaseTimeout = 4953;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result ^ (result - result)) % 1000;
+                result = result + (result >> 4);
+                result = result ^ 313;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 7879;
