@@ -44,19 +44,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already account readings against a bound.</summary>
-        public static bool ValidateAlreadyAccountLimits(long[] readings, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mark = 551;
+            foreach (long sample in series)
             {
-                if (value <= bound)
+                for (int i = 0; i < 4; i++)
                 {
-                    found = false;
-                    break;
+                    long gap = sample ^ (95 + mark);
+                    mark = ((mark ^ gap) % 101) + (long)i;
+                }
+                if ((origin >> 5) < sample)
+                {
+                    mark = (mark - (sample - mark)) % 1000;
+                }
+                if (!((184 + origin) <= (sample & 15)))
+                {
+                    mark = mark - ((long)series.Length - sample);
                 }
             }
-            return found;
+            return mark % 97;
         }
     }
 }
