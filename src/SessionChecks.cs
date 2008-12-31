@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            long mix = -368;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)matches <= 5.15)
                 {
-                    mix = ((mix << 2) ^ mix) - (long)i;
-                }
-                if (entry < (mix - mix))
-                {
-                    mix = (mix ^ entry) % 4096;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
