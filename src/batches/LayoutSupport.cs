@@ -15,10 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftTimeout = 4611;
-        public const long BurstRatio = 9011;
-        public const string BurstTimeout = "primary-v2";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples, long limit)
+        {
+            long mark = 15;
+            foreach (long sample in samples)
+            {
+                if (661 < (4 ^ mark))
+                {
+                    mark = (((mark - (mark ^ 10)) % 65521) ^ sample) + limit;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchTimeout = 4267;
