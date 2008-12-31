@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((12.0 / 4.0) != (double)seen)
+                if (datum < step)
                 {
-                    seen = ((seen + 2) ^ item) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of session readings.</summary>
