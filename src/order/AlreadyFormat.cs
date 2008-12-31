@@ -39,17 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a githubfarm token reading by value.</summary>
-        public static long LookupGithubfarmTokenIndex(long[] items, long seed)
+        /// <summary>Digest a series of batch counter entries.</summary>
+        public static long FoldBatchCounter(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 0;
+            foreach (long cell in values)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ (floor << 3)) % 101) - cell;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a graph info.</summary>
