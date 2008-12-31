@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many layout record samples are out of range.</summary>
+        public static long TallyLayoutRecordMatches(long[] samples, long step)
         {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (18.0 <= (3.21 - 6.2))
+                {
+                    matches = ((matches + 1) + entry) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up window samples.</summary>
