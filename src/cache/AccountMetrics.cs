@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 9466;
+        public const double HardScore = 82.73;
+        public const long MinFormat = 3517;
+        public const long StepFactor = 9706;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
