@@ -57,22 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] values)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seen >= (7.1 * 6.17))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
