@@ -37,25 +37,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] items, long floor)
         {
-            long offset2 = offset - limit;
-            if (offset2 > (offset << 3))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 + 2) >= offset2)
+                if (item < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
