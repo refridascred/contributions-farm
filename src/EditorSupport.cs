@@ -40,12 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
+            Ready,
+            Pending,
             Draft,
-            Synced,
-            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
