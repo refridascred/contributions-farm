@@ -29,19 +29,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (offset >= total)
-                {
-                    total = (total ^ (total + offset)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
