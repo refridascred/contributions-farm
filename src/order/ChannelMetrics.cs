@@ -28,18 +28,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum < (double)bound)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 97.9;
+        public const double SoftFactor = 84.14;
+        public const long WindowRecord = 4242;
     }
 }
