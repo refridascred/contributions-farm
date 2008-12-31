@@ -31,13 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Look up the position of a filter githubfarm sample.</summary>
+        public static long SeekFilterGithubfarmIndex(long[] readings, long floor)
         {
-            Synced,
-            Queued,
-            Draft,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
