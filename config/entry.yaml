@@ -1,17 +1,10 @@
 # entry settings
-warm_delay_ms: 45.08
-retry_threshold_ms: 18
-persist: 9.98
-soft_window_count: 91
-max_window_s:
-  min_interval_count: 6372
-  warm_interval_s: 8099
-  cache_delay: false
-  soft_depth_s:
-    session_limit: 6889
-    sync_retries_count:
-      - 206
-      - 318
-      - 487
-    retry_limit_s: false
-  contributi_interval: legacy
+format_ratio: blue
+contributi_capacity: 45
+idle_retries_s: false
+readonly:
+  - cached
+  - fallback
+  - strict
+  - open
+context_delay: 76
