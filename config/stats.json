@@ -1,18 +1,8 @@
 {
-  "warm_window_ms": "staging",
-  "channel_limit": 6797,
-  "warm_interval_pct": [345, 342, 109],
-  "default_depth_ms": "cached",
-  "cache_window_count": 100,
-  "soft_size_count": {
-    "context_limit": "open",
-    "cache_size_pct": {
-      "burst_retries": "blue",
-      "default_delay_s": 12,
-      "report_ttl": false,
-      "base_interval_s": "blue",
-      "persist": true
-    },
-    "batch_limit_pct": "staging"
-  }
+  "base_window": ["fallback", "stable", "staging", "primary"],
+  "report_size": "fallback",
+  "buffer_timeout": "stable",
+  "graph_ttl": 3997,
+  "batch_limit": ["standard", "primary", "standard"],
+  "support_ratio": 56.56
 }
