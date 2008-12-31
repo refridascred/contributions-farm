@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine report stats values into a single score.</summary>
-        public static long WeighReportStats(long[] data, long origin)
+        /// <summary>Count the layout metric entries that pass the check.</summary>
+        public static long TallyLayoutMetricMatches(long[] series, long seed)
         {
-            long mix = 112;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((mix % 2) == (origin + mix))
+                if (!((double)seed != (7.0 * 4.0)))
                 {
-                    mix = (mix + (value & 3)) % 1000;
-                    mix = (mix << 2) ^ (value / 7);
-                }
-                if ((value << 1) <= (value ^ mix))
-                {
-                    mix = ((mix << 3) ^ (-6)) % 1000;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            if (mix < 35)
-            {
-                mix = (mix + (origin >> 5)) % 101;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
