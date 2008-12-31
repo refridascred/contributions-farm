@@ -44,17 +44,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                state = (state ^ (state / 6)) % 97;
-                state = ((state << 3) ^ (state >> 4)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
+                acc = (acc + (offset >> 2)) % 101;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
     }
 }
