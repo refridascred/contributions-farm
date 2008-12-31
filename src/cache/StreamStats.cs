@@ -50,13 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            Done,
-            New,
-            Active,
-            Pending,
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
