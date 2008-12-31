@@ -38,16 +38,18 @@ namespace Common.Utilities
         public const long SoftSpan = 352;
         public const long BaseTimeout = 4953;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                total = total - (47 % 8);
-                total = ((total * 2) + (long)i) % 4093;
+                if ((double)matches != (2.0 + 3.3))
+                {
+                    matches = (matches + 1) + datum;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
