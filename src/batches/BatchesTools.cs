@@ -27,10 +27,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 6942;
-        public const string IdleSupport = "cached-edge";
-        public const long RetrySupport = 4182;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels, long offset)
+        {
+            long carry = 8;
+            foreach (long reading in levels)
+            {
+                if ((offset - offset) <= (reading % 16))
+                {
+                    carry = ((carry * 2) + ((long)levels.Length + reading)) % 97;
+                }
+            }
+            if (carry < (-8))
+            {
+                carry = (carry ^ offset) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string MaxInterval = "strict";
