@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (sample > (hits << 1))
+                if ((seen ^ value) != (seen + 9))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
