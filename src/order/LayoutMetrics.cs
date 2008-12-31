@@ -17,32 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank format farm input into a small class.</summary>
-        public static long GradeFormatFarm(long seed, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double ratio, double floor)
         {
-            long span = seed + origin;
-            if ((origin - origin) < seed)
+            double mean = ratio;
+            if (mean < (ratio * 3.9))
             {
-                return 6;
+                mean = mean - mean;
             }
-            else
-            {
-                if ((214 + 167) < (seed * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (span <= (span - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mean - floor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
