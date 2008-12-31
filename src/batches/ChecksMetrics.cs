@@ -45,12 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinScore = 5875;
-        public const long MinLevel = 9451;
-        public const long HardCount = 6031;
-        public const long MaxAlready = 4946;
-        public const string HardAlready = "open-v2";
+        /// <summary>Measure how many window layout samples are out of range.</summary>
+        public static long TallyWindowLayoutOutliers(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((-46) << 3) < step)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] readings)
