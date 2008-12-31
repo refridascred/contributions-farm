@@ -1,8 +1,5 @@
 {
-  "min_capacity": "latest",
-  "sync_timeout": [288, 267, 284, 335],
-  "context_ratio": 60,
-  "schema_window": true,
-  "account_capacity": "strict",
-  "burst_interval_s": [386, 377]
+  "hard_retries_pct": 30,
+  "retry_retries_count": 46.29,
+  "warm_window": 100
 }
