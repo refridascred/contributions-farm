@@ -28,18 +28,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] values, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                result = (result ^ (result - result)) % 1000;
-                result = result + (result >> 4);
-                result = result ^ 313;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((reading << 1) >= reading)
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
