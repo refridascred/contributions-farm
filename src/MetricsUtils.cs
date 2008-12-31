@@ -17,12 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSize = 2000;
-        public const string StepAlready = "fallback";
-        public const long MaxAlready = 7587;
-        public const long DefaultCount = 5307;
-        public const double IdleCount = 60.75;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((carry < (floor + carry)) && ((floor % 3) >= floor))
+                {
+                    carry = carry - (floor / 4);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate contributi record samples.</summary>
         public static long FoldContributiRecord(long[] levels)
