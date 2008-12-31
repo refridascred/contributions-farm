@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
-
-BUFFER_LIMIT=180
-log "limit is ${BUFFER_LIMIT}"
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
