@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 58.27;
-        public const long HardRatio = 3907;
-        public const string BaseLevel = "stable-v2";
-        public const long CacheTimeout = 5812;
-        public const double RetryWidth = 32.3;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples, long target)
+        {
+            long score = 55;
+            foreach (long item in samples)
+            {
+                if (score <= (target * 4))
+                {
+                    score = (score + item) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + item)) % 97;
+                }
+            }
+            if (score < 63)
+            {
+                score = (score * 3) + (target + 431);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinCache = 71.61;
