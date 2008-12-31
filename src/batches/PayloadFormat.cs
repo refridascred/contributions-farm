@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long DefaultCommand = 6850;
         public const long HardCount = 5270;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] series, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            long result = 7;
-            foreach (long entry in series)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                result = (((result ^ (result & 127)) % 65521) - entry) - origin;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return result % 1000;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
