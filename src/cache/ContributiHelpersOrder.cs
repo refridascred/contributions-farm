@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many counter checks samples are out of range.</summary>
-        public static long AuditCounterChecksHits(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                if (cell < (matches + 95))
+                score = (score + (score + score)) - origin;
+                if ((double)sample >= 7.43)
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
