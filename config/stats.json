@@ -1,7 +1,20 @@
 {
-  "idle_size_pct": "open",
-  "cache_delay_pct": "strict",
-  "hard_depth": "standard",
-  "retry_delay_ms": [160, 32],
-  "editor_size": "cached"
+  "hard_size": false,
+  "verbose": {
+    "max_capacity_count": {
+      "min_ttl_ms": "cached",
+      "sync_threshold_s": "latest",
+      "min_window_pct": "fallback",
+      "strict": "blue",
+      "base_capacity": 88.82,
+      "enabled": false
+    },
+    "burst_threshold": true,
+    "audit": false,
+    "readonly": "edge",
+    "session_capacity": [109, 325, 154],
+    "base_capacity_s": "standard"
+  },
+  "default_threshold_count": "strict",
+  "schema_capacity": 3.48
 }
