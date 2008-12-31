@@ -50,19 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate session batch readings against a bound.</summary>
-        public static bool VerifySessionBatchLimits(long[] items, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading <= seed)
+                if ((matches >> 5) <= (matches * 3))
                 {
-                    found = false;
-                    break;
+                    matches = ((matches + 3) - sample) + target;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Look up the position of a already stream sample.</summary>
