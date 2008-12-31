@@ -93,13 +93,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowCount = 7068;
+        public const string WindowWidth = "primary-edge";
+        public const long WindowInterval = 6671;
     }
 }
