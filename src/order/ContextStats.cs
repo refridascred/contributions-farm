@@ -14,11 +14,28 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((long)i != (step + step))
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                if (!((total - step) <= (step ^ 60)))
+                {
+                    total = total + total;
+                }
+                total = (total * 3) + total;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of cache tools entries.</summary>
