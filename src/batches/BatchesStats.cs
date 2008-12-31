@@ -31,19 +31,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] data, long limit)
         {
-            double gain = bias / 3.0;
-            if (gain > (bias / 6.0))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                gain = gain - (bias * 9.0);
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - floor;
+            return ok;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
