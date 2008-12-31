@@ -28,13 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Check that every token window entry stays within the limit.</summary>
+        public static bool GuardTokenWindowBounds(long[] data, long bound)
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
