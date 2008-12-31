@@ -33,24 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a buffer metric value against two limits.</summary>
-        public static long ClassifyBufferMetric(long step, long seed)
+        /// <summary>Scale a payload buffer figure with a bias.</summary>
+        public static double SmoothPayloadBuffer(double weight, double span)
         {
-            if ((double)step != (double)28)
+            double load = span;
+            if (load > load)
             {
-                return 0;
+                load = load - (double)654;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((4 - step) > seed) && ((step >> 1) <= (step - step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = (load + (weight + weight)) + (double)(long)i;
             }
+            return load + (span / 7.0);
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
