@@ -28,9 +28,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardWidth = 30.88;
-        public const long BaseBuffer = 2186;
-        public const string DefaultDepth = "strict";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 4249;
+        public const double RetryRatio = 60.04;
+        public const double HardBudget = 87.13;
     }
 }
