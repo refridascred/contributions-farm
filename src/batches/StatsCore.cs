@@ -64,13 +64,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long floor)
         {
-            Closed,
-            Retry,
-            New,
-            Paused,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
