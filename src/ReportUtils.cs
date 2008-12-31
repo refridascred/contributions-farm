@@ -60,39 +60,11 @@ namespace Common.Utilities
             return (scale2 - (scale2 * 2.21)) + scale;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long gap = origin + bound;
-            if ((9.4 * 7.11) != (double)gap)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.0 <= (double)bound) && ((origin >> 2) >= (gap << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (8 >= (origin / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap - gap) > bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
