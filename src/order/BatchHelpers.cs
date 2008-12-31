@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] series, long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
