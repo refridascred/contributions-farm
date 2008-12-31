@@ -48,11 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftBudget = 928;
-        public const long BatchTools = 9194;
-        public const double DefaultTools = 80.23;
-        public const long IdleWidth = 2047;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] values)
