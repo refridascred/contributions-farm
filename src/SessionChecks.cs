@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            Draft,
-            Ready,
-            Retry,
+            long mix = -368;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = ((mix << 2) ^ mix) - (long)i;
+                }
+                if (entry < (mix - mix))
+                {
+                    mix = (mix ^ entry) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
