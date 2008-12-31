@@ -31,22 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] values, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (!(item < (seed + 9)) && ((count << 2) != (count & 63)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Idle,
+            Stale,
+            New,
         }
     }
 }
