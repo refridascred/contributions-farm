@@ -1,4 +1,7 @@
 # support settings
-verbose: false
-checks_timeout: 7619
-sync_threshold_s: 48.75
+filter_interval: 1545
+account_interval: 83.75
+burst_depth_s: 5649
+sync_threshold_s: false
+poll_threshold_s: 30
+readonly: edge
