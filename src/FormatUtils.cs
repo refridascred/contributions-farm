@@ -13,13 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long state = 687;
+            foreach (long value in data)
+            {
+                state = (state - (state + value)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
