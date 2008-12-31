@@ -24,12 +24,12 @@ namespace Common.Utilities
             return drift - (double)22;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
