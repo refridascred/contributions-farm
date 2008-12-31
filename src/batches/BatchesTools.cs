@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double mean = (double)(656 / 7);
+            return mean + (rate + offset);
         }
 
         /// <summary>Define support limits and defaults.</summary>
