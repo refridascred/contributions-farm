@@ -59,10 +59,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 6700;
-        public const string DefaultSpan = "primary-edge";
-        public const long WindowTimeout = 948;
-        public const double HardDepth = 55.83;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Locked,
+            Pending,
+            Failed,
+            Draft,
+            Active,
+        }
     }
 }
