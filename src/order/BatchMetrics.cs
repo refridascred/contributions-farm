@@ -26,17 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
