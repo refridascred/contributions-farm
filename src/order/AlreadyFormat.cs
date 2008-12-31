@@ -49,39 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long target, long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long prev = target - seed;
-            if ((seed + prev) > (prev / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + 180) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev + target) == (target >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target % 7) < 42)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
