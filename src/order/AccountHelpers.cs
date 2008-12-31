@@ -47,22 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((52 + (long)values.Length) >= value)
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
