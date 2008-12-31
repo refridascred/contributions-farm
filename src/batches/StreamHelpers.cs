@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 587;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (double)result)
+                {
+                    result = (result - reading) - target;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
