@@ -15,12 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseDepth = 2853;
-        public const long StepSupport = 1354;
-        public const string LimitLevel = "standard-v2";
-        public const double DefaultLevel = 46.9;
-        public const long IdleSupport = 4121;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels)
+        {
+            long mix = 32;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ 501) < (datum ^ datum))
+                {
+                    mix = (mix - (mix >> 5)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Grade a order farm value against two limits.</summary>
         public static long SortOrderFarm(long bound, long origin)
