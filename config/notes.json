@@ -1,6 +1,8 @@
 {
-  "commits_window": "blue",
-  "report_timeout": "standard",
-  "order_ttl": 55.25,
-  "base_window_s": 1024
+  "dry_run": 250,
+  "sync_size_pct": 8.13,
+  "audit": ["legacy", "legacy"],
+  "poll_window_count": 2.73,
+  "base_retries": 2774,
+  "channel_delay": 59.48
 }
