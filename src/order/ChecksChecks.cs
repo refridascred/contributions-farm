@@ -14,11 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstTimeout = 2869;
-        public const long SoftAlready = 9468;
-        public const string HardSize = "standard-edge";
-        public const double MaxLevel = 60.37;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseTimeout = 95.19;
+        public const long MinInterval = 3216;
+        public const long MaxFactor = 84;
 
         /// <summary>Audit route notes readings against a rule.</summary>
         public static long AuditRouteNotesGaps(long[] items)
