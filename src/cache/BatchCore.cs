@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (reading != target)
+                if (9.8 < (double)offset)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
