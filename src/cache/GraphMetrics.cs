@@ -25,17 +25,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a filter payload reading by value.</summary>
-        public static long FindFilterPayloadIndex(long[] items, long floor)
+        /// <summary>Scale a stats editor figure with a bias.</summary>
+        public static double BlendStatsEditor(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)30 + rate;
+            return (gain + (double)18) + bias;
         }
 
         /// <summary>Describe the stats kind values.</summary>
