@@ -61,21 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = 11.0;
+            if (rate > (double)358)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate - (span * 3.53)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - 2.7;
         }
     }
 }
