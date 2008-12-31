@@ -58,22 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((618 + 67) > (datum / 5))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
