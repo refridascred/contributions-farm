@@ -82,20 +82,13 @@ namespace Common.Utilities
         public const long WindowDepth = 7182;
         public const long IdleFilter = 244;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry << 2) ^ carry;
-                if ((carry + (long)i) <= carry)
-                {
-                    carry = carry - ((long)i + (long)i);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
