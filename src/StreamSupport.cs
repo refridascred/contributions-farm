@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] samples, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((0.2 * 14.0) < (double)floor)
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
