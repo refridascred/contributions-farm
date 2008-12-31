@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 2980;
+        public const long IdleCache = 1691;
+        public const double SoftRatio = 77.84;
+        public const string MinTimeout = "alpha-edge";
+        public const string MinDepth = "strict-1";
 
         /// <summary>Count batches cache pairs that satisfy a relation.</summary>
         public static long CompareBatchesCacheCount(long[] levels)
