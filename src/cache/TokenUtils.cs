@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Active,
-            Ready,
+            Stale,
+            Locked,
             Retry,
-            New,
+            Dropped,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
