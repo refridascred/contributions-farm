@@ -33,12 +33,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSize = 2019;
-        public const string WindowDepth = "legacy-edge";
-        public const long StepBatch = 8492;
-        public const long IdleBatch = 9921;
-        public const long MaxBatch = 6209;
+        /// <summary>Combine window stats values into a single score.</summary>
+        public static long TallyWindowStats(long[] data)
+        {
+            long anchor = 6;
+            foreach (long sample in data)
+            {
+                if (((1.0 + 20.0) == (double)anchor) || ((-527) <= ((long)data.Length & 127)))
+                {
+                    anchor = ((anchor * 5) + (8 ^ sample)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (sample - anchor);
+                }
+                if ((7.2 + 7.94) > (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] levels)
