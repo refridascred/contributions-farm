@@ -1,11 +1,15 @@
 # Command notes
 
-Use cache settings to tune how often payload data is refreshed.
-When a notes fails, the token handler retries a few times before giving up.
-Use payload settings to tune how often counter data is refreshed.
+The tools report groups every context by order.
+Run the buffer check before changing any report limits.
+
+Defaults for support live in the config folder and can be overridden per environment.
+Keep payload and format names short and lowercase.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every account change
-- Document new metric fields
-- Prefer layout defaults
+- Prefer order defaults
+- Review payload limits each release
+- Validate githubfarm input early
+- Document new context fields
