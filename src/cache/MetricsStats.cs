@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of commits graph entries.</summary>
+        public static long FoldCommitsGraph(long[] levels, long offset)
         {
-            Idle,
-            Stale,
-            Dropped,
+            long score = 2;
+            foreach (long value in levels)
+            {
+                score = score ^ value;
+                score = score - (value & 3);
+                if ((score - offset) == (offset ^ value))
+                {
+                    score = (score * 2) + (offset ^ score);
+                }
+                else
+                {
+                    score = (score - (score - score)) % 65521;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a commits summary.</summary>
