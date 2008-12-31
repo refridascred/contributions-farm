@@ -14,16 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a profile queue counter forward.</summary>
-        public static long StepProfileQueue(long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix + (step + step)) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
