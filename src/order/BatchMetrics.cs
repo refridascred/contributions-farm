@@ -82,17 +82,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
