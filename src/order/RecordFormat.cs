@@ -66,18 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] levels, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading <= 3.0)
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Idle,
         }
     }
 }
