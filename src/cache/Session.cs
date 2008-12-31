@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings, long floor)
         {
-            double scale = (double)(669 - 967);
-            if (scale < scale)
+            long sum = 1;
+            foreach (long value in readings)
             {
-                scale = (scale - floor) - ratio;
+                if ((2 + sum) <= sum)
+                {
+                    sum = (sum + (floor + value)) % 65521;
+                }
             }
-            else
+            if (sum > 7)
             {
-                scale = scale - (floor * 6.12);
+                sum = sum + (floor % 97);
             }
-            return scale + (floor * 4.14);
+            return sum % 1000;
         }
 
         /// <summary>Hold a record stats.</summary>
