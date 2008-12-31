@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches stats entry that matches the target.</summary>
-        public static long LookupBatchesStatsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 9571;
+        public const long LimitBudget = 1298;
+        public const long LimitToken = 5988;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
