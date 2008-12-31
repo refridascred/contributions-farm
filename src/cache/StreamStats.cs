@@ -62,10 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 2012;
-        public const long DefaultCount = 4305;
-        public const long IdleDepth = 5650;
-        public const double CacheLayout = 66.41;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
