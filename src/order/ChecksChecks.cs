@@ -14,19 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of profile checks entries.</summary>
-        public static long TotalProfileChecks(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            long score = 840;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                score = (score + item) % 97;
-                if ((item - item) <= (item * 2))
+                if ((tally + cell) <= (cell % 8))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
