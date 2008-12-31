@@ -45,26 +45,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values, long step)
+        /// <summary>Grade a batch githubfarm value against two limits.</summary>
+        public static long SortBatchGithubfarm(long bound, long target)
         {
-            long sum = -1;
-            foreach (long value in values)
+            if (((478 + target) < (bound + bound)) && ((target >> 1) != (bound + 776)))
             {
-                if ((4.8 / 9.0) < (double)sum)
+                return 2;
+            }
+            else
+            {
+                if (((target ^ bound) != (target - target)) && ((target & 3) > target))
                 {
-                    sum = (sum << 3) ^ (value >> 5);
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum * 3) + (sum + step);
+                    if ((791 << 2) < (bound + 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (sum > (-55))
-            {
-                sum = ((sum << 3) ^ (step + sum)) % 255;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
