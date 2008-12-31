@@ -18,17 +18,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Locate a order stats reading by value.</summary>
-        public static long FindOrderStatsIndex(long[] readings, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] > limit)
+                if ((37 <= target) && (((-15) + cell) <= 615))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a batch reading.</summary>
