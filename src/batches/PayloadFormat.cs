@@ -53,15 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            double rate2 = rate;
-            if (rate2 <= rate)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 + (1.1 + rate2)) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 - (double)430;
+            return seen;
         }
     }
 }
