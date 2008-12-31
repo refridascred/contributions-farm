@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long limit, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long delta = limit - target;
-            if (((double)limit > (double)target) || (limit <= 860))
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)delta < (1.0 - 1.1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + limit) <= (limit / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)target >= (double)77))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
