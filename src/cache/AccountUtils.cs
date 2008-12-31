@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Roll a order report counter forward.</summary>
+        public static long SeriesOrderReport(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry * 4) + (5 - carry)) % 65521) ^ (long)i2;
                 }
+                if (((double)carry >= 6.61) && (carry > (offset - 583)))
+                {
+                    carry = ((carry << 2) ^ (offset << 1)) % 4096;
+                    carry = (carry << 3) ^ offset;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
