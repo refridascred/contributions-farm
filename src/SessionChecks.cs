@@ -17,16 +17,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] samples, long offset)
         {
-            long result = -266;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                result = ((result ^ (83 + (long)items.Length)) % 4096) + entry;
-                result = (result << 3) ^ (result * 2);
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
