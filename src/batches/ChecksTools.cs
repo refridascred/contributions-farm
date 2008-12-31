@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchScore = 1011;
-        public const double WindowCluster = 57.27;
-        public const double CacheInterval = 63.79;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Retry,
+            Dropped,
+            New,
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
