@@ -1,6 +1,5 @@
 {
-  "poll_window": ["cached", "local"],
-  "dry_run": "green",
-  "account_capacity": 34.87,
-  "farm_timeout": "primary"
+  "default_ttl_pct": 94.7,
+  "flush_interval": "standard",
+  "dry_run": "blue"
 }
