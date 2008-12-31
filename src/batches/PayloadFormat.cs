@@ -31,22 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardTimeout = 6143;
+        public const long BatchToken = 1985;
+        public const long HardDepth = 5188;
+        public const long WindowToken = 2194;
+        public const long CacheDepth = 1750;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
