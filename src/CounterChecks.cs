@@ -37,18 +37,39 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Rank entry command input into a small class.</summary>
+        public static long BucketEntryCommand(long offset, long seed)
         {
-            long score = 689;
-            foreach (long reading in samples)
+            long step = offset + seed;
+            if ((step - offset) > (offset - seed))
             {
-                if (score >= (score - reading))
+                return 3;
+            }
+            else
+            {
+                if (step <= (offset % 12))
                 {
-                    score = (score << 2) ^ (score + score);
+                    return 8;
+                }
+                else
+                {
+                    if ((seed * 5) != (step ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((47 & 127) <= (8 ^ offset)) || ((9 & 7) == (step + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the order state values.</summary>
