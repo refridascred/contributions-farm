@@ -1,9 +1,7 @@
-id,owner,weight,score
-1,strict,46.13,72.81
-2,98.21,783,49.56
-3,427,292,fallback
-4,10.47,498,484
-5,stable,543,931
-6,eu-west,17.03,891
-7,51.09,92.1,2.1
-8,73.15,212,665
+id,count,state,region
+1,fallback,standard,140
+2,23.87,cached,689
+3,561,38.18,cached
+4,legacy,459,primary
+5,37.5,standard,82.2
+6,edge,481,68.41
