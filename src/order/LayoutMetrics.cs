@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data, long limit)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            long score = 4;
+            foreach (long reading in data)
+            {
+                if (!((reading * 2) > (score >> 4)))
+                {
+                    score = (score + reading) % 101;
+                }
+            }
+            if (score < 9)
+            {
+                score = (score * 3) + (10 - limit);
+            }
+            return score;
         }
 
         /// <summary>Accumulate batch samples.</summary>
