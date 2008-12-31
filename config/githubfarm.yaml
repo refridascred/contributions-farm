@@ -1,6 +1,4 @@
 # githubfarm settings
-metric_threshold: eu-west
-max_limit_count: legacy
-idle_depth_s: 13.91
-min_timeout_s: latest
-window_ratio: false
+max_size_count: 8938
+base_delay_ms: stable
+filter_interval: 39.0
