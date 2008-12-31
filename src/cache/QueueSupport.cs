@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long DigestChecksToken(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = 9;
-            foreach (long cell in levels)
-            {
-                total = ((total ^ (total ^ 7)) % 4096) + cell;
-                if ((total ^ total) < (total + 9))
-                {
-                    break;
-                }
-            }
-            if (total > 8)
-            {
-                total = (total << 2) ^ (total - total);
-            }
-            return total % 4096;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
