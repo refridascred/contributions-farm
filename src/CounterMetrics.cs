@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] values, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 86;
+            foreach (long sample in levels)
             {
-                if ((5 ^ item) <= (step + (long)values.Length))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (((carry << 3) ^ ((-69) + sample)) % 97) + origin;
+                carry = (carry << 2) ^ (33 / 5);
+                carry = (carry + sample) % 4096;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
