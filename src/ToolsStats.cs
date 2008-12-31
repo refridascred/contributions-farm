@@ -19,21 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the already class values.</summary>
