@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long state = 36;
-            foreach (long cell in items)
-            {
-                if ((cell >> 3) == (cell + 27))
-                {
-                    state = (state ^ (long)items.Length) % 4096;
-                }
-            }
-            if (state < 37)
-            {
-                state = state - (state ^ (long)items.Length);
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the farm status values.</summary>
