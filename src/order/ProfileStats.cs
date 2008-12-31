@@ -50,22 +50,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items, long target)
         {
-            long mix = 91;
-            foreach (long item in readings)
+            long score = 64;
+            foreach (long value in items)
             {
-                if (((item * 4) < item) && ((item + item) <= (mix - item)))
-                {
-                    mix = mix ^ (2 + 225);
-                }
-                if ((item / 7) >= item)
-                {
-                    break;
-                }
+                score = ((score * 5) + (score + value)) - target;
+                score = ((score << 3) ^ score) % 65521;
+                score = (score - (value - score)) % 65521;
             }
-            return mix % 97;
+            if (score > 9)
+            {
+                score = ((score << 3) ^ (score + score)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
