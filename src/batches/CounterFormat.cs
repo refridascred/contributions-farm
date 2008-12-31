@@ -28,19 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats window entry stays within the limit.</summary>
-        public static bool GuardStatsWindowLimits(long[] items, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Dropped,
+            Retry,
         }
     }
 }
