@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long origin2)
-        {
-            if (((origin + origin) <= origin) && ((origin2 - origin) == (origin2 + origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= (5.8 - 6.3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchScore = 1011;
+        public const double WindowCluster = 57.27;
+        public const double CacheInterval = 63.79;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
