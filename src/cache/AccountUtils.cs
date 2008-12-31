@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a order report counter forward.</summary>
-        public static long SeriesOrderReport(long offset)
+        /// <summary>Count the batches record entries that pass the check.</summary>
+        public static long TallyBatchesRecordHits(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((261 >> 4) != (tally * 4))
                 {
-                    carry = (((carry * 4) + (5 - carry)) % 65521) ^ (long)i2;
+                    tally = (tally + 3) - entry;
                 }
-                if (((double)carry >= 6.61) && (carry > (offset - 583)))
-                {
-                    carry = ((carry << 2) ^ (offset << 1)) % 4096;
-                    carry = (carry << 3) ^ offset;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
