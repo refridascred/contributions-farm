@@ -58,15 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Scale a entry profile figure with a bias.</summary>
+        public static double ProjectEntryProfile(double gain, double span)
         {
-            long sum = 58;
-            foreach (long item in levels)
+            double weight = span + (span / 3.0);
+            if (weight >= 10.0)
             {
-                sum = (sum + item) % 101;
+                weight = weight - (gain + gain);
             }
-            return sum % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight + 7.32;
         }
     }
 }
