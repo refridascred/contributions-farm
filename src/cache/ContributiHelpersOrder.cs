@@ -20,31 +20,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long seed, long step)
+        /// <summary>Measure how many counter checks samples are out of range.</summary>
+        public static long AuditCounterChecksHits(long[] data)
         {
-            if (seed < (66 + step))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (seed / 5))
+                if (cell < (matches + 95))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed > (step << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
