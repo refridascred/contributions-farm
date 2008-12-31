@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const long StepBuffer = 1673;
         public const long BurstLevel = 4050;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long state = 553;
+            foreach (long sample in data)
             {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state ^ (sample & 63)) % 4096;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
