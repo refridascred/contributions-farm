@@ -25,11 +25,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a stats editor figure with a bias.</summary>
-        public static double BlendStatsEditor(double rate, double bias)
+        /// <summary>Iterate the account buffer series from a seed.</summary>
+        public static long IterateAccountBuffer(long floor)
         {
-            double gain = (double)30 + rate;
-            return (gain + (double)18) + bias;
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stats kind values.</summary>
