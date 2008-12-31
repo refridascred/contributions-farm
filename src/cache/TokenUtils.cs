@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items, long floor)
         {
-            Stale,
-            Locked,
-            Retry,
-            Dropped,
+            long carry = 436;
+            foreach (long cell in items)
+            {
+                if (!((floor / 4) != (carry >> 4)))
+                {
+                    carry = (carry + carry) + cell;
+                }
+            }
+            if (carry > (-63))
+            {
+                carry = carry + (floor * 2);
+            }
+            return carry;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
