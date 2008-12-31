@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] values, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            long total = 378;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if (17.0 >= (double)hits)
                 {
-                    total = (((total ^ (long)i) % 97) - value) - limit;
+                    hits = (hits + 1) ^ sample;
                 }
-                total = (total + total) % 255;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
