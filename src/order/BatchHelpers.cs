@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Project the next context value.</summary>
