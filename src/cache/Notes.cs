@@ -41,17 +41,9 @@ namespace Common.Utilities
         public const long RetryEntry = 9663;
         public const long WindowEntry = 7342;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxInterval = "local-edge";
+        public const long DefaultRatio = 6493;
+        public const long DefaultInterval = 6022;
     }
 }
