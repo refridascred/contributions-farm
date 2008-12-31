@@ -33,18 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (hits > datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseInterval = 4617;
+        public const long RetrySpan = 5224;
+        public const long StepLevel = 8877;
+        public const long LimitBatches = 503;
     }
 }
