@@ -29,19 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long carry = 41;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry + reading;
-                if ((reading >> 5) < (684 ^ carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry + (reading + 150);
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
