@@ -28,25 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a already channel value against two limits.</summary>
-        public static long SortAlreadyChannel(long step, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data)
         {
-            long cur = step + limit;
-            if ((cur * 4) >= (cur + limit))
+            long mix = 92;
+            foreach (long reading in data)
             {
-                return 2;
+                mix = ((mix * 5) + reading) % 65521;
             }
-            else
+            if (mix < 116)
             {
-                if ((limit / 7) == (52 - cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                mix = (mix << 2) ^ (mix + mix);
             }
+            return mix;
         }
     }
 }
