@@ -1,7 +1,8 @@
 {
-  "filter_ratio": true,
-  "soft_ratio_s": "edge",
-  "verbose": 17,
-  "soft_interval_count": 7404,
-  "strict": 80.62
+  "hard_ttl_ms": 71,
+  "max_window_s": "local",
+  "burst_interval_ms": 1814,
+  "idle_window_ms": 9700,
+  "warm_delay_ms": "legacy",
+  "default_interval_s": "strict"
 }
