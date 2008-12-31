@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
