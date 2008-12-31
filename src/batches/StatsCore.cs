@@ -44,39 +44,18 @@ namespace Common.Utilities
             return weight + (double)0;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] data)
         {
-            long prev = seed ^ origin;
-            if ((1 >> 2) >= (seed + 59))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((6.05 - 19.0) < (double)prev))
+                if (((seen << 1) < ((-2) << 1)) && (((value + 858) < value) && ((96 + seen) != (seen + seen))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 5) != (prev >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin / 4) < (prev - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
