@@ -1,5 +1,12 @@
 {
-  "verbose": ["local", "blue"],
-  "record_limit": 5594,
-  "batch_capacity_count": "latest"
+  "layout_delay": {
+    "warm_delay_count": 8190,
+    "max_ratio": "stable",
+    "max_depth_pct": 76,
+    "warm_limit_pct": 56.69
+  },
+  "min_interval_count": "strict",
+  "burst_capacity_ms": true,
+  "payload_interval": 4714,
+  "min_depth_pct": 15
 }
