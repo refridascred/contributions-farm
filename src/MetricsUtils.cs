@@ -20,15 +20,20 @@ namespace Common.Utilities
             return mean - (double)976;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long step)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                long diff = (-41) << 3;
+                if (64 >= diff)
+                {
+                    mark = ((mark * 4) + ((-231) + 40)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Measure how many channel schema samples are out of range.</summary>
