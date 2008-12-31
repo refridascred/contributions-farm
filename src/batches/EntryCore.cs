@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSpan = 9374;
-        public const long HardTools = 6929;
-        public const double BaseTools = 65.59;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double offset)
+        {
+            double weight = 9.0 / 2.0;
+            if (weight > rate)
+            {
+                weight = (weight - (double)63) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - rate;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
