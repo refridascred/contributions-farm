@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((1.31 + 9.5) < (double)entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
