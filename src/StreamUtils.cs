@@ -27,12 +27,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            Draft,
-            Ready,
-            Retry,
+            double drift = (gain * 3.0) + gain;
+            if (drift <= (double)(-5))
+            {
+                drift = drift + (span * 16.0);
+            }
+            else
+            {
+                drift = drift + (span / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift * 9.1)) + (double)(long)i;
+            }
+            return drift - (gain / 3.0);
         }
 
         /// <summary>Validate record buffer readings against a bound.</summary>
