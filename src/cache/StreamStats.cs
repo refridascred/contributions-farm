@@ -38,31 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            if ((step >> 2) >= step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 4) == (bound ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < (step >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
