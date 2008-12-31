@@ -14,21 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up counter support samples.</summary>
-        public static long CompareCounterSupportCount(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 3)
+                    if ((readings[i] + readings[j]) == 14)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
