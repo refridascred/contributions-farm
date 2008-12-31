@@ -50,19 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache cluster measurements.</summary>
-        public static double ScaleCacheCluster(double weight, double floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 > 1.68)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - (double)72;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - floor) - (double)(long)i;
-            }
-            return weight2 + (double)612;
+            return hits;
         }
     }
 }
