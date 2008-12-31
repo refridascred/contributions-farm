@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 357;
-        public const string StepSize = "fallback";
-        public const string MinScore = "fallback-edge";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardWidth = "staging-v2";
