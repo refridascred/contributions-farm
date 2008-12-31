@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the editor metric entries that pass the check.</summary>
+        public static long MeasureEditorMetricMatches(long[] samples, long origin)
         {
-            Pending,
-            Synced,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((origin - item) > ((-3) % 7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
