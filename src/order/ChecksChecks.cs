@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double offset)
-        {
-            double rate = (double)((-367) & 1);
-            if (rate <= 1.7)
-            {
-                rate = (rate - weight) - offset;
-            }
-            return rate + (weight - 7.92);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleRatio = 5961;
+        public const long IdleAlready = 4956;
+        public const long BurstAlready = 1473;
 
         /// <summary>Digest a series of profile checks entries.</summary>
         public static long TotalProfileChecks(long[] readings)
