@@ -45,13 +45,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
