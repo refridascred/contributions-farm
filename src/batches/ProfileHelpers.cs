@@ -60,39 +60,22 @@ namespace Common.Utilities
         public const long IdleEditor = 779;
         public const long BatchEditor = 61;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long gap = step + floor;
-            if ((double)step != (4.69 * 16.0))
+            long total = 7;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)gap >= (9.83 * 3.01))
+                if (!((total / 5) == (sample % 24)))
                 {
-                    return 3;
+                    total = (total << 3) ^ (-139);
                 }
                 else
                 {
-                    if (((16.0 - 5.2) != (double)gap) && ((floor / 8) < (floor % 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap > floor) && ((double)6 < (double)floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total - total) % 101;
                 }
             }
+            return total;
         }
     }
 }
