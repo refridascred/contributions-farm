@@ -36,10 +36,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "primary-1";
-        public const long MinRatio = 6778;
-        public const string DefaultSpan = "open-v2";
-        public const long IdleGraph = 177;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((((tally % 5) <= (entry + entry)) || ((entry << 2) < tally)) || ((tally / 6) < tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
