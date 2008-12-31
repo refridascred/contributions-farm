@@ -19,13 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
