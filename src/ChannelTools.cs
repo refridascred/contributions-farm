@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = seed + limit;
+            if ((double)seed != (8.6 + 6.8))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ seed) > (span / 7))
                 {
-                    if ((values[i] ^ values[j]) == 1)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed > (seed * 5)) && (span >= (seed / 7)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
