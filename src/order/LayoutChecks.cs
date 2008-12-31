@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
