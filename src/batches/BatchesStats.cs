@@ -14,16 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total ^ (origin & 63)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Derive the next batch batches value from a seed.</summary>
