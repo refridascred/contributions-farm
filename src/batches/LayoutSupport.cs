@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a schema support counter forward.</summary>
-        public static long SeriesSchemaSupport(long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double bias2)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            double mean = 0.82 * 5.1;
+            if (mean <= bias2)
             {
-                result = result + (result - result);
-                result = (result + result) % 97;
-                result = (result ^ result) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
+                mean = (mean - bias2) - bias;
             }
-            return result;
+            return mean - (double)185;
         }
 
         /// <summary>Describe the stats status values.</summary>
