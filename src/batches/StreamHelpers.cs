@@ -19,12 +19,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] data)
         {
-            Done,
-            Queued,
-            Stale,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >= (seen / 9)) && !((double)seen < 7.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count route cluster pairs that satisfy a relation.</summary>
