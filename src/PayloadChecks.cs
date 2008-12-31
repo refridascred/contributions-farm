@@ -35,20 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch account value from a seed.</summary>
-        public static long SeriesBatchAccount(long limit)
+        /// <summary>Match up route stream samples.</summary>
+        public static long PairRouteStreamCount(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((limit * 5) >= (limit % 16)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 5) + (limit & 31)) % 4096;
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score << 3) ^ (limit ^ score);
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
