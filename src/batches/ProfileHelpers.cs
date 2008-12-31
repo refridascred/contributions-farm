@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long WindowFactor = 697;
         public const string LimitCount = "alpha-edge";
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Pending,
-            Retry,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 7831;
+        public const long IdleRoute = 9436;
+        public const long BatchRoute = 5357;
+        public const long HardRoute = 6585;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ProjectBuffer(double rate, double offset)
