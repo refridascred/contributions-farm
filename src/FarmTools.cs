@@ -33,23 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] readings)
         {
-            double load = (double)(516 ^ 353);
-            if (load < bias2)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                load = load - (bias2 - 3.54);
+                if (hits > datum)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                load = load - (bias + bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
+            return hits;
         }
     }
 }
