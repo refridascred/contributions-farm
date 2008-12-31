@@ -76,18 +76,12 @@ namespace Common.Utilities
         public const double BurstSpan = 11.65;
         public const long MaxChecks = 7727;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitLevel = 1076;
+        public const long DefaultAccount = 7207;
+        public const long BurstWidth = 6525;
+        public const long CacheTimeout = 9017;
+        public const double BurstAccount = 48.22;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
