@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a editor account reading.</summary>
-        public static double ProjectEditorAccount(double bias, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] readings, long offset)
         {
-            double load = (double)(2 ^ 765);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                load = ((load + floor) + (double)(long)i) + bias;
+                if (!((8.7 - 6.4) < (double)seen))
+                {
+                    seen = ((seen + 2) + sample) - offset;
+                }
             }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
