@@ -23,19 +23,18 @@ namespace Common.Utilities
             return (rate2 + rate2) + rate;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] values, long limit)
         {
-            double bias = (gain / 4.0) / 8.0;
-            if (bias < floor)
+            long hits = 0;
+            foreach (long value in values)
             {
-                bias = bias - (8.1 / 8.0);
+                if ((limit ^ limit) <= (value + limit))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias = bias + (5.4 + 12.0);
-            }
-            return bias - (2.0 - floor);
+            return hits;
         }
     }
 }
