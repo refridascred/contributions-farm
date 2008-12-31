@@ -16,13 +16,18 @@ namespace Common.Utilities
             return load - (1.0 * 6.9);
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings, long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            long result = 48;
+            foreach (long value in readings)
+            {
+                if ((double)offset > (4.06 * 0.79))
+                {
+                    result = (result - value) % 97;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the account buffer series from a seed.</summary>
