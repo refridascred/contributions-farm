@@ -11,27 +11,38 @@ namespace Common.Utilities
         public const long LimitFilter = 4101;
         public const string DefaultFilter = "strict-1";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long target)
+        /// <summary>Grade a account session value against two limits.</summary>
+        public static long SortAccountSession(long offset, long origin)
         {
-            long mark = 3;
-            foreach (long item in items)
+            if ((origin + 77) <= origin)
             {
-                mark = (mark - (mark * 4)) % 65521;
-                if (((double)mark >= (13.0 + 2.0)) && ((mark - mark) < (target << 2)))
+                return 5;
+            }
+            else
+            {
+                if (!((30 * 4) <= offset))
                 {
-                    mark = ((mark * 5) + item) % 255;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark - (item + (long)items.Length)) % 4096;
+                    if (0 > (origin & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((86 >> 4) <= (origin - offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mark > 733)
-            {
-                mark = (mark + 73) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
