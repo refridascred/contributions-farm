@@ -27,12 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of channel tools entries.</summary>
+        public static long ScoreChannelTools(long[] series)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long mark = 90;
+            foreach (long entry in series)
+            {
+                if ((682 << 1) > entry)
+                {
+                    mark = (mark - (mark << 2)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ entry) % 255;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
