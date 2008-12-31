@@ -19,31 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            if ((seed >> 2) > (seed * 5))
+            double drift = 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                drift = (drift + span) + (double)(long)i;
             }
-            else
-            {
-                if (((seed % 12) <= (9 / 4)) && ((double)floor <= 0.67))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.03 - 4.2) <= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + (bias + bias);
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
