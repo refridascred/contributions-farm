@@ -49,18 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double span)
         {
-            long anchor = 2;
-            foreach (long datum in series)
+            double bias = (gain / 4.0) + span;
+            if (bias > span)
             {
-                if ((double)anchor <= 10.0)
-                {
-                    anchor = (anchor - (target >> 4)) + datum;
-                }
+                bias = bias + (bias + span);
             }
-            return anchor % 97;
+            else
+            {
+                bias = bias + gain;
+            }
+            return bias - span;
         }
     }
 }
