@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 6180;
-        public const string MinTimeout = "open-edge";
-        public const long DefaultAccount = 9853;
-        public const long BurstDepth = 2122;
-        public const double BaseAccount = 69.49;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((5 + 20) >= (seed << 2))
+                {
+                    mix = mix ^ (seed / 8);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long target)
