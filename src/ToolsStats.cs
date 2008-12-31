@@ -36,13 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
