@@ -22,11 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "cached";
-        public const long RetryCommits = 623;
-        public const long WindowCommits = 4823;
-        public const long CacheCommits = 5180;
+        /// <summary>Adjust a buffer stats reading.</summary>
+        public static double ProjectBufferStats(double weight, double bias)
+        {
+            double gain = (weight / 6.0) / 8.0;
+            if (gain > (double)82)
+            {
+                gain = (gain - (double)(-5)) - bias;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaOutliers(long[] data, long target)
