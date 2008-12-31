@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double WindowCluster = 57.27;
         public const double CacheInterval = 63.79;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Active,
-            Retry,
-            Closed,
+            Idle,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
