@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5453;
-        public const long BatchRatio = 967;
-        public const string LimitLevel = "legacy-v2";
-        public const double DefaultBudget = 3.46;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
