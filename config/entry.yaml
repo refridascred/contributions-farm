@@ -1,9 +1,22 @@
 # entry settings
-min_ttl: 7004
-window_limit:
-  - 226
-  - 357
-  - 76
-  - 93
-poll_depth: 4380
-strict: open
+stream_threshold:
+  burst_window: 60
+  metrics_window:
+    idle_delay_ms:
+      - staging
+      - open
+      - cached
+    max_limit: 1773
+    persist: false
+  audit: blue
+  default_size_pct: 100
+retry_retries_pct:
+  - legacy
+  - standard
+  - latest
+  - blue
+account_capacity:
+  - stable
+  - latest
+  - strict
+  - edge
