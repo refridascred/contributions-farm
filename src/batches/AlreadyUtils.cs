@@ -33,17 +33,13 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Fold a list of report readings.</summary>
