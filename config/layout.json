@@ -1,6 +1,23 @@
 {
-  "min_retries": "eu-west",
-  "soft_retries_s": "green",
-  "editor_limit": [379, 50],
-  "burst_window_count": true
+  "verbose": {
+    "poll_delay_ms": {
+      "strict": "staging",
+      "burst_limit_count": true,
+      "stream_limit": "strict",
+      "compress": 60,
+      "flush_interval": [390, 157, 317],
+      "poll_interval_ms": "fallback"
+    },
+    "queue_retries": ["open", "latest"],
+    "soft_delay_ms": "stable"
+  },
+  "hard_ttl_pct": ["open", "cached"],
+  "warm_threshold_s": {
+    "poll_window": 82.12,
+    "metrics_window": "green",
+    "hard_window": 10,
+    "dry_run": 11.84,
+    "compress": [129, 399, 409],
+    "burst_ttl_count": 500
+  }
 }
