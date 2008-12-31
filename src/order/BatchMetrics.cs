@@ -44,10 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCount = 8701;
-        public const long IdleCommand = 7191;
-        public const long MinFactor = 5801;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Combine batch stats values into a single score.</summary>
         public static long FoldBatchStats(long[] samples)
