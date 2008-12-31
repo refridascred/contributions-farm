@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (result <= (target % 64))
+                if (items[i] < seed)
                 {
-                    result = result + ((long)i + 73);
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
