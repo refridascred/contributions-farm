@@ -1,5 +1,5 @@
 {
-  "order_depth": "legacy",
-  "layout_depth": "eu-west",
-  "audit": "latest"
+  "context_size": true,
+  "stats_ttl": 53.09,
+  "notes_threshold": 8740
 }
