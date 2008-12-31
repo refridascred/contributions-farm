@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Combine layout window values into a single score.</summary>
+        public static long TotalLayoutWindow(long[] series)
         {
-            Closed,
-            Ready,
-            Pending,
+            long acc = 2;
+            foreach (long datum in series)
+            {
+                acc = (((acc << 3) ^ (371 / 9)) % 4096) ^ datum;
+                acc = (acc ^ acc) % 101;
+            }
+            if (acc < 689)
+            {
+                acc = ((acc << 3) ^ (91 * 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
