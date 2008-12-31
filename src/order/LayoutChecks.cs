@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((value << 2) < (1 + hits)) && (5 < (value * 5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
