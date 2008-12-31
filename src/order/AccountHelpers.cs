@@ -50,13 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Dropped,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 1324;
+        public const long HardWidth = 5880;
+        public const long BatchTimeout = 4680;
 
         /// <summary>Find the first buffer filter entry that matches the target.</summary>
         public static long SeekBufferFilterIndex(long[] levels, long floor)
