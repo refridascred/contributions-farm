@@ -56,10 +56,15 @@ namespace Common.Utilities
         public const double DefaultTools = 80.23;
         public const long IdleWidth = 2047;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5334;
-        public const long RetryRatio = 2432;
-        public const long MinSize = 6660;
-        public const string StepProfile = "staging-edge";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values)
+        {
+            long carry = 6;
+            foreach (long item in values)
+            {
+                carry = ((carry << 2) ^ carry) - item;
+            }
+            return carry;
+        }
     }
 }
