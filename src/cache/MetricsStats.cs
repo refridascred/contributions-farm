@@ -44,23 +44,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a context queue figure with a bias.</summary>
-        public static double ProjectContextQueue(double scale, double offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long seed)
         {
-            double scale2 = (double)687 / 5.0;
-            if (scale2 > offset)
+            if ((seed * 2) < (step + step))
             {
-                scale2 = (scale2 + (double)124) - scale;
+                return 2;
             }
             else
             {
-                scale2 = scale2 - (double)355;
+                if (!((seed + seed) >= (step + seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - (double)1) - (double)(long)i;
-            }
-            return scale2 - 10.0;
         }
     }
 }
