@@ -1,12 +1,7 @@
 # githubfarm settings
-format_limit:
-  profile_limit: 17
-  contributi_limit: legacy
-  format_window: local
-  base_retries_pct: 74.97
-entry_timeout:
-  - 78
-  - 490
-layout_size: false
-warm_threshold: 8479
-base_limit_s: false
+githubfarm_size: false
+compress: 53
+soft_ttl_pct: 77.49
+idle_delay: edge
+buffer_depth: 60
+enabled: primary
