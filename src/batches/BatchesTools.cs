@@ -22,21 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count account order pairs that satisfy a relation.</summary>
-        public static long PairAccountOrderCount(long[] samples)
+        /// <summary>Locate a profile format reading by value.</summary>
+        public static long SeekProfileFormatIndex(long[] samples, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] < seed)
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
