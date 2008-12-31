@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
