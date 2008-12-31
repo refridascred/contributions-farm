@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long SoftSupport = 4923;
         public const long BaseDepth = 5212;
 
-        /// <summary>Match up commits metrics samples.</summary>
-        public static long MatchCommitsMetricsCount(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
