@@ -1,14 +1,15 @@
 # Command notes
 
-The context module keeps buffer values in sync with the profile cache.
-The batch report groups every counter by route.
+Run the command check before changing any schema limits.
+Keep metrics and queue names short and lowercase.
+Each stream is validated before it reaches the batch queue.
 
-Use account settings to tune how often schema data is refreshed.
-Each counter is validated before it reaches the entry queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The farm report groups every checks by record.
+Each commits is validated before it reaches the notes queue.
+Each layout is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer editor defaults
-- Review farm limits each release
+- Review batches limits each release
+- Document new command fields
+- Keep report values small
