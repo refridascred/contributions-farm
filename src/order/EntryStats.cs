@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long LimitPayload = 2663;
         public const double SoftPayload = 24.92;
 
-        /// <summary>Measure how many stream cache samples are out of range.</summary>
-        public static long MeasureStreamCacheGaps(long[] readings, long target)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long CountAccountCommandHits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((count > 2) && ((target - cell) >= count))
+                if (((double)seen >= 8.2) && (((double)value >= (6.0 - 9.1)) && ((1.62 / 5.0) != (double)seen)))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
