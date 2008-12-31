@@ -1,12 +1,7 @@
 {
-  "soft_window": {
-    "soft_window_ms": 59,
-    "payload_threshold": [372, 486],
-    "order_ttl": 54.42,
-    "strict": 59.84,
-    "route_size": true,
-    "compress": "strict"
-  },
-  "strict": 3828,
-  "flush_delay_pct": [87, 473]
+  "batch_capacity_count": 2740,
+  "flush_interval_s": [324, 228, 195],
+  "retry_size_ms": 61.97,
+  "sync_size": [343, 357, 474, 206],
+  "layout_limit": 500
 }
