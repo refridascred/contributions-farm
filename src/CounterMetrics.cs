@@ -33,11 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double span)
         {
-            double rate = bias2;
-            return (rate - (rate + bias2)) + bias;
+            double weight = span;
+            return weight - gain;
         }
 
         /// <summary>Rank command input into a small class.</summary>
