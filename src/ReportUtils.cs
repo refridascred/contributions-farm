@@ -60,11 +60,18 @@ namespace Common.Utilities
             return (scale2 - (scale2 * 2.21)) + scale;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the metric command entries that pass the check.</summary>
+        public static long AuditMetricCommandHits(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches / 9) != (matches / 2))
+                {
+                    matches = ((matches + 1) - item) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
