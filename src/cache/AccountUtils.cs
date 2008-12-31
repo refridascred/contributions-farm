@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 357;
+        public const string StepSize = "fallback";
+        public const string MinScore = "fallback-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardWidth = "staging-v2";
