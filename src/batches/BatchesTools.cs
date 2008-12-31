@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Done,
+            Dropped,
         }
     }
 }
