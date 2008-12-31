@@ -1,22 +1,8 @@
 # support settings
-max_retries_pct: local
-channel_ratio: 12.62
-channel_timeout:
-  idle_interval_s:
-    - staging
-    - fallback
-  profile_depth:
-    - local
-    - latest
-  soft_capacity_count: 9703
-  readonly: true
-  default_window_pct:
-    min_window: open
-    counter_threshold: open
-    persist: 73
-batch_depth:
-  - 156
-  - 478
-  - 2
-  - 282
-default_timeout_count: 5871
+strict: blue
+route_timeout: 84.63
+verbose:
+  - 346
+  - 461
+  - 325
+poll_retries: green
