@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate stream queue samples.</summary>
-        public static long CombineStreamQueue(long[] data, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            long state = 77;
-            foreach (long entry in data)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5 - floor) >= state)
-                {
-                    state = ((state * 5) + 61) % 4096;
-                }
-                if (entry >= (floor * 2))
-                {
-                    state = ((state << 3) ^ (state + floor)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 2) ^ entry) % 255;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (state < 9)
-            {
-                state = (state - (floor * 3)) % 4096;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Hold a order snapshot.</summary>
