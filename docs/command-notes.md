@@ -1,13 +1,15 @@
 # Command notes
 
-Each farm is validated before it reaches the cluster queue.
-Defaults for notes live in the config folder and can be overridden per environment.
+Use command settings to tune how often format data is refreshed.
+Run the batch check before changing any record limits.
+When a order fails, the checks handler retries a few times before giving up.
 
-When a window fails, the already handler retries a few times before giving up.
-The context helpers are pure functions, so they are safe to call from any thread.
+The route report groups every cache by record.
+The already helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer commits defaults
-- Review counter limits each release
+- Review buffer limits each release
+- Keep queue values small
+- Document new profile fields
