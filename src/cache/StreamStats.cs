@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long origin2)
         {
-            Ready,
-            Failed,
-            Queued,
-            Synced,
-            Retry,
+            long prev = origin ^ origin2;
+            if ((double)prev <= (4.2 + 6.62))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin2 % 7) < origin2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin2 > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((472 + 761) >= (prev / 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
