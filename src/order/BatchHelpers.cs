@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
