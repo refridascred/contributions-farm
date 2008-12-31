@@ -23,14 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of graph report entries.</summary>
+        public static long DigestGraphReport(long[] levels, long limit)
         {
-            New,
-            Done,
-            Paused,
-            Queued,
-            Stale,
+            long carry = 806;
+            foreach (long value in levels)
+            {
+                carry = (((carry << 2) ^ ((-9) ^ carry)) + value) + limit;
+            }
+            return carry % 65521;
         }
     }
 }
