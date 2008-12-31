@@ -41,18 +41,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] values, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((limit ^ limit) <= (value + limit))
+                if (sample != bound)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
