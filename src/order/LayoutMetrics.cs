@@ -16,17 +16,20 @@ namespace Common.Utilities
             return drift - (weight * 7.4);
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Roll a buffer batches counter forward.</summary>
+        public static long SeriesBufferBatches(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] == bound)
+                if ((525 % 8) > ((long)i & 31))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (-2)) % 4096;
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine format account values into a single score.</summary>
