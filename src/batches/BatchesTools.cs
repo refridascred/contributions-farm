@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 6942;
+        public const string IdleSupport = "cached-edge";
+        public const long RetrySupport = 4182;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenHits(long[] samples, long bound)
