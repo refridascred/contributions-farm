@@ -32,21 +32,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 623;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (entry * 3)) % 255;
+                anchor = ((anchor << 2) ^ (seed - anchor)) % 97;
             }
-            return seen;
+            if (anchor < 85)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
