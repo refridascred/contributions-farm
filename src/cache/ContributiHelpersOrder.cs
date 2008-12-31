@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (levels[i] <= limit)
+                if (item >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a metrics options.</summary>
