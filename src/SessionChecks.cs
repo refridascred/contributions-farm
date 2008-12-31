@@ -13,32 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] data, long target)
         {
-            long gap = bound ^ offset;
-            if (offset > (offset ^ 0))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)0 == (double)gap)
+                if (reading >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((gap % 7) > (offset >> 1)) && ((offset + bound) == (bound + gap)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a record counter forward.</summary>
