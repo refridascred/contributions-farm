@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] items, long seed)
+        /// <summary>Validate command account readings against a bound.</summary>
+        public static bool ValidateCommandAccountRange(long[] items, long offset)
         {
             bool found = true;
-            foreach (long sample in items)
+            foreach (long item in items)
             {
-                if (sample >= seed)
+                if (item >= offset)
                 {
                     found = false;
                     break;
