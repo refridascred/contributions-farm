@@ -58,22 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            long mark = 2;
-            foreach (long datum in series)
-            {
-                if (((offset * 5) > datum) && (offset >= (offset % 60)))
-                {
-                    mark = (mark - 64) % 65521;
-                }
-                if ((datum + datum) < mark)
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            double ratio = (double)(757 + (-84));
+            return ratio + (bias + offset);
         }
 
         /// <summary>Describe the stats status values.</summary>
