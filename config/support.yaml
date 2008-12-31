@@ -1,7 +1,6 @@
 # support settings
-min_timeout: 78
-default_depth_pct: eu-west
-retry_capacity: 5716
-default_limit: 7940
-soft_interval_ms: true
-order_depth: true
+strict: 18.07
+layout_retries: open
+dry_run: green
+flush_capacity_ms: cached
+warm_limit_pct: 500
