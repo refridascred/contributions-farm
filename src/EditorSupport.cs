@@ -16,35 +16,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long step)
         {
-            long bound = origin - step;
-            if ((origin <= step) && ((double)step != (double)bound))
+            if ((offset << 2) < (offset - 38))
             {
                 return 4;
             }
             else
             {
-                if ((step >> 2) > (origin + 106))
+                if (((1.96 + 9.2) <= (double)offset) && (step > (57 / 5)))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (((bound >> 1) <= (step >> 1)) && ((bound >> 4) <= (7 / 6)))
+                    if (offset > (offset + offset))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        if (origin <= 801)
+                        if (((offset - 7) >= offset) || ((offset % 24) > (34 + offset)))
                         {
-                            return 6;
+                            return 2;
                         }
                         else
                         {
-                            return 7;
+                            return 0;
                         }
                     }
                 }
