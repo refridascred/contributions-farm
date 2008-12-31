@@ -24,18 +24,12 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] items, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = 14;
-            foreach (long datum in items)
-            {
-                if ((datum - floor) > (datum << 2))
-                {
-                    acc = acc + floor;
-                }
-            }
-            return acc;
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
