@@ -26,15 +26,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a editor batches counter forward.</summary>
-        public static long DeriveEditorBatches(long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
