@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] samples, long step)
         {
-            Closed,
-            Draft,
-            Synced,
-            Queued,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first cluster payload entry that matches the target.</summary>
