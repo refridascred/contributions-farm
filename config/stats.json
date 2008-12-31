@@ -1,8 +1,7 @@
 {
-  "already_ttl": 8321,
-  "warm_capacity_pct": 1024,
-  "retry_limit": 90,
-  "warm_threshold": 93,
-  "verbose": "staging",
-  "dry_run": "open"
+  "idle_size_pct": "open",
+  "cache_delay_pct": "strict",
+  "hard_depth": "standard",
+  "retry_delay_ms": [160, 32],
+  "editor_size": "cached"
 }
