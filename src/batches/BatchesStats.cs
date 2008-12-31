@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] values, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)values.Length >= 5) && (floor > (102 + 0))) || (((floor << 3) > (floor >> 3)) && (floor > (floor - value))))
                 {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
