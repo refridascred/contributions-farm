@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long score = 55;
-            foreach (long item in samples)
-            {
-                if (score <= (target * 4))
-                {
-                    score = (score + item) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score + item)) % 97;
-                }
-            }
-            if (score < 63)
-            {
-                score = (score * 3) + (target + 431);
-            }
-            return score % 1000;
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Accumulate checks samples.</summary>
