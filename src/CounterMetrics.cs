@@ -48,10 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleScore = 2998;
-        public const long StepCache = 8618;
-        public const string MinScore = "strict";
-        public const long BurstSize = 9997;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - (long)data.Length) > (tally / 8))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
+        }
     }
 }
