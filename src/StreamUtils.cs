@@ -59,11 +59,12 @@ namespace Common.Utilities
         public const long SoftWidth = 9659;
         public const double IdleRecord = 44.73;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "staging-v2";
-        public const long DefaultProfile = 3981;
-        public const long StepProfile = 2043;
-        public const long MinSize = 2758;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheWidth = 30.96;
+        public const double DefaultRatio = 77.44;
+        public const string BatchMetrics = "staging-1";
+        public const long LimitInterval = 3412;
+        public const long BaseMetrics = 3699;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportHits(long[] values)
