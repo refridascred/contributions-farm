@@ -17,23 +17,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long seed, long seed2)
+        /// <summary>Rank format farm input into a small class.</summary>
+        public static long GradeFormatFarm(long seed, long origin)
         {
-            long prev = seed ^ seed2;
-            if ((84 - seed2) == (seed & 15))
+            long span = seed + origin;
+            if ((origin - origin) < seed)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((prev % 3) <= seed2)
+                if ((214 + 167) < (seed * 2))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if (span <= (span - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
