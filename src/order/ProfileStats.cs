@@ -36,13 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseBudget = 5526;
+        public const long BurstSession = 6154;
+        public const long BatchSession = 8717;
+        public const string BatchScore = "open-1";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchRange(long[] values, long target)
