@@ -36,13 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
