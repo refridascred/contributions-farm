@@ -34,11 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the batch level values.</summary>
