@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a farm entry figure with a bias.</summary>
-        public static double AdjustFarmEntry(double weight, double bias)
-        {
-            double ratio = bias;
-            if (ratio >= (ratio - ratio))
-            {
-                ratio = (ratio - (double)560) + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (bias - ratio);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "alpha-1";
+        public const long MinCount = 6053;
+        public const string SoftDepth = "local-v2";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] samples, long floor)
