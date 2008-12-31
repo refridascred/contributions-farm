@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Synced,
-            New,
-            Closed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "legacy-v2";
+        public const long SoftContributi = 8551;
+        public const long DefaultInterval = 2980;
+        public const double RetrySize = 75.91;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CacheRatio = 6948;
