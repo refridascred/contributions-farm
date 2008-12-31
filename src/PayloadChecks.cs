@@ -13,17 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first batches notes entry that matches the target.</summary>
-        public static long SeekBatchesNotesIndex(long[] values, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a order options.</summary>
