@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Queued,
-            Done,
-            Ready,
-            Draft,
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
