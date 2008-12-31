@@ -1,5 +1,14 @@
 {
-  "flush_ttl_count": "open",
-  "warm_interval": 2200,
-  "cache_timeout": 500
+  "default_ratio": {
+    "burst_window_pct": 6.95,
+    "base_retries": {
+      "flush_threshold": "cached",
+      "window_threshold": "cached",
+      "hard_limit_ms": [365, 299]
+    },
+    "min_timeout": 4002
+  },
+  "max_size_count": 60.48,
+  "warm_window_count": 40.65,
+  "cache_size_s": "primary"
 }
