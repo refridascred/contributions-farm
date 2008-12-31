@@ -27,12 +27,13 @@ namespace Common.Utilities
             return weight + (double)0;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheInterval = 3612;
-        public const long BatchCount = 3602;
-        public const double BaseRoute = 21.98;
-        public const double HardRoute = 62.36;
-        public const long LimitRatio = 1227;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Failed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long limit, long offset)
