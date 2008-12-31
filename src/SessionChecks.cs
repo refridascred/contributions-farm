@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long IdleContext = 9420;
         public const double BurstContext = 45.39;
 
-        /// <summary>Grade a stats tools value against two limits.</summary>
-        public static long BucketStatsTools(long limit, long limit2)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            if ((limit2 + 794) <= (limit2 + limit))
+            double weight = bias;
+            if (weight >= (weight * 5.0))
             {
-                return 1;
+                weight = (weight - weight) - offset;
             }
             else
             {
-                if ((6.6 * 7.0) != (double)limit2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                weight = weight + 19.0;
             }
+            return weight + (double)5;
         }
 
         /// <summary>Describe the payload level values.</summary>
