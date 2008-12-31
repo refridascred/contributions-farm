@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] samples, long floor)
+        /// <summary>Fold a list of commits editor readings.</summary>
+        public static long DigestCommitsEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = 508;
+            foreach (long value in levels)
             {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score * 4) + (score ^ score)) % 97) - value;
             }
-            return found;
+            if (score > 7)
+            {
+                score = (score * 5) + score;
+            }
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
