@@ -1,5 +1,8 @@
 {
-  "retry_ratio_ms": false,
-  "stats_timeout": ["fallback", "latest", "cached", "standard"],
-  "strict": 14.93
+  "max_ratio_ms": true,
+  "compress": 34,
+  "sync_window_count": "local",
+  "batches_delay": "eu-west",
+  "contributi_window": "legacy",
+  "warm_window": false
 }
