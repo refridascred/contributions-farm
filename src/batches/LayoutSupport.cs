@@ -47,15 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values)
         {
-            double scale = ratio;
-            for (int i = 0; i < 5; i++)
+            long mix = -7;
+            foreach (long value in values)
             {
-                scale = ((scale + (double)4) + (double)(long)i) + span;
+                if (value >= (value - value))
+                {
+                    mix = (mix ^ (mix >> 5)) % 255;
+                }
             }
-            return scale - ratio;
+            if (mix < 8)
+            {
+                mix = (mix ^ (mix - (long)values.Length)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
