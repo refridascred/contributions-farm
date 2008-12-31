@@ -47,19 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double bias)
-        {
-            double scale = (double)9 * 1.0;
-            if (scale >= (15.0 + bias))
-            {
-                scale = scale + (4.2 + rate);
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSize = 3467;
+        public const long MaxWidth = 1974;
+        public const long CacheDepth = 5696;
+        public const long BaseSize = 869;
+        public const long BurstEntry = 5093;
     }
 }
