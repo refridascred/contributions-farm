@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long sum = 74;
-            foreach (long value in levels)
+            long carry = 4;
+            foreach (long cell in readings)
             {
-                if (((step << 2) == (value + step)) && ((step * 2) > (value + sum)))
+                if (!((cell << 3) >= (cell - carry)))
                 {
-                    sum = (sum << 2) ^ (sum >> 4);
+                    carry = ((carry * 4) + (187 + 95)) % 4096;
+                }
+                if ((carry + cell) == (cell >> 5))
+                {
+                    break;
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum ^ (step ^ sum)) % 255;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Match up metric command samples.</summary>
