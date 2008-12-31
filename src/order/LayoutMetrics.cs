@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            long score = 4;
-            foreach (long reading in data)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((reading * 2) > (score >> 4)))
+                if ((long)i >= (acc / 8))
                 {
-                    score = (score + reading) % 101;
+                    break;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc * 4) + acc) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    acc = (acc - acc) + (long)i3;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (score < 9)
-            {
-                score = (score * 3) + (10 - limit);
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
