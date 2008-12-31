@@ -84,26 +84,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long limit)
-        {
-            long cur = origin ^ limit;
-            if ((limit % 12) < (origin / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + limit) == (cur << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "stable";
+        public const long WindowBuffer = 2051;
+        public const string DefaultCount = "latest-edge";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] data)
