@@ -26,22 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long AuditSessionLayoutGaps(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum == (9.37 * 2.7))
+                if (values[i] > bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream entry.</summary>
