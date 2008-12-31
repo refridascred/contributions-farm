@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mean + 10.0;
         }
 
-        /// <summary>Project the next filter format value.</summary>
-        public static double SmoothFilterFormat(double bias, double span)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            double load = (double)(2 + (-629));
-            return (load + bias) + span;
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell ^ cell) != (hits % 97)) && ((hits - cell) >= (cell - cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
