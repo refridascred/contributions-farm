@@ -29,18 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit buffer githubfarm readings against a rule.</summary>
-        public static long MeasureBufferGithubfarmGaps(long[] readings, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)step >= (10.0 * 16.0))
+                if ((8.0 + 18.0) <= (double)cell)
                 {
-                    count = (count + 1) ^ reading;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
