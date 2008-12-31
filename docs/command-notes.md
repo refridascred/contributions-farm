@@ -1,10 +1,14 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Run the schema check before changing any metrics limits.
+Defaults for already live in the config folder and can be overridden per environment.
+When a order fails, the layout handler retries a few times before giving up.
+
+Each report is validated before it reaches the checks queue.
+When a session fails, the farm handler retries a few times before giving up.
+When a session fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new checks fields
-- Log every batches change
+- Document new profile fields
+- Validate notes input early
+- Prefer payload defaults
