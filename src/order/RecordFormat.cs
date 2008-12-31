@@ -47,31 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long seed)
         {
-            long total = 427;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((series[i] <= seed) && ((series[i] % 2) == 0))
                 {
-                    total = ((total << 2) ^ 3) ^ (long)i;
-                    total = (total ^ datum) % 97;
-                }
-                if ((offset + offset) >= offset)
-                {
-                    total = (total ^ (datum ^ offset)) % 1000;
-                }
-                else
-                {
-                    total = (total + (51 / 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (total < 17)
-            {
-                total = total ^ (total ^ total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
