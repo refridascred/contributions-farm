@@ -54,21 +54,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((51 + 2) < origin)
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + (state - origin)) % 255;
+                }
+                else
+                {
+                    state = ((state * 4) + sample) % 101;
                 }
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
