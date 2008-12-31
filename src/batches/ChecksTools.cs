@@ -44,20 +44,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next account cache value from a seed.</summary>
-        public static long IterateAccountCache(long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] samples, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((double)(-5) <= (double)score) && ((double)floor <= 5.1))
+                if ((double)datum == (3.0 - 9.13))
                 {
-                    score = (score - floor) % 101;
+                    hits = (hits + 1) + limit;
                 }
-                score = ((score * 3) + (907 - 6)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
