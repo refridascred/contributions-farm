@@ -41,18 +41,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long CountCacheClusterOutliers(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (seen <= (sample << 3))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
