@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "cached";
-        public const long BatchFactor = 8913;
-        public const string BatchOrder = "standard";
-        public const long MinOrder = 7153;
+        /// <summary>Rank report format input into a small class.</summary>
+        public static long GradeReportFormat(long seed, long seed2)
+        {
+            if ((seed ^ seed2) <= (seed - seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (62 > (seed2 * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleLevel = 6385;
