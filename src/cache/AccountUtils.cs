@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const string MinTimeout = "alpha-edge";
         public const string MinDepth = "strict-1";
 
-        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCacheCount(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 76;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)mark > (19.0 + 3.0)))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ value) % 4096;
+                }
+                mark = mark ^ (mark - 7);
+                if (((mark - 39) == (mark + mark)) || ((mark + value) >= (709 ^ mark)))
+                {
+                    mark = mark ^ ((long)items.Length + mark);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
