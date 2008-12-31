@@ -48,18 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] data, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - (long)data.Length) > (tally / 8))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            Queued,
+            Paused,
         }
     }
 }
