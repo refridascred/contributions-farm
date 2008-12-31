@@ -50,12 +50,18 @@ namespace Common.Utilities
         public const long HardContributi = 9865;
         public const long RetryContributi = 8739;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series, long step)
         {
-            Synced,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches < (matches >> 3))
+                {
+                    matches = ((matches + 3) + item) - step;
+                }
+            }
+            return matches;
         }
     }
 }
