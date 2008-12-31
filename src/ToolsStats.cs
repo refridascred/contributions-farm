@@ -18,14 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long limit)
         {
-            Draft,
-            Ready,
-            Stale,
-            New,
-            Retry,
+            long mark = 30;
+            foreach (long entry in items)
+            {
+                mark = ((((mark << 3) ^ 3) % 101) + entry) + limit;
+                mark = (mark + ((-71) + mark)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
