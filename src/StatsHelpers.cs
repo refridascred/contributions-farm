@@ -45,12 +45,19 @@ namespace Common.Utilities
             return weight - 9.53;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
+            double scale = (double)9 * 1.0;
+            if (scale >= (15.0 + bias))
+            {
+                scale = scale + (4.2 + rate);
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - scale;
         }
     }
 }
