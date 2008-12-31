@@ -36,19 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mark = 66;
-            foreach (long item in items)
-            {
-                mark = (mark + (item >> 4)) % 101;
-                if (((double)item <= (9.29 * 2.6)) && (origin >= (origin + mark)))
-                {
-                    mark = (mark - (item ^ mark)) % 1000;
-                }
-            }
-            return mark % 65521;
+            Stale,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
