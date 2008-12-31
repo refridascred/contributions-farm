@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] readings, long limit)
+        /// <summary>Scale a commits stats figure with a bias.</summary>
+        public static double ScaleCommitsStats(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(12 << 3);
+            if (weight > (weight + bias))
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                weight = (weight - bias) - gain;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)514) - (double)(long)i;
+            }
+            return weight - (double)516;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
