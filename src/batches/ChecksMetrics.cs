@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long floor)
         {
-            Paused,
-            Ready,
-            Retry,
-            New,
-            Pending,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
