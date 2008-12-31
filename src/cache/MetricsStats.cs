@@ -34,13 +34,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long limit)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            if ((2.8 + 2.1) != (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(bound >= (99 * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - 39) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (limit & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
