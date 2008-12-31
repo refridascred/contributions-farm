@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultSize = 81.44;
-        public const long SoftCounter = 1738;
-        public const double WindowBudget = 79.82;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double scale, double span)
+        {
+            double gain = (span - 9.34) / 8.0;
+            if (gain < 2.1)
+            {
+                gain = gain + (gain * 7.64);
+            }
+            else
+            {
+                gain = gain - span;
+            }
+            return gain + (scale + scale);
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseDepth = 1382;
