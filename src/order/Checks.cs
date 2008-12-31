@@ -40,14 +40,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Dropped,
-            Done,
-            Pending,
-            Idle,
-            Closed,
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
