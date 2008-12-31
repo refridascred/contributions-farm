@@ -1,22 +1,4 @@
 # entry settings
-stream_threshold:
-  burst_window: 60
-  metrics_window:
-    idle_delay_ms:
-      - staging
-      - open
-      - cached
-    max_limit: 1773
-    persist: false
-  audit: blue
-  default_size_pct: 100
-retry_retries_pct:
-  - legacy
-  - standard
-  - latest
-  - blue
-account_capacity:
-  - stable
-  - latest
-  - strict
-  - edge
+base_capacity: 49.07
+burst_capacity_count: 1024
+flush_depth_s: fallback
