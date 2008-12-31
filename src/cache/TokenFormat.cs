@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 4023;
-        public const string BaseInterval = "staging";
-        public const long BurstReport = 3352;
-        public const double DefaultReport = 28.55;
-        public const long MinFactor = 2041;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] readings, long bound)
