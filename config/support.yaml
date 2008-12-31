@@ -1,10 +1,18 @@
 # support settings
-flush_threshold_s:
-  burst_capacity_count: 30
-  retry_retries_ms: 37.86
-  warm_timeout_ms:
-    poll_limit_ms: false
-    strict: fallback
-    enabled: 100
-flush_ttl_ms: 5292
-retry_timeout_count: 83.16
+max_ratio_pct: false
+stream_timeout: 96
+route_delay: staging
+sync_window: 79.55
+base_depth_pct:
+  queue_limit:
+    - 386
+    - 8
+    - 462
+  poll_window_s:
+    max_ratio: blue
+    default_limit_s: 74.77
+    cache_retries: 2.98
+  format_limit:
+    - 352
+    - 498
+    - 344
