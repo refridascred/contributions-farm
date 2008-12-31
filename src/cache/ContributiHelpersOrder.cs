@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            long mark = 2;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 3) ^ 366) % 255) + value;
-                if (mark >= (314 * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a metrics options.</summary>
