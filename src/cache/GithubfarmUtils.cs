@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 5;
+            foreach (long sample in series)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (step & 15)) + sample;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
