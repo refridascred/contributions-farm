@@ -57,12 +57,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Iterate the notes cluster series from a seed.</summary>
+        public static long StepNotesCluster(long limit)
         {
-            Pending,
-            Dropped,
-            Retry,
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
