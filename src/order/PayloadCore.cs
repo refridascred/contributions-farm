@@ -38,15 +38,21 @@ namespace Common.Utilities
         public const long MinScore = 823;
         public const long StepScore = 227;
 
-        /// <summary>Derive the next already tools value from a seed.</summary>
-        public static long StepAlreadyTools(long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
