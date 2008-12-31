@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels)
         {
-            Failed,
-            Closed,
-            Queued,
-            Idle,
+            long anchor = 284;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (((anchor * 5) + (4 & 127)) % 255) - (long)i;
+                }
+                if ((anchor % 3) >= anchor)
+                {
+                    anchor = (anchor - (cell - cell)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a session options.</summary>
