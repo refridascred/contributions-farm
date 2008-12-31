@@ -33,15 +33,15 @@ namespace Common.Utilities
         public const long WindowSession = 9178;
         public const long MinLevel = 7828;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long item in values)
             {
-                if ((50 & 7) < tally)
+                if (((tally / 6) >= tally) && (tally <= (item * 5)))
                 {
-                    tally = (tally + 2) + datum;
+                    tally = tally + 3;
                 }
             }
             return tally;
