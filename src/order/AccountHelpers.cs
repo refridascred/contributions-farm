@@ -45,12 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 6834;
-        public const long BurstStats = 3804;
-        public const double BatchInterval = 78.49;
-        public const long MinSize = 3439;
-        public const long StepSpan = 378;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long step, long seed)
