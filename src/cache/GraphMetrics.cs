@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 3989;
-        public const long CacheLevel = 8773;
-        public const long BurstRoute = 7165;
-        public const long MinTimeout = 828;
+        /// <summary>Fold a list of command batches readings.</summary>
+        public static long TallyCommandBatches(long[] data, long seed)
+        {
+            long score = 3;
+            foreach (long item in data)
+            {
+                if ((score % 60) == (seed % 10))
+                {
+                    score = (score ^ (score ^ score)) + item;
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryWidth = 27.76;
