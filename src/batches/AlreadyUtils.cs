@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long bound)
         {
-            if (36 >= seed)
+            bool found = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((409 + 5) < (seed % 16))
+                if (item >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a already info.</summary>
