@@ -14,25 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] levels, long offset)
-        {
-            long state = 90;
-            foreach (long entry in levels)
-            {
-                if ((double)state > (7.3 + 9.0))
-                {
-                    state = (state * 3) + (state / 2);
-                    break;
-                }
-                state = state - (state >> 5);
-                if ((state + offset) >= (entry ^ entry))
-                {
-                    state = (state * 3) + (entry + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 8480;
+        public const long IdleSupport = 8886;
+        public const long MaxSupport = 3845;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] readings)
