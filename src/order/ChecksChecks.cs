@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long span = floor - offset;
-            if ((offset / 8) != (offset & 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)span != (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of profile checks entries.</summary>
