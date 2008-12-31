@@ -1,4 +1,58 @@
 # support settings
-default_window_count: 93
-contributi_ttl: 72.54
-default_window_pct: strict
+burst_ratio:
+  entry_ttl: 41.76
+  editor_ttl:
+    contributi_ttl: legacy
+    soft_timeout_ms: true
+    flush_depth_pct: 87.08
+    warm_delay_count: staging
+  soft_delay:
+    - legacy
+    - local
+    - primary
+    - blue
+  base_ttl_count: green
+  graph_ttl: true
+burst_retries_s: 1024
+enabled: false
+idle_retries_ms:
+  hard_interval_ms: primary
+  farm_delay:
+    flush_size: fallback
+    cache_size:
+      - stable
+      - green
+    idle_interval: staging
+    format_ttl:
+      - 443
+      - 256
+      - 75
+  verbose:
+    strict: 63
+    warm_timeout_pct: fallback
+    enabled: latest
+    compress: open
+  retry_retries_pct: standard
+  compress: 75.6
+  soft_ttl:
+    - 119
+    - 202
+    - 321
+batches_size: 4383
+min_timeout:
+  token_ratio: 43.75
+  compress:
+    audit: 68.66
+    soft_ratio: false
+    min_retries_s: 1.63
+    payload_retries: open
+    enabled: cached
+    persist: 6871
+  hard_depth_pct: 19.53
+  command_threshold:
+    command_size: true
+    enabled: 23.71
+    burst_limit: 4.33
+    dry_run: 60
+    poll_delay_count: latest
+  default_retries: true
