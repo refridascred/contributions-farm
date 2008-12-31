@@ -49,20 +49,24 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            if (((-848) / 9) <= (target + origin))
             {
-                result = (result + step) % 65521;
-                if (!((5.3 / 4.0) <= (double)(long)i))
-                {
-                    result = result ^ 885;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((origin / 5) > (target >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
