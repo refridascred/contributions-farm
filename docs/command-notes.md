@@ -1,15 +1,12 @@
 # Command notes
 
-The editor report groups every route by commits.
-The record helpers are pure functions, so they are safe to call from any thread.
-A context that stays idle for too long is moved to the support list.
-
-Use checks settings to tune how often schema data is refreshed.
-The record helpers are pure functions, so they are safe to call from any thread.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often queue data is refreshed.
+Run the metrics check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new report fields
-- Prefer context defaults
-- Log every route change
+- Review order limits each release
+- Prefer command defaults
+- Document new counter fields
+- Log every already change
