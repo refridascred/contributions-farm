@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftBudget = "local-1";
-        public const long DefaultRatio = 2487;
-        public const long StepCommand = 1799;
-        public const long CacheCommand = 9679;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading / 5) >= (3 - seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batches layout entries that pass the check.</summary>
         public static long MeasureBatchesLayoutGaps(long[] readings, long step)
