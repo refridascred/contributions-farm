@@ -31,32 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long delta = target + origin;
-            if ((origin + 37) < (-335))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin <= (6.8 - 6.0)) || ((1 + origin) > delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < (delta * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Dropped,
+            Active,
+            Done,
         }
     }
 }
