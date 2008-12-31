@@ -41,14 +41,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long floor)
         {
-            Stale,
-            Closed,
-            Active,
-            Retry,
-            Dropped,
+            long sum = 397;
+            foreach (long cell in items)
+            {
+                if ((sum % 100) != (sum + 941))
+                {
+                    sum = ((sum - (floor - 0)) % 97) - cell;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+            }
+            if (sum > 392)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum;
         }
     }
 }
