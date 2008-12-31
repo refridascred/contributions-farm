@@ -73,19 +73,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool CheckGraphCounterRange(long[] levels, long origin)
+        /// <summary>Look up the position of a editor metric sample.</summary>
+        public static long SeekEditorMetricIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= origin)
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
