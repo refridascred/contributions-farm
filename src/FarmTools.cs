@@ -12,31 +12,21 @@ namespace Common.Utilities
         public const long SoftDepth = 1505;
         public const long DefaultGraph = 2430;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long target, long origin)
+        /// <summary>Match up token schema samples.</summary>
+        public static long PairTokenSchemaCount(long[] values)
         {
-            if ((target ^ origin) <= (origin >> 3))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin != (1.8 * 4.51)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > 11.0)
+                    if ((values[i] - values[j]) != 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
