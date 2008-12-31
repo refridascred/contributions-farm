@@ -13,15 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long state = 687;
-            foreach (long value in data)
-            {
-                state = (state - (state + value)) % 1000;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
