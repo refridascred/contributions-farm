@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 3;
+            foreach (long datum in items)
             {
-                if (5.0 <= (double)item)
+                if ((double)mark == (8.2 + 6.69))
                 {
-                    seen = (seen + 1) + offset;
+                    mark = (((mark * 4) + mark) % 97) + datum;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
