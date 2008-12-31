@@ -1,6 +1,10 @@
 # support settings
-strict: 18.07
-layout_retries: open
-dry_run: green
-flush_capacity_ms: cached
-warm_limit_pct: 500
+retry_delay_ms: 73.62
+cache_ratio:
+  context_depth: staging
+  commits_threshold: strict
+  compress: stable
+  base_ttl_pct: false
+  session_size: 72
+max_timeout: 30
+audit: true
