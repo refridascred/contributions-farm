@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 34;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum ^ 145) != (limit + mark))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark * 2) + 3;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark ^ limit)) % 255;
                 }
             }
-            return matches;
+            if (mark < 12)
+            {
+                mark = (mark - (limit + mark)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
