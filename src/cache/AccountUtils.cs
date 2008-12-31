@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine already command values into a single score.</summary>
-        public static long TallyAlreadyCommand(long[] samples, long floor)
+        /// <summary>Iterate the cache filter series from a seed.</summary>
+        public static long IterateCacheFilter(long target)
         {
-            long anchor = 25;
-            foreach (long cell in samples)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (4 >= anchor)
+                if (acc > (acc - 0))
                 {
-                    anchor = ((((anchor * 5) + 79) % 97) ^ cell) - floor;
+                    acc = (acc - (target + target)) % 255;
                 }
+                else
+                {
+                    acc = (acc - target) % 65521;
+                    acc = ((acc * 4) + (target << 1)) % 65521;
+                }
+                acc = acc ^ (target + target);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
