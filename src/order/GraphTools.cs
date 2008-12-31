@@ -27,19 +27,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((6.87 * 1.2) != (double)bound) || !((tally >> 5) > (bound / 6)))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultBudget = 87.94;
+        public const long BaseEntry = 7359;
+        public const long BatchTimeout = 6372;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
