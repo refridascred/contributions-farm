@@ -27,32 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter metrics value against two limits.</summary>
-        public static long ClassifyCounterMetrics(long seed, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long bound)
         {
-            long diff = seed - offset;
-            if (((8.87 / 5.0) >= (double)diff) || (seed <= (offset / 6)))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset ^ seed) != (seed * 3)) || ((2.0 + 3.3) <= (double)offset))
+                if (((6.87 * 1.2) != (double)bound) || !((tally >> 5) > (bound / 6)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - offset) != (seed & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
