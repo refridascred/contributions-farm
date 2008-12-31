@@ -1,20 +1,33 @@
 # entry settings
-dry_run:
-  - strict
-  - local
-  - blue
-persist: 250
-default_capacity_count: 7314
-route_depth:
-  sync_limit: false
-  max_threshold_s: standard
-  context_ttl: 8
-  strict: cached
-  persist:
-    poll_capacity: 96.92
-    metric_interval: primary
-    tools_delay:
+default_window_pct:
+  payload_size: 91.07
+  batch_depth: 30
+  audit:
+    - open
+    - eu-west
+  burst_delay_ms: 100
+cache_depth:
+  retry_limit_ms:
+    flush_limit_s: fallback
+    retry_limit_count: stable
+    order_window:
+      - eu-west
+      - edge
+    burst_retries: 60
+    persist: false
+    sync_size_ms:
+      - primary
+      - legacy
+      - primary
       - latest
-      - strict
-    persist: true
-  base_threshold: fallback
+  batch_threshold_pct: 3340
+  idle_size_pct:
+    audit: 56.87
+    metrics_depth: 92.23
+    dry_run: stable
+    warm_interval_count: 8984
+    order_ratio: false
+  queue_limit: primary
+soft_window_pct: fallback
+cache_size: fallback
+hard_timeout_count: false
