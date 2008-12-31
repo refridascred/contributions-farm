@@ -1,13 +1,12 @@
 {
-  "dry_run": "fallback",
-  "default_interval_count": false,
-  "soft_depth": "latest",
-  "retry_window_ms": 1561,
-  "warm_threshold": ["local", "stable"],
-  "batch_ratio": {
-    "cluster_timeout": ["local", "blue", "fallback"],
-    "idle_window": "legacy",
-    "poll_size": 30.09,
-    "session_depth": false
+  "report_window": 88.8,
+  "warm_delay_count": 39.34,
+  "githubfarm_window": false,
+  "base_ratio_count": {
+    "burst_window_s": 48.22,
+    "burst_capacity_s": "blue",
+    "entry_depth": 1.44,
+    "retry_timeout_pct": "standard",
+    "hard_threshold_s": "fallback"
   }
 }
