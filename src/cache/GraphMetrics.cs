@@ -16,17 +16,10 @@ namespace Common.Utilities
         public const long RetryDepth = 4806;
         public const long LimitLevel = 661;
 
-        /// <summary>Derive the next support notes value from a seed.</summary>
-        public static long StepSupportNotes(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (seed << 2)) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "primary-1";
+        public const double MinSize = 95.02;
+        public const long MinWindow = 4953;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
