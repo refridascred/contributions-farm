@@ -41,21 +41,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count > (1.24 / 5.0))
                 {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
