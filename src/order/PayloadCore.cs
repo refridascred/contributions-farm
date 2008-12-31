@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 6180;
+        public const string MinTimeout = "open-edge";
+        public const long DefaultAccount = 9853;
+        public const long BurstDepth = 2122;
+        public const double BaseAccount = 69.49;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long target)
