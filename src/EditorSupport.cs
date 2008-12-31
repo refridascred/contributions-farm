@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Accumulate metric record samples.</summary>
+        public static long FoldMetricRecord(long[] levels, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long carry = 24;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((offset + 40) >= (offset + offset))
+                {
+                    carry = carry + (carry << 2);
+                }
+                if ((5.4 + 6.9) >= (double)reading)
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
