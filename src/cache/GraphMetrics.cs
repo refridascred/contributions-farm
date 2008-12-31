@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 3989;
+        public const long CacheLevel = 8773;
+        public const long BurstRoute = 7165;
+        public const long MinTimeout = 828;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryWidth = 27.76;
