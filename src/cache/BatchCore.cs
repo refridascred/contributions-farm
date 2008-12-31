@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 5820;
-        public const long RetryOrder = 8261;
-        public const long BatchBudget = 8302;
-        public const long IdleOrder = 6133;
-        public const string MaxOrder = "local";
+        /// <summary>Find the first batches stats entry that matches the target.</summary>
+        public static long LookupBatchesStatsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
