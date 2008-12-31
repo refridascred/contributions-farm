@@ -45,23 +45,11 @@ namespace Common.Utilities
             return drift - (double)47;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!(step > (seen ^ seen)))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleTimeout = 4804;
+        public const long IdleFactor = 8424;
+        public const long WindowInterval = 7244;
+        public const double RetryStream = 32.51;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long SeriesFarm(long step)
