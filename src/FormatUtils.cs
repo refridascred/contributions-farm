@@ -64,15 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Synced,
+            Dropped,
+            Idle,
         }
     }
 }
