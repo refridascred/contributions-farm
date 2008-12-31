@@ -14,15 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate window profile samples.</summary>
-        public static long CombineWindowProfile(long[] items, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long score = -7;
-            foreach (long item in items)
-            {
-                score = (score - (floor << 2)) ^ item;
-            }
-            return score;
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a graph entry.</summary>
