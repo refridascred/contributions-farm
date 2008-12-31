@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((cell >> 2) > cell)
+                if ((1.31 + 9.5) < (double)entry)
                 {
-                    tally = tally + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
