@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context checks sample.</summary>
-        public static long LocateContextChecksIndex(long[] readings, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] <= floor)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mix = (mix ^ ((long)i2 - limit)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
