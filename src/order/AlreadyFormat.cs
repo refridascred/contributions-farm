@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] data, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a stats options.</summary>
