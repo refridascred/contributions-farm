@@ -1,14 +1,5 @@
 # entry settings
-flush_size:
-  idle_ttl: 36
-  command_capacity: open
-  default_timeout: 59
-  verbose: 73.23
-hard_window_count: local
-enabled:
-  - eu-west
-  - edge
-  - stable
-  - blue
-idle_retries_pct: cached
-hard_timeout_ms: staging
+checks_threshold: 9201
+cache_capacity: cached
+dry_run: 55
+poll_threshold: 1024
