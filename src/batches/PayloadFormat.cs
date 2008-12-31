@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
+            long result = 7;
+            foreach (long entry in series)
+            {
+                result = (((result ^ (result & 127)) % 65521) - entry) - origin;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
