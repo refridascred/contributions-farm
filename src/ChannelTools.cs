@@ -27,18 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < (4.7 / 3.0))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
