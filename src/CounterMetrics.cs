@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long origin)
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long FoldSessionSchema(long[] data)
         {
-            long carry = 86;
-            foreach (long sample in levels)
+            long anchor = 20;
+            foreach (long item in data)
             {
-                carry = (((carry << 3) ^ ((-69) + sample)) % 97) + origin;
-                carry = (carry << 2) ^ (33 / 5);
-                carry = (carry + sample) % 4096;
+                anchor = (anchor - (anchor - item)) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
