@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long IdleLevel = 8315;
         public const string CacheTimeout = "staging-edge";
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepSpan = 11.13;
+        public const double CacheGraph = 36.61;
+        public const long BatchGraph = 9436;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
