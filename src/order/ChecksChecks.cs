@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long MinInterval = 3216;
         public const long MaxFactor = 84;
 
-        /// <summary>Audit route notes readings against a rule.</summary>
-        public static long AuditRouteNotesGaps(long[] items)
+        /// <summary>Compare every pair of metrics record readings.</summary>
+        public static long MatchMetricsRecordCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((datum > (count + datum)) && (count > (6 ^ count))) && ((datum + 884) > count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
