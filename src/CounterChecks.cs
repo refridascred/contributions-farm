@@ -54,15 +54,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long step)
         {
-            long carry = 379;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 2) + carry) ^ entry;
+                if (((double)cell == (double)step) || ((step + seen) < step))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
