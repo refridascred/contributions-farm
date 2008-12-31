@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long bound)
+        /// <summary>Combine queue counter values into a single score.</summary>
+        public static long FoldQueueCounter(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long sum = 3;
+            foreach (long value in values)
             {
-                if (cell != bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    ok = false;
-                    break;
+                    sum = sum + (sum ^ (long)i);
+                }
+                if ((value ^ sum) != (118 - 0))
+                {
+                    sum = (sum * 4) + (sum - floor);
                 }
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Rank account input into a small class.</summary>
