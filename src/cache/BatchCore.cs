@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] items, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
