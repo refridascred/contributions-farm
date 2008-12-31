@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] values, long limit)
         {
-            long result = 503;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!((sample * 3) > (549 * 4)))
+                if ((long)values.Length >= 2)
                 {
-                    result = ((result + result) % 1000) - step;
+                    tally = ((tally + 2) ^ cell) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
