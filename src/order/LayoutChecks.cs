@@ -73,18 +73,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] items)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double ratio = (7.2 * 1.75) + 17.0;
+            if (ratio <= (bias - rate))
             {
-                if (cell >= seen)
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio + bias;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + bias;
         }
     }
 }
