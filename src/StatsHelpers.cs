@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = 24;
-            foreach (long reading in data)
-            {
-                mark = (((mark << 2) ^ (mark ^ mark)) % 255) + reading;
-            }
-            if (mark > 65)
-            {
-                mark = (mark * 5) + ((long)data.Length / 4);
-            }
-            return mark;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
