@@ -30,13 +30,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            Done,
+            Active,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
