@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] samples, long floor)
+        /// <summary>Match up cache support samples.</summary>
+        public static long OverlapCacheSupportCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.2 * 14.0) < (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
