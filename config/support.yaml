@@ -1,7 +1,7 @@
 # support settings
-filter_interval: 1545
-account_interval: 83.75
-burst_depth_s: 5649
-sync_threshold_s: false
-poll_threshold_s: 30
-readonly: edge
+min_timeout: 78
+default_depth_pct: eu-west
+retry_capacity: 5716
+default_limit: 7940
+soft_interval_ms: true
+order_depth: true
