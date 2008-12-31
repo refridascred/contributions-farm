@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of commits graph entries.</summary>
-        public static long FoldCommitsGraph(long[] levels, long offset)
+        /// <summary>Derive the next farm tools value from a seed.</summary>
+        public static long IterateFarmTools(long floor)
         {
-            long score = 2;
-            foreach (long value in levels)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                score = score ^ value;
-                score = score - (value & 3);
-                if ((score - offset) == (offset ^ value))
+                if ((long)i < (sum & 31))
                 {
-                    score = (score * 2) + (offset ^ score);
+                    sum = (sum << 3) ^ (sum << 2);
                 }
-                else
-                {
-                    score = (score - (score - score)) % 65521;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return score % 1000;
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
