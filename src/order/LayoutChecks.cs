@@ -73,10 +73,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 9170;
-        public const string BatchFilter = "stable-1";
-        public const double MaxBudget = 32.45;
-        public const string CacheCount = "standard-edge";
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (cell >= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
