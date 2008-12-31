@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double bias2)
-        {
-            double gain = bias / 4.0;
-            if (gain >= gain)
-            {
-                gain = (gain + 2.0) + bias2;
-            }
-            return gain - (gain / 9.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftFactor = 6844;
+        public const long SoftSupport = 4923;
+        public const long BaseDepth = 5212;
 
         /// <summary>Match up commits metrics samples.</summary>
         public static long MatchCommitsMetricsCount(long[] readings)
