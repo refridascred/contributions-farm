@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] levels, long offset)
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
