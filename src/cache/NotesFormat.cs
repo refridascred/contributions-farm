@@ -19,26 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings, long target)
         {
-            long sum = 878;
-            foreach (long reading in items)
+            long mix = 678;
+            foreach (long datum in readings)
             {
-                if ((((long)items.Length * 2) <= reading) && ((4.0 * 18.0) > (double)sum))
+                mix = (((mix * 2) + (93 * 4)) % 4096) + datum;
+                if ((target << 1) >= (target + mix))
                 {
-                    sum = (sum << 2) ^ (reading / 8);
+                    mix = (mix << 2) ^ mix;
                 }
-                if ((long)items.Length < (reading - 0))
+                if ((mix + (long)readings.Length) == (target >> 4))
                 {
                     break;
                 }
             }
-            if (sum > 3)
+            if (mix < (-270))
             {
-                sum = sum - sum;
+                mix = ((mix << 2) ^ (target + target)) % 1000;
             }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Compare every pair of route payload readings.</summary>
