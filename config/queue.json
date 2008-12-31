@@ -1,6 +1,19 @@
 {
-  "batch_retries": 500,
-  "readonly": false,
-  "enabled": 72.58,
-  "poll_capacity_ms": "stable"
+  "warm_depth_pct": {
+    "retry_retries_s": ["edge", "standard", "strict", "stable"],
+    "default_interval": ["fallback", "edge", "blue", "blue"],
+    "min_capacity": 30,
+    "warm_limit_ms": false
+  },
+  "metric_limit": {
+    "batch_limit_ms": "cached",
+    "context_ratio": "fallback",
+    "compress": 5021,
+    "warm_ratio_s": "standard",
+    "session_depth": 98.22
+  },
+  "persist": 85.81,
+  "sync_ttl_s": false,
+  "compress": false,
+  "verbose": true
 }
