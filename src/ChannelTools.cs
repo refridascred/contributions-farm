@@ -19,23 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            long acc = 3;
-            foreach (long sample in data)
+            long result = 653;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 4) + (sample + origin)) % 1000;
-                if (sample < (acc + origin))
+                result = (result + (origin << 1)) % 1000;
+                if (((cell << 3) > (437 + origin)) || (2.0 > (double)cell))
                 {
-                    acc = acc - (acc + sample);
+                    result = (result - (origin / 5)) % 101;
                 }
-                else
-                {
-                    acc = (acc + 57) % 101;
-                }
+                result = ((result * 3) + (9 % 10)) % 97;
             }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of channel tools entries.</summary>
