@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long mark = 342;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = (((mark << 3) ^ mark) % 65521) ^ (long)i;
+                }
+                if (!((value / 3) >= (mark - mark)))
+                {
+                    mark = (mark << 3) ^ value;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many record filter samples are out of range.</summary>
