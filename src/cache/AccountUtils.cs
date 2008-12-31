@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] readings, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((8.7 - 6.4) < (double)seen))
-                {
-                    seen = ((seen + 2) + sample) - offset;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
