@@ -19,32 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache payload input into a small class.</summary>
-        public static long ClassifyCachePayload(long step, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data, long limit)
         {
-            long next = step ^ floor;
-            if ((6.0 - 9.5) == (double)step)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next * 3) == (next >> 3))
+                if ((((matches ^ matches) > datum) && ((double)matches <= (9.9 / 8.0))) || ((0.5 * 3.15) >= (double)limit))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)next > (10.0 - 0.52))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two queue measurements.</summary>
