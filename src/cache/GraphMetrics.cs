@@ -25,14 +25,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Locate a filter payload reading by value.</summary>
+        public static long FindFilterPayloadIndex(long[] items, long floor)
         {
-            Done,
-            Pending,
-            Retry,
-            Stale,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
