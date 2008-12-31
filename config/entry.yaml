@@ -1,7 +1,21 @@
 # entry settings
-readonly: local
-sync_threshold_pct: fallback
-strict:
-  - 436
-  - 470
-idle_ttl: 7476
+warm_window_pct:
+  notes_depth: 67
+  burst_limit:
+    - 85
+    - 2
+    - 10
+  editor_window: primary
+  sync_size_count: staging
+  max_limit_pct: 250
+idle_ttl: stable
+dry_run:
+  idle_delay_ms: 1.93
+  warm_delay: local
+  verbose: 3346
+  idle_timeout_s:
+    - 447
+    - 296
+    - 195
+    - 381
+retry_window_s: cached
