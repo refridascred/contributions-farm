@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
