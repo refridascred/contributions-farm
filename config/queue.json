@@ -1,5 +1,8 @@
 {
-  "flush_interval_s": "eu-west",
-  "burst_retries_s": [354, 13, 439, 397],
-  "dry_run": 39
+  "burst_threshold_s": 43,
+  "account_depth": 14.71,
+  "readonly": "green",
+  "verbose": [210, 95],
+  "retry_size_s": false,
+  "queue_ttl": "staging"
 }
