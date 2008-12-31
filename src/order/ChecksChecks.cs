@@ -44,19 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)i < sum)
+                if (readings[i] <= origin)
                 {
-                    sum = (sum + ((long)i + 8)) % 1000;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
