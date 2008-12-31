@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Paused,
-            Pending,
-            Draft,
-            Active,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "alpha-1";
+        public const long RetryBudget = 3222;
+        public const long BurstInterval = 8242;
 
         /// <summary>Project the next account channel value.</summary>
         public static double ProjectAccountChannel(double bias, double bias2)
