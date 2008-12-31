@@ -61,10 +61,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowDepth = "stable";
-        public const double WindowBatch = 59.79;
-        public const double WindowInterval = 69.9;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] values)
