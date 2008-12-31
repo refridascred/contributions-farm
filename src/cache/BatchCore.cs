@@ -50,22 +50,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen - seen) < (offset % 64))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseSize = 8.09;
+        public const long MaxLayout = 8311;
+        public const double MinInterval = 18.91;
     }
 }
