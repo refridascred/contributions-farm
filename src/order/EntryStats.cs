@@ -53,13 +53,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Ready,
-            Draft,
-            Locked,
-            Paused,
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
