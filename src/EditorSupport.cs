@@ -75,21 +75,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
