@@ -16,11 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double span)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double bias2)
         {
-            double rate2 = span;
-            return (rate2 + rate2) + rate;
+            double scale = bias2;
+            if (scale <= (double)3)
+            {
+                scale = scale + (scale / 5.0);
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (bias + bias)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
