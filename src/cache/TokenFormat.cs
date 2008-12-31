@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric command entry stays within the limit.</summary>
-        public static bool GuardMetricCommandLimits(long[] items, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long total = 4;
+            foreach (long datum in levels)
             {
-                if (entry > floor)
+                if (((double)total != (19.0 * 2.0)) || (datum < (807 / 5)))
                 {
-                    stale = false;
-                    break;
+                    total = (total - (datum * 4)) % 101;
                 }
             }
-            return stale;
+            if (total < (-640))
+            {
+                total = total ^ (total << 1);
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
