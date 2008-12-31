@@ -1,17 +1,13 @@
 {
-  "poll_size_s": true,
-  "warm_delay": {
-    "enabled": "legacy",
-    "sync_interval_ms": false,
-    "idle_capacity_s": "blue",
-    "flush_ttl_s": 85
+  "commits_timeout": false,
+  "enabled": false,
+  "idle_ratio_ms": "primary",
+  "compress": {
+    "compress": 6,
+    "dry_run": true,
+    "warm_ttl_pct": 60,
+    "soft_retries_ms": 60
   },
-  "audit": {
-    "default_retries_count": 44,
-    "persist": 1024,
-    "flush_delay_count": ["eu-west", "green", "standard", "open"],
-    "metric_ratio": 23.07,
-    "retry_window_s": 42.09
-  },
-  "stats_interval": true
+  "verbose": "blue",
+  "readonly": false
 }
