@@ -13,15 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Dropped,
-            Closed,
-            Synced,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitDepth = "fallback-edge";
+        public const long HardEditor = 3872;
+        public const double MinEditor = 62.48;
+        public const long MaxCount = 717;
+        public const long BaseEditor = 1722;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long offset, long bound)
