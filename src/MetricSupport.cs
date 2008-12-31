@@ -36,22 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] items, long limit)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - limit) <= tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
     }
 }
