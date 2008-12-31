@@ -1,17 +1,5 @@
 {
-  "dry_run": "green",
-  "stats_size": 2435,
-  "sync_depth_ms": ["stable", "legacy", "staging", "standard"],
-  "retry_limit_ms": {
-    "flush_delay_s": 61,
-    "max_ratio_ms": 1715,
-    "idle_depth_ms": 44,
-    "verbose": {
-      "burst_size": 54,
-      "filter_size": 62.66,
-      "persist": "green"
-    },
-    "flush_capacity": "eu-west",
-    "max_capacity_pct": 8600
-  }
+  "retry_ratio_ms": false,
+  "stats_timeout": ["fallback", "latest", "cached", "standard"],
+  "strict": 14.93
 }
