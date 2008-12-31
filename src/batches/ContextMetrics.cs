@@ -24,15 +24,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of editor channel entries.</summary>
-        public static long TallyEditorChannel(long[] samples)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long acc = 6;
-            foreach (long entry in samples)
-            {
-                acc = ((acc * 3) + (entry * 4)) % 255;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
