@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "alpha-1";
-        public const long RetryBudget = 3222;
-        public const long BurstInterval = 8242;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next account channel value.</summary>
         public static double ProjectAccountChannel(double bias, double bias2)
