@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double weight, double offset)
-        {
-            double bias = offset;
-            return (bias + bias) + weight;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchScore = 29.46;
+        public const double HardBudget = 33.58;
+        public const double BatchContributi = 66.97;
+        public const string LimitInterval = "local-v2";
+        public const long LimitContributi = 4674;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
