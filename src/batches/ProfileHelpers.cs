@@ -51,23 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double bias)
+        /// <summary>Combine queue commits values into a single score.</summary>
+        public static long ScoreQueueCommits(long[] values, long seed)
         {
-            double bias2 = 3.6 - 20.0;
-            if (bias2 < 6.5)
+            long result = 22;
+            foreach (long entry in values)
             {
-                bias2 = (bias2 + bias2) - bias;
+                if (result > (entry ^ entry))
+                {
+                    result = ((result << 2) ^ (seed & 255)) % 4096;
+                }
+                if (3.9 < (double)result)
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (7.3 + bias2)) + (double)(long)i;
-            }
-            return bias2 + (bias2 * 7.77);
+            return result;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
