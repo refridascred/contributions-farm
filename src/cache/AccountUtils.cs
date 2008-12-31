@@ -36,21 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Measure how many layout farm samples are out of range.</summary>
+        public static long MeasureLayoutFarmOutliers(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + (-721)) <= (tally / 3))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + offset;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
