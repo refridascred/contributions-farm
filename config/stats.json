@@ -1,8 +1,8 @@
 {
-  "format_depth": 500,
-  "verbose": "latest",
-  "min_limit_pct": 500,
-  "burst_capacity_count": 500,
-  "hard_limit_pct": "staging",
-  "cluster_retries": 100
+  "idle_ttl_s": 250,
+  "channel_ratio": "latest",
+  "stream_capacity": "open",
+  "payload_interval": 8565,
+  "idle_window_s": ["open", "stable"],
+  "hard_ttl": 52
 }
