@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long total = 5;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 4) + (total + 0)) ^ cell) + bound;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > 5)
-            {
-                total = (total * 2) + total;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a graph options.</summary>
