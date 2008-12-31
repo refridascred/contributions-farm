@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count context counter pairs that satisfy a relation.</summary>
-        public static long MatchContextCounterCount(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (36 >= seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((409 + 5) < (seed % 16))
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
