@@ -40,10 +40,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 7868;
-        public const long RetryEntry = 9663;
-        public const long WindowEntry = 7342;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 4347;
+        public const long MinAlready = 4494;
+        public const long LimitSize = 510;
 
         /// <summary>Project the next support value.</summary>
         public static double ScaleSupport(double bias, double span)
