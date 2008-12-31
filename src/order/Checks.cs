@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] series, long limit)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen + datum) >= 2)
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
