@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate farm counter readings against a bound.</summary>
-        public static bool VerifyFarmCounterRange(long[] levels, long step)
+        /// <summary>Project the next editor counter value.</summary>
+        public static double ProjectEditorCounter(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double load = 6.9;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                load = ((load - (double)(long)i) + ratio) - offset;
             }
-            return ok;
+            return load - (double)1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
