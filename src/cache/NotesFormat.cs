@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Active,
-            Stale,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitTimeout = 7172;
+        public const long BatchFarm = 9276;
+        public const double RetryFarm = 79.84;
+        public const long IdleFarm = 2333;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long offset, long step)
