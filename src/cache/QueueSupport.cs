@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if (value < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit payload counter readings against a rule.</summary>
