@@ -45,9 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 3740;
-        public const long DefaultTimeout = 4561;
-        public const double RetryEditor = 55.5;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFactor = 6479;
+        public const long DefaultFilter = 6238;
+        public const string BatchFilter = "cached-v2";
+        public const long MinBudget = 9695;
+        public const long StepFilter = 7165;
     }
 }
