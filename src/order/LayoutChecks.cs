@@ -40,22 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long sum = 934;
-            foreach (long value in samples)
-            {
-                if (sum <= bound)
-                {
-                    sum = ((sum * 2) + (long)samples.Length) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ value) % 101;
-                }
-            }
-            return sum;
+            Draft,
+            Idle,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
