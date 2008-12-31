@@ -1,11 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the cluster list.
-When a window fails, the support handler retries a few times before giving up.
+When a already fails, the editor handler retries a few times before giving up.
+Run the format check before changing any metric limits.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep checks values small
-- Review buffer limits each release
-- Validate tools input early
+- Validate account input early
+- Review cache limits each release
+- Document new command fields
+- Keep farm values small
