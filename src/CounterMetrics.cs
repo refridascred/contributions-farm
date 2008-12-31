@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] data, long origin)
         {
-            double weight = span;
-            return weight - gain;
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (4.03 < (double)sample)
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
