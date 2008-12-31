@@ -58,19 +58,17 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long target)
         {
-            long sum = 62;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 2) ^ (sum ^ entry)) % 65521;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 76)
-            {
-                sum = ((sum << 3) ^ (seed + seed)) % 65521;
-            }
-            return sum % 97;
+            return -1;
         }
     }
 }
