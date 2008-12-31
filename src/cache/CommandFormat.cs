@@ -45,13 +45,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8786;
         public const double HardTimeout = 88.24;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double bias = gain * 1.71;
+            if (bias > offset)
+            {
+                bias = bias + 15.0;
+            }
+            return bias - (double)8;
         }
     }
 }
