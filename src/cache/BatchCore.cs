@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every farm order entry stays within the limit.</summary>
+        public static bool CheckFarmOrderLimits(long[] data, long step)
         {
-            Locked,
-            New,
-            Dropped,
-            Closed,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the queue status values.</summary>
