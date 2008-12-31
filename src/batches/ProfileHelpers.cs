@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values)
         {
-            Draft,
-            Closed,
-            Failed,
+            long anchor = 111;
+            foreach (long cell in values)
+            {
+                anchor = (anchor + anchor) - cell;
+                if (!((6.1 - 5.0) == (double)anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
