@@ -48,19 +48,12 @@ namespace Common.Utilities
             return drift - (gain / 3.0);
         }
 
-        /// <summary>Validate record buffer readings against a bound.</summary>
-        public static bool ValidateRecordBufferRange(long[] readings, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
