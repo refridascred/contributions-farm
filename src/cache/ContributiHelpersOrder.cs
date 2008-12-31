@@ -29,17 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchCount = 9685;
+        public const long LimitLevel = 6497;
+        public const long IdleCount = 8434;
     }
 }
