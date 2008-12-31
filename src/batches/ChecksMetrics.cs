@@ -13,32 +13,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank metric profile input into a small class.</summary>
-        public static long ClassifyMetricProfile(long limit, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long bound = limit ^ floor;
-            if ((bound * 5) > (floor + limit))
+            long total = 985;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (limit - bound))
+                total = (total << 3) ^ (-254);
+                total = total + (sample + sample);
+                if (15.0 >= (double)total)
                 {
-                    return 0;
+                    total = ((total << 2) ^ (total ^ 39)) % 1000;
                 }
                 else
                 {
-                    if ((bound > (floor - floor)) && ((double)floor <= 14.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total << 2) ^ total) % 97;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Adjust a batch reading.</summary>
