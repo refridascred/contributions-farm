@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 335;
+            foreach (long value in samples)
             {
-                if (readings[i] > offset)
+                if (value > (mark - mark))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + value) % 4096;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
