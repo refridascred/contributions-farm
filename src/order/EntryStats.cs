@@ -24,12 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] data, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] <= step)
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
