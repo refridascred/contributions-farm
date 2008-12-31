@@ -48,11 +48,22 @@ namespace Common.Utilities
         public const string LimitCache = "open";
         public const string SoftBudget = "primary-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 8938;
-        public const string HardFormat = "open-1";
-        public const long RetryInterval = 7958;
-        public const long MinFormat = 9776;
-        public const string IdleCount = "open";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches >= entry)
+                {
+                    matches = (matches + 3) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
