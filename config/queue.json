@@ -1,5 +1,11 @@
 {
-  "burst_interval": "blue",
-  "githubfarm_interval": "legacy",
-  "flush_interval_count": true
+  "sync_capacity": 8156,
+  "idle_capacity_s": 69,
+  "compress": "primary",
+  "retry_retries": {
+    "audit": 4.43,
+    "soft_delay_pct": "latest",
+    "poll_size_pct": [172, 171, 324, 267]
+  },
+  "batch_ttl_s": 3855
 }
