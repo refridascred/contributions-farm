@@ -23,15 +23,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Derive the next route account value from a seed.</summary>
+        public static long DeriveRouteAccount(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                double load = (1.71 + 3.8) / 6.0;
+                if (!((load * 6.1) >= 7.88))
+                {
+                    carry = carry + 789;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (target % 97)) % 101;
+                    load = load - (load - load);
+                }
+                carry = (carry ^ (target - carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Combine editor format values into a single score.</summary>
