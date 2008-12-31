@@ -1,8 +1,5 @@
 # githubfarm settings
-warm_ratio: green
-base_ttl: 18
-batch_depth_pct:
-  - 239
-  - 112
-  - 261
-  - 346
+entry_interval: cached
+warm_threshold: 30
+soft_timeout: latest
+batch_size: true
