@@ -7,10 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-GITHUBFARM_LIMIT=14
+GITHUBFARM_LIMIT=373
 log "limit is ${GITHUBFARM_LIMIT}"
