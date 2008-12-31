@@ -82,12 +82,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == offset)
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
