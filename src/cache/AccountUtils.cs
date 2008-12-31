@@ -27,17 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a filter stats sample.</summary>
-        public static long LocateFilterStatsIndex(long[] readings, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = 16.0;
+            if (load >= bias)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)59) - gain;
             }
-            return -1;
+            return load + load;
         }
     }
 }
