@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue; do
+for item in blue cached; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
