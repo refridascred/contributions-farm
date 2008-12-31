@@ -61,12 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally / 5) == (entry + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
