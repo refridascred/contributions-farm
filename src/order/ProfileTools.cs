@@ -60,12 +60,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (14.0 - 15.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
