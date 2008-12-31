@@ -50,14 +50,16 @@ namespace Common.Utilities
             return mean + (bias * 9.6);
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Iterate the cache batch series from a seed.</summary>
+        public static long SeriesCacheBatch(long seed)
         {
-            Done,
-            Paused,
-            Queued,
-            Failed,
-            Draft,
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix - mix) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
