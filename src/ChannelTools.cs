@@ -26,13 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public bool Level { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 54.49;
+        public const long WindowChecks = 558;
+        public const long BaseChecks = 9897;
     }
 }
