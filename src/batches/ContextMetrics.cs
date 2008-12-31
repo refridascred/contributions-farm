@@ -13,30 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long seed2)
         {
-            long slot = step ^ floor;
-            if ((15.0 * 2.0) < (double)floor)
+            long bound = seed ^ seed2;
+            if (!((bound + seed) == (seed2 - seed2)))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((slot >= (step << 1)) && (step < floor))
+                if ((double)bound > (4.0 / 3.0))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((2 / 2) < (653 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 1;
                 }
             }
         }
