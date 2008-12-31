@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double bias)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long origin)
         {
-            double rate = bias;
-            if (rate > (rate * 6.7))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - gain;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (0.12 - bias);
-            }
-            return rate + (4.1 / 3.0);
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
