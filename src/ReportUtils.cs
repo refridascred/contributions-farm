@@ -95,16 +95,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm session series from a seed.</summary>
-        public static long IterateGithubfarmSession(long step)
+        /// <summary>Compare every pair of graph entry readings.</summary>
+        public static long OverlapGraphEntryCount(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry + (carry % 100);
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
