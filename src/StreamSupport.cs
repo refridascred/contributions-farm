@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches * 3) >= cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next format batches value from a seed.</summary>
