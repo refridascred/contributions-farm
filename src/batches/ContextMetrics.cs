@@ -23,22 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long result = 346;
-            foreach (long reading in values)
-            {
-                if ((reading >> 5) < (2 * 5))
-                {
-                    result = result + reading;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result - ((-91) ^ 5)) % 1000;
-            }
-            return result;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
