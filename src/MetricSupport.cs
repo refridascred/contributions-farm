@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples, long origin)
         {
-            long anchor = 284;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)seen >= (9.6 + 7.2))
                 {
-                    anchor = (((anchor * 5) + (4 & 127)) % 255) - (long)i;
-                }
-                if ((anchor % 3) >= anchor)
-                {
-                    anchor = (anchor - (cell - cell)) % 97;
+                    seen = ((seen + 1) + value) + origin;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
