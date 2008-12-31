@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Idle,
-            Locked,
-            Synced,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardTimeout = 1922;
+        public const string CacheEntry = "staging";
+        public const long BatchTimeout = 9170;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
