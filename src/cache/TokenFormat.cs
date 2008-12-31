@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long step)
+        /// <summary>Validate profile layout readings against a bound.</summary>
+        public static bool ValidateProfileLayoutLimits(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (datum < step)
+                if (reading < bound)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Fold a list of session readings.</summary>
