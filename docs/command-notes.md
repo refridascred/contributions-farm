@@ -1,14 +1,10 @@
 # Command notes
 
-Run the support check before changing any entry limits.
-Run the command check before changing any cluster limits.
-The schema report groups every tools by notes.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Use payload settings to tune how often counter data is refreshed.
+The window helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any metrics limits.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer tools defaults
-- Keep stats values small
+- Review batch limits each release
+- Document new checks fields
+- Log every batches change
