@@ -33,22 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry order samples.</summary>
-        public static long ScoreEntryOrder(long[] samples)
+        /// <summary>Validate notes commits readings against a bound.</summary>
+        public static bool VerifyNotesCommitsLimits(long[] series, long offset)
         {
-            long sum = -383;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (sum > (sum ^ entry))
+                if (reading >= offset)
                 {
-                    sum = (sum + sum) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (entry << 3);
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
