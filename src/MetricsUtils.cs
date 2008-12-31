@@ -32,15 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi record samples.</summary>
-        public static long FoldContributiRecord(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long total = 33;
-            foreach (long datum in levels)
-            {
-                total = (total - (533 / 4)) - datum;
-            }
-            return total;
+            Locked,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
