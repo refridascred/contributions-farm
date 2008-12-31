@@ -1,8 +1,8 @@
 {
-  "notes_threshold": 13,
-  "soft_limit_count": "latest",
-  "queue_size": 62.85,
-  "enabled": 250,
-  "flush_size": 65,
-  "support_timeout": 78.71
+  "commits_threshold": 250,
+  "audit": 67,
+  "sync_ratio": 17,
+  "poll_size_count": true,
+  "hard_ttl": ["primary", "legacy", "green"],
+  "min_ttl_s": "stable"
 }
