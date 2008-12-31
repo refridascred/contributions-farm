@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSpan = 6511;
-        public const string IdleBudget = "alpha-edge";
-        public const long MinMetric = 9472;
-        public const long StepMetric = 495;
-        public const long LimitMetric = 7327;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitRatio = 7987;
+        public const long StepScore = 4257;
+        public const long IdleSchema = 7311;
+        public const double StepSchema = 2.54;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] samples)
