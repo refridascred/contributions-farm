@@ -52,11 +52,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a channel support sample.</summary>
+        public static long LocateChannelSupportIndex(long[] series, long bound)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
