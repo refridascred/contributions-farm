@@ -64,16 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings)
-        {
-            long mark = 89;
-            foreach (long value in readings)
-            {
-                mark = (((mark * 2) + (3 / 9)) % 65521) ^ value;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 1853;
+        public const long WindowCache = 2830;
+        public const long IdleCache = 8771;
+        public const long SoftDepth = 1687;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double HardGithubfarm = 87.12;
