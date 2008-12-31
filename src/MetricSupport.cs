@@ -23,10 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "staging-edge";
-        public const string HardBudget = "strict-v2";
-        public const long RetryTimeout = 9070;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksMatches(long[] series, long seed)
