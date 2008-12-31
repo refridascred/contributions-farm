@@ -55,23 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double ratio, double bias)
+        /// <summary>Digest a series of batches githubfarm entries.</summary>
+        public static long FoldBatchesGithubfarm(long[] samples)
         {
-            double rate = bias / 9.0;
-            if (rate < bias)
+            long result = 409;
+            foreach (long entry in samples)
             {
-                rate = rate - (double)0;
+                result = (result - (result + entry)) % 255;
             }
-            else
-            {
-                rate = rate + 5.7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (ratio + ratio);
+            return result;
         }
 
         /// <summary>Hold a record options.</summary>
