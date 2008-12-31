@@ -66,11 +66,17 @@ namespace Common.Utilities
         public const long StepProfile = 2043;
         public const long MinSize = 2758;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 685;
-        public const long StepFactor = 7508;
-        public const long CacheLevel = 2729;
-        public const long LimitCluster = 5771;
-        public const long WindowInterval = 871;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
