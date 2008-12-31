@@ -31,12 +31,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            Failed,
-            Locked,
-            Stale,
+            long total = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                total = total - (47 % 8);
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
