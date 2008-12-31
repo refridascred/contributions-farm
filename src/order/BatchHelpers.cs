@@ -20,12 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Compare every pair of order entry readings.</summary>
+        public static long OverlapOrderEntryCount(long[] series)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
