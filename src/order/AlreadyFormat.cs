@@ -50,18 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] items, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)tally != (9.0 * 6.0))
-                {
-                    tally = ((tally + 2) - entry) - seed;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
