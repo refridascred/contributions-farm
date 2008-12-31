@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = -46;
+            foreach (long entry in levels)
             {
-                if ((cell >> 1) <= seen)
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix << 2) ^ (mix + entry)) % 65521;
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Accumulate record account samples.</summary>
