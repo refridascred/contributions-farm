@@ -20,12 +20,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items, long target)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((target >> 5) >= (count ^ reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
