@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many entry graph samples are out of range.</summary>
-        public static long AuditEntryGraphOutliers(long[] series, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((9.31 / 4.0) < (double)value)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the farm class values.</summary>
