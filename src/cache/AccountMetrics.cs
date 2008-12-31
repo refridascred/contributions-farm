@@ -58,11 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
         {
-            double ratio = (double)(757 + (-84));
-            return ratio + (bias + offset);
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the stats status values.</summary>
