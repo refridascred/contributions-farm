@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many layout record samples are out of range.</summary>
-        public static long TallyLayoutRecordMatches(long[] samples, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (18.0 <= (3.21 - 6.2))
-                {
-                    matches = ((matches + 1) + entry) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Find the first report counter entry that matches the target.</summary>
