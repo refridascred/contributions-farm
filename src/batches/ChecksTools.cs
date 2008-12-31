@@ -33,22 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] samples, long limit)
+        /// <summary>Combine editor format values into a single score.</summary>
+        public static long DigestEditorFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = 0;
+            foreach (long entry in items)
             {
-                if ((double)datum == (3.0 - 9.13))
+                mark = (mark << 2) ^ (6 - 94);
+                if (!((entry % 64) <= (entry * 4)))
                 {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark << 3) ^ (entry + mark);
                 }
             }
-            return hits;
+            if (mark < 339)
+            {
+                mark = ((mark << 3) ^ (mark * 5)) % 4096;
+            }
+            return mark;
         }
     }
 }
