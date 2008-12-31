@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const long DefaultCount = 5307;
         public const double IdleCount = 60.75;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long origin)
+        /// <summary>Accumulate contributi record samples.</summary>
+        public static long FoldContributiRecord(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long total = 33;
+            foreach (long datum in levels)
             {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - (533 / 4)) - datum;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
