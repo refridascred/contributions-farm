@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleRatio = 5973;
-        public const long CacheFactor = 3876;
-        public const string BaseAccount = "open-1";
-        public const long StepDepth = 8243;
-        public const string MinAccount = "latest-v2";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] samples, long bound)
