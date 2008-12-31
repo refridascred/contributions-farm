@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=331
-log "limit is ${BUFFER_LIMIT}"
+for item in eu-west fallback staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=21
+log "limit is ${BUFFER_LIMIT}"
