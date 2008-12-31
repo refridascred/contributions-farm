@@ -48,19 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor format readings.</summary>
-        public static long TallyEditorFormat(long[] items)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long state = 2;
-            foreach (long entry in items)
-            {
-                if ((entry + state) != (entry - 15))
-                {
-                    state = (state ^ (entry & 1)) % 255;
-                }
-                state = state - (entry - 446);
-            }
-            return state % 97;
+            Queued,
+            Retry,
+            Dropped,
+            Locked,
         }
     }
 }
