@@ -53,22 +53,31 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of farm editor entries.</summary>
-        public static long WeighFarmEditor(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long offset, long bound)
         {
-            long mix = 122;
-            foreach (long value in data)
+            if (offset > 659)
             {
-                if ((727 + value) > (mix + mix))
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) == (8 + offset))
                 {
-                    mix = mix - (mix + mix);
+                    return 4;
                 }
-                if (value >= (mix + 473))
+                else
                 {
-                    mix = mix + (mix * 5);
+                    if ((6.9 / 8.0) < (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix % 97;
         }
     }
 }
