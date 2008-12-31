@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data, long floor)
         {
-            double load = span;
-            if (load <= (load + rate))
+            long state = 85;
+            foreach (long cell in data)
             {
-                load = load + 8.3;
+                state = (((state * 2) + cell) % 255) + floor;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (span + load);
+            return state;
         }
 
         /// <summary>Describe the channel kind values.</summary>
