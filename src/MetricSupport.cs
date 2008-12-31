@@ -41,15 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile tools samples.</summary>
-        public static long FoldProfileTools(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long state = 673;
-            foreach (long item in levels)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                state = ((state - state) % 1000) - item;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
     }
 }
