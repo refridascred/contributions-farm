@@ -55,37 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph format pair into a bucket.</summary>
-        public static long BucketGraphFormat(long target, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long seed)
         {
-            long lane = target - offset;
-            if ((3.17 / 6.0) > (double)lane)
+            long span = floor ^ seed;
+            if ((floor & 3) != (seed << 3))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((offset >> 4) >= (lane - offset))
+                if (666 >= (span >> 4))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((double)offset != (6.6 + 20.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset % 8) == (offset + offset)) && ((double)target > 3.8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
