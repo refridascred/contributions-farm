@@ -67,10 +67,14 @@ namespace Common.Utilities
         public const long IdleCache = 8771;
         public const long SoftDepth = 1687;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 87.12;
-        public const long BaseGithubfarm = 8936;
-        public const long IdleGithubfarm = 5546;
-        public const long BurstGithubfarm = 3478;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Active,
+            Pending,
+            Locked,
+            Stale,
+            Done,
+        }
     }
 }
