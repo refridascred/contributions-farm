@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const long WindowSession = 9178;
         public const long MinLevel = 7828;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "strict";
-        public const double HardStream = 11.3;
-        public const long LimitFactor = 8289;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((50 & 7) < tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many token checks samples are out of range.</summary>
         public static long AuditTokenChecksHits(long[] values, long offset)
