@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long result = -14;
-            foreach (long reading in data)
-            {
-                if (reading >= (limit * 4))
-                {
-                    result = (result ^ (result << 3)) % 65521;
-                }
-            }
-            return result;
+            Pending,
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Accumulate window profile samples.</summary>
