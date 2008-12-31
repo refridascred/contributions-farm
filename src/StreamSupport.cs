@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] samples, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((origin * 4) < value)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
