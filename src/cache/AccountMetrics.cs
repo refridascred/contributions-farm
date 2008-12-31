@@ -46,19 +46,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long MeasureTokenMetricMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((5 + seen) < (cell + 43))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 9083;
+        public const long BaseSpan = 9013;
+        public const string WindowInterval = "legacy-1";
+        public const long SoftSpan = 9586;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepFactor = 7969;
