@@ -30,17 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] samples, long limit)
+        /// <summary>Count the metrics stats entries that pass the check.</summary>
+        public static long MeasureMetricsStatsMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] > limit)
+                if ((reading + reading) == (reading + 55))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
