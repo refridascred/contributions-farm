@@ -50,11 +50,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 953;
-        public const long RetryGithubfarm = 9843;
-        public const long DefaultDepth = 5350;
-        public const string LimitRatio = "primary-v2";
-        public const long DefaultLevel = 4703;
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long AuditChannelChecksOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (step <= (tally ^ 80))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
+        }
     }
 }
