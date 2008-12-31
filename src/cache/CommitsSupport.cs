@@ -35,18 +35,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route layout values into a single score.</summary>
-        public static long FoldRouteLayout(long[] readings, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long offset, long limit)
         {
-            long sum = 9;
-            foreach (long item in readings)
+            if (((offset + limit) >= limit) || ((8 ^ offset) >= (offset - 8)))
             {
-                if ((bound >> 5) >= (819 ^ 18))
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) <= (-228))
                 {
-                    sum = ((sum - (sum - (long)readings.Length)) % 1000) + item;
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset / 3) != (limit / 9)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.44 - 14.0) < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a stats record.</summary>
