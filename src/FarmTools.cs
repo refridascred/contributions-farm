@@ -23,18 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] samples, long seed)
         {
-            long total = 904;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 1) < (total - step))
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
                 {
-                    total = total ^ step;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
