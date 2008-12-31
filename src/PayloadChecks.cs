@@ -21,18 +21,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - seen) > 11)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) - datum;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up route stream samples.</summary>
