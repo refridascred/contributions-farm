@@ -11,38 +11,27 @@ namespace Common.Utilities
         public const long LimitFilter = 4101;
         public const string DefaultFilter = "strict-1";
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long target)
         {
-            if (origin <= (origin + origin))
+            long mark = 3;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((9.0 * 5.61) <= (double)floor) || ((double)floor != (double)origin))
+                mark = (mark - (mark * 4)) % 65521;
+                if (((double)mark >= (13.0 + 2.0)) && ((mark - mark) < (target << 2)))
                 {
-                    return 4;
+                    mark = ((mark * 5) + item) % 255;
                 }
                 else
                 {
-                    if (((13.0 * 17.0) <= (double)floor) && ((origin >> 2) > floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark - (item + (long)items.Length)) % 4096;
                 }
             }
+            if (mark > 733)
+            {
+                mark = (mark + 73) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
