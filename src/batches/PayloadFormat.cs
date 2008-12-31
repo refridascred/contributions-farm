@@ -29,11 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
