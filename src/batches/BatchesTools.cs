@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > floor)
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a profile format reading by value.</summary>
