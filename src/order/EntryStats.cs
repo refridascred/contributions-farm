@@ -28,18 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (seen >= (datum ^ datum))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 3) + (96 % 5)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
