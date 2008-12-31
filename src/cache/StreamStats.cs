@@ -65,35 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data, long floor)
+        /// <summary>Scale a window batches figure with a bias.</summary>
+        public static double ProjectWindowBatches(double scale, double span)
         {
-            long acc = 13;
-            foreach (long reading in data)
+            double scale2 = (double)(6 - 42);
+            for (int i = 0; i < 3; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = acc + ((long)i - reading);
-                    acc = ((acc * 5) + (acc - floor)) % 255;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (acc + floor) - (long)i2;
-                }
-                if ((reading >> 4) <= (acc * 4))
-                {
-                    acc = (acc ^ (reading - floor)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc % 10)) % 65521;
-                }
+                scale2 = ((scale2 - (13.0 + scale2)) + (double)(long)i) + span;
             }
-            if (acc < 781)
-            {
-                acc = (acc + (floor & 1)) % 1000;
-            }
-            return acc % 4096;
+            return scale2 + scale;
         }
     }
 }
