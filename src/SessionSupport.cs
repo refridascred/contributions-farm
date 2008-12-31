@@ -13,22 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (sample < (seen - sample))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
