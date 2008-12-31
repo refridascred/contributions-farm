@@ -1,5 +1,9 @@
 {
-  "compress": 30,
-  "cache_limit": 40.74,
-  "queue_threshold": 30
+  "hard_delay_ms": {
+    "dry_run": 8879,
+    "verbose": [188, 145],
+    "min_delay_pct": ["legacy", "staging"]
+  },
+  "channel_limit": 21,
+  "format_delay": ["local", "eu-west", "cached", "local"]
 }
