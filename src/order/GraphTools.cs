@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Done,
-            Failed,
-            Retry,
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
