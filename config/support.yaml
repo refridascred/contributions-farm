@@ -1,6 +1,24 @@
 # support settings
-cache_delay: 9093
-hard_window: 87.2
-burst_threshold_count: 30
-enabled: false
-cache_ttl_s: true
+strict:
+  readonly: 48.7
+  dry_run: strict
+  soft_window_count: 6646
+already_window: stable
+compress:
+  cache_interval_s: true
+  verbose: 8210
+  soft_limit_ms:
+    warm_capacity_ms: fallback
+    batch_ratio: 500
+    soft_retries_count: 2640
+    default_timeout_s:
+      - open
+      - latest
+      - staging
+      - local
+    soft_ttl: 9757
+  dry_run: 614
+  commits_window: edge
+  window_limit: 93.82
+flush_limit: false
+persist: legacy
