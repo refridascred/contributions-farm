@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] items, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                mark = ((mark * 4) + (bound + 55)) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
