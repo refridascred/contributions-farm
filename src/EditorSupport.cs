@@ -50,10 +50,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "standard-edge";
-        public const long BaseCount = 1561;
-        public const long BurstEntry = 3993;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheSize = 96;
+        public const long DefaultOrder = 6459;
+        public const string WindowRatio = "open";
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
