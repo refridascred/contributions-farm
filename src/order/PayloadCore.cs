@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BatchRoute = 4688;
         public const long LimitRoute = 8591;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long target)
         {
-            Active,
-            Dropped,
-            Ready,
-            Queued,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
