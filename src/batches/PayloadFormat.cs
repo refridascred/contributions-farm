@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry + 567) >= (8 + entry)) || (10 <= ((long)readings.Length - matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "stable-edge";
+        public const string BaseFactor = "primary";
+        public const string SoftDepth = "fallback-1";
+        public const long RetryLayout = 2564;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
