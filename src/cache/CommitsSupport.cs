@@ -68,15 +68,18 @@ namespace Common.Utilities
         public const double BurstSpan = 11.65;
         public const long MaxChecks = 7727;
 
-        /// <summary>Fold a list of githubfarm queue readings.</summary>
-        public static long DigestGithubfarmQueue(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data, long target)
         {
-            long carry = 4;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                carry = (((carry * 5) + (carry * 2)) % 97) - item;
+                if (((target < tally) && ((tally & 63) == (target - 717))) && ((tally - 82) != (712 * 4)))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
