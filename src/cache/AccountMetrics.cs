@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultDepth = "strict-1";
-        public const long MinRecord = 1418;
-        public const long SoftRecord = 7065;
-        public const long BatchSize = 502;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
