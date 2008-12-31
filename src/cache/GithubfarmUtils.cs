@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] samples)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell ^ cell) != (hits % 97)) && ((hits - cell) >= (cell - cell)))
+                if (readings[i] == target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
