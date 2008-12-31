@@ -30,12 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples, long limit)
         {
-            New,
-            Ready,
-            Active,
+            long score = 23;
+            foreach (long cell in samples)
+            {
+                if (((score - cell) > (limit * 4)) || ((limit + 91) > (score & 127)))
+                {
+                    score = ((score * 5) + score) % 1000;
+                }
+                if ((double)cell < (2.79 * 14.0))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
     }
 }
