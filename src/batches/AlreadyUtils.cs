@@ -50,26 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                bool found = (8.84 - 0.2) > (double)seed;
-                if (seed > result)
-                {
-                    found = (double)result >= (1.8 / 7.0);
-                }
-                if (((double)(long)i >= (18.0 * 6.6)) || found)
-                {
-                    result = ((result * 3) + (seed - result)) % 101;
-                    result = result - (result + seed);
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftBudget = 928;
+        public const long BatchTools = 9194;
+        public const double DefaultTools = 80.23;
+        public const long IdleWidth = 2047;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 5334;
