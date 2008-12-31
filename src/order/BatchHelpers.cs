@@ -20,23 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double bias2)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            double scale = bias2;
-            if (scale <= (double)3)
+            double mean = span;
+            if (mean < weight)
             {
-                scale = scale + (scale / 5.0);
+                mean = mean + (double)5;
             }
             else
             {
-                scale = scale - bias;
+                mean = mean + span;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (bias + bias)) + (double)(long)i;
-            }
-            return scale + bias;
+            return mean + span;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
