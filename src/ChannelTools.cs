@@ -27,19 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings, long origin)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long entry in readings)
             {
-                if (((tally << 1) == (value >> 4)) || ((tally + tally) != (value ^ value)))
+                if ((double)entry < (4.7 / 3.0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + origin;
                 }
             }
             return tally;
