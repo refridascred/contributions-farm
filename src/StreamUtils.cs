@@ -65,17 +65,18 @@ namespace Common.Utilities
         public const long StepProfile = 2043;
         public const long MinSize = 2758;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                if ((hits & 15) == (datum - limit))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
