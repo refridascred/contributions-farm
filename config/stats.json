@@ -1,8 +1,8 @@
 {
-  "queue_ttl": 100,
-  "poll_ratio_pct": 31,
-  "dry_run": 60,
-  "sync_capacity": 7348,
-  "filter_capacity": "open",
-  "verbose": "stable"
+  "notes_threshold": 13,
+  "soft_limit_count": "latest",
+  "queue_size": 62.85,
+  "enabled": 250,
+  "flush_size": 65,
+  "support_timeout": 78.71
 }
