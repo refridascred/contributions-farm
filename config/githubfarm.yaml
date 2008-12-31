@@ -1,10 +1,20 @@
 # githubfarm settings
-cluster_ratio:
-  - 3
-  - 447
-  - 351
-metrics_capacity: true
-poll_delay: false
-persist: open
-compress: false
-burst_size_pct: local
+payload_retries: 81.95
+metric_capacity: cached
+min_timeout_count: standard
+idle_delay_ms: green
+editor_threshold: 2
+farm_depth:
+  tools_size:
+    verbose: true
+    base_capacity_ms: false
+    poll_ratio: 28.1
+    max_interval: blue
+    persist:
+      - 161
+      - 408
+      - 28
+      - 374
+  default_limit_pct: green
+  dry_run: 15
+  audit: fallback
