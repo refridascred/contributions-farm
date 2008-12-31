@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] data, long seed)
+        /// <summary>Look up the position of a payload support sample.</summary>
+        public static long LocatePayloadSupportIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item < (6.26 * 12.0))
+                if (values[i] >= limit)
                 {
-                    matches = (matches + 2) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
