@@ -45,18 +45,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] readings, long offset)
+        /// <summary>Fold a list of farm record readings.</summary>
+        public static long TallyFarmRecord(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = 270;
+            foreach (long entry in items)
             {
-                if (!(18.0 > (double)entry))
-                {
-                    seen = (seen + 2) + offset;
-                }
+                total = (total ^ entry) % 255;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Combine already buffer values into a single score.</summary>
