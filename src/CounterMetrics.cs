@@ -33,10 +33,19 @@ namespace Common.Utilities
             return ratio - (bias * 4.61);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinTimeout = 9928;
-        public const string LimitMetrics = "alpha-v2";
-        public const long BatchRatio = 3965;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count != (8.2 - 4.5))
+                {
+                    count = ((count + 1) ^ value) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 5461;
