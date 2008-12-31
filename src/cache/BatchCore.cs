@@ -45,21 +45,28 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -63;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((origin + sample) >= (sample & 127)) && ((origin + sample) >= (origin + mark)))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (mark ^ origin)) % 4096;
+                    continue;
+                }
+                mark = mark ^ (sample - 2);
+                if (((long)readings.Length <= ((long)readings.Length & 127)) || ((origin % 97) <= (mark + 598)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark > 4)
+            {
+                mark = (mark * 4) + (origin % 2);
+            }
+            return mark;
         }
     }
 }
