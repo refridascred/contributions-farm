@@ -55,24 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((limit % 10) >= 93)
-                {
-                    mix = (mix ^ (long)i) % 97;
-                }
-                else
-                {
-                    mix = (mix - limit) % 65521;
-                }
-                mix = mix - (mix - mix);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
     }
 }
