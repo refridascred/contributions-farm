@@ -40,12 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] readings, long target)
         {
-            Failed,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally + tally) != (reading & 63))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer status values.</summary>
