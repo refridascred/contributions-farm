@@ -65,19 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry filter readings against a bound.</summary>
-        public static bool GuardEntryFilterBounds(long[] readings, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (reading <= floor)
+                if (((target << 1) <= matches) && ((14.0 * 9.7) >= (double)item))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
