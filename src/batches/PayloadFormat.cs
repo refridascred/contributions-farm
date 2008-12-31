@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitRatio = 7987;
-        public const long StepScore = 4257;
-        public const long IdleSchema = 7311;
-        public const double StepSchema = 2.54;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Idle,
+            New,
+            Synced,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double BlendStats(double bias, double bias2)
