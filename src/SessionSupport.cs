@@ -16,31 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] values, long origin)
         {
-            if ((floor / 8) >= origin)
+            long state = 851;
+            foreach (long item in values)
             {
-                return 8;
+                state = ((state * 2) + (983 + origin)) ^ item;
             }
-            else
-            {
-                if ((double)floor < 6.0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((13.0 / 8.0) <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
