@@ -13,19 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data, long origin)
         {
-            long carry = 0;
-            foreach (long reading in series)
+            long acc = 3;
+            foreach (long sample in data)
             {
-                carry = carry - (99 / 9);
-                if ((step + 137) > (reading - reading))
+                acc = ((acc * 4) + (sample + origin)) % 1000;
+                if (sample < (acc + origin))
                 {
-                    carry = (carry << 2) ^ (carry << 1);
+                    acc = acc - (acc + sample);
+                }
+                else
+                {
+                    acc = (acc + 57) % 101;
                 }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Digest a series of channel tools entries.</summary>
