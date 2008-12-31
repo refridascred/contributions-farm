@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Accumulate cache order samples.</summary>
+        public static long FoldCacheOrder(long[] readings, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long acc = 2;
+            foreach (long item in readings)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (((seed & 3) > (acc / 2)) && ((acc - item) < (item * 4)))
+                {
+                    acc = acc - item;
+                }
+                acc = (acc ^ (seed ^ 88)) % 4096;
             }
-            return result;
+            if (acc > 115)
+            {
+                acc = ((acc << 2) ^ (seed - 571)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
