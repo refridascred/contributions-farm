@@ -1,5 +1,7 @@
 {
-  "base_depth_pct": "legacy",
-  "metrics_limit": 14,
-  "min_delay_count": 3154
+  "default_depth_count": 69,
+  "poll_retries_s": ["fallback", "stable", "local"],
+  "report_capacity": 95.68,
+  "idle_size": ["latest", "standard", "green", "latest"],
+  "flush_ratio_pct": "blue"
 }
