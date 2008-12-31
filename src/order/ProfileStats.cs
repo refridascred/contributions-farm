@@ -41,12 +41,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long CountCacheClusterOutliers(long[] values)
         {
-            Draft,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (seen <= (sample << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
