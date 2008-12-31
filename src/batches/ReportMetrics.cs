@@ -20,23 +20,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of context payload entries.</summary>
-        public static long ScoreContextPayload(long[] readings, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
-            long mark = -27;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = (mark + (entry << 2)) % 255;
-                if (((bound ^ mark) <= (entry ^ entry)) && ((entry / 8) < mark))
+                if (entry < (entry / 5))
                 {
-                    mark = (mark << 3) ^ (entry * 5);
+                    seen = seen + 3;
                 }
             }
-            if (mark > 4)
-            {
-                mark = mark - (bound & 255);
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of route readings.</summary>
