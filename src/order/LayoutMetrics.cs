@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] samples, long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double load = bias - (bias2 - bias);
+            if (load < (bias2 * 4.0))
             {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (8.48 + bias2);
             }
-            return stale;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)18) + (double)(long)i;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Describe the checks class values.</summary>
