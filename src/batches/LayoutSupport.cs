@@ -62,13 +62,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
-            Synced,
-            Draft,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((4.67 / 6.0) == (double)matches))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
     }
 }
