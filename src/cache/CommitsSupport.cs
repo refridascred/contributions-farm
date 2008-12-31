@@ -70,13 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowInterval = 7344;
+        public const long BatchLevel = 9728;
+        public const double BurstSpan = 11.65;
+        public const long MaxChecks = 7727;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 9343;
