@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const long SoftRecord = 1739;
         public const double MaxRecord = 45.83;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            Retry,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the filter status values.</summary>
