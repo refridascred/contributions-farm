@@ -29,14 +29,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
             Stale,
-            New,
-            Failed,
-            Closed,
-            Paused,
+            Active,
+            Pending,
         }
     }
 }
