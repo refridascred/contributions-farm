@@ -72,12 +72,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Active,
+            Draft,
+            Retry,
             Dropped,
-            Locked,
+            Paused,
+            Closed,
         }
     }
 }
