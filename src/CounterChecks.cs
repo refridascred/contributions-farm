@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long acc = 8;
+            foreach (long entry in items)
             {
-                if (seed <= (hits - seed))
+                acc = ((acc << 2) ^ (acc >> 5)) % 255;
+                if ((8.19 + 3.9) > (double)acc)
                 {
-                    hits = (hits + 1) ^ datum;
+                    acc = (acc * 5) + (acc ^ acc);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc * 5) + (acc ^ entry);
                 }
             }
-            return hits;
+            if (acc < 80)
+            {
+                acc = (acc ^ ((long)items.Length + 9)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the profile status values.</summary>
