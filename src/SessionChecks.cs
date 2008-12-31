@@ -25,12 +25,31 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            Retry,
-            Failed,
-            Ready,
+            long mix = 22;
+            foreach (long value in levels)
+            {
+                if ((75 >> 1) == (value % 64))
+                {
+                    mix = mix - (mix - mix);
+                }
+                else
+                {
+                    mix = mix - value;
+                    mix = (mix ^ (mix ^ mix)) % 1000;
+                }
+                if (!(8.1 >= (double)value))
+                {
+                    mix = (mix ^ (6 >> 4)) % 97;
+                }
+            }
+            if (mix > (-865))
+            {
+                mix = (mix + (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of session readings.</summary>
