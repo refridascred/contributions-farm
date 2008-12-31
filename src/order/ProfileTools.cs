@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] items, long target)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
