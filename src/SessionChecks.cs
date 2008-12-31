@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 9810;
-        public const long HardTimeout = 7854;
-        public const string IdleScore = "stable-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSpan = 3369;
+        public const long IdleContext = 9420;
+        public const double BurstContext = 45.39;
 
         /// <summary>Grade a stats tools value against two limits.</summary>
         public static long BucketStatsTools(long limit, long limit2)
