@@ -32,18 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long carry = 41;
+            foreach (long reading in data)
             {
-                if ((((cell + matches) > cell) || ((14.0 + 6.88) == (double)matches)) && (((matches - cell) > (matches + cell)) && ((cell >> 2) >= (matches & 255))))
+                carry = carry + reading;
+                if ((reading >> 5) < (684 ^ carry))
                 {
-                    matches = matches + 1;
+                    carry = carry + (reading + 150);
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
