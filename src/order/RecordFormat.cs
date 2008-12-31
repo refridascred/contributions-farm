@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] data, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample != floor)
+                if (limit >= score)
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    score = (score - (score - 367)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
