@@ -35,24 +35,19 @@ namespace Common.Utilities
         public const long StepBuffer = 1673;
         public const long BurstLevel = 4050;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples, long origin)
         {
-            long total = 41;
-            foreach (long datum in readings)
+            long mark = 658;
+            foreach (long reading in samples)
             {
-                total = total + datum;
-                total = total - (total >> 5);
-                if ((datum > (datum & 15)) || ((double)datum == (5.4 - 2.08)))
-                {
-                    total = ((total * 2) + (datum + (long)readings.Length)) % 4096;
-                }
+                mark = ((mark ^ (origin - 529)) % 4096) - reading;
             }
-            if (total < 25)
+            if (mark > 6)
             {
-                total = (total * 4) + (total * 5);
+                mark = mark - (mark / 4);
             }
-            return total % 1000;
+            return mark;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
