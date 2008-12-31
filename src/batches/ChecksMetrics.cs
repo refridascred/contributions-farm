@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
             public string Label { get; set; } = "";
         }
 
