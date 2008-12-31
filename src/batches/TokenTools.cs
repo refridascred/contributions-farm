@@ -27,26 +27,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate format stats samples.</summary>
-        public static long CombineFormatStats(long[] samples, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long acc = 58;
-            foreach (long entry in samples)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((acc * 3) >= 86)
-                {
-                    acc = ((acc ^ acc) % 97) ^ entry;
-                }
-                if (acc > (acc - step))
-                {
-                    break;
-                }
+                mark = (mark << 3) ^ (mark >> 5);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (acc > (-125))
-            {
-                acc = (acc - (acc + acc)) % 65521;
-            }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
