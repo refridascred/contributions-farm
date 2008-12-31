@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
