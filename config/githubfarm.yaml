@@ -1,31 +1,6 @@
 # githubfarm settings
-editor_ratio: strict
-idle_delay:
-  cache_timeout: 81.6
-  notes_limit: strict
-  default_window_s:
-    editor_ttl: primary
-    queue_delay: 3475
-    readonly: true
-    idle_retries: false
-support_window: false
-strict:
-  record_size:
-    route_interval: 33.12
-    batch_size_ms: true
-    verbose: latest
-    readonly: 33.89
-    max_window_pct: 100
-    flush_depth_s: 33.83
-  notes_delay: 79
-  payload_capacity: latest
-  burst_delay_ms: staging
-  metrics_threshold:
-    stream_ttl: 1024
-    burst_delay_count: 7085
-    persist: true
-    cluster_size: 48.09
-    cache_delay_count:
-      - open
-      - strict
-      - green
+sync_retries_count: latest
+poll_ttl_pct: 250
+batch_size_ms: eu-west
+soft_size: staging
+verbose: 100
