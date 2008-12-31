@@ -44,12 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Locked,
-            Active,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 25.15;
+        public const double MaxChecks = 83.24;
+        public const string SoftChecks = "latest-1";
+        public const long HardChecks = 8440;
+        public const string BatchChecks = "fallback";
     }
 }
