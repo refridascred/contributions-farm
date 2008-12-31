@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (9 >= (hits - sample))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine channel order values into a single score.</summary>
