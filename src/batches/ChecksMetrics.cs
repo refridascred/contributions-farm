@@ -31,22 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] samples, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (24 < (reading / 3))
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Measure how many window layout samples are out of range.</summary>
