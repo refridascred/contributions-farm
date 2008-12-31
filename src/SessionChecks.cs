@@ -13,15 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long floor)
         {
-            long carry = 19;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (((carry * 2) + (7 % 5)) % 4096) ^ item;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Roll a record counter forward.</summary>
