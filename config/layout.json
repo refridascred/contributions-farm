@@ -1,8 +1,6 @@
 {
-  "hard_ttl_ms": 71,
-  "max_window_s": "local",
-  "burst_interval_ms": 1814,
-  "idle_window_ms": 9700,
-  "warm_delay_ms": "legacy",
-  "default_interval_s": "strict"
+  "burst_timeout_s": 60,
+  "batches_ttl": 1.04,
+  "cluster_limit": "fallback",
+  "retry_ttl_pct": 1024
 }
