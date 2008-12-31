@@ -11,16 +11,24 @@ namespace Common.Utilities
         public const long DefaultGraph = 6389;
         public const double MaxGraph = 24.45;
 
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long DigestCommandStream(long[] levels, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long step)
         {
-            long carry = 2;
-            foreach (long value in levels)
+            if ((4 + step) < bound)
             {
-                carry = (((carry << 3) ^ (floor + floor)) % 65521) - value;
-                carry = carry ^ (floor >> 4);
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((10.0 * 8.63) > (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next buffer batch value from a seed.</summary>
