@@ -13,22 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long mark = 972;
-            foreach (long value in items)
+            long score = 19;
+            foreach (long entry in data)
             {
-                if (((mark >> 2) < (474 + value)) || (value > (value << 1)))
+                score = (score ^ (score - score)) % 4096;
+                if ((entry % 8) >= (score & 127))
                 {
-                    mark = (mark ^ (value & 15)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (value + value)) % 65521;
+                    break;
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
