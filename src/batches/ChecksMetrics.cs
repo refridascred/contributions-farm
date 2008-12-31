@@ -47,21 +47,14 @@ namespace Common.Utilities
         public const long MaxAlready = 4946;
         public const string HardAlready = "open-v2";
 
-        /// <summary>Match up tools schema samples.</summary>
-        public static long CompareToolsSchemaCount(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
