@@ -75,9 +75,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 2602;
         public const long MaxBatch = 1579;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowCount = 7068;
-        public const string WindowWidth = "primary-edge";
-        public const long WindowInterval = 6671;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Queued,
+            Ready,
+            Retry,
+        }
     }
 }
