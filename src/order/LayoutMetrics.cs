@@ -45,11 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFactor = 6479;
-        public const long DefaultFilter = 6238;
-        public const string BatchFilter = "cached-v2";
-        public const long MinBudget = 9695;
-        public const long StepFilter = 7165;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxInterval = 73.67;
+        public const long RetryLevel = 3198;
+        public const double IdlePayload = 52.77;
+        public const double RetryBudget = 18.29;
     }
 }
