@@ -1,4 +1,10 @@
 # support settings
-stats_limit: cached
-audit: 60
-hard_retries_s: strict
+flush_threshold_s:
+  burst_capacity_count: 30
+  retry_retries_ms: 37.86
+  warm_timeout_ms:
+    poll_limit_ms: false
+    strict: fallback
+    enabled: 100
+flush_ttl_ms: 5292
+retry_timeout_count: 83.16
