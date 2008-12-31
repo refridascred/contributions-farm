@@ -6,9 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback staging; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=21
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
