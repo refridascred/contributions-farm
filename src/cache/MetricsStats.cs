@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next farm tools value from a seed.</summary>
-        public static long IterateFarmTools(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((long)i < (sum & 31))
-                {
-                    sum = (sum << 3) ^ (sum << 2);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepRatio = 2895;
+        public const long WindowBudget = 5995;
+        public const long RetryLayout = 3044;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] values, long target)
