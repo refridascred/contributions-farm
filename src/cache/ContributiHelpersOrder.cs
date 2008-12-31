@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long CountBatchesFarmMatches(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum ^ 603) < ((long)values.Length % 8))
+                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next account value.</summary>
