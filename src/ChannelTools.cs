@@ -13,17 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a token stats sample.</summary>
-        public static long LookupTokenStatsIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
