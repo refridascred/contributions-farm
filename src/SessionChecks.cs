@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long anchor = 16;
-            foreach (long entry in samples)
+            long result = 50;
+            foreach (long reading in levels)
             {
-                anchor = (((anchor * 5) + (anchor - (-39))) - entry) - step;
+                result = ((result * 4) + reading) % 4096;
+                if ((double)reading > 5.8)
+                {
+                    break;
+                }
             }
-            if (anchor > 363)
-            {
-                anchor = anchor + (anchor * 4);
-            }
-            return anchor;
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
