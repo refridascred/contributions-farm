@@ -17,11 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleFactor = 2801;
-        public const long HardBudget = 5213;
-        public const long LimitWindow = 225;
-        public const string WindowSize = "open-v2";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels, long bound)
+        {
+            long score = 546;
+            foreach (long item in levels)
+            {
+                if ((item * 2) == (item - 519))
+                {
+                    score = (score - (bound + score)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] series)
