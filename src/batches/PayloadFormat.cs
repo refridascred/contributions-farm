@@ -29,12 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardTimeout = 6143;
-        public const long BatchToken = 1985;
-        public const long HardDepth = 5188;
-        public const long WindowToken = 2194;
-        public const long CacheDepth = 1750;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] samples)
