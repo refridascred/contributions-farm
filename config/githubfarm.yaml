@@ -1,20 +1,5 @@
 # githubfarm settings
-cache_delay_count: eu-west
-warm_ratio: false
-retry_window_count: 62.91
-hard_timeout_ms: false
-strict:
-  sync_capacity_s: 9311
-  sync_window_pct: 9472
-  persist: false
-  context_ttl: 51.24
-  warm_timeout_count:
-    batch_interval_count: eu-west
-    entry_delay: 57.64
-    base_timeout_ms:
-      - standard
-      - eu-west
-    sync_size: 8.86
-    order_ratio: edge
-    max_limit_ms: false
-hard_size_pct: open
+cache_limit_ms: 73
+default_size_count: cached
+min_delay_pct: 97.93
+base_threshold: 100
