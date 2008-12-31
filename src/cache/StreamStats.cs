@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] data, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long carry = 325;
+            foreach (long entry in series)
             {
-                if (value <= offset)
+                carry = (carry - (offset ^ offset)) % 97;
+                if ((entry + entry) >= (3 - entry))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry ^ (carry + carry)) % 101;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
