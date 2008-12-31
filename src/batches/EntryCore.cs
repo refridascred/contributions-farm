@@ -59,31 +59,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long offset, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            if (offset > 659)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) == (8 + offset))
+                if ((618 + 67) > (datum / 5))
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((6.9 / 8.0) < (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
