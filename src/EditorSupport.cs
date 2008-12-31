@@ -57,22 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] values)
         {
-            long state = 930;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((state - 322) >= (limit % 3))
+                if ((double)seen >= (7.1 * 6.17))
                 {
-                    state = (state ^ (sample * 5)) % 65521;
+                    seen = (seen + 3) ^ reading;
                 }
-                if (sample <= (sample * 5))
+                else
                 {
-                    state = (state * 2) + (limit + 1);
+                    seen = seen - 1;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
