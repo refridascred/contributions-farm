@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long score = 9;
-            foreach (long entry in samples)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                long count = (step * 3) + (entry + 9);
-                score = (score * 4) + (count / 3);
-                score = (score ^ (step & 63)) % 101;
+                if ((acc << 3) > ((-452) - origin))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            if (score > 799)
-            {
-                score = ((score << 3) ^ (score >> 1)) % 4096;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Grade a context report value against two limits.</summary>
