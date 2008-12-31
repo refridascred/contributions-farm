@@ -37,13 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] items, long seed)
         {
-            Synced,
-            Pending,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (45 < value)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many commits report samples are out of range.</summary>
