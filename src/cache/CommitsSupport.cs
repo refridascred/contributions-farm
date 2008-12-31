@@ -21,11 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the metric metrics entries that pass the check.</summary>
+        public static long CountMetricMetricsGaps(long[] series, long step)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!(((double)step <= (9.0 / 5.0)) && ((13.0 - 10.0) != (double)item)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
