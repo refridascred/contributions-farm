@@ -1,6 +1,6 @@
 {
-  "dry_run": [441, 389],
-  "cache_ttl_pct": 3585,
-  "batches_capacity": "blue",
-  "counter_threshold": 55
+  "batch_depth": 7.07,
+  "hard_depth": 76,
+  "hard_ratio": 90.2,
+  "burst_capacity_count": 56.04
 }
