@@ -1,6 +1,18 @@
 {
-  "token_interval": false,
-  "retry_window_count": 1024,
-  "soft_size_pct": 66.79,
-  "cache_depth": "primary"
+  "warm_window_ms": "staging",
+  "channel_limit": 6797,
+  "warm_interval_pct": [345, 342, 109],
+  "default_depth_ms": "cached",
+  "cache_window_count": 100,
+  "soft_size_count": {
+    "context_limit": "open",
+    "cache_size_pct": {
+      "burst_retries": "blue",
+      "default_delay_s": 12,
+      "report_ttl": false,
+      "base_interval_s": "blue",
+      "persist": true
+    },
+    "batch_limit_pct": "staging"
+  }
 }
