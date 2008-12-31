@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] values, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Project the next account channel value.</summary>
