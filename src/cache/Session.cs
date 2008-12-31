@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long CountRecordChannelHits(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (1.0 <= (double)hits)
+                if (!((546 >> 2) < (bound + bound)))
                 {
-                    hits = (hits + 1) - sample;
+                    carry = (carry << 3) ^ (bound / 9);
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
