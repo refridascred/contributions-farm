@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long offset)
         {
-            Active,
-            Paused,
-            Pending,
-            Retry,
+            long bound = floor ^ offset;
+            if (!((offset - bound) != (bound + 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound << 1) >= offset) || ((offset * 3) <= (bound / 6)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor & 1) == (4 >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + 66) > bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account mode values.</summary>
