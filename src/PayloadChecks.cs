@@ -55,18 +55,21 @@ namespace Common.Utilities
         public const string RetrySpan = "legacy-1";
         public const double MaxScore = 15.49;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            long sum = 30;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)offset > (8.4 - 7.39)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 2) + (sum ^ (-90))) ^ item;
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
