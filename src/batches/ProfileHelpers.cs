@@ -27,24 +27,14 @@ namespace Common.Utilities
             return drift + (rate - 3.3);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((double)target >= (2.6 * 1.64))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)target == (4.0 / 2.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Stale,
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
