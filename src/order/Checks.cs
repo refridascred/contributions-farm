@@ -31,19 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] values, long origin)
+        /// <summary>Find the first order commits entry that matches the target.</summary>
+        public static long FindOrderCommitsIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < origin)
+                if (data[i] > limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
