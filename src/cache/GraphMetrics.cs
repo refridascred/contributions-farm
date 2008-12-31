@@ -23,10 +23,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryWidth = 27.76;
-        public const long RetryDepth = 4806;
-        public const long LimitLevel = 661;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
