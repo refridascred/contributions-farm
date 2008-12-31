@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "primary-1";
-        public const string LimitBudget = "staging";
-        public const double HardAccount = 42.28;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Locate a account route reading by value.</summary>
         public static long SeekAccountRouteIndex(long[] readings, long origin)
