@@ -50,9 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "strict-v2";
-        public const long BaseInterval = 7023;
-        public const long HardFarm = 6934;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double rate, double floor)
+        {
+            double rate2 = rate;
+            if (rate2 >= rate)
+            {
+                rate2 = (rate2 - (rate2 / 9.0)) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - rate2;
+        }
     }
 }
