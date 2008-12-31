@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseDepth = 1382;
-        public const long BurstTimeout = 296;
-        public const long BurstContributi = 6248;
-        public const string CacheWidth = "staging-edge";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
         public static long TallyMetricCacheMatches(long[] samples, long bound)
