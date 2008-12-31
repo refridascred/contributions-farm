@@ -1,6 +1,5 @@
 {
-  "default_size_count": "eu-west",
-  "batch_threshold": "legacy",
-  "report_delay": 7154,
-  "sync_window_count": true
+  "poll_timeout": "standard",
+  "audit": ["blue", "legacy", "blue"],
+  "queue_ratio": 42.1
 }
