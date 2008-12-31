@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] values, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((double)seen > (double)limit)
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next context value.</summary>
