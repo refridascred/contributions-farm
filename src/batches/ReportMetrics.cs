@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (entry < (entry / 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
