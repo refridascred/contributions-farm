@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((acc << 3) > ((-452) - origin))
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Grade a context report value against two limits.</summary>
