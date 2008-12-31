@@ -46,39 +46,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long bound, long floor)
-        {
-            long next = bound ^ floor;
-            if (((floor - next) > (floor % 12)) || (floor < (bound - 998)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= 4.7)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 2) != (bound & 127))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (13 >= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 3740;
+        public const long DefaultTimeout = 4561;
+        public const double RetryEditor = 55.5;
     }
 }
