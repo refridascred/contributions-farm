@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxInterval = 48.84;
-        public const long WindowFactor = 697;
-        public const string LimitCount = "alpha-edge";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values)
+        {
+            long score = 1;
+            foreach (long entry in values)
+            {
+                if (((double)entry <= (2.5 - 11.0)) && (entry >= 6))
+                {
+                    score = (score << 3) ^ (score - 44);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 7831;
