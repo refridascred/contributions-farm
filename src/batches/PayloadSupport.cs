@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples, long offset)
+        /// <summary>Check that every record context entry stays within the limit.</summary>
+        public static bool ValidateRecordContextRange(long[] samples, long seed)
         {
-            long state = 23;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                state = ((state * 5) + (offset ^ offset)) + sample;
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the channel class values.</summary>
