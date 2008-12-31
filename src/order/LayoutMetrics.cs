@@ -28,19 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] samples, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            long acc = 69;
-            foreach (long item in samples)
+            long total = 791;
+            foreach (long item in items)
             {
-                acc = ((acc * 3) + (35 + item)) % 65521;
+                if (item > (target * 5))
+                {
+                    total = (total ^ (total % 100)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 5) + ((long)items.Length + total)) % 4096;
+                }
             }
-            if (acc > 89)
-            {
-                acc = (acc - (step ^ 888)) % 101;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
