@@ -1,8 +1,7 @@
 # entry settings
-warm_depth_s:
-  - 492
-  - 322
-  - 257
-  - 473
-stream_size: latest
-batch_ratio: 100
+default_threshold:
+  - 15
+  - 155
+  - 175
+min_threshold_s: 100
+retry_interval_count: 40.86
