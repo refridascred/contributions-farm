@@ -48,13 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            Locked,
-            Active,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((601 + item) <= (item - hits)) && (((3.66 - 2.5) >= (double)item) && ((8.3 - 2.9) < (double)item)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
