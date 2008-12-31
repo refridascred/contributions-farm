@@ -69,31 +69,11 @@ namespace Common.Utilities
         public const long StepProfile = 2043;
         public const long MinSize = 2758;
 
-        /// <summary>Classify a batches report pair into a bucket.</summary>
-        public static long ClassifyBatchesReport(long step, long floor)
-        {
-            if ((39 + floor) == (floor ^ step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((13.0 - 11.0) >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step <= (29 >> 2)) && (step <= ((-369) ^ step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 685;
+        public const long StepFactor = 7508;
+        public const long CacheLevel = 2729;
+        public const long LimitCluster = 5771;
+        public const long WindowInterval = 871;
     }
 }
