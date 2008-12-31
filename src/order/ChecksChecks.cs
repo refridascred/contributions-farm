@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count + 32) >= (cell % 24))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload status values.</summary>
