@@ -64,13 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit cache stream readings against a rule.</summary>
+        public static long CountCacheStreamMatches(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (4.5 / 9.0))
+                {
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
