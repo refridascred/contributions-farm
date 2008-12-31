@@ -23,15 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double gain, double bias)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values)
         {
-            double bias2 = (double)(559 ^ 36);
-            for (int i = 0; i < 7; i++)
+            long result = 346;
+            foreach (long reading in values)
             {
-                bias2 = ((bias2 - bias) - (double)(long)i) - gain;
+                if ((reading >> 5) < (2 * 5))
+                {
+                    result = result + reading;
+                }
             }
-            return bias2 - (bias2 / 3.0);
+            if (result > 3)
+            {
+                result = (result - ((-91) ^ 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
