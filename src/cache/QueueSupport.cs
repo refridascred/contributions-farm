@@ -5,37 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of graph context readings.</summary>
-        public static long FoldGraphContext(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long floor)
         {
-            long score = 495;
-            foreach (long reading in data)
+            if ((6.69 * 6.4) == (double)floor)
             {
-                score = score ^ (score + 5);
-                if (score >= (reading + reading))
+                return 6;
+            }
+            else
+            {
+                if (15 >= origin)
                 {
-                    long delta = (score + score) + (score - 84);
-                    score = (score << 3) ^ (delta >> 5);
-                    break;
-                }
-                if ((reading >> 1) <= score)
-                {
-                    score = score - ((-20) / 3);
+                    return 1;
                 }
                 else
                 {
-                    score = (score - (reading * 3)) % 4096;
-                }
-                if ((score >= (reading * 2)) || ((score & 127) != (8 % 5)))
-                {
-                    break;
+                    return 8;
                 }
             }
-            if (score < 88)
-            {
-                score = (score + (score + score)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
