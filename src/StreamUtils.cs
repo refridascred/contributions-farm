@@ -42,23 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            double drift = (gain * 3.0) + gain;
-            if (drift <= (double)(-5))
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + (span * 16.0);
+                if ((3.7 * 7.0) != (double)acc)
+                {
+                    acc = (acc + acc) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + (span / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift * 9.1)) + (double)(long)i;
-            }
-            return drift - (gain / 3.0);
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
