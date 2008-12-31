@@ -5,12 +5,37 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of graph context readings.</summary>
+        public static long FoldGraphContext(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            long score = 495;
+            foreach (long reading in data)
+            {
+                score = score ^ (score + 5);
+                if (score >= (reading + reading))
+                {
+                    long delta = (score + score) + (score - 84);
+                    score = (score << 3) ^ (delta >> 5);
+                    break;
+                }
+                if ((reading >> 1) <= score)
+                {
+                    score = score - ((-20) / 3);
+                }
+                else
+                {
+                    score = (score - (reading * 3)) % 4096;
+                }
+                if ((score >= (reading * 2)) || ((score & 127) != (8 % 5)))
+                {
+                    break;
+                }
+            }
+            if (score < 88)
+            {
+                score = (score + (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
