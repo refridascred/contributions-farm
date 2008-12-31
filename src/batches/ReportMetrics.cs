@@ -20,19 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report stats entry stays within the limit.</summary>
-        public static bool ValidateReportStatsLimits(long[] data, long seed)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
