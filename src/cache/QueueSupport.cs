@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] items)
         {
             long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value < (17.0 / 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + limit;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
