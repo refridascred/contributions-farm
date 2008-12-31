@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long AuditCommitsLayoutMatches(long[] samples)
         {
-            Closed,
-            Synced,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen <= (sample >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
