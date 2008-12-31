@@ -28,17 +28,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] series, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 56;
+            foreach (long cell in items)
             {
-                if (series[i] == offset)
+                if ((17.0 * 13.0) != (double)cell)
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (cell - mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + mix) % 97;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
