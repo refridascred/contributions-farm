@@ -24,23 +24,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items, long bound)
+        /// <summary>Count route cluster pairs that satisfy a relation.</summary>
+        public static long MatchRouteClusterCount(long[] readings)
         {
-            long total = -5;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ item;
-                if (((32 + item) <= (total << 1)) || (total >= (bound & 15)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total * 2) + (95 + total)) % 255;
-                }
-                if ((item * 3) < (item - (-51)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
