@@ -24,19 +24,39 @@ namespace Common.Utilities
             return drift - (double)22;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] data, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long span = offset - floor;
+            if (span < (54 >> 2))
             {
-                if (cell > bound)
+                return 6;
+            }
+            else
+            {
+                if ((span + 361) <= floor)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((5.3 * 1.24) > (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset >> 4) < span)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
