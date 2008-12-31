@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length < (13.0 - 7.91))
-                {
-                    seen = ((seen + 2) - value) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 2801;
+        public const long HardBudget = 5213;
+        public const long LimitWindow = 225;
+        public const string WindowSize = "open-v2";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftInterval = 3315;
