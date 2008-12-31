@@ -49,22 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache already samples.</summary>
-        public static long MatchCacheAlreadyCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 94.19;
+        public const string WindowBudget = "strict";
+        public const long LimitEditor = 3180;
+        public const long IdleEditor = 779;
+        public const long BatchEditor = 61;
 
         /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
         public static long TallyGithubfarmMetricsOutliers(long[] samples, long target)
