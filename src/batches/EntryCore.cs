@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const long WindowSession = 9178;
         public const long MinLevel = 7828;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Validate buffer batch readings against a bound.</summary>
+        public static bool GuardBufferBatchRange(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (((tally / 6) >= tally) && (tally <= (item * 5)))
+                if (entry > step)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Roll a cache batches counter forward.</summary>
