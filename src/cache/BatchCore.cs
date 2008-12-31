@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitCount = "staging-edge";
-        public const long BurstSpan = 5058;
-        public const long BaseFarm = 1439;
-        public const double MaxTimeout = 87.79;
-        public const long MaxRatio = 8873;
+        /// <summary>Derive the next profile contributi value from a seed.</summary>
+        public static long RollProfileContributi(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((limit >> 2) <= (21 & 1)) && ((958 - carry) > ((-9) << 2)))
+                {
+                    carry = (carry ^ (carry - 2)) % 1000;
+                    carry = (carry ^ (carry >> 3)) % 65521;
+                }
+                if (1.7 <= (double)(long)i)
+                {
+                    carry = (carry - ((long)i % 64)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (-79);
+                }
+                carry = ((carry << 2) ^ ((long)i + (long)i)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 5820;
