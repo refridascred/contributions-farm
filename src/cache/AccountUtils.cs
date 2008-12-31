@@ -29,18 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((((tally + 49) <= (862 ^ (-694))) && ((tally + cell) != (cell + cell))) && !((tally + cell) == (tally % 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 71.54;
+        public const double IdleFactor = 63.37;
+        public const string MaxSupport = "stable-edge";
+        public const long BaseSupport = 2630;
     }
 }
