@@ -29,20 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
         {
-            long anchor = 623;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 2) + (entry * 3)) % 255;
-                anchor = ((anchor << 2) ^ (seed - anchor)) % 97;
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (anchor < 85)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return found;
         }
     }
 }
