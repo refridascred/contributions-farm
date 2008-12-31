@@ -27,26 +27,12 @@ namespace Common.Utilities
         public const string IdleSize = "strict-v2";
         public const string MaxSupport = "alpha-edge";
 
-        /// <summary>Combine payload record values into a single score.</summary>
-        public static long TallyPayloadRecord(long[] values, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mix = 582;
-            foreach (long reading in values)
-            {
-                if (((reading + mix) == (long)values.Length) || (((long)values.Length * 2) != (mix - step)))
-                {
-                    mix = (mix + (0 / 7)) % 1000;
-                }
-                if ((138 * 2) > (step >> 1))
-                {
-                    break;
-                }
-            }
-            if (mix < (-673))
-            {
-                mix = (mix + (mix - step)) % 255;
-            }
-            return mix;
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
