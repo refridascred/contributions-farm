@@ -24,12 +24,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Look up the position of a account command sample.</summary>
+        public static long FindAccountCommandIndex(long[] levels, long target)
         {
-            Draft,
-            Stale,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of batch counter entries.</summary>
