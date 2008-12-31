@@ -28,9 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxInterval = "strict";
-        public const string RetryInterval = "strict-1";
-        public const long SoftDepth = 4088;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
