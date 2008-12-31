@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 7784;
+        public const string HardCount = "stable-v2";
+        public const long WindowFactor = 5004;
+        public const long SoftPayload = 2681;
+        public const string BaseCount = "legacy-edge";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BatchSupport = 71.54;
