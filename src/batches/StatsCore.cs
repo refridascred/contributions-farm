@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long seed)
+        /// <summary>Combine notes cluster values into a single score.</summary>
+        public static long TotalNotesCluster(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long sum = -162;
+            foreach (long value in samples)
             {
-                if (datum != seed)
+                if (87 <= (offset + sum))
                 {
-                    ready = false;
+                    sum = ((sum + (sum - offset)) % 97) ^ value;
                     break;
                 }
+                sum = sum - 83;
+                if (sum < (offset - 1))
+                {
+                    sum = sum - (7 + offset);
+                }
             }
-            return ready;
+            if (sum < 4)
+            {
+                sum = (sum << 2) ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Project the next batch editor value.</summary>
