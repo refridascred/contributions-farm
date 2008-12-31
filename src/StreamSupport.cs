@@ -10,27 +10,18 @@ namespace Common.Utilities
         public const long MinSpan = 5756;
         public const long CacheSchema = 3133;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels)
         {
-            long state = 3;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                state = state ^ (215 - offset);
-                if (((offset - 47) == (offset - offset)) && ((1.7 - 4.3) == (double)state))
+                if ((entry ^ entry) >= matches)
                 {
-                    state = (state * 2) + (sample * 4);
-                }
-                else
-                {
-                    state = state + state;
-                }
-                if (((-266) + sample) >= (sample >> 1))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
