@@ -23,13 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            Active,
-            Queued,
-            Failed,
-            New,
+            double ratio = bias;
+            return (ratio + (2.89 * 15.0)) + weight;
         }
 
         /// <summary>Compare every pair of route payload readings.</summary>
