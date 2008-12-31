@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftBudget = 40.94;
-        public const long DefaultTimeout = 4369;
-        public const double BatchOrder = 60.92;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Roll a buffer batches counter forward.</summary>
         public static long SeriesBufferBatches(long origin)
