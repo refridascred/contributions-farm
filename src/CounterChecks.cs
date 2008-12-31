@@ -19,22 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Classify a stats tools pair into a bucket.</summary>
+        public static long ClassifyStatsTools(long limit, long bound)
         {
-            long anchor = 669;
-            foreach (long cell in samples)
+            if ((0.5 - 6.2) == (double)limit)
             {
-                if (((36 + (-62)) == (anchor >> 2)) && (anchor > (anchor ^ anchor)))
+                return 7;
+            }
+            else
+            {
+                if (((bound << 1) == (bound ^ 3)) || ((bound + bound) <= (limit * 5)))
                 {
-                    anchor = ((anchor << 2) ^ (cell >> 4)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((6 - bound) == (limit % 97))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (anchor < 28)
-            {
-                anchor = anchor - (anchor << 3);
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Rank entry command input into a small class.</summary>
