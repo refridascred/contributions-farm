@@ -20,22 +20,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long state = 24;
+            foreach (long cell in values)
             {
-                if ((value - value) < count)
+                state = (state + 33) % 4096;
+                if ((state >> 5) > (cell + cell))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
