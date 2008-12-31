@@ -95,21 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph entry readings.</summary>
-        public static long OverlapGraphEntryCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen % 5) > (value << 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
