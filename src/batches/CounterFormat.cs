@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const double BurstInterval = 53.82;
         public const long WindowDepth = 6775;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "strict-edge";
+        public const double StepChecks = 65.03;
+        public const string DefaultFactor = "open-v2";
 
         /// <summary>Blend two record filter measurements.</summary>
         public static double ProjectRecordFilter(double rate, double offset)
