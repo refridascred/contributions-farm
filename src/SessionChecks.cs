@@ -25,13 +25,12 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Active,
-            Locked,
-            Failed,
-            Ready,
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
