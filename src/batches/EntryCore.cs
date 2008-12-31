@@ -49,16 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cache batches counter forward.</summary>
-        public static long SeriesCacheBatches(long bound)
+        /// <summary>Digest a series of farm editor entries.</summary>
+        public static long WeighFarmEditor(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long mix = 122;
+            foreach (long value in data)
             {
-                acc = acc + (acc ^ acc);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((727 + value) > (mix + mix))
+                {
+                    mix = mix - (mix + mix);
+                }
+                if (value >= (mix + 473))
+                {
+                    mix = mix + (mix * 5);
+                }
             }
-            return acc;
+            return mix % 97;
         }
     }
 }
