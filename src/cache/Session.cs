@@ -11,31 +11,16 @@ namespace Common.Utilities
         public const long DefaultGraph = 6389;
         public const double MaxGraph = 24.45;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long step, long step2)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long DigestCommandStream(long[] levels, long floor)
         {
-            if ((step2 + step2) > (step2 & 7))
+            long carry = 2;
+            foreach (long value in levels)
             {
-                return 7;
+                carry = (((carry << 3) ^ (floor + floor)) % 65521) - value;
+                carry = carry ^ (floor >> 4);
             }
-            else
-            {
-                if ((7 + step2) == (9 - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step % 10) <= (490 % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next buffer batch value from a seed.</summary>
