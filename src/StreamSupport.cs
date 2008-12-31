@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Closed,
             Active,
-            Failed,
             Paused,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the commits phase values.</summary>
