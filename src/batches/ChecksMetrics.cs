@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double scale, double span)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double gain = (span - 9.34) / 8.0;
-            if (gain < 2.1)
-            {
-                gain = gain + (gain * 7.64);
-            }
-            else
-            {
-                gain = gain - span;
-            }
-            return gain + (scale + scale);
+            Paused,
+            Ready,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
