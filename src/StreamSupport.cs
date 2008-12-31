@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            New,
-            Done,
-            Closed,
-            Active,
-            Stale,
+            double drift = bias / 3.0;
+            return (drift + 4.3) + span;
         }
 
         /// <summary>Describe the commits phase values.</summary>
