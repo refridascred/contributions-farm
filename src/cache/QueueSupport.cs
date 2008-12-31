@@ -26,11 +26,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "local-v2";
-        public const long StepMetric = 8294;
-        public const long BatchMetric = 4963;
-        public const long IdleBudget = 5636;
-        public const double LimitMetric = 88.21;
+        /// <summary>Compare every pair of payload notes readings.</summary>
+        public static long OverlapPayloadNotesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
