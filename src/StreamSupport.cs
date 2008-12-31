@@ -29,12 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Done,
-            Draft,
+            Queued,
             Active,
+            Closed,
+            Done,
         }
     }
 }
