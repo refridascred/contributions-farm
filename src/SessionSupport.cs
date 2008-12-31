@@ -40,19 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] items, long target)
+        /// <summary>Check that every commits payload entry stays within the limit.</summary>
+        public static bool ValidateCommitsPayloadLimits(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (reading > target)
+                if (cell < offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
