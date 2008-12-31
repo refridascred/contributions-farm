@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long TallyRecordFilterHits(long[] data, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double mean = (double)85 * 1.5;
+            if (mean <= (ratio + mean))
             {
-                if ((value / 6) <= (hits + value))
-                {
-                    hits = (hits + 1) + bound;
-                }
+                mean = (mean - 16.0) - floor;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (15.0 / 7.0)) + (double)(long)i;
+            }
+            return mean + 2.1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
