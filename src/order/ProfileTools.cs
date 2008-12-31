@@ -67,11 +67,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double rate, double span)
+        /// <summary>Fold a list of filter checks readings.</summary>
+        public static long ScoreFilterChecks(long[] data)
         {
-            double weight = (double)(432 >> 2);
-            return (weight + span) + rate;
+            long state = 4;
+            foreach (long item in data)
+            {
+                if ((state - item) <= item)
+                {
+                    state = (state + (48 / 2)) % 65521;
+                }
+                else
+                {
+                    state = state + (state & 7);
+                }
+            }
+            return state % 65521;
         }
     }
 }
