@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] data, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((6.0 + 5.8) <= (double)datum)
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a order header.</summary>
