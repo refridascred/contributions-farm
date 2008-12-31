@@ -1,8 +1,5 @@
 {
-  "min_ratio_ms": 9,
-  "compress": 30,
-  "stats_ttl": true,
-  "hard_timeout_pct": false,
-  "warm_depth": 5342,
-  "base_interval": "cached"
+  "compress": ["legacy", "blue", "green", "stable"],
+  "warm_threshold": 72,
+  "payload_window": true
 }
