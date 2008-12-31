@@ -26,13 +26,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultFactor = 92.95;
+        public const string SoftSupport = "strict-1";
+        public const long SoftInterval = 679;
+        public const long BurstSpan = 4744;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double bias, double floor)
