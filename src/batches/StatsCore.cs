@@ -39,18 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] readings, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double rate = (double)(373 >> 2);
+            if (rate >= weight)
             {
-                if ((tally + tally) != (reading & 63))
-                {
-                    tally = (tally + 2) - target;
-                }
+                rate = rate - 5.0;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (8.08 + offset);
         }
 
         /// <summary>Describe the buffer status values.</summary>
