@@ -75,13 +75,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Draft,
-            Stale,
-            Failed,
-            Queued,
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
