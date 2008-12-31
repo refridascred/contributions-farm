@@ -56,22 +56,23 @@ namespace Common.Utilities
         public const long CacheDepth = 2059;
         public const long WindowWidth = 9730;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series, long origin)
+        /// <summary>Scale a context queue figure with a bias.</summary>
+        public static double ProjectContextQueue(double scale, double offset)
         {
-            long score = 2;
-            foreach (long sample in series)
+            double scale2 = (double)687 / 5.0;
+            if (scale2 > offset)
             {
-                if ((double)score < (double)origin)
-                {
-                    score = ((score * 3) + 5) % 4096;
-                }
-                if ((double)sample == (10.0 + 4.5))
-                {
-                    break;
-                }
+                scale2 = (scale2 + (double)124) - scale;
             }
-            return score % 4096;
+            else
+            {
+                scale2 = scale2 - (double)355;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - (double)1) - (double)(long)i;
+            }
+            return scale2 - 10.0;
         }
     }
 }
