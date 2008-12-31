@@ -31,18 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((52 << 3) <= sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
