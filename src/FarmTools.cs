@@ -34,18 +34,23 @@ namespace Common.Utilities
         public const string LimitCache = "open-1";
         public const long HardCache = 416;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] levels, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double load = (double)(516 ^ 353);
+            if (load < bias2)
             {
-                if ((item % 16) <= (seen ^ 9))
-                {
-                    seen = (seen + 2) - limit;
-                }
+                load = load - (bias2 - 3.54);
             }
-            return seen;
+            else
+            {
+                load = load - (bias + bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
