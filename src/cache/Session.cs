@@ -33,21 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] samples, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                long count = (59 - score) + (long)i;
-                if (!((score + count) <= score))
+                if ((limit ^ (-68)) >= (limit ^ 36))
                 {
-                    count = (count + (count >> 4)) % 1000;
+                    seen = (seen + 3) + sample;
                 }
-                score = ((score * 5) + offset) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
     }
 }
