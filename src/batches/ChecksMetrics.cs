@@ -10,25 +10,11 @@ namespace Common.Utilities
         public const long SoftCounter = 1738;
         public const double WindowBudget = 79.82;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples)
-        {
-            long total = 985;
-            foreach (long sample in samples)
-            {
-                total = (total << 3) ^ (-254);
-                total = total + (sample + sample);
-                if (15.0 >= (double)total)
-                {
-                    total = ((total << 2) ^ (total ^ 39)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 97;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseDepth = 1382;
+        public const long BurstTimeout = 296;
+        public const long BurstContributi = 6248;
+        public const string CacheWidth = "staging-edge";
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
         public static long TallyMetricCacheMatches(long[] samples, long bound)
