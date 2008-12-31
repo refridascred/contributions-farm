@@ -29,13 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long TallyFormatAccount(long[] items)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long state = 5;
+            foreach (long datum in items)
+            {
+                state = ((state + ((long)items.Length / 6)) % 101) + datum;
+            }
+            return state % 4096;
         }
     }
 }
