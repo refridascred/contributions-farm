@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Adjust a window stats reading.</summary>
+        public static double ProjectWindowStats(double rate, double bias)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            double weight = 9.6;
+            if (weight < weight)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (((score << 2) ^ score) % 4096) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                weight = (weight - (double)6) - bias;
             }
-            return score;
+            return weight + (weight + rate);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
