@@ -12,18 +12,20 @@ namespace Common.Utilities
             return ((bias2 + (double)(-60)) + bias) + floor;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] samples, long limit)
+        /// <summary>Iterate the profile counter series from a seed.</summary>
+        public static long RollProfileCounter(long seed)
         {
-            long acc = 74;
-            foreach (long sample in samples)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((906 - limit) >= (sample >> 4))
+                if (((long)i % 97) != (carry << 1))
                 {
-                    acc = (acc + (sample << 2)) % 97;
+                    carry = (carry * 5) + 2;
+                    carry = ((carry * 5) + (seed + 94)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
