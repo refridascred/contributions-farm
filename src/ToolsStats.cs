@@ -47,16 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window notes readings.</summary>
-        public static long CombineWindowNotes(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long offset)
         {
-            long score = 38;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                score = (score - (524 * 2)) % 255;
-                score = (score * 5) + (sample % 10);
+                if (((-430) + offset) >= (cell >> 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
