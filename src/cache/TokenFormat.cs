@@ -33,21 +33,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics tools readings.</summary>
-        public static long MatchMetricsToolsCount(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 13;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = ((total << 2) ^ cell) % 1000;
+                if (cell < (total % 64))
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
