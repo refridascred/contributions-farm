@@ -14,12 +14,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long offset)
         {
-            Locked,
-            Paused,
-            Dropped,
+            if (!((step - offset) < (599 + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((3 >> 4) == (offset << 1)) && (offset <= (step + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
