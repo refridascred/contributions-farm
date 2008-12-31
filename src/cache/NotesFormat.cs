@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] readings, long bound)
         {
-            long bound = floor ^ offset;
-            if (!((offset - bound) != (bound + 4)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound << 1) >= offset) || ((offset * 3) <= (bound / 6)))
+                if (entry >= (count + entry))
                 {
-                    return 8;
+                    count = (count + 1) + bound;
                 }
                 else
                 {
-                    if ((floor & 1) == (4 >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + 66) > bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
