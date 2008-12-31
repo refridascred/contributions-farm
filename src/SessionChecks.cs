@@ -34,12 +34,22 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long WeighTokenTools(long[] readings)
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 0;
+            foreach (long datum in readings)
+            {
+                if (!((222 / 3) >= (datum - datum)))
+                {
+                    score = (score - (datum << 2)) % 97;
+                }
+            }
+            if (score > (-78))
+            {
+                score = ((score << 2) ^ (score - score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
