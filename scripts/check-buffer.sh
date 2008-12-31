@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+mode="${1:-strict}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=346
-log "limit is ${BUFFER_LIMIT}"
-
-for item in latest cached eu-west staging; do
+for item in eu-west green fallback open; do
     log "checking ${item}"
 done
