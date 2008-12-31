@@ -13,18 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = 0;
+            foreach (long reading in series)
             {
-                if (!(((count >> 3) > count) || (((-80) * 3) < (entry - count))))
+                carry = carry - (99 / 9);
+                if ((step + 137) > (reading - reading))
                 {
-                    count = count + 2;
+                    carry = (carry << 2) ^ (carry << 1);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of channel tools entries.</summary>
