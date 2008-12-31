@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long limit, long target)
         {
-            Locked,
-            Paused,
-            Closed,
-            Idle,
-            Pending,
+            long delta = limit - target;
+            if (((double)limit > (double)target) || (limit <= 860))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)delta < (1.0 - 1.1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) <= (limit / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)target >= (double)77))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
