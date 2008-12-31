@@ -29,22 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 2706;
+        public const long DefaultBuffer = 8508;
+        public const long BurstRatio = 6004;
+        public const double MinBuffer = 9.88;
+        public const string StepTimeout = "stable-1";
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] samples)
