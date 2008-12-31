@@ -19,18 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long offset, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((floor << 2) <= floor)
             {
-                if (!(((double)cell != (4.1 - 1.44)) || ((double)count >= (18.0 + 7.0))))
+                return 6;
+            }
+            else
+            {
+                if ((4.0 + 6.56) < (double)offset)
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((1.22 + 2.8) == (double)floor) || (0 < (offset & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a counter header.</summary>
