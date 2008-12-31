@@ -35,31 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long target)
         {
-            if (!((double)limit <= 8.43))
+            long state = 305;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 4) <= (0 & 127))
+                state = ((state << 3) ^ (state << 3)) ^ reading;
+                if ((double)22 > (double)target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - limit) >= (offset - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = state + (target >> 5);
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a session stats.</summary>
