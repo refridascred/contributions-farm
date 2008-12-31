@@ -1,12 +1,4 @@
 # githubfarm settings
-strict:
-  poll_limit_count: 6034
-  flush_depth: eu-west
-  readonly: false
-  default_ratio_count:
-    burst_window_s: 6317
-    burst_depth: local
-    verbose: true
-audit: strict
-soft_ttl: false
-hard_retries: false
+warm_interval_count: staging
+min_retries_s: 39.82
+batch_ttl_ms: open
