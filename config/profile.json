@@ -1,12 +1,14 @@
 {
-  "compress": 18.2,
-  "hard_threshold": true,
-  "command_ttl": 500,
-  "verbose": {
-    "idle_threshold_count": 47,
-    "warm_ttl_pct": "fallback",
-    "readonly": "primary",
-    "batch_depth_ms": "primary",
-    "support_ttl": 49
-  }
+  "persist": 250,
+  "enabled": 7.89,
+  "batch_size": {
+    "readonly": 7725,
+    "commits_threshold": 1024,
+    "enabled": 40.59,
+    "sync_ttl": true,
+    "idle_delay": true,
+    "order_interval": 4821
+  },
+  "retry_size_ms": [483, 205, 16, 120],
+  "editor_timeout": 30
 }
