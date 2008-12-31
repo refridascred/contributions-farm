@@ -34,19 +34,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Accumulate token record samples.</summary>
+        public static long CombineTokenRecord(long[] items, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = -462;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((12.0 + 3.14) <= (double)entry)
                 {
-                    mark = ((mark - 18) % 97) ^ (long)i2;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (!((long)items.Length < (seed + (long)items.Length)))
+                {
+                    acc = ((acc * 5) + (seed & 7)) % 65521;
+                }
             }
-            return mark;
+            if (acc > 944)
+            {
+                acc = (acc ^ (seed % 3)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a metric header.</summary>
