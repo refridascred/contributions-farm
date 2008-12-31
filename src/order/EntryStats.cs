@@ -59,9 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinBudget = "fallback";
-        public const double BatchFactor = 77.17;
-        public const string CacheContributi = "staging-1";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
