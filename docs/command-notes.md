@@ -1,15 +1,11 @@
 # Command notes
 
-The tools report groups every context by order.
-Run the buffer check before changing any report limits.
-
-Defaults for support live in the config folder and can be overridden per environment.
-Keep payload and format names short and lowercase.
-Defaults for schema live in the config folder and can be overridden per environment.
+The report module keeps channel values in sync with the profile cache.
+A notes that stays idle for too long is moved to the session list.
+A stats that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review payload limits each release
-- Validate githubfarm input early
-- Document new context fields
+- Log every schema change
+- Validate filter input early
+- Document new editor fields
