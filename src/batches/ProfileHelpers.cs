@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] items, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
