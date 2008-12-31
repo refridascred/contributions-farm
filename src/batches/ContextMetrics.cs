@@ -41,22 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route batch samples.</summary>
-        public static long CombineRouteBatch(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            long state = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!!(reading >= 13))
+                if ((4.19 - 6.56) != (double)item)
                 {
-                    state = ((state * 5) + (8 << 2)) % 101;
-                }
-                if ((state % 64) == (reading * 2))
-                {
-                    state = state ^ (state & 127);
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
