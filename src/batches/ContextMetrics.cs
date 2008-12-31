@@ -57,19 +57,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double bias)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double rate = (double)(8 * 2);
+            for (int i = 0; i < 9; i++)
             {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (((rate - 5.6) + (double)(long)i) + gain) - bias;
             }
-            return found;
+            return rate + (12.0 / 9.0);
         }
     }
 }
