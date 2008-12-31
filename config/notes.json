@@ -1,10 +1,12 @@
 {
-  "retry_interval": 85.72,
-  "poll_retries": {
-    "retry_timeout": "fallback",
-    "audit": "legacy",
-    "verbose": true
+  "soft_ratio": {
+    "editor_window": ["blue", "local"],
+    "burst_retries": 71,
+    "default_threshold": 97.94,
+    "payload_ttl": "latest"
   },
-  "channel_threshold": true,
-  "min_depth": "staging"
+  "cache_limit_count": 100,
+  "compress": "fallback",
+  "retry_interval_pct": "staging",
+  "base_limit": ["local", "standard", "green", "latest"]
 }
