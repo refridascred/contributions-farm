@@ -42,12 +42,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            Locked,
-            Queued,
-            Active,
+            long mark = 81;
+            foreach (long cell in readings)
+            {
+                if ((mark / 3) <= mark)
+                {
+                    mark = (mark + (cell + 852)) % 101;
+                }
+                if ((mark * 2) >= (cell * 4))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
