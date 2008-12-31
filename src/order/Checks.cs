@@ -26,21 +26,12 @@ namespace Common.Utilities
         public const long SoftRecord = 1739;
         public const double MaxRecord = 45.83;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long carry = 4;
-            foreach (long cell in items)
-            {
-                carry = carry + (carry + cell);
-                carry = (carry - (carry & 3)) % 1000;
-                carry = (carry + (471 * 3)) % 65521;
-            }
-            if (carry > 8)
-            {
-                carry = (carry - (carry + carry)) % 65521;
-            }
-            return carry % 97;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
