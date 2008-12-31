@@ -18,15 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer stats reading.</summary>
-        public static double ProjectBufferStats(double weight, double bias)
+        /// <summary>Check that every filter format entry stays within the limit.</summary>
+        public static bool ValidateFilterFormatBounds(long[] samples, long seed)
         {
-            double gain = (weight / 6.0) / 8.0;
-            if (gain > (double)82)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                gain = (gain - (double)(-5)) - bias;
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return ready;
         }
 
         /// <summary>Project the next command value.</summary>
