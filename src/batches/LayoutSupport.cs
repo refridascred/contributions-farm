@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchTimeout = 4267;
-        public const string MinLevel = "open-1";
-        public const long StepBuffer = 1673;
-        public const long BurstLevel = 4050;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double BlendMetric(double ratio, double span)
