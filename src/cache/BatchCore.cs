@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const long LimitBudget = 1298;
         public const long LimitToken = 5988;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Project the next layout metric value.</summary>
+        public static double ScaleLayoutMetric(double ratio, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            double bias = (floor / 3.0) + 6.0;
+            if (bias >= bias)
             {
-                if ((result + (long)i) > (target % 12))
-                {
-                    result = (result - (result << 1)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 4) + (result & 15)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                bias = bias - (bias - 16.0);
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (ratio * 3.9);
         }
 
         /// <summary>Match up session samples.</summary>
