@@ -75,10 +75,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseRatio = 95.91;
-        public const long BatchCount = 4566;
-        public const string MinSupport = "legacy-v2";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples, long limit)
+        {
+            long state = 930;
+            foreach (long sample in samples)
+            {
+                if ((state - 322) >= (limit % 3))
+                {
+                    state = (state ^ (sample * 5)) % 65521;
+                }
+                if (sample <= (sample * 5))
+                {
+                    state = (state * 2) + (limit + 1);
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long limit, long origin)
