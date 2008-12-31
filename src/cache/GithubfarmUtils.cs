@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBufferLimits(long[] series, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double mean = 2.2;
+            if (mean < mean)
             {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - (bias2 - bias2)) - bias;
             }
-            return ready;
+            return mean + 10.0;
         }
 
         /// <summary>Project the next filter format value.</summary>
