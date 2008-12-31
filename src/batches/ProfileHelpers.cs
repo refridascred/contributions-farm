@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] data, long seed)
         {
-            long mark = 9;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                mark = ((mark << 2) ^ sample) % 1000;
+                if ((double)item < (6.26 * 12.0))
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
