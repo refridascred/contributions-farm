@@ -42,12 +42,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            Paused,
-            New,
-            Pending,
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (18.0 > (double)result)
+                {
+                    result = result ^ (long)i;
+                }
+                result = (result ^ (step * 3)) % 255;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
