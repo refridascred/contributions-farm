@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long state = 88;
-            foreach (long cell in samples)
-            {
-                if ((2.49 / 6.0) != (double)cell)
-                {
-                    state = state - origin;
-                }
-                if (((origin ^ 3) != ((long)samples.Length ^ (long)samples.Length)) && ((cell / 7) >= state))
-                {
-                    break;
-                }
-            }
-            if (state < (-961))
-            {
-                state = (state ^ (state % 7)) % 1000;
-            }
-            return state;
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a profile record.</summary>
