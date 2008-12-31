@@ -29,17 +29,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Failed,
+            Closed,
+            Paused,
         }
     }
 }
