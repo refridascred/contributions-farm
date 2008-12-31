@@ -33,25 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route tools counter forward.</summary>
-        public static long DeriveRouteTools(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc ^ bound) % 101) - (long)i2;
-                    acc = ((acc * 3) + bound) % 4096;
-                }
-                if (!(((acc + (long)i) == ((long)i + bound)) && (bound <= (acc >> 2))))
-                {
-                    acc = ((acc * 3) + (bound ^ acc)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSize = 2019;
+        public const string WindowDepth = "legacy-edge";
+        public const long StepBatch = 8492;
+        public const long IdleBatch = 9921;
+        public const long MaxBatch = 6209;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] samples, long seed)
