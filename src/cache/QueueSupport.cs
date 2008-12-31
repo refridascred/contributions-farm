@@ -33,20 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + state;
-                if (((offset & 3) < (offset ^ state)) && ((double)(long)i >= (5.17 * 3.2)))
-                {
-                    state = (state * 5) + state;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
