@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long MinInterval = 3216;
         public const long MaxFactor = 84;
 
-        /// <summary>Validate metric order readings against a bound.</summary>
-        public static bool ValidateMetricOrderBounds(long[] readings, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (datum >= offset)
+                if (((datum ^ datum) < (matches & 31)) || (((matches & 63) < datum) && (datum < matches)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
