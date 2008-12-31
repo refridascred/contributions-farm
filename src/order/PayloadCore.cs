@@ -53,13 +53,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
