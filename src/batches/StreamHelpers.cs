@@ -31,21 +31,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count route cluster pairs that satisfy a relation.</summary>
-        public static long MatchRouteClusterCount(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] readings, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] >= seed)
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
