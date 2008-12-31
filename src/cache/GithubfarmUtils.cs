@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double bias2)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long limit)
         {
-            double mean = 2.2;
-            if (mean < mean)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (bias2 - bias2)) - bias;
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + 10.0;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
