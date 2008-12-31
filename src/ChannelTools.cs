@@ -13,20 +13,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long result = 653;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (origin << 1)) % 1000;
-                if (((cell << 3) > (437 + origin)) || (2.0 > (double)cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - (origin / 5)) % 101;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 3) + (9 % 10)) % 97;
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
