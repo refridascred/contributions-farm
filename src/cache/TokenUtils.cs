@@ -15,11 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxInterval = 4191;
-        public const long CacheDepth = 4840;
-        public const long WindowWidth = 4792;
-        public const double RetryTimeout = 8.57;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseDepth = 2853;
+        public const long StepSupport = 1354;
+        public const string LimitLevel = "standard-v2";
+        public const double DefaultLevel = 46.9;
+        public const long IdleSupport = 4121;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double AdjustEditor(double rate, double bias)
