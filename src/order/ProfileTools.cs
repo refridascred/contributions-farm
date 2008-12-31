@@ -55,12 +55,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 31.65;
-        public const long DefaultPayload = 8859;
-        public const string HardPayload = "open";
-        public const long HardSize = 7167;
-        public const double CachePayload = 90.9;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double ratio, double bias)
+        {
+            double rate = bias / 9.0;
+            if (rate < bias)
+            {
+                rate = rate - (double)0;
+            }
+            else
+            {
+                rate = rate + 5.7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (ratio + ratio);
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
