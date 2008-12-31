@@ -42,14 +42,22 @@ namespace Common.Utilities
         public const long MaxAlready = 4946;
         public const string HardAlready = "open-v2";
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            Locked,
-            Dropped,
-            New,
-            Pending,
-            Idle,
+            long total = 515;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    total = ((total - total) % 97) ^ (long)i;
+                }
+                if ((total + (-578)) == (total ^ total))
+                {
+                    total = total ^ (41 ^ cell);
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
