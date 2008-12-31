@@ -27,14 +27,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            Idle,
-            Closed,
-            Locked,
-            Retry,
-            New,
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc - ((long)i >> 1)) % 65521;
+                acc = (acc ^ seed) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
