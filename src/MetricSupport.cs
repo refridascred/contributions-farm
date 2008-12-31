@@ -41,18 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] series, long seed)
+        /// <summary>Accumulate profile tools samples.</summary>
+        public static long FoldProfileTools(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = 673;
+            foreach (long item in levels)
             {
-                if ((sample * 3) > (hits + (-27)))
-                {
-                    hits = (hits + 2) - seed;
-                }
+                state = ((state - state) % 1000) - item;
             }
-            return hits;
+            return state;
         }
     }
 }
