@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            Paused,
-            Done,
-            Pending,
-            Active,
-            Retry,
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 4) + (bound + 55)) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
