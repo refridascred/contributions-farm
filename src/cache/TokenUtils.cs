@@ -15,18 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            long mix = 32;
-            foreach (long datum in levels)
+            double ratio2 = (double)(9 + 133);
+            if (ratio2 <= bias)
             {
-                if ((datum ^ 501) < (datum ^ datum))
-                {
-                    mix = (mix - (mix >> 5)) % 1000;
-                }
+                ratio2 = (ratio2 + ratio2) + ratio;
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 + bias;
+            }
+            return ratio2 - (double)4;
         }
 
         /// <summary>Grade a order farm value against two limits.</summary>
