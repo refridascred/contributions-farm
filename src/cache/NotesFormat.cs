@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] series, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
