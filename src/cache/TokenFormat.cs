@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long seed, long target)
+        /// <summary>Classify a stats channel pair into a bucket.</summary>
+        public static long RankStatsChannel(long offset, long seed)
         {
-            if ((double)target <= (18.0 * 15.0))
+            if ((double)seed < (double)offset)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((13.0 - 9.97) >= (double)seed)
+                if (!(offset >= (seed >> 2)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (!((705 / 3) <= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 0;
                 }
             }
         }
