@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the layout metric entries that pass the check.</summary>
-        public static long TallyLayoutMetricMatches(long[] series, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double gain = (double)(131 + 2);
+            if (gain <= weight)
             {
-                if (!((double)seed != (7.0 * 4.0)))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                gain = (gain + gain) + bias;
             }
-            return matches;
+            else
+            {
+                gain = gain + (weight / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 3.0) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Define record limits and defaults.</summary>
