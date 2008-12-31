@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowInterval = "strict-1";
-        public const double HardBuffer = 87.66;
-        public const string StepBuffer = "strict";
-        public const double SoftBuffer = 56.57;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowBudget = 8224;
+        public const long LimitScore = 7618;
+        public const string SoftDepth = "alpha-1";
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
