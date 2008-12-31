@@ -18,13 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter format entry stays within the limit.</summary>
-        public static bool ValidateFilterFormatBounds(long[] samples, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] values, long floor)
         {
             bool ready = true;
-            foreach (long datum in samples)
+            foreach (long sample in values)
             {
-                if (datum != seed)
+                if (sample > floor)
                 {
                     ready = false;
                     break;
