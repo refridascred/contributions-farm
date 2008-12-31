@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardTimeout = 1922;
-        public const string CacheEntry = "staging";
-        public const long BatchTimeout = 9170;
+        /// <summary>Audit queue graph readings against a rule.</summary>
+        public static long TallyQueueGraphOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
