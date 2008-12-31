@@ -22,17 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
