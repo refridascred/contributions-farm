@@ -21,19 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of checks buffer entries.</summary>
-        public static long WeighChecksBuffer(long[] data)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long result = 69;
-            foreach (long item in data)
-            {
-                result = ((result * 3) + (item - result)) % 101;
-            }
-            if (result < 674)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
