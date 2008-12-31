@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchCount = 4449;
-        public const double BurstInterval = 53.82;
-        public const long WindowDepth = 6775;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Dropped,
+            Draft,
+            Retry,
+            Done,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string HardChecks = "strict-edge";
