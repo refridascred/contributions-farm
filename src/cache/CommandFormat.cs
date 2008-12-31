@@ -28,18 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] readings, long bound)
+        /// <summary>Locate a order stats reading by value.</summary>
+        public static long FindOrderStatsIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count < (17.0 * 5.1))
+                if (readings[i] > limit)
                 {
-                    count = ((count + 1) + entry) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
