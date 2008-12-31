@@ -46,15 +46,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Match up window tools samples.</summary>
+        public static long MatchWindowToolsCount(long[] series)
         {
             long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen & 63) <= 31)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
