@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] samples, long floor)
         {
-            Retry,
-            Stale,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next already value.</summary>
