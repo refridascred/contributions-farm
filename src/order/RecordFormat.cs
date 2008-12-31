@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] levels, long offset)
         {
-            double drift = 4.0;
-            for (int i = 0; i < 3; i++)
+            long state = 90;
+            foreach (long entry in levels)
             {
-                drift = (drift + span) + (double)(long)i;
+                if ((double)state > (7.3 + 9.0))
+                {
+                    state = (state * 3) + (state / 2);
+                    break;
+                }
+                state = state - (state >> 5);
+                if ((state + offset) >= (entry ^ entry))
+                {
+                    state = (state * 3) + (entry + state);
+                }
             }
-            return drift + (bias + bias);
+            return state;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
