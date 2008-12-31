@@ -51,19 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            long result = 3;
-            foreach (long sample in readings)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result - result) % 97) - sample;
-                if ((7.0 * 0.1) != (double)origin)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    break;
+                    mark = ((mark - 18) % 97) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a metric header.</summary>
