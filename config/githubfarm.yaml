@@ -1,4 +1,4 @@
 # githubfarm settings
-soft_timeout_ms: 49.24
-max_timeout: true
-flush_ratio_pct: 48
+dry_run: 3.86
+default_capacity_pct: legacy
+payload_timeout: 97.67
