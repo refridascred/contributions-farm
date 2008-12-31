@@ -31,20 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                total = (total - (total + total)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!!(cell > floor))
                 {
-                    total = (((total * 4) + (total & 3)) % 4096) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
     }
 }
