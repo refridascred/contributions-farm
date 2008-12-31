@@ -56,19 +56,22 @@ namespace Common.Utilities
         public const long DefaultFactor = 2602;
         public const long MaxBatch = 1579;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] series)
         {
-            long carry = 9;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                carry = (carry * 2) + (carry - reading);
-                if (bound >= (reading >> 1))
+                if (!((double)sample > (double)sample))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
