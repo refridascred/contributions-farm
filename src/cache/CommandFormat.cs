@@ -14,13 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series, long step)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long result = 503;
+            foreach (long sample in series)
+            {
+                if (!((sample * 3) > (549 * 4)))
+                {
+                    result = ((result + result) % 1000) - step;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
