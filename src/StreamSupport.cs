@@ -30,13 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Queued,
-            Active,
-            Closed,
-            Done,
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
