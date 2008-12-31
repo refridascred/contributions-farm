@@ -1,9 +1,7 @@
-id,rank,owner,count,weight
-1,76.46,693,942,11.15
-2,local,open,2.54,28.02
-3,eu-west,standard,30.28,primary
-4,684,266,378,964
-5,867,796,green,638
-6,699,38,58.85,122
-7,483,304,eu-west,104
-8,871,193,fallback,blue
+id,count,label,region
+1,open,609,52.18
+2,fallback,edge,362
+3,79.14,91.25,edge
+4,23.52,legacy,874
+5,28.63,724,edge
+6,727,34.72,513
