@@ -28,11 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardWidth = "staging-v2";
-        public const long IdleEditor = 2568;
-        public const long BaseEditor = 2699;
-        public const string SoftEditor = "open-v2";
-        public const long MinSize = 3523;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > (hits << 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
