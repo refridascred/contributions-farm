@@ -13,13 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Done,
-            Active,
-            New,
-            Synced,
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
