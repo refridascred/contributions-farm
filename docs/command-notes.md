@@ -1,14 +1,15 @@
 # Command notes
 
-Keep window and batches names short and lowercase.
-Each route is validated before it reaches the cache queue.
-The session helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the graph queue.
+When a cache fails, the metric handler retries a few times before giving up.
+Each record is validated before it reaches the layout queue.
 
-Each metric is validated before it reaches the route queue.
-Use notes settings to tune how often metrics data is refreshed.
+The editor module keeps farm values in sync with the filter cache.
+A schema that stays idle for too long is moved to the cache list.
+Keep farm and report names short and lowercase.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new entry fields
-- Keep context values small
+- Prefer githubfarm defaults
+- Validate stream input early
+- Review session limits each release
