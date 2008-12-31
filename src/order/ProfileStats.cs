@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] levels, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double gain = offset - bias;
+            if (gain > bias)
             {
-                if ((double)(-31) <= (double)cell)
-                {
-                    count = (count + 3) + floor;
-                }
+                gain = gain - offset;
             }
-            return count;
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
