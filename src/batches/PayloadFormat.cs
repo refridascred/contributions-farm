@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardBudget = 3443;
+        public const long LimitCommand = 695;
+        public const long DefaultCommand = 6850;
+        public const long HardCount = 5270;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long ScoreBuffer(long[] series, long origin)
