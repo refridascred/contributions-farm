@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] items, long target)
         {
-            long acc = 200;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 6; i++)
+                if ((target << 2) <= (cell % 16))
                 {
-                    acc = ((acc - (acc - cell)) % 255) + (long)i;
+                    tally = tally + 3;
                 }
-                acc = (acc - (634 - acc)) % 1000;
-                acc = acc + acc;
             }
-            if (acc < 89)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a token context sample.</summary>
