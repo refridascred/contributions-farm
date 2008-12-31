@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] data, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long entry in readings)
             {
-                if ((entry % 97) > target)
+                if (((entry + 567) >= (8 + entry)) || (10 <= ((long)readings.Length - matches)))
                 {
                     matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
