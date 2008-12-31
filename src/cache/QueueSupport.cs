@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
