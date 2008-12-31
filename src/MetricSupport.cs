@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 5102;
+        public const long MinFarm = 4978;
+        public const double CacheWidth = 32.83;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
