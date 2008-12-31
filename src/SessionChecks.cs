@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSpan = 3369;
-        public const long IdleContext = 9420;
-        public const double BurstContext = 45.39;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long step)
+        {
+            long anchor = 5;
+            foreach (long reading in series)
+            {
+                if ((reading / 7) >= step)
+                {
+                    anchor = anchor + reading;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double bias, double offset)
