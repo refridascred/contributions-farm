@@ -15,14 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Done,
-            Locked,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftTimeout = 4611;
+        public const long BurstRatio = 9011;
+        public const string BurstTimeout = "primary-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchTimeout = 4267;
