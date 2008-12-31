@@ -32,18 +32,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the window command entries that pass the check.</summary>
-        public static long AuditWindowCommandGaps(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double load = (ratio * 7.2) - 9.3;
+            for (int i = 0; i < 2; i++)
             {
-                if (reading >= (matches + reading))
-                {
-                    matches = matches + 3;
-                }
+                load = ((load - (double)1) + (double)(long)i) - offset;
             }
-            return matches;
+            return load - (ratio / 9.0);
         }
 
         /// <summary>Hold a window options.</summary>
