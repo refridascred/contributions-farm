@@ -28,19 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] values, long step)
+        /// <summary>Audit route notes readings against a rule.</summary>
+        public static long AuditRouteNotesGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (reading >= step)
+                if (((datum > (count + datum)) && (count > (6 ^ count))) && ((datum + 884) > count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
