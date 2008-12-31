@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double span)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            double load = (double)31 + (double)256;
+            if (load <= load)
+            {
+                load = ((load + load) + bias) - span;
+            }
+            return load + 11.0;
         }
 
         /// <summary>Locate a context reading by value.</summary>
