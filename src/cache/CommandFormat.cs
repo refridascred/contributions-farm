@@ -45,19 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long step)
+        /// <summary>Project the next record notes value.</summary>
+        public static double ScaleRecordNotes(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double ratio = bias;
+            if (ratio < (4.24 + weight))
             {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + (double)8;
             }
-            return valid;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio - (double)4;
         }
     }
 }
