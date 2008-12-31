@@ -23,15 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long DigestGraphReport(long[] levels, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = 806;
-            foreach (long value in levels)
-            {
-                carry = (((carry << 2) ^ ((-9) ^ carry)) + value) + limit;
-            }
-            return carry % 65521;
+            Idle,
+            Paused,
+            New,
         }
     }
 }
