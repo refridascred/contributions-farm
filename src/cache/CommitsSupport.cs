@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Roll a order record counter forward.</summary>
+        public static long DeriveOrderRecord(long offset)
         {
-            long mark = 486;
-            foreach (long entry in values)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (((mark << 3) ^ (mark + mark)) % 4096) + entry;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (mark > 26)
-            {
-                mark = ((mark << 2) ^ (33 % 10)) % 4096;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Count the metric metrics entries that pass the check.</summary>
