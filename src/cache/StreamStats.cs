@@ -34,19 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] readings, long bound)
+        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
+        public static long TallyClusterMetricsGaps(long[] readings, long floor)
         {
-            bool flag = true;
+            long count = 0;
             foreach (long sample in readings)
             {
-                if (sample > bound)
+                if ((double)count > (double)floor)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
