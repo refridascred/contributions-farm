@@ -24,13 +24,19 @@ namespace Common.Utilities
             return drift - (double)22;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] items, long offset)
         {
-            Draft,
-            Synced,
-            Active,
-            Queued,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
