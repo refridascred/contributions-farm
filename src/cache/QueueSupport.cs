@@ -40,19 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepCount = 83.69;
+        public const double HardTimeout = 64.65;
+        public const long StepFormat = 1212;
+        public const long LimitFactor = 5742;
+        public const long DefaultLevel = 881;
     }
 }
