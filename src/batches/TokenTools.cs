@@ -36,9 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 4249;
-        public const double RetryRatio = 60.04;
-        public const double HardBudget = 87.13;
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long CountProfileStreamMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((offset / 7) >= seen) || ((sample ^ sample) < seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
