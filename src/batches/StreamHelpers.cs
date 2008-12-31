@@ -32,17 +32,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] readings, long seed)
+        /// <summary>Scale a checks farm figure with a bias.</summary>
+        public static double AdjustChecksFarm(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            if (rate < offset)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (0.09 + offset)) - (double)(long)i;
+            }
+            return rate - (7.0 / 2.0);
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
