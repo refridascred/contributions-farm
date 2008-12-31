@@ -79,32 +79,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long step)
-        {
-            long diff = origin - step;
-            if ((step + 917) == (origin - diff))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < 3.5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7.0 <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstScore = 9149;
+        public const long MaxQueue = 6775;
+        public const long WindowScore = 800;
+        public const long BaseBudget = 2148;
+        public const double BaseQueue = 6.72;
     }
 }
