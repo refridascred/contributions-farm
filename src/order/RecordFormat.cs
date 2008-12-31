@@ -44,16 +44,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc + (offset >> 2)) % 101;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowLevel = 27.97;
+        public const string SoftWidth = "open-edge";
+        public const string BatchLevel = "standard-edge";
+        public const double StepLevel = 53.2;
+        public const string StepCounter = "latest";
     }
 }
