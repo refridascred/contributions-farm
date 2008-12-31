@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate token editor readings against a bound.</summary>
-        public static bool VerifyTokenEditorRange(long[] data, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (item < target)
+                if (((double)step == (17.0 - 4.2)) && (((-5) / 7) >= score))
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 2) + score) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Check that every report stats entry stays within the limit.</summary>
