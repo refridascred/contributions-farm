@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "open-edge";
-        public const long BaseChecks = 1582;
-        public const double IdleChecks = 13.28;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardSize = 66.87;
+        public const double BatchRecord = 39.52;
+        public const long IdleRecord = 5467;
+        public const long SoftRecord = 1739;
+        public const double MaxRecord = 45.83;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double HardCount = 60.1;
