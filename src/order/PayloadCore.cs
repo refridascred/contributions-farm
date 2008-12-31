@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
