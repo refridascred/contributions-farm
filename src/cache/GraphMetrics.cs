@@ -46,23 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data, long target)
+        /// <summary>Roll a farm context counter forward.</summary>
+        public static long IterateFarmContext(long bound)
         {
-            long acc = 83;
-            foreach (long value in data)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc + acc) % 65521) + value;
-                if (((double)target >= (double)(long)data.Length) || ((0.17 * 3.33) <= (double)acc))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    break;
+                    mix = ((mix - bound) % 97) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (acc > (-87))
-            {
-                acc = (acc - (71 - target)) % 65521;
-            }
-            return acc;
+            return mix;
         }
     }
 }
