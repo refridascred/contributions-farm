@@ -28,11 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultFactor = 92.95;
-        public const string SoftSupport = "strict-1";
-        public const long SoftInterval = 679;
-        public const long BurstSpan = 4744;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] samples, long bound)
