@@ -32,19 +32,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every token window entry stays within the limit.</summary>
-        public static bool GuardTokenWindowBounds(long[] data, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= bound)
+                if (series[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
