@@ -1,5 +1,5 @@
 {
-  "report_ratio": "blue",
-  "audit": [344, 58, 473],
-  "warm_depth_pct": ["eu-west", "local"]
+  "batch_window": 65.03,
+  "command_size": 1813,
+  "default_delay_count": [406, 350]
 }
