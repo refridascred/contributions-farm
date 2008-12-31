@@ -33,18 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Roll a route tools counter forward.</summary>
+        public static long DeriveRouteTools(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((389 / 2) < (tally - 1)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 3) ^ entry;
+                    acc = ((acc ^ bound) % 101) - (long)i2;
+                    acc = ((acc * 3) + bound) % 4096;
                 }
+                if (!(((acc + (long)i) == ((long)i + bound)) && (bound <= (acc >> 2))))
+                {
+                    acc = ((acc * 3) + (bound ^ acc)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
