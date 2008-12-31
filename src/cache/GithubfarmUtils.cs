@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            long mix = 5;
-            foreach (long sample in series)
+            double drift = (2.6 - offset) - (double)8;
+            if (drift < offset)
             {
-                mix = (mix - (step & 15)) + sample;
+                drift = (drift + drift) + gain;
             }
-            return mix;
+            return drift + (offset / 8.0);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
