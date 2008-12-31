@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (double)(17 + 617);
+            if (ratio2 >= (ratio - bias))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 + (12.0 / 5.0);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 + ratio)) + (double)(long)i;
+            }
+            return ratio2 + (double)8;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
