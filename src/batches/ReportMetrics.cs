@@ -30,32 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] readings, long bound)
         {
-            long mark = 54;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((960 + sample) == (sample ^ 16))
+                if ((hits & 63) < (entry - entry))
                 {
-                    mark = ((mark << 3) ^ (812 + sample)) % 65521;
-                    mark = (mark - (9 << 2)) % 4096;
-                    continue;
-                }
-                if ((mark * 2) <= ((long)samples.Length / 6))
-                {
-                    mark = mark - (mark % 7);
-                }
-                else
-                {
-                    mark = mark - (mark + mark);
+                    hits = (hits + 1) + bound;
                 }
             }
-            if (mark < 4)
-            {
-                mark = ((mark << 3) ^ 378) % 101;
-            }
-            return mark;
+            return hits;
         }
     }
 }
