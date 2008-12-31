@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const string BatchOrder = "standard";
         public const long MinOrder = 7153;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a order stats reading by value.</summary>
