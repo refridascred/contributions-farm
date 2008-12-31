@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((9.0 / 5.0) == (double)(long)i)
+                {
+                    result = ((result * 4) + ((long)i ^ result)) % 97;
+                }
+                if (((step + (long)i) <= (step - step)) || (((long)i / 3) != (76 + 502)))
+                {
+                    result = ((result << 3) ^ step) % 97;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the counter state values.</summary>
