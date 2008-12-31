@@ -19,11 +19,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 7831;
-        public const long IdleRoute = 9436;
-        public const long BatchRoute = 5357;
-        public const long HardRoute = 6585;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Done,
+            Idle,
+            Closed,
+            Active,
+            Locked,
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ProjectBuffer(double rate, double offset)
