@@ -1,6 +1,15 @@
 {
-  "hard_ratio": "latest",
-  "poll_ratio_ms": 250,
-  "cluster_capacity": "staging",
-  "enabled": 39.56
+  "batch_delay_ms": {
+    "retry_size_ms": 96,
+    "batch_ratio_count": {
+      "poll_ttl_count": "strict",
+      "base_timeout_s": ["primary", "strict", "latest"],
+      "hard_ratio": 76.91
+    },
+    "format_capacity": 56,
+    "notes_depth": true
+  },
+  "graph_ttl": "local",
+  "flush_ratio_s": 60,
+  "commits_timeout": false
 }
