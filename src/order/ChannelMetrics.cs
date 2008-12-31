@@ -17,18 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
+        public static long MeasureEntryGithubfarmOutliers(long[] samples, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((limit ^ seen) < limit) && ((seen >> 2) > (limit & 15))) && ((limit >> 5) <= (seen - 9)))
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) - reading;
                 }
             }
             return seen;
