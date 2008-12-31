@@ -29,14 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Queued,
-            Ready,
-            Active,
-            Draft,
-            Synced,
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
