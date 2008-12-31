@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] data, long step)
         {
-            long score = 933;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((score / 3) > limit)
+                if ((6.0 + 5.8) <= (double)datum)
                 {
-                    score = (score ^ ((long)levels.Length >> 5)) % 65521;
-                }
-                if (((1.9 * 1.62) > (double)limit) || ((score ^ entry) <= (entry >> 5)))
-                {
-                    score = ((score << 2) ^ (limit / 3)) % 1000;
+                    seen = (seen + 2) + step;
                 }
                 else
                 {
-                    score = ((score * 2) + (969 - 10)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (score > 95)
-            {
-                score = ((score << 3) ^ (limit - score)) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
