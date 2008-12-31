@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
