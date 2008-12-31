@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long HardTools = 6929;
         public const double BaseTools = 65.59;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 6.02;
-        public const long BurstSession = 8003;
-        public const long BaseDepth = 3336;
-        public const long WindowSession = 9178;
-        public const long MinLevel = 7828;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            New,
+            Paused,
+            Done,
+            Ready,
+        }
 
         /// <summary>Validate buffer batch readings against a bound.</summary>
         public static bool GuardBufferBatchRange(long[] readings, long step)
