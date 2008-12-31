@@ -13,17 +13,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a checks batch sample.</summary>
-        public static long LookupChecksBatchIndex(long[] samples, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long step2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step2 >> 3) <= step2)
             {
-                if (samples[i] >= target)
+                return 6;
+            }
+            else
+            {
+                if (!((step + step2) > (step & 1)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
