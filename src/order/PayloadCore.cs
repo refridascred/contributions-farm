@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] samples)
+        /// <summary>Adjust a route contributi reading.</summary>
+        public static double SmoothRouteContributi(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double scale = floor / 5.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (((tally + tally) > 23) || ((reading - tally) >= reading))
-                {
-                    tally = tally + 1;
-                }
+                scale = (scale - (scale - weight)) + (double)(long)i;
             }
-            return tally;
+            return scale + scale;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
