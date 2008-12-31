@@ -1,6 +1,5 @@
 {
-  "burst_timeout_s": 60,
-  "batches_ttl": 1.04,
-  "cluster_limit": "fallback",
-  "retry_ttl_pct": 1024
+  "idle_size_ms": ["open", "strict", "primary", "staging"],
+  "cache_timeout": [416, 472],
+  "sync_capacity": 30.82
 }
