@@ -49,22 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinScore = 5880;
+        public const long BatchFactor = 5480;
+        public const string RetrySpan = "legacy-1";
+        public const double MaxScore = 15.49;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] data, long offset)
