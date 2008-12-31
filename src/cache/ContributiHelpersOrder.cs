@@ -20,19 +20,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long seed, long step)
         {
-            long state = 24;
-            foreach (long cell in values)
+            if (seed < (66 + step))
             {
-                state = (state + 33) % 4096;
-                if ((state >> 5) > (cell + cell))
+                return 5;
+            }
+            else
+            {
+                if (seed < (seed / 5))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (seed > (step << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state;
         }
     }
 }
