@@ -24,13 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the queue mode values.</summary>
