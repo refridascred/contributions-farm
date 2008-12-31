@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
-        public static bool CheckProfileBufferLimits(long[] samples, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long acc = 4;
+            foreach (long sample in items)
             {
-                if (item >= floor)
+                if ((0 >> 3) < sample)
                 {
-                    valid = false;
-                    break;
+                    acc = acc + sample;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a queue record.</summary>
