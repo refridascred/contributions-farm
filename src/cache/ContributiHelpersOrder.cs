@@ -29,9 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchCount = 9685;
-        public const long LimitLevel = 6497;
-        public const long IdleCount = 8434;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
