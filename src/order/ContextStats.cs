@@ -29,12 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long DigestCacheTools(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            long carry = 97;
+            foreach (long datum in data)
+            {
+                carry = (carry ^ datum) % 255;
+            }
+            if (carry < 2)
+            {
+                carry = (carry - (14 - step)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the channel phase values.</summary>
