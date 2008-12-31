@@ -13,18 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long CountAccountCommandHits(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 972;
+            foreach (long value in items)
             {
-                if (((double)seen >= 8.2) && (((double)value >= (6.0 - 9.1)) && ((1.62 / 5.0) != (double)seen)))
+                if (((mark >> 2) < (474 + value)) || (value > (value << 1)))
                 {
-                    seen = seen + 2;
+                    mark = (mark ^ (value & 15)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (value + value)) % 65521;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
