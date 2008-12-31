@@ -52,19 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits << 2) != (seed ^ entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 1425;
+        public const double BurstFormat = 9.02;
+        public const long DefaultWidth = 614;
+        public const string BatchFormat = "strict-edge";
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
