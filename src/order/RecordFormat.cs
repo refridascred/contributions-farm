@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 3;
+            foreach (long sample in readings)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) == 0))
+                result = ((result - result) % 97) - sample;
+                if ((7.0 * 0.1) != (double)origin)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
