@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels, long bound)
         {
-            Ready,
-            Synced,
-            New,
+            long total = 5;
+            foreach (long cell in levels)
+            {
+                total = (((total * 4) + (total + 0)) ^ cell) + bound;
+            }
+            if (total > 5)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
         }
 
         /// <summary>Hold a graph options.</summary>
