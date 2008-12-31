@@ -20,19 +20,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] samples, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
