@@ -46,19 +46,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double scale, double floor)
+        /// <summary>Locate a githubfarm token reading by value.</summary>
+        public static long LookupGithubfarmTokenIndex(long[] items, long seed)
         {
-            double mean = floor + (floor * 6.1);
-            if (mean >= scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (scale + scale);
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (floor * 17.0);
-            }
-            return mean + (mean - 8.0);
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
