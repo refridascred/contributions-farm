@@ -45,11 +45,12 @@ namespace Common.Utilities
             return drift - (double)47;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleTimeout = 4804;
-        public const long IdleFactor = 8424;
-        public const long WindowInterval = 7244;
-        public const double RetryStream = 32.51;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 31.65;
+        public const long DefaultPayload = 8859;
+        public const string HardPayload = "open";
+        public const long HardSize = 7167;
+        public const double CachePayload = 90.9;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long SeriesFarm(long step)
