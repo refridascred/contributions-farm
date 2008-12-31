@@ -48,17 +48,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 83;
+            foreach (long value in data)
             {
-                if (values[i] == bound)
+                acc = ((acc + acc) % 65521) + value;
+                if (((double)target >= (double)(long)data.Length) || ((0.17 * 3.33) <= (double)acc))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc > (-87))
+            {
+                acc = (acc - (71 - target)) % 65521;
+            }
+            return acc;
         }
     }
 }
