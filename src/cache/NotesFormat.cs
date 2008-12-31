@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] readings, long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item << 1) != (item * 4))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
     }
 }
