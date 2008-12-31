@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (items[i] > limit)
+                if ((entry % 97) > target)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
