@@ -44,13 +44,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9896;
+        public const long LimitLevel = 3238;
+        public const string StepTools = "staging";
+        public const long SoftTools = 2890;
     }
 }
