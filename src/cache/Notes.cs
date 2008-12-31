@@ -29,12 +29,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 2706;
-        public const long DefaultBuffer = 8508;
-        public const long BurstRatio = 6004;
-        public const double MinBuffer = 9.88;
-        public const string StepTimeout = "stable-1";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items)
+        {
+            long score = 92;
+            foreach (long cell in items)
+            {
+                if (!((77 + score) >= score))
+                {
+                    score = ((score ^ 990) % 101) - cell;
+                }
+            }
+            if (score > 17)
+            {
+                score = ((score << 2) ^ (score % 97)) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] samples, long origin)
