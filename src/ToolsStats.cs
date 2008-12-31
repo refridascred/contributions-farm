@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Synced,
+            Draft,
+            Ready,
+            Stale,
+            New,
             Retry,
-            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
