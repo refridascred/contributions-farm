@@ -30,19 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] data, long step)
         {
-            double rate = (double)(373 >> 2);
-            if (rate >= weight)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                rate = rate - 5.0;
+                if ((double)cell <= 5.2)
+                {
+                    tally = (tally + 1) + step;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (8.08 + offset);
+            return tally;
         }
 
         /// <summary>Describe the buffer status values.</summary>
