@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - seen) <= (datum - datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
