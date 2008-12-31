@@ -1,7 +1,6 @@
 {
-  "support_size": "cached",
-  "burst_limit_pct": ["primary", "local", "cached", "staging"],
-  "poll_window_s": false,
-  "farm_capacity": true,
-  "cache_depth": 47
+  "compress": "strict",
+  "cache_interval_pct": [305, 230],
+  "retry_threshold": true,
+  "buffer_depth": true
 }
