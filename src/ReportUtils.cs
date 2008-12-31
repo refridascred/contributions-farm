@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long offset, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
         {
-            if (offset <= (limit << 1))
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
+                score = ((score << 2) ^ (score & 63)) % 65521;
+                score = (score * 4) + score;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (offset > (offset >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 1) > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Grade a account session value against two limits.</summary>
