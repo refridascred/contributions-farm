@@ -14,32 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long bound, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] values, long bound)
         {
-            long step = bound + target;
-            if (bound > (step ^ bound))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step >= (8.52 / 4.0))
+                if (!((double)sample <= 1.8))
                 {
-                    return 6;
+                    hits = (hits + 3) - bound;
                 }
                 else
                 {
-                    if (target >= (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the report state values.</summary>
