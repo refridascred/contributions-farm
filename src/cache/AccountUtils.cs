@@ -24,18 +24,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7 << 2) > (entry & 7))
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    tally = (tally + 2) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
