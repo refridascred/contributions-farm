@@ -29,19 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (cell >= floor)
+                if ((value - value) < count)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
