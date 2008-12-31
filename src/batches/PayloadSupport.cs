@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                acc = (acc - ((long)i - acc)) % 97;
+                acc = (acc + acc) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a order snapshot.</summary>
