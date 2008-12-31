@@ -46,15 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Compare every pair of batch checks readings.</summary>
+        public static long PairBatchChecksCount(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
