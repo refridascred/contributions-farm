@@ -1,12 +1,5 @@
 {
-  "flush_size": {
-    "default_timeout": "open",
-    "max_ratio": 24.07,
-    "burst_ratio_count": 1707,
-    "persist": [191, 489, 418, 230],
-    "buffer_delay": [34, 440, 21, 432]
-  },
-  "base_size_pct": ["primary", "standard"],
-  "hard_limit_s": "edge",
-  "base_limit_pct": 250
+  "report_ratio": "blue",
+  "audit": [344, 58, 473],
+  "warm_depth_pct": ["eu-west", "local"]
 }
