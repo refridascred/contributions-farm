@@ -27,16 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor ^ anchor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state - (step << 1)) % 101) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Accumulate farm samples.</summary>
