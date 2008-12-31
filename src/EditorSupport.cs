@@ -78,31 +78,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            if (!((origin % 10) <= (limit + 2)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 4) > (401 ^ 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (origin >= 8)
+                    if ((readings[i] + readings[j]) != 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
