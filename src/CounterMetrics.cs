@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] values, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (sample > floor)
+                if ((double)(long)values.Length < (13.0 - 7.91))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 2) - value) - floor;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
