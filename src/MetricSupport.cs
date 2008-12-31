@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const string HardBudget = "strict-v2";
         public const long RetryTimeout = 9070;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio2 = (double)(7 + (-83));
+            if (ratio2 <= 0.8)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                ratio2 = ((ratio2 + (3.4 / 7.0)) + ratio) + bias;
             }
-            return -1;
+            return ratio2 + (double)872;
         }
     }
 }
