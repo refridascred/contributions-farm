@@ -1,10 +1,6 @@
-id,level,score,label
-1,408,436,42.51
-2,51.05,strict,659
-3,167,79.08,62.54
-4,latest,89.38,888
-5,edge,724,93.89
-6,1.73,standard,602
-7,547,395,17.01
-8,51.11,51.69,965
-9,944,eu-west,53.96
+id,ratio,label,state,rank
+1,standard,138,655,staging
+2,985,910,primary,44.02
+3,780,legacy,358,24
+4,32.27,145,721,287
+5,local,351,126,276
