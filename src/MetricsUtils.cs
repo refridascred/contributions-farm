@@ -20,13 +20,15 @@ namespace Common.Utilities
             return mean - (double)976;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of command readings.</summary>
