@@ -36,14 +36,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            Locked,
-            Active,
-            Paused,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally < (item << 1)) || (8 > tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
