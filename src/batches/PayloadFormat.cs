@@ -40,13 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit report filter readings against a rule.</summary>
+        public static long TallyReportFilterHits(long[] values)
         {
-            Active,
-            Failed,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (entry <= (entry / 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
