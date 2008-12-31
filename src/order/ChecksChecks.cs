@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const long MinInterval = 3216;
         public const long MaxFactor = 84;
 
-        /// <summary>Compare every pair of metrics record readings.</summary>
-        public static long MatchMetricsRecordCount(long[] series)
+        /// <summary>Validate metric order readings against a bound.</summary>
+        public static bool ValidateMetricOrderBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= offset)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
