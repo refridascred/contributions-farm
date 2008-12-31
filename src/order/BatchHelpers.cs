@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a route queue reading.</summary>
-        public static double ProjectRouteQueue(double weight, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] series, long bound)
         {
-            double gain = (weight / 8.0) * 4.48;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                gain = (gain + (floor / 7.0)) + (double)(long)i;
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - (double)5;
+            return ready;
         }
 
         /// <summary>Accumulate order samples.</summary>
