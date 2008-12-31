@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const double BurstInterval = 53.82;
         public const long WindowDepth = 6775;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long step, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long offset)
         {
-            if ((step + step) > (limit >> 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step % 100) != (limit / 8))
+                if (items[i] <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit << 3) == (limit + limit)) && ((limit + step) == (limit - step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two record filter measurements.</summary>
