@@ -29,11 +29,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long offset)
         {
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache level values.</summary>
