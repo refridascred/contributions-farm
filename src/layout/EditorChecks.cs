@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Combine metric commits values into a single score.</summary>
-        public static long WeighMetricCommits(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] levels, long target)
         {
-            long acc = 942;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (849 <= (acc + value))
+                if ((20.0 / 3.0) >= (double)target)
                 {
-                    acc = (acc * 2) + (acc >> 1);
+                    tally = (tally + 1) + cell;
                 }
-                acc = (acc << 2) ^ (value + value);
-                if ((double)acc <= (7.2 * 7.55))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the booking kind values.</summary>
