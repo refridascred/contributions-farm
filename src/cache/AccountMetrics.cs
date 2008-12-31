@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long step, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if (!((step & 15) <= (limit ^ limit)))
             {
-                if (1.0 < (double)datum)
+                return 8;
+            }
+            else
+            {
+                if (step > (3 + step))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit << 2) != (step - 0)) || (step < (step + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-98) > (limit ^ limit)) || ((9.1 * 10.0) >= (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
