@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
