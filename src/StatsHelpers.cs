@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "cached-1";
-        public const long BatchScore = 8350;
-        public const long MinBudget = 7785;
-        public const long WindowSize = 3789;
-        public const long CacheContext = 7909;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Idle,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] readings)
