@@ -35,19 +35,39 @@ namespace Common.Utilities
         public const long StepBuffer = 1673;
         public const long BurstLevel = 4050;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples, long origin)
+        /// <summary>Grade a command checks value against two limits.</summary>
+        public static long ClassifyCommandChecks(long step, long step2)
         {
-            long mark = 658;
-            foreach (long reading in samples)
+            long prev = step - step2;
+            if ((prev << 3) != (step - step))
             {
-                mark = ((mark ^ (origin - 529)) % 4096) - reading;
+                return 0;
             }
-            if (mark > 6)
+            else
             {
-                mark = mark - (mark / 4);
+                if ((double)step <= (7.53 - 5.31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step < (step << 3)) || (9 >= (557 - prev)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((4.1 * 14.0) < (double)step2) && (step2 > (4 - prev)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
