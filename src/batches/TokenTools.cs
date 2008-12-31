@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry notes entries that pass the check.</summary>
-        public static long MeasureEntryNotesHits(long[] data, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if ((2.0 * 8.2) > (double)seed)
             {
-                if ((seen ^ seen) < (datum - seen))
+                return 2;
+            }
+            else
+            {
+                if (!((double)259 > (double)seed))
                 {
-                    seen = (seen + 3) - seed;
+                    return 8;
+                }
+                else
+                {
+                    if (limit < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
