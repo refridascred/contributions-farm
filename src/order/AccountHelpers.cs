@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const double HardToken = 33.72;
         public const long BaseToken = 4635;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((2.0 > (double)value) && (16.0 <= (double)matches))
+                if ((offset >= (result + result)) || ((result + 67) < (offset ^ result)))
                 {
-                    matches = matches + 1;
+                    result = (result + (result - (long)i)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
