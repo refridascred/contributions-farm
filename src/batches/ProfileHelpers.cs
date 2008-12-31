@@ -23,14 +23,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long floor, long step)
         {
-            Paused,
-            Done,
-            Draft,
-            Ready,
-            Active,
+            long prev = floor ^ step;
+            if ((step >> 2) <= (9 - prev))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev & 3) >= (floor + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (step / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
