@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleInterval = 3492;
-        public const double StepRatio = 31.73;
-        public const string DefaultLevel = "staging-edge";
-        public const long CacheStats = 6877;
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long CountRecordChannelHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (1.0 <= (double)hits)
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double bias, double bias2)
