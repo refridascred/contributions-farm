@@ -19,22 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long target, long offset)
         {
-            long mix = -2;
-            foreach (long sample in samples)
+            long bound = target ^ offset;
+            if ((double)target >= (5.5 / 5.0))
             {
-                if (11.0 < (double)origin)
+                return 7;
+            }
+            else
+            {
+                if ((708 < target) && ((bound - bound) <= (offset << 2)))
                 {
-                    mix = (((mix << 2) ^ (origin - (long)samples.Length)) % 97) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if (target >= 4)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (mix < 462)
-            {
-                mix = ((mix << 3) ^ (origin << 3)) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
