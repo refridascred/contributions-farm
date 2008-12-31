@@ -44,11 +44,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] data)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((double)hits < (double)reading) || ((197 * 4) > (hits % 100))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
