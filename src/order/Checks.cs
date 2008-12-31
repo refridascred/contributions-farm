@@ -12,16 +12,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] samples, long floor)
-        {
-            long mix = -18;
-            foreach (long cell in samples)
-            {
-                mix = (((mix + (mix * 4)) % 101) + cell) + floor;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "open-edge";
+        public const long BaseChecks = 1582;
+        public const double IdleChecks = 13.28;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double HardCount = 60.1;
