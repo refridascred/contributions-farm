@@ -36,18 +36,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((tally < (item << 1)) || (8 > tally))
+                if (sample != limit)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
