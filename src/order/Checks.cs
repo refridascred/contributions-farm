@@ -24,12 +24,16 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardSize = 66.87;
-        public const double BatchRecord = 39.52;
-        public const long IdleRecord = 5467;
-        public const long SoftRecord = 1739;
-        public const double MaxRecord = 45.83;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double offset)
+        {
+            double gain = offset * 2.9;
+            if (gain <= 9.3)
+            {
+                gain = (gain + 4.0) - weight;
+            }
+            return gain - (gain / 3.0);
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
