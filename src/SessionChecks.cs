@@ -40,22 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            long score = 23;
-            foreach (long cell in samples)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((score - cell) > (limit * 4)) || ((limit + 91) > (score & 127)))
-                {
-                    score = ((score * 5) + score) % 1000;
-                }
-                if ((double)cell < (2.79 * 14.0))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return score % 4096;
+            return acc;
         }
     }
 }
