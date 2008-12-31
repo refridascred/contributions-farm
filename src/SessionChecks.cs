@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardTimeout = 7854;
         public const string IdleScore = "stable-1";
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long mark = 4;
+            foreach (long entry in data)
+            {
+                mark = (mark * 5) + (origin % 12);
+                if ((((long)data.Length & 7) >= origin) && ((origin << 3) <= (entry - entry)))
+                {
+                    mark = mark ^ (mark * 5);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload level values.</summary>
