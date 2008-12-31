@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] values, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen > (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
