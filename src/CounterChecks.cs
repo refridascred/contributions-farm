@@ -43,19 +43,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state - (step << 1)) % 101) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Accumulate payload format samples.</summary>
