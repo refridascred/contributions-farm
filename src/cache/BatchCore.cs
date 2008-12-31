@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Draft,
+            Locked,
+            Ready,
             Done,
-            Paused,
-            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
