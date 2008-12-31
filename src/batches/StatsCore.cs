@@ -37,19 +37,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long state = 305;
-            foreach (long reading in levels)
-            {
-                state = ((state << 3) ^ (state << 3)) ^ reading;
-                if ((double)22 > (double)target)
-                {
-                    state = state + (target >> 5);
-                }
-            }
-            return state;
+            Queued,
+            Paused,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the stats class values.</summary>
