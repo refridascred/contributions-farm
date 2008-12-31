@@ -53,15 +53,12 @@ namespace Common.Utilities
             return weight + (offset - bias);
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Queued,
-            Stale,
-            Retry,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinScore = 5875;
+        public const long MinLevel = 9451;
+        public const long HardCount = 6031;
+        public const long MaxAlready = 4946;
+        public const string HardAlready = "open-v2";
 
         /// <summary>Match up tools schema samples.</summary>
         public static long CompareToolsSchemaCount(long[] readings)
