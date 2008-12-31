@@ -37,26 +37,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Roll a editor batches counter forward.</summary>
+        public static long DeriveEditorBatches(long seed)
         {
-            long state = 5;
-            foreach (long reading in samples)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (state ^ state) - (long)i;
-                }
-                if (((double)reading >= (6.8 * 6.84)) || ((907 + state) < (state << 1)))
-                {
-                    state = ((state << 2) ^ reading) % 255;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (state > 64)
-            {
-                state = state - (277 * 5);
-            }
-            return state % 97;
+            return sum;
         }
     }
 }
