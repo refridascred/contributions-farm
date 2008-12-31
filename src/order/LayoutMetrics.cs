@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "fallback-v2";
-        public const long HardInterval = 9307;
-        public const long IdleRatio = 8510;
-        public const long IdleChecks = 2411;
-        public const string BurstSpan = "alpha-v2";
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
+        {
+            long mix = 79;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length + mix) <= ((-22) - datum))
+                {
+                    mix = mix - (datum ^ datum);
+                }
+                else
+                {
+                    mix = mix ^ datum;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long limit)
