@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const long SoftRecord = 1739;
         public const double MaxRecord = 45.83;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardCount = 60.1;
-        public const long MinInterval = 4542;
-        public const long BatchSupport = 4743;
-        public const double StepSupport = 9.75;
-        public const double MinSupport = 50.16;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
+        {
+            long carry = 4;
+            foreach (long cell in items)
+            {
+                carry = carry + (carry + cell);
+                carry = (carry - (carry & 3)) % 1000;
+                carry = (carry + (471 * 3)) % 65521;
+            }
+            if (carry > 8)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsMatches(long[] readings, long target)
