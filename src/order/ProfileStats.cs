@@ -23,13 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] levels, long floor)
         {
-            Done,
-            Failed,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)(-31) <= (double)cell)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
