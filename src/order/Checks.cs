@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double gain = (double)(131 + 2);
-            if (gain <= weight)
-            {
-                gain = (gain + gain) + bias;
-            }
-            else
-            {
-                gain = gain + (weight / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 3.0) + (double)(long)i;
-            }
-            return gain - weight;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next account value.</summary>
