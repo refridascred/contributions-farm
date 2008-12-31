@@ -12,24 +12,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long seed)
+        /// <summary>Digest a series of stats format entries.</summary>
+        public static long TotalStatsFormat(long[] series, long limit)
         {
-            if ((738 >> 1) >= seed)
+            long total = 319;
+            foreach (long cell in series)
             {
-                return 5;
+                total = ((total ^ (747 & 3)) + cell) + limit;
             }
-            else
-            {
-                if (((7.1 - 0.19) < (double)seed) || (seed >= (step * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the payload kind values.</summary>
