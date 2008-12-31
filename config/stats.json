@@ -1,24 +1,5 @@
 {
-  "base_timeout": 3229,
-  "default_delay_pct": {
-    "min_window_count": 61.39,
-    "audit": 74.56,
-    "batch_size_ms": "standard",
-    "strict": 500,
-    "compress": "blue"
-  },
-  "retry_window": {
-    "verbose": {
-      "poll_interval_count": 49.55,
-      "default_window_pct": "primary",
-      "poll_interval_ms": false,
-      "base_limit_s": 86,
-      "poll_ttl_ms": 60,
-      "hard_depth_ms": 49.73
-    },
-    "entry_limit": "latest",
-    "default_depth": 250,
-    "default_timeout": false,
-    "retry_timeout": "blue"
-  }
+  "session_threshold": 15.15,
+  "flush_timeout": 500,
+  "batch_interval": "legacy"
 }
