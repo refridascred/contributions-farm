@@ -19,17 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter metrics reading by value.</summary>
-        public static long LookupFilterMetricsIndex(long[] series, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = bound + step;
+            if ((step & 255) <= bound)
             {
-                if (series[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((bound <= (lane + bound)) && ((double)lane > (double)step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
