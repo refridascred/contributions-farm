@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Look up the position of a token profile sample.</summary>
+        public static long SeekTokenProfileIndex(long[] series, long offset)
         {
-            double weight = (double)(6 + 4);
-            if (weight > bias2)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)69) - bias;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (double)4;
+            return -1;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
