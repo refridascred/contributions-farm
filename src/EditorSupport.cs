@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (mix ^ ((long)i2 - limit)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "local-1";
+        public const long StepCommits = 1884;
+        public const long BaseCount = 687;
+        public const long MinCommits = 7827;
 
         /// <summary>Fold a list of payload counter readings.</summary>
         public static long ScorePayloadCounter(long[] readings)
