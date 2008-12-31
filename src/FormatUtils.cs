@@ -48,12 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a channel support sample.</summary>
-        public static long LocateChannelSupportIndex(long[] series, long bound)
+        /// <summary>Look up the position of a record channel sample.</summary>
+        public static long FindRecordChannelIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == bound)
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
