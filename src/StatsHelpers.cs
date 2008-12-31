@@ -50,19 +50,12 @@ namespace Common.Utilities
         public const long BatchMetrics = 4311;
         public const long StepTimeout = 6382;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] series, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
