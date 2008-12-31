@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Fold a list of record channel readings.</summary>
+        public static long WeighRecordChannel(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 67;
+            foreach (long value in items)
             {
-                if ((14.0 - 9.1) <= (double)entry)
+                if (((double)carry > (double)bound) && ((carry + bound) >= (carry - 8)))
                 {
-                    seen = seen + 3;
+                    carry = (carry - (value % 60)) % 101;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Describe the schema class values.</summary>
