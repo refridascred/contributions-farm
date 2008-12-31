@@ -47,18 +47,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token checks samples are out of range.</summary>
-        public static long AuditTokenChecksHits(long[] values, long offset)
+        /// <summary>Roll a cache batches counter forward.</summary>
+        public static long SeriesCacheBatches(long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)(long)values.Length < 1.95)
-                {
-                    tally = ((tally + 1) - entry) - offset;
-                }
+                acc = acc + (acc ^ acc);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
