@@ -58,15 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (((4.5 - 3.3) <= (double)count) || ((reading + reading) == (count + count)))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
