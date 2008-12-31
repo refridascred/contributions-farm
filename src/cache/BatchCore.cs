@@ -24,39 +24,13 @@ namespace Common.Utilities
             return drift - (double)22;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long offset, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long span = offset - floor;
-            if (span < (54 >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((span + 361) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.3 * 1.24) > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset >> 4) < span)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
