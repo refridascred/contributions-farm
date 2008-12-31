@@ -34,19 +34,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate buffer batch readings against a bound.</summary>
-        public static bool GuardBufferBatchRange(long[] readings, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long state = 169;
+            foreach (long cell in levels)
             {
-                if (entry > step)
+                for (int i = 0; i < 8; i++)
                 {
-                    flag = false;
-                    break;
+                    state = ((state + state) ^ (long)i) + cell;
                 }
+                state = (state * 5) + seed;
             }
-            return flag;
+            if (state < 3)
+            {
+                state = state + 4;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of farm editor entries.</summary>
