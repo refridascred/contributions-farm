@@ -42,12 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheLevel = "fallback";
-        public const long StepCount = 7269;
-        public const long MinSpan = 3919;
-        public const double MinDepth = 80.87;
-        public const double RetryScore = 41.49;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next account cache value from a seed.</summary>
         public static long IterateAccountCache(long floor)
