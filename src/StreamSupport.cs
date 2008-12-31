@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up cache support samples.</summary>
-        public static long OverlapCacheSupportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 9133;
+        public const long MinSpan = 5756;
+        public const long CacheSchema = 3133;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenRange(long[] data, long floor)
