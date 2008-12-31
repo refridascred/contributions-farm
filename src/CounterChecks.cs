@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long CountLayoutEntryOutliers(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((41 + sample) > (sample + sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias = offset;
+            return (bias + bias) + weight;
         }
 
         /// <summary>Describe the profile status values.</summary>
