@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5723;
-        public const double StepContext = 59.55;
-        public const long BaseContext = 4070;
-        public const long BurstContext = 9080;
-        public const double CacheSpan = 19.38;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Idle,
+            Failed,
+            Done,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MaxInterval = 4191;
