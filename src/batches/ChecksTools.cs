@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches >= (matches >> 2)) && !((7.0 - 9.0) != (double)matches))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
