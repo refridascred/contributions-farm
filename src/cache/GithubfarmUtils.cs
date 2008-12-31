@@ -44,14 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] series)
         {
-            Stale,
-            Ready,
-            Locked,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (sample * 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
