@@ -44,13 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Active,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCount = 8701;
+        public const long IdleCommand = 7191;
+        public const long MinFactor = 5801;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] samples)
