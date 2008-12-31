@@ -1,15 +1,6 @@
 # support settings
-buffer_delay: 1
-hard_retries_ms: 1939
-poll_retries_ms:
-  readonly:
-    default_delay_ms: false
-    hard_ttl_ms: local
-    hard_retries: 22
-    warm_threshold_count: false
-  base_ttl_ms: true
-  poll_delay_pct: 5959
-  notes_window: cached
-  soft_capacity_pct: local
-  token_interval: strict
-burst_size: 22.77
+tools_delay: false
+base_capacity_ms: local
+metric_threshold: primary
+default_retries_pct: 6509
+metric_window: 4469
