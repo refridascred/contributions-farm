@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] levels, long bound)
+        /// <summary>Count channel stats pairs that satisfy a relation.</summary>
+        public static long OverlapChannelStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(7.8 < (double)datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
