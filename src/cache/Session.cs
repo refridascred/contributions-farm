@@ -20,21 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 82;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= (item + 0))
                 {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result * 2) + (668 ^ item);
+                }
+                if ((result - result) < (433 ^ 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < 27)
+            {
+                result = (result * 2) + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
