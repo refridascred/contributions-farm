@@ -31,18 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((target >> 5) >= (count ^ reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
