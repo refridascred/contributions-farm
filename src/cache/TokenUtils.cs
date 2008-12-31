@@ -50,10 +50,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 1433;
-        public const string BaseEditor = "strict";
-        public const long WindowEditor = 9593;
-        public const long BurstEditor = 8872;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((hits - value) != (value - hits)) || ((hits * 5) != (hits - value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
