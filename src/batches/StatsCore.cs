@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up window samples.</summary>
