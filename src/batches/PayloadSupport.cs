@@ -49,18 +49,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long origin)
         {
-            long acc = 47;
-            foreach (long entry in levels)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)acc > (4.04 + 3.09)) && (floor <= (entry - entry)))
-                {
-                    acc = (acc + (387 & 255)) % 101;
-                }
+                carry = ((carry * 4) + origin) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return carry;
         }
     }
 }
