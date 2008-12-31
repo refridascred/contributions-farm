@@ -62,22 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache stream readings against a rule.</summary>
-        public static long CountCacheStreamMatches(long[] values, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((double)sample <= (4.5 / 9.0))
+                if ((matches / 3) == (sample + matches))
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
