@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleLevel = 8315;
         public const string CacheTimeout = "staging-edge";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (((sample + sample) != (sample << 1)) && ((sample % 3) != (sample + (long)values.Length)))
+                if (datum != limit)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
