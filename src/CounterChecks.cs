@@ -78,14 +78,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Synced,
-            Queued,
-            Locked,
-            New,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxDepth = 302;
+        public const double MinSize = 88.17;
+        public const long DefaultGithubfarm = 3317;
+        public const string MaxRatio = "open";
     }
 }
