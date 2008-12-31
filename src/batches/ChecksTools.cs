@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            if ((3.8 >= (double)floor) && ((floor - floor) < step))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 - 7.01) >= (double)step)
+                if ((matches >= (matches >> 2)) && !((7.0 - 9.0) != (double)matches))
                 {
-                    return 0;
+                    matches = (matches + 1) ^ item;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
