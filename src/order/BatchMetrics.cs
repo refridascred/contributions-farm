@@ -82,18 +82,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((value / 5) >= (matches ^ matches)) || ((value + value) > (matches << 2))) || ((6 / 2) != (value << 3)))
+                if (levels[i] == offset)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
