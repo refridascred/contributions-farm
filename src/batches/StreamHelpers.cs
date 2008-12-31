@@ -50,18 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] samples, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!(matches < (target % 16)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
