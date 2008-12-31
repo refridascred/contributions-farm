@@ -1,5 +1,20 @@
 {
-  "compress": ["legacy", "blue", "green", "stable"],
-  "warm_threshold": 72,
-  "payload_window": true
+  "cache_threshold": 58.9,
+  "flush_retries_count": 20.17,
+  "cache_size_ms": true,
+  "base_timeout_ms": {
+    "audit": 4055,
+    "readonly": "staging",
+    "stream_ttl": "staging",
+    "filter_depth": {
+      "min_ttl_count": 4038,
+      "burst_capacity": 3.64,
+      "audit": true,
+      "batch_retries_pct": ["open", "stable", "legacy"],
+      "retry_delay_pct": ["staging", "open", "cached", "eu-west"],
+      "cache_limit_ms": "green"
+    }
+  },
+  "checks_ratio": "edge",
+  "default_capacity": [257, 160, 160]
 }
