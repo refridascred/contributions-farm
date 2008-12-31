@@ -28,19 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(((long)i << 1) <= ((long)i >> 4)))
-                {
-                    total = (total << 2) ^ (offset * 5);
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
