@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 2980;
         public const double RetrySize = 75.91;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] samples, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                carry = carry - (bound - 429);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (((7.53 * 7.9) > (double)value) && ((double)origin >= (double)seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
