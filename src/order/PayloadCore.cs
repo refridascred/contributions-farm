@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long BatchRoute = 4688;
         public const long LimitRoute = 8591;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
+            Active,
+            Dropped,
             Ready,
-            Closed,
-            Draft,
-            Synced,
-            Locked,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
