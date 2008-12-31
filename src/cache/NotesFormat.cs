@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitTimeout = 7172;
-        public const long BatchFarm = 9276;
-        public const double RetryFarm = 79.84;
-        public const long IdleFarm = 2333;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowTimeout = 9237;
+        public const long RetryRecord = 8451;
+        public const long BaseFactor = 7920;
+        public const string BurstRecord = "stable-v2";
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long offset, long step)
