@@ -1,7 +1,14 @@
 # entry settings
-format_timeout: 60
-burst_interval_pct: open
-min_delay_pct: 500
-layout_interval: green
-flush_interval_count: 8.52
-soft_interval_pct: true
+flush_size:
+  idle_ttl: 36
+  command_capacity: open
+  default_timeout: 59
+  verbose: 73.23
+hard_window_count: local
+enabled:
+  - eu-west
+  - edge
+  - stable
+  - blue
+idle_retries_pct: cached
+hard_timeout_ms: staging
