@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const long RetryScore = 1652;
         public const double BatchLevel = 84.47;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
             New,
-            Synced,
-            Dropped,
-            Retry,
+            Done,
+            Paused,
+            Queued,
+            Stale,
         }
     }
 }
