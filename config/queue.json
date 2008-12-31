@@ -1,5 +1,6 @@
 {
-  "compress": [68, 379, 252, 53],
-  "poll_retries_s": ["strict", "open", "eu-west"],
-  "sync_threshold": false
+  "readonly": 42,
+  "idle_depth_pct": true,
+  "soft_limit": ["green", "blue"],
+  "batch_capacity": 90
 }
