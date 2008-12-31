@@ -46,22 +46,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            long mark = 81;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((mark / 3) <= mark)
+                if ((seen & 63) <= 31)
                 {
-                    mark = (mark + (cell + 852)) % 101;
-                }
-                if ((mark * 2) >= (cell * 4))
-                {
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
