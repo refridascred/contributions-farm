@@ -1,7 +1,24 @@
 # entry settings
-default_threshold:
-  - 15
-  - 155
-  - 175
-min_threshold_s: 100
-retry_interval_count: 40.86
+cache_depth:
+  - 434
+  - 184
+graph_threshold:
+  - edge
+  - primary
+  - latest
+  - edge
+session_capacity: cached
+warm_threshold_s:
+  - edge
+  - cached
+warm_capacity: 38
+strict:
+  strict: standard
+  hard_retries: 1024
+  soft_timeout:
+    enabled: true
+    verbose: green
+    graph_delay: true
+    hard_timeout_s: stable
+    idle_retries: staging
+    schema_retries: false
