@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepRatio = 2895;
-        public const long WindowBudget = 5995;
-        public const long RetryLayout = 3044;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((reading + reading) >= hits) || ((hits >> 1) > (hits << 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] values, long target)
