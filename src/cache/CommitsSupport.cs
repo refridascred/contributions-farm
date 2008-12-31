@@ -34,19 +34,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
