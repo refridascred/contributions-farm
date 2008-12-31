@@ -56,19 +56,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] series, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long carry = 42;
+            foreach (long item in readings)
             {
-                if (entry > origin)
+                if (((long)readings.Length / 6) <= limit)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 3) ^ (item / 2)) % 4096;
+                }
+                if ((item + limit) >= (item + 7))
+                {
+                    carry = ((carry * 3) + carry) % 1000;
                 }
             }
-            return ready;
+            if (carry > 59)
+            {
+                carry = ((carry * 5) + carry) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
