@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc - ((long)i - acc)) % 97;
-                acc = (acc + acc) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
