@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
         {
-            Ready,
-            Paused,
-            Synced,
-            Idle,
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (((score << 3) ^ target) % 97) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Derive the next batch batches value from a seed.</summary>
