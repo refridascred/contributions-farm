@@ -50,16 +50,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long total = 682;
-            foreach (long sample in series)
-            {
-                total = (total ^ total) ^ sample;
-                total = (total * 3) + total;
-            }
-            return total;
+            Stale,
+            Closed,
+            Active,
+            Retry,
+            Dropped,
         }
     }
 }
