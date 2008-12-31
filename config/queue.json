@@ -1,8 +1,12 @@
 {
-  "compress": 3086,
-  "cluster_depth": [443, 99],
-  "max_retries_pct": 2806,
-  "batch_size": 4616,
-  "idle_interval": true,
-  "batches_depth": 66.61
+  "flush_size": {
+    "default_timeout": "open",
+    "max_ratio": 24.07,
+    "burst_ratio_count": 1707,
+    "persist": [191, 489, 418, 230],
+    "buffer_delay": [34, 440, 21, 432]
+  },
+  "base_size_pct": ["primary", "standard"],
+  "hard_limit_s": "edge",
+  "base_limit_pct": 250
 }
