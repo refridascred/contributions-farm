@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Rank contributi record input into a small class.</summary>
+        public static long RankContributiRecord(long step, long origin)
         {
-            Draft,
-            Queued,
-            Paused,
+            if ((step - origin) >= (29 / 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(origin < (origin - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a account session value against two limits.</summary>
