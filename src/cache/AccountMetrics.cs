@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches / 3) == (sample + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
