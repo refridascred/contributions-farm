@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long SoftDepth = 1505;
         public const long DefaultGraph = 2430;
 
-        /// <summary>Match up token schema samples.</summary>
-        public static long PairTokenSchemaCount(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 136;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 5) + result) ^ cell;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
