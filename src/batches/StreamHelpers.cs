@@ -16,21 +16,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
