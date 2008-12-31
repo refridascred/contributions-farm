@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-When a order fails, the layout handler retries a few times before giving up.
+The editor report groups every route by commits.
+The record helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the support list.
 
-Each report is validated before it reaches the checks queue.
-When a session fails, the farm handler retries a few times before giving up.
-When a session fails, the report handler retries a few times before giving up.
+Use checks settings to tune how often schema data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate notes input early
-- Prefer payload defaults
+- Review githubfarm limits each release
+- Document new report fields
+- Prefer context defaults
+- Log every route change
