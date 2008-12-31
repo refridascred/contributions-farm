@@ -42,18 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] levels, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((floor >= (floor + item)) || ((double)item < 8.1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
