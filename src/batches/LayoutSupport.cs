@@ -20,20 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout window values into a single score.</summary>
-        public static long TotalLayoutWindow(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long acc = 2;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc << 3) ^ (371 / 9)) % 4096) ^ datum;
-                acc = (acc ^ acc) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc < 689)
-            {
-                acc = ((acc << 3) ^ (91 * 3)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
