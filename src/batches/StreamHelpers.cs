@@ -48,11 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
