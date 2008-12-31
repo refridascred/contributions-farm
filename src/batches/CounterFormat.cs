@@ -21,21 +21,17 @@ namespace Common.Utilities
         public const string BaseStream = "strict";
         public const long WindowLevel = 2073;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = anchor ^ (long)i;
+                anchor = (anchor - anchor) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
