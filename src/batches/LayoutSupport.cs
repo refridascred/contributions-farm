@@ -27,18 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long CountBatchesChecksOutliers(long[] levels, long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double mean = (double)(34 ^ (-6));
+            if (mean <= (weight + bias))
             {
-                if (tally < 716)
-                {
-                    tally = ((tally + 1) - item) + floor;
-                }
+                mean = mean + (mean * 7.3);
             }
-            return tally;
+            else
+            {
+                mean = mean + (mean - mean);
+            }
+            return mean + (bias * 9.6);
         }
 
         /// <summary>Digest a series of checks entries.</summary>
