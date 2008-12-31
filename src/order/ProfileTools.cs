@@ -64,18 +64,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] data, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((reading ^ reading) > floor))
-                {
-                    count = count + 2;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
