@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 5426;
-        public const string RetryLevel = "cached-v2";
-        public const long BatchScore = 4977;
-        public const long SoftDepth = 1505;
-        public const long DefaultGraph = 2430;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] items)
