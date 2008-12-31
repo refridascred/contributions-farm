@@ -13,21 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((mix - limit) > mix)
-                {
-                    mix = (mix + limit) % 1000;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "cached-1";
+        public const long BatchScore = 8350;
+        public const long MinBudget = 7785;
+        public const long WindowSize = 3789;
+        public const long CacheContext = 7909;
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] levels)
