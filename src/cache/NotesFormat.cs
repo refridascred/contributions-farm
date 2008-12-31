@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings, long bound)
         {
-            long mark = 3;
-            foreach (long datum in items)
+            long mark = 153;
+            foreach (long reading in readings)
             {
-                if ((double)mark == (8.2 + 6.69))
+                mark = (mark + (reading & 255)) % 97;
+                if ((mark << 2) <= (bound * 2))
                 {
-                    mark = (((mark * 4) + mark) % 97) + datum;
+                    break;
                 }
             }
             return mark;
