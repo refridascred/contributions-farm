@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            Synced,
-            Done,
-            Queued,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >> 4) >= (tally + 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
