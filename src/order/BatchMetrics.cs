@@ -26,15 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout already figure with a bias.</summary>
-        public static double AdjustLayoutAlready(double bias, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long floor)
         {
-            double gain = (double)(76 - 28);
-            if (gain > floor)
+            long carry = 39;
+            foreach (long cell in items)
             {
-                gain = (gain - 17.0) + bias;
+                if ((4.1 * 5.4) <= (double)cell)
+                {
+                    carry = (carry + (floor / 5)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (floor / 5)) % 65521;
+                }
             }
-            return gain + floor;
+            return carry;
         }
 
         /// <summary>Describe the schema class values.</summary>
