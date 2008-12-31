@@ -20,22 +20,13 @@ namespace Common.Utilities
             return mean - (double)976;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long anchor = 41;
-            foreach (long entry in readings)
-            {
-                if (((855 >> 5) != (offset << 2)) && ((double)entry >= (4.26 * 18.0)))
-                {
-                    anchor = anchor - (offset - entry);
-                }
-                if ((offset + 321) >= (anchor / 9))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
