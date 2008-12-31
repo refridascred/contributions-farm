@@ -47,31 +47,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long offset, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long step)
         {
-            if (!((offset - seed) < (offset + 5)))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (603 <= (offset + offset))
+                if (cell > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
