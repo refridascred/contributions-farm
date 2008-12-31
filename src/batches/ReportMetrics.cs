@@ -25,23 +25,19 @@ namespace Common.Utilities
             return (scale - scale) + bias;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double ratio, double offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double span)
         {
-            double ratio2 = (offset * 9.6) * 1.0;
-            if (ratio2 > (offset * 5.42))
+            double ratio = span;
+            if (ratio < ratio)
             {
-                ratio2 = ratio2 + (double)905;
+                ratio = (ratio - 1.0) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                ratio2 = ratio2 + (ratio / 6.0);
+                ratio = (ratio + ratio) - (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (ratio - offset)) + (double)(long)i;
-            }
-            return ratio2 - 0.83;
+            return ratio - (span / 3.0);
         }
     }
 }
