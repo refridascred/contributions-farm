@@ -24,22 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowRatio = "staging-edge";
+        public const string MinLayout = "strict-v2";
+        public const long BaseLevel = 7673;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double SmoothCommand(double rate, double span)
