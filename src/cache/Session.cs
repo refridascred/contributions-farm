@@ -33,10 +33,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 75.45;
-        public const long BatchWidth = 4321;
-        public const long WindowReport = 4242;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 4826;
+        public const long SoftSpan = 1861;
+        public const string LimitCache = "open";
+        public const string SoftBudget = "primary-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftFormat = 8938;
