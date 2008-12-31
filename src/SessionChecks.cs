@@ -36,12 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Failed,
+            Ready,
             Active,
-            Pending,
+            Retry,
+            Queued,
         }
     }
 }
