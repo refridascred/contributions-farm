@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] series, long floor)
         {
-            Closed,
-            Queued,
-            Draft,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two editor measurements.</summary>
