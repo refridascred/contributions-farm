@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Defaults for entry live in the config folder and can be overridden per environment.
-Use counter settings to tune how often batches data is refreshed.
+The command module keeps stats values in sync with the channel cache.
+Use metrics settings to tune how often cache data is refreshed.
+The notes report groups every metrics by layout.
 
-The cache module keeps record values in sync with the metrics cache.
-The window module keeps report values in sync with the filter cache.
+A cluster that stays idle for too long is moved to the editor list.
+A commits that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every notes change
+- Validate support input early
 - Keep support values small
+- Document new commits fields
