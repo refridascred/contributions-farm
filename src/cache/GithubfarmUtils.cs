@@ -33,11 +33,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long TallyContextStream(long[] levels)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long anchor = 16;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor ^ entry) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
