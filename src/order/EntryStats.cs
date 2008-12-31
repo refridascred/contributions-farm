@@ -14,24 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long offset)
+        /// <summary>Measure how many stream cache samples are out of range.</summary>
+        public static long MeasureStreamCacheGaps(long[] readings, long target)
         {
-            if (!((step - offset) < (599 + offset)))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((3 >> 4) == (offset << 1)) && (offset <= (step + offset)))
+                if ((count > 2) && ((target - cell) >= count))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
