@@ -16,13 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] levels, long bound)
         {
-            Locked,
-            Paused,
-            Queued,
-            Retry,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(7.8 < (double)datum))
+                {
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
