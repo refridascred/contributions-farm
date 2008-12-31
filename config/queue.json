@@ -1,5 +1,5 @@
 {
-  "readonly": 44.6,
-  "stats_timeout": false,
-  "strict": 11.01
+  "compress": [68, 379, 252, 53],
+  "poll_retries_s": ["strict", "open", "eu-west"],
+  "sync_threshold": false
 }
