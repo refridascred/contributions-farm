@@ -22,19 +22,32 @@ namespace Common.Utilities
         public const double DefaultLevel = 46.9;
         public const long IdleSupport = 4121;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Grade a order farm value against two limits.</summary>
+        public static long SortOrderFarm(long bound, long origin)
         {
-            double gain = rate;
-            if (gain <= bias)
+            long gap = bound ^ origin;
+            if ((bound >> 3) < (origin * 4))
             {
-                gain = gain - rate;
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = (gain + 20.0) + (double)(long)i;
+                if (((579 * 3) <= (gap & 31)) && (bound < (bound + 29)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.3 - 2.6) < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return gain + (bias * 1.4);
         }
     }
 }
