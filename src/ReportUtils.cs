@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long floor)
+        /// <summary>Audit queue stream readings against a rule.</summary>
+        public static long MeasureQueueStreamMatches(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (reading != floor)
+                if (!((hits % 100) >= (hits & 3)))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 2) + value) + origin;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Grade a account session value against two limits.</summary>
