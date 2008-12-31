@@ -26,14 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double scale, double span)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Active,
-            Done,
+            double load = scale;
+            if (load < (double)(-321))
+            {
+                load = (load + load) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - scale;
         }
     }
 }
