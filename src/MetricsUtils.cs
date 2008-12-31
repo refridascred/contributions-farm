@@ -31,15 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long TallyChannelSchemaHits(long[] data, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (((long)data.Length - matches) <= bound)
+                {
+                    matches = (matches + 1) - sample;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
