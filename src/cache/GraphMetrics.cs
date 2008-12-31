@@ -16,10 +16,15 @@ namespace Common.Utilities
         public const long RetryDepth = 4806;
         public const long LimitLevel = 661;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "primary-1";
-        public const double MinSize = 95.02;
-        public const long MinWindow = 4953;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Done,
+            Pending,
+            Retry,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
