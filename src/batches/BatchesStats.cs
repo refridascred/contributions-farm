@@ -40,22 +40,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings, long origin)
+        /// <summary>Project the next context schema value.</summary>
+        public static double ScaleContextSchema(double scale, double span)
         {
-            long state = 3;
-            foreach (long sample in readings)
+            double mean = 15.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((51 + 2) < origin)
-                {
-                    state = (state + (state - origin)) % 255;
-                }
-                else
-                {
-                    state = ((state * 4) + sample) % 101;
-                }
+                mean = (((mean - mean) + (double)(long)i) - scale) + span;
             }
-            return state % 4096;
+            return mean - 1.5;
         }
     }
 }
