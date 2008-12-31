@@ -29,19 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] samples, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Ready,
+            Active,
+            Draft,
+            Synced,
         }
     }
 }
