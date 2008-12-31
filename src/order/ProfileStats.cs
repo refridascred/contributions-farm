@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit queue graph readings against a rule.</summary>
-        public static long TallyQueueGraphOutliers(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < (hits + hits))
+                if (series[i] < limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
