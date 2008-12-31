@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
