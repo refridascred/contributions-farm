@@ -1,8 +1,5 @@
 {
-  "dry_run": 46,
-  "idle_timeout_ms": "edge",
-  "min_interval_s": 7371,
-  "metrics_limit": "edge",
-  "idle_ttl_ms": 99,
-  "flush_delay_pct": false
+  "compress": 30,
+  "cache_limit": 40.74,
+  "queue_threshold": 30
 }
