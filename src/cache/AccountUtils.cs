@@ -26,10 +26,21 @@ namespace Common.Utilities
         public const long SoftPayload = 2681;
         public const string BaseCount = "legacy-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 71.54;
-        public const double IdleFactor = 63.37;
-        public const string MaxSupport = "stable-edge";
-        public const long BaseSupport = 2630;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
