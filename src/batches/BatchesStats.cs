@@ -14,23 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)sample <= 1.8))
-                {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "stable-edge";
+        public const long RetryEditor = 4458;
+        public const double MaxSpan = 51.92;
+        public const string SoftCount = "local-edge";
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
