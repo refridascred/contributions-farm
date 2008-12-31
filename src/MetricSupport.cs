@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const string HardBudget = "strict-v2";
         public const long RetryTimeout = 9070;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long offset)
         {
-            Failed,
-            Synced,
-            Closed,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
