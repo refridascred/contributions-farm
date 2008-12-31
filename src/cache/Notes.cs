@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long state = 85;
-            foreach (long cell in data)
-            {
-                state = (((state * 2) + cell) % 255) + floor;
-            }
-            return state;
+            Closed,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
