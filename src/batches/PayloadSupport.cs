@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] items, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 23;
+            foreach (long sample in samples)
             {
-                if ((matches % 16) < (matches - reading))
-                {
-                    matches = (matches + 3) - floor;
-                }
+                state = ((state * 5) + (offset ^ offset)) + sample;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Digest a series of graph report entries.</summary>
