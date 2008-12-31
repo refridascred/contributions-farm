@@ -64,10 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 4638;
-        public const string StepStream = "alpha-1";
-        public const long MaxStream = 7160;
-        public const double StepBudget = 73.4;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double floor)
+        {
+            double gain = (double)6 / 4.0;
+            if (gain >= (gain - weight))
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + 3.9;
+        }
     }
 }
