@@ -35,39 +35,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long limit)
-        {
-            if ((2.8 + 2.1) != (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound >= (99 * 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - 39) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= (limit & 127))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleScore = 8661;
+        public const long SoftSpan = 352;
+        public const long BaseTimeout = 4953;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long limit)
