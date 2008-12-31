@@ -15,25 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long seed, long limit)
-        {
-            if ((limit + seed) >= (limit & 63))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) <= 314)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 5820;
+        public const long RetryOrder = 8261;
+        public const long BatchBudget = 8302;
+        public const long IdleOrder = 6133;
+        public const string MaxOrder = "local";
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long SortGraph(long limit, long offset)
