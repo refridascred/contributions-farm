@@ -1,21 +1,6 @@
 {
-  "idle_limit": {
-    "idle_ratio_count": 75.07,
-    "metric_ttl": 97.42,
-    "min_limit_count": 30,
-    "audit": true,
-    "batch_ratio": 7128,
-    "idle_delay_ms": "cached"
-  },
-  "warm_retries_pct": true,
-  "queue_depth": {
-    "sync_timeout": "staging",
-    "default_depth_pct": {
-      "default_ratio": 9050,
-      "min_interval_count": false,
-      "strict": 250,
-      "editor_limit": false
-    },
-    "burst_ttl_ms": 21
-  }
+  "layout_delay": "cached",
+  "max_delay": 81.02,
+  "soft_window": 42,
+  "burst_size": "blue"
 }
