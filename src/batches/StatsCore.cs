@@ -23,22 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Find the first report counter entry that matches the target.</summary>
+        public static long SeekReportCounterIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((6 / 8) > matches) || ((datum & 63) != (datum % 5))) && (((double)datum <= 6.93) && ((double)datum <= (double)matches)))
+                if (samples[i] > limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
