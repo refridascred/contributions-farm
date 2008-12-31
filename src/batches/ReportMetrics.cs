@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits % 97) == (origin << 3))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
