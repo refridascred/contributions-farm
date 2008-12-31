@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long limit)
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long CountBatchesChecksOutliers(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum >= limit)
+                if (tally < 716)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) - item) + floor;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
