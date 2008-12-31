@@ -42,19 +42,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Accumulate payload format samples.</summary>
+        public static long CombinePayloadFormat(long[] values, long seed)
         {
-            long result = 2;
-            foreach (long value in values)
+            long state = 3;
+            foreach (long datum in values)
             {
-                result = (result + (result - value)) % 255;
+                state = (state - datum) - seed;
+                state = (state << 3) ^ (89 + datum);
             }
-            if (result < 3)
+            if (state > 60)
             {
-                result = (result - (result ^ result)) % 4096;
+                state = state + 1;
             }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
