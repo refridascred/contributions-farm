@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cache order samples.</summary>
-        public static long FoldCacheOrder(long[] readings, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long floor)
         {
-            long acc = 2;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (((seed & 3) > (acc / 2)) && ((acc - item) < (item * 4)))
+                if (sample != floor)
                 {
-                    acc = acc - item;
+                    valid = false;
+                    break;
                 }
-                acc = (acc ^ (seed ^ 88)) % 4096;
             }
-            if (acc > 115)
-            {
-                acc = ((acc << 2) ^ (seed - 571)) % 1000;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
