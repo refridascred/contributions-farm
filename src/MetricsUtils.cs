@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            Active,
-            New,
-            Locked,
-            Dropped,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc * 2) + seed;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
