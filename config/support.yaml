@@ -1,18 +1,4 @@
 # support settings
-max_ratio_pct: false
-stream_timeout: 96
-route_delay: staging
-sync_window: 79.55
-base_depth_pct:
-  queue_limit:
-    - 386
-    - 8
-    - 462
-  poll_window_s:
-    max_ratio: blue
-    default_limit_s: 74.77
-    cache_retries: 2.98
-  format_limit:
-    - 352
-    - 498
-    - 344
+default_window_count: 93
+contributi_ttl: 72.54
+default_window_pct: strict
