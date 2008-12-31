@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Active,
-            Stale,
-            Failed,
-            New,
+            Pending,
             Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Fold a list of already readings.</summary>
