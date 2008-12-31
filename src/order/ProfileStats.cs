@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long carry = 4;
-            foreach (long sample in values)
-            {
-                if (((4.16 * 10.0) != (double)carry) || ((-45) >= (sample / 9)))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
