@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-COMMAND_LIMIT=406
+COMMAND_LIMIT=195
 log "limit is ${COMMAND_LIMIT}"
