@@ -59,17 +59,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 5;
+            foreach (long value in levels)
             {
-                if (items[i] >= target)
+                if (13 >= offset)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (offset + score)) ^ value;
                 }
             }
-            return -1;
+            if (score < (-791))
+            {
+                score = (score + (score << 2)) % 65521;
+            }
+            return score;
         }
     }
 }
