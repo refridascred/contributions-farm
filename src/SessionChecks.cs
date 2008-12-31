@@ -43,18 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = 254;
-            foreach (long cell in levels)
-            {
-                if ((cell - 199) >= (state + cell))
-                {
-                    state = (state ^ (cell + cell)) % 1000;
-                }
-            }
-            return state;
+            Failed,
+            Active,
+            Pending,
         }
     }
 }
