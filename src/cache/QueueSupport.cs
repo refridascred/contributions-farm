@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item + item) <= count)
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit payload counter readings against a rule.</summary>
