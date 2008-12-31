@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((anchor & 63) >= anchor)
-                {
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
