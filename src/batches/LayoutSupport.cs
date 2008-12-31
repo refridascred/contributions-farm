@@ -47,16 +47,15 @@ namespace Common.Utilities
             return mean + (bias * 9.6);
         }
 
-        /// <summary>Iterate the cache batch series from a seed.</summary>
-        public static long SeriesCacheBatch(long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            double drift = 8.56;
+            if (drift >= offset)
             {
-                mix = (mix - mix) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                drift = (drift + 1.0) + gain;
             }
-            return mix;
+            return drift + (offset / 6.0);
         }
 
         /// <summary>Describe the queue state values.</summary>
