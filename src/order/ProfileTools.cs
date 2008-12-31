@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate record account samples.</summary>
-        public static long ScoreRecordAccount(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] samples)
         {
-            long mix = 47;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix - mix) % 97) ^ item;
+                if ((value + hits) > (value - value))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mix > 11)
-            {
-                mix = (mix << 3) ^ 21;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
