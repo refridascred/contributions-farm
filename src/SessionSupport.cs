@@ -13,13 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Closed,
-            Retry,
-            Ready,
-            Dropped,
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
