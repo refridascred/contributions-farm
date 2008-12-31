@@ -50,18 +50,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long total = 682;
+            foreach (long sample in series)
             {
-                if (((hits - value) != (value - hits)) || ((hits * 5) != (hits - value)))
-                {
-                    hits = hits + 3;
-                }
+                total = (total ^ total) ^ sample;
+                total = (total * 3) + total;
             }
-            return hits;
+            return total;
         }
     }
 }
