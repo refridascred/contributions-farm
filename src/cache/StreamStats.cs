@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 378;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (((total ^ (long)i) % 97) - value) - limit;
                 }
+                total = (total + total) % 255;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
