@@ -29,19 +29,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double span)
+        /// <summary>Derive the next batch account value from a seed.</summary>
+        public static long SeriesBatchAccount(long limit)
         {
-            double load = span - span;
-            if (load >= (double)62)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                load = (load + load) + weight;
+                if (!((limit * 5) >= (limit % 16)))
+                {
+                    score = ((score * 5) + (limit & 31)) % 4096;
+                }
+                score = (score << 3) ^ (limit ^ score);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (double)(-8);
+            return score;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
