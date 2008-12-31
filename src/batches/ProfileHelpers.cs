@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long WindowFactor = 697;
         public const string LimitCount = "alpha-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchSpan = "staging-edge";
-        public const double DefaultFactor = 63.14;
-        public const long IdleMetrics = 139;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Pending,
+            Retry,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 3299;
