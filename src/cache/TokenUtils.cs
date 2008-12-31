@@ -15,19 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            double ratio2 = (double)(9 + 133);
-            if (ratio2 <= bias)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = (ratio2 + ratio2) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + bias;
-            }
-            return ratio2 - (double)4;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
