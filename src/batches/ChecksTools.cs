@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long step)
         {
-            Retry,
-            Dropped,
-            New,
+            if ((3.8 >= (double)floor) && ((floor - floor) < step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 - 7.01) >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the record phase values.</summary>
