@@ -44,12 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Done,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "legacy-v2";
+        public const double BurstCache = 12.96;
+        public const string LimitCache = "cached-edge";
+        public const double MaxSize = 91.44;
+        public const long SoftCache = 2674;
     }
 }
