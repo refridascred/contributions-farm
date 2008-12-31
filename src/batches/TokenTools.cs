@@ -34,12 +34,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
