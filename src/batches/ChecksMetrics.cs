@@ -63,21 +63,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Stale,
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Match up tools schema samples.</summary>
