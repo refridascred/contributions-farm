@@ -1,8 +1,24 @@
 # support settings
-strict: blue
-route_timeout: 84.63
-verbose:
-  - 346
-  - 461
-  - 325
-poll_retries: green
+already_capacity: fallback
+max_capacity_s:
+  enabled:
+    already_timeout: eu-west
+    flush_depth: strict
+    audit:
+      - stable
+      - standard
+      - staging
+      - staging
+    min_timeout_pct:
+      - 200
+      - 272
+      - 283
+      - 378
+    cache_interval_ms: true
+    stream_retries: stable
+  schema_limit: 141
+  burst_delay_s:
+    - fallback
+    - eu-west
+    - stable
+idle_capacity_pct: 1024
