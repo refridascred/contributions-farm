@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Locked,
-            Ready,
-            Done,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitCount = "staging-edge";
+        public const long BurstSpan = 5058;
+        public const long BaseFarm = 1439;
+        public const double MaxTimeout = 87.79;
+        public const long MaxRatio = 8873;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 5820;
