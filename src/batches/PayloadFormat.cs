@@ -28,11 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] values, long offset)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)(long)values.Length < (9.9 - 2.7))
+                {
+                    hits = ((hits + 1) + entry) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
