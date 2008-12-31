@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) <= (cell - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSpan = 9374;
+        public const long HardTools = 6929;
+        public const double BaseTools = 65.59;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double LimitSession = 6.02;
