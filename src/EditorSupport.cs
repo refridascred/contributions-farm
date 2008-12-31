@@ -73,13 +73,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long origin)
         {
-            Active,
-            Draft,
-            Failed,
-            Idle,
+            if (!((origin % 10) <= (limit + 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 4) > (401 ^ 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin >= 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
