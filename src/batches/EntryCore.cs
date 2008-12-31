@@ -13,19 +13,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] series, long step)
+        /// <summary>Classify a token layout pair into a bucket.</summary>
+        public static long RankTokenLayout(long floor, long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long delta = floor - offset;
+            if (floor <= (delta - 90))
             {
-                if (datum > step)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor <= 6.31)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ 66) < (938 >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta * 5) >= (33 - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the format mode values.</summary>
