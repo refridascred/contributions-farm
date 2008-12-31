@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long offset, long step)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            if ((double)offset <= (9.0 + 9.2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step * 5) <= (step << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
