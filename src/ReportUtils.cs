@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double scale2 = bias - (2.99 * 3.4);
-            return (scale2 - (scale2 * 2.21)) + scale;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the metric command entries that pass the check.</summary>
