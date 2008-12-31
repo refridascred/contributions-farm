@@ -44,17 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 225;
+            foreach (long item in levels)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
+                if ((double)result < (0.3 * 18.0))
                 {
-                    return (long)i;
+                    result = (result ^ (seed % 16)) ^ item;
                 }
             }
-            return -1;
+            if (result < 46)
+            {
+                result = (result - (result ^ result)) % 65521;
+            }
+            return result;
         }
     }
 }
