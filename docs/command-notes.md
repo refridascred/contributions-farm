@@ -1,15 +1,15 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the schema list.
-A already that stays idle for too long is moved to the editor list.
-The command report groups every report by route.
+The channel module keeps profile values in sync with the metrics cache.
+A commits that stays idle for too long is moved to the channel list.
 
-Use checks settings to tune how often channel data is refreshed.
-The layout report groups every counter by queue.
-A checks that stays idle for too long is moved to the batches list.
+Use notes settings to tune how often batches data is refreshed.
+Run the command check before changing any tools limits.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate checks input early
-- Review layout limits each release
+- Document new format fields
+- Prefer support defaults
+- Log every payload change
+- Validate tools input early
