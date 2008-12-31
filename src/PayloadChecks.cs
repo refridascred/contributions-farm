@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Scale a schema notes figure with a bias.</summary>
+        public static double ScaleSchemaNotes(double bias, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((step / 5) > (result - 297)))
-                {
-                    result = result - step;
-                    result = (result * 5) + (step >> 4);
-                }
-                if ((step + result) != (451 + step))
-                {
-                    result = (result - ((long)i / 8)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (long)i) % 65521;
-                }
-                result = result + result;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            double bias2 = (double)47 * 7.0;
+            return ((bias2 + (double)(-60)) + bias) + floor;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
