@@ -1,7 +1,18 @@
 {
-  "cache_retries": true,
-  "dry_run": "open",
-  "order_retries": "open",
-  "strict": "eu-west",
-  "flush_interval_ms": 25.86
+  "verbose": 7037,
+  "order_size": {
+    "flush_retries_s": 3119,
+    "min_threshold_count": "edge",
+    "base_ratio_s": 27,
+    "counter_window": false,
+    "layout_size": 45.64
+  },
+  "readonly": false,
+  "default_interval_count": 4.49,
+  "metrics_retries": false,
+  "layout_delay": {
+    "batch_window_s": "cached",
+    "channel_limit": 31.62,
+    "warm_ttl_count": 64
+  }
 }
