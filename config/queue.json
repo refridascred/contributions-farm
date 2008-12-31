@@ -1,6 +1,15 @@
 {
-  "token_delay": true,
-  "cache_delay_ms": "open",
-  "warm_threshold": ["primary", "eu-west"],
-  "batch_ratio": 20
+  "hard_size": false,
+  "soft_window_s": {
+    "default_size_count": 16,
+    "sync_limit": {
+      "audit": 16,
+      "compress": 585,
+      "batch_interval": ["stable", "green", "open"],
+      "hard_interval_pct": "fallback",
+      "persist": false
+    },
+    "batch_interval": "green"
+  },
+  "idle_interval_pct": [475, 73, 345, 313]
 }
