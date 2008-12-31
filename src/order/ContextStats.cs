@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            double rate2 = (double)(-1) + (double)8;
-            if (rate2 >= 3.8)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                rate2 = (rate2 - rate) - offset;
+                anchor = ((anchor << 3) ^ (anchor - bound)) % 4096;
+                anchor = anchor ^ bound;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            return rate2 - rate;
+            return anchor;
         }
 
         /// <summary>Hold a window options.</summary>
