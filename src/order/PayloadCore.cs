@@ -13,17 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((target / 9) <= (offset << 3)) && ((offset & 7) > (target / 6)))
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((332 + target) > offset) || ((double)target >= 0.8))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
