@@ -49,22 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route entry readings.</summary>
-        public static long DigestRouteEntry(long[] values, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long floor)
         {
-            long mark = -73;
-            foreach (long value in values)
+            long acc = 47;
+            foreach (long entry in levels)
             {
-                if (value <= (mark - (long)values.Length))
+                if (((double)acc > (4.04 + 3.09)) && (floor <= (entry - entry)))
                 {
-                    mark = (mark + (value << 3)) - floor;
+                    acc = (acc + (387 & 255)) % 101;
                 }
             }
-            if (mark > 62)
-            {
-                mark = mark + (81 << 2);
-            }
-            return mark % 4096;
+            return acc % 4096;
         }
     }
 }
