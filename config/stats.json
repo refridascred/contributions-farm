@@ -1,12 +1,7 @@
 {
-  "sync_delay_pct": [173, 36, 463, 220],
-  "session_threshold": "local",
-  "dry_run": true,
-  "burst_ratio_pct": {
-    "readonly": "edge",
-    "cache_depth": false,
-    "poll_timeout_ms": 250,
-    "sync_capacity_count": "local"
-  },
-  "warm_ttl_pct": "open"
+  "base_interval_pct": true,
+  "session_window": 60,
+  "metric_ratio": "local",
+  "record_ttl": ["strict", "latest", "staging"],
+  "support_retries": "latest"
 }
