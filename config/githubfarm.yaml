@@ -1,18 +1,8 @@
 # githubfarm settings
-queue_window:
-  batch_size: false
-  hard_capacity_count: 100
-  sync_timeout_ms: 53.54
-persist: false
-format_capacity:
-  burst_window_s: 66
-  compress: 63.53
-  max_timeout_count: 26
-  persist:
-    - local
-    - local
-    - staging
-  base_size_ms: 5108
-compress: 98.84
-readonly: 64.06
-idle_retries_s: 8816
+cache_timeout_ms: legacy
+checks_window:
+  min_depth_count: 2238
+  default_size: 3197
+  base_window_s: fallback
+max_ratio: 60
+metrics_delay: standard
