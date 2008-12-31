@@ -85,13 +85,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] values, long step)
         {
-            Paused,
-            Locked,
-            Queued,
-            Pending,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
