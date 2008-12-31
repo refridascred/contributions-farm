@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
