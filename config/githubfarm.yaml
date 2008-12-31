@@ -1,8 +1,31 @@
 # githubfarm settings
-support_retries:
-  - fallback
-  - fallback
-  - green
-  - staging
-poll_depth_count: 13.92
-batch_delay_pct: 5843
+verbose:
+  hard_window: false
+  sync_limit: 1687
+  hard_window_pct:
+    hard_window: 96.71
+    burst_capacity_s: false
+    batch_capacity: edge
+    token_depth: 33
+  compress:
+    verbose: true
+    commits_capacity: true
+    soft_threshold:
+      - staging
+      - blue
+      - blue
+    sync_interval_ms: standard
+    idle_retries: 39.66
+    idle_timeout_pct: 39.04
+cluster_threshold:
+  cache_limit: false
+  poll_timeout_pct:
+    - cached
+    - stable
+  window_delay: 76.9
+  idle_retries: 28
+  default_depth: 43.33
+  format_size: 250
+cluster_limit: 67.25
+readonly: 59
+min_delay: 500
