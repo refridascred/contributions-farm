@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Roll a schema support counter forward.</summary>
+        public static long SeriesSchemaSupport(long offset)
         {
-            New,
-            Ready,
-            Retry,
-            Queued,
+            long result = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result + (result - result);
+                result = (result + result) % 97;
+                result = (result ^ result) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
