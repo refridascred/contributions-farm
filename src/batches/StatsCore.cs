@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string HardPayload = "strict";
         public const long RetryPayload = 5606;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double ratio, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] readings, long seed)
         {
-            double mean = ratio - (ratio / 6.0);
-            if (mean > (double)515)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mean = (mean - ratio) + bias;
+                if (((reading + 7) <= seed) || ((seed + reading) == (reading << 1)))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)482) + (double)(long)i;
-            }
-            return mean + ratio;
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
