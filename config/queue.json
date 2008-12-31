@@ -1,5 +1,14 @@
 {
-  "sync_threshold_count": false,
-  "cluster_retries": 1024,
-  "commits_depth": "cached"
+  "retry_ttl_pct": "local",
+  "strict": {
+    "verbose": [158, 261, 339, 432],
+    "base_ttl": 56,
+    "warm_limit_pct": "blue",
+    "entry_delay": 100,
+    "idle_interval_s": 44
+  },
+  "flush_size_ms": [136, 159, 44],
+  "min_depth_pct": 6387,
+  "account_window": [276, 319, 235],
+  "cache_depth": 8442
 }
