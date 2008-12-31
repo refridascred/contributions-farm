@@ -57,15 +57,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            double load = floor;
-            if (load <= load)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                load = load - ratio;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return load - (double)66;
+            return anchor;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
