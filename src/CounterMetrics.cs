@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double floor)
-        {
-            double ratio = (double)33 / 3.0;
-            if (ratio > ratio)
-            {
-                ratio = ratio - floor;
-            }
-            return ratio - (bias * 4.61);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "cached";
+        public const long RetryCommits = 623;
+        public const long WindowCommits = 4823;
+        public const long CacheCommits = 5180;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaOutliers(long[] data, long target)
