@@ -49,15 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double gain2 = (offset - offset) * 3.0;
-            if (gain2 > (gain2 - gain))
-            {
-                gain2 = gain2 + (9.0 + 9.84);
-            }
-            return gain2 - (5.68 / 8.0);
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
