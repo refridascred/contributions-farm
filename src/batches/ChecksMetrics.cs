@@ -31,15 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long TallyMetricCacheMatches(long[] samples, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] samples, long seed)
         {
             long seen = 0;
-            foreach (long item in samples)
+            foreach (long reading in samples)
             {
-                if ((7 & 1) <= (seen ^ bound))
+                if (24 < (reading / 3))
                 {
-                    seen = (seen + 3) - item;
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
