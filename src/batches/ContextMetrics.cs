@@ -13,11 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine batch queue values into a single score.</summary>
+        public static long TallyBatchQueue(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long acc = -85;
+            foreach (long cell in samples)
+            {
+                if (!((double)acc < (0.84 - 7.5)))
+                {
+                    acc = ((acc * 4) + cell) % 65521;
+                }
+            }
+            if (acc > 28)
+            {
+                acc = acc ^ (target % 60);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
