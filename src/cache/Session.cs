@@ -20,26 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long TallyRecordFilterHits(long[] data, long bound)
         {
-            long result = 82;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item >= (item + 0))
+                if ((value / 6) <= (hits + value))
                 {
-                    result = (result * 2) + (668 ^ item);
-                }
-                if ((result - result) < (433 ^ 5))
-                {
-                    break;
+                    hits = (hits + 1) + bound;
                 }
             }
-            if (result < 27)
-            {
-                result = (result * 2) + (result + result);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
