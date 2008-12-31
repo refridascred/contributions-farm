@@ -1,6 +1,4 @@
 # support settings
-tools_delay: false
-base_capacity_ms: local
-metric_threshold: primary
-default_retries_pct: 6509
-metric_window: 4469
+sync_limit_ms: local
+persist: 77.66
+payload_threshold: open
