@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the profile counter series from a seed.</summary>
-        public static long RollProfileCounter(long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i % 97) != (carry << 1))
-                {
-                    carry = (carry * 5) + 2;
-                    carry = ((carry * 5) + (seed + 94)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
