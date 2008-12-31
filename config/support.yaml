@@ -1,9 +1,4 @@
 # support settings
-stream_timeout: false
-compress:
-  - strict
-  - cached
-  - eu-west
-  - eu-west
-record_ratio: 59
-batch_capacity: true
+cache_capacity: 55
+payload_ratio: true
+enabled: 4167
