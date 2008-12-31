@@ -64,15 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm payload counter forward.</summary>
-        public static long StepFarmPayload(long seed)
+        /// <summary>Fold a list of format token readings.</summary>
+        public static long ScoreFormatToken(long[] readings, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long acc = 778;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                acc = ((acc << 3) ^ (target + target)) - sample;
             }
-            return anchor;
+            if (acc > 7)
+            {
+                acc = (acc + (target & 255)) % 255;
+            }
+            return acc;
         }
     }
 }
