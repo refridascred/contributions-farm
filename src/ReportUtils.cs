@@ -53,19 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format token readings.</summary>
-        public static long ScoreFormatToken(long[] readings, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long acc = 778;
-            foreach (long sample in readings)
-            {
-                acc = ((acc << 3) ^ (target + target)) - sample;
-            }
-            if (acc > 7)
-            {
-                acc = (acc + (target & 255)) % 255;
-            }
-            return acc;
+            Closed,
+            Done,
+            Draft,
+            Dropped,
+            Stale,
         }
     }
 }
