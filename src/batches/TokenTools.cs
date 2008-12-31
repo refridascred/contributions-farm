@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] samples, long origin)
         {
-            double ratio2 = (double)(17 + 617);
-            if (ratio2 >= (ratio - bias))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = ratio2 + (12.0 / 5.0);
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 + ratio)) + (double)(long)i;
-            }
-            return ratio2 + (double)8;
+            return -1;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
