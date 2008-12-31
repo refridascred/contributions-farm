@@ -60,13 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long target)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
