@@ -25,39 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long step, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long gap = step - origin;
-            if (!((double)gap >= (double)origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ origin) <= (2 >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)origin > (15.0 + 10.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + origin) == (11 >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
