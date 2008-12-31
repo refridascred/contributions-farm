@@ -47,12 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "open-v2";
-        public const double MaxSupport = 98.86;
-        public const string MaxInterval = "latest-v2";
-        public const double BurstDepth = 77.75;
-        public const long MinSupport = 6993;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] samples, long step)
