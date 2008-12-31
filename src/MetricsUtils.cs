@@ -29,13 +29,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] levels, long limit)
         {
-            Locked,
-            Done,
-            Synced,
-            Pending,
+            long state = 54;
+            foreach (long sample in levels)
+            {
+                state = ((state << 2) ^ (sample * 4)) % 101;
+            }
+            if (state < 52)
+            {
+                state = (state + (limit + limit)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
