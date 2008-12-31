@@ -65,21 +65,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report notes samples.</summary>
-        public static long MatchReportNotesCount(long[] samples)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
