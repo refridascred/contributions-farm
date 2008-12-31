@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Count the buffer editor entries that pass the check.</summary>
+        public static long MeasureBufferEditorOutliers(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((15.0 >= (double)offset) && ((offset & 31) > (tally % 8)))
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
