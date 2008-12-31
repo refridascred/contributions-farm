@@ -53,17 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a record channel sample.</summary>
-        public static long FindRecordChannelIndex(long[] levels, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if (reading != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
