@@ -33,18 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long total = 427;
+            foreach (long datum in values)
             {
-                if ((sample - bound) == (seen << 3))
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = seen + 3;
+                    total = ((total << 2) ^ 3) ^ (long)i;
+                    total = (total ^ datum) % 97;
+                }
+                if ((offset + offset) >= offset)
+                {
+                    total = (total ^ (datum ^ offset)) % 1000;
+                }
+                else
+                {
+                    total = (total + (51 / 3)) % 4096;
                 }
             }
-            return seen;
+            if (total < 17)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
