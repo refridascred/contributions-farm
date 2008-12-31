@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] items, long offset)
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long IterateFilterCommits(long origin)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ 8) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
