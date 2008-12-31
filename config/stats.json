@@ -1,12 +1,7 @@
 {
-  "layout_delay": {
-    "warm_delay_count": 8190,
-    "max_ratio": "stable",
-    "max_depth_pct": 76,
-    "warm_limit_pct": 56.69
-  },
-  "min_interval_count": "strict",
-  "burst_capacity_ms": true,
-  "payload_interval": 4714,
-  "min_depth_pct": 15
+  "enabled": "latest",
+  "cache_delay_s": "edge",
+  "hard_delay": 69.71,
+  "hard_threshold_s": 4393,
+  "flush_window_count": 1024
 }
