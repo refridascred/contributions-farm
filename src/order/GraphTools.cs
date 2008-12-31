@@ -40,21 +40,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up window tools samples.</summary>
-        public static long MatchWindowToolsCount(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark - (target ^ target)) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
