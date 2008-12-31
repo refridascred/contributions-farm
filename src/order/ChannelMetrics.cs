@@ -33,23 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] series, long floor)
         {
-            double ratio = (double)69;
-            if (ratio > (floor / 6.0))
+            long score = -62;
+            foreach (long entry in series)
             {
-                ratio = (ratio + 2.48) + weight;
+                score = (score + (252 - entry)) - floor;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + (2.02 * 0.1);
+            return score;
         }
     }
 }
