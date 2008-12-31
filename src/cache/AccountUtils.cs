@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 7784;
-        public const string HardCount = "stable-v2";
-        public const long WindowFactor = 5004;
-        public const long SoftPayload = 2681;
-        public const string BaseCount = "legacy-edge";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value - matches) == (74 ^ matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] series)
