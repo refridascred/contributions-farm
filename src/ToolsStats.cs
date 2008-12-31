@@ -14,16 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long step)
         {
-            long mark = 30;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((((mark << 3) ^ 3) % 101) + entry) + limit;
-                mark = (mark + ((-71) + mark)) % 4096;
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
