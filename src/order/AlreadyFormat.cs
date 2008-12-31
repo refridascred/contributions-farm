@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series, long floor)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long entry in series)
             {
-                if ((tally > bound) || (((bound % 64) >= (bound << 2)) || ((711 / 8) <= (tally + value))))
+                if ((tally >> 4) < floor)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) + entry;
                 }
             }
             return tally;
