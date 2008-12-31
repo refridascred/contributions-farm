@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long MaxBuffer = 5012;
         public const long WindowBuffer = 2157;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] data, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                acc = (acc - ((long)i >> 1)) % 65521;
-                acc = (acc ^ seed) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
