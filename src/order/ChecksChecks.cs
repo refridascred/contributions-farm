@@ -44,22 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            long result = 225;
-            foreach (long item in levels)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)result < (0.3 * 18.0))
+                if ((long)i < sum)
                 {
-                    result = (result ^ (seed % 16)) ^ item;
+                    sum = (sum + ((long)i + 8)) % 1000;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (result < 46)
-            {
-                result = (result - (result ^ result)) % 65521;
-            }
-            return result;
+            return sum;
         }
     }
 }
