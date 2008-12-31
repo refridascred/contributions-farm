@@ -54,16 +54,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the notes cluster series from a seed.</summary>
-        public static long StepNotesCluster(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 6006;
+        public const long SoftWidth = 9659;
+        public const double IdleRecord = 44.73;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string WindowProfile = "staging-v2";
