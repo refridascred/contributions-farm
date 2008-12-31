@@ -57,26 +57,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long step)
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long DigestGithubfarmMetric(long[] series)
         {
-            long carry = 581;
-            foreach (long cell in items)
+            long anchor = 8;
+            foreach (long sample in series)
             {
-                if (!(cell < carry))
-                {
-                    carry = (carry + (carry + step)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (0 ^ 86)) % 4096;
-                }
+                anchor = ((anchor << 3) ^ anchor) ^ sample;
+                anchor = (anchor + (92 + 21)) % 101;
             }
-            if (carry < 0)
-            {
-                carry = carry - (carry >> 4);
-            }
-            return carry;
+            return anchor;
         }
     }
 }
