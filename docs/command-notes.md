@@ -1,14 +1,14 @@
 # Command notes
 
-The command module keeps stats values in sync with the channel cache.
-Use metrics settings to tune how often cache data is refreshed.
-The notes report groups every metrics by layout.
+Keep window and batches names short and lowercase.
+Each route is validated before it reaches the cache queue.
+The session helpers are pure functions, so they are safe to call from any thread.
 
-A cluster that stays idle for too long is moved to the editor list.
-A commits that stays idle for too long is moved to the token list.
+Each metric is validated before it reaches the route queue.
+Use notes settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Validate support input early
-- Keep support values small
-- Document new commits fields
+- Prefer record defaults
+- Document new entry fields
+- Keep context values small
