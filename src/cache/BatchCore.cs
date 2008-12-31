@@ -30,28 +30,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = -63;
-            foreach (long sample in readings)
-            {
-                if (((origin + sample) >= (sample & 127)) && ((origin + sample) >= (origin + mark)))
-                {
-                    mark = (mark - (mark ^ origin)) % 4096;
-                    continue;
-                }
-                mark = mark ^ (sample - 2);
-                if (((long)readings.Length <= ((long)readings.Length & 127)) || ((origin % 97) <= (mark + 598)))
-                {
-                    break;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark * 4) + (origin % 2);
-            }
-            return mark;
+            Synced,
+            Active,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
