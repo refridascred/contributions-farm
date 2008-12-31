@@ -31,12 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseCount = 48.78;
+        public const long MaxChannel = 1649;
+        public const double BaseChannel = 68.8;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
