@@ -36,16 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings, long limit)
-        {
-            long mix = 7;
-            foreach (long sample in readings)
-            {
-                mix = (mix - (limit + sample)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 1482;
+        public const string RetryContext = "staging-edge";
+        public const long MaxContext = 9803;
+        public const long IdleContext = 6246;
 
         /// <summary>Project the next order value.</summary>
         public static double AdjustOrder(double weight, double bias)
