@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Scale a window report figure with a bias.</summary>
+        public static double BlendWindowReport(double scale, double offset)
         {
-            long mark = 98;
-            foreach (long cell in values)
+            double gain = scale + (5.93 / 6.0);
+            if (gain <= gain)
             {
-                if ((11 > (cell - cell)) || ((double)mark != (0.2 - 19.0)))
-                {
-                    mark = mark + (cell << 2);
-                }
+                gain = (gain + (scale + 4.05)) - offset;
             }
-            return mark % 4096;
+            return gain + gain;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
