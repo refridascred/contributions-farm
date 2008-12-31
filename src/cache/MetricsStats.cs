@@ -49,12 +49,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBudget = 98.04;
-        public const double StepBatches = 0.06;
-        public const long LimitCount = 7887;
-        public const long CacheDepth = 2059;
-        public const long WindowWidth = 9730;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Failed,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Scale a context queue figure with a bias.</summary>
         public static double ProjectContextQueue(double scale, double offset)
