@@ -16,11 +16,40 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "local-1";
-        public const long StepCommits = 1884;
-        public const long BaseCount = 687;
-        public const long MinCommits = 7827;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long step)
+        {
+            long bound = origin - step;
+            if ((origin <= step) && ((double)step != (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 2) > (origin + 106))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound >> 1) <= (step >> 1)) && ((bound >> 4) <= (7 / 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin <= 801)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of payload counter readings.</summary>
         public static long ScorePayloadCounter(long[] readings)
