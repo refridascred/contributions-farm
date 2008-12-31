@@ -60,12 +60,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 9535;
-        public const double BurstLevel = 70.75;
-        public const long RetrySize = 6179;
-        public const long CacheDepth = 6185;
-        public const string BaseChecks = "local";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings)
+        {
+            long mark = 89;
+            foreach (long value in readings)
+            {
+                mark = (((mark * 2) + (3 / 9)) % 65521) ^ value;
+            }
+            return mark;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double HardGithubfarm = 87.12;
