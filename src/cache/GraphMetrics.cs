@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load - (1.0 * 6.9);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] items)
         {
-            long result = 48;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)offset > (4.06 * 0.79))
+                if ((reading + tally) < (reading % 97))
                 {
-                    result = (result - value) % 97;
+                    tally = tally + 2;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Adjust a command reading.</summary>
