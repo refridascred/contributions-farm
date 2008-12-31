@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Measure how many stream channel samples are out of range.</summary>
+        public static long MeasureStreamChannelGaps(long[] values)
         {
-            long state = 94;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (((8.4 / 5.0) != (double)reading) || (reading < state))
+                if ((double)entry >= (16.0 - 18.0))
                 {
-                    state = state + state;
+                    seen = seen + 2;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
