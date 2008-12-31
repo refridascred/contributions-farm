@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every contributi profile entry stays within the limit.</summary>
+        public static bool CheckContributiProfileLimits(long[] levels, long limit)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Done,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
