@@ -31,19 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (4.03 < (double)sample)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftInterval = 3315;
+        public const long HardInterval = 8385;
+        public const long IdleWindow = 2851;
+        public const long WindowTimeout = 4632;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleScore = 2998;
