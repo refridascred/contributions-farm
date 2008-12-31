@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long HardTimeout = 7854;
         public const string IdleScore = "stable-1";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
