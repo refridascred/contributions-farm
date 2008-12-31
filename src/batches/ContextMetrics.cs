@@ -20,19 +20,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
