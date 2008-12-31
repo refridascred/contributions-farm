@@ -50,11 +50,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinBudget = "fallback";
+        public const double BatchFactor = 77.17;
+        public const string CacheContributi = "staging-1";
     }
 }
