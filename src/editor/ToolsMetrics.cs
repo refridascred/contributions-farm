@@ -24,16 +24,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Grade a metrics profile value against two limits.</summary>
+        public static long RankMetricsProfile(long offset, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long step = offset + bound;
+            if (((20.0 - 14.0) > (double)bound) && ((double)0 >= (double)bound))
             {
-                score = (score ^ (1 ^ bound)) % 101;
-                score = ((score * 3) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((-106) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)bound > (17.0 * 4.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
