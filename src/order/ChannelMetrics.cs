@@ -33,15 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] series, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long origin2)
         {
-            long score = -62;
-            foreach (long entry in series)
+            long span = origin + origin2;
+            if ((double)span < (double)19)
             {
-                score = (score + (252 - entry)) - floor;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (((double)origin2 == (5.8 + 2.5)) || ((span + span) > (span + origin2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
