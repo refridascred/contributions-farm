@@ -1,5 +1,8 @@
 # support settings
-max_threshold_pct: 28
-warm_limit: eu-west
-githubfarm_threshold: 75.69
-max_size_count: true
+readonly: 1024
+warm_threshold_ms: 88.57
+persist: true
+max_threshold_ms: 53
+base_limit:
+  - 263
+  - 346
