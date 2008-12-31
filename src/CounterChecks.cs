@@ -89,11 +89,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitDepth = "local-v2";
-        public const long MinSchema = 7682;
-        public const double IdleSchema = 36.92;
-        public const long HardRatio = 1084;
-        public const long MaxSchema = 1794;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] levels, long step)
+        {
+            long score = 9;
+            foreach (long reading in levels)
+            {
+                if (!(((reading & 1) >= step) || ((reading + score) <= (156 - reading))))
+                {
+                    score = ((score << 2) ^ score) % 255;
+                }
+                if (step < (step << 2))
+                {
+                    score = score - (step - reading);
+                }
+                else
+                {
+                    score = ((score << 2) ^ step) % 97;
+                }
+            }
+            return score;
+        }
     }
 }
