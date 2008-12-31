@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5516;
-        public const double HardBudget = 86.56;
-        public const long LimitFilter = 4101;
-        public const string DefaultFilter = "strict-1";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long offset, long limit)
+        {
+            if (offset <= (limit << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset > (offset >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 1) > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a account session value against two limits.</summary>
         public static long SortAccountSession(long offset, long origin)
