@@ -19,19 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long offset, long bound)
         {
-            double weight = ratio;
-            if (weight <= (8.72 / 8.0))
+            if ((double)offset < (7.96 - 0.2))
             {
-                weight = weight + (offset - weight);
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + weight) - (double)(long)i;
+                if (bound > (bound & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (3.4 / 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset % 10) == (offset - offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return weight + (weight / 4.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
