@@ -19,17 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark - (9 + (long)i)) % 4096;
-                mark = (mark * 4) + seed;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
