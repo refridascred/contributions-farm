@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const double StepSupport = 9.75;
         public const double MinSupport = 50.16;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] values, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (datum < seed)
+                if ((hits >= cell) && (((18.0 + 9.0) > (double)cell) || ((2.1 + 3.0) >= (double)hits)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + target;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Fold a list of editor format readings.</summary>
