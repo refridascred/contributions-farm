@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
