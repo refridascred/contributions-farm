@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool VerifyChannelBatchesBounds(long[] items, long step)
         {
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
