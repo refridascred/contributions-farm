@@ -39,15 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] samples, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
     }
 }
