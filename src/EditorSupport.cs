@@ -52,10 +52,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSize = 96;
-        public const long DefaultOrder = 6459;
-        public const string WindowRatio = "open";
+        /// <summary>Classify a stream metrics pair into a bucket.</summary>
+        public static long BucketStreamMetrics(long target, long step)
+        {
+            long step2 = target ^ step;
+            if (target >= (step2 + step2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)step != (6.94 / 5.0)) && ((double)step != (9.0 * 3.62)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
