@@ -62,22 +62,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = 5;
-            foreach (long value in levels)
-            {
-                if (13 >= offset)
-                {
-                    score = ((score << 3) ^ (offset + score)) ^ value;
-                }
-            }
-            if (score < (-791))
-            {
-                score = (score + (score << 2)) % 65521;
-            }
-            return score;
+            Synced,
+            Draft,
+            New,
+            Dropped,
         }
     }
 }
