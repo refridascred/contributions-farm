@@ -13,12 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitDepth = "fallback-edge";
-        public const long HardEditor = 3872;
-        public const double MinEditor = 62.48;
-        public const long MaxCount = 717;
-        public const long BaseEditor = 1722;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < (seen - sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long offset, long bound)
