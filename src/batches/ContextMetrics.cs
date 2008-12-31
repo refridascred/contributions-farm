@@ -41,11 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long offset)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cache status values.</summary>
