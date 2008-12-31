@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long mark = 24;
+            foreach (long reading in data)
             {
-                if ((9.0 / 5.0) == (double)(long)i)
-                {
-                    result = ((result * 4) + ((long)i ^ result)) % 97;
-                }
-                if (((step + (long)i) <= (step - step)) || (((long)i / 3) != (76 + 502)))
-                {
-                    result = ((result << 3) ^ step) % 97;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                mark = (((mark << 2) ^ (mark ^ mark)) % 255) + reading;
             }
-            return result;
+            if (mark > 65)
+            {
+                mark = (mark * 5) + ((long)data.Length / 4);
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
