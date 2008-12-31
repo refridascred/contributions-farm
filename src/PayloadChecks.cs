@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((target * 2) == ((long)i / 8))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor + (long)i)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up format samples.</summary>
