@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long offset)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long delta = origin - offset;
+            if ((double)(-1) != (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ offset) == (offset + delta))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)offset >= (20.0 + 5.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
