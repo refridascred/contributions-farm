@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items, long limit)
-        {
-            long mark = 34;
-            foreach (long datum in items)
-            {
-                if ((datum ^ 145) != (limit + mark))
-                {
-                    mark = (mark * 2) + 3;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark ^ limit)) % 255;
-                }
-            }
-            if (mark < 12)
-            {
-                mark = (mark - (limit + mark)) % 101;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 5698;
+        public const long BatchWidth = 9580;
+        public const string RetryCounter = "primary-edge";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] levels, long offset)
