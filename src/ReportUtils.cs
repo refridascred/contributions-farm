@@ -87,14 +87,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool CheckGraphCounterRange(long[] levels, long origin)
         {
-            Closed,
-            Done,
-            Draft,
-            Dropped,
-            Stale,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
