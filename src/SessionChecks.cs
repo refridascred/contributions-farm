@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] readings, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits >> 1) >= (limit * 4))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
