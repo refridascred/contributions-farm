@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8786;
         public const double HardTimeout = 88.24;
 
-        /// <summary>Check that every report command entry stays within the limit.</summary>
-        public static bool ValidateReportCommandLimits(long[] readings, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
