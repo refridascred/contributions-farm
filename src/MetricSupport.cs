@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long state = 9;
-            foreach (long reading in series)
-            {
-                state = ((state << 3) ^ seed) % 1000;
-                state = (state * 2) + reading;
-                if (((seed + 60) > (52 << 2)) || ((11 + seed) != (seed & 63)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Failed,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a session options.</summary>
