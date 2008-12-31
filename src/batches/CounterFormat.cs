@@ -22,18 +22,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter report samples are out of range.</summary>
-        public static long TallyCounterReportOutliers(long[] values, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample <= (matches << 2)) && ((sample / 4) == (817 >> 4)))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the order mode values.</summary>
