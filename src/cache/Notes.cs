@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long AuditCommitsLayoutMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen <= (sample >> 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowRatio = "legacy-v2";
+        public const double BaseLevel = 67.35;
+        public const double LimitCommits = 39.48;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextOutliers(long[] levels, long bound)
