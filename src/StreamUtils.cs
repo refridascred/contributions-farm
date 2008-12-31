@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double span)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double scale2 = 1.6;
-            return ((scale2 - (double)90) + scale) + span;
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
