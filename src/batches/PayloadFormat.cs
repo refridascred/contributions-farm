@@ -38,12 +38,26 @@ namespace Common.Utilities
         public const long WindowToken = 2194;
         public const long CacheDepth = 1750;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            long state = 5;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (state ^ state) - (long)i;
+                }
+                if (((double)reading >= (6.8 * 6.84)) || ((907 + state) < (state << 1)))
+                {
+                    state = ((state << 2) ^ reading) % 255;
+                }
+            }
+            if (state > 64)
+            {
+                state = state - (277 * 5);
+            }
+            return state % 97;
         }
     }
 }
