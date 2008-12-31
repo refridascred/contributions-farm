@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] samples)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item - hits) >= (item + item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
