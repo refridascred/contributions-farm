@@ -14,18 +14,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = 546;
-            foreach (long item in levels)
-            {
-                if ((item * 2) == (item - 519))
-                {
-                    score = (score - (bound + score)) % 101;
-                }
-            }
-            return score;
+            Active,
+            New,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
