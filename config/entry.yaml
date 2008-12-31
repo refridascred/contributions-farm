@@ -1,24 +1,9 @@
 # entry settings
-cache_depth:
-  - 434
-  - 184
-graph_threshold:
-  - edge
-  - primary
-  - latest
-  - edge
-session_capacity: cached
-warm_threshold_s:
-  - edge
-  - cached
-warm_capacity: 38
-strict:
-  strict: standard
-  hard_retries: 1024
-  soft_timeout:
-    enabled: true
-    verbose: green
-    graph_delay: true
-    hard_timeout_s: stable
-    idle_retries: staging
-    schema_retries: false
+min_ttl: 7004
+window_limit:
+  - 226
+  - 357
+  - 76
+  - 93
+poll_depth: 4380
+strict: open
