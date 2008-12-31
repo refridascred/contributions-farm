@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleRatio = 5961;
-        public const long IdleAlready = 4956;
-        public const long BurstAlready = 1473;
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of profile checks entries.</summary>
         public static long TotalProfileChecks(long[] readings)
