@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardBudget = 3443;
-        public const long LimitCommand = 695;
-        public const long DefaultCommand = 6850;
-        public const long HardCount = 5270;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long seed)
