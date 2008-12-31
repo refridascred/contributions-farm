@@ -31,18 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first order commits entry that matches the target.</summary>
-        public static long FindOrderCommitsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardCount = 60.1;
+        public const long MinInterval = 4542;
+        public const long BatchSupport = 4743;
+        public const double StepSupport = 9.75;
+        public const double MinSupport = 50.16;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaRange(long[] values, long seed)
