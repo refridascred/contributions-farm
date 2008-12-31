@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a profile format reading by value.</summary>
-        public static long SeekProfileFormatIndex(long[] samples, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (samples[i] < seed)
+                if (((long)items.Length ^ item) <= ((-72) & 31))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
