@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series, long seed)
         {
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long state = 9;
+            foreach (long reading in series)
+            {
+                state = ((state << 3) ^ seed) % 1000;
+                state = (state * 2) + reading;
+                if (((seed + 60) > (52 << 2)) || ((11 + seed) != (seed & 63)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a session options.</summary>
