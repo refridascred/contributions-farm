@@ -24,12 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            Idle,
-            Pending,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
