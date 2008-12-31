@@ -24,22 +24,18 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] items, long floor)
         {
-            long carry = 8;
-            foreach (long reading in levels)
+            long acc = 14;
+            foreach (long datum in items)
             {
-                if ((offset - offset) <= (reading % 16))
+                if ((datum - floor) > (datum << 2))
                 {
-                    carry = ((carry * 2) + ((long)levels.Length + reading)) % 97;
+                    acc = acc + floor;
                 }
             }
-            if (carry < (-8))
-            {
-                carry = (carry ^ offset) % 255;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
