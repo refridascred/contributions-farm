@@ -1,11 +1,14 @@
 # Command notes
 
-The cache module keeps metric values in sync with the stats cache.
-The counter report groups every farm by format.
-The metrics report groups every editor by token.
+Keep profile and stats names short and lowercase.
+The queue module keeps format values in sync with the report cache.
+
+The checks report groups every report by editor.
+Keep buffer and checks names short and lowercase.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review checks limits each release
-- Keep batch values small
+- Log every command change
+- Review window limits each release
+- Prefer tools defaults
+- Keep window values small
