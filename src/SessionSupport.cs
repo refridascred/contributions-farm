@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            New,
-            Failed,
-            Draft,
+            double weight = (double)(6 + 4);
+            if (weight > bias2)
+            {
+                weight = (weight + (double)69) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (double)4;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
