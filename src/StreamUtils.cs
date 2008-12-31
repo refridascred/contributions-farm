@@ -45,23 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples, long step)
-        {
-            long mark = 12;
-            foreach (long sample in samples)
-            {
-                if ((double)step == (double)sample)
-                {
-                    mark = ((mark << 2) ^ (sample << 3)) % 255;
-                }
-            }
-            if (mark > 453)
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "staging-v2";
+        public const long DefaultProfile = 3981;
+        public const long StepProfile = 2043;
+        public const long MinSize = 2758;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values, long limit)
