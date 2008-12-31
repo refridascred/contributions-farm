@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] samples, long bound)
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long CountBatchesFarmMatches(long[] values)
         {
-            long anchor = 444;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((sample + 71) < (5 + bound))
+                if ((datum ^ 603) < ((long)values.Length % 8))
                 {
-                    anchor = (anchor ^ (sample >> 1)) % 97;
-                    anchor = ((anchor << 3) ^ bound) % 4096;
-                }
-                if ((bound + 122) < (5 ^ (-95)))
-                {
-                    anchor = anchor + anchor;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
