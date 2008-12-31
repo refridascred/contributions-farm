@@ -30,26 +30,23 @@ namespace Common.Utilities
             return (ratio2 - ratio) + floor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            long sum = 397;
-            foreach (long cell in items)
+            double weight = (double)819 - 3.0;
+            if (weight < (7.0 / 8.0))
             {
-                if ((sum % 100) != (sum + 941))
-                {
-                    sum = ((sum - (floor - 0)) % 97) - cell;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
+                weight = weight + (offset - rate);
             }
-            if (sum > 392)
+            else
             {
-                sum = ((sum << 3) ^ sum) % 97;
+                weight = weight + weight;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - (2.4 / 2.0);
         }
     }
 }
