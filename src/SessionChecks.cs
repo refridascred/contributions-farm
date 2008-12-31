@@ -26,31 +26,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((floor & 1) <= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 3) <= (target + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor ^ target) <= (target << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the cache level values.</summary>
