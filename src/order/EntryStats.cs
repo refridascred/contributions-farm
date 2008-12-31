@@ -53,19 +53,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry support figure with a bias.</summary>
-        public static double ScaleEntrySupport(double rate, double span)
-        {
-            double weight = (span - 12.0) * 3.82;
-            if (weight > span)
-            {
-                weight = weight - rate;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleTimeout = 3494;
+        public const long DefaultQueue = 6814;
+        public const string HardFactor = "standard-1";
     }
 }
