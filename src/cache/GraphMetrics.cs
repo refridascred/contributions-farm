@@ -30,15 +30,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the account buffer series from a seed.</summary>
-        public static long IterateAccountBuffer(long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Queued,
+            Synced,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the stats kind values.</summary>
