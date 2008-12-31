@@ -32,21 +32,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count account cache pairs that satisfy a relation.</summary>
-        public static long PairAccountCacheCount(long[] samples)
+        /// <summary>Count the window command entries that pass the check.</summary>
+        public static long AuditWindowCommandGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading >= (matches + reading))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
