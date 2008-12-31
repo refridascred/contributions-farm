@@ -25,17 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long mix = 2;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - ((-5) - reading)) % 65521;
-                mix = (mix ^ (reading ^ reading)) % 4096;
-                mix = mix + (688 - (long)data.Length);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a command record.</summary>
