@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many entry graph samples are out of range.</summary>
+        public static long AuditEntryGraphOutliers(long[] series, long step)
         {
-            Done,
-            Draft,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((9.31 / 4.0) < (double)value)
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
