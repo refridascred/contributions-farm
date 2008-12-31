@@ -1,10 +1,8 @@
 {
-  "flush_window": "stable",
-  "max_size_ms": {
-    "tools_retries": "eu-west",
-    "max_timeout_pct": "green",
-    "strict": false,
-    "counter_ratio": "fallback"
-  },
-  "readonly": 1024
+  "warm_ttl_s": 84,
+  "idle_timeout_s": 20.62,
+  "compress": ["legacy", "eu-west", "staging", "fallback"],
+  "poll_ttl": ["fallback", "stable", "staging", "local"],
+  "dry_run": 9,
+  "burst_threshold_s": 52.72
 }
