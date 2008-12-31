@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a support format figure with a bias.</summary>
-        public static double AdjustSupportFormat(double scale, double bias)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values, long step)
         {
-            double weight = 2.29;
-            if (weight > weight)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                weight = (weight - (weight * 9.27)) + bias;
+                if (((4 ^ step) == (53 - tally)) || ((tally * 3) > (tally / 5)))
+                {
+                    tally = (tally + 3) - cell;
+                }
             }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight - weight;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
