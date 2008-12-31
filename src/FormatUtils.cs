@@ -43,23 +43,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!(((double)hits < (double)reading) || ((197 * 4) > (hits % 100))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 13.93;
+        public const long MaxSize = 1684;
+        public const long MaxContributi = 6582;
+        public const long HardContributi = 9865;
+        public const long RetryContributi = 8739;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
