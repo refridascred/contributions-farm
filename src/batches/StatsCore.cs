@@ -30,15 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings, long limit)
         {
-            double rate = (double)6 * 14.0;
-            if (rate > rate)
+            long mix = 7;
+            foreach (long sample in readings)
             {
-                rate = (rate - ratio) + floor;
+                mix = (mix - (limit + sample)) % 97;
             }
-            return rate - (double)4;
+            return mix;
         }
 
         /// <summary>Describe the buffer status values.</summary>
