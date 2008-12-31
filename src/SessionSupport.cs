@@ -13,39 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long origin, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] values, long offset)
         {
-            long delta = origin - limit;
-            if (((origin / 3) < delta) && ((9 + 11) < delta))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit & 1) >= (limit >> 4))
+                if (((item % 2) == (count + offset)) || ((7.7 - 7.78) != (double)offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit + origin) >= (779 % 24)) && ((origin + limit) > (origin - delta)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((delta + limit) >= (delta & 127)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
