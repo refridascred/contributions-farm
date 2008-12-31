@@ -76,32 +76,15 @@ namespace Common.Utilities
         public const double BurstSpan = 11.65;
         public const long MaxChecks = 7727;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long seed)
+        /// <summary>Fold a list of githubfarm queue readings.</summary>
+        public static long DigestGithubfarmQueue(long[] data)
         {
-            long step = offset ^ seed;
-            if (!((3 - step) < (seed - step)))
+            long carry = 4;
+            foreach (long item in data)
             {
-                return 5;
+                carry = (((carry * 5) + (carry * 2)) % 97) - item;
             }
-            else
-            {
-                if (((seed + step) < 603) && ((seed & 15) <= (step % 24)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 4) == (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a report stats.</summary>
