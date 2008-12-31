@@ -48,11 +48,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                if ((double)anchor < (3.88 - 5.7))
+                {
+                    anchor = (((anchor << 2) ^ (anchor - 7)) % 65521) ^ cell;
+                }
+                anchor = ((anchor * 3) + anchor) % 101;
+            }
+            if (anchor > 893)
+            {
+                anchor = ((anchor * 5) + (-792)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
