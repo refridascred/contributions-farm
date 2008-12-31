@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings, long floor)
-        {
-            long sum = 1;
-            foreach (long value in readings)
-            {
-                if ((2 + sum) <= sum)
-                {
-                    sum = (sum + (floor + value)) % 65521;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = sum + (floor % 97);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleInterval = 84.54;
+        public const double BaseGraph = 74.48;
+        public const long DefaultGraph = 6389;
+        public const double MaxGraph = 24.45;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
