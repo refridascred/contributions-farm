@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long IdleSchema = 7311;
         public const double StepSchema = 2.54;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (bias - bias2) * 5.0;
+            if (load <= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (double)5;
             }
-            return seen;
+            return load + (bias * 0.02);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
