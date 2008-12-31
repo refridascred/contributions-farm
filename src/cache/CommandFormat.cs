@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string BatchOrder = "standard";
         public const long MinOrder = 7153;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleLevel = 6385;
+        public const string HardStats = "primary";
+        public const long BaseDepth = 8099;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsOutliers(long[] items, long target)
