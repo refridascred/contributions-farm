@@ -50,26 +50,31 @@ namespace Common.Utilities
         public const long StepProfile = 2043;
         public const long MinSize = 2758;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values, long limit)
+        /// <summary>Classify a batches report pair into a bucket.</summary>
+        public static long ClassifyBatchesReport(long step, long floor)
         {
-            long total = 49;
-            foreach (long reading in values)
+            if ((39 + floor) == (floor ^ step))
             {
-                if (((total % 16) != (806 - total)) && ((8.7 + 14.0) > (double)limit))
+                return 7;
+            }
+            else
+            {
+                if ((13.0 - 11.0) >= (double)floor)
                 {
-                    total = ((total + limit) % 65521) - reading;
+                    return 3;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (total * 3)) % 101;
+                    if ((step <= (29 >> 2)) && (step <= ((-369) ^ step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total > 636)
-            {
-                total = (total << 2) ^ ((long)values.Length + total);
-            }
-            return total;
         }
     }
 }
