@@ -68,31 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long floor)
-        {
-            if (((double)target != (1.3 * 9.09)) && ((floor << 2) > floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor >> 4) > (floor & 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 1) > 560)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "staging-v2";
+        public const string IdleChecks = "primary-v2";
+        public const string BatchChecks = "strict-1";
+        public const double MinChecks = 64.82;
+        public const long MinSpan = 8655;
     }
 }
