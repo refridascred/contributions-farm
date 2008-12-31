@@ -35,13 +35,22 @@ namespace Common.Utilities
             return gain - (gain / 3.0);
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            Retry,
-            Idle,
-            Queued,
-            Locked,
+            long score = 0;
+            foreach (long item in readings)
+            {
+                if ((score << 2) <= (item >> 2))
+                {
+                    score = ((score * 4) + (long)readings.Length) % 255;
+                }
+            }
+            if (score < 62)
+            {
+                score = (score * 3) + (score * 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a record record.</summary>
