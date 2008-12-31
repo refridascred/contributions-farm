@@ -43,19 +43,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long bound, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long next = bound ^ floor;
+            if (((floor - next) > (floor % 12)) || (floor < (bound - 998)))
             {
-                if (sample <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= 4.7)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound % 2) != (bound & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (13 >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
