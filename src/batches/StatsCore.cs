@@ -30,18 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] data, long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double rate = (double)6 * 14.0;
+            if (rate > rate)
             {
-                if ((double)cell <= 5.2)
-                {
-                    tally = (tally + 1) + step;
-                }
+                rate = (rate - ratio) + floor;
             }
-            return tally;
+            return rate - (double)4;
         }
 
         /// <summary>Describe the buffer status values.</summary>
