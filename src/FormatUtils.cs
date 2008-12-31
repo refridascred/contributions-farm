@@ -62,18 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count ^ count) < (8 >> 3))
-                {
-                    count = (count + 2) + reading;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
