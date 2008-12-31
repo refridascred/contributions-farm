@@ -1,20 +1,5 @@
 {
-  "flush_delay_pct": {
-    "order_interval": "fallback",
-    "retry_size_ms": 43.95,
-    "flush_timeout": "strict",
-    "flush_size_count": "standard"
-  },
-  "burst_ttl_s": false,
-  "max_depth_s": {
-    "burst_ttl_count": 4868,
-    "session_size": 842,
-    "batch_interval": 93.0,
-    "compress": 82,
-    "soft_delay_pct": 29,
-    "hard_window": "primary"
-  },
-  "report_ratio": "strict",
-  "tools_size": 28.22,
-  "audit": "primary"
+  "base_window_s": 45.25,
+  "flush_capacity": 94.8,
+  "compress": "local"
 }
