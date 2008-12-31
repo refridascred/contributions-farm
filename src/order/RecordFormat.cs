@@ -55,12 +55,25 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long TotalGraphCache(long[] samples, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public double Rank { get; set; }
+            long result = 1;
+            foreach (long value in samples)
+            {
+                if ((value + result) <= (value >> 5))
+                {
+                    result = (result - (value + 134)) - target;
+                    result = (result - (result - result)) % 97;
+                    break;
+                }
+                else
+                {
+                    result = ((result * 3) + (long)samples.Length) % 4096;
+                }
+                result = (result ^ (value + value)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
