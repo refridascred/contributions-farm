@@ -34,23 +34,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            double gain = bias;
+            if (gain < gain)
             {
-                if ((double)bound == (7.0 - 1.42))
-                {
-                    state = (state + (bound ^ bound)) % 1000;
-                }
-                if ((double)bound > 11.0)
-                {
-                    state = (state + bound) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                gain = gain - 1.4;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (floor + 15.0);
         }
     }
 }
