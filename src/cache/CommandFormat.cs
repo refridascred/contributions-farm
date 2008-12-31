@@ -47,19 +47,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long offset, long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if (!((offset - seed) < (offset + 5)))
             {
-                if (item > step)
+                return 3;
+            }
+            else
+            {
+                if (603 <= (offset + offset))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
     }
 }
