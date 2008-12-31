@@ -32,14 +32,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long origin)
         {
-            Stale,
-            Synced,
-            New,
-            Done,
-            Dropped,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a metric summary.</summary>
