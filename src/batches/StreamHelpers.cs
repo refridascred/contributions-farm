@@ -65,11 +65,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] items)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches % 24) < (matches & 63))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric kind values.</summary>
