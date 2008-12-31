@@ -41,12 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit channel checks readings against a rule.</summary>
