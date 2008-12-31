@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
