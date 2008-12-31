@@ -28,17 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
