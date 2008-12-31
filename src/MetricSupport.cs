@@ -21,11 +21,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
