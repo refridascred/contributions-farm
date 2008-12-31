@@ -40,14 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] items, long seed)
         {
-            Draft,
-            Idle,
-            Failed,
-            Retry,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
