@@ -47,17 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] items, long seed)
+        /// <summary>Compare every pair of entry checks readings.</summary>
+        public static long OverlapEntryChecksCount(long[] items)
         {
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
