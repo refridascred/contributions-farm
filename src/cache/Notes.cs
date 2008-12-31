@@ -55,21 +55,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 14)
+                    if ((samples[i] - samples[j]) > 12)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
