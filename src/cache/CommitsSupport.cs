@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] levels, long bound)
+        /// <summary>Digest a series of checks buffer entries.</summary>
+        public static long WeighChecksBuffer(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = 69;
+            foreach (long item in data)
             {
-                if ((tally + cell) <= (683 + bound))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result * 3) + (item - result)) % 101;
             }
-            return tally;
+            if (result < 674)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
