@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            Idle,
-            Done,
-            Draft,
-            Dropped,
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
