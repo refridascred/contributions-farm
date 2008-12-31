@@ -1,5 +1,12 @@
 {
-  "burst_delay_count": [184, 65, 302, 164],
-  "audit": [468, 222, 254, 242],
-  "min_size_pct": 90.96
+  "soft_window": {
+    "soft_window_ms": 59,
+    "payload_threshold": [372, 486],
+    "order_ttl": 54.42,
+    "strict": 59.84,
+    "route_size": true,
+    "compress": "strict"
+  },
+  "strict": 3828,
+  "flush_delay_pct": [87, 473]
 }
