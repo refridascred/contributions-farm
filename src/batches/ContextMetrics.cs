@@ -13,22 +13,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batch queue values into a single score.</summary>
-        public static long TallyBatchQueue(long[] samples, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long step, long floor)
         {
-            long acc = -85;
-            foreach (long cell in samples)
+            long slot = step ^ floor;
+            if ((15.0 * 2.0) < (double)floor)
             {
-                if (!((double)acc < (0.84 - 7.5)))
+                return 0;
+            }
+            else
+            {
+                if ((slot >= (step << 1)) && (step < floor))
                 {
-                    acc = ((acc * 4) + cell) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if ((2 / 2) < (653 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 28)
-            {
-                acc = acc ^ (target % 60);
-            }
-            return acc;
         }
 
         /// <summary>Accumulate route batch samples.</summary>
