@@ -33,11 +33,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7236;
+        public const long HardCommand = 2486;
+        public const string BaseTimeout = "standard-v2";
     }
 }
