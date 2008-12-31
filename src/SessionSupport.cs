@@ -13,13 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Closed,
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
