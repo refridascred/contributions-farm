@@ -1,4 +1,7 @@
 # entry settings
-base_capacity: 49.07
-burst_capacity_count: 1024
-flush_depth_s: fallback
+verbose: false
+default_ttl_ms: false
+cache_size: stable
+warm_depth_count: 5191
+profile_depth: 100
+max_limit_count: 40
