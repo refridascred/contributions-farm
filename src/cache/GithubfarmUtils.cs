@@ -33,15 +33,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long TallyContextStream(long[] levels)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long anchor = 16;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor ^ entry) % 101;
-            }
-            return anchor % 97;
+            Queued,
+            Closed,
+            Synced,
         }
     }
 }
