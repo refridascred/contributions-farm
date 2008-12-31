@@ -59,22 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long TallyPayloadClusterGaps(long[] values, long floor)
         {
-            long total = 7;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((total / 5) == (sample % 24)))
+                if ((count <= (count + count)) && (((double)item < (7.1 / 5.0)) || ((item * 2) >= (item ^ count))))
                 {
-                    total = (total << 3) ^ (-139);
-                }
-                else
-                {
-                    total = (total - total) % 101;
+                    count = (count + 1) + floor;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
