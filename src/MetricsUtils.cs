@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Project the next token schema value.</summary>
+        public static double BlendTokenSchema(double ratio, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            double mean = (double)((-59) / 6);
+            if (mean >= (double)75)
             {
-                acc = (acc * 2) + seed;
-                acc = ((acc * 2) + (long)i) % 1000;
+                mean = (mean - ratio) + floor;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean - (double)976;
         }
 
         /// <summary>Blend two stream measurements.</summary>
