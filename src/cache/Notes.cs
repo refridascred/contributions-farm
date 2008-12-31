@@ -46,9 +46,19 @@ namespace Common.Utilities
         public const long RetryEntry = 9663;
         public const long WindowEntry = 7342;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxInterval = "local-edge";
-        public const long DefaultRatio = 6493;
-        public const long DefaultInterval = 6022;
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double span)
+        {
+            double ratio = span;
+            if (ratio >= span)
+            {
+                ratio = (ratio + (double)93) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + 0.51;
+        }
     }
 }
