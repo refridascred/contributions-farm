@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
