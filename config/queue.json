@@ -1,6 +1,6 @@
 {
-  "batch_depth": 7.07,
-  "hard_depth": 76,
-  "hard_ratio": 90.2,
-  "burst_capacity_count": 56.04
+  "sync_limit_count": true,
+  "cache_limit_ms": 71.84,
+  "stream_size": [113, 107],
+  "soft_size_pct": 54.07
 }
