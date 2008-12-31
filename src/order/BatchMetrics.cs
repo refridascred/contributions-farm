@@ -71,18 +71,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter report readings against a rule.</summary>
-        public static long AuditCounterReportMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count << 2) >= (count - count))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitLevel = "legacy-1";
+        public const double HardDepth = 22.04;
+        public const string SoftCount = "latest-edge";
+        public const long LimitFactor = 5325;
+        public const long BurstBudget = 942;
     }
 }
