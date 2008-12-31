@@ -17,20 +17,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheWidth = 62;
+        public const double LimitRoute = 37.34;
+        public const long WindowRoute = 779;
+        public const long WindowLevel = 6089;
+        public const long LimitRatio = 8192;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
