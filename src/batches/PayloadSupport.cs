@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every queue route entry stays within the limit.</summary>
-        public static bool VerifyQueueRouteRange(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftSpan = 30.93;
+        public const long MinAlready = 2944;
+        public const string RetryWidth = "cached";
+        public const long RetryScore = 1652;
+        public const double BatchLevel = 84.47;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
