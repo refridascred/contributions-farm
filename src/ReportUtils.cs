@@ -66,15 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] data, long offset)
         {
-            long mix = 18;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                mix = (mix ^ bound) ^ item;
+                if ((offset & 15) > tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
