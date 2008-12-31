@@ -17,18 +17,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long AuditProfileMetricHits(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches / 5) <= (long)data.Length)
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    matches = (matches + 3) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
