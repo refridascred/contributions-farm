@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] data, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)seen >= (3.2 - 2.5))
-                {
-                    seen = ((seen + 1) ^ value) + origin;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
