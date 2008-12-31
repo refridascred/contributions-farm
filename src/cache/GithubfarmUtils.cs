@@ -30,18 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics stats entries that pass the check.</summary>
-        public static long MeasureMetricsStatsMatches(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) == (reading + 55))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
