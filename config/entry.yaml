@@ -1,4 +1,7 @@
 # entry settings
-channel_capacity: true
-verbose: standard
-enabled: 71.97
+format_timeout: 60
+burst_interval_pct: open
+min_delay_pct: 500
+layout_interval: green
+flush_interval_count: 8.52
+soft_interval_pct: true
