@@ -13,12 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
