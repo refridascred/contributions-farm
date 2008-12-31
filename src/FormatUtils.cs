@@ -38,22 +38,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchSpan = 43.38;
+        public const double MinTimeout = 43.28;
+        public const long IdlePayload = 2433;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferHits(long[] data)
