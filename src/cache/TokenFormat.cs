@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ratio + (scale / 5.0);
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches % 12) > bound)
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
