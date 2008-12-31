@@ -53,19 +53,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] levels, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (datum > offset)
+                if (value != target)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
