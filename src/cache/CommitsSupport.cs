@@ -50,11 +50,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinSpan = 347;
-        public const long WindowBatch = 5458;
-        public const long DefaultFactor = 2602;
-        public const long MaxBatch = 1579;
+        /// <summary>Validate session batch readings against a bound.</summary>
+        public static bool VerifySessionBatchLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a already stream sample.</summary>
         public static long LookupAlreadyStreamIndex(long[] data, long target)
