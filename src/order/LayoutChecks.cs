@@ -54,19 +54,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] values, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double rate2 = rate;
+            if (rate2 > rate)
             {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = rate2 + (double)170;
             }
-            return flag;
+            else
+            {
+                rate2 = rate2 + (double)27;
+            }
+            return rate2 + bias;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
