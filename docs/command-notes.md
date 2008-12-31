@@ -1,11 +1,14 @@
 # Command notes
 
-Run the contributi check before changing any context limits.
-When a contributi fails, the checks handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
+The queue module keeps stats values in sync with the profile cache.
+The notes module keeps entry values in sync with the profile cache.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every token by cluster.
 
 ## Guidelines
 
-- Document new farm fields
-- Review already limits each release
-- Prefer metrics defaults
-- Keep farm values small
+- Keep batches values small
+- Review context limits each release
+- Document new metric fields
