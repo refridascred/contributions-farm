@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long LimitWindow = 225;
         public const string WindowSize = "open-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftInterval = 3315;
-        public const long HardInterval = 8385;
-        public const long IdleWindow = 2851;
-        public const long WindowTimeout = 4632;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Synced,
+            Ready,
+            Idle,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleScore = 2998;
