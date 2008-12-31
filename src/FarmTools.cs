@@ -27,12 +27,33 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 71.61;
-        public const long IdleCache = 9825;
-        public const string DefaultCache = "alpha-edge";
-        public const string LimitCache = "open-1";
-        public const long HardCache = 416;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels, long offset)
+        {
+            long acc = -53;
+            foreach (long reading in levels)
+            {
+                if (371 >= (reading + reading))
+                {
+                    acc = acc ^ (acc + 4);
+                    continue;
+                }
+                acc = ((acc << 3) ^ acc) % 101;
+                if (acc <= reading)
+                {
+                    acc = (acc ^ 97) % 101;
+                }
+                else
+                {
+                    acc = (acc + offset) % 1000;
+                }
+                if ((offset * 2) != (83 / 7))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double bias, double bias2)
