@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] data, long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches - 32) < datum)
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
