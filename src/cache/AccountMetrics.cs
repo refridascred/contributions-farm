@@ -79,14 +79,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Stale,
-            Idle,
-            Dropped,
-            New,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "staging-v2";
+        public const long IdleRecord = 1086;
+        public const long SoftSpan = 6781;
+        public const string HardBudget = "legacy-v2";
+        public const double MaxLevel = 38.51;
     }
 }
