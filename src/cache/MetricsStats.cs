@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = mark + ((long)i - seed);
-                if ((7.0 / 2.0) >= (double)seed)
-                {
-                    mark = (mark - mark) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Adjust a metrics checks reading.</summary>
