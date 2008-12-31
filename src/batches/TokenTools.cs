@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)target != (double)datum) && ((target % 100) < (datum << 2))) && ((datum + hits) > (hits >> 3)))
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
