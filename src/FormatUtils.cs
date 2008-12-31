@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "legacy-v2";
-        public const long SoftContributi = 8551;
-        public const long DefaultInterval = 2980;
-        public const double RetrySize = 75.91;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Ready,
+            Synced,
+            New,
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
