@@ -41,15 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
