@@ -59,18 +59,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] values)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((7.6 + 1.0) <= (double)matches) && ((double)sample == (double)3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
