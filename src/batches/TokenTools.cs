@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double bias2)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double mean = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean + bias2)) + (double)(long)i;
-            }
-            return mean + (bias - 3.0);
+            Paused,
+            Idle,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Project the next account channel value.</summary>
