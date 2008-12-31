@@ -72,17 +72,11 @@ namespace Common.Utilities
         public const long StepInterval = 2624;
         public const string BaseScore = "open";
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] samples, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
