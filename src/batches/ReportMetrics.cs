@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long acc = 666;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 3) + (limit + limit)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
+                acc = (acc * 3) + (reading % 97);
             }
-            return mix;
+            if (acc < 967)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a already header.</summary>
