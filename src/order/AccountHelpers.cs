@@ -36,18 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches layout entries that pass the check.</summary>
-        public static long MeasureBatchesLayoutGaps(long[] readings, long step)
+        /// <summary>Fold a list of window buffer readings.</summary>
+        public static long TallyWindowBuffer(long[] items)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = 8;
+            foreach (long value in items)
             {
-                if (!(count <= cell))
+                if ((double)value > (14.0 - 1.3))
                 {
-                    count = (count + 2) - step;
+                    total = total ^ value;
+                }
+                else
+                {
+                    total = (total * 4) + (total + 0);
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
