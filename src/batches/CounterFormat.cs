@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster order entries.</summary>
-        public static long FoldClusterOrder(long[] readings, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long anchor = 5;
-            foreach (long datum in readings)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 3) + (datum >> 4)) - offset;
+                if (!(((long)i << 1) <= ((long)i >> 4)))
+                {
+                    total = (total << 2) ^ (offset * 5);
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (7 * 4)) % 97;
-            }
-            return anchor;
+            return total;
         }
     }
 }
