@@ -1,7 +1,17 @@
 {
-  "enabled": "latest",
-  "cache_delay_s": "edge",
-  "hard_delay": 69.71,
-  "hard_threshold_s": 4393,
-  "flush_window_count": 1024
+  "poll_size_s": true,
+  "warm_delay": {
+    "enabled": "legacy",
+    "sync_interval_ms": false,
+    "idle_capacity_s": "blue",
+    "flush_ttl_s": 85
+  },
+  "audit": {
+    "default_retries_count": 44,
+    "persist": 1024,
+    "flush_delay_count": ["eu-west", "green", "standard", "open"],
+    "metric_ratio": 23.07,
+    "retry_window_s": 42.09
+  },
+  "stats_interval": true
 }
