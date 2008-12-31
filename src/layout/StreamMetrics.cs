@@ -32,22 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the route layout entries that pass the check.</summary>
-        public static long CountRouteLayoutHits(long[] levels, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((((tally % 16) >= (-2)) && ((tally / 9) < value)) && ((limit >> 4) < (limit + limit)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the account checks entries that pass the check.</summary>
