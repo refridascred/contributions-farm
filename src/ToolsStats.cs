@@ -63,10 +63,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 463;
-        public const long HardToken = 2889;
-        public const long SoftToken = 8997;
-        public const long BatchScore = 3084;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Active,
+            Stale,
+            Pending,
+            Queued,
+            Failed,
+        }
     }
 }
