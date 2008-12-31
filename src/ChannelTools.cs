@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] series)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((seen ^ datum) > datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
