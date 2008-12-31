@@ -59,18 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long TallyPayloadClusterGaps(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count <= (count + count)) && (((double)item < (7.1 / 5.0)) || ((item * 2) >= (item ^ count))))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 4638;
+        public const string StepStream = "alpha-1";
+        public const long MaxStream = 7160;
+        public const double StepBudget = 73.4;
     }
 }
