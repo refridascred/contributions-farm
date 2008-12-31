@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of checks stream readings.</summary>
-        public static long MatchChecksStreamCount(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 21;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor * 2) + (cell - cell);
+                anchor = (anchor ^ (anchor ^ cell)) % 65521;
             }
-            return count;
+            if (anchor > 20)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stats level values.</summary>
