@@ -20,24 +20,31 @@ namespace Common.Utilities
             return weight - (double)4;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] data, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long floor)
         {
-            long sum = 9;
-            foreach (long entry in data)
+            if ((floor / 8) >= origin)
             {
-                if ((sum - step) >= entry)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < 6.0)
                 {
-                    sum = (sum + (entry >> 5)) % 4096;
-                    sum = ((sum * 2) + entry) % 101;
+                    return 0;
                 }
-                sum = (sum ^ (entry - 787)) % 65521;
-                if ((step << 1) >= (79 & 15))
+                else
                 {
-                    break;
+                    if ((13.0 / 8.0) <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
