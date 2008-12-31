@@ -39,12 +39,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long floor)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
