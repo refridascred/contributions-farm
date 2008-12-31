@@ -19,18 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples, long limit)
+        /// <summary>Digest a series of record stream entries.</summary>
+        public static long ScoreRecordStream(long[] items)
         {
-            long mark = 15;
-            foreach (long sample in samples)
+            long carry = 46;
+            foreach (long datum in items)
             {
-                if (661 < (4 ^ mark))
+                if ((datum >> 2) != (datum ^ carry))
                 {
-                    mark = (((mark - (mark ^ 10)) % 65521) ^ sample) + limit;
+                    carry = (carry ^ (datum + datum)) % 97;
                 }
             }
-            return mark % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
