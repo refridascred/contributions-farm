@@ -23,14 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Ready,
-            Done,
+            double ratio2 = 1.3 - (double)77;
+            return (ratio2 - ratio) + floor;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
