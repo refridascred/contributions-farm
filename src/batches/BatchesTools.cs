@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 2222;
+        public const long WindowFactor = 1171;
+        public const long HardEditor = 3274;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] items)
