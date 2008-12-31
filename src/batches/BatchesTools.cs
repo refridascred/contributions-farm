@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 5698;
-        public const long BatchWidth = 9580;
-        public const string RetryCounter = "primary-edge";
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] levels, long offset)
