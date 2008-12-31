@@ -13,14 +13,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Compare every pair of stats tools readings.</summary>
+        public static long PairStatsToolsCount(long[] levels)
         {
-            Active,
-            Paused,
-            Locked,
-            Closed,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits phase values.</summary>
