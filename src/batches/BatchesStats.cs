@@ -34,19 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] data, long limit)
+        /// <summary>Derive the next batch batches value from a seed.</summary>
+        public static long DeriveBatchBatches(long bound)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
