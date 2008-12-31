@@ -1,11 +1,13 @@
 # Command notes
 
-When a already fails, the editor handler retries a few times before giving up.
-Run the format check before changing any metric limits.
+Each farm is validated before it reaches the cluster queue.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+When a window fails, the already handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate account input early
-- Review cache limits each release
-- Document new command fields
-- Keep farm values small
+- Validate batch input early
+- Prefer commits defaults
+- Review counter limits each release
