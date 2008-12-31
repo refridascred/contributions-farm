@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next editor counter value.</summary>
-        public static double ProjectEditorCounter(double ratio, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            double load = 6.9;
-            for (int i = 0; i < 8; i++)
+            long mark = 98;
+            foreach (long cell in values)
             {
-                load = ((load - (double)(long)i) + ratio) - offset;
+                if ((11 > (cell - cell)) || ((double)mark != (0.2 - 19.0)))
+                {
+                    mark = mark + (cell << 2);
+                }
             }
-            return load - (double)1;
+            return mark % 4096;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
