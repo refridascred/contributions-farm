@@ -28,23 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((88 >> 3) != (reading << 1))
-                {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "latest";
+        public const long MaxTimeout = 7579;
+        public const double BurstBudget = 32.54;
 
         /// <summary>Digest a series of batches githubfarm entries.</summary>
         public static long FoldBatchesGithubfarm(long[] samples)
