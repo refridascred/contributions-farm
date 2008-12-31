@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long IdleOrder = 6133;
         public const string MaxOrder = "local";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((1 - tally) >= (datum >> 5))
+                if (sample <= (matches + matches))
                 {
-                    tally = (tally + 3) + bound;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
