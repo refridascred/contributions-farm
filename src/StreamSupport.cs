@@ -13,14 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] series, long target)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Done,
-            Stale,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
