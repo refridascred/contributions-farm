@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 9466;
-        public const double HardScore = 82.73;
-        public const long MinFormat = 3517;
-        public const long StepFactor = 9706;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultDepth = "strict-1";
+        public const long MinRecord = 1418;
+        public const long SoftRecord = 7065;
+        public const long BatchSize = 502;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
