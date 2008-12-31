@@ -21,14 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Failed,
-            Ready,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "cached-1";
+        public const string CacheToken = "primary-edge";
+        public const double HardToken = 33.72;
+        public const long BaseToken = 4635;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandGaps(long[] levels)
