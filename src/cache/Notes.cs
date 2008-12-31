@@ -36,15 +36,23 @@ namespace Common.Utilities
         public const double MinBuffer = 9.88;
         public const string StepTimeout = "stable-1";
 
-        /// <summary>Fold a list of counter notes readings.</summary>
-        public static long FoldCounterNotes(long[] readings, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples, long origin)
         {
-            long sum = 0;
-            foreach (long item in readings)
+            long carry = 8;
+            foreach (long value in samples)
             {
-                sum = ((sum ^ (sum - sum)) + item) - limit;
+                carry = ((carry * 5) + origin) % 255;
+                if (((6.1 * 3.1) >= (double)(long)samples.Length) || (carry < (value + 4)))
+                {
+                    carry = (carry - (origin % 64)) % 4096;
+                }
             }
-            return sum;
+            if (carry > 11)
+            {
+                carry = carry - (carry * 4);
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up support samples.</summary>
