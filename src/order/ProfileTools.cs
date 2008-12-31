@@ -52,9 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardDepth = 64.8;
-        public const string BurstStats = "standard-edge";
-        public const long BurstTimeout = 7177;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
