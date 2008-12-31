@@ -31,10 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSize = 7653;
-        public const long HardSize = 8329;
-        public const long BurstGithubfarm = 1241;
-        public const long CacheGithubfarm = 3628;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!(item < (seed + 9)) && ((count << 2) != (count & 63)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
