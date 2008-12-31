@@ -1,4 +1,28 @@
 # entry settings
-metric_window: 34.98
-audit: green
-max_limit_pct: 60
+burst_limit: cached
+compress:
+  - strict
+  - staging
+cache_timeout_ms:
+  enabled: legacy
+  warm_interval:
+    - eu-west
+    - primary
+  command_size:
+    - 213
+    - 73
+  batches_interval: true
+  hard_retries:
+    githubfarm_timeout: 2333
+    batches_delay: primary
+    account_limit: blue
+    compress:
+      - 328
+      - 155
+      - 8
+      - 273
+  dry_run:
+    - stable
+    - stable
+    - eu-west
+verbose: 58
