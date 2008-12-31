@@ -41,15 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double bias)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 >= (7.97 * 1.8))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 + (14.0 / 8.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 - scale;
+            return hits;
         }
     }
 }
