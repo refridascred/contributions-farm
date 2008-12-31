@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Retry,
+            Queued,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define support limits and defaults.</summary>
