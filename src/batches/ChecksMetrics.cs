@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultSize = 81.44;
+        public const long SoftCounter = 1738;
+        public const double WindowBudget = 79.82;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] samples)
