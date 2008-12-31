@@ -1,8 +1,5 @@
 {
-  "poll_limit_count": [389, 332, 174, 78],
-  "report_timeout": [442, 387, 256],
-  "entry_interval": 1024,
-  "idle_capacity_s": 10,
-  "token_size": 8679,
-  "sync_ttl_ms": 97.57
+  "batch_delay_s": [139, 98],
+  "channel_interval": 46,
+  "burst_ttl": [230, 408, 494, 363]
 }
