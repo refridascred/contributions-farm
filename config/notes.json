@@ -1,5 +1,7 @@
 {
-  "batch_depth_pct": "legacy",
-  "persist": "legacy",
-  "verbose": 8696
+  "min_ratio_s": true,
+  "idle_threshold": 57.55,
+  "retry_capacity_pct": 94,
+  "compress": "green",
+  "max_ratio_count": true
 }
