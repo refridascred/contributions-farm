@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "alpha-1";
-        public const long MinCount = 6053;
-        public const string SoftDepth = "local-v2";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell + 0) != (2 / 2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] samples, long floor)
