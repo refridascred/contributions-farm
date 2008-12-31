@@ -30,15 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] readings, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings, long origin)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long sample in readings)
             {
-                if ((hits & 63) < (entry - entry))
+                if ((hits % 97) == (origin << 3))
                 {
-                    hits = (hits + 1) + bound;
+                    hits = (hits + 3) ^ sample;
                 }
             }
             return hits;
