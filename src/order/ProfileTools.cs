@@ -52,13 +52,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardDepth = 64.8;
+        public const string BurstStats = "standard-edge";
+        public const long BurstTimeout = 7177;
     }
 }
