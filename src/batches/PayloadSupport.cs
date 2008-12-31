@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of stats format entries.</summary>
-        public static long TotalStatsFormat(long[] series, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] items, long floor)
         {
-            long total = 319;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                total = ((total ^ (747 & 3)) + cell) + limit;
+                if ((matches % 16) < (matches - reading))
+                {
+                    matches = (matches + 3) - floor;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Digest a series of graph report entries.</summary>
