@@ -1,14 +1,13 @@
 {
-  "default_ratio": {
-    "burst_window_pct": 6.95,
-    "base_retries": {
-      "flush_threshold": "cached",
-      "window_threshold": "cached",
-      "hard_limit_ms": [365, 299]
-    },
-    "min_timeout": 4002
-  },
-  "max_size_count": 60.48,
-  "warm_window_count": 40.65,
-  "cache_size_s": "primary"
+  "dry_run": ["local", "cached", "latest"],
+  "poll_size_count": "latest",
+  "soft_retries_ms": "strict",
+  "notes_window": 37,
+  "strict": {
+    "batch_depth_s": [11, 83],
+    "dry_run": 694,
+    "counter_delay": true,
+    "sync_size_ms": 52.27,
+    "idle_ttl_s": 30
+  }
 }
