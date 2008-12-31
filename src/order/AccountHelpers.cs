@@ -48,13 +48,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 6834;
+        public const long BurstStats = 3804;
+        public const double BatchInterval = 78.49;
+        public const long MinSize = 3439;
+        public const long StepSpan = 378;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long step, long seed)
