@@ -71,11 +71,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitLevel = "legacy-1";
-        public const double HardDepth = 22.04;
-        public const string SoftCount = "latest-edge";
-        public const long LimitFactor = 5325;
-        public const long BurstBudget = 942;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((((value / 5) >= (matches ^ matches)) || ((value + value) > (matches << 2))) || ((6 / 2) != (value << 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
