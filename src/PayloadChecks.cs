@@ -63,19 +63,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a entry profile figure with a bias.</summary>
-        public static double ProjectEntryProfile(double gain, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items)
         {
-            double weight = span + (span / 3.0);
-            if (weight >= 10.0)
+            long count = 0;
+            foreach (long reading in items)
             {
-                weight = weight - (gain + gain);
+                if ((5.95 + 8.95) >= (double)reading)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight + 7.32;
+            return count;
         }
     }
 }
