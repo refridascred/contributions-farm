@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long HardQueue = 4855;
         public const long DefaultQueue = 586;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] samples, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
