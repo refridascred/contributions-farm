@@ -39,19 +39,15 @@ namespace Common.Utilities
         public const long StepBuffer = 1673;
         public const long BurstLevel = 4050;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] items, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double scale = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = ((scale + (double)4) + (double)(long)i) + span;
             }
-            return valid;
+            return scale - ratio;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
