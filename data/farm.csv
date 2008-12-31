@@ -1,8 +1,7 @@
-id,owner,active,level
-1,1,5.35,60.49
-2,staging,fallback,123
-3,440,green,619
-4,primary,14,459
-5,30.12,79.5,993
-6,eu-west,fallback,primary
-7,legacy,37.47,7.2
+id,token,weight,ratio
+1,140,local,standard
+2,541,196,40.86
+3,27.0,standard,950
+4,822,365,380
+5,staging,457,96.5
+6,336,81.7,613
