@@ -12,12 +12,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftSpan = 30.93;
-        public const long MinAlready = 2944;
-        public const string RetryWidth = "cached";
-        public const long RetryScore = 1652;
-        public const double BatchLevel = 84.47;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long seed)
+        {
+            if ((738 >> 1) >= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((7.1 - 0.19) < (double)seed) || (seed >= (step * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
