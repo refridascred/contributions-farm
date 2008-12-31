@@ -1,14 +1,14 @@
 # Command notes
 
-Use profile settings to tune how often notes data is refreshed.
-Use checks settings to tune how often cluster data is refreshed.
-When a record fails, the record handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
+Use counter settings to tune how often batches data is refreshed.
 
-Use schema settings to tune how often already data is refreshed.
-Keep stream and layout names short and lowercase.
+The cache module keeps record values in sync with the metrics cache.
+The window module keeps report values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new batch fields
-- Validate editor input early
-- Log every cache change
+- Document new farm fields
+- Log every notes change
+- Keep support values small
