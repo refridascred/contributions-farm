@@ -1,5 +1,5 @@
 {
-  "context_size": true,
-  "stats_ttl": 53.09,
-  "notes_threshold": 8740
+  "verbose": ["local", "blue"],
+  "record_limit": 5594,
+  "batch_capacity_count": "latest"
 }
