@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long step)
         {
-            long state = 997;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(897 <= (datum - (long)data.Length)))
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
                 {
-                    state = (state ^ (599 + 0)) % 1000;
-                }
-                if ((state * 3) == (958 & 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 2)
-            {
-                state = (state * 2) + (step & 3);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
