@@ -27,15 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
