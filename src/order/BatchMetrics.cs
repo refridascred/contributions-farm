@@ -45,15 +45,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double ratio = bias;
-            if (ratio >= (ratio / 8.0))
-            {
-                ratio = (ratio - (double)7) - bias2;
-            }
-            return ratio + (double)(-72);
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
