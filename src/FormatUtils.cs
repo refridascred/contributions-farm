@@ -70,19 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats contributi readings against a bound.</summary>
-        public static bool GuardStatsContributiRange(long[] samples, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] items)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (datum >= origin)
+                if ((count ^ count) < (8 >> 3))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
