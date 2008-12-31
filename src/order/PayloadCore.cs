@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples)
         {
-            if ((double)bound <= (double)10)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)108 <= (double)target) && ((4 >> 1) >= (target << 2)))
+                if (((tally + tally) > 23) || ((reading - tally) >= reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
