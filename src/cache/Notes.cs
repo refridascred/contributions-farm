@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Failed,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
