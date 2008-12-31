@@ -35,12 +35,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 5448;
-        public const long WindowWidth = 927;
-        public const long BaseRatio = 2237;
-        public const double WindowBudget = 48.15;
-        public const long HardDepth = 298;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long limit, long offset)
+        {
+            long step = limit - offset;
+            if (offset < (offset * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (double)4)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 9896;
