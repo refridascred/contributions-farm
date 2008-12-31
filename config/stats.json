@@ -1,8 +1,5 @@
 {
-  "default_depth_pct": 41.03,
-  "burst_window": true,
-  "farm_retries": "open",
-  "idle_capacity_s": true,
-  "retry_threshold": 8176,
-  "burst_depth_s": true
+  "persist": true,
+  "batch_threshold_count": false,
+  "sync_threshold_count": [394, 241, 282]
 }
