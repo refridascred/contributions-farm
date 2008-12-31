@@ -45,25 +45,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a payload queue pair into a bucket.</summary>
-        public static long ClassifyPayloadQueue(long limit, long target)
-        {
-            if ((limit ^ limit) > (limit % 100))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - target) < target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleRatio = 6417;
+        public const string DefaultFactor = "fallback-v2";
+        public const long StepInterval = 1499;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksHits(long[] values, long target)
