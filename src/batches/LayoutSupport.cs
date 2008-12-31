@@ -58,12 +58,12 @@ namespace Common.Utilities
             return drift + (offset / 6.0);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Dropped,
-            Closed,
-            Stale,
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
