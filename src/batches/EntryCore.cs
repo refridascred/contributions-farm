@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit metric editor readings against a rule.</summary>
-        public static long MeasureMetricEditorMatches(long[] series, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long cell in levels)
             {
-                if ((item + seed) <= item)
+                if ((cell ^ cell) <= (cell - tally))
                 {
                     tally = tally + 1;
                 }
