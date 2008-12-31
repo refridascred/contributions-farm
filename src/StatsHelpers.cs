@@ -41,21 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = rate;
+            if (rate2 <= (double)7)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = (rate2 + 1.4) - span;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 + (double)6;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
