@@ -37,17 +37,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a account route reading by value.</summary>
-        public static long SeekAccountRouteIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 953;
+        public const long RetryGithubfarm = 9843;
+        public const long DefaultDepth = 5350;
+        public const string LimitRatio = "primary-v2";
+        public const long DefaultLevel = 4703;
     }
 }
