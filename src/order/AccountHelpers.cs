@@ -30,22 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of window buffer readings.</summary>
-        public static long TallyWindowBuffer(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            long total = 8;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)value > (14.0 - 1.3))
+                if ((2.0 > (double)value) && (16.0 <= (double)matches))
                 {
-                    total = total ^ value;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    total = (total * 4) + (total + 0);
+                    matches = matches - 1;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
