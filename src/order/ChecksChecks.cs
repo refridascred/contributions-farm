@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit <= (3.78 - 13.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
