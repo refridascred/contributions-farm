@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a profile contributi counter forward.</summary>
-        public static long RollProfileContributi(long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix + (282 & 255)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout entries.</summary>
