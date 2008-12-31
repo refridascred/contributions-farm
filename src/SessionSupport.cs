@@ -13,11 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long origin, long limit)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long delta = origin - limit;
+            if (((origin / 3) < delta) && ((9 + 11) < delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit & 1) >= (limit >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit + origin) >= (779 % 24)) && ((origin + limit) > (origin - delta)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((delta + limit) >= (delta & 127)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
