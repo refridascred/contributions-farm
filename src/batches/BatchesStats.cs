@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double weight = rate * 0.4;
-            if (weight <= offset)
-            {
-                weight = weight + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (rate + offset)) + (double)(long)i;
-            }
-            return weight + (offset + weight);
+            Queued,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Digest a series of context entries.</summary>
