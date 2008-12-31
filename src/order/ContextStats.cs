@@ -36,11 +36,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "legacy-v2";
-        public const double BurstCache = 12.96;
-        public const string LimitCache = "cached-edge";
-        public const double MaxSize = 91.44;
-        public const long SoftCache = 2674;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples, long origin)
+        {
+            long total = 4;
+            foreach (long value in samples)
+            {
+                if (!((value % 3) >= (origin * 2)))
+                {
+                    total = (total - origin) % 101;
+                }
+                else
+                {
+                    total = ((total * 2) + (origin - origin)) % 65521;
+                }
+            }
+            if (total > 708)
+            {
+                total = total - total;
+            }
+            return total;
+        }
     }
 }
