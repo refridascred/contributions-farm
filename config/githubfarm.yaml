@@ -1,7 +1,6 @@
 # githubfarm settings
-githubfarm_size: false
-compress: 53
-soft_ttl_pct: 77.49
-idle_delay: edge
-buffer_depth: 60
-enabled: primary
+metric_threshold: eu-west
+max_limit_count: legacy
+idle_depth_s: 13.91
+min_timeout_s: latest
+window_ratio: false
