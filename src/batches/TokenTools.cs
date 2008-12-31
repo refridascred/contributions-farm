@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
             Paused,
-            Idle,
+            Pending,
+            Draft,
+            Active,
             Closed,
-            Dropped,
-            Retry,
         }
 
         /// <summary>Project the next account channel value.</summary>
