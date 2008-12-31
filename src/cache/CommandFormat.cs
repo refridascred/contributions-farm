@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank report format input into a small class.</summary>
-        public static long GradeReportFormat(long seed, long seed2)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] data)
         {
-            if ((seed ^ seed2) <= (seed - seed))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (62 > (seed2 * 2))
+                if (!((entry << 3) == (tally + 649)))
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
