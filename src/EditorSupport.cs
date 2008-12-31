@@ -23,38 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long step)
+        /// <summary>Look up the position of a batches schema sample.</summary>
+        public static long SeekBatchesSchemaIndex(long[] readings, long step)
         {
-            if ((offset << 2) < (offset - 38))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((1.96 + 9.2) <= (double)offset) && (step > (57 / 5)))
+                if (readings[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset - 7) >= offset) || ((offset % 24) > (34 + offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of payload counter readings.</summary>
