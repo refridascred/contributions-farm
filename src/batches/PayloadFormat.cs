@@ -42,18 +42,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings)
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long TotalBatchesCluster(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = 8;
+            foreach (long entry in items)
             {
-                if ((((tally % 5) <= (entry + entry)) || ((entry << 2) < tally)) || ((tally / 6) < tally))
+                if (((acc / 8) <= acc) && ((65 % 8) < (acc - entry)))
                 {
-                    tally = tally + 1;
+                    acc = (acc ^ (acc - entry)) % 4096;
+                }
+                if ((acc - acc) < 107)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc > 7)
+            {
+                acc = (acc + (857 - acc)) % 97;
+            }
+            return acc;
         }
     }
 }
