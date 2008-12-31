@@ -46,11 +46,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7879;
-        public const long HardInterval = 4972;
-        public const long SoftChecks = 6882;
-        public const double StepWidth = 74.43;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long seed)
+        {
+            if ((double)seed < (7.0 + 18.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 * 4) <= (target + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long step, long seed)
