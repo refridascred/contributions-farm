@@ -35,22 +35,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of channel tools entries.</summary>
-        public static long ScoreChannelTools(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mark = 90;
-            foreach (long entry in series)
-            {
-                if ((682 << 1) > entry)
-                {
-                    mark = (mark - (mark << 2)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ entry) % 255;
-                }
-            }
-            return mark % 65521;
+            Paused,
+            Stale,
+            Locked,
+            Draft,
+            Done,
         }
     }
 }
