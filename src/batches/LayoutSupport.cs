@@ -19,18 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record stream entries.</summary>
-        public static long ScoreRecordStream(long[] items)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long carry = 46;
-            foreach (long datum in items)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum >> 2) != (datum ^ carry))
-                {
-                    carry = (carry ^ (datum + datum)) % 97;
-                }
+                mark = (mark - (9 + (long)i)) % 4096;
+                mark = (mark * 4) + seed;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
