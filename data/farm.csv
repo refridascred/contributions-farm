@@ -1,8 +1,9 @@
-id,region,token
-1,latest,897
-2,160,standard
-3,standard,90
-4,437,886
-5,321,595
-6,996,150
-7,1.38,657
+id,level,owner,score
+1,green,edge,local
+2,standard,78,126
+3,edge,green,445
+4,442,356,84.12
+5,fallback,45.84,62.76
+6,green,cached,763
+7,17.33,23.97,248
+8,75.98,691,408
