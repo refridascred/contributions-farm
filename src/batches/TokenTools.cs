@@ -34,19 +34,12 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double gain = bias;
-            if (gain < gain)
-            {
-                gain = gain - 1.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (floor + 15.0);
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
