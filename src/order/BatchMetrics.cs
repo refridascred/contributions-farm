@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardCount = 42.0;
-        public const long BurstWidth = 9604;
-        public const long BaseLevel = 5634;
-        public const double RetryOrder = 96.34;
-        public const string CacheInterval = "open-edge";
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long AuditSessionLayoutGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum == (9.37 * 2.7))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
