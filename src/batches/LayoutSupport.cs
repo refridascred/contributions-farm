@@ -35,39 +35,19 @@ namespace Common.Utilities
         public const long StepBuffer = 1673;
         public const long BurstLevel = 4050;
 
-        /// <summary>Grade a command checks value against two limits.</summary>
-        public static long ClassifyCommandChecks(long step, long step2)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] items, long limit)
         {
-            long prev = step - step2;
-            if ((prev << 3) != (step - step))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (7.53 - 5.31))
+                if (value < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step < (step << 3)) || (9 >= (557 - prev)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((4.1 * 14.0) < (double)step2) && (step2 > (4 - prev)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
