@@ -48,22 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] items)
+        /// <summary>Derive the next tools format value from a seed.</summary>
+        public static long DeriveToolsFormat(long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((601 + item) <= (item - hits)) && (((3.66 - 2.5) >= (double)item) && ((8.3 - 2.9) < (double)item)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 4) + (seed - (long)i)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
