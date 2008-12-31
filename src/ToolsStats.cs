@@ -46,11 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftRatio = 1756;
-        public const long MinCount = 6320;
-        public const double DefaultSpan = 72.83;
-        public const long BaseLevel = 319;
+        /// <summary>Fold a list of window notes readings.</summary>
+        public static long CombineWindowNotes(long[] data)
+        {
+            long score = 38;
+            foreach (long sample in data)
+            {
+                score = (score - (524 * 2)) % 255;
+                score = (score * 5) + (sample % 10);
+            }
+            return score;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseToken = 463;
