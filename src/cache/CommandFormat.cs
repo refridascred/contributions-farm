@@ -45,15 +45,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8786;
         public const double HardTimeout = 88.24;
 
-        /// <summary>Adjust a record metric reading.</summary>
-        public static double AdjustRecordMetric(double weight, double floor)
+        /// <summary>Check that every report command entry stays within the limit.</summary>
+        public static bool ValidateReportCommandLimits(long[] readings, long target)
         {
-            double mean = (double)(617 << 3);
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                mean = ((mean + (double)94) - (double)(long)i) - floor;
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (weight * 2.0);
+            return found;
         }
     }
 }
