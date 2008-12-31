@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 231;
-        public const long SoftBatches = 1550;
-        public const string IdleBatches = "open";
-        public const long DefaultBatches = 8311;
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double weight, double floor)
+        {
+            double load = weight;
+            if (load >= (7.24 * 6.7))
+            {
+                load = load - (double)8;
+            }
+            else
+            {
+                load = load - (floor / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (floor + load);
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] levels, long offset)
