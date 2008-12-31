@@ -28,12 +28,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] values)
         {
-            Queued,
-            Idle,
-            Dropped,
+            long carry = 237;
+            foreach (long value in values)
+            {
+                carry = ((carry * 3) + value) % 101;
+            }
+            if (carry > (-13))
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token snapshot.</summary>
