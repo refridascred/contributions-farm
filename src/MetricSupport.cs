@@ -32,12 +32,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
+            Closed,
+            Synced,
             Pending,
-            Done,
-            Failed,
+            Dropped,
+            Queued,
         }
     }
 }
