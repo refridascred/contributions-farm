@@ -59,15 +59,13 @@ namespace Common.Utilities
         public const long HardSize = 7167;
         public const double CachePayload = 90.9;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
