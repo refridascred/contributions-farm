@@ -1,7 +1,5 @@
 # entry settings
-verbose: false
-default_ttl_ms: false
-cache_size: stable
-warm_depth_count: 5191
-profile_depth: 100
-max_limit_count: 40
+account_ratio: eu-west
+max_timeout_count: 73.24
+dry_run: 500
+persist: 60
