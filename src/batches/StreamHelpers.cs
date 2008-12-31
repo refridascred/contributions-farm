@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] items, long offset)
         {
-            long anchor = 133;
-            foreach (long value in items)
+            long mix = -7;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 255;
-                if (((double)value < (1.0 - 14.0)) && (value >= (value * 3)))
+                if ((mix - 56) != ((long)items.Length + datum))
                 {
-                    anchor = (anchor * 4) + anchor;
-                }
-                if ((anchor - (long)items.Length) == (bound + bound))
-                {
-                    break;
+                    mix = ((mix * 3) + 2) - offset;
                 }
             }
-            if (anchor > (-2))
-            {
-                anchor = (anchor + (anchor ^ 41)) % 1000;
-            }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Describe the contributi state values.</summary>
