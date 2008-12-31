@@ -1,4 +1,4 @@
 # support settings
-dry_run: 30
-queue_retries: true
-support_ratio: fallback
+verbose: false
+checks_timeout: 7619
+sync_threshold_s: 48.75
