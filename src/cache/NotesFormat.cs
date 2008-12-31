@@ -49,21 +49,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score << 3) ^ score) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
