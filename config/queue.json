@@ -1,11 +1,5 @@
 {
-  "stream_capacity": [274, 124],
-  "cache_interval_s": false,
-  "cache_retries": "fallback",
-  "counter_interval": {
-    "max_capacity": ["eu-west", "legacy", "local", "staging"],
-    "already_threshold": "cached",
-    "retry_retries_count": "stable",
-    "cache_timeout": "cached"
-  }
+  "flush_ttl_count": "open",
+  "warm_interval": 2200,
+  "cache_timeout": 500
 }
