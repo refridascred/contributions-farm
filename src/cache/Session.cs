@@ -42,11 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 4826;
-        public const long SoftSpan = 1861;
-        public const string LimitCache = "open";
-        public const string SoftBudget = "primary-v2";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item & 1) >= (273 % 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmHits(long[] series, long step)
