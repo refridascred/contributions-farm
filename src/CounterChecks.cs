@@ -64,18 +64,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double gain2 = (offset - offset) * 3.0;
+            if (gain2 > (gain2 - gain))
             {
-                if (matches <= (matches - entry))
-                {
-                    matches = matches + 2;
-                }
+                gain2 = gain2 + (9.0 + 9.84);
             }
-            return matches;
+            return gain2 - (5.68 / 8.0);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
