@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next buffer metric value from a seed.</summary>
-        public static long IterateBufferMetric(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mix << 2) > (9 & 63))
-                {
-                    mix = (mix - (mix * 2)) % 65521;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "stable";
+        public const string DefaultChecks = "alpha";
+        public const string BaseChecks = "staging-edge";
+        public const string IdleSpan = "latest-v2";
 
         /// <summary>Count the metric metrics entries that pass the check.</summary>
         public static long CountMetricMetricsGaps(long[] series, long step)
