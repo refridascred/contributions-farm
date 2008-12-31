@@ -54,17 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] data, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
