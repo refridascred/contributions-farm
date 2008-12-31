@@ -22,18 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] samples)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value + hits) > (value - value))
+                if (origin >= (long)i)
                 {
-                    hits = hits + 2;
+                    continue;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (origin * 4)) % 65521;
+                }
+                anchor = (anchor - (anchor + anchor)) % 255;
+                if ((origin % 24) < origin)
+                {
+                    anchor = (anchor ^ (anchor & 3)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
