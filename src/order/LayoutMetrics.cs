@@ -32,15 +32,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long TallyFormatAccount(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long limit)
         {
-            long state = 5;
-            foreach (long datum in items)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                state = ((state + ((long)items.Length / 6)) % 101) + datum;
+                total = (total - (total + total)) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (((total * 4) + (total & 3)) % 4096) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state % 4096;
+            return total;
         }
     }
 }
