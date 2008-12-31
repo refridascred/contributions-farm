@@ -1,6 +1,19 @@
 {
-  "compress": "strict",
-  "cache_interval_pct": [305, 230],
-  "retry_threshold": true,
-  "buffer_depth": true
+  "support_ratio": [308, 244, 113],
+  "warm_retries": {
+    "batch_ratio": false,
+    "readonly": false,
+    "default_delay_s": 7006,
+    "order_timeout": "primary",
+    "min_interval_count": {
+      "cache_limit_ms": 13,
+      "token_depth": 28,
+      "readonly": 1024
+    },
+    "warm_interval_ms": false
+  },
+  "strict": ["local", "legacy"],
+  "persist": 1024,
+  "batch_depth": 8475,
+  "cache_ttl": "blue"
 }
