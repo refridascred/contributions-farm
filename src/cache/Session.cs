@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long DefaultGraph = 6389;
         public const double MaxGraph = 24.45;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public double Score { get; set; }
+            double load = bias + (bias * 10.0);
+            if (load <= (bias * 5.99))
+            {
+                load = load + (bias2 * 1.0);
+            }
+            return load + bias2;
         }
 
         /// <summary>Derive the next buffer batch value from a seed.</summary>
