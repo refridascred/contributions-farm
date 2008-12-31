@@ -23,18 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] readings, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item << 1) != (item * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) - target;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
