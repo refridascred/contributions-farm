@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a stats channel pair into a bucket.</summary>
-        public static long RankStatsChannel(long offset, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long bound)
         {
-            if ((double)seed < (double)offset)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(offset >= (seed >> 2)))
+                if ((12.0 / 4.0) != (double)seen)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    seen = ((seen + 2) ^ item) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a counter stats.</summary>
