@@ -1,5 +1,16 @@
 {
-  "batch_ratio_pct": "staging",
-  "verbose": 30,
-  "record_delay": ["blue", "staging", "primary"]
+  "poll_delay": 100,
+  "soft_window_s": {
+    "poll_threshold_count": 50.95,
+    "strict": "strict",
+    "stats_window": 82.14,
+    "max_depth": 57.98,
+    "max_ratio_s": 63,
+    "burst_limit": {
+      "hard_delay_ms": 1167,
+      "compress": 1024,
+      "idle_ttl_count": true
+    }
+  },
+  "soft_size_count": "blue"
 }
