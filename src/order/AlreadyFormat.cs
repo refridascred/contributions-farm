@@ -49,15 +49,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm record readings.</summary>
-        public static long TallyFarmRecord(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long target, long seed)
         {
-            long total = 270;
-            foreach (long entry in items)
+            long prev = target - seed;
+            if ((seed + prev) > (prev / 4))
             {
-                total = (total ^ entry) % 255;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((target + 180) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev + target) == (target >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 7) < 42)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
