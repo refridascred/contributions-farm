@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a route contributi reading.</summary>
-        public static double SmoothRouteContributi(double weight, double floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            double scale = floor / 5.0;
-            for (int i = 0; i < 5; i++)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale - (scale - weight)) + (double)(long)i;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return scale + scale;
+            return acc;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
