@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double span)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double load = (double)31 + (double)256;
-            if (load <= load)
-            {
-                load = ((load + load) + bias) - span;
-            }
-            return load + 11.0;
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
