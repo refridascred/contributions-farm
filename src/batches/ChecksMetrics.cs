@@ -50,13 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            Draft,
-            Done,
-            Queued,
-            Pending,
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum * 5) + (long)i;
+                sum = ((sum * 4) + (sum - floor)) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
