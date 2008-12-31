@@ -12,6 +12,15 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in blue eu-west staging; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=265
+log "limit is ${CHANNEL_LIMIT}"
