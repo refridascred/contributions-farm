@@ -34,14 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long offset)
         {
-            Failed,
-            New,
-            Idle,
-            Paused,
-            Dropped,
+            long state = -184;
+            foreach (long value in data)
+            {
+                state = (((state - (613 % 12)) % 1000) ^ value) - offset;
+                if (((-869) << 3) >= (long)data.Length)
+                {
+                    state = (state - state) % 4096;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
