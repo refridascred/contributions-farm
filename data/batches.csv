@@ -1,7 +1,8 @@
-id,weight,state
-1,830,920
-2,777,legacy
-3,257,291
-4,863,38.37
-5,356,standard
-6,green,edge
+id,score,active
+1,cached,91.38
+2,537,932
+3,220,673
+4,93,576
+5,67.66,51.12
+6,92.0,primary
+7,63.62,70.98
