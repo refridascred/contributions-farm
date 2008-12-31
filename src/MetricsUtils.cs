@@ -55,13 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Draft,
             Stale,
-            Queued,
-            Dropped,
+            Failed,
+            Synced,
         }
     }
 }
