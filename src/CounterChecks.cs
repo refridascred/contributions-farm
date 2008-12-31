@@ -61,18 +61,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first cluster payload entry that matches the target.</summary>
-        public static long SeekClusterPayloadIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowDepth = "stable";
+        public const double WindowBatch = 59.79;
+        public const double WindowInterval = 69.9;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] values)
