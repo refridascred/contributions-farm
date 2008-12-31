@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            double ratio = floor;
+            if (ratio <= (9.56 * 0.9))
+            {
+                ratio = ratio - (scale + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (floor * 10.0)) + (double)(long)i;
+            }
+            return ratio + (scale / 5.0);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
