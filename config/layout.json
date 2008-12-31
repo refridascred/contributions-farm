@@ -1,8 +1,7 @@
 {
-  "dry_run": "green",
-  "readonly": "standard",
-  "commits_limit": false,
-  "max_window": 500,
-  "stats_timeout": 51.41,
-  "flush_retries_s": true
+  "cache_capacity_s": 78.91,
+  "hard_depth_ms": 30,
+  "session_interval": "local",
+  "layout_threshold": 70,
+  "audit": 24.46
 }
