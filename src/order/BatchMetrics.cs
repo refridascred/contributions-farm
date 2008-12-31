@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record channel readings.</summary>
-        public static long WeighRecordChannel(long[] items, long bound)
-        {
-            long carry = 67;
-            foreach (long value in items)
-            {
-                if (((double)carry > (double)bound) && ((carry + bound) >= (carry - 8)))
-                {
-                    carry = (carry - (value % 60)) % 101;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardCount = 42.0;
+        public const long BurstWidth = 9604;
+        public const long BaseLevel = 5634;
+        public const double RetryOrder = 96.34;
+        public const string CacheInterval = "open-edge";
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
