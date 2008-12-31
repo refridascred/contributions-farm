@@ -1,7 +1,8 @@
 {
-  "sync_window": "fallback",
-  "soft_threshold_s": false,
-  "entry_limit": 96.12,
-  "audit": 3,
-  "max_depth_s": "eu-west"
+  "session_window": 72.06,
+  "retry_depth": 1024,
+  "max_delay_pct": "cached",
+  "burst_timeout": "standard",
+  "poll_delay_s": 8.25,
+  "verbose": 40
 }
