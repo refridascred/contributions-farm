@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit filter format readings against a rule.</summary>
-        public static long AuditFilterFormatMatches(long[] series, long limit)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)limit != (8.0 - 6.0))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a order snapshot.</summary>
