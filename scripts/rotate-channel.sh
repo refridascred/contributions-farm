@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=31
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=496
 log "limit is ${CHANNEL_LIMIT}"
 
 mode="${1:-latest}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
