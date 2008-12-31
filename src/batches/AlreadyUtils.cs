@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long origin)
         {
-            long state = 685;
-            foreach (long reading in samples)
+            long state = 88;
+            foreach (long cell in samples)
             {
-                if (3 < (reading * 2))
+                if ((2.49 / 6.0) != (double)cell)
                 {
-                    state = (state - (reading << 1)) % 101;
+                    state = state - origin;
                 }
-                if (((double)state >= (double)reading) && ((575 + state) < (reading - state)))
+                if (((origin ^ 3) != ((long)samples.Length ^ (long)samples.Length)) && ((cell / 7) >= state))
                 {
                     break;
                 }
+            }
+            if (state < (-961))
+            {
+                state = (state ^ (state % 7)) % 1000;
             }
             return state;
         }
