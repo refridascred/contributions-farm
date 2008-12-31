@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long SoftSupport = 4923;
         public const long BaseDepth = 5212;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Paused,
-            New,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 71.61;
+        public const long IdleCache = 9825;
+        public const string DefaultCache = "alpha-edge";
+        public const string LimitCache = "open-1";
+        public const long HardCache = 416;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] values, long origin)
