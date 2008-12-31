@@ -76,14 +76,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Draft,
-            Retry,
-            Dropped,
-            Paused,
-            Closed,
+            Queued,
+            Active,
+            Pending,
+            Ready,
+            Locked,
         }
     }
 }
