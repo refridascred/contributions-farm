@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mean - (double)976;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                long diff = (-41) << 3;
-                if (64 >= diff)
-                {
-                    mark = ((mark * 4) + ((-231) + 40)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many channel schema samples are out of range.</summary>
