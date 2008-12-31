@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank contributi record input into a small class.</summary>
-        public static long RankContributiRecord(long step, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long floor)
         {
-            if ((step - origin) >= (29 / 2))
+            bool ready = true;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(origin < (origin - step)))
+                if (reading != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a account session value against two limits.</summary>
