@@ -1,12 +1,9 @@
 # entry settings
-compress: 39.6
-batch_ratio_s: true
-checks_limit:
-  - 429
-  - 414
-dry_run:
-  base_window_pct: false
-  max_depth: fallback
-  hard_limit_count: stable
-  format_depth: eu-west
-  sync_capacity: 60
+cache_depth_count:
+  poll_ratio_ms: staging
+  compress: local
+  min_limit: cached
+  base_threshold: 15.09
+  retry_timeout: edge
+base_window_s: green
+tools_ratio: blue
