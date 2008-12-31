@@ -34,39 +34,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Classify a already schema pair into a bucket.</summary>
-        public static long GradeAlreadySchema(long bound, long bound2)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            long bound3 = bound ^ bound2;
-            if ((double)bound2 == (3.97 / 3.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 97) != (7 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound3 <= bound2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((64 + bound3) > (bound - bound2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double rate = bias2;
+            return (rate - (rate + bias2)) + bias;
         }
 
         /// <summary>Rank command input into a small class.</summary>
