@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "latest-1";
-        public const long DefaultRoute = 1912;
-        public const long BatchRoute = 4688;
-        public const long LimitRoute = 8591;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] data, long target)
