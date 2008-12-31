@@ -48,12 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] values, long limit)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
