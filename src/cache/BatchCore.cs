@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long LimitBudget = 1298;
         public const long LimitToken = 5988;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
