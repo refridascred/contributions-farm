@@ -40,17 +40,26 @@ namespace Common.Utilities
         public const long IdleBatch = 9921;
         public const long MaxBatch = 6209;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 9;
+            foreach (long sample in levels)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
+                if (acc <= (sample - 2))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (sample & 127);
+                }
+                if (((double)sample < 9.3) || (sample >= (sample - acc)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 89)
+            {
+                acc = ((acc * 4) + acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
