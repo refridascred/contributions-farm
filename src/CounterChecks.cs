@@ -55,22 +55,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] items, long target)
+        /// <summary>Find the first cluster payload entry that matches the target.</summary>
+        public static long SeekClusterPayloadIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target / 5) <= (item + seen))
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
