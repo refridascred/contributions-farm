@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up order command samples.</summary>
-        public static long CompareOrderCommandCount(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 70;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)bound >= (double)item))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 2) ^ bound) % 1000;
+                }
+                if (((bound - bound) <= mark) || (bound >= 12))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
