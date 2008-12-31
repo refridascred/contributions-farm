@@ -14,17 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                if (!(((double)cell != (4.1 - 1.44)) || ((double)count >= (18.0 + 7.0))))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
