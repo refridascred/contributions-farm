@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record context entry stays within the limit.</summary>
-        public static bool ValidateRecordContextRange(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftRatio = 7659;
+        public const long DefaultDepth = 7408;
+        public const long MinSpan = 7335;
+        public const long MaxBuffer = 5012;
+        public const long WindowBuffer = 2157;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long seed)
