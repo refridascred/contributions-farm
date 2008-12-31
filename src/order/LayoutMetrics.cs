@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a buffer batches counter forward.</summary>
-        public static long SeriesBufferBatches(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((525 % 8) > ((long)i & 31))
-                {
-                    score = ((score << 3) ^ (-2)) % 4096;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "fallback-v2";
+        public const long HardInterval = 9307;
+        public const long IdleRatio = 8510;
+        public const long IdleChecks = 2411;
+        public const string BurstSpan = "alpha-v2";
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long limit)
