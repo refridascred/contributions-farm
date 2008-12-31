@@ -1,12 +1,7 @@
 {
-  "report_window": 88.8,
-  "warm_delay_count": 39.34,
-  "githubfarm_window": false,
-  "base_ratio_count": {
-    "burst_window_s": 48.22,
-    "burst_capacity_s": "blue",
-    "entry_depth": 1.44,
-    "retry_timeout_pct": "standard",
-    "hard_threshold_s": "fallback"
-  }
+  "filter_ratio": true,
+  "soft_ratio_s": "edge",
+  "verbose": 17,
+  "soft_interval_count": 7404,
+  "strict": 80.62
 }
