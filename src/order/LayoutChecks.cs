@@ -40,11 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            long sum = 934;
+            foreach (long value in samples)
+            {
+                if (sum <= bound)
+                {
+                    sum = ((sum * 2) + (long)samples.Length) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ value) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
