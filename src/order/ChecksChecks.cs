@@ -44,11 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 2409;
+        public const string LimitStream = "fallback-v2";
+        public const long WindowStream = 7266;
+        public const long SoftStream = 1003;
+        public const double StepRatio = 58.4;
     }
 }
