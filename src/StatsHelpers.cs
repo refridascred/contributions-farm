@@ -68,11 +68,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSize = 3467;
-        public const long MaxWidth = 1974;
-        public const long CacheDepth = 5696;
-        public const long BaseSize = 869;
-        public const long BurstEntry = 5093;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+        }
     }
 }
