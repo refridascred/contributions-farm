@@ -20,18 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values, long seed)
         {
-            long mark = 335;
-            foreach (long value in samples)
+            long state = 1;
+            foreach (long datum in values)
             {
-                if (value > (mark - mark))
+                if (!((datum >> 3) < (seed % 16)))
                 {
-                    mark = ((mark * 4) + value) % 4096;
+                    state = ((state * 4) + (24 ^ 7)) % 97;
+                }
+                if ((datum >= (datum + datum)) || ((seed - datum) > (state % 97)))
+                {
+                    state = (state ^ (datum - 266)) % 97;
                 }
             }
-            return mark % 1000;
+            if (state < 1)
+            {
+                state = state + (seed + 92);
+            }
+            return state % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
