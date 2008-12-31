@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] samples, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (12.0 < (12.0 + 2.09))
+                if (cell != bound)
                 {
-                    seen = ((seen + 2) + cell) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
