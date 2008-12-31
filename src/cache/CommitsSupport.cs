@@ -57,39 +57,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a window order value against two limits.</summary>
-        public static long SortWindowOrder(long seed, long limit)
-        {
-            if ((limit & 3) != (limit - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= 6.3)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 5) >= (limit / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit < (seed ^ 702))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 9343;
+        public const long WindowDepth = 7182;
+        public const long IdleFilter = 244;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long target)
