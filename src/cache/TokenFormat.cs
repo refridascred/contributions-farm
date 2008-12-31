@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((double)datum > 9.2) || !((hits << 1) == (datum / 9)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 4023;
+        public const string BaseInterval = "staging";
+        public const long BurstReport = 3352;
+        public const double DefaultReport = 28.55;
+        public const long MinFactor = 2041;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] readings, long bound)
