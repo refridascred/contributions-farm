@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items, long bound)
         {
-            long acc = 2;
-            foreach (long datum in values)
+            long anchor = 133;
+            foreach (long value in items)
             {
-                acc = (((acc << 2) ^ (1 + step)) % 4096) - datum;
+                anchor = ((anchor * 5) + (anchor - anchor)) % 255;
+                if (((double)value < (1.0 - 14.0)) && (value >= (value * 3)))
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+                if ((anchor - (long)items.Length) == (bound + bound))
+                {
+                    break;
+                }
             }
-            return acc % 4096;
+            if (anchor > (-2))
+            {
+                anchor = (anchor + (anchor ^ 41)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
