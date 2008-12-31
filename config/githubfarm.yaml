@@ -1,15 +1,8 @@
 # githubfarm settings
-queue_ttl:
-  - standard
-  - edge
-  - cached
-  - edge
-min_depth:
-  - edge
-  - stable
-  - cached
-  - standard
-batch_retries_count: strict
-cache_delay_ms: 93.81
-metric_capacity: 30
-entry_window: strict
+channel_interval:
+  - 110
+  - 222
+  - 203
+  - 380
+min_capacity_count: open
+audit: 500
