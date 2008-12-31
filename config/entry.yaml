@@ -1,19 +1,20 @@
 # entry settings
-account_window: cached
-profile_timeout: true
 dry_run:
-  idle_depth_count: stable
-  audit:
-    - 384
-    - 289
-    - 101
-    - 292
-  soft_ttl: blue
-  hard_ttl_pct:
-    - 208
-    - 454
-    - 484
-    - 405
-  warm_capacity_ms: false
-  flush_delay: true
-token_limit: cached
+  - strict
+  - local
+  - blue
+persist: 250
+default_capacity_count: 7314
+route_depth:
+  sync_limit: false
+  max_threshold_s: standard
+  context_ttl: 8
+  strict: cached
+  persist:
+    poll_capacity: 96.92
+    metric_interval: primary
+    tools_delay:
+      - latest
+      - strict
+    persist: true
+  base_threshold: fallback
