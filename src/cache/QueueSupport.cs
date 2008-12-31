@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Combine session format values into a single score.</summary>
+        public static long FoldSessionFormat(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -975;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result << 3) ^ (0 ^ 3)) + entry;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the format state values.</summary>
