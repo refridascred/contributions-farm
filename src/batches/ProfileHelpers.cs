@@ -56,15 +56,12 @@ namespace Common.Utilities
         public const long IdleEditor = 779;
         public const long BatchEditor = 61;
 
-        /// <summary>Blend two payload already measurements.</summary>
-        public static double ScalePayloadAlready(double gain, double floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double load = (double)(32 - 3);
-            if (load > (gain + 5.18))
-            {
-                load = (load - gain) - floor;
-            }
-            return load + 8.52;
+            New,
+            Stale,
+            Draft,
         }
     }
 }
