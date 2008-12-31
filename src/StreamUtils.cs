@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next order token value from a seed.</summary>
-        public static long IterateOrderToken(long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((origin + total) >= (origin + (-3)))
-                {
-                    total = ((total << 2) ^ origin) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Retry,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Project the next already value.</summary>
