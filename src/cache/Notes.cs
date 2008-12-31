@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a contributi commits value against two limits.</summary>
-        public static long BucketContributiCommits(long origin, long step)
-        {
-            if (((double)origin > (double)step) || ((step + origin) <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + step) != (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step << 2) > 82)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin < ((-1) % 64))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 37.8;
+        public const long CacheSession = 3295;
+        public const double MaxDepth = 80.7;
+        public const long LimitSession = 9854;
+        public const long WindowWidth = 3653;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
