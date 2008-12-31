@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long MinSpan = 5756;
         public const long CacheSchema = 3133;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ entry) >= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 95.6;
+        public const long SoftTimeout = 2261;
+        public const long IdleMetrics = 2754;
+        public const long MinMetrics = 1752;
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
         public static long TotalSupportGithubfarm(long[] series)
