@@ -1,8 +1,6 @@
 {
-  "poll_ttl_count": 13.37,
-  "base_capacity": true,
-  "strict": "cached",
-  "flush_limit_pct": "fallback",
-  "cache_interval_s": 38.85,
-  "enabled": 1311
+  "sync_timeout_pct": "strict",
+  "strict": "stable",
+  "farm_ttl": [154, 385, 199, 476],
+  "batch_interval": 500
 }
