@@ -19,32 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] samples)
         {
-            long bound = target ^ offset;
-            if ((double)target >= (5.5 / 5.0))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((708 < target) && ((bound - bound) <= (offset << 2)))
+                if ((item - hits) >= (item + item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= 4)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
