@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] values, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((((long)values.Length >= 5) && (floor > (102 + 0))) || (((floor << 3) > (floor >> 3)) && (floor > (floor - value))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
