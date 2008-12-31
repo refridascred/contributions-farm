@@ -37,21 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Grade a already channel value against two limits.</summary>
+        public static long SortAlreadyChannel(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = step + limit;
+            if ((cur * 4) >= (cur + limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit / 7) == (52 - cur))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
