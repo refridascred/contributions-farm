@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] readings, long floor)
+        /// <summary>Roll a filter session counter forward.</summary>
+        public static long RollFilterSession(long target)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                result = result + target;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
