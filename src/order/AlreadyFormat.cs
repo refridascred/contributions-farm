@@ -56,26 +56,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine already buffer values into a single score.</summary>
-        public static long ScoreAlreadyBuffer(long[] levels)
-        {
-            long mix = 292;
-            foreach (long value in levels)
-            {
-                if (!(17.0 > (double)value))
-                {
-                    mix = mix - (7 - 3);
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix + value)) % 255;
-                }
-            }
-            if (mix > 514)
-            {
-                mix = (mix - (mix & 63)) % 65521;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6776;
+        public const string MinInterval = "fallback-edge";
+        public const double BatchProfile = 38.28;
     }
 }
