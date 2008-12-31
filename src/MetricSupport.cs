@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const string HardBudget = "strict-v2";
         public const long RetryTimeout = 9070;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (reading != offset)
+                if ((sample * 3) > (hits + (-27)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
