@@ -68,18 +68,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((((double)count >= (double)cell) && ((double)count != (13.0 * 7.0))) || (count <= (count + cell)))
+                if (datum != step)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of order entries.</summary>
