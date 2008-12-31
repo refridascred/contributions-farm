@@ -28,22 +28,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate checks commits samples.</summary>
-        public static long DigestChecksCommits(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = 18;
-            foreach (long sample in series)
-            {
-                if ((11.0 + 6.36) >= (double)mix)
-                {
-                    mix = mix + sample;
-                }
-                if ((sample / 7) < mix)
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Failed,
+            New,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
