@@ -38,12 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepFactor = 7.82;
-        public const double StepAlready = 13.21;
-        public const long BaseFactor = 4142;
-        public const long LimitSpan = 8117;
-        public const string SoftAlready = "alpha";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstBudget = 98.04;
