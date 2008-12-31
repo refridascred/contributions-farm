@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long TallyPayloadRecordOutliers(long[] levels, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - step) > (79 * 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
