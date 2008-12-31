@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] readings, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((sample > (count & 31)) || ((double)sample <= (double)count))
+                if (((4 + entry) < (offset >> 1)) || !((double)entry > 8.91))
                 {
-                    count = (count + 3) + offset;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
