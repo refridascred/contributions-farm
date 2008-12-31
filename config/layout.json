@@ -1,10 +1,6 @@
 {
-  "warm_depth_pct": 30,
-  "filter_limit": "stable",
-  "soft_depth": {
-    "max_size": true,
-    "persist": "stable",
-    "compress": [408, 142]
-  },
-  "idle_delay": "edge"
+  "min_retries": "eu-west",
+  "soft_retries_s": "green",
+  "editor_limit": [379, 50],
+  "burst_window_count": true
 }
