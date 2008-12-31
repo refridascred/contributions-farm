@@ -43,11 +43,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
