@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stream channel samples are out of range.</summary>
-        public static long MeasureStreamChannelGaps(long[] values)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= (16.0 - 18.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a route reading.</summary>
