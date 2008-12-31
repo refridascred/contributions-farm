@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit token cluster readings against a rule.</summary>
-        public static long AuditTokenClusterMatches(long[] readings, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((tally >> 1) != (reading / 8))
+                if (sample <= bound)
                 {
-                    tally = (tally + 2) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
