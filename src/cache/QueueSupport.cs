@@ -34,39 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] levels, long seed)
         {
-            long bound = target ^ seed;
-            if (!((target << 1) == (seed ^ seed)))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target < (double)seed)
+                if (datum > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target << 2) == (seed << 2)) || ((target + seed) >= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound << 1) >= (target * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
