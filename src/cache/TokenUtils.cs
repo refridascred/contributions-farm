@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
+            Active,
             Idle,
-            Failed,
+            Stale,
+            Dropped,
             Done,
-            Retry,
-            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
