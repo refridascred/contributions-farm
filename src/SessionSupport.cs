@@ -40,19 +40,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every commits payload entry stays within the limit.</summary>
-        public static bool ValidateCommitsPayloadLimits(long[] series, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long state = 0;
+            foreach (long cell in data)
             {
-                if (cell < offset)
+                if ((cell > (cell + cell)) || ((1.6 * 2.0) > (double)cell))
                 {
-                    found = false;
-                    break;
+                    state = (state ^ (state + state)) % 65521;
+                    state = (state - (state - 0)) % 4096;
+                    continue;
                 }
+                state = (state << 2) ^ state;
             }
-            return found;
+            if (state > 578)
+            {
+                state = (state + (state + state)) % 65521;
+            }
+            return state;
         }
     }
 }
