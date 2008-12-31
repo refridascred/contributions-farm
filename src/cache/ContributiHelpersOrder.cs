@@ -25,24 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double bias, double span)
         {
-            if ((origin + origin) <= (origin * 2))
+            double drift = bias - (bias - span);
+            if (drift <= (1.7 / 6.0))
             {
-                return 5;
+                drift = drift - 5.0;
             }
-            else
-            {
-                if ((6.21 * 6.29) == (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return drift - (20.0 + span);
         }
     }
 }
