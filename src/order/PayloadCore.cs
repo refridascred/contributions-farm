@@ -50,10 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardFactor = 8182;
-        public const long MinScore = 823;
-        public const long StepScore = 227;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long offset)
+        {
+            long cur = floor ^ offset;
+            if ((94 * 5) > (cur * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((106 << 3) < (floor % 60)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] series)
