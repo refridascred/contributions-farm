@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            Done,
+            Draft,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
