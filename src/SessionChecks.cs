@@ -19,19 +19,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double weight = bias;
-            if (weight >= (weight * 5.0))
-            {
-                weight = (weight - weight) - offset;
-            }
-            else
-            {
-                weight = weight + 19.0;
-            }
-            return weight + (double)5;
+            Draft,
+            Stale,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Match up contributi samples.</summary>
