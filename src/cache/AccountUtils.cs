@@ -26,18 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value - matches) == (74 ^ matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
