@@ -45,21 +45,20 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Match up already payload samples.</summary>
-        public static long CompareAlreadyPayloadCount(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result + step) % 65521;
+                if (!((5.3 / 4.0) <= (double)(long)i))
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result ^ 885;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
