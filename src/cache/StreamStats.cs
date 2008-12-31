@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (17.0 >= (double)hits)
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Failed,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
