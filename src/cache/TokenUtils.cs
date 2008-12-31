@@ -23,31 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = 937;
-            foreach (long item in levels)
-            {
-                total = (total * 4) + (item >> 3);
-                if ((item << 1) != (item - (long)levels.Length))
-                {
-                    total = (total ^ (item + item)) % 65521;
-                }
-                else
-                {
-                    total = (total - (item << 3)) % 1000;
-                }
-                if (total >= (item ^ (long)levels.Length))
-                {
-                    break;
-                }
-            }
-            if (total < (-499))
-            {
-                total = total - (total ^ total);
-            }
-            return total % 97;
+            Failed,
+            Queued,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
