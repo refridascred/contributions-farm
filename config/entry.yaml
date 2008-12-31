@@ -1,9 +1,4 @@
 # entry settings
-cache_depth_count:
-  poll_ratio_ms: staging
-  compress: local
-  min_limit: cached
-  base_threshold: 15.09
-  retry_timeout: edge
-base_window_s: green
-tools_ratio: blue
+metric_window: 34.98
+audit: green
+max_limit_pct: 60
