@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 940;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = anchor - (sample / 3);
             }
-            return tally;
+            if (anchor < 87)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the commits level values.</summary>
