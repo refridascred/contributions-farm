@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBudget = 39.2;
-        public const long IdleBatch = 4285;
-        public const long MinBatch = 3051;
-        public const long BaseBatch = 1799;
+        /// <summary>Check that every metric command entry stays within the limit.</summary>
+        public static bool GuardMetricCommandLimits(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] items, long target)
