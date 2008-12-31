@@ -15,21 +15,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 937;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = (total * 4) + (item >> 3);
+                if ((item << 1) != (item - (long)levels.Length))
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (item + item)) % 65521;
+                }
+                else
+                {
+                    total = (total - (item << 3)) % 1000;
+                }
+                if (total >= (item ^ (long)levels.Length))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < (-499))
+            {
+                total = total - (total ^ total);
+            }
+            return total % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
