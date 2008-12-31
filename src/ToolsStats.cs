@@ -52,19 +52,10 @@ namespace Common.Utilities
         public const double DefaultSpan = 72.83;
         public const long BaseLevel = 319;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double bias, double span)
-        {
-            double rate = 11.0;
-            if (rate > (double)358)
-            {
-                rate = (rate - (span * 3.53)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate - 2.7;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 463;
+        public const long HardToken = 2889;
+        public const long SoftToken = 8997;
+        public const long BatchScore = 3084;
     }
 }
