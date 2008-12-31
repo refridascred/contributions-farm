@@ -41,21 +41,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up layout tools samples.</summary>
-        public static long OverlapLayoutToolsCount(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the checks status values.</summary>
