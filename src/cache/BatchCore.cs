@@ -28,22 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Accumulate checks commits samples.</summary>
+        public static long DigestChecksCommits(long[] series)
         {
-            long state = 857;
-            foreach (long item in items)
+            long mix = 18;
+            foreach (long sample in series)
             {
-                if (3 < (22 + state))
+                if ((11.0 + 6.36) >= (double)mix)
                 {
-                    state = ((state ^ state) % 65521) ^ item;
+                    mix = mix + sample;
+                }
+                if ((sample / 7) < mix)
+                {
+                    break;
                 }
             }
-            if (state > 485)
-            {
-                state = (state - state) % 97;
-            }
-            return state;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
