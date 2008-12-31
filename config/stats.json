@@ -1,8 +1,6 @@
 {
-  "idle_ttl_s": 250,
-  "channel_ratio": "latest",
-  "stream_capacity": "open",
-  "payload_interval": 8565,
-  "idle_window_s": ["open", "stable"],
-  "hard_ttl": 52
+  "token_interval": false,
+  "retry_window_count": 1024,
+  "soft_size_pct": 66.79,
+  "cache_depth": "primary"
 }
