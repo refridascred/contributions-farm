@@ -63,12 +63,12 @@ namespace Common.Utilities
         public const long IdleEditor = 779;
         public const long BatchEditor = 61;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            New,
-            Stale,
-            Draft,
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
