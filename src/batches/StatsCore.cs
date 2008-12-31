@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string HardPayload = "strict";
         public const long RetryPayload = 5606;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] readings, long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading + 7) <= seed) || ((seed + reading) == (reading << 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the window level values.</summary>
