@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 7579;
         public const double BurstBudget = 32.54;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long acc = 6;
+            foreach (long item in items)
+            {
+                if ((acc / 8) >= (68 / 5))
+                {
+                    acc = (((acc * 5) + (item * 3)) % 255) - origin;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
