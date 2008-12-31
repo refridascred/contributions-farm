@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > bound)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
