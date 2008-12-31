@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a stats notes reading.</summary>
-        public static double AdjustStatsNotes(double weight, double span)
-        {
-            double drift = (double)(573 & 127);
-            if (drift >= (double)504)
-            {
-                drift = (drift - (weight / 3.0)) + span;
-            }
-            return drift - (weight * 7.4);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftBudget = 40.94;
+        public const long DefaultTimeout = 4369;
+        public const double BatchOrder = 60.92;
 
         /// <summary>Roll a buffer batches counter forward.</summary>
         public static long SeriesBufferBatches(long origin)
