@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const long SoftDepth = 1505;
         public const long DefaultGraph = 2430;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] values, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long target, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((target ^ origin) <= (origin >> 3))
             {
-                if ((seen < (cell - cell)) || ((seed - cell) != (3 ^ seed)))
+                return 7;
+            }
+            else
+            {
+                if (!((double)origin != (1.8 * 4.51)))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target > 11.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
