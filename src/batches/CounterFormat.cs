@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long delta = offset + seed;
-            if (4.0 > (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (delta % 24))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
