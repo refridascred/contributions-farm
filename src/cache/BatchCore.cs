@@ -25,12 +25,23 @@ namespace Common.Utilities
         public const long LimitBudget = 1298;
         public const long LimitToken = 5988;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            Pending,
-            Retry,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((result + (long)i) > (target % 12))
+                {
+                    result = (result - (result << 1)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 4) + (result & 15)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Roll a record counter forward.</summary>
