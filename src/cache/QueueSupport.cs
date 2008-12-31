@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long origin)
         {
-            if ((6.69 * 6.4) == (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (15 >= origin)
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
