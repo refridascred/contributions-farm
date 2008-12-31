@@ -32,22 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long TallyClusterMetricsGaps(long[] readings, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)count > (double)floor)
+                if ((6.3 + 3.0) > (double)reading)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
