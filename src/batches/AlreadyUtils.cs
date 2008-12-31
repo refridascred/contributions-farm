@@ -34,12 +34,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values, long step)
         {
-            Locked,
-            Retry,
-            Idle,
+            long sum = -1;
+            foreach (long value in values)
+            {
+                if ((4.8 / 9.0) < (double)sum)
+                {
+                    sum = (sum << 3) ^ (value >> 5);
+                }
+                else
+                {
+                    sum = (sum * 3) + (sum + step);
+                }
+            }
+            if (sum > (-55))
+            {
+                sum = ((sum << 3) ^ (step + sum)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
