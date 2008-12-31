@@ -24,19 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long limit)
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool GuardWindowSchemaBounds(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (reading <= limit)
+                if (datum < origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the queue mode values.</summary>
