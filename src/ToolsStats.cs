@@ -36,17 +36,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] <= bound)
+                if ((double)5 >= (double)floor)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
