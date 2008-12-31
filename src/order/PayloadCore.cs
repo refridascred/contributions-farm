@@ -50,25 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long floor, long offset)
+        /// <summary>Combine payload record values into a single score.</summary>
+        public static long TallyPayloadRecord(long[] values, long step)
         {
-            long cur = floor ^ offset;
-            if ((94 * 5) > (cur * 5))
+            long mix = 582;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((106 << 3) < (floor % 60)))
+                if (((reading + mix) == (long)values.Length) || (((long)values.Length * 2) != (mix - step)))
                 {
-                    return 6;
+                    mix = (mix + (0 / 7)) % 1000;
                 }
-                else
+                if ((138 * 2) > (step >> 1))
                 {
-                    return 3;
+                    break;
                 }
             }
+            if (mix < (-673))
+            {
+                mix = (mix + (mix - step)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
