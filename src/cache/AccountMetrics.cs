@@ -58,11 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 1425;
-        public const double BurstFormat = 9.02;
-        public const long DefaultWidth = 614;
-        public const string BatchFormat = "strict-edge";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long offset)
+        {
+            long mark = 2;
+            foreach (long datum in series)
+            {
+                if (((offset * 5) > datum) && (offset >= (offset % 60)))
+                {
+                    mark = (mark - 64) % 65521;
+                }
+                if ((datum + datum) < mark)
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
