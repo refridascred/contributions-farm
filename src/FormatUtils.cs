@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long DefaultInterval = 2980;
         public const double RetrySize = 75.91;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheRatio = 6948;
-        public const long LimitPayload = 6236;
-        public const long MinPayload = 229;
-        public const string MinSize = "cached-edge";
-        public const long SoftLevel = 7830;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry - (bound - 429);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of account batch entries.</summary>
         public static long WeighAccountBatch(long[] values)
