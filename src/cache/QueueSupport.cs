@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long origin)
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long DigestChecksToken(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long total = 9;
+            foreach (long cell in levels)
             {
-                if (value < origin)
+                total = ((total ^ (total ^ 7)) % 4096) + cell;
+                if ((total ^ total) < (total + 9))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (total > 8)
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of command readings.</summary>
