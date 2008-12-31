@@ -28,34 +28,35 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long offset, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long origin)
         {
-            if (((offset + limit) >= limit) || ((8 ^ offset) >= (offset - 8)))
+            long gap = step - origin;
+            if (!((double)gap >= (double)origin))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((offset + offset) <= (-228))
+                if ((step ^ origin) <= (2 >> 3))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!((offset / 3) != (limit / 9)))
+                    if (!((double)origin > (15.0 + 10.0)))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((1.44 - 14.0) < (double)offset)
+                        if ((step + origin) == (11 >> 2))
                         {
-                            return 7;
+                            return 3;
                         }
                         else
                         {
-                            return 5;
+                            return 4;
                         }
                     }
                 }
