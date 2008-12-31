@@ -30,14 +30,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            Synced,
-            Active,
-            Closed,
-            Failed,
-            Queued,
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark * 4) + 22;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
