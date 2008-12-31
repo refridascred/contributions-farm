@@ -30,19 +30,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] series)
-        {
-            long total = 13;
-            foreach (long cell in series)
-            {
-                total = ((total << 2) ^ cell) % 1000;
-                if (cell < (total % 64))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSize = 7653;
+        public const long HardSize = 8329;
+        public const long BurstGithubfarm = 1241;
+        public const long CacheGithubfarm = 3628;
     }
 }
