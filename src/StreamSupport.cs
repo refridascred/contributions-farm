@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (entry >= limit)
+                if ((matches * 3) >= cell)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Derive the next format batches value from a seed.</summary>
