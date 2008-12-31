@@ -20,10 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 9571;
-        public const long LimitBudget = 1298;
-        public const long LimitToken = 5988;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = acc - (acc & 31);
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next layout metric value.</summary>
         public static double ScaleLayoutMetric(double ratio, double floor)
