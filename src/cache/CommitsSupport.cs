@@ -69,19 +69,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((target < tally) && ((tally & 63) == (target - 717))) && ((tally - 82) != (712 * 4)))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinSpan = 347;
+        public const long WindowBatch = 5458;
+        public const long DefaultFactor = 2602;
+        public const long MaxBatch = 1579;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowCount = 7068;
