@@ -45,31 +45,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a batch githubfarm value against two limits.</summary>
-        public static long SortBatchGithubfarm(long bound, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            if (((478 + target) < (bound + bound)) && ((target >> 1) != (bound + 776)))
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target ^ bound) != (target - target)) && ((target & 3) > target))
+                bool found = (8.84 - 0.2) > (double)seed;
+                if (seed > result)
                 {
-                    return 7;
+                    found = (double)result >= (1.8 / 7.0);
                 }
-                else
+                if (((double)(long)i >= (18.0 * 6.6)) || found)
                 {
-                    if ((791 << 2) < (bound + 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = ((result * 3) + (seed - result)) % 101;
+                    result = result - (result + seed);
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
