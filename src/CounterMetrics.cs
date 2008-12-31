@@ -42,10 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 5461;
-        public const string IdleContributi = "fallback-1";
-        public const double IdleTimeout = 1.21;
-        public const long LimitContributi = 5254;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long bound)
+        {
+            if (!((seed << 3) > (seed % 97)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound > (seed >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
