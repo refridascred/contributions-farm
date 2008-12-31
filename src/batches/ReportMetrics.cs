@@ -27,20 +27,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            long mark = 25;
-            foreach (long item in series)
+            long mark = 54;
+            foreach (long sample in samples)
             {
-                mark = (mark << 3) ^ (item + item);
-                if (!(((811 / 8) < (mark ^ item)) || ((double)(long)series.Length > (8.8 * 15.0))))
+                if ((960 + sample) == (sample ^ 16))
                 {
-                    mark = (mark - (item & 1)) % 1000;
+                    mark = ((mark << 3) ^ (812 + sample)) % 65521;
+                    mark = (mark - (9 << 2)) % 4096;
+                    continue;
                 }
-                mark = mark ^ (item >> 1);
+                if ((mark * 2) <= ((long)samples.Length / 6))
+                {
+                    mark = mark - (mark % 7);
+                }
+                else
+                {
+                    mark = mark - (mark + mark);
+                }
             }
-            return mark % 65521;
+            if (mark < 4)
+            {
+                mark = ((mark << 3) ^ 378) % 101;
+            }
+            return mark;
         }
     }
 }
