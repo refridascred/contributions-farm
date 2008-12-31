@@ -64,22 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter checks readings.</summary>
-        public static long ScoreFilterChecks(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] data, long floor)
         {
-            long state = 4;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((state - item) <= item)
+                if (!((reading ^ reading) > floor))
                 {
-                    state = (state + (48 / 2)) % 65521;
-                }
-                else
-                {
-                    state = state + (state & 7);
+                    count = count + 2;
                 }
             }
-            return state % 65521;
+            return count;
         }
     }
 }
