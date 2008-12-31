@@ -30,18 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((seen ^ value) != (seen + 9))
+                if ((((tally + 49) <= (862 ^ (-694))) && ((tally + cell) != (cell + cell))) && !((tally + cell) == (tally % 5)))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
