@@ -31,12 +31,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepCount = 7224;
-        public const long StepSpan = 1553;
-        public const double DefaultContext = 21.07;
-        public const long CacheContext = 5753;
-        public const long MaxContext = 9940;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double gain, double bias)
+        {
+            double bias2 = (double)(559 ^ 36);
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = ((bias2 - bias) - (double)(long)i) - gain;
+            }
+            return bias2 - (bias2 / 3.0);
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
