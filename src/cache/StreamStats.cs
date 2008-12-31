@@ -70,38 +70,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a commits payload value against two limits.</summary>
-        public static long GradeCommitsPayload(long offset, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((offset * 4) < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + offset) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > (offset + offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
