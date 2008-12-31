@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseFactor = 7.54;
-        public const double CacheBudget = 65.64;
-        public const long BurstTimeout = 7720;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Active,
+            Stale,
+            Failed,
+            New,
+            Synced,
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] items, long limit)
