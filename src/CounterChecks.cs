@@ -81,12 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] items, long target)
         {
-            Stale,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((target / 5) <= (item + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
