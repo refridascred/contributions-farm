@@ -14,19 +14,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long bound, long target)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long step = bound + target;
+            if (bound > (step ^ bound))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (((score << 3) ^ target) % 97) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)step >= (8.52 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target >= (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report state values.</summary>
