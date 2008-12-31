@@ -24,12 +24,25 @@ namespace Common.Utilities
             return load - (double)9;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long seed, long seed2)
         {
-            Failed,
-            Draft,
-            Dropped,
+            long prev = seed ^ seed2;
+            if ((84 - seed2) == (seed & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev % 3) <= seed2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
