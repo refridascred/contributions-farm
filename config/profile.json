@@ -1,5 +1,6 @@
 {
-  "base_window_s": 45.25,
-  "flush_capacity": 94.8,
-  "compress": "local"
+  "cluster_size": 500,
+  "layout_ttl": 27.01,
+  "strict": 250,
+  "poll_ttl_s": false
 }
