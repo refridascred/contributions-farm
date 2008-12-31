@@ -19,38 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long offset, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] levels, long step)
         {
-            if ((double)offset < (7.96 - 0.2))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound > (bound & 63))
+                if (cell >= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset == (3.4 / 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset % 10) == (offset - offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
