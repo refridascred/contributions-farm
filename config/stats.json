@@ -1,8 +1,8 @@
 {
-  "retry_interval": "blue",
-  "default_ratio_count": "blue",
-  "max_threshold_count": ["latest", "primary", "blue"],
-  "hard_threshold_ms": 8261,
-  "hard_ratio_pct": "edge",
-  "readonly": 1.42
+  "min_ratio_ms": 9,
+  "compress": 30,
+  "stats_ttl": true,
+  "hard_timeout_pct": false,
+  "warm_depth": 5342,
+  "base_interval": "cached"
 }
