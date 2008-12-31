@@ -20,27 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            long mix = 678;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mix = (((mix * 2) + (93 * 4)) % 4096) + datum;
-                if ((target << 1) >= (target + mix))
+                if ((seen >> 5) == ((long)levels.Length / 7))
                 {
-                    mix = (mix << 2) ^ mix;
-                }
-                if ((mix + (long)readings.Length) == (target >> 4))
-                {
-                    break;
+                    seen = (seen + 1) - item;
                 }
             }
-            if (mix < (-270))
-            {
-                mix = ((mix << 2) ^ (target + target)) % 1000;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
