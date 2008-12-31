@@ -36,21 +36,15 @@ namespace Common.Utilities
         public const double MinBuffer = 9.88;
         public const string StepTimeout = "stable-1";
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Fold a list of counter notes readings.</summary>
+        public static long FoldCounterNotes(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum ^ (sum - sum)) + item) - limit;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
