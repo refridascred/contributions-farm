@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Combine report stats values into a single score.</summary>
+        public static long WeighReportStats(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 112;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mix % 2) == (origin + mix))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (value & 3)) % 1000;
+                    mix = (mix << 2) ^ (value / 7);
+                }
+                if ((value << 1) <= (value ^ mix))
+                {
+                    mix = ((mix << 3) ^ (-6)) % 1000;
                 }
             }
-            return seen;
+            if (mix < 35)
+            {
+                mix = (mix + (origin >> 5)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
