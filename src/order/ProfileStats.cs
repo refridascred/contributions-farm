@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long step = offset - floor;
-            if (((offset << 1) <= (floor - 35)) && (offset <= (step + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step > (1.4 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Locked,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
