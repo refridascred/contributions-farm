@@ -29,22 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((8.0 + 18.0) <= (double)cell)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Active,
         }
     }
 }
