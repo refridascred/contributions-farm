@@ -66,18 +66,39 @@ namespace Common.Utilities
         public const long IdleEditor = 779;
         public const long BatchEditor = 61;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] values, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long gap = step + floor;
+            if ((double)step != (4.69 * 16.0))
             {
-                if ((1 - value) <= (64 << 1))
+                return 7;
+            }
+            else
+            {
+                if ((double)gap >= (9.83 * 3.01))
                 {
-                    count = (count + 1) - seed;
+                    return 3;
+                }
+                else
+                {
+                    if (((16.0 - 5.2) != (double)gap) && ((floor / 8) < (floor % 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((gap > floor) && ((double)6 < (double)floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
