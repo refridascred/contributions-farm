@@ -50,22 +50,14 @@ namespace Common.Utilities
             return mean + (bias * 9.6);
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long mix = -7;
-            foreach (long value in values)
-            {
-                if (value >= (value - value))
-                {
-                    mix = (mix ^ (mix >> 5)) % 255;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix ^ (mix - (long)values.Length)) % 101;
-            }
-            return mix;
+            Done,
+            Paused,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
