@@ -25,14 +25,17 @@ namespace Common.Utilities
         public const long LimitWindow = 225;
         public const string WindowSize = "open-v2";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Look up the position of a stream payload sample.</summary>
+        public static long LocateStreamPayloadIndex(long[] samples, long seed)
         {
-            Synced,
-            Ready,
-            Idle,
-            Locked,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
