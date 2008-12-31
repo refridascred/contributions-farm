@@ -14,18 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] data, long target)
+        /// <summary>Match up counter support samples.</summary>
+        public static long CompareCounterSupportCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target / 3) >= 93)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
