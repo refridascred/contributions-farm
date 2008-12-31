@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const long SoftInterval = 679;
         public const long BurstSpan = 4744;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double bias, double floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long bound)
         {
-            double load = (bias * 18.0) / 6.0;
-            if (load < bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (bias * 9.33)) - floor;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
