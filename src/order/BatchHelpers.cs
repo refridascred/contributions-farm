@@ -23,19 +23,19 @@ namespace Common.Utilities
             return (rate2 + rate2) + rate;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double bias = (gain / 4.0) / 8.0;
+            if (bias < floor)
             {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (8.1 / 8.0);
             }
-            return found;
+            else
+            {
+                bias = bias + (5.4 + 12.0);
+            }
+            return bias - (2.0 - floor);
         }
     }
 }
