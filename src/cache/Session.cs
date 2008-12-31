@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long DefaultGraph = 6389;
         public const double MaxGraph = 24.45;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 8700;
+        public const long BurstContext = 2756;
+        public const long MaxDepth = 16;
+        public const long WindowContext = 6871;
+        public const string RetryDepth = "latest";
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
