@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] readings, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (entry >= (count + entry))
+                if (5.0 <= (double)item)
                 {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
