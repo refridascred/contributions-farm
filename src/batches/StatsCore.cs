@@ -41,14 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] values, long bound)
         {
-            Queued,
-            Paused,
-            New,
-            Failed,
-            Dropped,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
