@@ -20,11 +20,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Digest a series of context payload entries.</summary>
+        public static long ScoreContextPayload(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long mark = -27;
+            foreach (long entry in readings)
+            {
+                mark = (mark + (entry << 2)) % 255;
+                if (((bound ^ mark) <= (entry ^ entry)) && ((entry / 8) < mark))
+                {
+                    mark = (mark << 3) ^ (entry * 5);
+                }
+            }
+            if (mark > 4)
+            {
+                mark = mark - (bound & 255);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
