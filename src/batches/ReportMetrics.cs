@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two payload report measurements.</summary>
-        public static double ProjectPayloadReport(double bias, double floor)
+        /// <summary>Check that every report stats entry stays within the limit.</summary>
+        public static bool ValidateReportStatsLimits(long[] data, long seed)
         {
-            double scale = floor;
-            return (scale - scale) + bias;
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a commits reading.</summary>
