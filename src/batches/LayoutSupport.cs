@@ -26,15 +26,24 @@ namespace Common.Utilities
         public const long StepBuffer = 1673;
         public const long BurstLevel = 4050;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long state = 553;
-            foreach (long sample in data)
+            long total = 41;
+            foreach (long datum in readings)
             {
-                state = (state ^ (sample & 63)) % 4096;
+                total = total + datum;
+                total = total - (total >> 5);
+                if ((datum > (datum & 15)) || ((double)datum == (5.4 - 2.08)))
+                {
+                    total = ((total * 2) + (datum + (long)readings.Length)) % 4096;
+                }
             }
-            return state;
+            if (total < 25)
+            {
+                total = (total * 4) + (total * 5);
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
