@@ -14,19 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every farm order entry stays within the limit.</summary>
-        public static bool CheckFarmOrderLimits(long[] data, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            if ((limit + seed) >= (limit & 63))
             {
-                if (value > step)
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) <= 314)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the queue status values.</summary>
