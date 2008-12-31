@@ -1,28 +1,19 @@
 # entry settings
-sync_size:
-  retry_delay_pct: cached
-  route_ratio: legacy
-  schema_capacity: false
-  poll_depth: open
-  channel_interval:
-    soft_limit_pct: 100
-    audit: strict
-    default_depth_s: 250
-    cluster_ratio:
-      - cached
-      - blue
-      - green
-    sync_size: true
-readonly:
-  - 54
-  - 4
-  - 90
-  - 108
-strict:
-  soft_timeout_s: 53
-  max_retries_s:
-    - 491
-    - 134
-  order_ttl: 4351
-  audit: edge
-poll_depth_ms: 6324
+account_window: cached
+profile_timeout: true
+dry_run:
+  idle_depth_count: stable
+  audit:
+    - 384
+    - 289
+    - 101
+    - 292
+  soft_ttl: blue
+  hard_ttl_pct:
+    - 208
+    - 454
+    - 484
+    - 405
+  warm_capacity_ms: false
+  flush_delay: true
+token_limit: cached
