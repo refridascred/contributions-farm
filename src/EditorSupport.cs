@@ -36,15 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload counter readings.</summary>
-        public static long ScorePayloadCounter(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long acc = 89;
-            foreach (long item in readings)
-            {
-                acc = acc ^ (item >> 3);
-            }
-            return acc % 65521;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
