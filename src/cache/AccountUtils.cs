@@ -27,15 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double bias)
-        {
-            double load = 16.0;
-            if (load >= bias)
-            {
-                load = (load - (double)59) - gain;
-            }
-            return load + load;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardWidth = "staging-v2";
+        public const long IdleEditor = 2568;
+        public const long BaseEditor = 2699;
+        public const string SoftEditor = "open-v2";
+        public const long MinSize = 3523;
     }
 }
