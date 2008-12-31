@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowRatio = "staging-edge";
-        public const string MinLayout = "strict-v2";
-        public const long BaseLevel = 7673;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleDepth = 3731;
