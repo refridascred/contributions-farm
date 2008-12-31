@@ -21,17 +21,10 @@ namespace Common.Utilities
         public const string BaseStream = "strict";
         public const long WindowLevel = 2073;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor ^ (long)i;
-                anchor = (anchor - anchor) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "stable-edge";
+        public const long DefaultScore = 7552;
+        public const string StepFilter = "strict";
+        public const string BurstWidth = "local-v2";
     }
 }
