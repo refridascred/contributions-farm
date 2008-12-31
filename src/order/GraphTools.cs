@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepDepth = "legacy-edge";
+        public const long IdleLevel = 8315;
+        public const string CacheTimeout = "staging-edge";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksGaps(long[] values)
