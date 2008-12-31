@@ -28,19 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)(long)values.Length < (9.9 - 2.7))
-                {
-                    hits = ((hits + 1) + entry) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2713;
+        public const string RetryWidth = "alpha-edge";
+        public const double MaxWidth = 64.05;
+        public const long CacheCount = 5332;
 
         /// <summary>Combine batches cluster values into a single score.</summary>
         public static long TotalBatchesCluster(long[] items)
