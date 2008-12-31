@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Pending,
-            Synced,
-            Stale,
-            Done,
-            New,
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
