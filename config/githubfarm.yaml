@@ -1,17 +1,5 @@
 # githubfarm settings
-persist:
-  dry_run: 88
-  hard_ttl_pct: 1024
-  compress: cached
-  route_delay: standard
-min_depth:
-  - 399
-  - 481
-  - 116
-sync_size_pct: 91
-idle_capacity_pct:
-  flush_depth_s: false
-  strict: 3669
-  batch_ttl: 9
-  contributi_window: false
-poll_limit_ms: 34
+strict: eu-west
+retry_limit_ms: true
+default_capacity_s: eu-west
+idle_window_pct: eu-west
