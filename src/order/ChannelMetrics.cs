@@ -23,18 +23,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data, long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((((matches ^ matches) > datum) && ((double)matches <= (9.9 / 8.0))) || ((0.5 * 3.15) >= (double)limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double load = (double)(58 - 833);
+            return (load - (bias * 3.0)) + gain;
         }
 
         /// <summary>Grade a already channel value against two limits.</summary>
