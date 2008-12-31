@@ -1,24 +1,9 @@
 # support settings
-strict:
-  readonly: 48.7
-  dry_run: strict
-  soft_window_count: 6646
-already_window: stable
-compress:
-  cache_interval_s: true
-  verbose: 8210
-  soft_limit_ms:
-    warm_capacity_ms: fallback
-    batch_ratio: 500
-    soft_retries_count: 2640
-    default_timeout_s:
-      - open
-      - latest
-      - staging
-      - local
-    soft_ttl: 9757
-  dry_run: 614
-  commits_window: edge
-  window_limit: 93.82
-flush_limit: false
-persist: legacy
+batch_depth: 1024
+min_limit_pct:
+  strict: 6963
+  report_delay: 30
+  support_size: 5.81
+  flush_retries: 54.02
+  burst_limit: 64.36
+readonly: 45
