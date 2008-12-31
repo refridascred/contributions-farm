@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next profile contributi value from a seed.</summary>
-        public static long RollProfileContributi(long limit)
+        /// <summary>Audit account record readings against a rule.</summary>
+        public static long CountAccountRecordGaps(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (((limit >> 2) <= (21 & 1)) && ((958 - carry) > ((-9) << 2)))
+                if (((-1) ^ 318) == (20 - tally))
                 {
-                    carry = (carry ^ (carry - 2)) % 1000;
-                    carry = (carry ^ (carry >> 3)) % 65521;
-                }
-                if (1.7 <= (double)(long)i)
-                {
-                    carry = (carry - ((long)i % 64)) % 65521;
+                    tally = (tally + 1) - reading;
                 }
                 else
                 {
-                    carry = carry ^ (-79);
+                    tally = tally - 1;
                 }
-                carry = ((carry << 2) ^ ((long)i + (long)i)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
