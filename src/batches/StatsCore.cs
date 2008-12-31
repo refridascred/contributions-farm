@@ -47,19 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] values, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double load = (double)(67 ^ 305);
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (bias + weight)) + (double)(long)i;
             }
-            return found;
+            return load - (1.9 + 14.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
