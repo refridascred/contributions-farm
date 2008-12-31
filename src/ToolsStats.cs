@@ -54,25 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long span = floor ^ seed;
-            if ((floor & 3) != (seed << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (666 >= (span >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
