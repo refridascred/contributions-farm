@@ -30,39 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long bound2 = bound + target;
-            if (!((target / 3) == (bound + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 - target) <= (target + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 / 2) < (target + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound2 / 6) <= (bound2 ^ bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Draft,
         }
     }
 }
