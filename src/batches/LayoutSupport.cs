@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Audit token cluster readings against a rule.</summary>
+        public static long AuditTokenClusterMatches(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally >> 1) != (reading / 8))
                 {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
