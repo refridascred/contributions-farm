@@ -29,15 +29,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next batch batches value from a seed.</summary>
-        public static long DeriveBatchBatches(long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Draft,
+            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Project the next context schema value.</summary>
