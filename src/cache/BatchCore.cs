@@ -35,20 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data, long offset)
-        {
-            long state = -184;
-            foreach (long value in data)
-            {
-                state = (((state - (613 % 12)) % 1000) ^ value) - offset;
-                if (((-869) << 3) >= (long)data.Length)
-                {
-                    state = (state - state) % 4096;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 5448;
+        public const long WindowWidth = 927;
+        public const long BaseRatio = 2237;
+        public const double WindowBudget = 48.15;
+        public const long HardDepth = 298;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 9896;
