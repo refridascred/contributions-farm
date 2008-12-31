@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRatio = 8529;
+        public const long MinScore = 4295;
+        public const double MaxBudget = 84.31;
+        public const double LimitRoute = 95.07;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long step)
