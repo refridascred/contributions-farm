@@ -41,12 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
