@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            Dropped,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
