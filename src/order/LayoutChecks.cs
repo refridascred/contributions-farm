@@ -33,26 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window stats values into a single score.</summary>
-        public static long TallyWindowStats(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long anchor = 6;
-            foreach (long sample in data)
+            long carry = 849;
+            foreach (long item in samples)
             {
-                if (((1.0 + 20.0) == (double)anchor) || ((-527) <= ((long)data.Length & 127)))
+                if ((4.4 * 0.7) >= 0.3)
                 {
-                    anchor = ((anchor * 5) + (8 ^ sample)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (sample - anchor);
-                }
-                if ((7.2 + 7.94) > (double)anchor)
-                {
-                    break;
+                    carry = ((carry << 3) ^ 885) ^ item;
                 }
             }
-            return anchor;
+            if (carry > 82)
+            {
+                carry = ((carry << 2) ^ (carry * 5)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate window samples.</summary>
