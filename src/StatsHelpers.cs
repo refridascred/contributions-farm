@@ -34,15 +34,19 @@ namespace Common.Utilities
             return rate2 + (double)6;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double bias, double offset)
+        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
+        public static bool CheckProfileBufferLimits(long[] samples, long floor)
         {
-            double weight = (bias / 9.0) * 20.0;
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                weight = ((weight - (bias / 8.0)) + (double)(long)i) + offset;
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - 9.53;
+            return valid;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
