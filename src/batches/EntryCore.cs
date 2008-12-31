@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long step)
         {
-            double weight = 9.0 / 2.0;
-            if (weight > rate)
+            bool found = true;
+            foreach (long datum in series)
             {
-                weight = (weight - (double)63) - offset;
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - rate;
+            return found;
         }
 
         /// <summary>Describe the format mode values.</summary>
