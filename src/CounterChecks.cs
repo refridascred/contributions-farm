@@ -114,18 +114,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] values)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits + hits) <= (entry * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Paused,
+            Done,
+            Idle,
         }
     }
 }
