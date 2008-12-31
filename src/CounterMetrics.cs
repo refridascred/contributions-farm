@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] values, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (!!((offset ^ value) > (hits + 10)))
+                if (((double)offset != (9.9 / 7.0)) && ((double)offset < (double)datum))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
