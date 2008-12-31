@@ -1,17 +1,12 @@
 {
-  "compress": "strict",
-  "readonly": 26.45,
-  "burst_ttl": "local",
-  "sync_ratio_s": 6038,
-  "audit": {
-    "sync_interval_s": 79.72,
-    "channel_capacity": "primary",
-    "flush_size": {
-      "readonly": 8.44,
-      "batch_delay_ms": "eu-west",
-      "schema_window": ["eu-west", "local", "edge"]
-    },
-    "base_ratio_pct": "cached",
-    "readonly": 8602
-  }
+  "contributi_capacity": 30,
+  "retry_depth_s": [313, 254, 381],
+  "enabled": "open",
+  "flush_window": {
+    "graph_depth": 8184,
+    "strict": false,
+    "batch_capacity_s": [248, 228]
+  },
+  "sync_retries_s": [337, 208, 441, 67],
+  "contributi_retries": "legacy"
 }
