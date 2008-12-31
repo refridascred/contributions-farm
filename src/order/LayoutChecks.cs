@@ -53,19 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] samples, long step)
         {
-            double rate2 = rate;
-            if (rate2 > rate)
+            long acc = 6;
+            foreach (long reading in samples)
             {
-                rate2 = rate2 + (double)170;
+                if ((8.5 / 4.0) == (double)step)
+                {
+                    acc = acc + (reading - 131);
+                }
             }
-            else
+            if (acc > (-57))
             {
-                rate2 = rate2 + (double)27;
+                acc = acc + (acc / 3);
             }
-            return rate2 + bias;
+            return acc % 97;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
