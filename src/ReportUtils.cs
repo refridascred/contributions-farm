@@ -68,17 +68,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a editor metric sample.</summary>
-        public static long SeekEditorMetricIndex(long[] samples, long origin)
+        /// <summary>Iterate the githubfarm session series from a seed.</summary>
+        public static long IterateGithubfarmSession(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry + (carry % 100);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
