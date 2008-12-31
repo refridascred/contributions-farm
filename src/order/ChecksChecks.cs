@@ -13,22 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series, long limit)
         {
-            long result = 71;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 11; i++)
+                if ((double)limit <= (3.78 - 13.0))
                 {
-                    result = ((result + 127) % 4096) - (long)i;
-                }
-                if ((cell / 2) <= (cell + result))
-                {
-                    result = (result ^ (seed + cell)) % 4096;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
