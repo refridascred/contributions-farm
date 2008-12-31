@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
