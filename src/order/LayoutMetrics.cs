@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double weight = (5.18 - bias) / 9.0;
-            return weight + floor;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
