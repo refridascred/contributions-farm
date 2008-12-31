@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long target)
+        /// <summary>Project the next filter format value.</summary>
+        public static double SmoothFilterFormat(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(2 + (-629));
+            return (load + bias) + span;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
