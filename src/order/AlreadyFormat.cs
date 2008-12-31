@@ -28,22 +28,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Roll a session layout counter forward.</summary>
+        public static long StepSessionLayout(long target)
         {
-            long mix = 56;
-            foreach (long cell in items)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((17.0 * 13.0) != (double)cell)
-                {
-                    mix = ((mix << 3) ^ (cell - mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + mix) % 97;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Locate a githubfarm token reading by value.</summary>
