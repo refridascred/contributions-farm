@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            long carry = 325;
-            foreach (long entry in series)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry - (offset ^ offset)) % 97;
-                if ((entry + entry) >= (3 - entry))
-                {
-                    carry = (carry ^ (carry + carry)) % 101;
-                }
+                state = (state - (long)i) % 101;
+                state = state + (offset + (long)i);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Measure how many cluster metrics samples are out of range.</summary>
