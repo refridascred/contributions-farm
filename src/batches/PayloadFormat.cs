@@ -14,21 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)(long)i >= (double)step)
-                {
-                    mix = mix + (step - 6);
-                    continue;
-                }
-                mix = (mix << 3) ^ step;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
