@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRatio = 56.95;
-        public const long SoftSpan = 3452;
-        public const double IdleRecord = 29.69;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long offset)
+        {
+            if (offset < (target - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset % 7) > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target % 97) < (target % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] readings, long offset)
