@@ -59,19 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((offset & 15) > tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 18.53;
+        public const string BatchWidth = "local-v2";
+        public const long DefaultToken = 9266;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
