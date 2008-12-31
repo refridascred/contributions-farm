@@ -20,12 +20,25 @@ namespace Common.Utilities
         public const string IdleSize = "strict-v2";
         public const string MaxSupport = "alpha-edge";
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state * 5) + (state & 31);
+                if ((state + seed) > (state + (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state + (state - state)) % 101;
+                    state = (state + (state ^ (long)i)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the editor mode values.</summary>
