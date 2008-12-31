@@ -21,36 +21,22 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Rank stream record input into a small class.</summary>
-        public static long RankStreamRecord(long step, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long step)
         {
-            if ((step - step) == ((-7) / 2))
+            if ((double)limit >= (double)7)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((step - step) != ((-488) + seed))
+                if (((double)step <= (8.79 - 2.7)) || ((step << 2) >= (step - limit)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((step - seed) >= (step % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (2.3 + 8.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
