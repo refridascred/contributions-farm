@@ -35,19 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double span)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double ratio = span;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - 1.0) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (span / 3.0);
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
