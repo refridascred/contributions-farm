@@ -25,19 +25,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool GuardWindowSchemaBounds(long[] samples, long origin)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
