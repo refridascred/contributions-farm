@@ -46,19 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] series, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (datum > origin)
+                if ((14.0 - 5.3) <= (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
