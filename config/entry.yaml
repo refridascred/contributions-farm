@@ -1,5 +1,48 @@
 # entry settings
-account_ratio: eu-west
-max_timeout_count: 73.24
-dry_run: 500
-persist: 60
+retry_timeout:
+  cache_capacity: 3944
+  verbose: standard
+  window_interval: green
+cache_limit:
+  base_size_count:
+    sync_timeout: green
+    default_depth: edge
+    burst_depth:
+      - 151
+      - 16
+    sync_ratio_pct: legacy
+    enabled: 21
+  poll_threshold: blue
+  poll_delay_ms: false
+  dry_run:
+    min_ratio_pct: stable
+    audit:
+      - 18
+      - 385
+      - 434
+    cache_size_ms: true
+    format_limit: 52
+  hard_window_pct: 63
+dry_run:
+  burst_delay:
+    - 112
+    - 133
+    - 15
+  entry_retries:
+    batch_depth_count: open
+    verbose: 500
+    default_interval_ms: 711
+  record_window: local
+  flush_capacity_count:
+    cache_capacity_count:
+      - 153
+      - 246
+    flush_ratio_ms: fallback
+    default_interval_count: edge
+    strict: 60
+max_size:
+  - stable
+  - stable
+  - stable
+  - green
+default_timeout: green
