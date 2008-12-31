@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Retry,
-            Locked,
-            Queued,
-            Done,
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a context report value against two limits.</summary>
