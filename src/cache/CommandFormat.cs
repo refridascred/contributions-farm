@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Stale,
-            Failed,
-            Synced,
-            Ready,
+            Pending,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
