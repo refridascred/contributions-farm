@@ -25,16 +25,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + origin) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Synced,
+            Dropped,
+            Retry,
         }
     }
 }
