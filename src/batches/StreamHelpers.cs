@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] items, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mix = -7;
-            foreach (long datum in items)
-            {
-                if ((mix - 56) != ((long)items.Length + datum))
-                {
-                    mix = ((mix * 3) + 2) - offset;
-                }
-            }
-            return mix % 65521;
+            Synced,
+            Done,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
