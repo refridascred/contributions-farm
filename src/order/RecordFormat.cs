@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metrics channel samples are out of range.</summary>
-        public static long TallyMetricsChannelGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches >= (datum / 9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowLevel = 0.12;
+        public const long BurstLevel = 4217;
+        public const long BurstBatch = 4759;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] levels, long offset)
