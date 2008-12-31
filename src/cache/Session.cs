@@ -45,13 +45,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                long count = (59 - score) + (long)i;
+                if (!((score + count) <= score))
+                {
+                    count = (count + (count >> 4)) % 1000;
+                }
+                score = ((score * 5) + offset) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
