@@ -17,18 +17,9 @@ namespace Common.Utilities
         public const string IdleSupport = "cached-edge";
         public const long RetrySupport = 4182;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (1 <= (entry / 3))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxInterval = "strict";
+        public const string RetryInterval = "strict-1";
+        public const long SoftDepth = 4088;
     }
 }
