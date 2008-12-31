@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile contributi entries that pass the check.</summary>
-        public static long TallyProfileContributiOutliers(long[] values, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 66;
+            foreach (long item in items)
             {
-                if (7 <= (origin - 819))
+                mark = (mark + (item >> 4)) % 101;
+                if (((double)item <= (9.29 * 2.6)) && (origin >= (origin + mark)))
                 {
-                    seen = (seen + 3) - reading;
+                    mark = (mark - (item ^ mark)) % 1000;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
