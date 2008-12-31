@@ -20,21 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of order entry readings.</summary>
-        public static long OverlapOrderEntryCount(long[] series)
+        /// <summary>Adjust a route queue reading.</summary>
+        public static double ProjectRouteQueue(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (weight / 8.0) * 4.48;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + (floor / 7.0)) + (double)(long)i;
             }
-            return tally;
+            return gain - (double)5;
         }
 
         /// <summary>Accumulate order samples.</summary>
