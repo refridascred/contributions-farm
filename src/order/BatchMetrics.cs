@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            long carry = 39;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((4.1 * 5.4) <= (double)cell)
+                if ((14.0 - 9.1) <= (double)entry)
                 {
-                    carry = (carry + (floor / 5)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (floor / 5)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the schema class values.</summary>
