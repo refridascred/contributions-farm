@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings, long bound)
         {
-            long total = 4;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((double)total != (19.0 * 2.0)) || (datum < (807 / 5)))
+                if ((matches % 12) > bound)
                 {
-                    total = (total - (datum * 4)) % 101;
+                    matches = (matches + 1) - value;
                 }
             }
-            if (total < (-640))
-            {
-                total = total ^ (total << 1);
-            }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
