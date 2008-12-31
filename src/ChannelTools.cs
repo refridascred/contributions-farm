@@ -26,9 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 54.49;
-        public const long WindowChecks = 558;
-        public const long BaseChecks = 9897;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Stale,
+            New,
+            Ready,
+            Active,
+            Retry,
+        }
     }
 }
