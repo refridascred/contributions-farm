@@ -38,19 +38,11 @@ namespace Common.Utilities
         public const long SoftSpan = 352;
         public const long BaseTimeout = 4953;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)matches != (2.0 + 3.3))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 7879;
+        public const long HardInterval = 4972;
+        public const long SoftChecks = 6882;
+        public const double StepWidth = 74.43;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long step, long seed)
