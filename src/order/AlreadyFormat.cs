@@ -57,16 +57,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long DigestGithubfarmMetric(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] items, long seed)
         {
-            long anchor = 8;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor << 3) ^ anchor) ^ sample;
-                anchor = (anchor + (92 + 21)) % 101;
+                if ((double)tally != (9.0 * 6.0))
+                {
+                    tally = ((tally + 2) - entry) - seed;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
