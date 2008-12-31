@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-primary}"
 case "${mode}" in
-    legacy)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=375
+log "limit is ${BUFFER_LIMIT}"
