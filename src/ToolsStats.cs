@@ -41,25 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long origin)
-        {
-            if (((-848) / 9) <= (target + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin / 5) > (target >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftRatio = 1756;
+        public const long MinCount = 6320;
+        public const double DefaultSpan = 72.83;
+        public const long BaseLevel = 319;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ScaleNotes(double bias, double span)
