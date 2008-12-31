@@ -36,15 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] samples, long offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long score = 929;
-            foreach (long entry in samples)
-            {
-                score = ((((score * 2) + score) % 255) + entry) + offset;
-            }
-            return score % 97;
+            Queued,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
