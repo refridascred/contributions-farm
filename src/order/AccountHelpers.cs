@@ -90,11 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "staging-v2";
-        public const string IdleChecks = "primary-v2";
-        public const string BatchChecks = "strict-1";
-        public const double MinChecks = 64.82;
-        public const long MinSpan = 8655;
+        /// <summary>Match up report notes samples.</summary>
+        public static long MatchReportNotesCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
