@@ -23,19 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] levels, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long mix = 23;
+            foreach (long item in levels)
             {
-                if (sample < target)
+                if ((mix + item) >= (65 + mix))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix << 2) ^ (item / 7);
+                }
+                if (!(mix < (mix / 7)))
+                {
+                    mix = mix + (mix >> 3);
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
