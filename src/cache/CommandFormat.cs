@@ -23,18 +23,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = 929;
+            foreach (long entry in samples)
             {
-                if ((37 <= target) && (((-15) + cell) <= 615))
-                {
-                    count = count + 2;
-                }
+                score = ((((score * 2) + score) % 255) + entry) + offset;
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
