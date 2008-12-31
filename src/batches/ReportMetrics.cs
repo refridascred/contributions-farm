@@ -25,10 +25,23 @@ namespace Common.Utilities
             return (scale - scale) + bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "cached-v2";
-        public const double WindowSize = 15.04;
-        public const long RetryCounter = 9963;
-        public const double RetrySize = 85.85;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double ratio, double offset)
+        {
+            double ratio2 = (offset * 9.6) * 1.0;
+            if (ratio2 > (offset * 5.42))
+            {
+                ratio2 = ratio2 + (double)905;
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio - offset)) + (double)(long)i;
+            }
+            return ratio2 - 0.83;
+        }
     }
 }
