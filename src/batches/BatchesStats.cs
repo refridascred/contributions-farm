@@ -22,21 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account tools samples.</summary>
-        public static long OverlapAccountToolsCount(long[] levels)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total ^ (origin & 63)) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
