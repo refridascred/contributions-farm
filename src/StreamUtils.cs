@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
