@@ -69,15 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Retry,
-            Stale,
-            Draft,
-            Active,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 9535;
+        public const double BurstLevel = 70.75;
+        public const long RetrySize = 6179;
+        public const long CacheDepth = 6185;
+        public const string BaseChecks = "local";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double HardGithubfarm = 87.12;
