@@ -36,13 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] series, long offset)
         {
-            Stale,
-            Draft,
-            Synced,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of farm record readings.</summary>
