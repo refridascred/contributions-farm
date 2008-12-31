@@ -45,13 +45,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many channel report samples are out of range.</summary>
+        public static long AuditChannelReportOutliers(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)value == (18.0 + 6.5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
