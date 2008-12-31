@@ -17,12 +17,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheWidth = 62;
-        public const double LimitRoute = 37.34;
-        public const long WindowRoute = 779;
-        public const long WindowLevel = 6089;
-        public const long LimitRatio = 8192;
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long AuditProfileMetricHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches / 5) <= (long)data.Length)
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
