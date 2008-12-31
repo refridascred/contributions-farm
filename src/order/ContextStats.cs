@@ -35,19 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache tools entries.</summary>
-        public static long DigestCacheTools(long[] data, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
         {
-            long carry = 97;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry ^ datum) % 255;
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry - (14 - step)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of token readings.</summary>
