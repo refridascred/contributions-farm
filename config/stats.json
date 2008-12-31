@@ -1,6 +1,6 @@
 {
-  "soft_timeout": [302, 408, 54, 490],
-  "batch_capacity_pct": false,
-  "layout_delay": 250,
-  "cluster_delay": false
+  "default_size_count": "eu-west",
+  "batch_threshold": "legacy",
+  "report_delay": 7154,
+  "sync_window_count": true
 }
