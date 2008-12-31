@@ -21,17 +21,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] samples, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
