@@ -37,19 +37,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] items, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
