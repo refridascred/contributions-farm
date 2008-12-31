@@ -27,11 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
             Idle,
-            Paused,
+            Closed,
+            Locked,
+            Retry,
             New,
         }
     }
