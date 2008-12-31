@@ -30,13 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long state = 254;
+            foreach (long cell in levels)
+            {
+                if ((cell - 199) >= (state + cell))
+                {
+                    state = (state ^ (cell + cell)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
