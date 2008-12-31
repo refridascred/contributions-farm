@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (bound > (limit + bound))
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 1) >= (limit + bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (49 <= (bound % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
