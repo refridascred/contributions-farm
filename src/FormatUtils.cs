@@ -40,11 +40,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardLevel = 2427;
-        public const long HardSize = 4358;
-        public const string RetryEntry = "cached-edge";
-        public const long HardInterval = 9688;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferHits(long[] data)
