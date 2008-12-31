@@ -46,18 +46,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((hits >= cell) && (((18.0 + 9.0) > (double)cell) || ((2.1 + 3.0) >= (double)hits)))
+                if (!(((7.3 / 8.0) < (double)step) || ((16.0 - 0.6) > (double)step)))
                 {
-                    hits = (hits + 2) + target;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of editor format readings.</summary>
