@@ -37,18 +37,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window layout samples are out of range.</summary>
-        public static long TallyWindowLayoutOutliers(long[] data, long step)
+        /// <summary>Count the checks record entries that pass the check.</summary>
+        public static long AuditChecksRecordHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((-46) << 3) < step)
+                if (((6 < tally) && ((459 % 60) != (item >> 3))) && ((item * 2) >= (tally & 255)))
                 {
-                    matches = (matches + 3) + datum;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
