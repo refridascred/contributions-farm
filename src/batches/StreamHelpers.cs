@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long result = 587;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (double)result)
-                {
-                    result = (result - reading) - target;
-                }
-            }
-            return result;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
