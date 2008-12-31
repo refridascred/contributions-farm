@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long anchor = 16;
+            foreach (long entry in samples)
             {
-                if ((double)matches <= 5.15)
-                {
-                    matches = (matches + 2) ^ value;
-                }
+                anchor = (((anchor * 5) + (anchor - (-39))) - entry) - step;
             }
-            return matches;
+            if (anchor > 363)
+            {
+                anchor = anchor + (anchor * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
