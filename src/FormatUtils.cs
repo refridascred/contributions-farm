@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = offset + offset;
+            if (drift > (offset * 2.8))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (double)65;
             }
-            return hits;
+            return drift - ratio;
         }
 
         /// <summary>Hold a graph options.</summary>
