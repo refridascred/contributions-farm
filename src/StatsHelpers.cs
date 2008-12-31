@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const string MinLayout = "strict-v2";
         public const long BaseLevel = 7673;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double span)
-        {
-            double rate2 = rate;
-            if (rate2 <= (double)7)
-            {
-                rate2 = (rate2 + 1.4) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 + (double)6;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleDepth = 3731;
+        public const long BaseCache = 4455;
+        public const long HardCache = 9023;
+        public const long SoftScore = 9464;
+        public const string WindowTimeout = "staging-edge";
 
         /// <summary>Check that every profile buffer entry stays within the limit.</summary>
         public static bool CheckProfileBufferLimits(long[] samples, long floor)
