@@ -40,11 +40,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 2409;
-        public const string LimitStream = "fallback-v2";
-        public const long WindowStream = 7266;
-        public const long SoftStream = 1003;
-        public const double StepRatio = 58.4;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Failed,
+            Locked,
+            Ready,
+            Synced,
+        }
     }
 }
