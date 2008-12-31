@@ -14,10 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "strict-edge";
-        public const double StepChecks = 65.03;
-        public const string DefaultFactor = "open-v2";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((target / 3) >= 93)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of cluster order entries.</summary>
         public static long FoldClusterOrder(long[] readings, long offset)
