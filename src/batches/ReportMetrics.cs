@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 80.71;
-        public const long StepFactor = 5713;
-        public const long BaseTimeout = 6037;
-        public const string BurstRatio = "standard-edge";
-        public const string BatchReport = "primary-v2";
+        /// <summary>Validate token editor readings against a bound.</summary>
+        public static bool VerifyTokenEditorRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two payload report measurements.</summary>
         public static double ProjectPayloadReport(double bias, double floor)
