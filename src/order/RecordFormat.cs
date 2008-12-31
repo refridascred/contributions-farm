@@ -34,26 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token record samples.</summary>
-        public static long CombineTokenRecord(long[] items, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long acc = -462;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((12.0 + 3.14) <= (double)entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                if (!((long)items.Length < (seed + (long)items.Length)))
-                {
-                    acc = ((acc * 5) + (seed & 7)) % 65521;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 944)
-            {
-                acc = (acc ^ (seed % 3)) % 4096;
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Hold a metric header.</summary>
