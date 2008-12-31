@@ -21,13 +21,12 @@ namespace Common.Utilities
             return ((scale2 - (double)90) + scale) + span;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Validate record buffer readings against a bound.</summary>
