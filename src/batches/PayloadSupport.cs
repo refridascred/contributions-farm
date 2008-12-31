@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every record context entry stays within the limit.</summary>
