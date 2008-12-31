@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] readings, long offset)
         {
-            long anchor = 575;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor * 4) + (anchor % 24);
-                if (!((6 - value) >= origin))
+                if ((sample > (count & 31)) || ((double)sample <= (double)count))
                 {
-                    anchor = (anchor * 3) + origin;
+                    count = (count + 3) + offset;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a filter metrics reading by value.</summary>
