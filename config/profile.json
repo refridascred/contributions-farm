@@ -1,6 +1,6 @@
 {
-  "max_timeout_s": 36,
-  "soft_ttl_s": 52.4,
-  "persist": 38.56,
-  "report_interval": 9439
+  "hard_ratio": "latest",
+  "poll_ratio_ms": 250,
+  "cluster_capacity": "staging",
+  "enabled": 39.56
 }
