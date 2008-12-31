@@ -40,23 +40,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long limit)
         {
-            long state = 169;
-            foreach (long cell in levels)
+            long offset2 = offset - limit;
+            if (offset2 > (offset << 3))
             {
-                for (int i = 0; i < 8; i++)
+                return 4;
+            }
+            else
+            {
+                if ((offset2 + 2) >= offset2)
                 {
-                    state = ((state + state) ^ (long)i) + cell;
+                    return 2;
                 }
-                state = (state * 5) + seed;
+                else
+                {
+                    return 0;
+                }
             }
-            if (state < 3)
-            {
-                state = state + 4;
-            }
-            return state % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
