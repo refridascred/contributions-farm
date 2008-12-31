@@ -1,5 +1,6 @@
 {
-  "default_ttl_pct": 94.7,
-  "flush_interval": "standard",
-  "dry_run": "blue"
+  "flush_window_pct": [207, 442, 84, 198],
+  "min_ratio_count": "eu-west",
+  "persist": 32.24,
+  "route_delay": "legacy"
 }
