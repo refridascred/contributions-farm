@@ -38,21 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up route stream samples.</summary>
-        public static long PairRouteStreamCount(long[] values)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 18)
+                    if ((values[i] - values[j]) == 10)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
