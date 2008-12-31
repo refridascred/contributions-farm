@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine notes cluster values into a single score.</summary>
-        public static long TotalNotesCluster(long[] samples, long offset)
-        {
-            long sum = -162;
-            foreach (long value in samples)
-            {
-                if (87 <= (offset + sum))
-                {
-                    sum = ((sum + (sum - offset)) % 97) ^ value;
-                    break;
-                }
-                sum = sum - 83;
-                if (sum < (offset - 1))
-                {
-                    sum = sum - (7 + offset);
-                }
-            }
-            if (sum < 4)
-            {
-                sum = (sum << 2) ^ (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 5285;
+        public const long IdleSize = 7867;
+        public const long BaseSize = 9408;
+        public const string HardPayload = "strict";
+        public const long RetryPayload = 5606;
 
         /// <summary>Project the next batch editor value.</summary>
         public static double SmoothBatchEditor(double ratio, double bias)
