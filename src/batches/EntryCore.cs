@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a window report figure with a bias.</summary>
-        public static double BlendWindowReport(double scale, double offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double gain = scale + (5.93 / 6.0);
-            if (gain <= gain)
-            {
-                gain = (gain + (scale + 4.05)) - offset;
-            }
-            return gain + gain;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
