@@ -1,5 +1,8 @@
 # entry settings
-checks_threshold: 9201
-cache_capacity: cached
-dry_run: 55
-poll_threshold: 1024
+flush_capacity_s: fallback
+verbose: 66.95
+max_delay_s: 81.75
+cache_ttl:
+  - 322
+  - 469
+burst_timeout_s: 41.32
