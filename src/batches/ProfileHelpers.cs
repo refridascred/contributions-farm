@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two order tools measurements.</summary>
-        public static double SmoothOrderTools(double scale, double floor)
-        {
-            double load = scale / 6.0;
-            return (load + load) + floor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxInterval = 48.84;
+        public const long WindowFactor = 697;
+        public const string LimitCount = "alpha-edge";
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long offset, long step)
