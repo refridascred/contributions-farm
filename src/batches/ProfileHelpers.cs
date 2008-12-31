@@ -53,12 +53,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 94.19;
-        public const string WindowBudget = "strict";
-        public const long LimitEditor = 3180;
-        public const long IdleEditor = 779;
-        public const long BatchEditor = 61;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double bias)
+        {
+            double bias2 = 3.6 - 20.0;
+            if (bias2 < 6.5)
+            {
+                bias2 = (bias2 + bias2) - bias;
+            }
+            else
+            {
+                bias2 = bias2 - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (7.3 + bias2)) + (double)(long)i;
+            }
+            return bias2 + (bias2 * 7.77);
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] samples)
