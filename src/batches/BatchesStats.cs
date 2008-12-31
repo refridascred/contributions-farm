@@ -47,10 +47,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchBudget = "standard-v2";
-        public const string StepSupport = "latest-1";
-        public const long WindowLevel = 5417;
-        public const long BaseSupport = 4965;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
