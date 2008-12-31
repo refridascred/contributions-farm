@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)step == (17.0 - 4.2)) && (((-5) / 7) >= score))
-                {
-                    score = ((score * 2) + score) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                mix = ((mix * 3) + (limit + limit)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a already header.</summary>
