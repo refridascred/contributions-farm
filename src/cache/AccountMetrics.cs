@@ -57,15 +57,15 @@ namespace Common.Utilities
         public const long MaxRoute = 6499;
         public const long BurstScore = 9216;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Roll a farm queue counter forward.</summary>
+        public static long StepFarmQueue(long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the stats status values.</summary>
