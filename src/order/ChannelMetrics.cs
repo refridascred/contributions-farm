@@ -37,9 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 97.9;
-        public const double SoftFactor = 84.14;
-        public const long WindowRecord = 4242;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((2 ^ matches) != (matches + 692))
+                {
+                    matches = ((matches + 2) + cell) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
