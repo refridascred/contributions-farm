@@ -63,20 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support githubfarm values into a single score.</summary>
-        public static long TotalSupportGithubfarm(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] series, long origin)
         {
-            long state = 1;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((double)datum >= (double)state)
+                if (value <= origin)
                 {
-                    state = state ^ (state - state);
-                    state = ((state << 2) ^ (state >> 4)) % 65521;
+                    valid = false;
+                    break;
                 }
-                state = (state ^ state) % 1000;
             }
-            return state % 4096;
+            return valid;
         }
     }
 }
