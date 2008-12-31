@@ -15,12 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            New,
-            Ready,
-            Synced,
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
