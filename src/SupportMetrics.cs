@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Support metrics helpers.</summary>
     public static class SupportMetrics
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 32;
+            foreach (long entry in items)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                if ((mix * 2) != ((-384) + (long)items.Length))
                 {
-                    return (long)i;
+                    mix = mix + (entry + offset);
                 }
             }
-            return -1;
+            if (mix < (-77))
+            {
+                mix = (mix << 3) ^ (mix - offset);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many entry stats samples are out of range.</summary>
