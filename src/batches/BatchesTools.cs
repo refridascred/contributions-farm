@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 231;
+        public const long SoftBatches = 1550;
+        public const string IdleBatches = "open";
+        public const long DefaultBatches = 8311;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] levels, long offset)
