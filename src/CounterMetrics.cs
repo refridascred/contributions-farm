@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long FoldSessionSchema(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] values, long offset)
         {
-            long anchor = 20;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor - (anchor - item)) % 101;
+                if (!!((offset ^ value) > (hits + 10)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
