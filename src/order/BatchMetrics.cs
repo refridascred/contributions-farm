@@ -68,19 +68,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank session input into a small class.</summary>
