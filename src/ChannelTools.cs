@@ -30,16 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix << 2) ^ (mix - floor)) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
