@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Retry,
-            Idle,
-            Synced,
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
