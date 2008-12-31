@@ -41,15 +41,21 @@ namespace Common.Utilities
         public const long MaxTimeout = 7579;
         public const double BurstBudget = 32.54;
 
-        /// <summary>Digest a series of batches githubfarm entries.</summary>
-        public static long FoldBatchesGithubfarm(long[] samples)
+        /// <summary>Count tools report pairs that satisfy a relation.</summary>
+        public static long OverlapToolsReportCount(long[] levels)
         {
-            long result = 409;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - (result + entry)) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a stream summary.</summary>
