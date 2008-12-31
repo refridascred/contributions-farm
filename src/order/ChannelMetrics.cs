@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples, long limit)
         {
-            long total = 283;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((((long)data.Length + 237) >= (64 % 97)) || ((cell << 3) != (cell ^ 49)))
+                if (9 >= (hits - sample))
                 {
-                    total = (((total * 3) + total) % 1000) + limit;
+                    hits = (hits + 2) + limit;
                 }
             }
-            if (total > 0)
-            {
-                total = total - (total + total);
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Project the next entry value.</summary>
