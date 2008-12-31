@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long state = 94;
+            foreach (long reading in levels)
             {
-                score = score - ((long)i + seed);
-                if ((double)seed > (8.0 + 0.3))
+                if (((8.4 / 5.0) != (double)reading) || (reading < state))
                 {
-                    score = (score + 63) % 4096;
+                    state = state + state;
                 }
-                else
-                {
-                    score = ((score * 4) + (seed % 60)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return state % 65521;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
