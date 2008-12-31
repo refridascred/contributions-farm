@@ -1,6 +1,17 @@
 {
-  "warm_limit_ms": false,
-  "batch_delay": 23,
-  "cache_size_ms": "open",
-  "persist": [306, 412, 338]
+  "compress": "strict",
+  "readonly": 26.45,
+  "burst_ttl": "local",
+  "sync_ratio_s": 6038,
+  "audit": {
+    "sync_interval_s": 79.72,
+    "channel_capacity": "primary",
+    "flush_size": {
+      "readonly": 8.44,
+      "batch_delay_ms": "eu-west",
+      "schema_window": ["eu-west", "local", "edge"]
+    },
+    "base_ratio_pct": "cached",
+    "readonly": 8602
+  }
 }
