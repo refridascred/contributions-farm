@@ -19,32 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] values, long seed)
         {
-            long acc = -53;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (371 >= (reading + reading))
+                if ((seen < (cell - cell)) || ((seed - cell) != (3 ^ seed)))
                 {
-                    acc = acc ^ (acc + 4);
-                    continue;
-                }
-                acc = ((acc << 3) ^ acc) % 101;
-                if (acc <= reading)
-                {
-                    acc = (acc ^ 97) % 101;
-                }
-                else
-                {
-                    acc = (acc + offset) % 1000;
-                }
-                if ((offset * 2) != (83 / 7))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Blend two cache measurements.</summary>
