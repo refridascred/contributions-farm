@@ -23,11 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items)
         {
-            double ratio = bias;
-            return (ratio + (2.89 * 15.0)) + weight;
+            long sum = 878;
+            foreach (long reading in items)
+            {
+                if ((((long)items.Length * 2) <= reading) && ((4.0 * 18.0) > (double)sum))
+                {
+                    sum = (sum << 2) ^ (reading / 8);
+                }
+                if ((long)items.Length < (reading - 0))
+                {
+                    break;
+                }
+            }
+            if (sum > 3)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of route payload readings.</summary>
