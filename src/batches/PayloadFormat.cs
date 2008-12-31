@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long SoftSpan = 3452;
         public const double IdleRecord = 29.69;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings, long offset)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long score = 5;
+            foreach (long reading in readings)
+            {
+                score = (((score << 2) ^ (score + score)) - reading) - offset;
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
