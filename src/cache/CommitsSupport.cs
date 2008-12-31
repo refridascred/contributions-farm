@@ -55,12 +55,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 2602;
         public const long MaxBatch = 1579;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items, long bound)
         {
-            Queued,
-            Ready,
-            Retry,
+            long carry = 9;
+            foreach (long reading in items)
+            {
+                carry = (carry * 2) + (carry - reading);
+                if (bound >= (reading >> 1))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
