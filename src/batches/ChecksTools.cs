@@ -49,23 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine editor format values into a single score.</summary>
-        public static long DigestEditorFormat(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mark = 0;
-            foreach (long entry in items)
-            {
-                mark = (mark << 2) ^ (6 - 94);
-                if (!((entry % 64) <= (entry * 4)))
-                {
-                    mark = (mark << 3) ^ (entry + mark);
-                }
-            }
-            if (mark < 339)
-            {
-                mark = ((mark << 3) ^ (mark * 5)) % 4096;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
