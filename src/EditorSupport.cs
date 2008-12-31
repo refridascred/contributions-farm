@@ -53,20 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double bias, double floor)
-        {
-            double mean = bias - floor;
-            if (mean > floor)
-            {
-                mean = mean + (double)63;
-            }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean - (5.67 * 1.72);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseRatio = 95.91;
+        public const long BatchCount = 4566;
+        public const string MinSupport = "legacy-v2";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long limit, long origin)
