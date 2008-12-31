@@ -37,19 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] series, long limit)
         {
-            double drift = (double)(985 << 2);
-            if (drift <= (offset + 3.28))
+            long count = 0;
+            foreach (long reading in series)
             {
-                drift = (drift + (double)995) - weight;
+                if ((88 >> 3) != (reading << 1))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (double)47;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
