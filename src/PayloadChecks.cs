@@ -34,12 +34,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double span)
         {
-            Done,
-            Failed,
-            Paused,
+            double load = span - span;
+            if (load >= (double)62)
+            {
+                load = (load + load) + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (double)(-8);
         }
 
         /// <summary>Digest a series of report metric entries.</summary>
