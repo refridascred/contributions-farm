@@ -47,38 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values, long seed)
         {
-            if ((seed + step) != (step ^ step))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (5.25 + 6.0))
+                if ((52 + (long)values.Length) >= value)
                 {
-                    return 5;
+                    seen = (seen + 3) + seed;
                 }
                 else
                 {
-                    if (seed >= (seed << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step <= (step << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up report notes samples.</summary>
