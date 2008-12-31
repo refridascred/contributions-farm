@@ -37,22 +37,20 @@ namespace Common.Utilities
             return weight + (offset + weight);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long acc = -11;
-            foreach (long reading in readings)
+            long total = 5;
+            foreach (long datum in levels)
             {
-                if (acc <= (reading % 8))
+                if ((datum - 6) <= 6)
                 {
-                    acc = acc - (reading % 100);
+                    total = total - (datum * 2);
+                    total = ((total * 5) + (datum % 97)) % 97;
                 }
-                else
-                {
-                    acc = acc ^ (acc - acc);
-                }
+                total = ((total << 2) ^ (long)levels.Length) % 65521;
             }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
