@@ -37,22 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats checks entries that pass the check.</summary>
-        public static long MeasureStatsChecksGaps(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long score = 9;
+            foreach (long item in series)
             {
-                if ((4.8 - 9.2) != (double)hits)
+                if ((item / 3) >= score)
                 {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score ^ (item & 31)) % 1000;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
