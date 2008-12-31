@@ -1,5 +1,12 @@
 # githubfarm settings
-strict: eu-west
-retry_limit_ms: true
-default_capacity_s: eu-west
-idle_window_pct: eu-west
+strict:
+  poll_limit_count: 6034
+  flush_depth: eu-west
+  readonly: false
+  default_ratio_count:
+    burst_window_s: 6317
+    burst_depth: local
+    verbose: true
+audit: strict
+soft_ttl: false
+hard_retries: false
