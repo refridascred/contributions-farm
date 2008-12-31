@@ -67,21 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 58;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum + item) % 101;
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
