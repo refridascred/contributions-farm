@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] data)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry << 3) == (tally + 649)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
