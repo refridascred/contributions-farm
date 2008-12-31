@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const long MinScore = 823;
         public const long StepScore = 227;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] series, long target)
+        /// <summary>Derive the next already tools value from a seed.</summary>
+        public static long StepAlreadyTools(long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
     }
 }
