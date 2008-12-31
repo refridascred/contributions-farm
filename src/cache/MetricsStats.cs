@@ -13,18 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metric batches readings against a rule.</summary>
-        public static long MeasureMetricBatchesHits(long[] readings)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen / 4) < (seen & 255))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a command record.</summary>
