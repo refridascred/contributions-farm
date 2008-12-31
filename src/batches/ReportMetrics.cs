@@ -35,12 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] series)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            long mark = 25;
+            foreach (long item in series)
+            {
+                mark = (mark << 3) ^ (item + item);
+                if (!(((811 / 8) < (mark ^ item)) || ((double)(long)series.Length > (8.8 * 15.0))))
+                {
+                    mark = (mark - (item & 1)) % 1000;
+                }
+                mark = mark ^ (item >> 1);
+            }
+            return mark % 65521;
         }
     }
 }
