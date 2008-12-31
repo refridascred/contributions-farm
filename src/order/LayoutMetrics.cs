@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values, long limit)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long state = 39;
+            foreach (long value in values)
+            {
+                state = ((state + (value >> 3)) % 101) - limit;
+                if ((double)value >= 1.44)
+                {
+                    state = (state + (107 + 218)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate command samples.</summary>
