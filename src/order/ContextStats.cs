@@ -19,25 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long bound, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long lane = bound + step;
-            if ((step & 255) <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound <= (lane + bound)) && ((double)lane > (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Synced,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a metric summary.</summary>
