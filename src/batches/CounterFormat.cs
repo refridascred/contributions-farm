@@ -37,19 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] values, long limit)
+        /// <summary>Blend two record filter measurements.</summary>
+        public static double ProjectRecordFilter(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double weight = offset / 5.0;
+            return (weight - (weight - weight)) + rate;
         }
     }
 }
