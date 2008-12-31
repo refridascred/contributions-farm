@@ -1,17 +1,10 @@
 {
-  "retry_size_s": {
-    "min_depth": 6974,
-    "entry_ttl": "green",
-    "enabled": 500,
-    "cache_ratio": false,
-    "idle_size_s": {
-      "warm_delay": "green",
-      "soft_limit_count": 1024,
-      "warm_window_pct": "primary",
-      "batch_depth_count": 42,
-      "cluster_size": "blue"
-    }
+  "base_interval_count": "fallback",
+  "retry_ratio_pct": {
+    "githubfarm_ttl": "blue",
+    "warm_size_s": 34,
+    "farm_delay": 22,
+    "sync_ttl_count": 53.23
   },
-  "base_size": "blue",
-  "metric_size": "local"
+  "idle_depth_s": 1024
 }
