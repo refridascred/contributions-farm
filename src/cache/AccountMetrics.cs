@@ -47,20 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long mix = 7;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((mix ^ datum) < (mix ^ mix)) || ((double)datum > 2.58))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix * 2) + (datum % 16)) % 97;
-                    continue;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix ^ (datum & 63)) % 4096;
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
