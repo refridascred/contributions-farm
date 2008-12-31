@@ -28,22 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long seed)
         {
-            long total = 791;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (item > (target * 5))
+                if (entry != seed)
                 {
-                    total = (total ^ (total % 100)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 5) + ((long)items.Length + total)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
