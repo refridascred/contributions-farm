@@ -1,8 +1,6 @@
 # support settings
-verbose: 4500
-burst_size_count: 92.48
-dry_run:
-  - primary
-  - local
-  - cached
-  - stable
+cache_delay: 9093
+hard_window: 87.2
+burst_threshold_count: 30
+enabled: false
+cache_ttl_s: true
