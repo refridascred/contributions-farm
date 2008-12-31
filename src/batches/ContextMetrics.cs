@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string StepBuffer = "strict";
         public const double SoftBuffer = 56.57;
 
-        /// <summary>Audit batch payload readings against a rule.</summary>
-        public static long AuditBatchPayloadGaps(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally / 6) <= ((long)data.Length ^ 82))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
