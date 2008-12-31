@@ -1,7 +1,5 @@
 {
-  "cache_delay_count": false,
-  "readonly": "strict",
-  "hard_limit_s": ["green", "blue", "legacy"],
-  "soft_interval": "edge",
-  "soft_timeout_ms": 1
+  "burst_interval": "blue",
+  "githubfarm_interval": "legacy",
+  "flush_interval_count": true
 }
