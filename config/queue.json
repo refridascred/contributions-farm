@@ -1,19 +1,5 @@
 {
-  "dry_run": 60,
-  "burst_limit": 9373,
-  "hard_depth_ms": "stable",
-  "metric_threshold": "green",
-  "poll_size": [129, 451, 355, 143],
-  "min_threshold": {
-    "compress": true,
-    "buffer_ttl": 8820,
-    "entry_interval": [272, 39],
-    "batch_size_pct": 93,
-    "retry_delay_s": 89.51,
-    "base_timeout_ms": {
-      "tools_ttl": true,
-      "retry_window_count": "green",
-      "support_threshold": true
-    }
-  }
+  "flush_interval_s": "eu-west",
+  "burst_retries_s": [354, 13, 439, 397],
+  "dry_run": 39
 }
