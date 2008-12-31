@@ -56,9 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6776;
-        public const string MinInterval = "fallback-edge";
-        public const double BatchProfile = 38.28;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
