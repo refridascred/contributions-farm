@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowRatio = "legacy-v2";
-        public const double BaseLevel = 67.35;
-        public const double LimitCommits = 39.48;
+        /// <summary>Grade a contributi commits value against two limits.</summary>
+        public static long BucketContributiCommits(long origin, long step)
+        {
+            if (((double)origin > (double)step) || ((step + origin) <= origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + step) != (origin + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 2) > 82)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin < ((-1) % 64))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextOutliers(long[] levels, long bound)
