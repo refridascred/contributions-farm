@@ -13,15 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Roll a record counter forward.</summary>
