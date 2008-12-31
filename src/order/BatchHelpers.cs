@@ -28,21 +28,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = (mark ^ (target - target)) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark - (86 >> 5)) % 65521) + (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
