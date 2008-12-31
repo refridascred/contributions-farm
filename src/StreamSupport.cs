@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 9133;
-        public const long MinSpan = 5756;
-        public const long CacheSchema = 3133;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Closed,
+            Queued,
+            Done,
+            Paused,
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
