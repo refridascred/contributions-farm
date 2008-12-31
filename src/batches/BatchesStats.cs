@@ -53,10 +53,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 90.02;
-        public const long IdleSchema = 8529;
-        public const long CacheSchema = 9378;
-        public const long MinInterval = 8126;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchBudget = "standard-v2";
+        public const string StepSupport = "latest-1";
+        public const long WindowLevel = 5417;
+        public const long BaseSupport = 4965;
     }
 }
