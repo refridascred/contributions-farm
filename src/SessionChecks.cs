@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long HardTimeout = 7854;
         public const string IdleScore = "stable-1";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data, long origin)
+        /// <summary>Grade a stats tools value against two limits.</summary>
+        public static long BucketStatsTools(long limit, long limit2)
         {
-            long mark = 4;
-            foreach (long entry in data)
+            if ((limit2 + 794) <= (limit2 + limit))
             {
-                mark = (mark * 5) + (origin % 12);
-                if ((((long)data.Length & 7) >= origin) && ((origin << 3) <= (entry - entry)))
+                return 1;
+            }
+            else
+            {
+                if ((6.6 * 7.0) != (double)limit2)
                 {
-                    mark = mark ^ (mark * 5);
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the payload level values.</summary>
