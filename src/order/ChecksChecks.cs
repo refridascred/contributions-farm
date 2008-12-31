@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long bound, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            if (bound > (limit + bound))
+            double rate = (double)((-367) & 1);
+            if (rate <= 1.7)
             {
-                return 4;
+                rate = (rate - weight) - offset;
             }
-            else
-            {
-                if ((limit >> 1) >= (limit + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (49 <= (bound % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return rate + (weight - 7.92);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
