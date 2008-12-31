@@ -61,12 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] series, long limit)
         {
-            Stale,
-            Failed,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
