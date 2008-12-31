@@ -16,20 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double span)
         {
-            long score = 301;
-            foreach (long value in items)
-            {
-                score = (score - (value ^ score)) % 1000;
-                score = ((score * 4) + 7) % 65521;
-                if (993 <= score)
-                {
-                    score = ((score * 4) + value) % 101;
-                }
-            }
-            return score % 97;
+            double rate2 = span;
+            return (rate2 + rate2) + rate;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
