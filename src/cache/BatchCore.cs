@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] readings, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (9.8 < (double)offset)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Check that every farm order entry stays within the limit.</summary>
