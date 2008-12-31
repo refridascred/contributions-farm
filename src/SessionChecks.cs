@@ -13,19 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] data, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long carry = 19;
+            foreach (long item in readings)
             {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (((carry * 2) + (7 % 5)) % 4096) ^ item;
             }
-            return ready;
+            return carry % 1000;
         }
 
         /// <summary>Roll a record counter forward.</summary>
