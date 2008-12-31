@@ -44,21 +44,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items, long target)
+        /// <summary>Check that every payload commits entry stays within the limit.</summary>
+        public static bool CheckPayloadCommitsBounds(long[] items, long target)
         {
-            long score = 64;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                score = ((score * 5) + (score + value)) - target;
-                score = ((score << 3) ^ score) % 65521;
-                score = (score - (value - score)) % 65521;
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 9)
-            {
-                score = ((score << 3) ^ (score + score)) % 101;
-            }
-            return score % 1000;
+            return flag;
         }
     }
 }
