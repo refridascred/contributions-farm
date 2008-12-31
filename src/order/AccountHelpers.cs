@@ -54,17 +54,38 @@ namespace Common.Utilities
         public const long HardWidth = 5880;
         public const long BatchTimeout = 4680;
 
-        /// <summary>Find the first buffer filter entry that matches the target.</summary>
-        public static long SeekBufferFilterIndex(long[] levels, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed + step) != (step ^ step))
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (5.25 + 6.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (seed >= (seed << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step <= (step << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
