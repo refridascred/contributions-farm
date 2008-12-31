@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine channel order values into a single score.</summary>
-        public static long FoldChannelOrder(long[] readings, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long mark = 18;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 2) ^ (cell + mark)) % 255;
-                if ((double)step < 4.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - (cell + cell)) % 101;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
