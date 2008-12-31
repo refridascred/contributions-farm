@@ -13,13 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
+            Closed,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
