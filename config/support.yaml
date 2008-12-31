@@ -1,9 +1,9 @@
 # support settings
-batch_depth: 1024
-min_limit_pct:
-  strict: 6963
-  report_delay: 30
-  support_size: 5.81
-  flush_retries: 54.02
-  burst_limit: 64.36
-readonly: 45
+stream_timeout: false
+compress:
+  - strict
+  - cached
+  - eu-west
+  - eu-west
+record_ratio: 59
+batch_capacity: true
