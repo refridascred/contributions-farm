@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of checks tools readings.</summary>
-        public static long PairChecksToolsCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 48;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark - (173 + item)) - offset;
+                mark = ((mark * 4) + item) % 4096;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
