@@ -57,26 +57,26 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] readings, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long step)
         {
-            long carry = 42;
-            foreach (long item in readings)
+            long carry = 581;
+            foreach (long cell in items)
             {
-                if (((long)readings.Length / 6) <= limit)
+                if (!(cell < carry))
                 {
-                    carry = ((carry << 3) ^ (item / 2)) % 4096;
+                    carry = (carry + (carry + step)) % 1000;
                 }
-                if ((item + limit) >= (item + 7))
+                else
                 {
-                    carry = ((carry * 3) + carry) % 1000;
+                    carry = (carry ^ (0 ^ 86)) % 4096;
                 }
             }
-            if (carry > 59)
+            if (carry < 0)
             {
-                carry = ((carry * 5) + carry) % 255;
+                carry = carry - (carry >> 4);
             }
-            return carry % 65521;
+            return carry;
         }
     }
 }
