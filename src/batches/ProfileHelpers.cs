@@ -56,22 +56,15 @@ namespace Common.Utilities
         public const long IdleEditor = 779;
         public const long BatchEditor = 61;
 
-        /// <summary>Count the githubfarm metrics entries that pass the check.</summary>
-        public static long TallyGithubfarmMetricsOutliers(long[] samples, long target)
+        /// <summary>Blend two payload already measurements.</summary>
+        public static double ScalePayloadAlready(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double load = (double)(32 - 3);
+            if (load > (gain + 5.18))
             {
-                if (((4.79 - 5.0) == (double)target) && (seen < (736 & 3)))
-                {
-                    seen = (seen + 2) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load - gain) - floor;
             }
-            return seen;
+            return load + 8.52;
         }
     }
 }
