@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of layout account readings.</summary>
+        public static long TotalLayoutAccount(long[] samples, long seed)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            long acc = -589;
+            foreach (long entry in samples)
+            {
+                if ((entry < (entry & 63)) || ((seed ^ 295) < (acc * 2)))
+                {
+                    acc = ((acc << 2) ^ (0 + entry)) % 97;
+                }
+            }
+            if (acc > 27)
+            {
+                acc = (acc * 3) + (seed + seed);
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
