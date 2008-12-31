@@ -50,21 +50,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Digest a series of report metric entries.</summary>
+        public static long TotalReportMetric(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 394;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 3) + (entry & 127)) - (long)i;
+                    anchor = (anchor ^ (7 / 7)) % 65521;
                 }
+                anchor = ((anchor * 3) + (entry - anchor)) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
