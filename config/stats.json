@@ -1,6 +1,8 @@
 {
-  "warm_delay_s": "stable",
-  "retry_ttl_count": 100,
-  "verbose": ["standard", "stable", "edge"],
-  "graph_limit": [341, 342, 415, 182]
+  "format_depth": 500,
+  "verbose": "latest",
+  "min_limit_pct": 500,
+  "burst_capacity_count": 500,
+  "hard_limit_pct": "staging",
+  "cluster_retries": 100
 }
