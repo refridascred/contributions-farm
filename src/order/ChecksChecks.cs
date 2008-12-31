@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 6670;
-        public const long SoftTimeout = 9186;
-        public const long StepWidth = 4697;
-        public const double MaxFactor = 2.58;
-        public const double RetryReport = 11.06;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Failed,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] levels, long seed)
