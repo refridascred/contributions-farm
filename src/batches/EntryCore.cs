@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit metric editor readings against a rule.</summary>
+        public static long MeasureMetricEditorMatches(long[] series, long seed)
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item + seed) <= item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
