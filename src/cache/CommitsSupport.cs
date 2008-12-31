@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "stable";
-        public const string DefaultChecks = "alpha";
-        public const string BaseChecks = "staging-edge";
-        public const string IdleSpan = "latest-v2";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values)
+        {
+            long mark = 486;
+            foreach (long entry in values)
+            {
+                mark = (((mark << 3) ^ (mark + mark)) % 4096) + entry;
+            }
+            if (mark > 26)
+            {
+                mark = ((mark << 2) ^ (33 % 10)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Count the metric metrics entries that pass the check.</summary>
         public static long CountMetricMetricsGaps(long[] series, long step)
