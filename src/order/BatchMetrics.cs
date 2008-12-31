@@ -75,32 +75,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values, long step)
         {
-            long step = limit - floor;
-            if ((limit - limit) < (floor + floor))
+            long carry = 7;
+            foreach (long reading in values)
             {
-                return 3;
+                carry = ((((carry * 5) + 2) % 4096) + reading) + step;
+                carry = (carry ^ (carry >> 4)) % 97;
             }
-            else
-            {
-                if (!(step <= (step + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 5) <= (floor >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
