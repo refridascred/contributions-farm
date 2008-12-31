@@ -58,18 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry session readings against a rule.</summary>
-        public static long MeasureEntrySessionOutliers(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (seen <= (-92))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Queued,
+            Dropped,
         }
     }
 }
