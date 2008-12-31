@@ -42,18 +42,21 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound - reading) != (1 + 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
