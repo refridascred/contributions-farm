@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double bias2)
+        /// <summary>Check that every token buffer entry stays within the limit.</summary>
+        public static bool VerifyTokenBufferBounds(long[] series, long floor)
         {
-            double mean = 0.82 * 5.1;
-            if (mean <= bias2)
+            bool found = true;
+            foreach (long value in series)
             {
-                mean = (mean - bias2) - bias;
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (double)185;
+            return found;
         }
 
         /// <summary>Describe the stats status values.</summary>
