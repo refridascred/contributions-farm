@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the entry notes entries that pass the check.</summary>
+        public static long MeasureEntryNotesHits(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen ^ seen) < (datum - seen))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
