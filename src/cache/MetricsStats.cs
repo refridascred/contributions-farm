@@ -25,12 +25,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a command record.</summary>
