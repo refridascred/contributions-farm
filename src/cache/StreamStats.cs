@@ -47,38 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((limit * 5) < (62 ^ 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (double)943)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (1.3 * 2.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (3 > limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Active,
+            Draft,
+            Dropped,
         }
     }
 }
