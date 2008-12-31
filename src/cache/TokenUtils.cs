@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long BurstContext = 9080;
         public const double CacheSpan = 19.38;
 
-        /// <summary>Fold a list of record stream readings.</summary>
-        public static long DigestRecordStream(long[] series, long floor)
-        {
-            long anchor = 413;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor * 4) + (anchor - floor)) + sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxInterval = 4191;
+        public const long CacheDepth = 4840;
+        public const long WindowWidth = 4792;
+        public const double RetryTimeout = 8.57;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double AdjustEditor(double rate, double bias)
