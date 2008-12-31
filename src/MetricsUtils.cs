@@ -45,21 +45,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Classify a payload queue pair into a bucket.</summary>
+        public static long ClassifyPayloadQueue(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit ^ limit) > (limit % 100))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit - target) < target)
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
