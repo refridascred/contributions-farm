@@ -32,11 +32,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double bias)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            double bias2 = bias;
+            if (bias2 >= (7.97 * 1.8))
+            {
+                bias2 = bias2 + (14.0 / 8.0);
+            }
+            return bias2 - scale;
         }
     }
 }
