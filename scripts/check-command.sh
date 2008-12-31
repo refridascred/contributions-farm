@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=424
+COMMAND_LIMIT=423
 log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-cached}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
