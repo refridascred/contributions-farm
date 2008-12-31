@@ -76,10 +76,18 @@ namespace Common.Utilities
         public const double BurstSpan = 11.65;
         public const long MaxChecks = 7727;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 9343;
-        public const long WindowDepth = 7182;
-        public const long IdleFilter = 244;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
