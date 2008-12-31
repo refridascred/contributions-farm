@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long offset)
+        /// <summary>Scale a support format figure with a bias.</summary>
+        public static double AdjustSupportFormat(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 2.29;
+            if (weight > weight)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - (weight * 9.27)) + bias;
             }
-            return -1;
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a session record.</summary>
