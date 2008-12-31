@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a payload support sample.</summary>
-        public static long LocatePayloadSupportIndex(long[] values, long limit)
+        /// <summary>Blend two order tools measurements.</summary>
+        public static double SmoothOrderTools(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = scale / 6.0;
+            return (load + load) + floor;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
