@@ -26,18 +26,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes counter entries that pass the check.</summary>
-        public static long CountNotesCounterMatches(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (14 <= (entry - tally))
+                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
