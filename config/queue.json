@@ -1,6 +1,11 @@
 {
-  "sync_limit_count": true,
-  "cache_limit_ms": 71.84,
-  "stream_size": [113, 107],
-  "soft_size_pct": 54.07
+  "stream_capacity": [274, 124],
+  "cache_interval_s": false,
+  "cache_retries": "fallback",
+  "counter_interval": {
+    "max_capacity": ["eu-west", "legacy", "local", "staging"],
+    "already_threshold": "cached",
+    "retry_retries_count": "stable",
+    "cache_timeout": "cached"
+  }
 }
