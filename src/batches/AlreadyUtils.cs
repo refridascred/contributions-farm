@@ -36,13 +36,18 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] series, long floor)
         {
-            Done,
-            Pending,
-            Idle,
-            Retry,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((floor ^ floor) <= floor) || (cell >= (floor & 127)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
