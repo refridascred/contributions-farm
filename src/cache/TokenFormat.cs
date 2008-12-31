@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long seed, long target)
         {
-            double ratio = floor;
-            if (ratio <= (9.56 * 0.9))
+            if ((double)target <= (18.0 * 15.0))
             {
-                ratio = ratio - (scale + scale);
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio - (floor * 10.0)) + (double)(long)i;
+                if ((13.0 - 9.97) >= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((705 / 3) <= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return ratio + (scale / 5.0);
         }
 
         /// <summary>Hold a counter stats.</summary>
