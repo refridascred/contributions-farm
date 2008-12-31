@@ -50,19 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Combine route tools values into a single score.</summary>
+        public static long FoldRouteTools(long[] readings, long floor)
         {
-            double rate2 = rate;
-            if (rate2 >= rate)
+            long score = 342;
+            foreach (long value in readings)
             {
-                rate2 = (rate2 - (rate2 / 9.0)) - floor;
+                score = (score + score) % 1000;
+                if (!((4.84 * 10.0) > (double)floor))
+                {
+                    score = ((score << 3) ^ (value ^ floor)) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return score % 4096;
         }
     }
 }
