@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
