@@ -44,12 +44,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 72.83;
-        public const long BurstBatches = 1228;
-        public const string DefaultBatches = "strict-edge";
-        public const double BatchBudget = 38.01;
-        public const double LimitLevel = 14.42;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
         public static bool GuardStatsContributiRange(long[] samples, long origin)
