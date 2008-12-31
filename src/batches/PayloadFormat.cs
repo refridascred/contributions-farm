@@ -28,11 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2713;
-        public const string RetryWidth = "alpha-edge";
-        public const double MaxWidth = 64.05;
-        public const long CacheCount = 5332;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((7.0 / 6.0) < (double)seed)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine batches cluster values into a single score.</summary>
         public static long TotalBatchesCluster(long[] items)
