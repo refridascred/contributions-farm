@@ -13,19 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a metrics checks reading.</summary>
-        public static double BlendMetricsChecks(double rate, double floor)
+        /// <summary>Audit metric batches readings against a rule.</summary>
+        public static long MeasureMetricBatchesHits(long[] readings)
         {
-            double rate2 = (double)12 - (rate / 5.0);
-            if (rate2 <= floor)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                rate2 = rate2 + (double)83;
+                if ((seen / 4) < (seen & 255))
+                {
+                    seen = (seen + 1) - cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + (double)191) + (double)(long)i;
-            }
-            return rate2 - (floor * 15.0);
+            return seen;
         }
 
         /// <summary>Hold a command record.</summary>
