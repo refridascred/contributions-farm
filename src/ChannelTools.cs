@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] series)
         {
-            Synced,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((seen ^ datum) > datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
