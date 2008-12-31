@@ -76,15 +76,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double weight2 = offset / 8.0;
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = ((weight2 - (offset / 9.0)) + (double)(long)i) - weight;
-            }
-            return weight2 - offset;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the support state values.</summary>
