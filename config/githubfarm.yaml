@@ -1,8 +1,7 @@
 # githubfarm settings
-cache_timeout_ms: legacy
-checks_window:
-  min_depth_count: 2238
-  default_size: 3197
-  base_window_s: fallback
-max_ratio: 60
-metrics_delay: standard
+stats_capacity: true
+queue_timeout: true
+flush_window:
+  - 2
+  - 146
+  - 284
