@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every token buffer entry stays within the limit.</summary>
-        public static bool VerifyTokenBufferBounds(long[] series, long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            bool found = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
