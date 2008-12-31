@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] series, long bound)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits >> 5) > reading)
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a checks batch sample.</summary>
