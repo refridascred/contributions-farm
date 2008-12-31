@@ -35,23 +35,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long carry = 51;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry ^ (cell - carry)) + (long)i;
-                    carry = ((carry * 2) + (cell - carry)) % 4096;
-                }
-                if (!(6 < (carry - 106)))
-                {
-                    carry = ((carry * 2) + (carry ^ cell)) % 1000;
-                }
-            }
-            return carry;
+            Closed,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
