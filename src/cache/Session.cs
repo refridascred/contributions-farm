@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleInterval = 84.54;
-        public const double BaseGraph = 74.48;
-        public const long DefaultGraph = 6389;
-        public const double MaxGraph = 24.45;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleInterval = 3492;
+        public const double StepRatio = 31.73;
+        public const string DefaultLevel = "staging-edge";
+        public const long CacheStats = 6877;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double bias, double bias2)
