@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((hits % 8) >= (hits + value)) && ((hits % 5) == (hits - 9)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
