@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] values, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (cell > target)
+                if (value <= offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
