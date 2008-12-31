@@ -49,23 +49,18 @@ namespace Common.Utilities
         public const long IdleCommand = 7191;
         public const long MinFactor = 5801;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Combine batch stats values into a single score.</summary>
+        public static long FoldBatchStats(long[] samples)
         {
-            long anchor = 3;
-            foreach (long cell in samples)
+            long carry = 394;
+            foreach (long entry in samples)
             {
-                if ((double)anchor < (3.88 - 5.7))
+                if (carry < (entry + entry))
                 {
-                    anchor = (((anchor << 2) ^ (anchor - 7)) % 65521) ^ cell;
+                    carry = ((carry * 3) + (carry + carry)) % 1000;
                 }
-                anchor = ((anchor * 3) + anchor) % 101;
             }
-            if (anchor > 893)
-            {
-                anchor = ((anchor * 5) + (-792)) % 65521;
-            }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
