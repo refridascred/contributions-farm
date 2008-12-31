@@ -65,18 +65,18 @@ namespace Common.Utilities
         public const long StepProfile = 2043;
         public const long MinSize = 2758;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] samples, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((hits & 15) == (datum - limit))
+                if ((cell - cell) > cell)
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
