@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next filter profile value from a seed.</summary>
-        public static long IterateFilterProfile(long seed)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
