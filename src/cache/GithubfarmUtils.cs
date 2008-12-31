@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double drift = (2.6 - offset) - (double)8;
-            if (drift < offset)
-            {
-                drift = (drift + drift) + gain;
-            }
-            return drift + (offset / 8.0);
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
