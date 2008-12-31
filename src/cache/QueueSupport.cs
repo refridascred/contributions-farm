@@ -33,13 +33,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long limit, long target)
         {
-            Pending,
-            Active,
-            New,
-            Failed,
+            long diff = limit - target;
+            if ((diff >> 1) == (limit / 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 5) > (limit / 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((503 + diff) != (diff + 9)) && (3.05 >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
