@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((2 >> 4) < step))
+                if ((matches % 97) > (long)values.Length)
                 {
-                    score = (score - score) % 65521;
+                    matches = (matches + 1) + datum;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
