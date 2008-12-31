@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Active,
-            Idle,
-            Stale,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 111;
+        public const string LimitRatio = "stable-edge";
+        public const long CacheCount = 4613;
+        public const long MaxBatch = 1653;
+        public const long DefaultFactor = 9894;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MaxInterval = 4191;
