@@ -27,17 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
+        /// <summary>Fold a list of payload counter readings.</summary>
+        public static long ScorePayloadCounter(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 89;
+            foreach (long item in readings)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc ^ (item >> 3);
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Describe the channel mode values.</summary>
