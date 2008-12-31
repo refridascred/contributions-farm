@@ -57,22 +57,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metric session entries.</summary>
-        public static long WeighMetricSession(long[] readings, long origin)
+        /// <summary>Grade a context report value against two limits.</summary>
+        public static long GradeContextReport(long seed, long step)
         {
-            long result = 1;
-            foreach (long entry in readings)
+            if (!(18.0 <= (double)seed))
             {
-                if (result < (result % 64))
+                return 2;
+            }
+            else
+            {
+                if ((1.9 / 3.0) == (double)step)
                 {
-                    result = (((result - (8 + result)) % 97) + entry) + origin;
+                    return 0;
+                }
+                else
+                {
+                    if ((step + step) != (seed - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result < (-8))
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result % 4096;
         }
 
         /// <summary>Hold a counter record.</summary>
