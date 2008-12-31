@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
