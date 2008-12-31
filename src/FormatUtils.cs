@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long DefaultInterval = 2980;
         public const double RetrySize = 75.91;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] samples, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((7.53 * 7.9) > (double)value) && ((double)origin >= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
