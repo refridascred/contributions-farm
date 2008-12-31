@@ -1,5 +1,19 @@
 {
-  "checks_capacity": "standard",
-  "default_delay_s": 3087,
-  "max_delay_count": ["legacy", "standard", "stable", "eu-west"]
+  "dry_run": 60,
+  "burst_limit": 9373,
+  "hard_depth_ms": "stable",
+  "metric_threshold": "green",
+  "poll_size": [129, 451, 355, 143],
+  "min_threshold": {
+    "compress": true,
+    "buffer_ttl": 8820,
+    "entry_interval": [272, 39],
+    "batch_size_pct": 93,
+    "retry_delay_s": 89.51,
+    "base_timeout_ms": {
+      "tools_ttl": true,
+      "retry_window_count": "green",
+      "support_threshold": true
+    }
+  }
 }
