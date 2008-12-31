@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable open strict green; do
-    log "checking ${item}"
-done
+mode="${1:-eu-west}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=365
+RECORD_LIMIT=387
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
