@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine channel order values into a single score.</summary>
+        public static long FoldChannelOrder(long[] readings, long step)
         {
-            Idle,
-            Paused,
-            Stale,
-            Synced,
+            long mark = 18;
+            foreach (long cell in readings)
+            {
+                mark = ((mark << 2) ^ (cell + mark)) % 255;
+                if ((double)step < 4.0)
+                {
+                    mark = (mark - (cell + cell)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
