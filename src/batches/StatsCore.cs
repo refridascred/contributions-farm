@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string HardPayload = "strict";
         public const long RetryPayload = 5606;
 
-        /// <summary>Project the next batch editor value.</summary>
-        public static double SmoothBatchEditor(double ratio, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            double weight = ratio;
-            if (weight < ratio)
+            double mean = ratio - (ratio / 6.0);
+            if (mean > (double)515)
             {
-                weight = (weight + 7.1) - bias;
+                mean = (mean - ratio) + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight - (weight + ratio);
+                mean = (mean + (double)482) + (double)(long)i;
             }
-            return weight + (double)0;
+            return mean + ratio;
         }
 
         /// <summary>Describe the window level values.</summary>
