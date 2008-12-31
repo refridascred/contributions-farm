@@ -39,11 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "local-edge";
-        public const double WindowFilter = 16.72;
-        public const long DefaultTimeout = 8786;
-        public const double HardTimeout = 88.24;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count < (17.0 * 5.1))
+                {
+                    count = ((count + 1) + entry) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ScaleBatch(double gain, double offset)
