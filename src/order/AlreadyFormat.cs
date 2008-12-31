@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((tally >> 4) < floor)
+                if ((double)seen >= (3.2 - 2.5))
                 {
-                    tally = (tally + 1) + entry;
+                    seen = ((seen + 1) ^ value) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
