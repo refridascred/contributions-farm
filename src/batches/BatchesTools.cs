@@ -24,12 +24,21 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count account order pairs that satisfy a relation.</summary>
+        public static long PairAccountOrderCount(long[] samples)
         {
-            Locked,
-            Failed,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
