@@ -77,9 +77,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseSize = 8.09;
-        public const long MaxLayout = 8311;
-        public const double MinInterval = 18.91;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
