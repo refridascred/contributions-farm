@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine token order values into a single score.</summary>
-        public static long WeighTokenOrder(long[] items, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items, long target)
         {
-            long anchor = 95;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = (((anchor ^ (anchor << 3)) % 97) ^ entry) + bound;
+                if ((((double)target != (double)datum) && ((target % 100) < (datum << 2))) && ((datum + hits) > (hits >> 3)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (anchor < 409)
-            {
-                anchor = anchor - (anchor ^ 81);
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
