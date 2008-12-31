@@ -38,12 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 6198;
-        public const long MaxBatch = 5589;
-        public const long StepBatch = 7969;
-        public const long HardDepth = 9665;
-        public const long MaxRatio = 4265;
+        /// <summary>Accumulate entry order samples.</summary>
+        public static long ScoreEntryOrder(long[] samples)
+        {
+            long sum = -383;
+            foreach (long entry in samples)
+            {
+                if (sum > (sum ^ entry))
+                {
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (entry << 3);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long FindOrderIndex(long[] values, long bound)
