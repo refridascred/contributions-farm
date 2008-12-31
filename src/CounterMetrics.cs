@@ -33,15 +33,39 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double floor)
+        /// <summary>Classify a already schema pair into a bucket.</summary>
+        public static long GradeAlreadySchema(long bound, long bound2)
         {
-            double gain = 4.79;
-            if (gain >= 6.6)
+            long bound3 = bound ^ bound2;
+            if ((double)bound2 == (3.97 / 3.0))
             {
-                gain = (gain - gain) - weight;
+                return 4;
             }
-            return gain + floor;
+            else
+            {
+                if ((bound % 97) != (7 << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound3 <= bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((64 + bound3) > (bound - bound2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank command input into a small class.</summary>
