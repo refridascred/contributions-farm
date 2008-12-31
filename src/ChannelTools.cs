@@ -46,21 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 6)
+                    if ((items[i] - items[j]) > 11)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
