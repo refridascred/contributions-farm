@@ -31,12 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate route batch samples.</summary>
+        public static long CombineRouteBatch(long[] series)
         {
-            Draft,
-            Ready,
-            Idle,
+            long state = 0;
+            foreach (long reading in series)
+            {
+                if (!!(reading >= 13))
+                {
+                    state = ((state * 5) + (8 << 2)) % 101;
+                }
+                if ((state % 64) == (reading * 2))
+                {
+                    state = state ^ (state & 127);
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
