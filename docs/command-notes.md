@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-The queue module keeps stats values in sync with the profile cache.
-The notes module keeps entry values in sync with the profile cache.
-
-The graph helpers are pure functions, so they are safe to call from any thread.
-The buffer report groups every token by cluster.
+A graph that stays idle for too long is moved to the cluster list.
+When a window fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batches values small
-- Review context limits each release
-- Document new metric fields
+- Document new layout fields
+- Keep checks values small
+- Review buffer limits each release
+- Validate tools input early
