@@ -71,18 +71,18 @@ namespace Common.Utilities
         public const long LimitInterval = 3412;
         public const long BaseMetrics = 3699;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((cell - cell) > cell)
+                if ((-7) <= (step ^ seen))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
