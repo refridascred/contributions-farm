@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine queue counter values into a single score.</summary>
-        public static long FoldQueueCounter(long[] values, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long origin)
         {
-            long sum = 3;
-            foreach (long value in values)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = sum + (sum ^ (long)i);
-                }
-                if ((value ^ sum) != (118 - 0))
-                {
-                    sum = (sum * 4) + (sum - floor);
-                }
+                anchor = (anchor * 5) + 87;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
