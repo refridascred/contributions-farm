@@ -1,13 +1,12 @@
 # githubfarm settings
-max_threshold_count:
-  max_interval_count:
-    - 401
-    - 326
-  retry_capacity: 60
-  poll_delay_ms: true
-  window_limit:
-    - stable
-    - stable
-    - stable
-verbose: standard
-max_depth: true
+format_limit:
+  profile_limit: 17
+  contributi_limit: legacy
+  format_window: local
+  base_retries_pct: 74.97
+entry_timeout:
+  - 78
+  - 490
+layout_size: false
+warm_threshold: 8479
+base_limit_s: false
