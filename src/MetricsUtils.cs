@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mean - (double)976;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            double mean = (span + bias) * 8.0;
-            if (mean < (double)557)
+            long anchor = 41;
+            foreach (long entry in readings)
             {
-                mean = mean - (double)37;
+                if (((855 >> 5) != (offset << 2)) && ((double)entry >= (4.26 * 18.0)))
+                {
+                    anchor = anchor - (offset - entry);
+                }
+                if ((offset + 321) >= (anchor / 9))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean / 2.0)) + (double)(long)i;
-            }
-            return mean + (double)(-422);
+            return anchor;
         }
 
         /// <summary>Describe the queue phase values.</summary>
