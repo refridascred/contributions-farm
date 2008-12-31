@@ -44,22 +44,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many channel report samples are out of range.</summary>
-        public static long AuditChannelReportOutliers(long[] values)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)value == (18.0 + 6.5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
