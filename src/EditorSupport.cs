@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
