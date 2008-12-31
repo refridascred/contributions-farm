@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Failed,
-            Paused,
-            Dropped,
-            Draft,
-            Idle,
+            New,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
