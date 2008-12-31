@@ -1,6 +1,5 @@
 {
-  "readonly": 42,
-  "idle_depth_pct": true,
-  "soft_limit": ["green", "blue"],
-  "batch_capacity": 90
+  "checks_capacity": "standard",
+  "default_delay_s": 3087,
+  "max_delay_count": ["legacy", "standard", "stable", "eu-west"]
 }
