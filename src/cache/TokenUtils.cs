@@ -12,27 +12,15 @@ namespace Common.Utilities
         public const long BurstContext = 9080;
         public const double CacheSpan = 19.38;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Fold a list of record stream readings.</summary>
+        public static long DigestRecordStream(long[] series, long floor)
         {
-            long score = 64;
-            foreach (long value in levels)
+            long anchor = 413;
+            foreach (long sample in series)
             {
-                score = (score * 5) + (value - score);
-                if (!((score - score) <= (score - value)))
-                {
-                    score = ((score * 2) + (score ^ 224)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score ^ value);
-                }
+                anchor = ((anchor * 4) + (anchor - floor)) + sample;
             }
-            if (score > 1)
-            {
-                score = (score ^ (score << 3)) % 4096;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
