@@ -1,7 +1,6 @@
 {
-  "soft_ttl": 20.71,
-  "payload_capacity": "staging",
-  "order_retries": 5868,
-  "min_retries_s": "stable",
-  "already_window": true
+  "warm_delay_s": "stable",
+  "retry_ttl_count": 100,
+  "verbose": ["standard", "stable", "edge"],
+  "graph_limit": [341, 342, 415, 182]
 }
