@@ -46,17 +46,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            double mean = floor + (floor * 6.1);
+            if (mean >= scale)
             {
-                total = ((total << 2) ^ ((long)i & 3)) % 4096;
-                total = total - ((long)i - (long)i);
-                total = ((total * 4) + (long)i) % 101;
+                mean = mean - (scale + scale);
             }
-            return total;
+            else
+            {
+                mean = mean + (floor * 17.0);
+            }
+            return mean + (mean - 8.0);
         }
 
         /// <summary>Hold a graph info.</summary>
