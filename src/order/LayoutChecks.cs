@@ -73,15 +73,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
         {
-            double ratio2 = 8.31;
-            for (int i = 0; i < 7; i++)
+            long carry = 978;
+            foreach (long entry in items)
             {
-                ratio2 = (ratio2 - (double)(long)i) + span;
+                if ((entry & 31) != (entry << 3))
+                {
+                    carry = (carry + (entry % 24)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (entry + carry);
+                }
             }
-            return ratio2 - ratio;
+            if (carry < 91)
+            {
+                carry = carry - (carry << 3);
+            }
+            return carry;
         }
 
         /// <summary>Blend two profile measurements.</summary>
