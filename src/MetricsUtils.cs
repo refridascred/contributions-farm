@@ -28,19 +28,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate payload notes readings against a bound.</summary>
-        public static bool GuardPayloadNotesLimits(long[] series, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading >= step)
+                carry = carry ^ origin;
+                if ((carry & 63) > 549)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 2) ^ 8) % 97;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Classify a payload queue pair into a bucket.</summary>
