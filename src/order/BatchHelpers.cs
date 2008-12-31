@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double mean = span;
-            if (mean < weight)
-            {
-                mean = mean + (double)5;
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean + span;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
