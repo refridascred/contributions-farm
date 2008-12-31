@@ -1,8 +1,7 @@
-id,rank,region,owner,count
-1,46.16,364,440,staging
-2,755,75.01,641,868
-3,145,cached,64.55,55.88
-4,64.96,613,829,591
-5,eu-west,latest,816,487
-6,655,legacy,3.1,cached
-7,81.4,staging,stable,815
+id,rank,state
+1,open,540
+2,83.57,open
+3,799,60.27
+4,511,929
+5,485,11.61
+6,37.12,stable
