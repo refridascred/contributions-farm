@@ -14,10 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleLevel = 6385;
-        public const string HardStats = "primary";
-        public const long BaseDepth = 8099;
+        /// <summary>Roll a schema metric counter forward.</summary>
+        public static long SeriesSchemaMetric(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc ^ (acc >> 4)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsOutliers(long[] items, long target)
