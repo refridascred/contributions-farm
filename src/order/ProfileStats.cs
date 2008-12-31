@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long floor)
         {
-            long mark = 48;
-            foreach (long item in values)
+            long step = offset - floor;
+            if (((offset << 1) <= (floor - 35)) && (offset <= (step + step)))
             {
-                mark = (mark - (173 + item)) - offset;
-                mark = ((mark * 4) + item) % 4096;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((double)step > (1.4 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
