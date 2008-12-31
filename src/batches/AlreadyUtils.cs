@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream commits entries that pass the check.</summary>
-        public static long CountStreamCommitsHits(long[] samples)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 4) <= 31)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a context reading by value.</summary>
