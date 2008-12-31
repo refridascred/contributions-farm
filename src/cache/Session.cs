@@ -38,11 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next buffer batch value from a seed.</summary>
+        public static long IterateBufferBatch(long bound)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
