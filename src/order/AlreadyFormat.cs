@@ -37,10 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheBudget = 6992;
-        public const string WindowGithubfarm = "strict-1";
-        public const double IdleInterval = 36.68;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total << 2) ^ ((long)i & 3)) % 4096;
+                total = total - ((long)i - (long)i);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaHits(long[] items, long seed)
