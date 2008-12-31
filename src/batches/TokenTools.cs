@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next account channel value.</summary>
-        public static double ProjectAccountChannel(double bias, double bias2)
+        /// <summary>Combine token order values into a single score.</summary>
+        public static long WeighTokenOrder(long[] items, long bound)
         {
-            double gain = (double)(934 * 3);
-            if (gain > bias)
+            long anchor = 95;
+            foreach (long entry in items)
             {
-                gain = gain - (gain + bias2);
+                anchor = (((anchor ^ (anchor << 3)) % 97) ^ entry) + bound;
             }
-            else
+            if (anchor < 409)
             {
-                gain = gain - (bias - bias);
+                anchor = anchor - (anchor ^ 81);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain * 7.0)) - (double)(long)i;
-            }
-            return gain + bias;
+            return anchor % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
