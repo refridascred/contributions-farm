@@ -49,20 +49,18 @@ namespace Common.Utilities
             return load + (double)(-8);
         }
 
-        /// <summary>Digest a series of report metric entries.</summary>
-        public static long TotalReportMetric(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data, long offset)
         {
-            long anchor = 394;
-            foreach (long entry in series)
+            long sum = 30;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (!((double)offset > (8.4 - 7.39)))
                 {
-                    anchor = ((anchor * 3) + (entry & 127)) - (long)i;
-                    anchor = (anchor ^ (7 / 7)) % 65521;
+                    sum = ((sum * 2) + (sum ^ (-90))) ^ item;
                 }
-                anchor = ((anchor * 3) + (entry - anchor)) % 97;
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Scale a entry profile figure with a bias.</summary>
