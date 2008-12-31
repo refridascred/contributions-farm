@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 95;
+            foreach (long reading in levels)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                mix = (mix * 4) + (reading + offset);
+                if (mix > (reading & 63))
                 {
-                    return (long)i;
+                    mix = ((mix * 4) + (-555)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)levels.Length + offset)) % 65521;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Hold a stream stats.</summary>
