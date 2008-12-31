@@ -1,5 +1,6 @@
 {
-  "session_threshold": 15.15,
-  "flush_timeout": 500,
-  "batch_interval": "legacy"
+  "idle_timeout_ms": false,
+  "persist": ["local", "legacy", "green"],
+  "cache_delay": false,
+  "sync_delay": 1024
 }
