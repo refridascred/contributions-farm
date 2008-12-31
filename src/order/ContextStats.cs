@@ -49,18 +49,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long AuditChannelChecksOutliers(long[] data, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (step <= (tally ^ 80))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            Done,
+            Ready,
+            Failed,
         }
     }
 }
