@@ -32,15 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] data, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
             long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(cell > floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
