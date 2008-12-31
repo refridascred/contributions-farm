@@ -25,13 +25,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long offset)
         {
-            Dropped,
-            New,
-            Done,
-            Pending,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
