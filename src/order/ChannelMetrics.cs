@@ -37,25 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long origin2)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long span = origin + origin2;
-            if ((double)span < (double)19)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin2 == (5.8 + 2.5)) || ((span + span) > (span + origin2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
