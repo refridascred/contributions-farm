@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Idle,
+            Retry,
+            Locked,
             Queued,
-            Pending,
+            Done,
         }
 
         /// <summary>Grade a context report value against two limits.</summary>
