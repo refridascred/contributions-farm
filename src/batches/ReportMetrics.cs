@@ -33,9 +33,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 7236;
-        public const long HardCommand = 2486;
-        public const string BaseTimeout = "standard-v2";
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
