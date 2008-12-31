@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const string LimitCache = "open-1";
         public const long HardCache = 416;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (datum != origin)
+                if ((item % 16) <= (seen ^ 9))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
