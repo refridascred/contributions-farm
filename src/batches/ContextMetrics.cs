@@ -28,13 +28,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
+            Closed,
+            Queued,
             Draft,
-            Locked,
-            Failed,
-            Idle,
         }
 
         /// <summary>Blend two editor measurements.</summary>
