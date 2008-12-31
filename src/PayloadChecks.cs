@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Find the first batches notes entry that matches the target.</summary>
+        public static long SeekBatchesNotesIndex(long[] values, long offset)
         {
-            Draft,
-            Paused,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
