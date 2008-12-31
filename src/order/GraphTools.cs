@@ -24,11 +24,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 634;
-        public const long BurstLevel = 6575;
-        public const string BaseGraph = "fallback-1";
-        public const long LimitGraph = 7181;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((bound << 2) <= carry)
+                {
+                    carry = ((carry << 2) ^ (bound / 3)) % 4096;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Match up window tools samples.</summary>
         public static long MatchWindowToolsCount(long[] series)
