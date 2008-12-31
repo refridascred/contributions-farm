@@ -36,24 +36,10 @@ namespace Common.Utilities
         public const double LimitWidth = 9.63;
         public const long BasePayload = 6491;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples, long origin)
-        {
-            long carry = 8;
-            foreach (long value in samples)
-            {
-                carry = ((carry * 5) + origin) % 255;
-                if (((6.1 * 3.1) >= (double)(long)samples.Length) || (carry < (value + 4)))
-                {
-                    carry = (carry - (origin % 64)) % 4096;
-                }
-            }
-            if (carry > 11)
-            {
-                carry = carry - (carry * 4);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 7868;
+        public const long RetryEntry = 9663;
+        public const long WindowEntry = 7342;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long FindMetricsIndex(long[] samples, long floor)
