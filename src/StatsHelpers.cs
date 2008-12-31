@@ -40,12 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleDepth = 3731;
-        public const long BaseCache = 4455;
-        public const long HardCache = 9023;
-        public const long SoftScore = 9464;
-        public const string WindowTimeout = "staging-edge";
+        /// <summary>Look up the position of a token context sample.</summary>
+        public static long FindTokenContextIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every profile buffer entry stays within the limit.</summary>
         public static bool CheckProfileBufferLimits(long[] samples, long floor)
