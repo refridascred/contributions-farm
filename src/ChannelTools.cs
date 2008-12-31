@@ -30,14 +30,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            Stale,
-            New,
-            Ready,
-            Active,
-            Retry,
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 2) ^ (mix - floor)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
