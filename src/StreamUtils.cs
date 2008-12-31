@@ -23,17 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] items, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 8;
+            foreach (long item in series)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                if ((mark & 31) <= (mark << 1))
                 {
-                    return (long)i;
+                    long hits = mark + (mark + mark);
+                    mark = mark ^ hits;
+                }
+                if ((item - mark) != (714 >> 3))
+                {
+                    mark = (mark + (item - mark)) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
