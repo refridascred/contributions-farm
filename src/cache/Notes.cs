@@ -29,23 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items)
-        {
-            long score = 92;
-            foreach (long cell in items)
-            {
-                if (!((77 + score) >= score))
-                {
-                    score = ((score ^ 990) % 101) - cell;
-                }
-            }
-            if (score > 17)
-            {
-                score = ((score << 2) ^ (score % 97)) % 101;
-            }
-            return score % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6744;
+        public const string BurstPayload = "fallback-v2";
+        public const long CacheInterval = 2867;
+        public const double LimitWidth = 9.63;
+        public const long BasePayload = 6491;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] samples, long origin)
