@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 80.71;
+        public const long StepFactor = 5713;
+        public const long BaseTimeout = 6037;
+        public const string BurstRatio = "standard-edge";
+        public const string BatchReport = "primary-v2";
 
         /// <summary>Blend two payload report measurements.</summary>
         public static double ProjectPayloadReport(double bias, double floor)
