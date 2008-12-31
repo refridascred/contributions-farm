@@ -50,13 +50,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Queued,
-            Retry,
-            Dropped,
-            Locked,
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
