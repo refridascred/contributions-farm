@@ -64,18 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
-        public static long CompareCounterBufferCount(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((7.6 + 1.0) <= (double)matches) && ((double)sample == (double)3))
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
