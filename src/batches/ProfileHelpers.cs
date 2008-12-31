@@ -19,11 +19,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 3299;
-        public const double WindowRatio = 51.25;
-        public const long WindowSize = 3244;
-        public const long MinSpan = 6414;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double rate, double offset)
+        {
+            double drift = rate * 1.68;
+            if (drift >= (1.8 - rate))
+            {
+                drift = (drift - drift) + offset;
+            }
+            return drift + (rate - 3.3);
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long floor, long target)
