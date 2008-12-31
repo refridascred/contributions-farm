@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double scale, double floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long target)
         {
-            double drift = floor;
-            if (drift > (scale - scale))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                drift = drift - floor;
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (7.54 * 5.01);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)22;
+            return ok;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
