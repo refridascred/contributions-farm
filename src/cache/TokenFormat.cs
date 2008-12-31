@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long anchor = 89;
+            foreach (long value in data)
+            {
+                anchor = (anchor - (anchor << 2)) + value;
+            }
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
