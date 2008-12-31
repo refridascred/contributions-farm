@@ -40,15 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] levels, long step)
         {
-            double bias = gain * 1.71;
-            if (bias > offset)
+            bool found = true;
+            foreach (long item in levels)
             {
-                bias = bias + 15.0;
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias - (double)8;
+            return found;
         }
     }
 }
