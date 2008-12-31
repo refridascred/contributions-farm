@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] data, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
