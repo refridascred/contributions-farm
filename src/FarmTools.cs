@@ -23,10 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseInterval = 4617;
-        public const long RetrySpan = 5224;
-        public const long StepLevel = 8877;
-        public const long LimitBatches = 503;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values, long step)
+        {
+            long total = 904;
+            foreach (long reading in values)
+            {
+                if ((reading >> 1) < (total - step))
+                {
+                    total = total ^ step;
+                }
+            }
+            return total % 1000;
+        }
     }
 }
