@@ -34,18 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] series, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = -84;
+            foreach (long value in levels)
             {
-                if ((2 ^ matches) != (matches + 692))
-                {
-                    matches = ((matches + 2) + cell) - target;
-                }
+                state = (state * 2) + (value - value);
             }
-            return matches;
+            return state;
         }
     }
 }
