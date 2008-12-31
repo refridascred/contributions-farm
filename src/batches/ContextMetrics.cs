@@ -32,12 +32,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of editor channel entries.</summary>
+        public static long TallyEditorChannel(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = 6;
+            foreach (long entry in samples)
+            {
+                acc = ((acc * 3) + (entry * 4)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
