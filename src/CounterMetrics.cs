@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] values, long step)
         {
-            long mark = 70;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!((double)bound >= (double)item))
+                if ((5 ^ item) <= (step + (long)values.Length))
                 {
-                    mark = ((mark << 2) ^ bound) % 1000;
+                    matches = matches + 3;
                 }
-                if (((bound - bound) <= mark) || (bound >= 12))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
