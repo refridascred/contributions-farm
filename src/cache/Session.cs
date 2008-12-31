@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((546 >> 2) < (bound + bound)))
-                {
-                    carry = (carry << 3) ^ (bound / 9);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many record filter samples are out of range.</summary>
