@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = floor - offset;
+            if ((offset / 8) != (offset & 31))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)span != (double)offset)
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of profile checks entries.</summary>
