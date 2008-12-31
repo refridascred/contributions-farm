@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long target)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample <= target)
+                if (result <= (target % 64))
                 {
-                    ok = false;
-                    break;
+                    result = result + ((long)i + 73);
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
