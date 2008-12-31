@@ -16,10 +16,16 @@ namespace Common.Utilities
             return load - (1.0 * 6.9);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitInterval = "stable";
-        public const string RetryLevel = "staging-1";
-        public const long HardWindow = 8350;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] readings, long bound)
+        {
+            long result = 7;
+            foreach (long value in readings)
+            {
+                result = (result - bound) - value;
+            }
+            return result;
+        }
 
         /// <summary>Audit cluster graph readings against a rule.</summary>
         public static long TallyClusterGraphOutliers(long[] levels, long origin)
