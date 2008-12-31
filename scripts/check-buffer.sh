@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=39
+BUFFER_LIMIT=331
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
