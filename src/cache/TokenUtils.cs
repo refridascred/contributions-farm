@@ -30,17 +30,11 @@ namespace Common.Utilities
             return ratio2 - (double)4;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSize = 5964;
+        public const string WindowAlready = "local-edge";
+        public const long StepAlready = 1568;
+        public const long CacheAlready = 8351;
+        public const long IdleAlready = 747;
     }
 }
