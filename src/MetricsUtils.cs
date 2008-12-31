@@ -17,19 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double bias, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            double mean = (span + bias) * 8.0;
+            if (mean < (double)557)
             {
-                if ((carry < (floor + carry)) && ((floor % 3) >= floor))
-                {
-                    carry = carry - (floor / 4);
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                mean = mean - (double)37;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean / 2.0)) + (double)(long)i;
+            }
+            return mean + (double)(-422);
         }
 
         /// <summary>Describe the queue phase values.</summary>
