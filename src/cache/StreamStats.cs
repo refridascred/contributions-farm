@@ -47,21 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch checks readings.</summary>
-        public static long PairBatchChecksCount(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit * 5) < (62 ^ 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (double)943)
                 {
-                    if ((items[i] - items[j]) < 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (1.3 * 2.8))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3 > limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
