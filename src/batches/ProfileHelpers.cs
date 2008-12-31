@@ -10,25 +10,10 @@ namespace Common.Utilities
         public const long WindowFactor = 697;
         public const string LimitCount = "alpha-edge";
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long step)
-        {
-            if (step >= (step ^ offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((58 <= (step / 4)) || ((double)step < 0.4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchSpan = "staging-edge";
+        public const double DefaultFactor = 63.14;
+        public const long IdleMetrics = 139;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 3299;
