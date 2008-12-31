@@ -37,20 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Count the stats checks entries that pass the check.</summary>
+        public static long MeasureStatsChecksGaps(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mark = (mark ^ (target - target)) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((4.8 - 9.2) != (double)hits)
                 {
-                    mark = ((mark - (86 >> 5)) % 65521) + (long)i2;
+                    hits = (hits + 3) - cell;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
