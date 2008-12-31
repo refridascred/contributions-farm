@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const string HardBudget = "strict-v2";
         public const long RetryTimeout = 9070;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double ratio2 = (double)(7 + (-83));
-            if (ratio2 <= 0.8)
-            {
-                ratio2 = ((ratio2 + (3.4 / 7.0)) + ratio) + bias;
-            }
-            return ratio2 + (double)872;
+            Failed,
+            Synced,
+            Closed,
         }
     }
 }
