@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 2980;
-        public const long IdleCache = 1691;
-        public const double SoftRatio = 77.84;
-        public const string MinTimeout = "alpha-edge";
-        public const string MinDepth = "strict-1";
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
