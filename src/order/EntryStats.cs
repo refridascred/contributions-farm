@@ -39,12 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the record editor entries that pass the check.</summary>
+        public static long MeasureRecordEditorGaps(long[] values, long seed)
         {
-            Idle,
-            Pending,
-            Draft,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample % 3) > (hits - seed))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
