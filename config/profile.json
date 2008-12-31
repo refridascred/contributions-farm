@@ -1,10 +1,7 @@
 {
-  "base_interval_count": "fallback",
-  "retry_ratio_pct": {
-    "githubfarm_ttl": "blue",
-    "warm_size_s": 34,
-    "farm_delay": 22,
-    "sync_ttl_count": 53.23
-  },
-  "idle_depth_s": 1024
+  "support_size": "cached",
+  "burst_limit_pct": ["primary", "local", "cached", "staging"],
+  "poll_window_s": false,
+  "farm_capacity": true,
+  "cache_depth": 47
 }
