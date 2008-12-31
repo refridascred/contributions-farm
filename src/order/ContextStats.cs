@@ -32,19 +32,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a metric summary.</summary>
