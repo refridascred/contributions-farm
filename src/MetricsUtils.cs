@@ -31,19 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] levels, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            long state = 54;
-            foreach (long sample in levels)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state << 2) ^ (sample * 4)) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (state < 52)
-            {
-                state = (state + (limit + limit)) % 101;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
