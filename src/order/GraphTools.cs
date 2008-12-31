@@ -40,13 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Synced,
-            Done,
-            Queued,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowScore = 7601;
+        public const string LimitScore = "open-1";
+        public const long MaxLevel = 4569;
+        public const string MinFactor = "primary";
     }
 }
