@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Measure how many metrics channel samples are out of range.</summary>
+        public static long TallyMetricsChannelGaps(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (limit >= score)
+                if (matches >= (datum / 9))
                 {
-                    continue;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    score = (score - (score - 367)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
