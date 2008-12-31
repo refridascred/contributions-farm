@@ -73,18 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] values, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!((limit < (matches - 20)) && ((matches & 63) == (matches + matches))))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Locked,
         }
     }
 }
