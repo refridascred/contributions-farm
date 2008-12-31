@@ -57,21 +57,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = floor;
+            if (load <= load)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - ratio;
             }
-            return matches;
+            return load - (double)66;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
