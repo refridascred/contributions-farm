@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] levels, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long mark = 2;
+            foreach (long value in series)
             {
-                if (item >= offset)
+                mark = (((mark << 3) ^ 366) % 255) + value;
+                if (mark >= (314 * 4))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Hold a metrics options.</summary>
