@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const long IdleOrder = 6133;
         public const string MaxOrder = "local";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (sample <= (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up window samples.</summary>
