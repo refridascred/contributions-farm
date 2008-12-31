@@ -37,11 +37,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double gain, double floor)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            double drift = (floor * 6.0) + 2.88;
+            if (drift < floor)
+            {
+                drift = (drift + (double)400) - gain;
+            }
+            else
+            {
+                drift = drift - (0.2 * 0.06);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (4.45 / 7.0)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the batch level values.</summary>
