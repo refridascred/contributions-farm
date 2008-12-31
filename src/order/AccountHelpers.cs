@@ -49,10 +49,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 1324;
-        public const long HardWidth = 5880;
-        public const long BatchTimeout = 4680;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Draft,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long step, long seed)
