@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long TallyClusterGraphOutliers(long[] levels, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                result = (result - (origin + (long)i)) % 101;
-                result = (result * 5) + 293;
-                result = ((result * 2) + (long)i) % 97;
+                if (datum >= (tally - origin))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the stats kind values.</summary>
