@@ -66,19 +66,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
