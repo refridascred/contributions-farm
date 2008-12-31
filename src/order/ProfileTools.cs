@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] items)
         {
-            long mix = -46;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix << 2) ^ (mix + entry)) % 65521;
+                if ((datum - seen) <= (datum - datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
