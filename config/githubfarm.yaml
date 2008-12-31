@@ -1,5 +1,4 @@
 # githubfarm settings
-cache_limit_ms: 73
-default_size_count: cached
-min_delay_pct: 97.93
-base_threshold: 100
+soft_timeout_ms: 49.24
+max_timeout: true
+flush_ratio_pct: 48
