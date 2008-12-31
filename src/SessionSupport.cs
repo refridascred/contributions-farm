@@ -40,18 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((datum + offset) == (3 << 3)) && (datum >= (datum ^ offset)))
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
