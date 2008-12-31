@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowLevel = 0.12;
-        public const long BurstLevel = 4217;
-        public const long BurstBatch = 4759;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            New,
+            Pending,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] levels, long offset)
