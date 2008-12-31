@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Adjust a metrics checks reading.</summary>
+        public static double BlendMetricsChecks(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = (double)12 - (rate / 5.0);
+            if (rate2 <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = rate2 + (double)83;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + (double)191) + (double)(long)i;
+            }
+            return rate2 - (floor * 15.0);
         }
 
         /// <summary>Hold a command record.</summary>
