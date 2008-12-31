@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchScore = 29.46;
-        public const double HardBudget = 33.58;
-        public const double BatchContributi = 66.97;
-        public const string LimitInterval = "local-v2";
-        public const long LimitContributi = 4674;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (seed <= (hits - seed))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
