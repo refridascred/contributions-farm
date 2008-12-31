@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long seed)
         {
-            Draft,
-            Queued,
-            Failed,
-            Idle,
+            if (((9 ^ seed) >= seed) && ((6.9 / 4.0) >= (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((896 + origin) <= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next context value.</summary>
