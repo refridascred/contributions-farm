@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit stream githubfarm readings against a rule.</summary>
+        public static long CountStreamGithubfarmGaps(long[] samples, long seed)
         {
-            Draft,
-            Synced,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading + reading) < 86))
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stats window entry stays within the limit.</summary>
