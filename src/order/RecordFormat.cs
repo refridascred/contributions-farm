@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            Failed,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((-646) < cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
