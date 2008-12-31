@@ -50,11 +50,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultSize = 5964;
-        public const string WindowAlready = "local-edge";
-        public const long StepAlready = 1568;
-        public const long CacheAlready = 8351;
-        public const long IdleAlready = 747;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 1433;
+        public const string BaseEditor = "strict";
+        public const long WindowEditor = 9593;
+        public const long BurstEditor = 8872;
     }
 }
