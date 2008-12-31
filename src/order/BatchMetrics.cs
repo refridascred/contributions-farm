@@ -82,12 +82,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long floor)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long step = limit - floor;
+            if ((limit - limit) < (floor + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step <= (step + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 5) <= (floor >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
