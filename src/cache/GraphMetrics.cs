@@ -51,17 +51,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a farm context counter forward.</summary>
-        public static long IterateFarmContext(long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((limit % 10) >= 93)
                 {
-                    mix = ((mix - bound) % 97) ^ (long)i2;
+                    mix = (mix ^ (long)i) % 97;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
+                else
+                {
+                    mix = (mix - limit) % 65521;
+                }
+                mix = mix - (mix - mix);
+                mix = ((mix * 2) + (long)i) % 97;
             }
             return mix;
         }
