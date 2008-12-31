@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double offset)
         {
-            long anchor = 5;
-            foreach (long reading in series)
+            double drift = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((reading / 7) >= step)
-                {
-                    anchor = anchor + reading;
-                }
+                drift = (drift + (rate + offset)) + (double)(long)i;
             }
-            return anchor % 65521;
+            return drift - drift;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
