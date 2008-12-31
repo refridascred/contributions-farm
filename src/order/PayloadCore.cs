@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((5 + 20) >= (seed << 2))
-                {
-                    mix = mix ^ (seed / 8);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
