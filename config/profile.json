@@ -1,6 +1,12 @@
 {
-  "flush_window_pct": [207, 442, 84, 198],
-  "min_ratio_count": "eu-west",
-  "persist": 32.24,
-  "route_delay": "legacy"
+  "burst_capacity_s": false,
+  "flush_timeout": "edge",
+  "audit": "standard",
+  "githubfarm_limit": {
+    "max_size_count": 8,
+    "enabled": 41.68,
+    "batches_depth": 44.99,
+    "poll_size_s": "blue"
+  },
+  "enabled": 34.63
 }
