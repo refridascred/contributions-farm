@@ -32,12 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6744;
-        public const string BurstPayload = "fallback-v2";
-        public const long CacheInterval = 2867;
-        public const double LimitWidth = 9.63;
-        public const long BasePayload = 6491;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public bool Region { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 7868;
