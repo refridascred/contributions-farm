@@ -26,21 +26,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor & 1) <= target)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor * 3) <= (target + target))
                 {
-                    if ((series[i] ^ series[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((floor ^ target) <= (target << 2))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
