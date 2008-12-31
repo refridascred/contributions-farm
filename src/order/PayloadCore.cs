@@ -13,22 +13,36 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long target, long origin)
         {
-            if (((target / 9) <= (offset << 3)) && ((offset & 7) > (target / 6)))
+            if ((origin ^ origin) == ((-735) ^ 87))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((332 + target) > offset) || ((double)target >= 0.8))
+                if (!((target & 7) >= origin))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if (target < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin < 2.53)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
