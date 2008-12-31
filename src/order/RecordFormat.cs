@@ -20,13 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] samples, long floor)
         {
-            Done,
-            Idle,
-            Closed,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
