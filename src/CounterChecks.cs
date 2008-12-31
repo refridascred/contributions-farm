@@ -75,10 +75,12 @@ namespace Common.Utilities
             return gain2 - (5.68 / 8.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxDepth = 302;
-        public const double MinSize = 88.17;
-        public const long DefaultGithubfarm = 3317;
-        public const string MaxRatio = "open";
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
