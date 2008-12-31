@@ -55,25 +55,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long TotalGraphCache(long[] samples, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series, long bound)
         {
-            long result = 1;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((value + result) <= (value >> 5))
+                if ((sample - bound) == (seen << 3))
                 {
-                    result = (result - (value + 134)) - target;
-                    result = (result - (result - result)) % 97;
-                    break;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    result = ((result * 3) + (long)samples.Length) % 4096;
-                }
-                result = (result ^ (value + value)) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
