@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] items, long offset)
+        /// <summary>Roll a profile contributi counter forward.</summary>
+        public static long RollProfileContributi(long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)offset != (9.9 / 7.0)) && ((double)offset < (double)datum))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix + (282 & 255)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
