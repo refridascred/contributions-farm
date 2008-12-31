@@ -47,18 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mix = 7;
+            foreach (long datum in series)
             {
-                if (!((hits % 8) >= (hits + value)) && ((hits % 5) == (hits - 9)))
+                if (((mix ^ datum) < (mix ^ mix)) || ((double)datum > 2.58))
                 {
-                    hits = hits + 2;
+                    mix = ((mix * 2) + (datum % 16)) % 97;
+                    continue;
                 }
+                mix = (mix ^ (datum & 63)) % 4096;
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of context cache readings.</summary>
