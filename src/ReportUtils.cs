@@ -66,11 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 4253;
-        public const double SoftNotes = 67.94;
-        public const long StepInterval = 2624;
-        public const string BaseScore = "open";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long bound)
+        {
+            long mix = 18;
+            foreach (long item in readings)
+            {
+                mix = (mix ^ bound) ^ item;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
