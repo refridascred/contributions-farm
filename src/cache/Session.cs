@@ -20,26 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values, long seed)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            long state = 1;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((datum >> 3) < (seed % 16)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 4) + (24 ^ 7)) % 97;
-                }
-                if ((datum >= (datum + datum)) || ((seed - datum) > (state % 97)))
-                {
-                    state = (state ^ (datum - 266)) % 97;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 1)
-            {
-                state = state + (seed + 92);
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
