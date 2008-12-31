@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
+            Retry,
+            Idle,
             Synced,
-            Locked,
-            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
