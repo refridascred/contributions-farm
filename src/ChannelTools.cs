@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Look up the position of a token stats sample.</summary>
+        public static long LookupTokenStatsIndex(long[] readings, long offset)
         {
-            long result = 87;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell - result) <= (result >> 5))
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
                 {
-                    result = ((result << 2) ^ result) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
