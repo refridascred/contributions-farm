@@ -15,18 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] data)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry >= (seen / 9)) && !((double)seen < 7.0))
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count route cluster pairs that satisfy a relation.</summary>
