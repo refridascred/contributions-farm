@@ -59,22 +59,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((5.95 + 8.95) >= (double)reading)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
