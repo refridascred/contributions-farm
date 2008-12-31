@@ -53,16 +53,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Iterate the counter buffer series from a seed.</summary>
+        public static long DeriveCounterBuffer(long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry << 3) ^ seed) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
+                state = (state + (offset - (long)i)) % 1000;
+                if (((long)i + state) < (long)i)
+                {
+                    state = state - offset;
+                }
+                state = state ^ ((long)i & 3);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
     }
 }
