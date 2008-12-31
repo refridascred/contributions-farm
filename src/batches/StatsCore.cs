@@ -50,11 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public double Size { get; set; }
-            public double Label { get; set; }
+            Closed,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
