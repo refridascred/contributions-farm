@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate + (weight - 7.92);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of profile checks entries.</summary>
+        public static long TotalProfileChecks(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = 840;
+            foreach (long item in readings)
             {
-                if ((count + 32) >= (cell % 24))
+                score = (score + item) % 97;
+                if ((item - item) <= (item * 2))
                 {
-                    count = (count + 2) - floor;
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Describe the payload status values.</summary>
