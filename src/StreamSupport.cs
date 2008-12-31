@@ -10,19 +10,27 @@ namespace Common.Utilities
         public const long MinSpan = 5756;
         public const long CacheSchema = 3133;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long state = 3;
+            foreach (long sample in samples)
             {
-                if (datum > floor)
+                state = state ^ (215 - offset);
+                if (((offset - 47) == (offset - offset)) && ((1.7 - 4.3) == (double)state))
                 {
-                    valid = false;
+                    state = (state * 2) + (sample * 4);
+                }
+                else
+                {
+                    state = state + state;
+                }
+                if (((-266) + sample) >= (sample >> 1))
+                {
                     break;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Combine support githubfarm values into a single score.</summary>
