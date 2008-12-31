@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long bound)
         {
-            Failed,
-            Ready,
-            Closed,
+            long next = limit - bound;
+            if ((bound + limit) > (next + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (next > (bound / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)limit >= (9.0 + 5.4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit % 24) <= (9 + 7)) && ((0.07 + 20.0) < (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
