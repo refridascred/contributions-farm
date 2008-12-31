@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] samples, long step)
         {
-            long mix = 79;
-            foreach (long datum in readings)
+            long acc = 69;
+            foreach (long item in samples)
             {
-                if (((long)readings.Length + mix) <= ((-22) - datum))
-                {
-                    mix = mix - (datum ^ datum);
-                }
-                else
-                {
-                    mix = mix ^ datum;
-                }
+                acc = ((acc * 3) + (35 + item)) % 65521;
             }
-            return mix;
+            if (acc > 89)
+            {
+                acc = (acc - (step ^ 888)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
