@@ -1,23 +1,7 @@
 {
-  "soft_timeout_ms": {
-    "persist": {
-      "audit": false,
-      "persist": true,
-      "batches_retries": "staging",
-      "warm_depth": 500,
-      "default_limit_s": false
-    },
-    "min_threshold": "staging",
-    "retry_limit_s": 9
-  },
-  "editor_window": "strict",
-  "batch_ttl_pct": 86,
-  "cluster_window": 99,
-  "idle_size": {
-    "cache_window_ms": true,
-    "idle_window": 4393,
-    "sync_size": "eu-west",
-    "order_size": ["edge", "primary"]
-  },
-  "persist": "green"
+  "cache_delay_count": false,
+  "readonly": "strict",
+  "hard_limit_s": ["green", "blue", "legacy"],
+  "soft_interval": "edge",
+  "soft_timeout_ms": 1
 }
