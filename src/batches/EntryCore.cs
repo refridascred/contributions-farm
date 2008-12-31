@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinWidth = 892;
-        public const double BaseSpan = 21.64;
-        public const long SoftRatio = 2372;
-        public const long DefaultFilter = 3047;
-        public const long SoftBudget = 7580;
+        /// <summary>Validate farm counter readings against a bound.</summary>
+        public static bool VerifyFarmCounterRange(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordMatches(long[] levels)
