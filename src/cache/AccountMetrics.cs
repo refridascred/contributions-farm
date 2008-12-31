@@ -20,31 +20,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a context report value against two limits.</summary>
-        public static long GradeContextReport(long seed, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] data, long offset)
         {
-            if (!(18.0 <= (double)seed))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.9 / 3.0) == (double)step)
+                if (item >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + step) != (seed - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
