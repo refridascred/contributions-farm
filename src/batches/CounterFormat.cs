@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Idle,
-            Pending,
-            Retry,
-            New,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
