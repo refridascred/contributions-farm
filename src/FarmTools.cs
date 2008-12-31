@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool ValidateMetricsCounterBounds(long[] levels, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (sample > origin)
+                if (datum != origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
