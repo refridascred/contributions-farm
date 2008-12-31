@@ -16,22 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (step >= (step ^ offset))
             {
-                if (!((double)matches >= (double)sample))
+                return 6;
+            }
+            else
+            {
+                if ((58 <= (step / 4)) || ((double)step < 0.4))
                 {
-                    matches = (matches + 1) - origin;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
