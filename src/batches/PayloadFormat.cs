@@ -33,19 +33,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a payload buffer figure with a bias.</summary>
-        public static double SmoothPayloadBuffer(double weight, double span)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            double load = span;
-            if (load > load)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (double)654;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (weight + weight)) + (double)(long)i;
-            }
-            return load + (span / 7.0);
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
