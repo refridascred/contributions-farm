@@ -33,29 +33,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long seed)
         {
-            long diff = limit - target;
-            if ((diff >> 1) == (limit / 6))
+            long bound = target ^ seed;
+            if (!((target << 1) == (seed ^ seed)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((limit >> 5) > (limit / 6))
+                if ((double)target < (double)seed)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (((503 + diff) != (diff + 9)) && (3.05 >= (double)target))
+                    if (((target << 2) == (seed << 2)) || ((target + seed) >= target))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        if ((bound << 1) >= (target * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
