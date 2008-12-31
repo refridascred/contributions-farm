@@ -13,21 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up metric command samples.</summary>
-        public static long MatchMetricCommandCount(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the editor mode values.</summary>
