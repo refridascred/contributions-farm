@@ -30,15 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            double bias = floor;
-            for (int i = 0; i < 3; i++)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                bias = ((bias - (bias - bias)) - (double)(long)i) - rate;
+                result = (result - (origin + (long)i)) % 101;
+                result = (result * 5) + 293;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return bias + (double)37;
+            return result;
         }
 
         /// <summary>Describe the stats kind values.</summary>
