@@ -48,12 +48,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            Draft,
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
