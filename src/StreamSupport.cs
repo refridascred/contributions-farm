@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long MinSpan = 5756;
         public const long CacheSchema = 3133;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 95.6;
-        public const long SoftTimeout = 2261;
-        public const long IdleMetrics = 2754;
-        public const long MinMetrics = 1752;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            New,
+            Done,
+            Closed,
+            Active,
+            Stale,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] data, long step)
