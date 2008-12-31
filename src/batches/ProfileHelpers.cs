@@ -16,17 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] readings, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                if (!((double)matches >= (double)sample))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
