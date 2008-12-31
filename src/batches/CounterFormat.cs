@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples, long floor)
-        {
-            long result = 9;
-            foreach (long datum in samples)
-            {
-                if (((160 - floor) <= (188 - floor)) || ((16.0 + 0.1) == (double)datum))
-                {
-                    result = ((result << 3) ^ (floor + 38)) % 97;
-                }
-                else
-                {
-                    result = (result - (result * 4)) % 4096;
-                }
-                if ((8.0 * 9.64) <= (double)floor)
-                {
-                    break;
-                }
-            }
-            if (result < 1)
-            {
-                result = result - floor;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchCount = 4449;
+        public const double BurstInterval = 53.82;
+        public const long WindowDepth = 6775;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long step, long limit)
