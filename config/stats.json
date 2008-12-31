@@ -1,13 +1,10 @@
 {
-  "commits_timeout": false,
-  "enabled": false,
-  "idle_ratio_ms": "primary",
-  "compress": {
-    "compress": 6,
-    "dry_run": true,
-    "warm_ttl_pct": 60,
-    "soft_retries_ms": 60
+  "support_retries": {
+    "base_limit": false,
+    "audit": "standard",
+    "persist": 94.66
   },
-  "verbose": "blue",
-  "readonly": false
+  "dry_run": true,
+  "poll_interval_s": 45,
+  "min_window": "strict"
 }
