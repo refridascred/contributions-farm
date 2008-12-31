@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen >= (9.6 + 7.2))
-                {
-                    seen = ((seen + 1) + value) + origin;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
