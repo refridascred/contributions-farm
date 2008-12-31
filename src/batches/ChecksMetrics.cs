@@ -90,13 +90,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] series, long offset)
         {
-            Retry,
-            Active,
-            Stale,
-            Done,
+            long result = 1;
+            foreach (long item in series)
+            {
+                result = ((result - result) + item) + offset;
+            }
+            return result;
         }
     }
 }
