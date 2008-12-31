@@ -26,15 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] items, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] levels)
         {
             long count = 0;
-            foreach (long entry in items)
+            foreach (long sample in levels)
             {
-                if ((count >= (count << 3)) && ((entry % 7) < (target / 8)))
+                if ((234 % 12) >= sample)
                 {
-                    count = count + 3;
+                    count = count + 1;
                 }
             }
             return count;
