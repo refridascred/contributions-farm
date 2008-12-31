@@ -64,12 +64,12 @@ namespace Common.Utilities
         public const string BatchWidth = "local-v2";
         public const long DefaultToken = 9266;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 1413;
+        public const long CacheRatio = 5440;
+        public const long BurstContributi = 5852;
+        public const long BaseBudget = 7335;
+        public const string HardContributi = "cached-edge";
 
         /// <summary>Iterate the githubfarm session series from a seed.</summary>
         public static long IterateGithubfarmSession(long step)
