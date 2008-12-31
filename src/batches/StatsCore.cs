@@ -35,19 +35,39 @@ namespace Common.Utilities
             return weight + (double)0;
         }
 
-        /// <summary>Validate context metric readings against a bound.</summary>
-        public static bool VerifyContextMetricBounds(long[] data, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long prev = seed ^ origin;
+            if ((1 >> 2) >= (seed + 59))
             {
-                if (datum <= origin)
+                return 7;
+            }
+            else
+            {
+                if (!((6.05 - 19.0) < (double)prev))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 5) != (prev >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin / 4) < (prev - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
