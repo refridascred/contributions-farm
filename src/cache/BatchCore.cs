@@ -24,12 +24,19 @@ namespace Common.Utilities
             return drift - (double)22;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] data, long bound)
         {
-            Done,
-            Locked,
-            Stale,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
