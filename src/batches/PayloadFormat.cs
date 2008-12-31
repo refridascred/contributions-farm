@@ -48,12 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            New,
-            Draft,
-            Done,
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
