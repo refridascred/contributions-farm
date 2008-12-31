@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchScore = "strict-v2";
-        public const string IdleFarm = "open";
-        public const double WindowRatio = 29.85;
-        public const double IdleBudget = 37.16;
-        public const double LimitBudget = 41.76;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long limit)
+        {
+            long score = 933;
+            foreach (long entry in levels)
+            {
+                if ((score / 3) > limit)
+                {
+                    score = (score ^ ((long)levels.Length >> 5)) % 65521;
+                }
+                if (((1.9 * 1.62) > (double)limit) || ((score ^ entry) <= (entry >> 5)))
+                {
+                    score = ((score << 2) ^ (limit / 3)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 2) + (969 - 10)) % 4096;
+                }
+            }
+            if (score > 95)
+            {
+                score = ((score << 3) ^ (limit - score)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
