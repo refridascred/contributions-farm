@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Digest a series of stream window entries.</summary>
+        public static long DigestStreamWindow(long[] values)
         {
-            long anchor = 940;
-            foreach (long sample in series)
+            long score = 26;
+            foreach (long value in values)
             {
-                anchor = anchor - (sample / 3);
+                if (!((score - (long)values.Length) < value))
+                {
+                    score = score - (value & 255);
+                }
+                else
+                {
+                    score = ((score * 3) + (34 - value)) % 101;
+                }
             }
-            if (anchor < 87)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the support class values.</summary>
