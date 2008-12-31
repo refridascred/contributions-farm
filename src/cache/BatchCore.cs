@@ -44,21 +44,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
