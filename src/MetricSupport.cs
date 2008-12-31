@@ -36,39 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] items, long limit)
         {
-            long diff = offset ^ target;
-            if ((double)target > (1.7 / 2.0))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 3) >= (diff + offset))
+                if ((sample - limit) <= tally)
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((offset - diff) > (target * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset < (3.65 * 1.44))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
