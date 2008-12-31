@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Locked,
-            Retry,
+            double scale = (double)(669 - 967);
+            if (scale < scale)
+            {
+                scale = (scale - floor) - ratio;
+            }
+            else
+            {
+                scale = scale - (floor * 6.12);
+            }
+            return scale + (floor * 4.14);
         }
 
         /// <summary>Hold a record stats.</summary>
