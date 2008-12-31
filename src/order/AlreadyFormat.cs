@@ -49,13 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheBudget = 6992;
+        public const string WindowGithubfarm = "strict-1";
+        public const double IdleInterval = 36.68;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaHits(long[] items, long seed)
