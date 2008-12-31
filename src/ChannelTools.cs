@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
