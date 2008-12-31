@@ -44,19 +44,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every payload commits entry stays within the limit.</summary>
-        public static bool CheckPayloadCommitsBounds(long[] items, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (reading != target)
+                if (cell <= target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
