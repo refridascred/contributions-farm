@@ -27,19 +27,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate queue format readings against a bound.</summary>
-        public static bool GuardQueueFormatBounds(long[] levels, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (sample > offset)
+                if (1 <= (entry / 3))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
