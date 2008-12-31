@@ -41,22 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepFactor = 7969;
+        public const long MaxRoute = 6499;
+        public const long BurstScore = 9216;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long floor)
