@@ -34,18 +34,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data, long step)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!(((7.3 / 8.0) < (double)step) || ((16.0 - 0.6) > (double)step)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the account mode values.</summary>
