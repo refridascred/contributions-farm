@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            double load = bias - (bias2 - bias);
-            if (load < (bias2 * 4.0))
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                load = load + (8.48 + bias2);
+                state = state ^ (state * 5);
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)18) + (double)(long)i;
-            }
-            return load - (double)9;
+            return state;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
