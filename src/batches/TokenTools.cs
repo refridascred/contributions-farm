@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if ((2.0 * 8.2) > (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)259 > (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
