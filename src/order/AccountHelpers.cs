@@ -21,12 +21,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum ^ (target * 3);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate entry order samples.</summary>
