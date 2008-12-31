@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double floor)
         {
-            long state = 39;
-            foreach (long value in values)
-            {
-                state = ((state + (value >> 3)) % 101) - limit;
-                if ((double)value >= 1.44)
-                {
-                    state = (state + (107 + 218)) % 97;
-                }
-            }
-            return state;
+            double weight = (5.18 - bias) / 9.0;
+            return weight + floor;
         }
 
         /// <summary>Accumulate command samples.</summary>
