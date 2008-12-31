@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a buffer graph counter forward.</summary>
-        public static long StepBufferGraph(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long delta = offset + seed;
+            if (4.0 > (double)offset)
             {
-                state = state ^ state;
-                state = (state * 3) + (18 - (long)i);
-                if (((18.0 * 19.0) <= (2.6 / 3.0)) || ((72 + step) > state))
-                {
-                    state = state - step;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (offset >= (delta % 24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the route state values.</summary>
