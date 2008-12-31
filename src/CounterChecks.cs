@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next farm profile value from a seed.</summary>
-        public static long SeriesFarmProfile(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                bool ok = (double)acc >= 0.28;
-                if (ok)
+                if (sample > (seen << 2))
                 {
-                    acc = (acc * 3) + (0 / 7);
+                    seen = seen + 1;
                 }
-                ok = ok && ((double)acc != (0.9 * 3.2));
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate session samples.</summary>
