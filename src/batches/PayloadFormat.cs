@@ -36,15 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double rate = (bias2 / 4.0) / 8.0;
-            if (rate < (2.54 - bias2))
-            {
-                rate = (rate + (double)9) + bias;
-            }
-            return rate - rate;
+            Active,
+            Failed,
+            Retry,
+            Draft,
         }
     }
 }
