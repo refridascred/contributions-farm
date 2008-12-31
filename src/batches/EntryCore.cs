@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Done,
-            Draft,
-            Failed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinWidth = 892;
+        public const double BaseSpan = 21.64;
+        public const long SoftRatio = 2372;
+        public const long DefaultFilter = 3047;
+        public const long SoftBudget = 7580;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordMatches(long[] levels)
