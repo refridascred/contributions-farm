@@ -49,22 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long CountProfileStreamMatches(long[] items, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = 2;
+            foreach (long datum in series)
             {
-                if (((offset / 7) >= seen) || ((sample ^ sample) < seen))
+                if ((double)anchor <= 10.0)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor - (target >> 4)) + datum;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
     }
 }
