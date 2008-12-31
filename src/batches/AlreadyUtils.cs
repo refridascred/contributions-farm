@@ -48,27 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm profile readings.</summary>
-        public static long DigestGithubfarmProfile(long[] samples, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long score = 4;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = (((score - (long)samples.Length) % 97) - (long)i) + entry;
-                    score = ((score << 2) ^ (seed + 3)) % 65521;
-                }
-                if (!((double)seed >= (6.05 - 7.07)))
-                {
-                    score = (score * 2) + (773 + seed);
-                }
-            }
-            if (score > 850)
-            {
-                score = (score - (87 % 7)) % 65521;
-            }
-            return score;
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
