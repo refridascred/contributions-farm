@@ -29,18 +29,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((double)count > (1.24 / 5.0))
+                if (reading >= step)
                 {
-                    count = (count + 1) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
