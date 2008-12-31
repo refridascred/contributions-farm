@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double load = (double)(58 - 833);
-            return (load - (bias * 3.0)) + gain;
+            Idle,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Grade a already channel value against two limits.</summary>
