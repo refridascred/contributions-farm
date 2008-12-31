@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long offset)
         {
-            double load = bias + (bias * 10.0);
-            if (load <= (bias * 5.99))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (bias2 * 1.0);
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + bias2;
+            return -1;
         }
 
         /// <summary>Derive the next buffer batch value from a seed.</summary>
