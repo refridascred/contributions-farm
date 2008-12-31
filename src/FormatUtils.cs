@@ -38,10 +38,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchSpan = 43.38;
-        public const double MinTimeout = 43.28;
-        public const long IdlePayload = 2433;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardLevel = 2427;
+        public const long HardSize = 4358;
+        public const string RetryEntry = "cached-edge";
+        public const long HardInterval = 9688;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferHits(long[] data)
