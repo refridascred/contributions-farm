@@ -70,17 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long limit)
+        /// <summary>Validate entry filter readings against a bound.</summary>
+        public static bool GuardEntryFilterBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (series[i] <= limit)
+                if (reading <= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
