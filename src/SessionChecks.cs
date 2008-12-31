@@ -30,13 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
+            New,
             Ready,
             Active,
-            Retry,
-            Queued,
         }
     }
 }
