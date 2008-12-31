@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long CountPayloadSupportMatches(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(693 > datum) && ((matches >> 2) == (seed ^ seed)))
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
