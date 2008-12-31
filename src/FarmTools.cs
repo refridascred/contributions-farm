@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] data)
         {
-            Draft,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (double)count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
