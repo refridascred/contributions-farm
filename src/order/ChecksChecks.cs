@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
-        public static bool CheckGithubfarmWindowRange(long[] data, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if (datum < origin)
+                if (cell > offset)
                 {
                     valid = false;
                     break;
