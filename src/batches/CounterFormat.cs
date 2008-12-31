@@ -35,17 +35,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a filter githubfarm sample.</summary>
-        public static long SeekFilterGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Check that every stats window entry stays within the limit.</summary>
+        public static bool GuardStatsWindowLimits(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                if (sample != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
