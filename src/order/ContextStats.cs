@@ -14,17 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor - bound)) % 4096;
-                anchor = anchor ^ bound;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of cache tools entries.</summary>
