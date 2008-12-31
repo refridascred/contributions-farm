@@ -36,19 +36,38 @@ namespace Common.Utilities
         public const long WindowSize = 3244;
         public const long MinSpan = 6414;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Rank stream record input into a small class.</summary>
+        public static long RankStreamRecord(long step, long seed)
         {
-            long anchor = 111;
-            foreach (long cell in values)
+            if ((step - step) == ((-7) / 2))
             {
-                anchor = (anchor + anchor) - cell;
-                if (!((6.1 - 5.0) == (double)anchor))
+                return 5;
+            }
+            else
+            {
+                if ((step - step) != ((-488) + seed))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step - seed) >= (step % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (2.3 + 8.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Combine queue commits values into a single score.</summary>
