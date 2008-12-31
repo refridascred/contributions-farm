@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] data, long floor)
         {
-            long span = seed - origin;
-            if ((6 + 50) <= (origin + span))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed >> 5) != (origin - span))
+                if (sample != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span * 2) < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + span) > (0 << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Scale a support format figure with a bias.</summary>
