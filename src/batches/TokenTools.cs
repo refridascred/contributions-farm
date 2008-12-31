@@ -49,22 +49,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate stats metric samples.</summary>
-        public static long TotalStatsMetric(long[] items, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long carry = -5;
-            foreach (long sample in items)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((17.0 - 1.37) >= (double)(long)items.Length)
+                if ((double)bound == (7.0 - 1.42))
                 {
-                    carry = ((carry - offset) % 255) ^ sample;
+                    state = (state + (bound ^ bound)) % 1000;
                 }
+                if ((double)bound > 11.0)
+                {
+                    state = (state + bound) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (carry < 6)
-            {
-                carry = ((carry << 3) ^ ((-382) + 188)) % 255;
-            }
-            return carry;
+            return state;
         }
     }
 }
