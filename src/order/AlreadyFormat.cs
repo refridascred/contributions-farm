@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] levels, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((48 << 2) == (matches + matches))
+                if ((tally > bound) || (((bound % 64) >= (bound << 2)) || ((711 / 8) <= (tally + value))))
                 {
-                    matches = ((matches + 2) ^ datum) + offset;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
