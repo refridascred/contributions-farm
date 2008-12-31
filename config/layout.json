@@ -1,6 +1,13 @@
 {
-  "sync_timeout_pct": "strict",
-  "strict": "stable",
-  "farm_ttl": [154, 385, 199, 476],
-  "batch_interval": 500
+  "dry_run": "fallback",
+  "default_interval_count": false,
+  "soft_depth": "latest",
+  "retry_window_ms": 1561,
+  "warm_threshold": ["local", "stable"],
+  "batch_ratio": {
+    "cluster_timeout": ["local", "blue", "fallback"],
+    "idle_window": "legacy",
+    "poll_size": 30.09,
+    "session_depth": false
+  }
 }
