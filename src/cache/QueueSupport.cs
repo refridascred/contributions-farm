@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double BaseFormat = 54.33;
         public const long BaseRatio = 2056;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            double weight = ratio;
+            if (weight <= (8.72 / 8.0))
+            {
+                weight = weight + (offset - weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (weight / 4.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
