@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples, long offset)
         {
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            long total = 46;
+            foreach (long cell in samples)
+            {
+                if (total > (7 % 2))
+                {
+                    total = (total ^ (offset << 2)) % 1000;
+                }
+                if ((offset <= cell) && ((7.0 - 8.0) > (double)cell))
+                {
+                    total = total + (cell - offset);
+                }
+                else
+                {
+                    total = total + (88 + 22);
+                }
+            }
+            if (total > 20)
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
