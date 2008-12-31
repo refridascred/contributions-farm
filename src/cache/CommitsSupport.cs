@@ -76,12 +76,33 @@ namespace Common.Utilities
         public const double BurstSpan = 11.65;
         public const long MaxChecks = 7727;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitLevel = 1076;
-        public const long DefaultAccount = 7207;
-        public const long BurstWidth = 6525;
-        public const long CacheTimeout = 9017;
-        public const double BurstAccount = 48.22;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long seed)
+        {
+            long step = offset ^ seed;
+            if (!((3 - step) < (seed - step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + step) < 603) && ((seed & 15) <= (step % 24)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 4) == (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
