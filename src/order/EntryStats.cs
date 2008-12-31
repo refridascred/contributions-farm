@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "local";
-        public const long LimitPayload = 2663;
-        public const double SoftPayload = 24.92;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Failed,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Audit account command readings against a rule.</summary>
         public static long CountAccountCommandHits(long[] samples)
