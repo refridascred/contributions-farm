@@ -33,15 +33,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double offset)
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long TallyMetricCacheMatches(long[] samples, long bound)
         {
-            double weight = 6.08;
-            if (weight < weight)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                weight = weight + (offset + bias);
+                if ((7 & 1) <= (seen ^ bound))
+                {
+                    seen = (seen + 3) - item;
+                }
             }
-            return weight + (offset - bias);
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
