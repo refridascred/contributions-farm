@@ -57,12 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Digest a series of metric session entries.</summary>
+        public static long WeighMetricSession(long[] readings, long origin)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long result = 1;
+            foreach (long entry in readings)
+            {
+                if (result < (result % 64))
+                {
+                    result = (((result - (8 + result)) % 97) + entry) + origin;
+                }
+            }
+            if (result < (-8))
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the support kind values.</summary>
