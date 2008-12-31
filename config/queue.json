@@ -1,6 +1,5 @@
 {
-  "retry_threshold": [109, 77, 297],
-  "warm_retries_pct": ["fallback", "blue", "eu-west"],
-  "strict": 4619,
-  "persist": true
+  "sync_threshold_count": false,
+  "cluster_retries": 1024,
+  "commits_depth": "cached"
 }
