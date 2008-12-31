@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a window stats reading.</summary>
-        public static double ProjectWindowStats(double rate, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long seed)
         {
-            double weight = 9.6;
-            if (weight < weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - (double)6) - bias;
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (weight + rate);
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
