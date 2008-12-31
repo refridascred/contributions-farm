@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a schema notes figure with a bias.</summary>
-        public static double ScaleSchemaNotes(double bias, double floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double bias2 = (double)47 * 7.0;
-            return ((bias2 + (double)(-60)) + bias) + floor;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the profile counter series from a seed.</summary>
