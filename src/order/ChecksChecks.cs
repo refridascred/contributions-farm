@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit already command readings against a rule.</summary>
-        public static long TallyAlreadyCommandHits(long[] levels, long floor)
+        /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
+        public static bool CheckGithubfarmWindowRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((floor >> 3) <= (matches + floor))
+                if (datum < origin)
                 {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
