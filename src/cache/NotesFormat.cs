@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] values, long bound)
         {
-            long mark = 153;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                mark = (mark + (reading & 255)) % 97;
-                if ((mark << 2) <= (bound * 2))
+                if (item < bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
