@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long target)
         {
-            Paused,
-            Done,
-            Retry,
+            if ((double)bound <= (double)10)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)108 <= (double)target) && ((4 >> 1) >= (target << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
