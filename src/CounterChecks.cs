@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 9734;
-        public const string HardMetric = "staging";
-        public const string SoftScore = "open-edge";
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long CountLayoutEntryOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((41 + sample) > (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] samples)
