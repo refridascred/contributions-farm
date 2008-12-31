@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double bias, double bias2)
         {
-            long mark = 497;
-            foreach (long datum in readings)
+            double mean = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mark + mark) == (mark + datum))
-                {
-                    mark = ((mark ^ (mark ^ datum)) % 4096) - step;
-                }
+                mean = (mean - (mean + bias2)) + (double)(long)i;
             }
-            return mark % 1000;
+            return mean + (bias - 3.0);
         }
 
         /// <summary>Project the next account channel value.</summary>
