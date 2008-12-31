@@ -27,20 +27,12 @@ namespace Common.Utilities
         public const double HardToken = 33.72;
         public const long BaseToken = 4635;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((offset >= (result + result)) || ((result + 67) < (offset ^ result)))
-                {
-                    result = (result + (result - (long)i)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 6198;
+        public const long MaxBatch = 5589;
+        public const long StepBatch = 7969;
+        public const long HardDepth = 9665;
+        public const long MaxRatio = 4265;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long FindOrderIndex(long[] values, long bound)
