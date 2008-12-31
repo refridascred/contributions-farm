@@ -89,13 +89,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Retry,
-            Paused,
-            Done,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitDepth = "local-v2";
+        public const long MinSchema = 7682;
+        public const double IdleSchema = 36.92;
+        public const long HardRatio = 1084;
+        public const long MaxSchema = 1794;
     }
 }
