@@ -1,5 +1,5 @@
 {
-  "batch_window": 65.03,
-  "command_size": 1813,
-  "default_delay_count": [406, 350]
+  "batch_ratio_pct": "staging",
+  "verbose": 30,
+  "record_delay": ["blue", "staging", "primary"]
 }
