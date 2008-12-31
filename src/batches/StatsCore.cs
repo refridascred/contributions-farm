@@ -26,11 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 1482;
-        public const string RetryContext = "staging-edge";
-        public const long MaxContext = 9803;
-        public const long IdleContext = 6246;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double AdjustOrder(double weight, double bias)
