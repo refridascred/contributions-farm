@@ -30,11 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitWidth = 6296;
+        public const double IdleDepth = 88.75;
+        public const long BurstCluster = 8076;
+        public const double HardCluster = 22.4;
     }
 }
