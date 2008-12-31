@@ -15,11 +15,19 @@ namespace Common.Utilities
         public const double StepChecks = 65.03;
         public const string DefaultFactor = "open-v2";
 
-        /// <summary>Blend two record filter measurements.</summary>
-        public static double ProjectRecordFilter(double rate, double offset)
+        /// <summary>Digest a series of cluster order entries.</summary>
+        public static long FoldClusterOrder(long[] readings, long offset)
         {
-            double weight = offset / 5.0;
-            return (weight - (weight - weight)) + rate;
+            long anchor = 5;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor * 3) + (datum >> 4)) - offset;
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (7 * 4)) % 97;
+            }
+            return anchor;
         }
     }
 }
