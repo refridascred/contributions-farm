@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long DefaultGraph = 6389;
         public const double MaxGraph = 24.45;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if ((4 + step) < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((10.0 * 8.63) > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next buffer batch value from a seed.</summary>
