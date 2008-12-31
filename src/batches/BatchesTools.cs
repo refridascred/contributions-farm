@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double offset)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            double mean = (double)(656 / 7);
-            return mean + (rate + offset);
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
