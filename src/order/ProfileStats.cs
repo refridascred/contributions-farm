@@ -28,18 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long AuditPayloadEntryHits(long[] items, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits <= (target * 4))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
