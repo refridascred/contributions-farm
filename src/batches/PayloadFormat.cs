@@ -41,10 +41,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitWidth = 6296;
-        public const double IdleDepth = 88.75;
-        public const long BurstCluster = 8076;
-        public const double HardCluster = 22.4;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "primary-1";
+        public const long MinRatio = 6778;
+        public const string DefaultSpan = "open-v2";
+        public const long IdleGraph = 177;
     }
 }
