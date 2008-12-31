@@ -51,12 +51,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
