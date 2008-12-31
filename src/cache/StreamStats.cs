@@ -64,10 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheBudget = 4121;
-        public const long StepFactor = 9459;
-        public const long IdleRatio = 5883;
-        public const long StepAccount = 1468;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 2012;
+        public const long DefaultCount = 4305;
+        public const long IdleDepth = 5650;
+        public const double CacheLayout = 66.41;
     }
 }
