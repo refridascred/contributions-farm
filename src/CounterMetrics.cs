@@ -33,18 +33,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data, long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            double gain = 4.79;
+            if (gain >= 6.6)
             {
-                if ((double)count != (8.2 - 4.5))
-                {
-                    count = ((count + 1) ^ value) + target;
-                }
+                gain = (gain - gain) - weight;
             }
-            return count;
+            return gain + floor;
         }
 
         /// <summary>Rank command input into a small class.</summary>
