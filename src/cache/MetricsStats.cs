@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long offset, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            if ((double)offset <= (9.0 + 9.2))
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 5) <= (step << 3))
+                mark = mark + ((long)i - seed);
+                if ((7.0 / 2.0) >= (double)seed)
                 {
-                    return 8;
+                    mark = (mark - mark) % 101;
                 }
-                else
-                {
-                    return 6;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Adjust a metrics checks reading.</summary>
