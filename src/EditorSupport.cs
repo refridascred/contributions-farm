@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool VerifyChannelBatchesBounds(long[] items, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
