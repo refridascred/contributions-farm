@@ -1,4 +1,46 @@
 # githubfarm settings
-retry_depth_s: true
-poll_capacity_s: strict
-format_delay: 88
+graph_ttl:
+  soft_ttl_pct:
+    batch_retries: true
+    window_retries: local
+    batch_size_count: green
+    cache_timeout_ms:
+      - strict
+      - latest
+      - legacy
+    profile_threshold: 4066
+    command_interval:
+      - 343
+      - 290
+      - 240
+  verbose: true
+  hard_window_s: staging
+  flush_interval_ms:
+    - blue
+    - latest
+    - green
+    - green
+  compress:
+    poll_ttl_count:
+      - 228
+      - 499
+      - 171
+    sync_capacity_ms: true
+    sync_delay: true
+    githubfarm_size: 707
+    compress:
+      - primary
+      - eu-west
+      - green
+  flush_ratio:
+    - 77
+    - 246
+metric_depth: 500
+readonly:
+  - 373
+  - 103
+  - 306
+  - 360
+soft_delay_ms: 76.1
+flush_threshold_s: local
+burst_size: 83.62
