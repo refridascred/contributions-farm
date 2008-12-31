@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 9340;
-        public const long MinChecks = 2520;
-        public const long MinInterval = 6862;
-        public const long WindowChecks = 487;
-        public const long SoftLevel = 9191;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheLevel = "fallback";
+        public const long StepCount = 7269;
+        public const long MinSpan = 3919;
+        public const double MinDepth = 80.87;
+        public const double RetryScore = 41.49;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteOutliers(long[] samples)
