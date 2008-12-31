@@ -64,10 +64,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseScore = 56.17;
-        public const double BatchGithubfarm = 47.86;
-        public const long MinInterval = 4586;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches <= (matches - entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
