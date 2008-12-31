@@ -1,7 +1,6 @@
-id,active,owner,rank
-1,primary,60.69,cached
-2,edge,stable,5.13
-3,990,13,fallback
-4,15.95,fallback,677
-5,24.7,68.34,blue
-6,blue,53.97,latest
+id,rank,ratio,weight
+1,477,557,408
+2,17.61,strict,425
+3,45.91,43.1,310
+4,319,41.69,404
+5,fallback,401,137
