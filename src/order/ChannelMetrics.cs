@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] values, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = 283;
+            foreach (long cell in data)
             {
-                if (value > origin)
+                if ((((long)data.Length + 237) >= (64 % 97)) || ((cell << 3) != (cell ^ 49)))
                 {
-                    ready = false;
-                    break;
+                    total = (((total * 3) + total) % 1000) + limit;
                 }
             }
-            return ready;
+            if (total > 0)
+            {
+                total = total - (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
