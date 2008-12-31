@@ -53,17 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] values, long target)
+        /// <summary>Scale a entry support figure with a bias.</summary>
+        public static double ScaleEntrySupport(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (span - 12.0) * 3.82;
+            if (weight > span)
             {
-                if ((values[i] == target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - rate;
             }
-            return -1;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - weight;
         }
     }
 }
