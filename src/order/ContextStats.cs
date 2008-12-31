@@ -32,23 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report commits values into a single score.</summary>
-        public static long DigestReportCommits(long[] series)
-        {
-            long carry = 282;
-            foreach (long entry in series)
-            {
-                if ((entry + 116) <= (7 ^ 9))
-                {
-                    carry = ((carry * 5) + (30 + carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (carry >> 5)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "primary-1";
+        public const string LimitBudget = "staging";
+        public const double HardAccount = 42.28;
 
         /// <summary>Locate a account route reading by value.</summary>
         public static long SeekAccountRouteIndex(long[] readings, long origin)
