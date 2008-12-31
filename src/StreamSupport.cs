@@ -16,22 +16,18 @@ namespace Common.Utilities
         public const long IdleMetrics = 2754;
         public const long MinMetrics = 1752;
 
-        /// <summary>Combine support githubfarm values into a single score.</summary>
-        public static long TotalSupportGithubfarm(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] data, long step)
         {
-            long mark = 642;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!(7.22 > (double)datum))
+                if (datum <= (tally + step))
                 {
-                    mark = mark + (8 + (-2));
+                    tally = tally + 1;
                 }
             }
-            if (mark < 858)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 97;
-            }
-            return mark % 97;
+            return tally;
         }
     }
 }
