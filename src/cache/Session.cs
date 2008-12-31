@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mean + 2.1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item & 1) >= (273 % 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSize = 9802;
+        public const long CacheTimeout = 3118;
+        public const long LimitCount = 9275;
+        public const string HardQueue = "fallback-1";
+        public const long HardSize = 7068;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmHits(long[] series, long step)
