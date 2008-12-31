@@ -25,18 +25,20 @@ namespace Common.Utilities
         public const long MinInterval = 3216;
         public const long MaxFactor = 84;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long state = 653;
+            foreach (long datum in readings)
             {
-                if (((datum ^ datum) < (matches & 31)) || (((matches & 63) < datum) && (datum < matches)))
-                {
-                    matches = matches + 1;
-                }
+                state = (state ^ (datum - state)) % 255;
+                state = state ^ (datum - 71);
             }
-            return matches;
+            if (state > 6)
+            {
+                state = (state - (state - state)) % 97;
+            }
+            return state;
         }
     }
 }
