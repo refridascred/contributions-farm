@@ -31,10 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseCount = 48.78;
-        public const long MaxChannel = 1649;
-        public const double BaseChannel = 68.8;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepCount = 7224;
+        public const long StepSpan = 1553;
+        public const double DefaultContext = 21.07;
+        public const long CacheContext = 5753;
+        public const long MaxContext = 9940;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
