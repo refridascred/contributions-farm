@@ -59,10 +59,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 73.06;
-        public const long DefaultDepth = 9629;
-        public const double BatchTools = 41.85;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double SmoothFormat(double weight, double offset)
