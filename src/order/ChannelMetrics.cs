@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryTimeout = 7477;
-        public const long HardStats = 8878;
-        public const long MaxInterval = 7138;
-        public const long BaseBudget = 751;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((2 >> 4) < step))
+                {
+                    score = (score - score) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] data, long limit)
