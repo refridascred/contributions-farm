@@ -17,16 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSize = 2000;
+        public const string StepAlready = "fallback";
+        public const long MaxAlready = 7587;
+        public const long DefaultCount = 5307;
+        public const double IdleCount = 60.75;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsLimits(long[] items, long origin)
