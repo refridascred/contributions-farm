@@ -20,5 +20,20 @@ namespace Common.Utilities
             }
             return part * 100.0 / total;
         }
+
+        /// <summary>Calculate a 16-bit checksum of a commits key.</summary>
+        public static int CommitsChecksum(string text)
+        {
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
+        }
     }
 }
