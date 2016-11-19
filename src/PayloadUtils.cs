@@ -24,5 +24,15 @@ namespace Common.Utilities
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
         }
+
+        /// <summary>Wrap a batch index into a fixed-size ring.</summary>
+        public static int WrapBatchIndex(int index, int size)
+        {
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
+        }
     }
 }
