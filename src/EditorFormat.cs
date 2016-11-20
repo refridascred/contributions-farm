@@ -29,5 +29,11 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Convert a counter command temperature from celsius to fahrenheit.</summary>
+        public static double CounterCommandCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
