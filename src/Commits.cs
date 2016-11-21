@@ -21,5 +21,15 @@ namespace Common.Utilities
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
         }
+
+        /// <summary>Express a channel count as a percentage.</summary>
+        public static double ChannelPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
