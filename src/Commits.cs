@@ -15,11 +15,17 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Interpolate between two cluster values.</summary>
-        public static double LerpCluster(double a, double b, double t)
+        /// <summary>Sum the decimal digits of a digest entry id.</summary>
+        public static int DigestEntryDigitSum(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Express a channel count as a percentage.</summary>
