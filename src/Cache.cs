@@ -23,22 +23,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Find the peak metric sample.</summary>
-        public static double MetricPeak(double[] values)
+        /// <summary>Average a list of graph counter samples.</summary>
+        public static double AverageGraphCounter(double[] values)
         {
             if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v;
             }
-            return best;
+            return total / values.Length;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
