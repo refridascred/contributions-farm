@@ -34,5 +34,17 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Clamp a queue value to a valid range.</summary>
+        public static double ClampQueue(double value, double lo, double hi)
+        {
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
+        }
     }
 }
