@@ -17,5 +17,15 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Express a batch count as a percentage.</summary>
+        public static double BatchPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
