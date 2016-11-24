@@ -29,5 +29,11 @@ namespace Common.Utilities
             }
             return true;
         }
+
+        /// <summary>Check whether a payload size is a power of two.</summary>
+        public static bool IsPayloadPowerOfTwo(long n)
+        {
+            return n > 0 && (n & (n - 1)) == 0;
+        }
     }
 }
