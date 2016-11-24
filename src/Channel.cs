@@ -47,5 +47,19 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Compute the greatest common divisor of two cache sizes.</summary>
+        public static long CacheGcd(long a, long b)
+        {
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
+        }
     }
 }
