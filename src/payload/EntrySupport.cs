@@ -25,5 +25,12 @@ namespace Common.Utilities
             }
             return ((index % size) + size) % size;
         }
+
+        /// <summary>Interpolate between two stream values.</summary>
+        public static double LerpStream(double a, double b, double t)
+        {
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
+        }
     }
 }
