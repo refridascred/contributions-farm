@@ -33,5 +33,30 @@ namespace Common.Utilities
             }
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
+
+        /// <summary>Check whether a digest already label reads the same backwards.</summary>
+        public static bool IsDigestAlreadyPalindrome(string text)
+        {
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
