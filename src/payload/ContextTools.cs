@@ -22,5 +22,20 @@ namespace Common.Utilities
             }
             return best;
         }
+
+        /// <summary>Calculate a 16-bit checksum of a catalog key.</summary>
+        public static int CatalogChecksum(string text)
+        {
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
+        }
     }
 }
