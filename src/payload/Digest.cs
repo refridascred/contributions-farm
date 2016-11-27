@@ -29,5 +29,20 @@ namespace Common.Utilities
             }
             return true;
         }
+
+        /// <summary>Average a list of payload already samples.</summary>
+        public static double AveragePayloadAlready(double[] values)
+        {
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
+        }
     }
 }
