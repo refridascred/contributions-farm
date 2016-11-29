@@ -23,19 +23,29 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Average a list of graph counter samples.</summary>
-        public static double AverageGraphCounter(double[] values)
+        /// <summary>Check whether a layout label reads the same backwards.</summary>
+        public static bool IsLayoutPalindrome(string text)
         {
-            if (values == null || values.Length == 0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                total += v;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total / values.Length;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
