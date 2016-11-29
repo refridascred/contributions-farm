@@ -16,5 +16,20 @@ namespace Common.Utilities
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
+
+        /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
+        public static int FolderChecksum(string text)
+        {
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
+        }
     }
 }
