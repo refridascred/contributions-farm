@@ -41,5 +41,15 @@ namespace Common.Utilities
             }
             return part * 100.0 / total;
         }
+
+        /// <summary>Express a invoice count as a percentage.</summary>
+        public static double InvoicePercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
