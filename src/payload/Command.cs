@@ -25,5 +25,15 @@ namespace Common.Utilities
             }
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
+
+        /// <summary>Express a cursor count as a percentage.</summary>
+        public static double CursorPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
