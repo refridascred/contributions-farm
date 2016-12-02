@@ -44,5 +44,15 @@ namespace Common.Utilities
             }
             return total / values.Length;
         }
+
+        /// <summary>Wrap a payload index into a fixed-size ring.</summary>
+        public static int WrapPayloadIndex(int index, int size)
+        {
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
+        }
     }
 }
