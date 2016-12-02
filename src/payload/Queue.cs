@@ -38,5 +38,11 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Convert a layout filter temperature from celsius to fahrenheit.</summary>
+        public static double LayoutFilterCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
