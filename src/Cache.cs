@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Cache helpers.</summary>
     public static class Cache
     {
-        /// <summary>Find the peak folder githubfarm sample.</summary>
-        public static double FolderGithubfarmPeak(double[] values)
+        /// <summary>Check whether a editor cursor size is a power of two.</summary>
+        public static bool IsEditorCursorPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a layout label reads the same backwards.</summary>
