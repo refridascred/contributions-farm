@@ -44,5 +44,18 @@ namespace Common.Utilities
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
+
+        /// <summary>Sum the decimal digits of a entry id.</summary>
+        public static int EntryDigitSum(long n)
+        {
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
+        }
     }
 }
