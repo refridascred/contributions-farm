@@ -15,17 +15,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Sum the decimal digits of a digest entry id.</summary>
-        public static int DigestEntryDigitSum(long n)
+        /// <summary>Wrap a session index into a fixed-size ring.</summary>
+        public static int WrapSessionIndex(int index, int size)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (size <= 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0;
             }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a channel count as a percentage.</summary>
