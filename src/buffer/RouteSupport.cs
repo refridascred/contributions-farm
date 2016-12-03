@@ -14,5 +14,20 @@ namespace Common.Utilities
             }
             return part * 100.0 / total;
         }
+
+        /// <summary>Average a list of order catalog samples.</summary>
+        public static double AverageOrderCatalog(double[] values)
+        {
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
+        }
     }
 }
