@@ -14,5 +14,15 @@ namespace Common.Utilities
             }
             return ((index % size) + size) % size;
         }
+
+        /// <summary>Wrap a catalog index into a fixed-size ring.</summary>
+        public static int WrapCatalogIndex(int index, int size)
+        {
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
+        }
     }
 }
