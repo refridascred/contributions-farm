@@ -15,5 +15,11 @@ namespace Common.Utilities
             }
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
+
+        /// <summary>Convert a schema temperature from celsius to fahrenheit.</summary>
+        public static double SchemaCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
