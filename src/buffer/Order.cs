@@ -22,5 +22,20 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Sum the squares of queue samples.</summary>
+        public static double QueueEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
