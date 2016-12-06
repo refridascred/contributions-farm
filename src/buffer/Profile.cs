@@ -21,5 +21,20 @@ namespace Common.Utilities
             }
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
+
+        /// <summary>Sum the squares of ticket samples.</summary>
+        public static double TicketEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
