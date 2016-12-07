@@ -51,5 +51,19 @@ namespace Common.Utilities
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
         }
+
+        /// <summary>Compute the greatest common divisor of two layout sizes.</summary>
+        public static long LayoutGcd(long a, long b)
+        {
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
+        }
     }
 }
