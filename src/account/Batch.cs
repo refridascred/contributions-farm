@@ -18,5 +18,20 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Calculate a 16-bit checksum of a counter key.</summary>
+        public static int CounterChecksum(string text)
+        {
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
+        }
     }
 }
