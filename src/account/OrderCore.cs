@@ -17,5 +17,11 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
+        public static double BufferCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
