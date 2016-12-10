@@ -41,5 +41,23 @@ namespace Common.Utilities
             }
             return Math.Max(lo, Math.Min(hi, value));
         }
+
+        /// <summary>Count the vowels in a order label.</summary>
+        public static int CountOrderVowels(string text)
+        {
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
     }
 }
