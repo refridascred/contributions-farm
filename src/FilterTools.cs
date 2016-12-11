@@ -47,8 +47,8 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two entry sizes.</summary>
-        public static long EntryGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two record sizes.</summary>
+        public static long RecordGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
