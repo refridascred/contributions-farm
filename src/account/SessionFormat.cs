@@ -31,5 +31,15 @@ namespace Common.Utilities
         {
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
+
+        /// <summary>Express a ticket count as a percentage.</summary>
+        public static double TicketPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
