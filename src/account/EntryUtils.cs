@@ -18,5 +18,12 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Interpolate between two profile filter values.</summary>
+        public static double LerpProfileFilter(double a, double b, double t)
+        {
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
+        }
     }
 }
