@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
-        public static int WrapFolderIndex(int index, int size)
+        /// <summary>Sum the decimal digits of a batches id.</summary>
+        public static int BatchesDigitSum(long n)
         {
-            if (size <= 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return ((index % size) + size) % size;
+            return total;
         }
 
         /// <summary>Interpolate between two buffer ticket values.</summary>
