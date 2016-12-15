@@ -40,5 +40,12 @@ namespace Common.Utilities
             }
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
+
+        /// <summary>Interpolate between two buffer values.</summary>
+        public static double LerpBuffer(double a, double b, double t)
+        {
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
+        }
     }
 }
