@@ -20,5 +20,15 @@ namespace Common.Utilities
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
+
+        /// <summary>Express a metric count as a percentage.</summary>
+        public static double MetricPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
