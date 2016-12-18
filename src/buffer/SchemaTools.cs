@@ -24,5 +24,23 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Count the vowels in a report editor label.</summary>
+        public static int CountReportEditorVowels(string text)
+        {
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
     }
 }
