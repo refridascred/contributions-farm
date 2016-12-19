@@ -21,5 +21,11 @@ namespace Common.Utilities
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
+
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
+        {
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+        }
     }
 }
