@@ -27,5 +27,11 @@ namespace Common.Utilities
         {
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
+
+        /// <summary>Check whether a counter size is a power of two.</summary>
+        public static bool IsCounterPowerOfTwo(long n)
+        {
+            return n > 0 && (n & (n - 1)) == 0;
+        }
     }
 }
