@@ -47,8 +47,8 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the decimal digits of a cluster id.</summary>
-        public static int ClusterDigitSum(long n)
+        /// <summary>Sum the decimal digits of a batches commits id.</summary>
+        public static int BatchesCommitsDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
