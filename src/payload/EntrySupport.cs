@@ -32,5 +32,20 @@ namespace Common.Utilities
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
         }
+
+        /// <summary>Average a list of payload samples.</summary>
+        public static double AveragePayload(double[] values)
+        {
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
+        }
     }
 }
