@@ -39,19 +39,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Average a list of commits samples.</summary>
-        public static double AverageCommits(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a context key.</summary>
+        public static int ContextChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Count the vowels in a layout label.</summary>
