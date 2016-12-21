@@ -29,8 +29,8 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Clamp a contributi buffer value to a valid range.</summary>
-        public static double ClampContributiBuffer(double value, double lo, double hi)
+        /// <summary>Clamp a catalog value to a valid range.</summary>
+        public static double ClampCatalog(double value, double lo, double hi)
         {
             if (lo > hi)
             {
