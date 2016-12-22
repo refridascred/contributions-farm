@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session format helpers.</summary>
     public static class SessionFormat
     {
-        /// <summary>Convert a token temperature from celsius to fahrenheit.</summary>
-        public static double TokenCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a cluster count as a percentage.</summary>
+        public static double ClusterPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the squares of cluster samples.</summary>
