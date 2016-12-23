@@ -29,5 +29,17 @@ namespace Common.Utilities
             }
             return part * 100.0 / total;
         }
+
+        /// <summary>Clamp a filter window value to a valid range.</summary>
+        public static double ClampFilterWindow(double value, double lo, double hi)
+        {
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
+        }
     }
 }
