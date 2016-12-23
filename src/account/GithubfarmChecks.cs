@@ -65,5 +65,12 @@ namespace Common.Utilities
             }
             return best;
         }
+
+        /// <summary>Interpolate between two window values.</summary>
+        public static double LerpWindow(double a, double b, double t)
+        {
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
+        }
     }
 }
