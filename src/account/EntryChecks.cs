@@ -15,10 +15,11 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
-        public static double OrderCelsiusToFahrenheit(double celsius)
+        /// <summary>Interpolate between two payload values.</summary>
+        public static double LerpPayload(double a, double b, double t)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Express a metric count as a percentage.</summary>
