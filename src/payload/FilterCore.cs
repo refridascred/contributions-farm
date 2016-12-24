@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Sum the squares of ticket samples.</summary>
-        public static double TicketEnergy(double[] values)
+        /// <summary>Interpolate between two cluster profile values.</summary>
+        public static double LerpClusterProfile(double a, double b, double t)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Interpolate between two buffer ticket values.</summary>
