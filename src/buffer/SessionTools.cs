@@ -45,5 +45,19 @@ namespace Common.Utilities
             }
             return best;
         }
+
+        /// <summary>Compute the greatest common divisor of two commits sizes.</summary>
+        public static long CommitsGcd(long a, long b)
+        {
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
+        }
     }
 }
