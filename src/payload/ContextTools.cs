@@ -33,17 +33,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the decimal digits of a command id.</summary>
-        public static int CommandDigitSum(long n)
+        /// <summary>Check whether a catalog size is a power of two.</summary>
+        public static bool IsCatalogPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
