@@ -22,14 +22,18 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Express a metric count as a percentage.</summary>
-        public static double MetricPercent(double part, double total)
+        /// <summary>Compute the greatest common divisor of two farm sizes.</summary>
+        public static long FarmGcd(long a, long b)
         {
-            if (total == 0.0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return part * 100.0 / total;
+            return a;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
