@@ -25,5 +25,30 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Check whether a digest githubfarm label reads the same backwards.</summary>
+        public static bool IsDigestGithubfarmPalindrome(string text)
+        {
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
