@@ -29,22 +29,29 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Find the peak ticket already sample.</summary>
-        public static double TicketAlreadyPeak(double[] values)
+        /// <summary>Check whether a layout label reads the same backwards.</summary>
+        public static bool IsLayoutPalindrome(string text)
         {
-            if (values == null || values.Length == 0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                if (values[i] > best)
+                if (char.IsLetterOrDigit(ch))
                 {
-                    best = values[i];
+                    cleaned.Append(char.ToLowerInvariant(ch));
                 }
             }
-            return best;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Sum the decimal digits of a payload commits id.</summary>
