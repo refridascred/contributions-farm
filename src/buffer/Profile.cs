@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Check whether a counter size is a power of two.</summary>
-        public static bool IsCounterPowerOfTwo(long n)
+        /// <summary>Calculate a 16-bit checksum of a githubfarm order key.</summary>
+        public static int GithubfarmOrderChecksum(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
