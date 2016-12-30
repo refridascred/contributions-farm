@@ -40,5 +40,15 @@ namespace Common.Utilities
             }
             return best;
         }
+
+        /// <summary>Wrap a githubfarm index into a fixed-size ring.</summary>
+        public static int WrapGithubfarmIndex(int index, int size)
+        {
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
+        }
     }
 }
