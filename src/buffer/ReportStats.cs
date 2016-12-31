@@ -43,5 +43,15 @@ namespace Common.Utilities
             }
             return total / values.Length;
         }
+
+        /// <summary>Express a command count as a percentage.</summary>
+        public static double CommandPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
