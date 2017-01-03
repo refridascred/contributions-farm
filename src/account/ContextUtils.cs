@@ -11,5 +11,11 @@ namespace Common.Utilities
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
         }
+
+        /// <summary>Convert a graph temperature from celsius to fahrenheit.</summary>
+        public static double GraphCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
