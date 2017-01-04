@@ -35,5 +35,20 @@ namespace Common.Utilities
             }
             return true;
         }
+
+        /// <summary>Sum the squares of schema samples.</summary>
+        public static double SchemaEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
