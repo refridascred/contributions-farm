@@ -5,3 +5,4 @@ Reference notes for the editor-metrics module.
 ## Functions
 
 - `DaysInMonth`: Count the days in a calendar month.
+- `AverageBuffer`: Average a list of buffer samples.
