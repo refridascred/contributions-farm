@@ -53,5 +53,20 @@ namespace Common.Utilities
         {
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
+
+        /// <summary>Sum the squares of graph samples.</summary>
+        public static double GraphEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
