@@ -52,14 +52,29 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Express a context count as a percentage.</summary>
-        public static double ContextPercent(double part, double total)
+        /// <summary>Check whether a already contributi label reads the same backwards.</summary>
+        public static bool IsAlreadyContributiPalindrome(string text)
         {
-            if (total == 0.0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            return part * 100.0 / total;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
