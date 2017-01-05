@@ -64,5 +64,11 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Check whether a commits size is a power of two.</summary>
+        public static bool IsCommitsPowerOfTwo(long n)
+        {
+            return n > 0 && (n & (n - 1)) == 0;
+        }
     }
 }
