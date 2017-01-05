@@ -24,19 +24,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of digest batch samples.</summary>
-        public static double DigestBatchEnergy(double[] values)
+        /// <summary>Clamp a folder token value to a valid range.</summary>
+        public static double ClampFolderToken(double value, double lo, double hi)
         {
-            double total = 0.0;
-            if (values == null)
+            if (lo > hi)
             {
-                return total;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Convert a layout filter temperature from celsius to fahrenheit.</summary>
