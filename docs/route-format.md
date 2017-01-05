@@ -8,3 +8,4 @@ Reference notes for the route-format module.
 - `ClusterDigitSum`: Sum the decimal digits of a cluster id.
 - `ReportPeak`: Find the peak report sample.
 - `PayloadCommitsDigitSum`: Sum the decimal digits of a payload commits id.
+- `IsLayoutPalindrome`: Check whether a layout label reads the same backwards.
