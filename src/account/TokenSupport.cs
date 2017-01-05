@@ -54,5 +54,11 @@ namespace Common.Utilities
             }
             return true;
         }
+
+        /// <summary>Convert a cluster booking temperature from celsius to fahrenheit.</summary>
+        public static double ClusterBookingCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
