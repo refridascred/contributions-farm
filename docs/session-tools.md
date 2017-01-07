@@ -5,3 +5,4 @@ Reference notes for the session-tools module.
 ## Functions
 
 - `TokenDigitSum`: Sum the decimal digits of a token id.
+- `AverageBatch`: Average a list of batch samples.
