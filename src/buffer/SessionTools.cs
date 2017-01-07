@@ -59,5 +59,20 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Average a list of batch samples.</summary>
+        public static double AverageBatch(double[] values)
+        {
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
+        }
     }
 }
