@@ -11,19 +11,11 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the squares of cluster samples.</summary>
-        public static double ClusterEnergy(double[] values)
+        /// <summary>Interpolate between two githubfarm folder values.</summary>
+        public static double LerpGithubfarmFolder(double a, double b, double t)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
