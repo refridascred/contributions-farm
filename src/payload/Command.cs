@@ -15,15 +15,16 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Clamp a farm value to a valid range.</summary>
+        public static double ClampFarm(double value, double lo, double hi)
         {
-            if (month == 2)
+            if (lo > hi)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Clamp a githubfarm folder value to a valid range.</summary>
