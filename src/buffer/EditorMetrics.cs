@@ -37,5 +37,20 @@ namespace Common.Utilities
             }
             return total / values.Length;
         }
+
+        /// <summary>Sum the squares of commits samples.</summary>
+        public static double CommitsEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
