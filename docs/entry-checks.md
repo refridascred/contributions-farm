@@ -8,3 +8,4 @@ Reference notes for the entry-checks module.
 - `LerpPayload`: Interpolate between two payload values.
 - `CountFarmVowels`: Count the vowels in a farm label.
 - `FarmGcd`: Compute the greatest common divisor of two farm sizes.
+- `BufferBookingEnergy`: Sum the squares of buffer booking samples.
