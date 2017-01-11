@@ -52,5 +52,18 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Sum the decimal digits of a booking ticket id.</summary>
+        public static int BookingTicketDigitSum(long n)
+        {
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
+        }
     }
 }
