@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Express a stream count as a percentage.</summary>
-        public static double StreamPercent(double part, double total)
+        /// <summary>Check whether a metric queue size is a power of two.</summary>
+        public static bool IsMetricQueuePowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Clamp a farm value to a valid range.</summary>
