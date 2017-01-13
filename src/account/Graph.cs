@@ -32,5 +32,15 @@ namespace Common.Utilities
             }
             return a;
         }
+
+        /// <summary>Express a cursor count as a percentage.</summary>
+        public static double CursorPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
