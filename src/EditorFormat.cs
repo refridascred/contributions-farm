@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor format helpers.</summary>
     public static class EditorFormat
     {
-        /// <summary>Express a report account count as a percentage.</summary>
-        public static double ReportAccountPercent(double part, double total)
+        /// <summary>Find the peak cursor batch sample.</summary>
+        public static double CursorBatchPeak(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Calculate a 16-bit checksum of a report cache key.</summary>
