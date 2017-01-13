@@ -24,5 +24,15 @@ namespace Common.Utilities
             }
             return ((index % size) + size) % size;
         }
+
+        /// <summary>Wrap a catalog cursor index into a fixed-size ring.</summary>
+        public static int WrapCatalogCursorIndex(int index, int size)
+        {
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
+        }
     }
 }
