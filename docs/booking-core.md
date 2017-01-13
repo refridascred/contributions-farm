@@ -5,3 +5,4 @@ Reference notes for the booking-core module.
 ## Functions
 
 - `ChannelGcd`: Compute the greatest common divisor of two channel sizes.
+- `ClampRouteContext`: Clamp a route context value to a valid range.
