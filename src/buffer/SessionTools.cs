@@ -46,18 +46,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Compute the greatest common divisor of two commits sizes.</summary>
-        public static long CommitsGcd(long a, long b)
+        /// <summary>Sum the squares of profile invoice samples.</summary>
+        public static double ProfileInvoiceEnergy(double[] values)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            double total = 0.0;
+            if (values == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return total;
             }
-            return a;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Average a list of batch samples.</summary>
