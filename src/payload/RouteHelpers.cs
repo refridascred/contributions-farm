@@ -45,19 +45,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Average a list of catalog order samples.</summary>
-        public static double AverageCatalogOrder(double[] values)
+        /// <summary>Sum the decimal digits of a counter id.</summary>
+        public static int CounterDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two layout sizes.</summary>
