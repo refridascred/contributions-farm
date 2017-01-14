@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Digest helpers.</summary>
     public static class Digest
     {
-        /// <summary>Check whether a already label reads the same backwards.</summary>
-        public static bool IsAlreadyPalindrome(string text)
+        /// <summary>Compute the greatest common divisor of two githubfarm commits sizes.</summary>
+        public static long GithubfarmCommitsGcd(long a, long b)
         {
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return true;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return a;
         }
 
         /// <summary>Average a list of payload already samples.</summary>
