@@ -46,17 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a route buffer id.</summary>
-        public static int RouteBufferDigitSum(long n)
+        /// <summary>Interpolate between two layout account values.</summary>
+        public static double LerpLayoutAccount(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a report label reads the same backwards.</summary>
