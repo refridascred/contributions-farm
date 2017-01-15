@@ -5,29 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter helpers.</summary>
     public static class Counter
     {
-        /// <summary>Check whether a invoice account label reads the same backwards.</summary>
-        public static bool IsInvoiceAccountPalindrome(string text)
+        /// <summary>Wrap a filter index into a fixed-size ring.</summary>
+        public static int WrapFilterIndex(int index, int size)
         {
-            if (text == null)
+            if (size <= 0)
             {
-                return true;
+                return 0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the vowels in a report label.</summary>
