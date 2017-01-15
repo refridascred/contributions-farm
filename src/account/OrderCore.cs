@@ -32,19 +32,19 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Average a list of batches samples.</summary>
-        public static double AverageBatches(double[] values)
+        /// <summary>Sum the squares of buffer samples.</summary>
+        public static double BufferEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
     }
 }
