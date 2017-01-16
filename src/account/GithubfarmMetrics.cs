@@ -57,14 +57,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Express a cache count as a percentage.</summary>
-        public static double CachePercent(double part, double total)
+        /// <summary>Calculate a 16-bit checksum of a commits invoice key.</summary>
+        public static int CommitsInvoiceChecksum(string text)
         {
-            if (total == 0.0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
