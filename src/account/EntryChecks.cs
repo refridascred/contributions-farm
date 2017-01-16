@@ -43,19 +43,29 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of buffer booking samples.</summary>
-        public static double BufferBookingEnergy(double[] values)
+        /// <summary>Check whether a already label reads the same backwards.</summary>
+        public static bool IsAlreadyPalindrome(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            if (text == null)
             {
-                return total;
+                return true;
             }
-            foreach (double v in values)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                total += v * v;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
