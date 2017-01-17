@@ -16,5 +16,11 @@ namespace Common.Utilities
             }
             return Math.Max(lo, Math.Min(hi, value));
         }
+
+        /// <summary>Check whether a folder size is a power of two.</summary>
+        public static bool IsFolderPowerOfTwo(long n)
+        {
+            return n > 0 && (n & (n - 1)) == 0;
+        }
     }
 }
