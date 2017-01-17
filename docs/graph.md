@@ -6,3 +6,4 @@ Reference notes for the graph module.
 
 - `StreamOrderGcd`: Compute the greatest common divisor of two stream order sizes.
 - `QueuePercent`: Express a queue count as a percentage.
+- `GraphGcd`: Compute the greatest common divisor of two graph sizes.
