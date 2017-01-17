@@ -6,3 +6,4 @@ Reference notes for the command module.
 
 - `IsLeapYear`: Check whether a year is a leap year.
 - `RecordPercent`: Express a record count as a percentage.
+- `ClampFarm`: Clamp a farm value to a valid range.
