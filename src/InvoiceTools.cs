@@ -22,5 +22,20 @@ namespace Common.Utilities
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
+
+        /// <summary>Sum the squares of profile githubfarm samples.</summary>
+        public static double ProfileGithubfarmEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
