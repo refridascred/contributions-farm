@@ -56,19 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Sum the squares of payload samples.</summary>
-        public static double PayloadEnergy(double[] values)
+        /// <summary>Check whether a cluster size is a power of two.</summary>
+        public static bool IsClusterPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Compute the greatest common divisor of two metric sizes.</summary>
