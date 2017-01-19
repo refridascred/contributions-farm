@@ -30,19 +30,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Average a list of window samples.</summary>
-        public static double AverageWindow(double[] values)
+        /// <summary>Check whether a already size is a power of two.</summary>
+        public static bool IsAlreadyPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a payload index into a fixed-size ring.</summary>
