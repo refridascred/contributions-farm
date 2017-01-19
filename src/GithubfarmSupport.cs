@@ -25,14 +25,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a catalog cursor index into a fixed-size ring.</summary>
-        public static int WrapCatalogCursorIndex(int index, int size)
+        /// <summary>Sum the squares of batches samples.</summary>
+        public static double BatchesEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
