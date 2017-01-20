@@ -6,3 +6,4 @@ Reference notes for the order-core module.
 
 - `LerpBookingGraph`: Interpolate between two booking graph values.
 - `BatchGcd`: Compute the greatest common divisor of two batch sizes.
+- `BufferEnergy`: Sum the squares of buffer samples.
