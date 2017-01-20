@@ -18,11 +18,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two token booking values.</summary>
-        public static double LerpTokenBooking(double a, double b, double t)
+        /// <summary>Compute the greatest common divisor of two invoice sizes.</summary>
+        public static long InvoiceGcd(long a, long b)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Wrap a batch index into a fixed-size ring.</summary>
