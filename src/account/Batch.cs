@@ -19,10 +19,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Convert a payload command temperature from celsius to fahrenheit.</summary>
-        public static double PayloadCommandCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a catalog payload count as a percentage.</summary>
+        public static double CatalogPayloadPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Average a list of folder session samples.</summary>
