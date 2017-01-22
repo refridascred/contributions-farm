@@ -24,14 +24,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Express a channel count as a percentage.</summary>
-        public static double ChannelPercent(double part, double total)
+        /// <summary>Sum the squares of farm samples.</summary>
+        public static double FarmEnergy(double[] values)
         {
-            if (total == 0.0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a report key.</summary>
