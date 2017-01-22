@@ -37,19 +37,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a graph key.</summary>
-        public static int GraphChecksum(string text)
+        /// <summary>Express a report count as a percentage.</summary>
+        public static double ReportPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
     }
 }
