@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Context tools helpers.</summary>
     public static class ContextTools
     {
-        /// <summary>Count the vowels in a batch editor label.</summary>
-        public static int CountBatchEditorVowels(string text)
+        /// <summary>Clamp a cache value to a valid range.</summary>
+        public static double ClampCache(double value, double lo, double hi)
         {
-            int count = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return count;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a record order size is a power of two.</summary>
