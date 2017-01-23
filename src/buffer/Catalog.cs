@@ -16,5 +16,20 @@ namespace Common.Utilities
             }
             return Math.Max(lo, Math.Min(hi, value));
         }
+
+        /// <summary>Sum the squares of stream profile samples.</summary>
+        public static double StreamProfileEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
