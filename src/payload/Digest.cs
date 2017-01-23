@@ -34,16 +34,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Clamp a record commits value to a valid range.</summary>
-        public static double ClampRecordCommits(double value, double lo, double hi)
+        /// <summary>Sum the squares of context samples.</summary>
+        public static double ContextEnergy(double[] values)
         {
-            if (lo > hi)
+            double total = 0.0;
+            if (values == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
