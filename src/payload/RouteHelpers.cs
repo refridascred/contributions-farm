@@ -30,19 +30,16 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a stream farm key.</summary>
-        public static int StreamFarmChecksum(string text)
+        /// <summary>Clamp a booking already value to a valid range.</summary>
+        public static double ClampBookingAlready(double value, double lo, double hi)
         {
-            int total = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return total;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Sum the decimal digits of a counter id.</summary>
