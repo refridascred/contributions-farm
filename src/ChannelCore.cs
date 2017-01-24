@@ -56,5 +56,15 @@ namespace Common.Utilities
             }
             return total / values.Length;
         }
+
+        /// <summary>Wrap a invoice index into a fixed-size ring.</summary>
+        public static int WrapInvoiceIndex(int index, int size)
+        {
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
+        }
     }
 }
