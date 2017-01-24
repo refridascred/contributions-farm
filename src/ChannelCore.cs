@@ -19,5 +19,20 @@ namespace Common.Utilities
             }
             return total / values.Length;
         }
+
+        /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
+        public static int ContributiChecksum(string text)
+        {
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
+        }
     }
 }
