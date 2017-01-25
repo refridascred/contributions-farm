@@ -23,10 +23,18 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Check whether a catalog size is a power of two.</summary>
-        public static bool IsCatalogPowerOfTwo(long n)
+        /// <summary>Compute the greatest common divisor of two queue sizes.</summary>
+        public static long QueueGcd(long a, long b)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
     }
 }
