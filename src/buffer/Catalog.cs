@@ -32,22 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak context sample.</summary>
-        public static double ContextPeak(double[] values)
+        /// <summary>Average a list of channel githubfarm samples.</summary>
+        public static double AverageChannelGithubfarm(double[] values)
         {
             if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v;
             }
-            return best;
+            return total / values.Length;
         }
 
         /// <summary>Check whether a metric label reads the same backwards.</summary>
