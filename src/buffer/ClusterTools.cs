@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Cluster tools helpers.</summary>
     public static class ClusterTools
     {
-        /// <summary>Check whether a farm context size is a power of two.</summary>
-        public static bool IsFarmContextPowerOfTwo(long n)
+        /// <summary>Wrap a channel index into a fixed-size ring.</summary>
+        public static int WrapChannelIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two account command sizes.</summary>
