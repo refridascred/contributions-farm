@@ -20,16 +20,22 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Clamp a cluster value to a valid range.</summary>
-        public static double ClampCluster(double value, double lo, double hi)
+        /// <summary>Find the peak githubfarm sample.</summary>
+        public static double GithubfarmPeak(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
