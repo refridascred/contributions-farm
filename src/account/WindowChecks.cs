@@ -19,10 +19,16 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Clamp a session value to a valid range.</summary>
+        public static double ClampSession(double value, double lo, double hi)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Count the days in a calendar month.</summary>
