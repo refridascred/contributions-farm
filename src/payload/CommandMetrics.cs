@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command metrics helpers.</summary>
     public static class CommandMetrics
     {
-        /// <summary>Express a window count as a percentage.</summary>
-        public static double WindowPercent(double part, double total)
+        /// <summary>Compute the greatest common divisor of two layout sizes.</summary>
+        public static long LayoutGcd(long a, long b)
         {
-            if (total == 0.0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return part * 100.0 / total;
+            return a;
         }
 
         /// <summary>Compute the greatest common divisor of two catalog sizes.</summary>
