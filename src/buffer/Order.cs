@@ -38,22 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a already label.</summary>
-        public static int CountAlreadyVowels(string text)
+        /// <summary>Sum the squares of token samples.</summary>
+        public static double TokenEnergy(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v * v;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check whether a cluster size is a power of two.</summary>
