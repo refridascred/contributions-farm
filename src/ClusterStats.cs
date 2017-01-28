@@ -59,16 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Clamp a filter folder value to a valid range.</summary>
-        public static double ClampFilterFolder(double value, double lo, double hi)
+        /// <summary>Sum the squares of cursor samples.</summary>
+        public static double CursorEnergy(double[] values)
         {
-            if (lo > hi)
+            double total = 0.0;
+            if (values == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a digest label.</summary>
