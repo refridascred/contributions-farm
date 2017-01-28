@@ -7,3 +7,4 @@ Reference notes for the batches module.
 - `WrapWindowIndex`: Wrap a window index into a fixed-size ring.
 - `GithubfarmGcd`: Compute the greatest common divisor of two githubfarm sizes.
 - `ClampCatalog`: Clamp a catalog value to a valid range.
+- `AlreadyGcd`: Compute the greatest common divisor of two already sizes.
