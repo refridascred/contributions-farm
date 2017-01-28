@@ -38,17 +38,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of commits samples.</summary>
-        public static double CommitsEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a command key.</summary>
+        public static int CommandChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
