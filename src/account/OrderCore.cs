@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Interpolate between two booking graph values.</summary>
-        public static double LerpBookingGraph(double a, double b, double t)
+        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
+        public static int WrapFolderIndex(int index, int size)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
