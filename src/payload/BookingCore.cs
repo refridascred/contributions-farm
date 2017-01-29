@@ -60,19 +60,19 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
-        public static int CacheChecksum(string text)
+        /// <summary>Average a list of layout samples.</summary>
+        public static double AverageLayout(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
 
         /// <summary>Interpolate between two account values.</summary>
