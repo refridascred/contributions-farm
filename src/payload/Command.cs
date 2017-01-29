@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Check whether a metric queue size is a power of two.</summary>
-        public static bool IsMetricQueuePowerOfTwo(long n)
+        /// <summary>Check whether a booking size is a power of two.</summary>
+        public static bool IsBookingPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
