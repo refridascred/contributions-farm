@@ -23,10 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a order window temperature from celsius to fahrenheit.</summary>
-        public static double OrderWindowCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a digest count as a percentage.</summary>
+        public static double DigestPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
