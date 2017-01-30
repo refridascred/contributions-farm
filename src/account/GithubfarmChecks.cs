@@ -68,11 +68,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Interpolate between two window values.</summary>
-        public static double LerpWindow(double a, double b, double t)
+        /// <summary>Sum the squares of commits samples.</summary>
+        public static double CommitsEnergy(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a context folder key.</summary>
