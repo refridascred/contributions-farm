@@ -41,14 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a report count as a percentage.</summary>
-        public static double ReportPercent(double part, double total)
+        /// <summary>Check whether a account booking size is a power of two.</summary>
+        public static bool IsAccountBookingPowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
