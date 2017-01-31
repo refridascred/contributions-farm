@@ -39,10 +39,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a cluster temperature from celsius to fahrenheit.</summary>
-        public static double ClusterCelsiusToFahrenheit(double celsius)
+        /// <summary>Average a list of invoice samples.</summary>
+        public static double AverageInvoice(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
