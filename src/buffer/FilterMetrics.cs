@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Filter metrics helpers.</summary>
     public static class FilterMetrics
     {
-        /// <summary>Calculate a 16-bit checksum of a cluster catalog key.</summary>
-        public static int ClusterCatalogChecksum(string text)
+        /// <summary>Find the peak cache editor sample.</summary>
+        public static double CacheEditorPeak(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total = (total * 31 + ch) % 65521;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total;
+            return best;
         }
 
         /// <summary>Check whether a catalog label reads the same backwards.</summary>
