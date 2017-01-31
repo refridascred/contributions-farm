@@ -9,3 +9,4 @@ Reference notes for the githubfarm-checks module.
 - `IsClusterPalindrome`: Check whether a cluster label reads the same backwards.
 - `CountTokenVowels`: Count the vowels in a token label.
 - `DigestGcd`: Compute the greatest common divisor of two digest sizes.
+- `CounterDigitSum`: Sum the decimal digits of a counter id.
