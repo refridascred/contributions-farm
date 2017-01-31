@@ -11,16 +11,10 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Clamp a farm value to a valid range.</summary>
-        public static double ClampFarm(double value, double lo, double hi)
+        /// <summary>Check whether a graph cursor size is a power of two.</summary>
+        public static bool IsGraphCursorPowerOfTwo(long n)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Clamp a githubfarm folder value to a valid range.</summary>
