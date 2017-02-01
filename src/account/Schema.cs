@@ -53,29 +53,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Check whether a report label reads the same backwards.</summary>
-        public static bool IsReportPalindrome(string text)
+        /// <summary>Calculate a 16-bit checksum of a context key.</summary>
+        public static int ContextChecksum(string text)
         {
+            int total = 0;
             if (text == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
     }
 }
