@@ -29,16 +29,29 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Clamp a catalog value to a valid range.</summary>
-        public static double ClampCatalog(double value, double lo, double hi)
+        /// <summary>Check whether a contributi label reads the same backwards.</summary>
+        public static bool IsContributiPalindrome(string text)
         {
-            if (lo > hi)
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return true;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Compute the greatest common divisor of two already sizes.</summary>
