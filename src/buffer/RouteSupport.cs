@@ -15,19 +15,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Average a list of order catalog samples.</summary>
-        public static double AverageOrderCatalog(double[] values)
+        /// <summary>Sum the squares of contributi profile samples.</summary>
+        public static double ContributiProfileEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Express a ticket record count as a percentage.</summary>
