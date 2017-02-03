@@ -6,3 +6,4 @@ Reference notes for the booking-core module.
 
 - `ChannelGcd`: Compute the greatest common divisor of two channel sizes.
 - `ClampRouteContext`: Clamp a route context value to a valid range.
+- `AverageLayout`: Average a list of layout samples.
