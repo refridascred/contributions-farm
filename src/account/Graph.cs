@@ -44,14 +44,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Express a cursor count as a percentage.</summary>
-        public static double CursorPercent(double part, double total)
+        /// <summary>Wrap a route index into a fixed-size ring.</summary>
+        public static int WrapRouteIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a queue count as a percentage.</summary>
