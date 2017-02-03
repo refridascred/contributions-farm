@@ -66,5 +66,20 @@ namespace Common.Utilities
             }
             return ((index % size) + size) % size;
         }
+
+        /// <summary>Sum the squares of contributi samples.</summary>
+        public static double ContributiEnergy(double[] values)
+        {
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
+        }
     }
 }
