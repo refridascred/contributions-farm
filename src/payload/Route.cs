@@ -35,8 +35,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
-        public static int ContributiChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a profile key.</summary>
+        public static int ProfileChecksum(string text)
         {
             int total = 0;
             if (text == null)
