@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Window helpers.</summary>
     public static class Window
     {
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Express a queue count as a percentage.</summary>
+        public static double QueuePercent(double part, double total)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a graph label reads the same backwards.</summary>
