@@ -51,5 +51,18 @@ namespace Common.Utilities
             }
             return true;
         }
+
+        /// <summary>Sum the decimal digits of a token id.</summary>
+        public static int TokenDigitSum(long n)
+        {
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
+        }
     }
 }
