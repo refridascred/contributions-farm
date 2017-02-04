@@ -16,5 +16,15 @@ namespace Common.Utilities
             }
             return Math.Max(lo, Math.Min(hi, value));
         }
+
+        /// <summary>Express a session count as a percentage.</summary>
+        public static double SessionPercent(double part, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
+        }
     }
 }
