@@ -47,10 +47,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Check whether a counter size is a power of two.</summary>
-        public static bool IsCounterPowerOfTwo(long n)
+        /// <summary>Sum the decimal digits of a window route id.</summary>
+        public static int WindowRouteDigitSum(long n)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
     }
 }
