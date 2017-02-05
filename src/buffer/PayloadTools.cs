@@ -64,5 +64,12 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Interpolate between two command values.</summary>
+        public static double LerpCommand(double a, double b, double t)
+        {
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
+        }
     }
 }
