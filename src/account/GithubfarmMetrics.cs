@@ -26,10 +26,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Check whether a entry schema size is a power of two.</summary>
-        public static bool IsEntrySchemaPowerOfTwo(long n)
+        /// <summary>Express a schema count as a percentage.</summary>
+        public static double SchemaPercent(double part, double total)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Average a list of catalog samples.</summary>
