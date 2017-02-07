@@ -23,19 +23,22 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Average a list of buffer samples.</summary>
-        public static double AverageBuffer(double[] values)
+        /// <summary>Count the vowels in a contributi label.</summary>
+        public static int CountContributiVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total / values.Length;
+            return count;
         }
 
         /// <summary>Calculate a 16-bit checksum of a command key.</summary>
