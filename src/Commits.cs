@@ -33,8 +33,8 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a channel count as a percentage.</summary>
-        public static double ChannelPercent(double part, double total)
+        /// <summary>Express a token count as a percentage.</summary>
+        public static double TokenPercent(double part, double total)
         {
             if (total == 0.0)
             {
