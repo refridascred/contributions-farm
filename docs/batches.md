@@ -8,3 +8,4 @@ Reference notes for the batches module.
 - `GithubfarmGcd`: Compute the greatest common divisor of two githubfarm sizes.
 - `ClampCatalog`: Clamp a catalog value to a valid range.
 - `AlreadyGcd`: Compute the greatest common divisor of two already sizes.
+- `BufferChecksum`: Calculate a 16-bit checksum of a buffer key.
