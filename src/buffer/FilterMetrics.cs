@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Filter metrics helpers.</summary>
     public static class FilterMetrics
     {
-        /// <summary>Find the peak cache editor sample.</summary>
-        public static double CacheEditorPeak(double[] values)
+        /// <summary>Compute the greatest common divisor of two report sizes.</summary>
+        public static long ReportGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return a;
         }
 
         /// <summary>Check whether a catalog label reads the same backwards.</summary>
