@@ -21,8 +21,8 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Compute the greatest common divisor of two batch sizes.</summary>
-        public static long BatchGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two folder sizes.</summary>
+        public static long FolderGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
