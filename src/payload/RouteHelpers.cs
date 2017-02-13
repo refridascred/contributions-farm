@@ -42,17 +42,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the squares of token cursor samples.</summary>
-        public static double TokenCursorEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
+        public static int EntryChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
