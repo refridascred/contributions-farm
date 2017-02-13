@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report core helpers.</summary>
     public static class ReportCore
     {
-        /// <summary>Clamp a contributi value to a valid range.</summary>
-        public static double ClampContributi(double value, double lo, double hi)
+        /// <summary>Wrap a channel batch index into a fixed-size ring.</summary>
+        public static int WrapChannelBatchIndex(int index, int size)
         {
-            if (lo > hi)
+            if (size <= 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Clamp a graph value to a valid range.</summary>
