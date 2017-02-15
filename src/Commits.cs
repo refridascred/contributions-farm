@@ -12,8 +12,8 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Wrap a session index into a fixed-size ring.</summary>
-        public static int WrapSessionIndex(int index, int size)
+        /// <summary>Wrap a layout index into a fixed-size ring.</summary>
+        public static int WrapLayoutIndex(int index, int size)
         {
             if (size <= 0)
             {
