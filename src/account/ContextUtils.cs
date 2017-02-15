@@ -17,11 +17,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Interpolate between two folder values.</summary>
-        public static double LerpFolder(double a, double b, double t)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Check whether a entry route size is a power of two.</summary>
