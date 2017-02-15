@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm format helpers.</summary>
     public static class FarmFormat
     {
-        /// <summary>Count the vowels in a cursor label.</summary>
-        public static int CountCursorVowels(string text)
+        /// <summary>Interpolate between two record graph values.</summary>
+        public static double LerpRecordGraph(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Interpolate between two githubfarm folder values.</summary>
