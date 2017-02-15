@@ -33,14 +33,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Wrap a batch index into a fixed-size ring.</summary>
-        public static int WrapBatchIndex(int index, int size)
+        /// <summary>Compute the greatest common divisor of two route command sizes.</summary>
+        public static long RouteCommandGcd(long a, long b)
         {
-            if (size <= 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return ((index % size) + size) % size;
+            return a;
         }
     }
 }
