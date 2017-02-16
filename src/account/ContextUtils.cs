@@ -11,10 +11,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a graph temperature from celsius to fahrenheit.</summary>
-        public static double GraphCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a payload folder size is a power of two.</summary>
+        public static bool IsPayloadFolderPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
