@@ -67,19 +67,10 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Sum the squares of contributi samples.</summary>
-        public static double ContributiEnergy(double[] values)
+        /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
+        public static double ProfileCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
