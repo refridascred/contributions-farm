@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Order metrics helpers.</summary>
     public static class OrderMetrics
     {
-        /// <summary>Count the vowels in a layout token label.</summary>
-        public static int CountLayoutTokenVowels(string text)
+        /// <summary>Sum the decimal digits of a layout session id.</summary>
+        public static int LayoutSessionDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
 
         /// <summary>Express a digest count as a percentage.</summary>
