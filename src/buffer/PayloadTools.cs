@@ -71,5 +71,12 @@ namespace Common.Utilities
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
         }
+
+        /// <summary>Interpolate between two queue values.</summary>
+        public static double LerpQueue(double a, double b, double t)
+        {
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
+        }
     }
 }
