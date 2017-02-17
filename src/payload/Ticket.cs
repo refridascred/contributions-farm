@@ -66,19 +66,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a window key.</summary>
-        public static int WindowChecksum(string text)
+        /// <summary>Express a editor count as a percentage.</summary>
+        public static double EditorPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
     }
 }
