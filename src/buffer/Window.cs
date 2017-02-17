@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Window helpers.</summary>
     public static class Window
     {
-        /// <summary>Express a queue count as a percentage.</summary>
-        public static double QueuePercent(double part, double total)
+        /// <summary>Interpolate between two filter editor values.</summary>
+        public static double LerpFilterEditor(double a, double b, double t)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a graph label reads the same backwards.</summary>
