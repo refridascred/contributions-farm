@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Invoice tools helpers.</summary>
     public static class InvoiceTools
     {
-        /// <summary>Clamp a already value to a valid range.</summary>
-        public static double ClampAlready(double value, double lo, double hi)
+        /// <summary>Express a batches channel count as a percentage.</summary>
+        public static double BatchesChannelPercent(double part, double total)
         {
-            if (lo > hi)
+            if (total == 0.0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a folder size is a power of two.</summary>
