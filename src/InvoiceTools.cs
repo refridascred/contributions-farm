@@ -15,10 +15,29 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a folder size is a power of two.</summary>
-        public static bool IsFolderPowerOfTwo(long n)
+        /// <summary>Check whether a account label reads the same backwards.</summary>
+        public static bool IsAccountPalindrome(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Compute the greatest common divisor of two invoice sizes.</summary>
