@@ -19,19 +19,11 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a profile context key.</summary>
-        public static int ProfileContextChecksum(string text)
+        /// <summary>Interpolate between two editor context values.</summary>
+        public static double LerpEditorContext(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Clamp a contributi value to a valid range.</summary>
