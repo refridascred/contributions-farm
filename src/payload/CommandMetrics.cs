@@ -27,19 +27,17 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Average a list of invoice samples.</summary>
-        public static double AverageInvoice(double[] values)
+        /// <summary>Sum the decimal digits of a profile id.</summary>
+        public static int ProfileDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return total;
         }
     }
 }
