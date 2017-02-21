@@ -20,10 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a cursor size is a power of two.</summary>
-        public static bool IsCursorPowerOfTwo(long n)
+        /// <summary>Average a list of report samples.</summary>
+        public static double AverageReport(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Convert a session cluster temperature from celsius to fahrenheit.</summary>
