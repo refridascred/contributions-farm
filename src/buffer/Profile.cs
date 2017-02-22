@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Calculate a 16-bit checksum of a githubfarm order key.</summary>
-        public static int GithubfarmOrderChecksum(string text)
+        /// <summary>Interpolate between two filter digest values.</summary>
+        public static double LerpFilterDigest(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a metric label reads the same backwards.</summary>
