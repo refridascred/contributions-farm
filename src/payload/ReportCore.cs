@@ -15,16 +15,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Clamp a graph value to a valid range.</summary>
-        public static double ClampGraph(double value, double lo, double hi)
+        /// <summary>Average a list of payload samples.</summary>
+        public static double AveragePayload(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Check whether a digest githubfarm label reads the same backwards.</summary>
