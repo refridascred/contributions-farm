@@ -7,3 +7,4 @@ Reference notes for the command-support module.
 - `LerpBatches`: Interpolate between two batches values.
 - `ClampCluster`: Clamp a cluster value to a valid range.
 - `SessionClusterCelsiusToFahrenheit`: Convert a session cluster temperature from celsius to fahrenheit.
+- `AverageReport`: Average a list of report samples.
