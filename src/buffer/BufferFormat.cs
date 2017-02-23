@@ -42,5 +42,11 @@ namespace Common.Utilities
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
+
+        /// <summary>Convert a farm temperature from celsius to fahrenheit.</summary>
+        public static double FarmCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
