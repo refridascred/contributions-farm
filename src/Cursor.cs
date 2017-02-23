@@ -15,22 +15,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a context buffer label.</summary>
-        public static int CountContextBufferVowels(string text)
+        /// <summary>Average a list of channel samples.</summary>
+        public static double AverageChannel(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v;
             }
-            return count;
+            return total / values.Length;
         }
 
         /// <summary>Count the vowels in a order channel label.</summary>
