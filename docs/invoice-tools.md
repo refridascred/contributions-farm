@@ -8,3 +8,4 @@ Reference notes for the invoice-tools module.
 - `IsBufferPalindrome`: Check whether a buffer label reads the same backwards.
 - `ClampAlready`: Clamp a already value to a valid range.
 - `IsAccountPalindrome`: Check whether a account label reads the same backwards.
+- `BatchesChannelPercent`: Express a batches channel count as a percentage.
