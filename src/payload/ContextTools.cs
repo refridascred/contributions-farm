@@ -17,10 +17,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Check whether a record order size is a power of two.</summary>
-        public static bool IsRecordOrderPowerOfTwo(long n)
+        /// <summary>Express a cache count as a percentage.</summary>
+        public static double CachePercent(double part, double total)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Compute the greatest common divisor of two queue sizes.</summary>
