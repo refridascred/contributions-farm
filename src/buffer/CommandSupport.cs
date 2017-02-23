@@ -35,10 +35,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Convert a session cluster temperature from celsius to fahrenheit.</summary>
-        public static double SessionClusterCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a stream index into a fixed-size ring.</summary>
+        public static int WrapStreamIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
     }
 }
