@@ -11,14 +11,16 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Express a filter count as a percentage.</summary>
-        public static double FilterPercent(double part, double total)
+        /// <summary>Clamp a cache invoice value to a valid range.</summary>
+        public static double ClampCacheInvoice(double value, double lo, double hi)
         {
-            if (total == 0.0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return part * 100.0 / total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Compute the greatest common divisor of two digest sizes.</summary>
