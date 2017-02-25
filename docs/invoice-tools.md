@@ -9,3 +9,4 @@ Reference notes for the invoice-tools module.
 - `ClampAlready`: Clamp a already value to a valid range.
 - `IsAccountPalindrome`: Check whether a account label reads the same backwards.
 - `BatchesChannelPercent`: Express a batches channel count as a percentage.
+- `InvoiceGcd`: Compute the greatest common divisor of two invoice sizes.
