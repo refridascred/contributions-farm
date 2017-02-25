@@ -42,17 +42,15 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
-        public static int EntryChecksum(string text)
+        /// <summary>Sum the decimal digits of a entry id.</summary>
+        public static int EntryDigitSum(long n)
         {
+            n = n < 0 ? -n : n;
             int total = 0;
-            if (text == null)
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
