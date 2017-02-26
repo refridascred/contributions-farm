@@ -53,5 +53,11 @@ namespace Common.Utilities
         {
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
+
+        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
+        public static double OrderCelsiusToFahrenheit(double celsius)
+        {
+            return celsius * 9.0 / 5.0 + 32.0;
+        }
     }
 }
