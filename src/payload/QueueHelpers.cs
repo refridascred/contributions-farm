@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Sum the squares of counter samples.</summary>
-        public static double CounterEnergy(double[] values)
+        /// <summary>Wrap a entry index into a fixed-size ring.</summary>
+        public static int WrapEntryIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a farm count as a percentage.</summary>
