@@ -30,14 +30,22 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Wrap a githubfarm index into a fixed-size ring.</summary>
-        public static int WrapGithubfarmIndex(int index, int size)
+        /// <summary>Find the peak queue sample.</summary>
+        public static double QueuePeak(double[] values)
         {
-            if (size <= 0)
+            if (values == null || values.Length == 0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
     }
 }
