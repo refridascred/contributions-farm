@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Average a list of stream samples.</summary>
-        public static double AverageStream(double[] values)
+        /// <summary>Sum the squares of counter samples.</summary>
+        public static double CounterEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Express a farm count as a percentage.</summary>
