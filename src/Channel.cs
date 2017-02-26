@@ -58,22 +58,10 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Find the peak farm sample.</summary>
-        public static double FarmPeak(double[] values)
+        /// <summary>Convert a editor batch temperature from celsius to fahrenheit.</summary>
+        public static double EditorBatchCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the vowels in a account label.</summary>
