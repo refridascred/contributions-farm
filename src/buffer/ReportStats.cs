@@ -47,11 +47,22 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Interpolate between two contributi account values.</summary>
-        public static double LerpContributiAccount(double a, double b, double t)
+        /// <summary>Count the vowels in a metric label.</summary>
+        public static int CountMetricVowels(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
