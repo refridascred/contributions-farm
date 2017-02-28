@@ -46,18 +46,16 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two channel sizes.</summary>
-        public static long ChannelGcd(long a, long b)
+        /// <summary>Clamp a record githubfarm value to a valid range.</summary>
+        public static double ClampRecordGithubfarm(double value, double lo, double hi)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (lo > hi)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return a;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Find the peak entry sample.</summary>
