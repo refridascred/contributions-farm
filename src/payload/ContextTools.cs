@@ -17,14 +17,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a cache count as a percentage.</summary>
-        public static double CachePercent(double part, double total)
+        /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
+        public static double CatalogCelsiusToFahrenheit(double celsius)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Compute the greatest common divisor of two queue sizes.</summary>
