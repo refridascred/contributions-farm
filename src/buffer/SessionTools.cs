@@ -28,22 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak farm sample.</summary>
-        public static double FarmPeak(double[] values)
+        /// <summary>Express a schema invoice count as a percentage.</summary>
+        public static double SchemaInvoicePercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the squares of profile invoice samples.</summary>
