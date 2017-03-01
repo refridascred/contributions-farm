@@ -6,3 +6,4 @@ Reference notes for the entry-utils module.
 
 - `LerpProfileFilter`: Interpolate between two profile filter values.
 - `ProfileGcd`: Compute the greatest common divisor of two profile sizes.
+- `AverageAccount`: Average a list of account samples.
