@@ -34,8 +34,8 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Clamp a route context value to a valid range.</summary>
-        public static double ClampRouteContext(double value, double lo, double hi)
+        /// <summary>Clamp a cursor value to a valid range.</summary>
+        public static double ClampCursor(double value, double lo, double hi)
         {
             if (lo > hi)
             {
