@@ -21,18 +21,22 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Compute the greatest common divisor of two invoice sizes.</summary>
-        public static long InvoiceGcd(long a, long b)
+        /// <summary>Count the vowels in a buffer label.</summary>
+        public static int CountBufferVowels(string text)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            int count = 0;
+            if (text == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return count;
             }
-            return a;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check whether a stream label reads the same backwards.</summary>
