@@ -6,3 +6,4 @@ Reference notes for the order-metrics module.
 
 - `FolderChecksum`: Calculate a 16-bit checksum of a folder key.
 - `SchemaCounterDigitSum`: Sum the decimal digits of a schema counter id.
+- `AverageClusterLayout`: Average a list of cluster layout samples.
