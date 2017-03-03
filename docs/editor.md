@@ -7,3 +7,4 @@ Reference notes for the editor module.
 - `ProfileContextChecksum`: Calculate a 16-bit checksum of a profile context key.
 - `CatalogGcd`: Compute the greatest common divisor of two catalog sizes.
 - `TicketPeak`: Find the peak ticket sample.
+- `ProfileContributiDigitSum`: Sum the decimal digits of a profile contributi id.
