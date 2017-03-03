@@ -23,19 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Sum the squares of queue samples.</summary>
-        public static double QueueEnergy(double[] values)
+        /// <summary>Check whether a farm size is a power of two.</summary>
+        public static bool IsFarmPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Interpolate between two window values.</summary>
