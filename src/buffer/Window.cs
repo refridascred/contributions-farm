@@ -58,10 +58,16 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a commits size is a power of two.</summary>
-        public static bool IsCommitsPowerOfTwo(long n)
+        /// <summary>Clamp a editor already value to a valid range.</summary>
+        public static double ClampEditorAlready(double value, double lo, double hi)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
