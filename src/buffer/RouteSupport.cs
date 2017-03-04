@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Count the vowels in a cursor label.</summary>
-        public static int CountCursorVowels(string text)
+        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
+        public static int BatchChecksum(string text)
         {
-            int count = 0;
+            int total = 0;
             if (text == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (char ch in text)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Sum the squares of contributi profile samples.</summary>
