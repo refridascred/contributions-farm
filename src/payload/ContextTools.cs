@@ -17,10 +17,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
-        public static double CatalogCelsiusToFahrenheit(double celsius)
+        /// <summary>Calculate a 16-bit checksum of a cursor key.</summary>
+        public static int CursorChecksum(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two queue sizes.</summary>
