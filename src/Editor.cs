@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor helpers.</summary>
     public static class Editor
     {
-        /// <summary>Compute the greatest common divisor of two catalog sizes.</summary>
-        public static long CatalogGcd(long a, long b)
+        /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
+        public static double ContributiCelsiusToFahrenheit(double celsius)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two editor context values.</summary>
