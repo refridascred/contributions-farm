@@ -25,19 +25,10 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Average a list of already samples.</summary>
-        public static double AverageAlready(double[] values)
+        /// <summary>Check whether a entry size is a power of two.</summary>
+        public static bool IsEntryPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Calculate a 16-bit checksum of a order key.</summary>
