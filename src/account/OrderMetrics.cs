@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Order metrics helpers.</summary>
     public static class OrderMetrics
     {
-        /// <summary>Sum the decimal digits of a layout session id.</summary>
-        public static int LayoutSessionDigitSum(long n)
+        /// <summary>Check whether a ticket editor size is a power of two.</summary>
+        public static bool IsTicketEditorPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Express a digest count as a percentage.</summary>
