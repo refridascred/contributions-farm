@@ -31,11 +31,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Interpolate between two editor values.</summary>
-        public static double LerpEditor(double a, double b, double t)
+        /// <summary>Express a schema folder count as a percentage.</summary>
+        public static double SchemaFolderPercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a session size is a power of two.</summary>
