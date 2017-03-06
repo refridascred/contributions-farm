@@ -11,17 +11,11 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the decimal digits of a order id.</summary>
-        public static int OrderDigitSum(long n)
+        /// <summary>Interpolate between two channel values.</summary>
+        public static double LerpChannel(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the decimal digits of a entry booking id.</summary>
