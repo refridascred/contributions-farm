@@ -7,3 +7,4 @@ Reference notes for the order module.
 - `ClampToken`: Clamp a token value to a valid range.
 - `PayloadEnergy`: Sum the squares of payload samples.
 - `DaysInMonth`: Count the days in a calendar month.
+- `LerpWindow`: Interpolate between two window values.
