@@ -21,19 +21,11 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
-        public static int FolderChecksum(string text)
+        /// <summary>Interpolate between two cursor values.</summary>
+        public static double LerpCursor(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of cluster layout samples.</summary>
