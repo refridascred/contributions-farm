@@ -26,11 +26,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Interpolate between two stream values.</summary>
-        public static double LerpStream(double a, double b, double t)
+        /// <summary>Find the peak metric digest sample.</summary>
+        public static double MetricDigestPeak(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Average a list of payload samples.</summary>
