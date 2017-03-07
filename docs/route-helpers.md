@@ -8,3 +8,4 @@ Reference notes for the route-helpers module.
 - `EntryChecksum`: Calculate a 16-bit checksum of a entry key.
 - `GraphGcd`: Compute the greatest common divisor of two graph sizes.
 - `EntryDigitSum`: Sum the decimal digits of a entry id.
+- `CommandPeak`: Find the peak command sample.
