@@ -33,10 +33,14 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a cluster booking temperature from celsius to fahrenheit.</summary>
-        public static double ClusterBookingCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a layout index into a fixed-size ring.</summary>
+        public static int WrapLayoutIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Find the peak githubfarm sample.</summary>
