@@ -5,3 +5,4 @@ Reference notes for the filter-metrics module.
 ## Functions
 
 - `CacheEditorPeak`: Find the peak cache editor sample.
+- `ClampGraph`: Clamp a graph value to a valid range.
