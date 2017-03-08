@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a profile key.</summary>
-        public static int ProfileChecksum(string text)
+        /// <summary>Convert a githubfarm temperature from celsius to fahrenheit.</summary>
+        public static double GithubfarmCelsiusToFahrenheit(double celsius)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a account booking size is a power of two.</summary>
