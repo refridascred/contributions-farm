@@ -32,18 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two metric folder sizes.</summary>
-        public static long MetricFolderGcd(long a, long b)
+        /// <summary>Find the peak counter sample.</summary>
+        public static double CounterPeak(double[] values)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (values == null || values.Length == 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Express a catalog count as a percentage.</summary>
