@@ -6,3 +6,4 @@ Reference notes for the token-support module.
 
 - `IsChannelPalindrome`: Check whether a channel label reads the same backwards.
 - `GithubfarmPeak`: Find the peak githubfarm sample.
+- `WrapLayoutIndex`: Wrap a layout index into a fixed-size ring.
