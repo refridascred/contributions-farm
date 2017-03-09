@@ -51,17 +51,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Sum the decimal digits of a payload commits id.</summary>
-        public static int PayloadCommitsDigitSum(long n)
+        /// <summary>Convert a githubfarm context temperature from celsius to fahrenheit.</summary>
+        public static double GithubfarmContextCelsiusToFahrenheit(double celsius)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
