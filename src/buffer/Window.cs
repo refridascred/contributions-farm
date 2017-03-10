@@ -37,19 +37,22 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Sum the squares of schema samples.</summary>
-        public static double SchemaEnergy(double[] values)
+        /// <summary>Count the vowels in a batches counter label.</summary>
+        public static int CountBatchesCounterVowels(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int count = 0;
+            if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v * v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Convert a ticket temperature from celsius to fahrenheit.</summary>
