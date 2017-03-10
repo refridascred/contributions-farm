@@ -51,10 +51,16 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Convert a githubfarm context temperature from celsius to fahrenheit.</summary>
-        public static double GithubfarmContextCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a session stream value to a valid range.</summary>
+        public static double ClampSessionStream(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
