@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm format helpers.</summary>
     public static class FarmFormat
     {
-        /// <summary>Interpolate between two record graph values.</summary>
-        public static double LerpRecordGraph(double a, double b, double t)
+        /// <summary>Check whether a folder size is a power of two.</summary>
+        public static bool IsFolderPowerOfTwo(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Interpolate between two githubfarm folder values.</summary>
