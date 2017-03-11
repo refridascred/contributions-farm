@@ -41,22 +41,10 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Find the peak queue sample.</summary>
-        public static double QueuePeak(double[] values)
+        /// <summary>Convert a invoice folder temperature from celsius to fahrenheit.</summary>
+        public static double InvoiceFolderCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
