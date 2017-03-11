@@ -41,17 +41,15 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a invoice context key.</summary>
-        public static int InvoiceContextChecksum(string text)
+        /// <summary>Sum the decimal digits of a githubfarm id.</summary>
+        public static int GithubfarmDigitSum(long n)
         {
+            n = n < 0 ? -n : n;
             int total = 0;
-            if (text == null)
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
