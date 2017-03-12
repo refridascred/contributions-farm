@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Invoice tools helpers.</summary>
     public static class InvoiceTools
     {
-        /// <summary>Express a batches channel count as a percentage.</summary>
-        public static double BatchesChannelPercent(double part, double total)
+        /// <summary>Clamp a catalog value to a valid range.</summary>
+        public static double ClampCatalog(double value, double lo, double hi)
         {
-            if (total == 0.0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return part * 100.0 / total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a record size is a power of two.</summary>
