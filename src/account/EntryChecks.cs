@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry checks helpers.</summary>
     public static class EntryChecks
     {
-        /// <summary>Wrap a digest index into a fixed-size ring.</summary>
-        public static int WrapDigestIndex(int index, int size)
+        /// <summary>Compute the greatest common divisor of two report sizes.</summary>
+        public static long ReportGcd(long a, long b)
         {
-            if (size <= 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return ((index % size) + size) % size;
+            return a;
         }
 
         /// <summary>Express a batch count as a percentage.</summary>
