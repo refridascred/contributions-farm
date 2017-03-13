@@ -11,10 +11,14 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a payload folder size is a power of two.</summary>
-        public static bool IsPayloadFolderPowerOfTwo(long n)
+        /// <summary>Express a route count as a percentage.</summary>
+        public static double RoutePercent(double part, double total)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the vowels in a stream label.</summary>
