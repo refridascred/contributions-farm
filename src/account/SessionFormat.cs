@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Session format helpers.</summary>
     public static class SessionFormat
     {
-        /// <summary>Express a cluster count as a percentage.</summary>
-        public static double ClusterPercent(double part, double total)
+        /// <summary>Express a cursor count as a percentage.</summary>
+        public static double CursorPercent(double part, double total)
         {
             if (total == 0.0)
             {
