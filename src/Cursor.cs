@@ -15,8 +15,8 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Average a list of channel samples.</summary>
-        public static double AverageChannel(double[] values)
+        /// <summary>Average a list of githubfarm layout samples.</summary>
+        public static double AverageGithubfarmLayout(double[] values)
         {
             if (values == null || values.Length == 0)
             {
