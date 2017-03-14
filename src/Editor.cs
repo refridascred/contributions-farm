@@ -11,11 +11,17 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Interpolate between two editor context values.</summary>
-        public static double LerpEditorContext(double a, double b, double t)
+        /// <summary>Sum the decimal digits of a cache id.</summary>
+        public static int CacheDigitSum(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Clamp a graph value to a valid range.</summary>
