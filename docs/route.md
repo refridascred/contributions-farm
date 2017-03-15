@@ -6,3 +6,4 @@ Reference notes for the route module.
 
 - `DaysInMonth`: Count the days in a calendar month.
 - `WrapBatchesIndex`: Wrap a batches index into a fixed-size ring.
+- `GithubfarmCelsiusToFahrenheit`: Convert a githubfarm temperature from celsius to fahrenheit.
