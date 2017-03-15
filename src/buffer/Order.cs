@@ -56,14 +56,10 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Express a metric contributi count as a percentage.</summary>
-        public static double MetricContributiPercent(double part, double total)
+        /// <summary>Check whether a queue ticket size is a power of two.</summary>
+        public static bool IsQueueTicketPowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
