@@ -53,22 +53,10 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Count the vowels in a buffer label.</summary>
-        public static int CountBufferVowels(string text)
+        /// <summary>Convert a editor temperature from celsius to fahrenheit.</summary>
+        public static double EditorCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
