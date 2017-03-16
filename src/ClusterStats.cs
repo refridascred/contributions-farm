@@ -48,10 +48,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a session size is a power of two.</summary>
-        public static bool IsSessionPowerOfTwo(long n)
+        /// <summary>Sum the squares of invoice samples.</summary>
+        public static double InvoiceEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Average a list of context booking samples.</summary>
