@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Cluster stats helpers.</summary>
     public static class ClusterStats
     {
-        /// <summary>Wrap a farm index into a fixed-size ring.</summary>
-        public static int WrapFarmIndex(int index, int size)
+        /// <summary>Count the vowels in a catalog label.</summary>
+        public static int CountCatalogVowels(string text)
         {
-            if (size <= 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0;
+                return count;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Average a list of buffer samples.</summary>
