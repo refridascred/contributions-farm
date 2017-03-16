@@ -31,19 +31,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a order key.</summary>
-        public static int OrderChecksum(string text)
+        /// <summary>Express a catalog count as a percentage.</summary>
+        public static double CatalogPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the vowels in a token command label.</summary>
