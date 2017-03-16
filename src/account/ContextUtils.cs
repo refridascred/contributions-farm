@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Convert a digest temperature from celsius to fahrenheit.</summary>
-        public static double DigestCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a folder count as a percentage.</summary>
+        public static double FolderPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Express a route count as a percentage.</summary>
