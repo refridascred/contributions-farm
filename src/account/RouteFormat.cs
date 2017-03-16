@@ -51,22 +51,22 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Find the peak counter sample.</summary>
-        public static double CounterPeak(double[] values)
+        /// <summary>Count the vowels in a metric label.</summary>
+        public static int CountMetricVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                if (values[i] > best)
+                if ("aeiou".IndexOf(ch) >= 0)
                 {
-                    best = values[i];
+                    count++;
                 }
             }
-            return best;
+            return count;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
