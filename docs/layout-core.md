@@ -7,3 +7,4 @@ Reference notes for the layout-core module.
 - `WrapGithubfarmIndex`: Wrap a githubfarm index into a fixed-size ring.
 - `OrderCounterPeak`: Find the peak order counter sample.
 - `QueuePeak`: Find the peak queue sample.
+- `InvoiceFolderCelsiusToFahrenheit`: Convert a invoice folder temperature from celsius to fahrenheit.
