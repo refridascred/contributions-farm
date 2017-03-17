@@ -27,19 +27,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of contributi cursor samples.</summary>
-        public static double AverageContributiCursor(double[] values)
+        /// <summary>Sum the squares of metric samples.</summary>
+        public static double MetricEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
