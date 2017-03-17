@@ -9,3 +9,4 @@ Reference notes for the cluster-stats module.
 - `IsInvoiceBatchesPalindrome`: Check whether a invoice batches label reads the same backwards.
 - `IsSessionPowerOfTwo`: Check whether a session size is a power of two.
 - `SchemaFolderPercent`: Express a schema folder count as a percentage.
+- `InvoiceEnergy`: Sum the squares of invoice samples.
