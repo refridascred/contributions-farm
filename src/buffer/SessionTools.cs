@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session tools helpers.</summary>
     public static class SessionTools
     {
-        /// <summary>Wrap a profile digest index into a fixed-size ring.</summary>
-        public static int WrapProfileDigestIndex(int index, int size)
+        /// <summary>Interpolate between two account values.</summary>
+        public static double LerpAccount(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the decimal digits of a token id.</summary>
