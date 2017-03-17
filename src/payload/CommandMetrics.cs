@@ -27,17 +27,18 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the decimal digits of a profile id.</summary>
-        public static int ProfileDigitSum(long n)
+        /// <summary>Compute the greatest common divisor of two graph cache sizes.</summary>
+        public static long GraphCacheGcd(long a, long b)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return total;
+            return a;
         }
     }
 }
