@@ -41,10 +41,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a account booking size is a power of two.</summary>
-        public static bool IsAccountBookingPowerOfTwo(long n)
+        /// <summary>Average a list of already account samples.</summary>
+        public static double AverageAlreadyAccount(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
