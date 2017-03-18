@@ -47,29 +47,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Check whether a invoice label reads the same backwards.</summary>
-        public static bool IsInvoicePalindrome(string text)
+        /// <summary>Wrap a session order index into a fixed-size ring.</summary>
+        public static int WrapSessionOrderIndex(int index, int size)
         {
-            if (text == null)
+            if (size <= 0)
             {
-                return true;
+                return 0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return ((index % size) + size) % size;
         }
     }
 }
