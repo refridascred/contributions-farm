@@ -35,11 +35,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two report values.</summary>
-        public static double LerpReport(double a, double b, double t)
+        /// <summary>Check whether a metric account label reads the same backwards.</summary>
+        public static bool IsMetricAccountPalindrome(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Average a list of farm samples.</summary>
