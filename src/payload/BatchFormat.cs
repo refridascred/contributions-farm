@@ -18,16 +18,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Clamp a filter window value to a valid range.</summary>
-        public static double ClampFilterWindow(double value, double lo, double hi)
+        /// <summary>Check whether a farm size is a power of two.</summary>
+        public static bool IsFarmPowerOfTwo(long n)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
