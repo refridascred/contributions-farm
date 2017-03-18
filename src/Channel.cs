@@ -58,10 +58,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Convert a editor batch temperature from celsius to fahrenheit.</summary>
-        public static double EditorBatchCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
+        public static int WrapContributiIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the vowels in a account label.</summary>
