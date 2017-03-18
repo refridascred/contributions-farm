@@ -12,11 +12,16 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Interpolate between two buffer ticket values.</summary>
-        public static double LerpBufferTicket(double a, double b, double t)
+        /// <summary>Clamp a booking value to a valid range.</summary>
+        public static double ClampBooking(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Find the peak stream sample.</summary>
