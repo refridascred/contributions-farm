@@ -9,3 +9,4 @@ Reference notes for the editor module.
 - `TicketPeak`: Find the peak ticket sample.
 - `ProfileContributiDigitSum`: Sum the decimal digits of a profile contributi id.
 - `ClampGraph`: Clamp a graph value to a valid range.
+- `CacheDigitSum`: Sum the decimal digits of a cache id.
