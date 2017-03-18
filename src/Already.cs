@@ -30,10 +30,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a payload size is a power of two.</summary>
-        public static bool IsPayloadPowerOfTwo(long n)
+        /// <summary>Express a order count as a percentage.</summary>
+        public static double OrderPercent(double part, double total)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Average a list of stream samples.</summary>
