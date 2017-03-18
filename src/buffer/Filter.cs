@@ -41,10 +41,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a payload size is a power of two.</summary>
-        public static bool IsPayloadPowerOfTwo(long n)
+        /// <summary>Average a list of batch schema samples.</summary>
+        public static double AverageBatchSchema(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
