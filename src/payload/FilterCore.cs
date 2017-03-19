@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Interpolate between two cluster profile values.</summary>
-        public static double LerpClusterProfile(double a, double b, double t)
+        /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
+        public static int CacheChecksum(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Clamp a booking value to a valid range.</summary>
