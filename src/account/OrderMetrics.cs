@@ -28,19 +28,10 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of cluster layout samples.</summary>
-        public static double AverageClusterLayout(double[] values)
+        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
+        public static double ChannelCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a batch record size is a power of two.</summary>
