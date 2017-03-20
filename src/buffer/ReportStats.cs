@@ -36,14 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a command count as a percentage.</summary>
-        public static double CommandPercent(double part, double total)
+        /// <summary>Find the peak cluster session sample.</summary>
+        public static double ClusterSessionPeak(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Count the vowels in a metric label.</summary>
