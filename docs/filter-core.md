@@ -5,3 +5,4 @@ Reference notes for the filter-core module.
 ## Functions
 
 - `BatchesDigitSum`: Sum the decimal digits of a batches id.
+- `CacheChecksum`: Calculate a 16-bit checksum of a cache key.
