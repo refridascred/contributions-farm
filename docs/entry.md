@@ -6,3 +6,4 @@ Reference notes for the entry module.
 
 - `GraphChannelPercent`: Express a graph channel count as a percentage.
 - `ClampRecord`: Clamp a record value to a valid range.
+- `WrapSessionOrderIndex`: Wrap a session order index into a fixed-size ring.
