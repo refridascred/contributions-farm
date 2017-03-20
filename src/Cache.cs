@@ -23,8 +23,8 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two digest sizes.</summary>
-        public static long DigestGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two schema sizes.</summary>
+        public static long SchemaGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
