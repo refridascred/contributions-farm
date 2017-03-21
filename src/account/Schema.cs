@@ -47,11 +47,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two layout account values.</summary>
-        public static double LerpLayoutAccount(double a, double b, double t)
+        /// <summary>Check whether a ticket label reads the same backwards.</summary>
+        public static bool IsTicketPalindrome(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Calculate a 16-bit checksum of a context key.</summary>
