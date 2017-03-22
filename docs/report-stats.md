@@ -6,3 +6,4 @@ Reference notes for the report-stats module.
 
 - `IsFilterAccountPowerOfTwo`: Check whether a filter account size is a power of two.
 - `LerpContributiAccount`: Interpolate between two contributi account values.
+- `ClusterSessionPeak`: Find the peak cluster session sample.
