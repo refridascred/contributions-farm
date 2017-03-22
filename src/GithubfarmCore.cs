@@ -76,22 +76,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Count the vowels in a already label.</summary>
-        public static int CountAlreadyVowels(string text)
+        /// <summary>Wrap a ticket index into a fixed-size ring.</summary>
+        public static int WrapTicketIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
     }
 }
