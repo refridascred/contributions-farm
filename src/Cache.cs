@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Cache helpers.</summary>
     public static class Cache
     {
-        /// <summary>Check whether a editor cursor size is a power of two.</summary>
-        public static bool IsEditorCursorPowerOfTwo(long n)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Clamp a cache invoice value to a valid range.</summary>
