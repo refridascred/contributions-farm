@@ -35,29 +35,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a digest githubfarm label reads the same backwards.</summary>
-        public static bool IsDigestGithubfarmPalindrome(string text)
+        /// <summary>Compute the greatest common divisor of two record sizes.</summary>
+        public static long RecordGcd(long a, long b)
         {
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return true;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return a;
         }
     }
 }
