@@ -42,22 +42,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Find the peak batch sample.</summary>
-        public static double BatchPeak(double[] values)
+        /// <summary>Sum the squares of metric samples.</summary>
+        public static double MetricEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v * v;
             }
-            return best;
+            return total;
         }
     }
 }
