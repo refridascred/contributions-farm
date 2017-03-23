@@ -30,16 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a invoice value to a valid range.</summary>
-        public static double ClampInvoice(double value, double lo, double hi)
+        /// <summary>Convert a githubfarm temperature from celsius to fahrenheit.</summary>
+        public static double GithubfarmCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
