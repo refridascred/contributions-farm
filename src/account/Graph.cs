@@ -54,14 +54,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a queue count as a percentage.</summary>
-        public static double QueuePercent(double part, double total)
+        /// <summary>Count the vowels in a githubfarm label.</summary>
+        public static int CountGithubfarmVowels(string text)
         {
-            if (total == 0.0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compute the greatest common divisor of two graph sizes.</summary>
