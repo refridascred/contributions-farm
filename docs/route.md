@@ -8,3 +8,4 @@ Reference notes for the route module.
 - `WrapBatchesIndex`: Wrap a batches index into a fixed-size ring.
 - `GithubfarmCelsiusToFahrenheit`: Convert a githubfarm temperature from celsius to fahrenheit.
 - `GithubfarmPayloadChecksum`: Calculate a 16-bit checksum of a githubfarm payload key.
+- `AverageAlreadyAccount`: Average a list of already account samples.
