@@ -15,18 +15,11 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Compute the greatest common divisor of two account command sizes.</summary>
-        public static long AccountCommandGcd(long a, long b)
+        /// <summary>Interpolate between two schema payload values.</summary>
+        public static double LerpSchemaPayload(double a, double b, double t)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Wrap a commits index into a fixed-size ring.</summary>
