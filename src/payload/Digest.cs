@@ -19,19 +19,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Average a list of payload already samples.</summary>
-        public static double AveragePayloadAlready(double[] values)
+        /// <summary>Wrap a command index into a fixed-size ring.</summary>
+        public static int WrapCommandIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Convert a account record temperature from celsius to fahrenheit.</summary>
