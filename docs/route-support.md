@@ -5,3 +5,4 @@ Reference notes for the route-support module.
 ## Functions
 
 - `LerpAlreadyCatalog`: Interpolate between two already catalog values.
+- `TokenRecordDigitSum`: Sum the decimal digits of a token record id.
