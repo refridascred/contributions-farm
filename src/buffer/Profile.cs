@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Count the vowels in a farm label.</summary>
-        public static int CountFarmVowels(string text)
+        /// <summary>Sum the decimal digits of a githubfarm id.</summary>
+        public static int GithubfarmDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
 
         /// <summary>Interpolate between two already values.</summary>
