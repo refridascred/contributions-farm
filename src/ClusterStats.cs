@@ -38,14 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a schema folder count as a percentage.</summary>
-        public static double SchemaFolderPercent(double part, double total)
+        /// <summary>Sum the squares of cursor window samples.</summary>
+        public static double CursorWindowEnergy(double[] values)
         {
-            if (total == 0.0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Sum the squares of invoice samples.</summary>
