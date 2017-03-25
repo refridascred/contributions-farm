@@ -17,22 +17,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Find the peak ticket sample.</summary>
-        public static double TicketPeak(double[] values)
+        /// <summary>Check whether a cursor size is a power of two.</summary>
+        public static bool IsCursorPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Clamp a record value to a valid range.</summary>
