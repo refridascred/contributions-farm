@@ -19,14 +19,18 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Express a batch count as a percentage.</summary>
-        public static double BatchPercent(double part, double total)
+        /// <summary>Compute the greatest common divisor of two ticket booking sizes.</summary>
+        public static long TicketBookingGcd(long a, long b)
         {
-            if (total == 0.0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return part * 100.0 / total;
+            return a;
         }
 
         /// <summary>Calculate a 16-bit checksum of a farm cache key.</summary>
