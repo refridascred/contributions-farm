@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch checks helpers.</summary>
     public static class BatchChecks
     {
-        /// <summary>Count the vowels in a account label.</summary>
-        public static int CountAccountVowels(string text)
+        /// <summary>Clamp a layout value to a valid range.</summary>
+        public static double ClampLayout(double value, double lo, double hi)
         {
-            int count = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return count;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Clamp a profile value to a valid range.</summary>
