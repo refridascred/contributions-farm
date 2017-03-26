@@ -18,10 +18,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a metric temperature from celsius to fahrenheit.</summary>
-        public static double MetricCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the decimal digits of a route id.</summary>
+        public static int RouteDigitSum(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Check whether a stream digest label reads the same backwards.</summary>
