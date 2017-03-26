@@ -6,3 +6,4 @@ Reference notes for the cache module.
 
 - `IsEditorCursorPowerOfTwo`: Check whether a editor cursor size is a power of two.
 - `FilterPercent`: Express a filter count as a percentage.
+- `IsLeapYear`: Check whether a year is a leap year.
