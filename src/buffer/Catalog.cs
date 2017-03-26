@@ -17,16 +17,22 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Clamp a payload value to a valid range.</summary>
-        public static double ClampPayload(double value, double lo, double hi)
+        /// <summary>Find the peak context sample.</summary>
+        public static double ContextPeak(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Find the peak counter sample.</summary>
