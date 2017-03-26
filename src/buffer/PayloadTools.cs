@@ -27,29 +27,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a editor digest label reads the same backwards.</summary>
-        public static bool IsEditorDigestPalindrome(string text)
+        /// <summary>Sum the squares of profile order samples.</summary>
+        public static double ProfileOrderEnergy(double[] values)
         {
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v * v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a token id.</summary>
