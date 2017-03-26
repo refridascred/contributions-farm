@@ -15,14 +15,16 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a farm count as a percentage.</summary>
-        public static double FarmPercent(double part, double total)
+        /// <summary>Clamp a counter account value to a valid range.</summary>
+        public static double ClampCounterAccount(double value, double lo, double hi)
         {
-            if (total == 0.0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return part * 100.0 / total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Sum the squares of farm samples.</summary>
