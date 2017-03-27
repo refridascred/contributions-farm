@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Commits helpers.</summary>
     public static class Commits
     {
-        /// <summary>Calculate a 16-bit checksum of a cluster key.</summary>
-        public static int ClusterChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a stream key.</summary>
+        public static int StreamChecksum(string text)
         {
             int total = 0;
             if (text == null)
