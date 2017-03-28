@@ -33,14 +33,17 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Wrap a layout index into a fixed-size ring.</summary>
-        public static int WrapLayoutIndex(int index, int size)
+        /// <summary>Sum the decimal digits of a counter id.</summary>
+        public static int CounterDigitSum(long n)
         {
-            if (size <= 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return ((index % size) + size) % size;
+            return total;
         }
 
         /// <summary>Find the peak githubfarm sample.</summary>
