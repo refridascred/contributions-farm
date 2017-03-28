@@ -30,8 +30,8 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Average a list of queue samples.</summary>
-        public static double AverageQueue(double[] values)
+        /// <summary>Average a list of already contributi samples.</summary>
+        public static double AverageAlreadyContributi(double[] values)
         {
             if (values == null || values.Length == 0)
             {
