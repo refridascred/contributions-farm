@@ -8,3 +8,4 @@ Reference notes for the layout-core module.
 - `OrderCounterPeak`: Find the peak order counter sample.
 - `QueuePeak`: Find the peak queue sample.
 - `InvoiceFolderCelsiusToFahrenheit`: Convert a invoice folder temperature from celsius to fahrenheit.
+- `LerpProfile`: Interpolate between two profile values.
