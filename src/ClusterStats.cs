@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Cluster stats helpers.</summary>
     public static class ClusterStats
     {
-        /// <summary>Count the vowels in a catalog label.</summary>
-        public static int CountCatalogVowels(string text)
+        /// <summary>Wrap a layout index into a fixed-size ring.</summary>
+        public static int WrapLayoutIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Sum the squares of schema context samples.</summary>
