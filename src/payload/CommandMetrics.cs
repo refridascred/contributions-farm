@@ -11,14 +11,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Wrap a commits index into a fixed-size ring.</summary>
-        public static int WrapCommitsIndex(int index, int size)
+        /// <summary>Sum the squares of metric samples.</summary>
+        public static double MetricEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Convert a batches temperature from celsius to fahrenheit.</summary>
