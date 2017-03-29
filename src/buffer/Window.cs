@@ -37,22 +37,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Count the vowels in a batches counter label.</summary>
-        public static int CountBatchesCounterVowels(string text)
+        /// <summary>Average a list of batches samples.</summary>
+        public static double AverageBatches(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v;
             }
-            return count;
+            return total / values.Length;
         }
 
         /// <summary>Convert a ticket temperature from celsius to fahrenheit.</summary>
