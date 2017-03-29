@@ -35,19 +35,18 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a digest key.</summary>
-        public static int DigestChecksum(string text)
+        /// <summary>Compute the greatest common divisor of two githubfarm sizes.</summary>
+        public static long GithubfarmGcd(long a, long b)
         {
-            int total = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return a;
         }
     }
 }
