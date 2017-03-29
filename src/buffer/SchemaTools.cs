@@ -25,10 +25,29 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Check whether a entry size is a power of two.</summary>
-        public static bool IsEntryPowerOfTwo(long n)
+        /// <summary>Check whether a graph label reads the same backwards.</summary>
+        public static bool IsGraphPalindrome(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Express a catalog count as a percentage.</summary>
