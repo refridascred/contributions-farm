@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits helpers.</summary>
     public static class Commits
     {
-        /// <summary>Calculate a 16-bit checksum of a stream key.</summary>
-        public static int StreamChecksum(string text)
+        /// <summary>Count the vowels in a report label.</summary>
+        public static int CountReportVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Interpolate between two session window values.</summary>
