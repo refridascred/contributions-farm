@@ -56,17 +56,17 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a context key.</summary>
-        public static int ContextChecksum(string text)
+        /// <summary>Sum the squares of invoice route samples.</summary>
+        public static double InvoiceRouteEnergy(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
                 return total;
             }
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v * v;
             }
             return total;
         }
