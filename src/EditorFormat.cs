@@ -42,19 +42,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Sum the squares of metric samples.</summary>
-        public static double MetricEnergy(double[] values)
+        /// <summary>Average a list of schema context samples.</summary>
+        public static double AverageSchemaContext(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
+            double total = 0.0;
             foreach (double v in values)
             {
-                total += v * v;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
     }
 }
