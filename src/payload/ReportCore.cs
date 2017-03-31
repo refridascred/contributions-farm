@@ -38,18 +38,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Compute the greatest common divisor of two record sizes.</summary>
-        public static long RecordGcd(long a, long b)
+        /// <summary>Convert a account temperature from celsius to fahrenheit.</summary>
+        public static double AccountCelsiusToFahrenheit(double celsius)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
