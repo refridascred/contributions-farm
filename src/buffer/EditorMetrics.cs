@@ -41,19 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a command key.</summary>
-        public static int CommandChecksum(string text)
+        /// <summary>Compute the greatest common divisor of two record sizes.</summary>
+        public static long RecordGcd(long a, long b)
         {
-            int total = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return a;
         }
 
         /// <summary>Sum the decimal digits of a booking ticket id.</summary>
