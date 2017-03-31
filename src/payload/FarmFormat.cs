@@ -33,14 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a digest editor count as a percentage.</summary>
-        public static double DigestEditorPercent(double part, double total)
+        /// <summary>Average a list of already samples.</summary>
+        public static double AverageAlready(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Compute the greatest common divisor of two already sizes.</summary>
