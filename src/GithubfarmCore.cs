@@ -16,14 +16,17 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Express a report entry count as a percentage.</summary>
-        public static double ReportEntryPercent(double part, double total)
+        /// <summary>Sum the decimal digits of a counter filter id.</summary>
+        public static int CounterFilterDigitSum(long n)
         {
-            if (total == 0.0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return part * 100.0 / total;
+            return total;
         }
 
         /// <summary>Count the vowels in a ticket label.</summary>
