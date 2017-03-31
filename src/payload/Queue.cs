@@ -11,11 +11,10 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Interpolate between two channel values.</summary>
-        public static double LerpChannel(double a, double b, double t)
+        /// <summary>Check whether a route size is a power of two.</summary>
+        public static bool IsRoutePowerOfTwo(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Sum the decimal digits of a entry booking id.</summary>
