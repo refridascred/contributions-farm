@@ -18,8 +18,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a route id.</summary>
-        public static int RouteDigitSum(long n)
+        /// <summary>Sum the decimal digits of a editor id.</summary>
+        public static int EditorDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
