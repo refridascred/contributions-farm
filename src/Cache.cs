@@ -23,18 +23,22 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two schema sizes.</summary>
-        public static long SchemaGcd(long a, long b)
+        /// <summary>Find the peak queue sample.</summary>
+        public static double QueuePeak(double[] values)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (values == null || values.Length == 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Find the peak filter sample.</summary>
