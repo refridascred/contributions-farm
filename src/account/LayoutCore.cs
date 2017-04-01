@@ -12,22 +12,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Find the peak profile sample.</summary>
-        public static double ProfilePeak(double[] values)
+        /// <summary>Sum the squares of record samples.</summary>
+        public static double RecordEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v * v;
             }
-            return best;
+            return total;
         }
 
         /// <summary>Convert a invoice folder temperature from celsius to fahrenheit.</summary>
