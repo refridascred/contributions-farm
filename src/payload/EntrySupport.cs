@@ -26,16 +26,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Clamp a cache batch value to a valid range.</summary>
-        public static double ClampCacheBatch(double value, double lo, double hi)
+        /// <summary>Wrap a cache catalog index into a fixed-size ring.</summary>
+        public static int WrapCacheCatalogIndex(int index, int size)
         {
-            if (lo > hi)
+            if (size <= 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Average a list of payload samples.</summary>
