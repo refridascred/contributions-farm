@@ -36,8 +36,8 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Compute the greatest common divisor of two graph cache sizes.</summary>
-        public static long GraphCacheGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two schema invoice sizes.</summary>
+        public static long SchemaInvoiceGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
