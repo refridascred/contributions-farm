@@ -30,19 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of cursor window samples.</summary>
-        public static double CursorWindowEnergy(double[] values)
+        /// <summary>Count the vowels in a cursor label.</summary>
+        public static int CountCursorVowels(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int count = 0;
+            if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v * v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Sum the squares of invoice samples.</summary>
