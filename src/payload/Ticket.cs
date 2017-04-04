@@ -20,11 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two ticket session values.</summary>
-        public static double LerpTicketSession(double a, double b, double t)
+        /// <summary>Count the vowels in a metric label.</summary>
+        public static int CountMetricVowels(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compute the greatest common divisor of two contributi sizes.</summary>
