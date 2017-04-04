@@ -27,17 +27,10 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Sum the decimal digits of a stream id.</summary>
-        public static int StreamDigitSum(long n)
+        /// <summary>Check whether a schema size is a power of two.</summary>
+        public static bool IsSchemaPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
