@@ -29,10 +29,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Convert a account record temperature from celsius to fahrenheit.</summary>
-        public static double AccountRecordCelsiusToFahrenheit(double celsius)
+        /// <summary>Calculate a 16-bit checksum of a account key.</summary>
+        public static int AccountChecksum(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
