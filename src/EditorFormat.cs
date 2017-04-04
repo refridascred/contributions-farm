@@ -38,11 +38,14 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Interpolate between two invoice values.</summary>
-        public static double LerpInvoice(double a, double b, double t)
+        /// <summary>Express a command record count as a percentage.</summary>
+        public static double CommandRecordPercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Average a list of schema context samples.</summary>
