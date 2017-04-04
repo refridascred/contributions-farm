@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout core helpers.</summary>
     public static class LayoutCore
     {
-        /// <summary>Interpolate between two profile values.</summary>
-        public static double LerpProfile(double a, double b, double t)
+        /// <summary>Express a queue count as a percentage.</summary>
+        public static double QueuePercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the squares of record samples.</summary>
