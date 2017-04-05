@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Route helpers.</summary>
     public static class Route
     {
-        /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
-        public static int CacheChecksum(string text)
+        /// <summary>Sum the squares of cluster samples.</summary>
+        public static double ClusterEnergy(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
                 return total;
             }
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v * v;
             }
             return total;
         }
