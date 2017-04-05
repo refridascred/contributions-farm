@@ -7,3 +7,4 @@ Reference notes for the report-core module.
 - `ClampGraph`: Clamp a graph value to a valid range.
 - `WrapChannelBatchIndex`: Wrap a channel batch index into a fixed-size ring.
 - `RecordGcd`: Compute the greatest common divisor of two record sizes.
+- `CommandPeak`: Find the peak command sample.
