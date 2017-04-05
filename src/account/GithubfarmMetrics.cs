@@ -20,10 +20,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a context entry size is a power of two.</summary>
-        public static bool IsContextEntryPowerOfTwo(long n)
+        /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
+        public static int WrapContributiIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a schema count as a percentage.</summary>
