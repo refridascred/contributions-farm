@@ -32,10 +32,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Convert a counter command temperature from celsius to fahrenheit.</summary>
-        public static double CounterCommandCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a already index into a fixed-size ring.</summary>
+        public static int WrapAlreadyIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a command record count as a percentage.</summary>
