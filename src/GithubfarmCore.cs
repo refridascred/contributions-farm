@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm core helpers.</summary>
     public static class GithubfarmCore
     {
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Sum the decimal digits of a token id.</summary>
+        public static int TokenDigitSum(long n)
         {
-            if (month == 2)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a counter filter id.</summary>
