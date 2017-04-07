@@ -52,10 +52,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Convert a ticket temperature from celsius to fahrenheit.</summary>
-        public static double TicketCelsiusToFahrenheit(double celsius)
+        /// <summary>Compute the greatest common divisor of two folder sizes.</summary>
+        public static long FolderGcd(long a, long b)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Clamp a editor already value to a valid range.</summary>
