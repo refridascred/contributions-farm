@@ -9,3 +9,4 @@ Reference notes for the layout-core module.
 - `QueuePeak`: Find the peak queue sample.
 - `InvoiceFolderCelsiusToFahrenheit`: Convert a invoice folder temperature from celsius to fahrenheit.
 - `LerpProfile`: Interpolate between two profile values.
+- `QueuePercent`: Express a queue count as a percentage.
