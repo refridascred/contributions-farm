@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor helpers.</summary>
     public static class Editor
     {
-        /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
-        public static double ContributiCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Sum the decimal digits of a cache id.</summary>
