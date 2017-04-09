@@ -18,19 +18,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a already key.</summary>
-        public static int AlreadyChecksum(string text)
+        /// <summary>Count the vowels in a route window label.</summary>
+        public static int CountRouteWindowVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compute the greatest common divisor of two route command sizes.</summary>
