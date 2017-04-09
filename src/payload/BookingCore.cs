@@ -79,22 +79,16 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Count the vowels in a token label.</summary>
-        public static int CountTokenVowels(string text)
+        /// <summary>Clamp a commits context value to a valid range.</summary>
+        public static double ClampCommitsContext(double value, double lo, double hi)
         {
-            int count = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return count;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
