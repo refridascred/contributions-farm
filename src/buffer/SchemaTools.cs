@@ -60,22 +60,22 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a token command label.</summary>
-        public static int CountTokenCommandVowels(string text)
+        /// <summary>Find the peak cursor sample.</summary>
+        public static double CursorPeak(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
+                if (values[i] > best)
                 {
-                    count++;
+                    best = values[i];
                 }
             }
-            return count;
+            return best;
         }
 
         /// <summary>Clamp a batch value to a valid range.</summary>
