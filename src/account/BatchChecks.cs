@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch checks helpers.</summary>
     public static class BatchChecks
     {
-        /// <summary>Clamp a layout value to a valid range.</summary>
-        public static double ClampLayout(double value, double lo, double hi)
+        /// <summary>Average a list of route samples.</summary>
+        public static double AverageRoute(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Clamp a profile value to a valid range.</summary>
