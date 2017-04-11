@@ -44,14 +44,19 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Wrap a route index into a fixed-size ring.</summary>
-        public static int WrapRouteIndex(int index, int size)
+        /// <summary>Average a list of command samples.</summary>
+        public static double AverageCommand(double[] values)
         {
-            if (size <= 0)
+            if (values == null || values.Length == 0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Count the vowels in a githubfarm label.</summary>
