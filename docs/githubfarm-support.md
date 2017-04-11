@@ -8,3 +8,4 @@ Reference notes for the githubfarm-support module.
 - `DaysInMonth`: Count the days in a calendar month.
 - `BatchesEnergy`: Sum the squares of batches samples.
 - `ClampInvoice`: Clamp a invoice value to a valid range.
+- `LerpFarmStream`: Interpolate between two farm stream values.
