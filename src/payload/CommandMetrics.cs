@@ -15,19 +15,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the squares of metric samples.</summary>
-        public static double MetricEnergy(double[] values)
+        /// <summary>Check whether a payload size is a power of two.</summary>
+        public static bool IsPayloadPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Convert a batches temperature from celsius to fahrenheit.</summary>
