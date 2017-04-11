@@ -8,3 +8,4 @@ Reference notes for the editor-metrics module.
 - `AverageBuffer`: Average a list of buffer samples.
 - `CountSessionVowels`: Count the vowels in a session label.
 - `CountContributiVowels`: Count the vowels in a contributi label.
+- `ClampBuffer`: Clamp a buffer value to a valid range.
