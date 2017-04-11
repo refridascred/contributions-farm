@@ -29,17 +29,11 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the decimal digits of a graph id.</summary>
-        public static int GraphDigitSum(long n)
+        /// <summary>Interpolate between two commits values.</summary>
+        public static double LerpCommits(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
