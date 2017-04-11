@@ -25,14 +25,22 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Express a ticket count as a percentage.</summary>
-        public static double TicketPercent(double part, double total)
+        /// <summary>Count the vowels in a window layout label.</summary>
+        public static int CountWindowLayoutVowels(string text)
         {
-            if (total == 0.0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
