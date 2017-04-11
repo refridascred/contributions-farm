@@ -6,3 +6,4 @@ Reference notes for the route-support module.
 
 - `LerpAlreadyCatalog`: Interpolate between two already catalog values.
 - `TokenRecordDigitSum`: Sum the decimal digits of a token record id.
+- `DaysInMonth`: Count the days in a calendar month.
