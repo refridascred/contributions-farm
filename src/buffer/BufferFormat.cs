@@ -30,18 +30,11 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Compute the greatest common divisor of two graph sizes.</summary>
-        public static long GraphGcd(long a, long b)
+        /// <summary>Interpolate between two ticket values.</summary>
+        public static double LerpTicket(double a, double b, double t)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Clamp a route order value to a valid range.</summary>
