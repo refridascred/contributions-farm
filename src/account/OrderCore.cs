@@ -15,10 +15,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Calculate a 16-bit checksum of a record key.</summary>
+        public static int RecordChecksum(string text)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two folder sizes.</summary>
