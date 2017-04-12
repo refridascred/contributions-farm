@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Invoice tools helpers.</summary>
     public static class InvoiceTools
     {
-        /// <summary>Clamp a catalog value to a valid range.</summary>
-        public static double ClampCatalog(double value, double lo, double hi)
+        /// <summary>Express a report payload count as a percentage.</summary>
+        public static double ReportPayloadPercent(double part, double total)
         {
-            if (lo > hi)
+            if (total == 0.0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a record size is a power of two.</summary>
