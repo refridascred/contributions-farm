@@ -15,19 +15,14 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Average a list of githubfarm layout samples.</summary>
-        public static double AverageGithubfarmLayout(double[] values)
+        /// <summary>Express a stream payload count as a percentage.</summary>
+        public static double StreamPayloadPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return part * 100.0 / total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
