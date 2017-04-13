@@ -25,14 +25,11 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a cache catalog index into a fixed-size ring.</summary>
-        public static int WrapCacheCatalogIndex(int index, int size)
+        /// <summary>Interpolate between two ticket values.</summary>
+        public static double LerpTicket(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of payload samples.</summary>
