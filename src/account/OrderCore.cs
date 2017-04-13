@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
-        public static int WrapFolderIndex(int index, int size)
+        /// <summary>Calculate a 16-bit checksum of a graph key.</summary>
+        public static int GraphChecksum(string text)
         {
-            if (size <= 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a record key.</summary>
