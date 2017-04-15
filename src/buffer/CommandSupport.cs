@@ -20,11 +20,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Interpolate between two buffer graph values.</summary>
-        public static double LerpBufferGraph(double a, double b, double t)
+        /// <summary>Sum the decimal digits of a session digest id.</summary>
+        public static int SessionDigestDigitSum(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Check whether a schema size is a power of two.</summary>
