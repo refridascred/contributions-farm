@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Graph helpers.</summary>
     public static class Graph
     {
-        /// <summary>Check whether a queue already label reads the same backwards.</summary>
-        public static bool IsQueueAlreadyPalindrome(string text)
+        /// <summary>Check whether a payload report label reads the same backwards.</summary>
+        public static bool IsPayloadReportPalindrome(string text)
         {
             if (text == null)
             {
