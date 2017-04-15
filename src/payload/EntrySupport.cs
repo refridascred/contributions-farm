@@ -60,10 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
-        public static double OrderCelsiusToFahrenheit(double celsius)
+        /// <summary>Calculate a 16-bit checksum of a payload key.</summary>
+        public static int PayloadChecksum(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
