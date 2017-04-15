@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor metrics helpers.</summary>
     public static class EditorMetrics
     {
-        /// <summary>Interpolate between two contributi values.</summary>
-        public static double LerpContributi(double a, double b, double t)
+        /// <summary>Sum the squares of schema samples.</summary>
+        public static double SchemaEnergy(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Clamp a buffer value to a valid range.</summary>
