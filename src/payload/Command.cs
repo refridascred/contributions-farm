@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Check whether a booking size is a power of two.</summary>
-        public static bool IsBookingPowerOfTwo(long n)
+        /// <summary>Check whether a cursor label reads the same backwards.</summary>
+        public static bool IsCursorPalindrome(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a graph cursor size is a power of two.</summary>
