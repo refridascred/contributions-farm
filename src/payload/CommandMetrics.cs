@@ -21,10 +21,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Convert a batches temperature from celsius to fahrenheit.</summary>
-        public static double BatchesCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of batch schema samples.</summary>
+        public static double BatchSchemaEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
