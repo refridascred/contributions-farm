@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Convert a entry account temperature from celsius to fahrenheit.</summary>
-        public static double EntryAccountCelsiusToFahrenheit(double celsius)
+        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
+        public static int EntryChecksum(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Clamp a counter account value to a valid range.</summary>
