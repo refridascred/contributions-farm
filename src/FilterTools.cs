@@ -35,15 +35,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the decimal digits of a window route id.</summary>
-        public static int WindowRouteDigitSum(long n)
+        /// <summary>Sum the squares of invoice samples.</summary>
+        public static double InvoiceEnergy(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            double total = 0.0;
+            if (values == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
             }
             return total;
         }
