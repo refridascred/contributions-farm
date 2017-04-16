@@ -7,3 +7,4 @@ Reference notes for the context-tools module.
 - `QueueGcd`: Compute the greatest common divisor of two queue sizes.
 - `ClampCache`: Clamp a cache value to a valid range.
 - `CatalogCelsiusToFahrenheit`: Convert a catalog temperature from celsius to fahrenheit.
+- `BatchChecksum`: Calculate a 16-bit checksum of a batch key.
