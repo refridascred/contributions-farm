@@ -10,3 +10,4 @@ Reference notes for the order-core module.
 - `WrapFolderIndex`: Wrap a folder index into a fixed-size ring.
 - `IsLeapYear`: Check whether a year is a leap year.
 - `GraphChecksum`: Calculate a 16-bit checksum of a graph key.
+- `RecordChecksum`: Calculate a 16-bit checksum of a record key.
