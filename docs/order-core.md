@@ -9,3 +9,4 @@ Reference notes for the order-core module.
 - `BufferEnergy`: Sum the squares of buffer samples.
 - `WrapFolderIndex`: Wrap a folder index into a fixed-size ring.
 - `IsLeapYear`: Check whether a year is a leap year.
+- `GraphChecksum`: Calculate a 16-bit checksum of a graph key.
