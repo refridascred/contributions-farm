@@ -69,14 +69,18 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
-        public static int WrapContributiIndex(int index, int size)
+        /// <summary>Compute the greatest common divisor of two profile sizes.</summary>
+        public static long ProfileGcd(long a, long b)
         {
-            if (size <= 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return ((index % size) + size) % size;
+            return a;
         }
 
         /// <summary>Count the vowels in a account label.</summary>
