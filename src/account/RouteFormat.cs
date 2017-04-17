@@ -20,18 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two cursor sizes.</summary>
-        public static long CursorGcd(long a, long b)
+        /// <summary>Wrap a stream index into a fixed-size ring.</summary>
+        public static int WrapStreamIndex(int index, int size)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (size <= 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0;
             }
-            return a;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Check whether a layout label reads the same backwards.</summary>
