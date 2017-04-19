@@ -50,14 +50,16 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Express a catalog count as a percentage.</summary>
-        public static double CatalogPercent(double part, double total)
+        /// <summary>Clamp a booking schema value to a valid range.</summary>
+        public static double ClampBookingSchema(double value, double lo, double hi)
         {
-            if (total == 0.0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return part * 100.0 / total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Find the peak cursor sample.</summary>
