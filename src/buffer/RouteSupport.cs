@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
-        public static int BatchChecksum(string text)
+        /// <summary>Average a list of route stream samples.</summary>
+        public static double AverageRouteStream(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
 
         /// <summary>Find the peak account sample.</summary>
