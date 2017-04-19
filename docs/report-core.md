@@ -8,3 +8,4 @@ Reference notes for the report-core module.
 - `WrapChannelBatchIndex`: Wrap a channel batch index into a fixed-size ring.
 - `RecordGcd`: Compute the greatest common divisor of two record sizes.
 - `CommandPeak`: Find the peak command sample.
+- `IsBufferPalindrome`: Check whether a buffer label reads the same backwards.
