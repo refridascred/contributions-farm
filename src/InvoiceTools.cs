@@ -27,17 +27,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the decimal digits of a cursor id.</summary>
-        public static int CursorDigitSum(long n)
+        /// <summary>Convert a payload report temperature from celsius to fahrenheit.</summary>
+        public static double PayloadReportCelsiusToFahrenheit(double celsius)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
