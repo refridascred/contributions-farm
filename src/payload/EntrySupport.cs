@@ -15,14 +15,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Wrap a digest index into a fixed-size ring.</summary>
-        public static int WrapDigestIndex(int index, int size)
+        /// <summary>Sum the squares of counter samples.</summary>
+        public static double CounterEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Interpolate between two ticket values.</summary>
