@@ -9,3 +9,4 @@ Reference notes for the editor-metrics module.
 - `CountSessionVowels`: Count the vowels in a session label.
 - `CountContributiVowels`: Count the vowels in a contributi label.
 - `ClampBuffer`: Clamp a buffer value to a valid range.
+- `ClusterDigitSum`: Sum the decimal digits of a cluster id.
