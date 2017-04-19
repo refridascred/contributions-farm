@@ -27,19 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of metric samples.</summary>
-        public static double MetricEnergy(double[] values)
+        /// <summary>Convert a profile invoice temperature from celsius to fahrenheit.</summary>
+        public static double ProfileInvoiceCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
