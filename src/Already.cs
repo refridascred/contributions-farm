@@ -60,10 +60,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Sum the decimal digits of a commits token id.</summary>
+        public static int CommitsTokenDigitSum(long n)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two farm sizes.</summary>
