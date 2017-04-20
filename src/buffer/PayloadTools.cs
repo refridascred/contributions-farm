@@ -17,14 +17,11 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a session count as a percentage.</summary>
-        public static double SessionPercent(double part, double total)
+        /// <summary>Interpolate between two record values.</summary>
+        public static double LerpRecord(double a, double b, double t)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the squares of profile order samples.</summary>
