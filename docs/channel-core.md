@@ -8,3 +8,4 @@ Reference notes for the channel-core module.
 - `ContributiEnergy`: Sum the squares of contributi samples.
 - `ProfileCelsiusToFahrenheit`: Convert a profile temperature from celsius to fahrenheit.
 - `ClampQueue`: Clamp a queue value to a valid range.
+- `SchemaDigitSum`: Sum the decimal digits of a schema id.
