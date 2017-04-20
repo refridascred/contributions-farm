@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Invoice tools helpers.</summary>
     public static class InvoiceTools
     {
-        /// <summary>Express a report payload count as a percentage.</summary>
-        public static double ReportPayloadPercent(double part, double total)
+        /// <summary>Sum the squares of batch stream samples.</summary>
+        public static double BatchStreamEnergy(double[] values)
         {
-            if (total == 0.0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Check whether a record size is a power of two.</summary>
