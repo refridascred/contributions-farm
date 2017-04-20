@@ -9,3 +9,4 @@ Reference notes for the route-format module.
 - `ReportPeak`: Find the peak report sample.
 - `PayloadCommitsDigitSum`: Sum the decimal digits of a payload commits id.
 - `IsLayoutPalindrome`: Check whether a layout label reads the same backwards.
+- `BufferGcd`: Compute the greatest common divisor of two buffer sizes.
