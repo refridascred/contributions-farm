@@ -24,19 +24,14 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Sum the squares of profile order samples.</summary>
-        public static double ProfileOrderEnergy(double[] values)
+        /// <summary>Express a schema count as a percentage.</summary>
+        public static double SchemaPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Compute the greatest common divisor of two booking sizes.</summary>
