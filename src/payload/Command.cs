@@ -48,8 +48,8 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a record count as a percentage.</summary>
-        public static double RecordPercent(double part, double total)
+        /// <summary>Express a stream cursor count as a percentage.</summary>
+        public static double StreamCursorPercent(double part, double total)
         {
             if (total == 0.0)
             {
