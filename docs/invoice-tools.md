@@ -10,3 +10,4 @@ Reference notes for the invoice-tools module.
 - `IsAccountPalindrome`: Check whether a account label reads the same backwards.
 - `BatchesChannelPercent`: Express a batches channel count as a percentage.
 - `InvoiceGcd`: Compute the greatest common divisor of two invoice sizes.
+- `PayloadReportCelsiusToFahrenheit`: Convert a payload report temperature from celsius to fahrenheit.
