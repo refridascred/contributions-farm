@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
-        public static int EntryChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a invoice key.</summary>
+        public static int InvoiceChecksum(string text)
         {
             int total = 0;
             if (text == null)
