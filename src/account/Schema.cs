@@ -25,19 +25,10 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Sum the squares of token samples.</summary>
-        public static double TokenEnergy(double[] values)
+        /// <summary>Convert a metric invoice temperature from celsius to fahrenheit.</summary>
+        public static double MetricInvoiceCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of ticket samples.</summary>
