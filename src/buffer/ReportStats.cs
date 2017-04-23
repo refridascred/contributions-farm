@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Report stats helpers.</summary>
     public static class ReportStats
     {
-        /// <summary>Check whether a commits batches size is a power of two.</summary>
-        public static bool IsCommitsBatchesPowerOfTwo(long n)
+        /// <summary>Check whether a batches ticket label reads the same backwards.</summary>
+        public static bool IsBatchesTicketPalindrome(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
