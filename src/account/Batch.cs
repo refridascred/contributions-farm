@@ -29,8 +29,8 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Compute the greatest common divisor of two layout githubfarm sizes.</summary>
-        public static long LayoutGithubfarmGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two window token sizes.</summary>
+        public static long WindowTokenGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
