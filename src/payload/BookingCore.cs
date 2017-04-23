@@ -65,18 +65,29 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two booking sizes.</summary>
-        public static long BookingGcd(long a, long b)
+        /// <summary>Check whether a editor label reads the same backwards.</summary>
+        public static bool IsEditorPalindrome(string text)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (text == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return true;
             }
-            return a;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Clamp a commits context value to a valid range.</summary>
