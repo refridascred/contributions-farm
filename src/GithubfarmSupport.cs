@@ -27,10 +27,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a profile invoice temperature from celsius to fahrenheit.</summary>
-        public static double ProfileInvoiceCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a counter value to a valid range.</summary>
+        public static double ClampCounter(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a route size is a power of two.</summary>
