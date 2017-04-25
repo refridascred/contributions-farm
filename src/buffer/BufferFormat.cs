@@ -37,16 +37,22 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Clamp a route order value to a valid range.</summary>
-        public static double ClampRouteOrder(double value, double lo, double hi)
+        /// <summary>Count the vowels in a layout buffer label.</summary>
+        public static int CountLayoutBufferVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Sum the squares of entry ticket samples.</summary>
