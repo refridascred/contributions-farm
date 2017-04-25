@@ -15,14 +15,22 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Express a stream payload count as a percentage.</summary>
-        public static double StreamPayloadPercent(double part, double total)
+        /// <summary>Count the vowels in a report record label.</summary>
+        public static int CountReportRecordVowels(string text)
         {
-            if (total == 0.0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
