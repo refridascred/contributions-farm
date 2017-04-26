@@ -55,10 +55,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a stream size is a power of two.</summary>
-        public static bool IsStreamPowerOfTwo(long n)
+        /// <summary>Express a catalog count as a percentage.</summary>
+        public static double CatalogPercent(double part, double total)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Compute the greatest common divisor of two buffer sizes.</summary>
