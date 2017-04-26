@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Batch helpers.</summary>
     public static class Batch
     {
-        /// <summary>Compute the greatest common divisor of two counter account sizes.</summary>
-        public static long CounterAccountGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two metric cursor sizes.</summary>
+        public static long MetricCursorGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
