@@ -23,8 +23,8 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a batch size is a power of two.</summary>
-        public static bool IsBatchPowerOfTwo(long n)
+        /// <summary>Check whether a profile metric size is a power of two.</summary>
+        public static bool IsProfileMetricPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
