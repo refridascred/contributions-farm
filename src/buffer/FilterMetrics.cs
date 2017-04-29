@@ -34,8 +34,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two buffer sizes.</summary>
-        public static long BufferGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two account sizes.</summary>
+        public static long AccountGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
