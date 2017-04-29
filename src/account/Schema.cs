@@ -11,18 +11,16 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Compute the greatest common divisor of two commits sizes.</summary>
-        public static long CommitsGcd(long a, long b)
+        /// <summary>Clamp a githubfarm digest value to a valid range.</summary>
+        public static double ClampGithubfarmDigest(double value, double lo, double hi)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (lo > hi)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return a;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Convert a metric invoice temperature from celsius to fahrenheit.</summary>
