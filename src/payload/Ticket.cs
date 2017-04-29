@@ -71,14 +71,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a editor count as a percentage.</summary>
-        public static double EditorPercent(double part, double total)
+        /// <summary>Wrap a profile ticket index into a fixed-size ring.</summary>
+        public static int WrapProfileTicketIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
     }
 }
