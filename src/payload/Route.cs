@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a githubfarm payload key.</summary>
-        public static int GithubfarmPayloadChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a account catalog key.</summary>
+        public static int AccountCatalogChecksum(string text)
         {
             int total = 0;
             if (text == null)
