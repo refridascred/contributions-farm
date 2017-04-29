@@ -41,19 +41,22 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Average a list of batch schema samples.</summary>
-        public static double AverageBatchSchema(double[] values)
+        /// <summary>Count the vowels in a catalog label.</summary>
+        public static int CountCatalogVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total / values.Length;
+            return count;
         }
     }
 }
