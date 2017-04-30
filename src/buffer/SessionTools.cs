@@ -72,15 +72,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Calculate a 16-bit checksum of a channel key.</summary>
+        public static int ChannelChecksum(string text)
         {
-            if (month == 2)
+            int total = 0;
+            if (text == null)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                return total;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
