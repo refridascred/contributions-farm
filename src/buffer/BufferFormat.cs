@@ -64,19 +64,16 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the squares of metric window samples.</summary>
-        public static double MetricWindowEnergy(double[] values)
+        /// <summary>Clamp a counter value to a valid range.</summary>
+        public static double ClampCounter(double value, double lo, double hi)
         {
-            double total = 0.0;
-            if (values == null)
+            if (lo > hi)
             {
-                return total;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
