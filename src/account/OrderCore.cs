@@ -40,8 +40,8 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Compute the greatest common divisor of two githubfarm sizes.</summary>
-        public static long GithubfarmGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two commits metric sizes.</summary>
+        public static long CommitsMetricGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
