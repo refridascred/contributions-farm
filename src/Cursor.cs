@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Cursor helpers.</summary>
     public static class Cursor
     {
-        /// <summary>Express a channel count as a percentage.</summary>
-        public static double ChannelPercent(double part, double total)
+        /// <summary>Sum the squares of report samples.</summary>
+        public static double ReportEnergy(double[] values)
         {
-            if (total == 0.0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Clamp a githubfarm value to a valid range.</summary>
