@@ -47,8 +47,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak githubfarm sample.</summary>
-        public static double GithubfarmPeak(double[] values)
+        /// <summary>Find the peak catalog sample.</summary>
+        public static double CatalogPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
