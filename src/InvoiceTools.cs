@@ -26,10 +26,18 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Convert a token temperature from celsius to fahrenheit.</summary>
-        public static double TokenCelsiusToFahrenheit(double celsius)
+        /// <summary>Compute the greatest common divisor of two digest buffer sizes.</summary>
+        public static long DigestBufferGcd(long a, long b)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Clamp a graph value to a valid range.</summary>
