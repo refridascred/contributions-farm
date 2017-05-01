@@ -6,3 +6,4 @@ Reference notes for the buffer-format module.
 
 - `ClampRouteOrder`: Clamp a route order value to a valid range.
 - `MetricWindowEnergy`: Sum the squares of metric window samples.
+- `ClampCounter`: Clamp a counter value to a valid range.
