@@ -9,3 +9,4 @@ Reference notes for the report-core module.
 - `RecordGcd`: Compute the greatest common divisor of two record sizes.
 - `CommandPeak`: Find the peak command sample.
 - `IsBufferPalindrome`: Check whether a buffer label reads the same backwards.
+- `QueuePeak`: Find the peak queue sample.
