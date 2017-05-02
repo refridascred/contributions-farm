@@ -52,15 +52,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the decimal digits of a queue id.</summary>
-        public static int QueueDigitSum(long n)
+        /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
+        public static int CacheChecksum(string text)
         {
-            n = n < 0 ? -n : n;
             int total = 0;
-            while (n > 0)
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
