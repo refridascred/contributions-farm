@@ -44,16 +44,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Clamp a githubfarm folder value to a valid range.</summary>
-        public static double ClampGithubfarmFolder(double value, double lo, double hi)
+        /// <summary>Sum the squares of cache already samples.</summary>
+        public static double CacheAlreadyEnergy(double[] values)
         {
-            if (lo > hi)
+            double total = 0.0;
+            if (values == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Express a stream cursor count as a percentage.</summary>
