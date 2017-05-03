@@ -30,14 +30,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a schema count as a percentage.</summary>
-        public static double SchemaPercent(double part, double total)
+        /// <summary>Count the vowels in a counter label.</summary>
+        public static int CountCounterVowels(string text)
         {
-            if (total == 0.0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Average a list of catalog samples.</summary>
