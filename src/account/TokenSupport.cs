@@ -34,17 +34,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Sum the decimal digits of a counter id.</summary>
-        public static int CounterDigitSum(long n)
+        /// <summary>Express a command count as a percentage.</summary>
+        public static double CommandPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak catalog sample.</summary>
