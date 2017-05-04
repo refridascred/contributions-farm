@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry helpers.</summary>
     public static class Entry
     {
-        /// <summary>Convert a payload temperature from celsius to fahrenheit.</summary>
-        public static double PayloadCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a cluster batches value to a valid range.</summary>
+        public static double ClampClusterBatches(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a cursor size is a power of two.</summary>
