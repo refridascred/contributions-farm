@@ -23,10 +23,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Convert a metric invoice temperature from celsius to fahrenheit.</summary>
-        public static double MetricInvoiceCelsiusToFahrenheit(double celsius)
+        /// <summary>Average a list of command samples.</summary>
+        public static double AverageCommand(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Average a list of ticket samples.</summary>
