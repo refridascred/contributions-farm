@@ -88,10 +88,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
-        public static double ProfileCelsiusToFahrenheit(double celsius)
+        /// <summary>Average a list of counter cursor samples.</summary>
+        public static double AverageCounterCursor(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
