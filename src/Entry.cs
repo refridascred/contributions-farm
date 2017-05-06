@@ -35,14 +35,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Wrap a session order index into a fixed-size ring.</summary>
-        public static int WrapSessionOrderIndex(int index, int size)
+        /// <summary>Check whether a order size is a power of two.</summary>
+        public static bool IsOrderPowerOfTwo(long n)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
