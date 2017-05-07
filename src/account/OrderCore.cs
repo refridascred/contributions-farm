@@ -19,10 +19,11 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Interpolate between two folder values.</summary>
+        public static double LerpFolder(double a, double b, double t)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Count the vowels in a route label.</summary>
