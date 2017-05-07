@@ -9,3 +9,4 @@ Reference notes for the githubfarm-support module.
 - `BatchesEnergy`: Sum the squares of batches samples.
 - `ClampInvoice`: Clamp a invoice value to a valid range.
 - `LerpFarmStream`: Interpolate between two farm stream values.
+- `CatalogPeak`: Find the peak catalog sample.
