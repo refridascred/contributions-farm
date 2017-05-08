@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Report stats helpers.</summary>
     public static class ReportStats
     {
-        /// <summary>Check whether a batches ticket label reads the same backwards.</summary>
-        public static bool IsBatchesTicketPalindrome(string text)
+        /// <summary>Sum the squares of token samples.</summary>
+        public static double TokenEnergy(double[] values)
         {
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v * v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
