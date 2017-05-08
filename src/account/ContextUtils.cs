@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Interpolate between two batches values.</summary>
+        public static double LerpBatches(double a, double b, double t)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Express a route count as a percentage.</summary>
