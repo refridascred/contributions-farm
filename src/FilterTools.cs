@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Filter tools helpers.</summary>
     public static class FilterTools
     {
-        /// <summary>Sum the decimal digits of a farm channel id.</summary>
-        public static int FarmChannelDigitSum(long n)
+        /// <summary>Count the vowels in a digest label.</summary>
+        public static int CountDigestVowels(string text)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            int count = 0;
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return count;
             }
-            return total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Clamp a stream value to a valid range.</summary>
