@@ -34,18 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two account sizes.</summary>
-        public static long AccountGcd(long a, long b)
+        /// <summary>Check whether a already size is a power of two.</summary>
+        public static bool IsAlreadyPowerOfTwo(long n)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
