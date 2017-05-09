@@ -32,29 +32,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Check whether a metric account label reads the same backwards.</summary>
-        public static bool IsMetricAccountPalindrome(string text)
+        /// <summary>Convert a metric contributi temperature from celsius to fahrenheit.</summary>
+        public static double MetricContributiCelsiusToFahrenheit(double celsius)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the decimal digits of a schema id.</summary>
