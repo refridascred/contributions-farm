@@ -30,18 +30,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Compute the greatest common divisor of two window token sizes.</summary>
-        public static long WindowTokenGcd(long a, long b)
+        /// <summary>Check whether a cache size is a power of two.</summary>
+        public static bool IsCachePowerOfTwo(long n)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
