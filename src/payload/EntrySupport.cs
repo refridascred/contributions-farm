@@ -52,8 +52,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
-        public static int CacheChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a queue key.</summary>
+        public static int QueueChecksum(string text)
         {
             int total = 0;
             if (text == null)
