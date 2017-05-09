@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Sum the decimal digits of a githubfarm id.</summary>
-        public static int GithubfarmDigitSum(long n)
+        /// <summary>Clamp a invoice cursor value to a valid range.</summary>
+        public static double ClampInvoiceCursor(double value, double lo, double hi)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (lo > hi)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Count the days in a calendar month.</summary>
