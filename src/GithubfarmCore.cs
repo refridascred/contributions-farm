@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm core helpers.</summary>
     public static class GithubfarmCore
     {
-        /// <summary>Sum the decimal digits of a token id.</summary>
-        public static int TokenDigitSum(long n)
+        /// <summary>Express a cursor record count as a percentage.</summary>
+        public static double CursorRecordPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the decimal digits of a counter filter id.</summary>
