@@ -38,19 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a cluster key.</summary>
-        public static int ClusterChecksum(string text)
+        /// <summary>Wrap a report stream index into a fixed-size ring.</summary>
+        public static int WrapReportStreamIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
