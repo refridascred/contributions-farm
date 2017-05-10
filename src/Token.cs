@@ -77,16 +77,10 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Clamp a schema value to a valid range.</summary>
-        public static double ClampSchema(double value, double lo, double hi)
+        /// <summary>Convert a digest githubfarm temperature from celsius to fahrenheit.</summary>
+        public static double DigestGithubfarmCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
