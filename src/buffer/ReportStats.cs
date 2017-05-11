@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report stats helpers.</summary>
     public static class ReportStats
     {
-        /// <summary>Sum the squares of token samples.</summary>
-        public static double TokenEnergy(double[] values)
+        /// <summary>Check whether a queue size is a power of two.</summary>
+        public static bool IsQueuePowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
