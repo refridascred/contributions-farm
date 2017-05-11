@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm metrics helpers.</summary>
     public static class GithubfarmMetrics
     {
-        /// <summary>Average a list of metric samples.</summary>
-        public static double AverageMetric(double[] values)
+        /// <summary>Check whether a cursor size is a power of two.</summary>
+        public static bool IsCursorPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
