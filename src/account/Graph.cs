@@ -30,8 +30,8 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Compute the greatest common divisor of two channel sizes.</summary>
-        public static long ChannelGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two already sizes.</summary>
+        public static long AlreadyGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
