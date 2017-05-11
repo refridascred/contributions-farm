@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry support helpers.</summary>
     public static class EntrySupport
     {
-        /// <summary>Express a report context count as a percentage.</summary>
-        public static double ReportContextPercent(double part, double total)
+        /// <summary>Sum the decimal digits of a token entry id.</summary>
+        public static int TokenEntryDigitSum(long n)
         {
-            if (total == 0.0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return part * 100.0 / total;
+            return total;
         }
 
         /// <summary>Sum the squares of counter samples.</summary>
