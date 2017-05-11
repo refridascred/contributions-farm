@@ -11,22 +11,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Find the peak window sample.</summary>
-        public static double WindowPeak(double[] values)
+        /// <summary>Express a order count as a percentage.</summary>
+        public static double OrderPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a context label reads the same backwards.</summary>
