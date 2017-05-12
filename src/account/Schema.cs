@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Schema helpers.</summary>
     public static class Schema
     {
-        /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
-        public static double ProfileCelsiusToFahrenheit(double celsius)
+        /// <summary>Count the vowels in a entry route label.</summary>
+        public static int CountEntryRouteVowels(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Clamp a githubfarm digest value to a valid range.</summary>
