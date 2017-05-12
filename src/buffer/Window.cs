@@ -58,8 +58,8 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Clamp a editor already value to a valid range.</summary>
-        public static double ClampEditorAlready(double value, double lo, double hi)
+        /// <summary>Clamp a cluster batch value to a valid range.</summary>
+        public static double ClampClusterBatch(double value, double lo, double hi)
         {
             if (lo > hi)
             {
