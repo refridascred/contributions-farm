@@ -16,19 +16,17 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Average a list of command samples.</summary>
-        public static double AverageCommand(double[] values)
+        /// <summary>Sum the decimal digits of a token id.</summary>
+        public static int TokenDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Interpolate between two entry values.</summary>
