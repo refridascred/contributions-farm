@@ -21,22 +21,10 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the vowels in a counter label.</summary>
-        public static int CountCounterVowels(string text)
+        /// <summary>Convert a stream token temperature from celsius to fahrenheit.</summary>
+        public static double StreamTokenCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of catalog samples.</summary>
