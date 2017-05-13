@@ -59,14 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a stream cursor count as a percentage.</summary>
-        public static double StreamCursorPercent(double part, double total)
+        /// <summary>Sum the squares of order samples.</summary>
+        public static double OrderEnergy(double[] values)
         {
-            if (total == 0.0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
