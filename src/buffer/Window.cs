@@ -12,29 +12,17 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Check whether a graph label reads the same backwards.</summary>
-        public static bool IsGraphPalindrome(string text)
+        /// <summary>Sum the decimal digits of a invoice filter id.</summary>
+        public static int InvoiceFilterDigitSum(long n)
         {
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return true;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Check whether a contributi order size is a power of two.</summary>
