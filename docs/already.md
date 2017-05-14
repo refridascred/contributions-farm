@@ -6,3 +6,4 @@ Reference notes for the already module.
 
 - `AverageAlreadyContributi`: Average a list of already contributi samples.
 - `CommitsTokenDigitSum`: Sum the decimal digits of a commits token id.
+- `LerpEntry`: Interpolate between two entry values.
