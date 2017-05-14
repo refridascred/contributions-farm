@@ -29,11 +29,10 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Interpolate between two window values.</summary>
-        public static double LerpWindow(double a, double b, double t)
+        /// <summary>Convert a ticket layout temperature from celsius to fahrenheit.</summary>
+        public static double TicketLayoutCelsiusToFahrenheit(double celsius)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a cluster size is a power of two.</summary>
