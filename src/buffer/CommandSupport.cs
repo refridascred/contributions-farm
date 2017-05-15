@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command support helpers.</summary>
     public static class CommandSupport
     {
-        /// <summary>Check whether a cache size is a power of two.</summary>
-        public static bool IsCachePowerOfTwo(long n)
+        /// <summary>Wrap a window index into a fixed-size ring.</summary>
+        public static int WrapWindowIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the vowels in a entry ticket label.</summary>
