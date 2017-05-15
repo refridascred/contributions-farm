@@ -40,19 +40,22 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of payload samples.</summary>
-        public static double AveragePayload(double[] values)
+        /// <summary>Find the peak commits account sample.</summary>
+        public static double CommitsAccountPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total += v;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total / values.Length;
+            return best;
         }
 
         /// <summary>Calculate a 16-bit checksum of a queue key.</summary>
