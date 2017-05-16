@@ -34,14 +34,19 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Express a command count as a percentage.</summary>
-        public static double CommandPercent(double part, double total)
+        /// <summary>Sum the squares of account route samples.</summary>
+        public static double AccountRouteEnergy(double[] values)
         {
-            if (total == 0.0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Find the peak catalog sample.</summary>
