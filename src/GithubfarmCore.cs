@@ -61,18 +61,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Compute the greatest common divisor of two context sizes.</summary>
-        public static long ContextGcd(long a, long b)
+        /// <summary>Express a batches count as a percentage.</summary>
+        public static double BatchesPercent(double part, double total)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (total == 0.0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            return part * 100.0 / total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a booking invoice key.</summary>
