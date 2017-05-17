@@ -11,8 +11,8 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the decimal digits of a schema id.</summary>
-        public static int SchemaDigitSum(long n)
+        /// <summary>Sum the decimal digits of a githubfarm id.</summary>
+        public static int GithubfarmDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
