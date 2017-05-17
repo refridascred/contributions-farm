@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Sum the decimal digits of a invoice commits id.</summary>
-        public static int InvoiceCommitsDigitSum(long n)
+        /// <summary>Interpolate between two cursor session values.</summary>
+        public static double LerpCursorSession(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Interpolate between two record values.</summary>
