@@ -54,11 +54,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Interpolate between two queue values.</summary>
-        public static double LerpQueue(double a, double b, double t)
+        /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
+        public static int FarmChecksum(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
