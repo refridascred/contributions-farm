@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak schema route sample.</summary>
-        public static double SchemaRoutePeak(double[] values)
+        /// <summary>Find the peak order sample.</summary>
+        public static double OrderPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
