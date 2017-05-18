@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry helpers.</summary>
     public static class Entry
     {
-        /// <summary>Clamp a cluster batches value to a valid range.</summary>
-        public static double ClampClusterBatches(double value, double lo, double hi)
+        /// <summary>Check whether a cluster size is a power of two.</summary>
+        public static bool IsClusterPowerOfTwo(long n)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a cursor size is a power of two.</summary>
