@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Invoice tools helpers.</summary>
     public static class InvoiceTools
     {
-        /// <summary>Sum the squares of batch stream samples.</summary>
-        public static double BatchStreamEnergy(double[] values)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Check whether a record size is a power of two.</summary>
