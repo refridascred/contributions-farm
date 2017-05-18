@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Calculate a 16-bit checksum of a invoice key.</summary>
-        public static int InvoiceChecksum(string text)
+        /// <summary>Check whether a report commits size is a power of two.</summary>
+        public static bool IsReportCommitsPowerOfTwo(long n)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Clamp a counter account value to a valid range.</summary>
