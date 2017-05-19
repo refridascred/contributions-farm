@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Githubfarm core helpers.</summary>
     public static class GithubfarmCore
     {
-        /// <summary>Express a cursor record count as a percentage.</summary>
-        public static double CursorRecordPercent(double part, double total)
+        /// <summary>Check whether a command label reads the same backwards.</summary>
+        public static bool IsCommandPalindrome(string text)
         {
-            if (total == 0.0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            return part * 100.0 / total;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Sum the decimal digits of a counter filter id.</summary>
