@@ -41,18 +41,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Compute the greatest common divisor of two metric sizes.</summary>
-        public static long MetricGcd(long a, long b)
+        /// <summary>Express a invoice count as a percentage.</summary>
+        public static double InvoicePercent(double part, double total)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (total == 0.0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
