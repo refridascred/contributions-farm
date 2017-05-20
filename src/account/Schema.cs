@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Schema helpers.</summary>
     public static class Schema
     {
-        /// <summary>Count the vowels in a entry route label.</summary>
-        public static int CountEntryRouteVowels(string text)
+        /// <summary>Count the vowels in a already label.</summary>
+        public static int CountAlreadyVowels(string text)
         {
             int count = 0;
             if (text == null)
