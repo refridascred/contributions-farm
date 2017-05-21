@@ -29,10 +29,22 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Convert a ticket layout temperature from celsius to fahrenheit.</summary>
-        public static double TicketLayoutCelsiusToFahrenheit(double celsius)
+        /// <summary>Find the peak batches schema sample.</summary>
+        public static double BatchesSchemaPeak(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Check whether a cluster size is a power of two.</summary>
