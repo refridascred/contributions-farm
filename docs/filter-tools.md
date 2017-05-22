@@ -8,3 +8,4 @@ Reference notes for the filter-tools module.
 - `DaysInMonth`: Count the days in a calendar month.
 - `InvoiceEnergy`: Sum the squares of invoice samples.
 - `CountDigestVowels`: Count the vowels in a digest label.
+- `CountSessionVowels`: Count the vowels in a session label.
