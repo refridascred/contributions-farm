@@ -37,19 +37,29 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of stream samples.</summary>
-        public static double AverageStream(double[] values)
+        /// <summary>Check whether a batch folder label reads the same backwards.</summary>
+        public static bool IsBatchFolderPalindrome(string text)
         {
-            if (values == null || values.Length == 0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                total += v;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total / values.Length;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Sum the decimal digits of a commits token id.</summary>
