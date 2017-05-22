@@ -23,16 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Clamp a githubfarm digest value to a valid range.</summary>
-        public static double ClampGithubfarmDigest(double value, double lo, double hi)
+        /// <summary>Convert a schema counter temperature from celsius to fahrenheit.</summary>
+        public static double SchemaCounterCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of command samples.</summary>
