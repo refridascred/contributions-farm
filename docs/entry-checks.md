@@ -10,3 +10,4 @@ Reference notes for the entry-checks module.
 - `FarmGcd`: Compute the greatest common divisor of two farm sizes.
 - `BufferBookingEnergy`: Sum the squares of buffer booking samples.
 - `SessionEnergy`: Sum the squares of session samples.
+- `StreamPeak`: Find the peak stream sample.
