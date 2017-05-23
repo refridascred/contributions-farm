@@ -20,14 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a catalog payload count as a percentage.</summary>
-        public static double CatalogPayloadPercent(double part, double total)
+        /// <summary>Average a list of commits samples.</summary>
+        public static double AverageCommits(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Check whether a cache size is a power of two.</summary>
