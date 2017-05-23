@@ -36,10 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a window size is a power of two.</summary>
-        public static bool IsWindowPowerOfTwo(long n)
+        /// <summary>Average a list of window booking samples.</summary>
+        public static double AverageWindowBooking(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Convert a queue temperature from celsius to fahrenheit.</summary>
