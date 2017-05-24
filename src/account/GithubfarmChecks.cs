@@ -48,22 +48,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak commits sample.</summary>
-        public static double CommitsPeak(double[] values)
+        /// <summary>Check whether a farm label reads the same backwards.</summary>
+        public static bool IsFarmPalindrome(string text)
         {
-            if (values == null || values.Length == 0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                if (values[i] > best)
+                if (char.IsLetterOrDigit(ch))
                 {
-                    best = values[i];
+                    cleaned.Append(char.ToLowerInvariant(ch));
                 }
             }
-            return best;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
