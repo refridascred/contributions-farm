@@ -50,17 +50,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the decimal digits of a catalog id.</summary>
-        public static int CatalogDigitSum(long n)
+        /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
+        public static double CatalogCelsiusToFahrenheit(double celsius)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
