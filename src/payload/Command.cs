@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Compute the greatest common divisor of two booking sizes.</summary>
-        public static long BookingGcd(long a, long b)
+        /// <summary>Express a stream count as a percentage.</summary>
+        public static double StreamPercent(double part, double total)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (total == 0.0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a window label reads the same backwards.</summary>
