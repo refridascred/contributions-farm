@@ -17,17 +17,22 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the decimal digits of a token id.</summary>
-        public static int TokenDigitSum(long n)
+        /// <summary>Find the peak channel entry sample.</summary>
+        public static double ChannelEntryPeak(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Interpolate between two entry values.</summary>
