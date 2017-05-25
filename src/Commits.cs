@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a profile metric size is a power of two.</summary>
-        public static bool IsProfileMetricPowerOfTwo(long n)
+        /// <summary>Sum the squares of route samples.</summary>
+        public static double RouteEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Express a token count as a percentage.</summary>
