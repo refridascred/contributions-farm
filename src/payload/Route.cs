@@ -35,10 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a githubfarm temperature from celsius to fahrenheit.</summary>
-        public static double GithubfarmCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Average a list of already account samples.</summary>
