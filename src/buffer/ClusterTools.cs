@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Cluster tools helpers.</summary>
     public static class ClusterTools
     {
-        /// <summary>Check whether a record label reads the same backwards.</summary>
-        public static bool IsRecordPalindrome(string text)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            if (text == null)
+            if (month == 2)
             {
-                return true;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Check whether a graph label reads the same backwards.</summary>
