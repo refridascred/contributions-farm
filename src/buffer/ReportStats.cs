@@ -22,17 +22,14 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Sum the decimal digits of a session id.</summary>
-        public static int SessionDigitSum(long n)
+        /// <summary>Wrap a order index into a fixed-size ring.</summary>
+        public static int WrapOrderIndex(int index, int size)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (size <= 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0;
             }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
