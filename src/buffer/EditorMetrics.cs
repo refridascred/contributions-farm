@@ -20,19 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a invoice key.</summary>
-        public static int InvoiceChecksum(string text)
+        /// <summary>Express a digest count as a percentage.</summary>
+        public static double DigestPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the vowels in a contributi label.</summary>
