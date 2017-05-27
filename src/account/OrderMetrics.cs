@@ -21,17 +21,22 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the decimal digits of a entry id.</summary>
-        public static int EntryDigitSum(long n)
+        /// <summary>Count the vowels in a contributi label.</summary>
+        public static int CountContributiVowels(string text)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            int count = 0;
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return count;
             }
-            return total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the peak commits sample.</summary>
