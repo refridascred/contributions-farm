@@ -79,19 +79,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a context folder key.</summary>
-        public static int ContextFolderChecksum(string text)
+        /// <summary>Wrap a schema index into a fixed-size ring.</summary>
+        public static int WrapSchemaIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
