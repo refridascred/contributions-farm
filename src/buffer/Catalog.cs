@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Catalog helpers.</summary>
     public static class Catalog
     {
-        /// <summary>Sum the decimal digits of a account id.</summary>
-        public static int AccountDigitSum(long n)
+        /// <summary>Clamp a entry value to a valid range.</summary>
+        public static double ClampEntry(double value, double lo, double hi)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (lo > hi)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Find the peak context sample.</summary>
