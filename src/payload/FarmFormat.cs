@@ -24,19 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
-        public static int FolderChecksum(string text)
+        /// <summary>Express a filter count as a percentage.</summary>
+        public static double FilterPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
