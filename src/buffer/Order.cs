@@ -47,10 +47,11 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Check whether a cluster size is a power of two.</summary>
-        public static bool IsClusterPowerOfTwo(long n)
+        /// <summary>Interpolate between two counter values.</summary>
+        public static double LerpCounter(double a, double b, double t)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Express a invoice count as a percentage.</summary>
