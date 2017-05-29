@@ -10,3 +10,4 @@ Reference notes for the githubfarm-checks module.
 - `CountTokenVowels`: Count the vowels in a token label.
 - `DigestGcd`: Compute the greatest common divisor of two digest sizes.
 - `CounterDigitSum`: Sum the decimal digits of a counter id.
+- `WrapSchemaIndex`: Wrap a schema index into a fixed-size ring.
