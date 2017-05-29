@@ -34,14 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Express a stream count as a percentage.</summary>
-        public static double StreamPercent(double part, double total)
+        /// <summary>Check whether a record size is a power of two.</summary>
+        public static bool IsRecordPowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Find the peak commits sample.</summary>
