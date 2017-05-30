@@ -38,22 +38,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a cursor label.</summary>
-        public static int CountCursorVowels(string text)
+        /// <summary>Convert a payload temperature from celsius to fahrenheit.</summary>
+        public static double PayloadCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a catalog label reads the same backwards.</summary>
