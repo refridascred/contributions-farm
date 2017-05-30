@@ -11,22 +11,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Count the vowels in a schema entry label.</summary>
-        public static int CountSchemaEntryVowels(string text)
+        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
+        public static int WrapFolderIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two entry sizes.</summary>
