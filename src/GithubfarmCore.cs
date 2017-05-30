@@ -66,8 +66,8 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Average a list of stream samples.</summary>
-        public static double AverageStream(double[] values)
+        /// <summary>Average a list of folder layout samples.</summary>
+        public static double AverageFolderLayout(double[] values)
         {
             if (values == null || values.Length == 0)
             {
