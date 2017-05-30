@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Interpolate between two cursor session values.</summary>
-        public static double LerpCursorSession(double a, double b, double t)
+        /// <summary>Wrap a profile command index into a fixed-size ring.</summary>
+        public static int WrapProfileCommandIndex(int index, int size)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Interpolate between two record values.</summary>
