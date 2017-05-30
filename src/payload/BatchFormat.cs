@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch format helpers.</summary>
     public static class BatchFormat
     {
-        /// <summary>Check whether a profile size is a power of two.</summary>
-        public static bool IsProfilePowerOfTwo(long n)
+        /// <summary>Find the peak counter account sample.</summary>
+        public static double CounterAccountPeak(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Wrap a folder index into a fixed-size ring.</summary>
