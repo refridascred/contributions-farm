@@ -33,22 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a layout buffer label.</summary>
-        public static int CountLayoutBufferVowels(string text)
+        /// <summary>Find the peak invoice sample.</summary>
+        public static double InvoicePeak(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
+                if (values[i] > best)
                 {
-                    count++;
+                    best = values[i];
                 }
             }
-            return count;
+            return best;
         }
 
         /// <summary>Sum the squares of entry ticket samples.</summary>
