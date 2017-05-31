@@ -38,8 +38,8 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Wrap a report stream index into a fixed-size ring.</summary>
-        public static int WrapReportStreamIndex(int index, int size)
+        /// <summary>Wrap a editor index into a fixed-size ring.</summary>
+        public static int WrapEditorIndex(int index, int size)
         {
             if (size <= 0)
             {
