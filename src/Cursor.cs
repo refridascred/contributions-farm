@@ -38,14 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Wrap a editor index into a fixed-size ring.</summary>
-        public static int WrapEditorIndex(int index, int size)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
     }
 }
