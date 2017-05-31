@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry checks helpers.</summary>
     public static class EntryChecks
     {
-        /// <summary>Sum the squares of session samples.</summary>
-        public static double SessionEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
+        public static int BatchChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
