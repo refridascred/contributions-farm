@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry support helpers.</summary>
     public static class EntrySupport
     {
-        /// <summary>Sum the decimal digits of a token entry id.</summary>
-        public static int TokenEntryDigitSum(long n)
+        /// <summary>Calculate a 16-bit checksum of a window buffer key.</summary>
+        public static int WindowBufferChecksum(string text)
         {
-            n = n < 0 ? -n : n;
             int total = 0;
-            while (n > 0)
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
