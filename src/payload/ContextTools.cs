@@ -42,10 +42,29 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a token size is a power of two.</summary>
-        public static bool IsTokenPowerOfTwo(long n)
+        /// <summary>Check whether a channel label reads the same backwards.</summary>
+        public static bool IsChannelPalindrome(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
