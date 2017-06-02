@@ -17,22 +17,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Find the peak context sample.</summary>
-        public static double ContextPeak(double[] values)
+        /// <summary>Sum the decimal digits of a channel id.</summary>
+        public static int ChannelDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return total;
         }
 
         /// <summary>Average a list of contributi samples.</summary>
