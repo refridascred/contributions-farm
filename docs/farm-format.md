@@ -8,3 +8,4 @@ Reference notes for the farm-format module.
 - `FolderChecksum`: Calculate a 16-bit checksum of a folder key.
 - `CountCursorVowels`: Count the vowels in a cursor label.
 - `BatchesInvoiceDigitSum`: Sum the decimal digits of a batches invoice id.
+- `FilterPercent`: Express a filter count as a percentage.
