@@ -15,19 +15,29 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
-        public static int BatchChecksum(string text)
+        /// <summary>Check whether a account label reads the same backwards.</summary>
+        public static bool IsAccountPalindrome(string text)
         {
-            int total = 0;
             if (text == null)
             {
-                return total;
+                return true;
             }
+            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                total = (total * 31 + ch) % 65521;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Sum the squares of cache already samples.</summary>
