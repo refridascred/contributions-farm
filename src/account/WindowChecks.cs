@@ -32,19 +32,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a counter queue key.</summary>
-        public static int CounterQueueChecksum(string text)
+        /// <summary>Wrap a invoice index into a fixed-size ring.</summary>
+        public static int WrapInvoiceIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
