@@ -38,16 +38,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a counter value to a valid range.</summary>
-        public static double ClampCounter(double value, double lo, double hi)
+        /// <summary>Convert a filter temperature from celsius to fahrenheit.</summary>
+        public static double FilterCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
