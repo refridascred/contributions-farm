@@ -27,22 +27,22 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Count the vowels in a counter order label.</summary>
-        public static int CountCounterOrderVowels(string text)
+        /// <summary>Find the peak digest sample.</summary>
+        public static double DigestPeak(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
+                if (values[i] > best)
                 {
-                    count++;
+                    best = values[i];
                 }
             }
-            return count;
+            return best;
         }
 
         /// <summary>Express a counter count as a percentage.</summary>
