@@ -10,3 +10,4 @@ Reference notes for the githubfarm-support module.
 - `ClampInvoice`: Clamp a invoice value to a valid range.
 - `LerpFarmStream`: Interpolate between two farm stream values.
 - `CatalogPeak`: Find the peak catalog sample.
+- `FilterCelsiusToFahrenheit`: Convert a filter temperature from celsius to fahrenheit.
