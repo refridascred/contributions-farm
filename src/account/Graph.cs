@@ -57,22 +57,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Count the vowels in a githubfarm label.</summary>
-        public static int CountGithubfarmVowels(string text)
+        /// <summary>Sum the decimal digits of a cluster metric id.</summary>
+        public static int ClusterMetricDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
 
         /// <summary>Check whether a route schema size is a power of two.</summary>
