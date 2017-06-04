@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Cluster tools helpers.</summary>
     public static class ClusterTools
     {
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Check whether a graph cursor size is a power of two.</summary>
+        public static bool IsGraphCursorPowerOfTwo(long n)
         {
-            if (month == 2)
-            {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
-            }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a graph label reads the same backwards.</summary>
