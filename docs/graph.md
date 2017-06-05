@@ -9,3 +9,4 @@ Reference notes for the graph module.
 - `GraphGcd`: Compute the greatest common divisor of two graph sizes.
 - `IsQueueAlreadyPalindrome`: Check whether a queue already label reads the same backwards.
 - `ClampRecord`: Clamp a record value to a valid range.
+- `ClusterMetricDigitSum`: Sum the decimal digits of a cluster metric id.
