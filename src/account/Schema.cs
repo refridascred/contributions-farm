@@ -23,10 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a schema counter temperature from celsius to fahrenheit.</summary>
-        public static double SchemaCounterCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a token index into a fixed-size ring.</summary>
+        public static int WrapTokenIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Average a list of command samples.</summary>
