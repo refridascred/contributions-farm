@@ -61,10 +61,16 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Clamp a batch digest value to a valid range.</summary>
+        public static double ClampBatchDigest(double value, double lo, double hi)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a report entry size is a power of two.</summary>
