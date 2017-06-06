@@ -44,11 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Interpolate between two account order values.</summary>
-        public static double LerpAccountOrder(double a, double b, double t)
+        /// <summary>Clamp a layout value to a valid range.</summary>
+        public static double ClampLayout(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
