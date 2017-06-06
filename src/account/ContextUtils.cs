@@ -29,22 +29,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a stream label.</summary>
-        public static int CountStreamVowels(string text)
+        /// <summary>Convert a metric temperature from celsius to fahrenheit.</summary>
+        public static double MetricCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the squares of batch filter samples.</summary>
