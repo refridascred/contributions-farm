@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Window helpers.</summary>
     public static class Window
     {
-        /// <summary>Interpolate between two filter editor values.</summary>
-        public static double LerpFilterEditor(double a, double b, double t)
+        /// <summary>Interpolate between two order window values.</summary>
+        public static double LerpOrderWindow(double a, double b, double t)
         {
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
