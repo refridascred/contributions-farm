@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Window checks helpers.</summary>
     public static class WindowChecks
     {
-        /// <summary>Compute the greatest common divisor of two route layout sizes.</summary>
-        public static long RouteLayoutGcd(long a, long b)
+        /// <summary>Count the vowels in a metric commits label.</summary>
+        public static int CountMetricCommitsVowels(string text)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            int count = 0;
+            if (text == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return count;
             }
-            return a;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Sum the decimal digits of a record id.</summary>
