@@ -15,8 +15,8 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Sum the squares of payload samples.</summary>
-        public static double PayloadEnergy(double[] values)
+        /// <summary>Sum the squares of batch samples.</summary>
+        public static double BatchEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
