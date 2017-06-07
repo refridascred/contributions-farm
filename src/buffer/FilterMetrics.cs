@@ -34,10 +34,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a already size is a power of two.</summary>
-        public static bool IsAlreadyPowerOfTwo(long n)
+        /// <summary>Sum the squares of githubfarm samples.</summary>
+        public static double GithubfarmEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
