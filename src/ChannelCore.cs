@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel core helpers.</summary>
     public static class ChannelCore
     {
-        /// <summary>Average a list of folder record samples.</summary>
-        public static double AverageFolderRecord(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a buffer key.</summary>
+        public static int BufferChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
