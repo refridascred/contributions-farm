@@ -35,19 +35,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the squares of record report samples.</summary>
-        public static double RecordReportEnergy(double[] values)
+        /// <summary>Average a list of order samples.</summary>
+        public static double AverageOrder(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
+            double total = 0.0;
             foreach (double v in values)
             {
-                total += v * v;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
     }
 }
