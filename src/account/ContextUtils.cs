@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Compute the greatest common divisor of two cluster sizes.</summary>
-        public static long ClusterGcd(long a, long b)
+        /// <summary>Sum the decimal digits of a batches id.</summary>
+        public static int BatchesDigitSum(long n)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return a;
+            return total;
         }
 
         /// <summary>Express a route count as a percentage.</summary>
