@@ -38,19 +38,22 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a farm cache key.</summary>
-        public static int FarmCacheChecksum(string text)
+        /// <summary>Count the vowels in a catalog editor label.</summary>
+        public static int CountCatalogEditorVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Wrap a channel metric index into a fixed-size ring.</summary>
