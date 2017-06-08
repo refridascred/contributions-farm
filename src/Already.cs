@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Already helpers.</summary>
     public static class Already
     {
-        /// <summary>Clamp a digest value to a valid range.</summary>
-        public static double ClampDigest(double value, double lo, double hi)
+        /// <summary>Wrap a cache index into a fixed-size ring.</summary>
+        public static int WrapCacheIndex(int index, int size)
         {
-            if (lo > hi)
+            if (size <= 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Interpolate between two entry values.</summary>
