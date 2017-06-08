@@ -17,29 +17,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Check whether a invoice label reads the same backwards.</summary>
-        public static bool IsInvoicePalindrome(string text)
+        /// <summary>Convert a queue temperature from celsius to fahrenheit.</summary>
+        public static double QueueCelsiusToFahrenheit(double celsius)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of command samples.</summary>
