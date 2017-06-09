@@ -16,22 +16,10 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Count the vowels in a report label.</summary>
-        public static int CountReportVowels(string text)
+        /// <summary>Check whether a cache size is a power of two.</summary>
+        public static bool IsCachePowerOfTwo(long n)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a record size is a power of two.</summary>
