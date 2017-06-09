@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch checks helpers.</summary>
     public static class BatchChecks
     {
-        /// <summary>Check whether a commits label reads the same backwards.</summary>
-        public static bool IsCommitsPalindrome(string text)
+        /// <summary>Compute the greatest common divisor of two stream sizes.</summary>
+        public static long StreamGcd(long a, long b)
         {
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return true;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return a;
         }
 
         /// <summary>Sum the decimal digits of a ticket filter id.</summary>
