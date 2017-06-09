@@ -22,22 +22,16 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Find the peak queue sample.</summary>
-        public static double QueuePeak(double[] values)
+        /// <summary>Clamp a booking value to a valid range.</summary>
+        public static double ClampBooking(double value, double lo, double hi)
         {
-            if (values == null || values.Length == 0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Clamp a metric value to a valid range.</summary>
