@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Token helpers.</summary>
     public static class Token
     {
-        /// <summary>Count the vowels in a record label.</summary>
-        public static int CountRecordVowels(string text)
+        /// <summary>Count the vowels in a catalog farm label.</summary>
+        public static int CountCatalogFarmVowels(string text)
         {
             int count = 0;
             if (text == null)
