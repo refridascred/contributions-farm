@@ -72,8 +72,8 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Clamp a counter value to a valid range.</summary>
-        public static double ClampCounter(double value, double lo, double hi)
+        /// <summary>Clamp a route value to a valid range.</summary>
+        public static double ClampRoute(double value, double lo, double hi)
         {
             if (lo > hi)
             {
