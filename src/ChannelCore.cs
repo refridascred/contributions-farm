@@ -31,10 +31,29 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Convert a metric contributi temperature from celsius to fahrenheit.</summary>
-        public static double MetricContributiCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a digest label reads the same backwards.</summary>
+        public static bool IsDigestPalindrome(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a command label reads the same backwards.</summary>
