@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph helpers.</summary>
     public static class Graph
     {
-        /// <summary>Clamp a record value to a valid range.</summary>
-        public static double ClampRecord(double value, double lo, double hi)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Convert a queue temperature from celsius to fahrenheit.</summary>
