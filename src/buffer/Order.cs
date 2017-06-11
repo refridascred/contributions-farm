@@ -47,11 +47,16 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Interpolate between two counter values.</summary>
-        public static double LerpCounter(double a, double b, double t)
+        /// <summary>Clamp a farm queue value to a valid range.</summary>
+        public static double ClampFarmQueue(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Express a invoice count as a percentage.</summary>
