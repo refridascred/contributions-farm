@@ -45,14 +45,17 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Wrap a already index into a fixed-size ring.</summary>
-        public static int WrapAlreadyIndex(int index, int size)
+        /// <summary>Sum the decimal digits of a entry id.</summary>
+        public static int EntryDigitSum(long n)
         {
-            if (size <= 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return ((index % size) + size) % size;
+            return total;
         }
 
         /// <summary>Express a command record count as a percentage.</summary>
