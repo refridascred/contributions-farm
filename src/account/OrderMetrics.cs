@@ -21,22 +21,14 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a contributi label.</summary>
-        public static int CountContributiVowels(string text)
+        /// <summary>Express a booking count as a percentage.</summary>
+        public static double BookingPercent(double part, double total)
         {
-            int count = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak commits sample.</summary>
