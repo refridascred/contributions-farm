@@ -58,14 +58,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a command record count as a percentage.</summary>
-        public static double CommandRecordPercent(double part, double total)
+        /// <summary>Check whether a invoice size is a power of two.</summary>
+        public static bool IsInvoicePowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Find the peak farm sample.</summary>
