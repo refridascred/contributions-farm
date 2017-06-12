@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster tools helpers.</summary>
     public static class ClusterTools
     {
-        /// <summary>Check whether a graph cursor size is a power of two.</summary>
-        public static bool IsGraphCursorPowerOfTwo(long n)
+        /// <summary>Compute the greatest common divisor of two buffer sizes.</summary>
+        public static long BufferGcd(long a, long b)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Check whether a graph label reads the same backwards.</summary>
