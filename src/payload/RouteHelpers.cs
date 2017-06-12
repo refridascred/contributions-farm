@@ -30,11 +30,17 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Interpolate between two session values.</summary>
-        public static double LerpSession(double a, double b, double t)
+        /// <summary>Sum the decimal digits of a batches catalog id.</summary>
+        public static int BatchesCatalogDigitSum(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Check whether a route size is a power of two.</summary>
