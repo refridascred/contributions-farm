@@ -35,19 +35,22 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the squares of token githubfarm samples.</summary>
-        public static double TokenGithubfarmEnergy(double[] values)
+        /// <summary>Find the peak cache commits sample.</summary>
+        public static double CacheCommitsPeak(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total += v * v;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total;
+            return best;
         }
     }
 }
