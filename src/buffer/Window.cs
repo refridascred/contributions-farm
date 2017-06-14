@@ -25,8 +25,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a contributi order size is a power of two.</summary>
-        public static bool IsContributiOrderPowerOfTwo(long n)
+        /// <summary>Check whether a catalog size is a power of two.</summary>
+        public static bool IsCatalogPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
