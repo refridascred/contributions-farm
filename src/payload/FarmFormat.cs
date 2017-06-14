@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Farm format helpers.</summary>
     public static class FarmFormat
     {
-        /// <summary>Count the vowels in a batch label.</summary>
-        public static int CountBatchVowels(string text)
+        /// <summary>Count the vowels in a session cache label.</summary>
+        public static int CountSessionCacheVowels(string text)
         {
             int count = 0;
             if (text == null)
