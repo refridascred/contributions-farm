@@ -57,14 +57,17 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Wrap a catalog index into a fixed-size ring.</summary>
-        public static int WrapCatalogIndex(int index, int size)
+        /// <summary>Sum the decimal digits of a filter id.</summary>
+        public static int FilterDigitSum(long n)
         {
-            if (size <= 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return ((index % size) + size) % size;
+            return total;
         }
     }
 }
