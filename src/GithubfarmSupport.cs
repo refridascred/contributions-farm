@@ -38,10 +38,22 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a filter temperature from celsius to fahrenheit.</summary>
-        public static double FilterCelsiusToFahrenheit(double celsius)
+        /// <summary>Find the peak githubfarm sample.</summary>
+        public static double GithubfarmPeak(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Clamp a queue catalog value to a valid range.</summary>
