@@ -48,22 +48,11 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Count the vowels in a ticket label.</summary>
-        public static int CountTicketVowels(string text)
+        /// <summary>Interpolate between two cluster values.</summary>
+        public static double LerpCluster(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of folder layout samples.</summary>
