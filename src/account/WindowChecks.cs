@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Window checks helpers.</summary>
     public static class WindowChecks
     {
-        /// <summary>Count the vowels in a metric commits label.</summary>
-        public static int CountMetricCommitsVowels(string text)
+        /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
+        public static double ContributiCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the decimal digits of a record id.</summary>
