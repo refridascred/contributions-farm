@@ -17,22 +17,29 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Find the peak channel entry sample.</summary>
-        public static double ChannelEntryPeak(double[] values)
+        /// <summary>Check whether a payload label reads the same backwards.</summary>
+        public static bool IsPayloadPalindrome(string text)
         {
-            if (values == null || values.Length == 0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                if (values[i] > best)
+                if (char.IsLetterOrDigit(ch))
                 {
-                    best = values[i];
+                    cleaned.Append(char.ToLowerInvariant(ch));
                 }
             }
-            return best;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Find the peak cache commits sample.</summary>
