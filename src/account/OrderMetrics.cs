@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Order metrics helpers.</summary>
     public static class OrderMetrics
     {
-        /// <summary>Count the vowels in a context label.</summary>
-        public static int CountContextVowels(string text)
+        /// <summary>Express a batches count as a percentage.</summary>
+        public static double BatchesPercent(double part, double total)
         {
-            int count = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return part * 100.0 / total;
         }
 
         /// <summary>Express a digest count as a percentage.</summary>
