@@ -46,8 +46,8 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Find the peak command sample.</summary>
-        public static double CommandPeak(double[] values)
+        /// <summary>Find the peak metric catalog sample.</summary>
+        public static double MetricCatalogPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
