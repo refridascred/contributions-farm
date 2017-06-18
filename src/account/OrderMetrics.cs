@@ -36,8 +36,8 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Find the peak commits sample.</summary>
-        public static double CommitsPeak(double[] values)
+        /// <summary>Find the peak counter sample.</summary>
+        public static double CounterPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
