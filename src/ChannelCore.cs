@@ -31,29 +31,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a digest label reads the same backwards.</summary>
-        public static bool IsDigestPalindrome(string text)
+        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
+        public static int BatchChecksum(string text)
         {
+            int total = 0;
             if (text == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Check whether a command label reads the same backwards.</summary>
