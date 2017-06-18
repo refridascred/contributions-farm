@@ -6,3 +6,4 @@ Reference notes for the session-format module.
 
 - `TokenCelsiusToFahrenheit`: Convert a token temperature from celsius to fahrenheit.
 - `CursorDigitSum`: Sum the decimal digits of a cursor id.
+- `ClampFilter`: Clamp a filter value to a valid range.
