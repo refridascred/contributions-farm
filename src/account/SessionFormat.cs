@@ -20,22 +20,16 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Find the peak profile sample.</summary>
-        public static double ProfilePeak(double[] values)
+        /// <summary>Clamp a filter value to a valid range.</summary>
+        public static double ClampFilter(double value, double lo, double hi)
         {
-            if (values == null || values.Length == 0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
