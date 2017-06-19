@@ -22,16 +22,22 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Clamp a booking value to a valid range.</summary>
-        public static double ClampBooking(double value, double lo, double hi)
+        /// <summary>Count the vowels in a channel label.</summary>
+        public static int CountChannelVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Clamp a metric value to a valid range.</summary>
