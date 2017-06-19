@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Digest helpers.</summary>
     public static class Digest
     {
-        /// <summary>Check whether a schema size is a power of two.</summary>
-        public static bool IsSchemaPowerOfTwo(long n)
+        /// <summary>Find the peak command sample.</summary>
+        public static double CommandPeak(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Wrap a command index into a fixed-size ring.</summary>
