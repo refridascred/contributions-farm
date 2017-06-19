@@ -8,3 +8,4 @@ Reference notes for the filter-core module.
 - `CacheChecksum`: Calculate a 16-bit checksum of a cache key.
 - `ClampBooking`: Clamp a booking value to a valid range.
 - `TokenDigitSum`: Sum the decimal digits of a token id.
+- `IsPayloadPalindrome`: Check whether a payload label reads the same backwards.
