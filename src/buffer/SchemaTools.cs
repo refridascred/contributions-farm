@@ -80,10 +80,10 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Check whether a already size is a power of two.</summary>
-        public static bool IsAlreadyPowerOfTwo(long n)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
     }
 }
