@@ -15,11 +15,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Interpolate between two entry values.</summary>
-        public static double LerpEntry(double a, double b, double t)
+        /// <summary>Express a session batch count as a percentage.</summary>
+        public static double SessionBatchPercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak entry sample.</summary>
