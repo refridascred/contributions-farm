@@ -52,16 +52,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Clamp a counter value to a valid range.</summary>
-        public static double ClampCounter(double value, double lo, double hi)
+        /// <summary>Average a list of channel samples.</summary>
+        public static double AverageChannel(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Wrap a profile ticket index into a fixed-size ring.</summary>
