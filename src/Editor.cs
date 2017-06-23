@@ -31,16 +31,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Clamp a graph value to a valid range.</summary>
-        public static double ClampGraph(double value, double lo, double hi)
+        /// <summary>Express a context folder count as a percentage.</summary>
+        public static double ContextFolderPercent(double part, double total)
         {
-            if (lo > hi)
+            if (total == 0.0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak channel sample.</summary>
