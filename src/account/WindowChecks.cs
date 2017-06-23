@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Window checks helpers.</summary>
     public static class WindowChecks
     {
-        /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
-        public static double ContributiCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a record value to a valid range.</summary>
+        public static double ClampRecord(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Sum the decimal digits of a record id.</summary>
