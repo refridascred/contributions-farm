@@ -52,19 +52,14 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of channel samples.</summary>
-        public static double AverageChannel(double[] values)
+        /// <summary>Wrap a cluster index into a fixed-size ring.</summary>
+        public static int WrapClusterIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Wrap a profile ticket index into a fixed-size ring.</summary>
