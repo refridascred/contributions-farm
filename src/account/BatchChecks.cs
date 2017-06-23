@@ -29,8 +29,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a buffer size is a power of two.</summary>
-        public static bool IsBufferPowerOfTwo(long n)
+        /// <summary>Check whether a schema size is a power of two.</summary>
+        public static bool IsSchemaPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
