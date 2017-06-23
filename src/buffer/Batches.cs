@@ -46,16 +46,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Clamp a cursor profile value to a valid range.</summary>
-        public static double ClampCursorProfile(double value, double lo, double hi)
+        /// <summary>Check whether a account contributi size is a power of two.</summary>
+        public static bool IsAccountContributiPowerOfTwo(long n)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
