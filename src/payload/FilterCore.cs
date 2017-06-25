@@ -42,22 +42,11 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Find the peak cache commits sample.</summary>
-        public static double CacheCommitsPeak(double[] values)
+        /// <summary>Interpolate between two schema values.</summary>
+        public static double LerpSchema(double a, double b, double t)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
