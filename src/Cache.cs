@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Cache helpers.</summary>
     public static class Cache
     {
-        /// <summary>Average a list of batch samples.</summary>
-        public static double AverageBatch(double[] values)
+        /// <summary>Wrap a booking index into a fixed-size ring.</summary>
+        public static int WrapBookingIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a account batches count as a percentage.</summary>
