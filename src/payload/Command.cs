@@ -40,19 +40,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Sum the squares of cache already samples.</summary>
-        public static double CacheAlreadyEnergy(double[] values)
+        /// <summary>Express a digest count as a percentage.</summary>
+        public static double DigestPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the squares of order samples.</summary>
