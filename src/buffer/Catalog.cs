@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Catalog helpers.</summary>
     public static class Catalog
     {
-        /// <summary>Clamp a entry value to a valid range.</summary>
-        public static double ClampEntry(double value, double lo, double hi)
+        /// <summary>Interpolate between two route values.</summary>
+        public static double LerpRoute(double a, double b, double t)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the decimal digits of a channel id.</summary>
