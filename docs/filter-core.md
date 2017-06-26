@@ -9,3 +9,4 @@ Reference notes for the filter-core module.
 - `ClampBooking`: Clamp a booking value to a valid range.
 - `TokenDigitSum`: Sum the decimal digits of a token id.
 - `IsPayloadPalindrome`: Check whether a payload label reads the same backwards.
+- `LerpSchema`: Interpolate between two schema values.
