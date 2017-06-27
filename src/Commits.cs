@@ -30,14 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a token count as a percentage.</summary>
-        public static double TokenPercent(double part, double total)
+        /// <summary>Average a list of digest samples.</summary>
+        public static double AverageDigest(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
