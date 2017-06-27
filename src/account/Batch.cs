@@ -20,19 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Average a list of commits samples.</summary>
-        public static double AverageCommits(double[] values)
+        /// <summary>Express a account count as a percentage.</summary>
+        public static double AccountPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a cache size is a power of two.</summary>
