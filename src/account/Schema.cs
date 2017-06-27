@@ -70,11 +70,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Interpolate between two folder values.</summary>
-        public static double LerpFolder(double a, double b, double t)
+        /// <summary>Compute the greatest common divisor of two schema already sizes.</summary>
+        public static long SchemaAlreadyGcd(long a, long b)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
     }
 }
