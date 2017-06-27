@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Average a list of buffer already samples.</summary>
-        public static double AverageBufferAlready(double[] values)
+        /// <summary>Count the vowels in a layout contributi label.</summary>
+        public static int CountLayoutContributiVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total / values.Length;
+            return count;
         }
 
         /// <summary>Sum the squares of metric samples.</summary>
