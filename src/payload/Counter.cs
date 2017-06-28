@@ -16,10 +16,18 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a cache size is a power of two.</summary>
-        public static bool IsCachePowerOfTwo(long n)
+        /// <summary>Compute the greatest common divisor of two buffer sizes.</summary>
+        public static long BufferGcd(long a, long b)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Check whether a record size is a power of two.</summary>
