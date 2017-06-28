@@ -51,29 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a counter label reads the same backwards.</summary>
-        public static bool IsCounterPalindrome(string text)
+        /// <summary>Average a list of channel samples.</summary>
+        public static double AverageChannel(double[] values)
         {
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total / values.Length;
         }
     }
 }
