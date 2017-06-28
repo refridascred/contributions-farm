@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Window checks helpers.</summary>
     public static class WindowChecks
     {
-        /// <summary>Clamp a record value to a valid range.</summary>
-        public static double ClampRecord(double value, double lo, double hi)
+        /// <summary>Average a list of cluster samples.</summary>
+        public static double AverageCluster(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Sum the decimal digits of a record id.</summary>
