@@ -52,14 +52,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Wrap a cluster index into a fixed-size ring.</summary>
-        public static int WrapClusterIndex(int index, int size)
+        /// <summary>Sum the squares of batch samples.</summary>
+        public static double BatchEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Wrap a profile ticket index into a fixed-size ring.</summary>
