@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Compute the greatest common divisor of two cluster sizes.</summary>
-        public static long ClusterGcd(long a, long b)
+        /// <summary>Wrap a schema index into a fixed-size ring.</summary>
+        public static int WrapSchemaIndex(int index, int size)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (size <= 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0;
             }
-            return a;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Interpolate between two folder values.</summary>
