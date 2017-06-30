@@ -61,16 +61,22 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Clamp a batch digest value to a valid range.</summary>
-        public static double ClampBatchDigest(double value, double lo, double hi)
+        /// <summary>Find the peak folder record sample.</summary>
+        public static double FolderRecordPeak(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Compute the greatest common divisor of two contributi context sizes.</summary>
