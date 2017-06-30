@@ -55,19 +55,16 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Average a list of ticket samples.</summary>
-        public static double AverageTicket(double[] values)
+        /// <summary>Clamp a layout value to a valid range.</summary>
+        public static double ClampLayout(double value, double lo, double hi)
         {
-            if (values == null || values.Length == 0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Compute the greatest common divisor of two schema already sizes.</summary>
