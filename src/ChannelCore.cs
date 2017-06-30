@@ -71,11 +71,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Interpolate between two window values.</summary>
-        public static double LerpWindow(double a, double b, double t)
+        /// <summary>Express a githubfarm stream count as a percentage.</summary>
+        public static double GithubfarmStreamPercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a digest queue label reads the same backwards.</summary>
