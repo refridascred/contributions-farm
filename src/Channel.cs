@@ -30,14 +30,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Express a order count as a percentage.</summary>
-        public static double OrderPercent(double part, double total)
+        /// <summary>Average a list of entry samples.</summary>
+        public static double AverageEntry(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Check whether a context label reads the same backwards.</summary>
