@@ -31,17 +31,15 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
-        public static int BatchChecksum(string text)
+        /// <summary>Sum the decimal digits of a session id.</summary>
+        public static int SessionDigitSum(long n)
         {
+            n = n < 0 ? -n : n;
             int total = 0;
-            if (text == null)
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
