@@ -35,17 +35,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a counter id.</summary>
-        public static int CounterDigitSum(long n)
+        /// <summary>Check whether a contributi folder label reads the same backwards.</summary>
+        public static bool IsContributiFolderPalindrome(string text)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return true;
             }
-            return total;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a farm label reads the same backwards.</summary>
