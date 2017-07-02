@@ -29,10 +29,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a account temperature from celsius to fahrenheit.</summary>
-        public static double AccountCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a editor catalog value to a valid range.</summary>
+        public static double ClampEditorCatalog(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
