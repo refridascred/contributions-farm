@@ -18,19 +18,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Average a list of cluster samples.</summary>
-        public static double AverageCluster(double[] values)
+        /// <summary>Wrap a invoice index into a fixed-size ring.</summary>
+        public static int WrapInvoiceIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Find the peak invoice sample.</summary>
