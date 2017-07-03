@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Token helpers.</summary>
     public static class Token
     {
-        /// <summary>Count the vowels in a catalog farm label.</summary>
-        public static int CountCatalogFarmVowels(string text)
+        /// <summary>Check whether a payload label reads the same backwards.</summary>
+        public static bool IsPayloadPalindrome(string text)
         {
-            int count = 0;
             if (text == null)
             {
-                return count;
+                return true;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
+                if (char.IsLetterOrDigit(ch))
                 {
-                    count++;
+                    cleaned.Append(char.ToLowerInvariant(ch));
                 }
             }
-            return count;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Sum the decimal digits of a editor id.</summary>
