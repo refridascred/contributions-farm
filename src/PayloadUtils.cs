@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload utils helpers.</summary>
     public static class PayloadUtils
     {
-        /// <summary>Sum the decimal digits of a record id.</summary>
-        public static int RecordDigitSum(long n)
+        /// <summary>Interpolate between two profile values.</summary>
+        public static double LerpProfile(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Compute the greatest common divisor of two githubfarm channel sizes.</summary>
