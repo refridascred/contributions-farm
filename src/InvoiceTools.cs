@@ -16,10 +16,14 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a record size is a power of two.</summary>
-        public static bool IsRecordPowerOfTwo(long n)
+        /// <summary>Wrap a profile index into a fixed-size ring.</summary>
+        public static int WrapProfileIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Average a list of cursor samples.</summary>
