@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Context tools helpers.</summary>
     public static class ContextTools
     {
-        /// <summary>Calculate a 16-bit checksum of a profile key.</summary>
-        public static int ProfileChecksum(string text)
+        /// <summary>Check whether a layout label reads the same backwards.</summary>
+        public static bool IsLayoutPalindrome(string text)
         {
-            int total = 0;
             if (text == null)
             {
-                return total;
+                return true;
             }
+            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                total = (total * 31 + ch) % 65521;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a cluster label reads the same backwards.</summary>
