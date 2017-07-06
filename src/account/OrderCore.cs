@@ -40,16 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Clamp a layout value to a valid range.</summary>
-        public static double ClampLayout(double value, double lo, double hi)
+        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
+        public static double OrderCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
