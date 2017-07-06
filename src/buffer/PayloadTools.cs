@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Wrap a profile command index into a fixed-size ring.</summary>
-        public static int WrapProfileCommandIndex(int index, int size)
+        /// <summary>Sum the squares of stream samples.</summary>
+        public static double StreamEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Interpolate between two record values.</summary>
