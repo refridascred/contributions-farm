@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry checks helpers.</summary>
     public static class EntryChecks
     {
-        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
-        public static int BatchChecksum(string text)
+        /// <summary>Check whether a payload commits label reads the same backwards.</summary>
+        public static bool IsPayloadCommitsPalindrome(string text)
         {
-            int total = 0;
             if (text == null)
             {
-                return total;
+                return true;
             }
+            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                total = (total * 31 + ch) % 65521;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Compute the greatest common divisor of two order sizes.</summary>
