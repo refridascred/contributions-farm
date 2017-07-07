@@ -26,18 +26,29 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Compute the greatest common divisor of two token stream sizes.</summary>
-        public static long TokenStreamGcd(long a, long b)
+        /// <summary>Check whether a account label reads the same backwards.</summary>
+        public static bool IsAccountPalindrome(string text)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (text == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return true;
             }
-            return a;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Express a catalog count as a percentage.</summary>
