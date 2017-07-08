@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of schema context samples.</summary>
-        public static double SchemaContextEnergy(double[] values)
+        /// <summary>Sum the squares of order ticket samples.</summary>
+        public static double OrderTicketEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
