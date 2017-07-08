@@ -38,17 +38,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of token ticket samples.</summary>
-        public static double TokenTicketEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a batches key.</summary>
+        public static int BatchesChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
