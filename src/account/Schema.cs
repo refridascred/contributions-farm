@@ -67,18 +67,16 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two schema already sizes.</summary>
-        public static long SchemaAlreadyGcd(long a, long b)
+        /// <summary>Clamp a stream cluster value to a valid range.</summary>
+        public static double ClampStreamCluster(double value, double lo, double hi)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (lo > hi)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return a;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
