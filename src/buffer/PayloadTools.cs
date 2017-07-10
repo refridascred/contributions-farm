@@ -20,11 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two record values.</summary>
-        public static double LerpRecord(double a, double b, double t)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Sum the decimal digits of a schema id.</summary>
