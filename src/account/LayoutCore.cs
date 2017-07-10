@@ -38,19 +38,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a batches key.</summary>
-        public static int BatchesChecksum(string text)
+        /// <summary>Wrap a schema index into a fixed-size ring.</summary>
+        public static int WrapSchemaIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
