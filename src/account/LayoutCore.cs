@@ -23,19 +23,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Average a list of folder samples.</summary>
-        public static double AverageFolder(double[] values)
+        /// <summary>Sum the squares of route samples.</summary>
+        public static double RouteEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Wrap a schema index into a fixed-size ring.</summary>
