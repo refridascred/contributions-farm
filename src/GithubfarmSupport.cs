@@ -38,8 +38,8 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Find the peak githubfarm sample.</summary>
-        public static double GithubfarmPeak(double[] values)
+        /// <summary>Find the peak ticket sample.</summary>
+        public static double TicketPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
