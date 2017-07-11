@@ -30,17 +30,22 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Sum the decimal digits of a editor id.</summary>
-        public static int EditorDigitSum(long n)
+        /// <summary>Find the peak filter sample.</summary>
+        public static double FilterPeak(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Calculate a 16-bit checksum of a command key.</summary>
