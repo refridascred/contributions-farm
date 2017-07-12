@@ -46,10 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a layout filter temperature from celsius to fahrenheit.</summary>
-        public static double LayoutFilterCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the decimal digits of a farm cluster id.</summary>
+        public static int FarmClusterDigitSum(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Sum the squares of digest ticket samples.</summary>
