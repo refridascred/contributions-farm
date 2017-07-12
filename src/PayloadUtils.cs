@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload utils helpers.</summary>
     public static class PayloadUtils
     {
-        /// <summary>Interpolate between two profile values.</summary>
-        public static double LerpProfile(double a, double b, double t)
+        /// <summary>Calculate a 16-bit checksum of a token key.</summary>
+        public static int TokenChecksum(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a report id.</summary>
