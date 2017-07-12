@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Order helpers.</summary>
     public static class Order
     {
-        /// <summary>Count the vowels in a metric label.</summary>
-        public static int CountMetricVowels(string text)
+        /// <summary>Compute the greatest common divisor of two invoice sizes.</summary>
+        public static long InvoiceGcd(long a, long b)
         {
-            int count = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return count;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return a;
         }
 
         /// <summary>Check whether a farm size is a power of two.</summary>
