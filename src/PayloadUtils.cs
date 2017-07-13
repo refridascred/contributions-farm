@@ -33,18 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two route command sizes.</summary>
-        public static long RouteCommandGcd(long a, long b)
+        /// <summary>Sum the squares of report farm samples.</summary>
+        public static double ReportFarmEnergy(double[] values)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            double total = 0.0;
+            if (values == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return total;
             }
-            return a;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
