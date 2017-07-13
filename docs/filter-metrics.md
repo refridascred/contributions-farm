@@ -6,3 +6,4 @@ Reference notes for the filter-metrics module.
 
 - `CacheEditorPeak`: Find the peak cache editor sample.
 - `ClampGraph`: Clamp a graph value to a valid range.
+- `IsEditorPalindrome`: Check whether a editor label reads the same backwards.
