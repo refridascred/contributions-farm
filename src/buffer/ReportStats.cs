@@ -29,22 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the vowels in a entry commits label.</summary>
-        public static int CountEntryCommitsVowels(string text)
+        /// <summary>Average a list of stream samples.</summary>
+        public static double AverageStream(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v;
             }
-            return count;
+            return total / values.Length;
         }
 
         /// <summary>Average a list of session samples.</summary>
