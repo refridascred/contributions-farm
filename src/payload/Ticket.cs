@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Ticket helpers.</summary>
     public static class Ticket
     {
-        /// <summary>Sum the squares of githubfarm samples.</summary>
-        public static double GithubfarmEnergy(double[] values)
+        /// <summary>Check whether a farm size is a power of two.</summary>
+        public static bool IsFarmPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a invoice label reads the same backwards.</summary>
