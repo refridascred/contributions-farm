@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Schema tools helpers.</summary>
     public static class SchemaTools
     {
-        /// <summary>Convert a graph temperature from celsius to fahrenheit.</summary>
-        public static double GraphCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of editor samples.</summary>
+        public static double EditorEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two account sizes.</summary>
