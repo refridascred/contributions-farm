@@ -35,10 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a payload temperature from celsius to fahrenheit.</summary>
-        public static double PayloadCelsiusToFahrenheit(double celsius)
+        /// <summary>Calculate a 16-bit checksum of a commits key.</summary>
+        public static int CommitsChecksum(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check whether a catalog label reads the same backwards.</summary>
