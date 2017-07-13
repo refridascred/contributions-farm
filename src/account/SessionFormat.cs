@@ -63,17 +63,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Sum the decimal digits of a cursor id.</summary>
-        public static int CursorDigitSum(long n)
+        /// <summary>Wrap a order commits index into a fixed-size ring.</summary>
+        public static int WrapOrderCommitsIndex(int index, int size)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (size <= 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0;
             }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
