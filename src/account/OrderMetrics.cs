@@ -54,10 +54,14 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Check whether a batch record size is a power of two.</summary>
-        public static bool IsBatchRecordPowerOfTwo(long n)
+        /// <summary>Wrap a filter index into a fixed-size ring.</summary>
+        public static int WrapFilterIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
     }
 }
