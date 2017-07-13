@@ -53,10 +53,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Check whether a account contributi size is a power of two.</summary>
-        public static bool IsAccountContributiPowerOfTwo(long n)
+        /// <summary>Convert a route filter temperature from celsius to fahrenheit.</summary>
+        public static double RouteFilterCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
