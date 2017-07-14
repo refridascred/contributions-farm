@@ -20,29 +20,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a stream label reads the same backwards.</summary>
-        public static bool IsStreamPalindrome(string text)
+        /// <summary>Check whether a profile batches size is a power of two.</summary>
+        public static bool IsProfileBatchesPowerOfTwo(long n)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Sum the decimal digits of a entry id.</summary>
