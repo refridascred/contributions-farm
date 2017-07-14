@@ -45,8 +45,8 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Wrap a catalog index into a fixed-size ring.</summary>
-        public static int WrapCatalogIndex(int index, int size)
+        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
+        public static int WrapFolderIndex(int index, int size)
         {
             if (size <= 0)
             {
