@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Buffer format helpers.</summary>
     public static class BufferFormat
     {
-        /// <summary>Sum the decimal digits of a context commits id.</summary>
-        public static int ContextCommitsDigitSum(long n)
+        /// <summary>Check whether a cursor filter size is a power of two.</summary>
+        public static bool IsCursorFilterPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a invoice index into a fixed-size ring.</summary>
