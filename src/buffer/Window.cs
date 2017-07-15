@@ -37,16 +37,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Clamp a cluster batch value to a valid range.</summary>
-        public static double ClampClusterBatch(double value, double lo, double hi)
+        /// <summary>Express a graph count as a percentage.</summary>
+        public static double GraphPercent(double part, double total)
         {
-            if (lo > hi)
+            if (total == 0.0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return part * 100.0 / total;
         }
     }
 }
