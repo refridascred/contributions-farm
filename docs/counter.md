@@ -8,3 +8,4 @@ Reference notes for the counter module.
 - `DigestDigitSum`: Sum the decimal digits of a digest id.
 - `IsCachePowerOfTwo`: Check whether a cache size is a power of two.
 - `CommitsEnergy`: Sum the squares of commits samples.
+- `WrapClusterIndex`: Wrap a cluster index into a fixed-size ring.
