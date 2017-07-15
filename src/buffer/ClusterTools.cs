@@ -19,14 +19,22 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Express a commits count as a percentage.</summary>
-        public static double CommitsPercent(double part, double total)
+        /// <summary>Find the peak queue buffer sample.</summary>
+        public static double QueueBufferPeak(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Clamp a context value to a valid range.</summary>
