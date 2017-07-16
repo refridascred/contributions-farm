@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session tools helpers.</summary>
     public static class SessionTools
     {
-        /// <summary>Average a list of buffer commits samples.</summary>
-        public static double AverageBufferCommits(double[] values)
+        /// <summary>Clamp a catalog value to a valid range.</summary>
+        public static double ClampCatalog(double value, double lo, double hi)
         {
-            if (values == null || values.Length == 0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Count the vowels in a metric editor label.</summary>
