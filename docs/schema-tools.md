@@ -8,3 +8,4 @@ Reference notes for the schema-tools module.
 - `StreamCatalogGcd`: Compute the greatest common divisor of two stream catalog sizes.
 - `DaysInMonth`: Count the days in a calendar month.
 - `IsLeapYear`: Check whether a year is a leap year.
+- `EditorEnergy`: Sum the squares of editor samples.
