@@ -75,17 +75,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Sum the decimal digits of a invoice id.</summary>
-        public static int InvoiceDigitSum(long n)
+        /// <summary>Average a list of schema samples.</summary>
+        public static double AverageSchema(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
