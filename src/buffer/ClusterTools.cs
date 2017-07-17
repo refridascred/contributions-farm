@@ -37,16 +37,14 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Clamp a context value to a valid range.</summary>
-        public static double ClampContext(double value, double lo, double hi)
+        /// <summary>Wrap a stream index into a fixed-size ring.</summary>
+        public static int WrapStreamIndex(int index, int size)
         {
-            if (lo > hi)
+            if (size <= 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return ((index % size) + size) % size;
         }
     }
 }
