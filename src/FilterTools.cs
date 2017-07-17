@@ -30,19 +30,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of invoice samples.</summary>
-        public static double InvoiceEnergy(double[] values)
+        /// <summary>Express a ticket graph count as a percentage.</summary>
+        public static double TicketGraphPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
     }
 }
