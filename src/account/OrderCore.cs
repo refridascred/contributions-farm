@@ -40,10 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
-        public static double OrderCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the decimal digits of a farm id.</summary>
+        public static int FarmDigitSum(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
     }
 }
