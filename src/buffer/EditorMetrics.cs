@@ -52,10 +52,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a stream temperature from celsius to fahrenheit.</summary>
-        public static double StreamCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a graph index into a fixed-size ring.</summary>
+        public static int WrapGraphIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Sum the decimal digits of a booking ticket id.</summary>
