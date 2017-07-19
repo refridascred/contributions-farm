@@ -25,14 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Wrap a context invoice index into a fixed-size ring.</summary>
-        public static int WrapContextInvoiceIndex(int index, int size)
+        /// <summary>Sum the decimal digits of a queue digest id.</summary>
+        public static int QueueDigestDigitSum(long n)
         {
-            if (size <= 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return ((index % size) + size) % size;
+            return total;
         }
 
         /// <summary>Convert a invoice batches temperature from celsius to fahrenheit.</summary>
