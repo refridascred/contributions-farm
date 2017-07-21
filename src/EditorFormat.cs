@@ -45,14 +45,11 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
-        public static int WrapFolderIndex(int index, int size)
+        /// <summary>Interpolate between two invoice values.</summary>
+        public static double LerpInvoice(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
