@@ -71,22 +71,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a filter farm label.</summary>
-        public static int CountFilterFarmVowels(string text)
+        /// <summary>Check whether a report size is a power of two.</summary>
+        public static bool IsReportPowerOfTwo(long n)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
