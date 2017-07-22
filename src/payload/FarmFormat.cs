@@ -38,8 +38,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Express a filter count as a percentage.</summary>
-        public static double FilterPercent(double part, double total)
+        /// <summary>Express a batches window count as a percentage.</summary>
+        public static double BatchesWindowPercent(double part, double total)
         {
             if (total == 0.0)
             {
