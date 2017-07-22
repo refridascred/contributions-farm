@@ -9,3 +9,4 @@ Reference notes for the buffer-format module.
 - `ClampCounter`: Clamp a counter value to a valid range.
 - `ContextCommitsDigitSum`: Sum the decimal digits of a context commits id.
 - `WrapInvoiceIndex`: Wrap a invoice index into a fixed-size ring.
+- `IsCursorFilterPowerOfTwo`: Check whether a cursor filter size is a power of two.
