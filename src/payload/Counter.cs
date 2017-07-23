@@ -37,19 +37,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the squares of commits samples.</summary>
-        public static double CommitsEnergy(double[] values)
+        /// <summary>Wrap a report contributi index into a fixed-size ring.</summary>
+        public static int WrapReportContributiIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Wrap a cluster index into a fixed-size ring.</summary>
