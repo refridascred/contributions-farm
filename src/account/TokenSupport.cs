@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token support helpers.</summary>
     public static class TokenSupport
     {
-        /// <summary>Average a list of ticket samples.</summary>
-        public static double AverageTicket(double[] values)
+        /// <summary>Convert a window temperature from celsius to fahrenheit.</summary>
+        public static double WindowCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Compute the greatest common divisor of two payload sizes.</summary>
