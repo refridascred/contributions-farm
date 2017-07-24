@@ -23,10 +23,16 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Check whether a payload size is a power of two.</summary>
-        public static bool IsPayloadPowerOfTwo(long n)
+        /// <summary>Clamp a queue context value to a valid range.</summary>
+        public static double ClampQueueContext(double value, double lo, double hi)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Sum the squares of batch schema samples.</summary>
