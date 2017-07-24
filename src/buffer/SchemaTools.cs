@@ -88,22 +88,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a route label.</summary>
-        public static int CountRouteVowels(string text)
+        /// <summary>Sum the squares of cursor graph samples.</summary>
+        public static double CursorGraphEnergy(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v * v;
             }
-            return count;
+            return total;
         }
     }
 }
