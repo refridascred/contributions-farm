@@ -48,19 +48,29 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a command key.</summary>
-        public static int CommandChecksum(string text)
+        /// <summary>Check whether a command label reads the same backwards.</summary>
+        public static bool IsCommandPalindrome(string text)
         {
-            int total = 0;
             if (text == null)
             {
-                return total;
+                return true;
             }
+            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                total = (total * 31 + ch) % 65521;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Find the peak folder record sample.</summary>
