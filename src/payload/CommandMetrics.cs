@@ -35,19 +35,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the squares of batch schema samples.</summary>
-        public static double BatchSchemaEnergy(double[] values)
+        /// <summary>Check whether a schema size is a power of two.</summary>
+        public static bool IsSchemaPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Average a list of already samples.</summary>
