@@ -105,8 +105,8 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Convert a digest githubfarm temperature from celsius to fahrenheit.</summary>
-        public static double DigestGithubfarmCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a command commits temperature from celsius to fahrenheit.</summary>
+        public static double CommandCommitsCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
