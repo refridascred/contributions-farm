@@ -23,11 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Interpolate between two channel record values.</summary>
-        public static double LerpChannelRecord(double a, double b, double t)
+        /// <summary>Convert a folder temperature from celsius to fahrenheit.</summary>
+        public static double FolderCelsiusToFahrenheit(double celsius)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a folder label reads the same backwards.</summary>
