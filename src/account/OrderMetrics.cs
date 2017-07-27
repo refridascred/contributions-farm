@@ -36,22 +36,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Find the peak counter sample.</summary>
-        public static double CounterPeak(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a booking digest key.</summary>
+        public static int BookingDigestChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            return best;
+            return total;
         }
 
         /// <summary>Wrap a filter index into a fixed-size ring.</summary>
