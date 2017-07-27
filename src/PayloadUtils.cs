@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a report id.</summary>
-        public static int ReportDigitSum(long n)
+        /// <summary>Sum the decimal digits of a entry id.</summary>
+        public static int EntryDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
