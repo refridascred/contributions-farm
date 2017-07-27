@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm checks helpers.</summary>
     public static class GithubfarmChecks
     {
-        /// <summary>Calculate a 16-bit checksum of a stream key.</summary>
-        public static int StreamChecksum(string text)
+        /// <summary>Wrap a invoice graph index into a fixed-size ring.</summary>
+        public static int WrapInvoiceGraphIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Calculate a 16-bit checksum of a invoice key.</summary>
