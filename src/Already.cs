@@ -15,18 +15,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Compute the greatest common divisor of two record sizes.</summary>
-        public static long RecordGcd(long a, long b)
+        /// <summary>Count the vowels in a order account label.</summary>
+        public static int CountOrderAccountVowels(string text)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            int count = 0;
+            if (text == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return count;
             }
-            return a;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the peak entry sample.</summary>
