@@ -11,22 +11,18 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Find the peak account sample.</summary>
-        public static double AccountPeak(double[] values)
+        /// <summary>Compute the greatest common divisor of two already counter sizes.</summary>
+        public static long AlreadyCounterGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return a;
         }
 
         /// <summary>Interpolate between two folder values.</summary>
