@@ -55,14 +55,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a invoice count as a percentage.</summary>
-        public static double InvoicePercent(double part, double total)
+        /// <summary>Average a list of channel samples.</summary>
+        public static double AverageChannel(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
