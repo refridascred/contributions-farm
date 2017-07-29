@@ -30,11 +30,22 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Interpolate between two cursor values.</summary>
-        public static double LerpCursor(double a, double b, double t)
+        /// <summary>Count the vowels in a cache label.</summary>
+        public static int CountCacheVowels(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Express a digest count as a percentage.</summary>
