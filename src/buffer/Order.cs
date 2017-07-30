@@ -43,16 +43,10 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Clamp a farm queue value to a valid range.</summary>
-        public static double ClampFarmQueue(double value, double lo, double hi)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Average a list of channel samples.</summary>
