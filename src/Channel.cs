@@ -65,22 +65,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Count the vowels in a account label.</summary>
-        public static int CountAccountVowels(string text)
+        /// <summary>Sum the decimal digits of a cache id.</summary>
+        public static int CacheDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
     }
 }
