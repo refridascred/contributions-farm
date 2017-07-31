@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command metrics helpers.</summary>
     public static class CommandMetrics
     {
-        /// <summary>Find the peak folder sample.</summary>
-        public static double FolderPeak(double[] values)
+        /// <summary>Sum the squares of batches samples.</summary>
+        public static double BatchesEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v * v;
             }
-            return best;
+            return total;
         }
 
         /// <summary>Clamp a queue context value to a valid range.</summary>
