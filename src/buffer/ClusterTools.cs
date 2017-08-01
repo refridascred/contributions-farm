@@ -12,22 +12,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Find the peak queue buffer sample.</summary>
-        public static double QueueBufferPeak(double[] values)
+        /// <summary>Sum the squares of metric entry samples.</summary>
+        public static double MetricEntryEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v * v;
             }
-            return best;
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
