@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry helpers.</summary>
     public static class Entry
     {
-        /// <summary>Check whether a cluster size is a power of two.</summary>
-        public static bool IsClusterPowerOfTwo(long n)
+        /// <summary>Clamp a cursor value to a valid range.</summary>
+        public static double ClampCursor(double value, double lo, double hi)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Count the vowels in a layout label.</summary>
