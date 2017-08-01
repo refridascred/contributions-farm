@@ -36,19 +36,14 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a booking digest key.</summary>
-        public static int BookingDigestChecksum(string text)
+        /// <summary>Wrap a token route index into a fixed-size ring.</summary>
+        public static int WrapTokenRouteIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Wrap a filter index into a fixed-size ring.</summary>
