@@ -12,8 +12,8 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
-        public static double ContributiCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a metric githubfarm temperature from celsius to fahrenheit.</summary>
+        public static double MetricGithubfarmCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
