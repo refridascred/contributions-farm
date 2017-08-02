@@ -11,14 +11,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Wrap a invoice index into a fixed-size ring.</summary>
-        public static int WrapInvoiceIndex(int index, int size)
+        /// <summary>Express a metric count as a percentage.</summary>
+        public static double MetricPercent(double part, double total)
         {
-            if (size <= 0)
+            if (total == 0.0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak invoice sample.</summary>
