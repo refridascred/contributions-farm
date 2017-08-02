@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Check whether a report commits size is a power of two.</summary>
-        public static bool IsReportCommitsPowerOfTwo(long n)
+        /// <summary>Sum the squares of batches samples.</summary>
+        public static double BatchesEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Check whether a context report size is a power of two.</summary>
