@@ -10,3 +10,4 @@ Reference notes for the filter-core module.
 - `TokenDigitSum`: Sum the decimal digits of a token id.
 - `IsPayloadPalindrome`: Check whether a payload label reads the same backwards.
 - `LerpSchema`: Interpolate between two schema values.
+- `AveragePayloadCounter`: Average a list of payload counter samples.
