@@ -60,19 +60,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Average a list of order samples.</summary>
-        public static double AverageOrder(double[] values)
+        /// <summary>Sum the squares of profile order samples.</summary>
+        public static double ProfileOrderEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
