@@ -20,10 +20,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a profile batches size is a power of two.</summary>
-        public static bool IsProfileBatchesPowerOfTwo(long n)
+        /// <summary>Sum the decimal digits of a profile id.</summary>
+        public static int ProfileDigitSum(long n)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Interpolate between two contributi values.</summary>
