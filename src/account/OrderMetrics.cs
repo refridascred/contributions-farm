@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Order metrics helpers.</summary>
     public static class OrderMetrics
     {
-        /// <summary>Express a batches count as a percentage.</summary>
-        public static double BatchesPercent(double part, double total)
+        /// <summary>Average a list of profile samples.</summary>
+        public static double AverageProfile(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Express a digest count as a percentage.</summary>
