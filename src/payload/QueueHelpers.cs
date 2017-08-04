@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Sum the squares of batches samples.</summary>
-        public static double BatchesEnergy(double[] values)
+        /// <summary>Sum the squares of token samples.</summary>
+        public static double TokenEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
