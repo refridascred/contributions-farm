@@ -32,18 +32,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Compute the greatest common divisor of two batch cursor sizes.</summary>
-        public static long BatchCursorGcd(long a, long b)
+        /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
+        public static double BufferCelsiusToFahrenheit(double celsius)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of already samples.</summary>
