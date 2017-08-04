@@ -68,19 +68,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
-        public static int FarmChecksum(string text)
+        /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
+        public static double CatalogCelsiusToFahrenheit(double celsius)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
