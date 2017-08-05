@@ -48,8 +48,8 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a invoice temperature from celsius to fahrenheit.</summary>
-        public static double InvoiceCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
+        public static double ChannelCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
