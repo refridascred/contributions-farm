@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Schema tools helpers.</summary>
     public static class SchemaTools
     {
-        /// <summary>Sum the squares of editor samples.</summary>
-        public static double EditorEnergy(double[] values)
+        /// <summary>Wrap a graph index into a fixed-size ring.</summary>
+        public static int WrapGraphIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the vowels in a buffer label.</summary>
