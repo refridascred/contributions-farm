@@ -9,3 +9,4 @@ Reference notes for the batches module.
 - `ClampCatalog`: Clamp a catalog value to a valid range.
 - `AlreadyGcd`: Compute the greatest common divisor of two already sizes.
 - `BufferChecksum`: Calculate a 16-bit checksum of a buffer key.
+- `CountReportCacheVowels`: Count the vowels in a report cache label.
