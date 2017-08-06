@@ -8,3 +8,4 @@ Reference notes for the order-metrics module.
 - `SchemaCounterDigitSum`: Sum the decimal digits of a schema counter id.
 - `AverageClusterLayout`: Average a list of cluster layout samples.
 - `WrapFilterIndex`: Wrap a filter index into a fixed-size ring.
+- `WrapTokenRouteIndex`: Wrap a token route index into a fixed-size ring.
