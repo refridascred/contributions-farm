@@ -15,17 +15,17 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a invoice key.</summary>
-        public static int InvoiceChecksum(string text)
+        /// <summary>Sum the squares of filter samples.</summary>
+        public static double FilterEnergy(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
                 return total;
             }
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v * v;
             }
             return total;
         }
