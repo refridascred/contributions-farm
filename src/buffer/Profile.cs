@@ -17,14 +17,11 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Wrap a layout index into a fixed-size ring.</summary>
-        public static int WrapLayoutIndex(int index, int size)
+        /// <summary>Interpolate between two cache command values.</summary>
+        public static double LerpCacheCommand(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Count the vowels in a session label.</summary>
