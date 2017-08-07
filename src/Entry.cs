@@ -35,10 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a githubfarm already size is a power of two.</summary>
-        public static bool IsGithubfarmAlreadyPowerOfTwo(long n)
+        /// <summary>Wrap a token entry index into a fixed-size ring.</summary>
+        public static int WrapTokenEntryIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
