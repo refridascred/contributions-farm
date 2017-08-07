@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Clamp a invoice cursor value to a valid range.</summary>
-        public static double ClampInvoiceCursor(double value, double lo, double hi)
+        /// <summary>Convert a payload temperature from celsius to fahrenheit.</summary>
+        public static double PayloadCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two cache command values.</summary>
