@@ -11,22 +11,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Count the vowels in a githubfarm label.</summary>
-        public static int CountGithubfarmVowels(string text)
+        /// <summary>Sum the squares of stream samples.</summary>
+        public static double StreamEnergy(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v * v;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a route id.</summary>
