@@ -41,22 +41,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a entry label.</summary>
-        public static int CountEntryVowels(string text)
+        /// <summary>Sum the squares of order samples.</summary>
+        public static double OrderEnergy(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v * v;
             }
-            return count;
+            return total;
         }
     }
 }
