@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Schema tools helpers.</summary>
     public static class SchemaTools
     {
-        /// <summary>Wrap a graph index into a fixed-size ring.</summary>
-        public static int WrapGraphIndex(int index, int size)
+        /// <summary>Interpolate between two cursor folder values.</summary>
+        public static double LerpCursorFolder(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Count the vowels in a buffer label.</summary>
