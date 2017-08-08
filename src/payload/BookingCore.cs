@@ -44,19 +44,22 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
-        public static int EntryChecksum(string text)
+        /// <summary>Count the vowels in a context label.</summary>
+        public static int CountContextVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Check whether a profile size is a power of two.</summary>
