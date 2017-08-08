@@ -11,11 +11,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Interpolate between two cache command values.</summary>
-        public static double LerpCacheCommand(double a, double b, double t)
+        /// <summary>Average a list of digest samples.</summary>
+        public static double AverageDigest(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Count the vowels in a session label.</summary>
