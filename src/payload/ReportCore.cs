@@ -29,16 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Clamp a editor catalog value to a valid range.</summary>
-        public static double ClampEditorCatalog(double value, double lo, double hi)
+        /// <summary>Count the vowels in a filter window label.</summary>
+        public static int CountFilterWindowVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
