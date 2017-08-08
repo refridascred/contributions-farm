@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor format helpers.</summary>
     public static class EditorFormat
     {
-        /// <summary>Average a list of entry digest samples.</summary>
-        public static double AverageEntryDigest(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a batch githubfarm key.</summary>
+        public static int BatchGithubfarmChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a profile id.</summary>
