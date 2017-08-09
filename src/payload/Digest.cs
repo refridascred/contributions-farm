@@ -56,8 +56,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Convert a queue temperature from celsius to fahrenheit.</summary>
-        public static double QueueCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
+        public static double ChannelCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
