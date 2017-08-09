@@ -91,29 +91,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a digest queue label reads the same backwards.</summary>
-        public static bool IsDigestQueuePalindrome(string text)
+        /// <summary>Convert a report temperature from celsius to fahrenheit.</summary>
+        public static double ReportCelsiusToFahrenheit(double celsius)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
