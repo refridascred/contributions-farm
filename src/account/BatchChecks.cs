@@ -48,18 +48,14 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Compute the greatest common divisor of two metric sizes.</summary>
-        public static long MetricGcd(long a, long b)
+        /// <summary>Wrap a buffer index into a fixed-size ring.</summary>
+        public static int WrapBufferIndex(int index, int size)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (size <= 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0;
             }
-            return a;
+            return ((index % size) + size) % size;
         }
     }
 }
