@@ -44,22 +44,11 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Count the vowels in a context label.</summary>
-        public static int CountContextVowels(string text)
+        /// <summary>Interpolate between two window values.</summary>
+        public static double LerpWindow(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a profile size is a power of two.</summary>
