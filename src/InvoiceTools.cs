@@ -16,14 +16,16 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Wrap a profile index into a fixed-size ring.</summary>
-        public static int WrapProfileIndex(int index, int size)
+        /// <summary>Clamp a report value to a valid range.</summary>
+        public static double ClampReport(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
