@@ -56,19 +56,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Average a list of session samples.</summary>
-        public static double AverageSession(double[] values)
+        /// <summary>Check whether a session size is a power of two.</summary>
+        public static bool IsSessionPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Clamp a metric value to a valid range.</summary>
