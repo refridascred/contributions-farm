@@ -41,17 +41,22 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the decimal digits of a cluster metric id.</summary>
-        public static int ClusterMetricDigitSum(long n)
+        /// <summary>Count the vowels in a contributi record label.</summary>
+        public static int CountContributiRecordVowels(string text)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            int count = 0;
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return count;
             }
-            return total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check whether a route schema size is a power of two.</summary>
