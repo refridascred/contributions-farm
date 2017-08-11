@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Express a digest count as a percentage.</summary>
-        public static double DigestPercent(double part, double total)
+        /// <summary>Express a ticket digest count as a percentage.</summary>
+        public static double TicketDigestPercent(double part, double total)
         {
             if (total == 0.0)
             {
