@@ -47,17 +47,17 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
-        public static int FarmChecksum(string text)
+        /// <summary>Sum the squares of buffer samples.</summary>
+        public static double BufferEnergy(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
                 return total;
             }
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v * v;
             }
             return total;
         }
