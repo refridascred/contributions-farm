@@ -30,19 +30,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a commits key.</summary>
-        public static int CommitsChecksum(string text)
+        /// <summary>Count the vowels in a channel metric label.</summary>
+        public static int CountChannelMetricVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Check whether a catalog label reads the same backwards.</summary>
