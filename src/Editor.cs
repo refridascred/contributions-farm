@@ -41,17 +41,15 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the squares of order samples.</summary>
-        public static double OrderEnergy(double[] values)
+        /// <summary>Sum the decimal digits of a graph metric id.</summary>
+        public static int GraphMetricDigitSum(long n)
         {
-            double total = 0.0;
-            if (values == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
