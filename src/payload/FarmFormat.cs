@@ -38,14 +38,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Express a batches window count as a percentage.</summary>
-        public static double BatchesWindowPercent(double part, double total)
+        /// <summary>Check whether a session size is a power of two.</summary>
+        public static bool IsSessionPowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Interpolate between two batches cache values.</summary>
