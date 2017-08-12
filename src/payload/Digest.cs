@@ -41,19 +41,11 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Average a list of window booking samples.</summary>
-        public static double AverageWindowBooking(double[] values)
+        /// <summary>Interpolate between two cache values.</summary>
+        public static double LerpCache(double a, double b, double t)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
