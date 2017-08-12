@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Order metrics helpers.</summary>
     public static class OrderMetrics
     {
-        /// <summary>Average a list of profile samples.</summary>
-        public static double AverageProfile(double[] values)
+        /// <summary>Clamp a context entry value to a valid range.</summary>
+        public static double ClampContextEntry(double value, double lo, double hi)
         {
-            if (values == null || values.Length == 0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Express a ticket digest count as a percentage.</summary>
