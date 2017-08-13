@@ -17,19 +17,18 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the squares of batch samples.</summary>
-        public static double BatchEnergy(double[] values)
+        /// <summary>Compute the greatest common divisor of two order sizes.</summary>
+        public static long OrderGcd(long a, long b)
         {
-            double total = 0.0;
-            if (values == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return a;
         }
 
         /// <summary>Check whether a buffer size is a power of two.</summary>
