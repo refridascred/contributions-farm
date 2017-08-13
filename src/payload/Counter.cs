@@ -31,10 +31,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a record size is a power of two.</summary>
-        public static bool IsRecordPowerOfTwo(long n)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Interpolate between two digest values.</summary>
