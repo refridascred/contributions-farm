@@ -26,17 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a route id.</summary>
-        public static int RouteDigitSum(long n)
+        /// <summary>Find the peak folder farm sample.</summary>
+        public static double FolderFarmPeak(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Calculate a 16-bit checksum of a entry report key.</summary>
