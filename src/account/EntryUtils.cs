@@ -59,8 +59,8 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the vowels in a metric label.</summary>
-        public static int CountMetricVowels(string text)
+        /// <summary>Count the vowels in a stream batch label.</summary>
+        public static int CountStreamBatchVowels(string text)
         {
             int count = 0;
             if (text == null)
