@@ -55,22 +55,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Count the vowels in a githubfarm label.</summary>
-        public static int CountGithubfarmVowels(string text)
+        /// <summary>Check whether a folder batches size is a power of two.</summary>
+        public static bool IsFolderBatchesPowerOfTwo(long n)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Sum the decimal digits of a queue buffer id.</summary>
