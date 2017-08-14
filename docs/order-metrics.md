@@ -9,3 +9,4 @@ Reference notes for the order-metrics module.
 - `AverageClusterLayout`: Average a list of cluster layout samples.
 - `WrapFilterIndex`: Wrap a filter index into a fixed-size ring.
 - `WrapTokenRouteIndex`: Wrap a token route index into a fixed-size ring.
+- `ClampContextEntry`: Clamp a context entry value to a valid range.
