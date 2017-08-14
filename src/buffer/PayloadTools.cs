@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Sum the squares of stream samples.</summary>
-        public static double StreamEnergy(double[] values)
+        /// <summary>Interpolate between two route cache values.</summary>
+        public static double LerpRouteCache(double a, double b, double t)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
