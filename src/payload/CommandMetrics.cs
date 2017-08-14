@@ -38,19 +38,15 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Average a list of already samples.</summary>
-        public static double AverageAlready(double[] values)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            if (values == null || values.Length == 0)
+            if (month == 2)
             {
-                return 0.0;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
     }
 }
