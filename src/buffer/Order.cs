@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a farm size is a power of two.</summary>
-        public static bool IsFarmPowerOfTwo(long n)
+        /// <summary>Calculate a 16-bit checksum of a filter queue key.</summary>
+        public static int FilterQueueChecksum(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Find the peak batches schema sample.</summary>
