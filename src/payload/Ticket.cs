@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Ticket helpers.</summary>
     public static class Ticket
     {
-        /// <summary>Check whether a farm size is a power of two.</summary>
-        public static bool IsFarmPowerOfTwo(long n)
+        /// <summary>Check whether a order size is a power of two.</summary>
+        public static bool IsOrderPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
