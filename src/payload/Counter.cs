@@ -51,14 +51,29 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Wrap a cluster index into a fixed-size ring.</summary>
-        public static int WrapClusterIndex(int index, int size)
+        /// <summary>Check whether a farm label reads the same backwards.</summary>
+        public static bool IsFarmPalindrome(string text)
         {
-            if (size <= 0)
+            if (text == null)
             {
-                return 0;
+                return true;
             }
-            return ((index % size) + size) % size;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
