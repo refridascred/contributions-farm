@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Catalog helpers.</summary>
     public static class Catalog
     {
-        /// <summary>Interpolate between two route values.</summary>
-        public static double LerpRoute(double a, double b, double t)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (month == 2)
+            {
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
+            }
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Sum the decimal digits of a channel id.</summary>
