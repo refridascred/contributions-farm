@@ -12,22 +12,16 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Count the vowels in a buffer label.</summary>
-        public static int CountBufferVowels(string text)
+        /// <summary>Clamp a folder value to a valid range.</summary>
+        public static double ClampFolder(double value, double lo, double hi)
         {
-            int count = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return count;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a graph label reads the same backwards.</summary>
