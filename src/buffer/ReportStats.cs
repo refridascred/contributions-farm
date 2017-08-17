@@ -41,19 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Average a list of stream samples.</summary>
-        public static double AverageStream(double[] values)
+        /// <summary>Check whether a invoice report size is a power of two.</summary>
+        public static bool IsInvoiceReportPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a session size is a power of two.</summary>
