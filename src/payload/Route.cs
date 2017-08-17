@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Route helpers.</summary>
     public static class Route
     {
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Convert a entry temperature from celsius to fahrenheit.</summary>
+        public static double EntryCelsiusToFahrenheit(double celsius)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the squares of stream samples.</summary>
