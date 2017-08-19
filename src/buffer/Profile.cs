@@ -21,22 +21,17 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the vowels in a session label.</summary>
-        public static int CountSessionVowels(string text)
+        /// <summary>Sum the decimal digits of a metric id.</summary>
+        public static int MetricDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
     }
 }
