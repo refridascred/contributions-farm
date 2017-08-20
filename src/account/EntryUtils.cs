@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry utils helpers.</summary>
     public static class EntryUtils
     {
-        /// <summary>Find the peak batch sample.</summary>
-        public static double BatchPeak(double[] values)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            if (values == null || values.Length == 0)
+            if (month == 2)
             {
-                return 0.0;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Count the vowels in a layout contributi label.</summary>
