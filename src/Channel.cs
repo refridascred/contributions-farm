@@ -43,14 +43,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Wrap a filter index into a fixed-size ring.</summary>
-        public static int WrapFilterIndex(int index, int size)
+        /// <summary>Calculate a 16-bit checksum of a batches key.</summary>
+        public static int BatchesChecksum(string text)
         {
-            if (size <= 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Clamp a cluster value to a valid range.</summary>
