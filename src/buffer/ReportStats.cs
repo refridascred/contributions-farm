@@ -47,10 +47,22 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Check whether a session size is a power of two.</summary>
-        public static bool IsSessionPowerOfTwo(long n)
+        /// <summary>Find the peak contributi sample.</summary>
+        public static double ContributiPeak(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Clamp a metric value to a valid range.</summary>
