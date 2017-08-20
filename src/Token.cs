@@ -83,8 +83,8 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a command commits temperature from celsius to fahrenheit.</summary>
-        public static double CommandCommitsCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a folder temperature from celsius to fahrenheit.</summary>
+        public static double FolderCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
