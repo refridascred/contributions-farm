@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already helpers.</summary>
     public static class Already
     {
-        /// <summary>Wrap a cache index into a fixed-size ring.</summary>
-        public static int WrapCacheIndex(int index, int size)
+        /// <summary>Interpolate between two stream values.</summary>
+        public static double LerpStream(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the decimal digits of a farm id.</summary>
