@@ -33,15 +33,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Sum the squares of already samples.</summary>
+        public static double AlreadyEnergy(double[] values)
         {
-            if (month == 2)
+            double total = 0.0;
+            if (values == null)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                return total;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
