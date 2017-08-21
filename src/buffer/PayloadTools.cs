@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Interpolate between two route cache values.</summary>
-        public static double LerpRouteCache(double a, double b, double t)
+        /// <summary>Express a command stream count as a percentage.</summary>
+        public static double CommandStreamPercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
