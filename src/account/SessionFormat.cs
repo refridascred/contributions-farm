@@ -41,29 +41,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Check whether a report metric label reads the same backwards.</summary>
-        public static bool IsReportMetricPalindrome(string text)
+        /// <summary>Check whether a folder size is a power of two.</summary>
+        public static bool IsFolderPowerOfTwo(long n)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Calculate a 16-bit checksum of a counter key.</summary>
