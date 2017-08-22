@@ -44,19 +44,10 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a entry report key.</summary>
-        public static int EntryReportChecksum(string text)
+        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
+        public static double ChannelCelsiusToFahrenheit(double celsius)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
