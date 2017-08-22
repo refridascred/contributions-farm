@@ -16,10 +16,10 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a batch size is a power of two.</summary>
-        public static bool IsBatchPowerOfTwo(long n)
+        /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
+        public static double ProfileCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of catalog samples.</summary>
