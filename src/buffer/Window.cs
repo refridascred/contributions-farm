@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Window helpers.</summary>
     public static class Window
     {
-        /// <summary>Compute the greatest common divisor of two queue sizes.</summary>
-        public static long QueueGcd(long a, long b)
+        /// <summary>Express a layout session count as a percentage.</summary>
+        public static double LayoutSessionPercent(double part, double total)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (total == 0.0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the decimal digits of a invoice filter id.</summary>
