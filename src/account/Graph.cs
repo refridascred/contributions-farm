@@ -44,22 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the vowels in a contributi record label.</summary>
-        public static int CountContributiRecordVowels(string text)
+        /// <summary>Express a channel route count as a percentage.</summary>
+        public static double ChannelRoutePercent(double part, double total)
         {
-            int count = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a route schema size is a power of two.</summary>
