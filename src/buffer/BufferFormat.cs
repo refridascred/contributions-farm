@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Buffer format helpers.</summary>
     public static class BufferFormat
     {
-        /// <summary>Check whether a cursor filter size is a power of two.</summary>
-        public static bool IsCursorFilterPowerOfTwo(long n)
+        /// <summary>Count the vowels in a queue schema label.</summary>
+        public static int CountQueueSchemaVowels(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Express a metric count as a percentage.</summary>
