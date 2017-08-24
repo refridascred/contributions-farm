@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Window helpers.</summary>
     public static class Window
     {
-        /// <summary>Express a layout session count as a percentage.</summary>
-        public static double LayoutSessionPercent(double part, double total)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            if (total == 0.0)
+            if (month == 2)
             {
-                return 0.0;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            return part * 100.0 / total;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Sum the decimal digits of a invoice filter id.</summary>
