@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Command support helpers.</summary>
     public static class CommandSupport
     {
-        /// <summary>Clamp a metric value to a valid range.</summary>
-        public static double ClampMetric(double value, double lo, double hi)
+        /// <summary>Convert a buffer window temperature from celsius to fahrenheit.</summary>
+        public static double BufferWindowCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Compute the greatest common divisor of two order sizes.</summary>
