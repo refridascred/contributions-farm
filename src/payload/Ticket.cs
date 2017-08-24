@@ -66,14 +66,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Wrap a profile ticket index into a fixed-size ring.</summary>
-        public static int WrapProfileTicketIndex(int index, int size)
+        /// <summary>Clamp a batch value to a valid range.</summary>
+        public static double ClampBatch(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
