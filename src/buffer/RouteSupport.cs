@@ -25,11 +25,29 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Interpolate between two folder values.</summary>
-        public static double LerpFolder(double a, double b, double t)
+        /// <summary>Check whether a filter githubfarm label reads the same backwards.</summary>
+        public static bool IsFilterGithubfarmPalindrome(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
