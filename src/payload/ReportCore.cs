@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Report core helpers.</summary>
     public static class ReportCore
     {
-        /// <summary>Convert a githubfarm temperature from celsius to fahrenheit.</summary>
-        public static double GithubfarmCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a contributi filter temperature from celsius to fahrenheit.</summary>
+        public static double ContributiFilterCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
