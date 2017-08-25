@@ -54,10 +54,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a route schema size is a power of two.</summary>
-        public static bool IsRouteSchemaPowerOfTwo(long n)
+        /// <summary>Convert a channel editor temperature from celsius to fahrenheit.</summary>
+        public static double ChannelEditorCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
