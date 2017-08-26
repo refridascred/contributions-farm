@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Sum the squares of token samples.</summary>
-        public static double TokenEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a metric key.</summary>
+        public static int MetricChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
