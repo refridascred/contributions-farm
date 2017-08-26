@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits helpers.</summary>
     public static class Commits
     {
-        /// <summary>Interpolate between two route values.</summary>
-        public static double LerpRoute(double a, double b, double t)
+        /// <summary>Convert a farm temperature from celsius to fahrenheit.</summary>
+        public static double FarmCelsiusToFahrenheit(double celsius)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the squares of route samples.</summary>
