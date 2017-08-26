@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Entry helpers.</summary>
     public static class Entry
     {
-        /// <summary>Clamp a cursor value to a valid range.</summary>
-        public static double ClampCursor(double value, double lo, double hi)
+        /// <summary>Clamp a filter value to a valid range.</summary>
+        public static double ClampFilter(double value, double lo, double hi)
         {
             if (lo > hi)
             {
