@@ -20,22 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a farm label.</summary>
-        public static int CountFarmVowels(string text)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
