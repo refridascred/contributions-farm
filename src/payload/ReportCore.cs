@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report core helpers.</summary>
     public static class ReportCore
     {
-        /// <summary>Convert a contributi filter temperature from celsius to fahrenheit.</summary>
-        public static double ContributiFilterCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of catalog queue samples.</summary>
+        public static double CatalogQueueEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a digest label.</summary>
