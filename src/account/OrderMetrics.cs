@@ -62,14 +62,29 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a filter index into a fixed-size ring.</summary>
-        public static int WrapFilterIndex(int index, int size)
+        /// <summary>Check whether a catalog label reads the same backwards.</summary>
+        public static bool IsCatalogPalindrome(string text)
         {
-            if (size <= 0)
+            if (text == null)
             {
-                return 0;
+                return true;
             }
-            return ((index % size) + size) % size;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
