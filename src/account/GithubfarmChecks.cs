@@ -30,16 +30,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a filter editor value to a valid range.</summary>
-        public static double ClampFilterEditor(double value, double lo, double hi)
+        /// <summary>Check whether a schema label reads the same backwards.</summary>
+        public static bool IsSchemaPalindrome(string text)
         {
-            if (lo > hi)
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return true;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Find the peak ticket sample.</summary>
