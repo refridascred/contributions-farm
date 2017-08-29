@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Session tools helpers.</summary>
     public static class SessionTools
     {
-        /// <summary>Clamp a catalog value to a valid range.</summary>
-        public static double ClampCatalog(double value, double lo, double hi)
+        /// <summary>Sum the decimal digits of a cursor id.</summary>
+        public static int CursorDigitSum(long n)
         {
-            if (lo > hi)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return total;
         }
 
         /// <summary>Count the vowels in a metric editor label.</summary>
