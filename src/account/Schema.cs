@@ -20,10 +20,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a folder temperature from celsius to fahrenheit.</summary>
-        public static double FolderCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a channel label reads the same backwards.</summary>
+        public static bool IsChannelPalindrome(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a folder label reads the same backwards.</summary>
