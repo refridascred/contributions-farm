@@ -20,10 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Interpolate between two commits account values.</summary>
+        public static double LerpCommitsAccount(double a, double b, double t)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
