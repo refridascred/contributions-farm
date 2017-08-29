@@ -40,10 +40,22 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Check whether a invoice size is a power of two.</summary>
-        public static bool IsInvoicePowerOfTwo(long n)
+        /// <summary>Find the peak cursor context sample.</summary>
+        public static double CursorContextPeak(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Interpolate between two invoice values.</summary>
