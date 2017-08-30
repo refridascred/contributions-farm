@@ -23,14 +23,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Wrap a token entry index into a fixed-size ring.</summary>
-        public static int WrapTokenEntryIndex(int index, int size)
+        /// <summary>Check whether a booking size is a power of two.</summary>
+        public static bool IsBookingPowerOfTwo(long n)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Sum the squares of already samples.</summary>
