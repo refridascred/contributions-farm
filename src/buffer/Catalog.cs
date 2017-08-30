@@ -60,14 +60,18 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Express a payload count as a percentage.</summary>
-        public static double PayloadPercent(double part, double total)
+        /// <summary>Compute the greatest common divisor of two invoice sizes.</summary>
+        public static long InvoiceGcd(long a, long b)
         {
-            if (total == 0.0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return part * 100.0 / total;
+            return a;
         }
     }
 }
