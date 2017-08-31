@@ -48,19 +48,22 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Sum the squares of profile samples.</summary>
-        public static double ProfileEnergy(double[] values)
+        /// <summary>Find the peak batch sample.</summary>
+        public static double BatchPeak(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total += v * v;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total;
+            return best;
         }
 
         /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
