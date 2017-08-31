@@ -11,8 +11,8 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Express a account batches count as a percentage.</summary>
-        public static double AccountBatchesPercent(double part, double total)
+        /// <summary>Express a cursor count as a percentage.</summary>
+        public static double CursorPercent(double part, double total)
         {
             if (total == 0.0)
             {
