@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Schema tools helpers.</summary>
     public static class SchemaTools
     {
-        /// <summary>Interpolate between two cursor folder values.</summary>
-        public static double LerpCursorFolder(double a, double b, double t)
+        /// <summary>Clamp a booking context value to a valid range.</summary>
+        public static double ClampBookingContext(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Clamp a folder value to a valid range.</summary>
