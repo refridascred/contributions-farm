@@ -60,22 +60,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Count the vowels in a ticket command label.</summary>
-        public static int CountTicketCommandVowels(string text)
+        /// <summary>Wrap a filter index into a fixed-size ring.</summary>
+        public static int WrapFilterIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
     }
 }
