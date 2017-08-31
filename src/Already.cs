@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already helpers.</summary>
     public static class Already
     {
-        /// <summary>Interpolate between two stream values.</summary>
-        public static double LerpStream(double a, double b, double t)
+        /// <summary>Average a list of cluster samples.</summary>
+        public static double AverageCluster(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Sum the decimal digits of a farm id.</summary>
