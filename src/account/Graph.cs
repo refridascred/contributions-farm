@@ -26,8 +26,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a schema graph label reads the same backwards.</summary>
-        public static bool IsSchemaGraphPalindrome(string text)
+        /// <summary>Check whether a commits label reads the same backwards.</summary>
+        public static bool IsCommitsPalindrome(string text)
         {
             if (text == null)
             {
