@@ -44,11 +44,22 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Interpolate between two digest values.</summary>
-        public static double LerpDigest(double a, double b, double t)
+        /// <summary>Find the peak payload sample.</summary>
+        public static double PayloadPeak(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Convert a record temperature from celsius to fahrenheit.</summary>
