@@ -23,17 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Sum the decimal digits of a ticket filter id.</summary>
-        public static int TicketFilterDigitSum(long n)
+        /// <summary>Express a filter count as a percentage.</summary>
+        public static double FilterPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a schema size is a power of two.</summary>
