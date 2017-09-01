@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Wrap a profile cursor index into a fixed-size ring.</summary>
-        public static int WrapProfileCursorIndex(int index, int size)
+        /// <summary>Check whether a already channel label reads the same backwards.</summary>
+        public static bool IsAlreadyChannelPalindrome(string text)
         {
-            if (size <= 0)
+            if (text == null)
             {
-                return 0;
+                return true;
             }
-            return ((index % size) + size) % size;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Convert a schema window temperature from celsius to fahrenheit.</summary>
