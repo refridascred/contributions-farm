@@ -55,22 +55,15 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a batches label.</summary>
-        public static int CountBatchesVowels(string text)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            int count = 0;
-            if (text == null)
+            if (month == 2)
             {
-                return count;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
     }
 }
