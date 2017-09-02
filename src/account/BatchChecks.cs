@@ -39,17 +39,18 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the decimal digits of a batch id.</summary>
-        public static int BatchDigitSum(long n)
+        /// <summary>Compute the greatest common divisor of two githubfarm cluster sizes.</summary>
+        public static long GithubfarmClusterGcd(long a, long b)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return total;
+            return a;
         }
 
         /// <summary>Wrap a buffer index into a fixed-size ring.</summary>
