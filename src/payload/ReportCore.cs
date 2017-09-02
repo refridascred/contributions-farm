@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a digest label.</summary>
-        public static int CountDigestVowels(string text)
+        /// <summary>Count the vowels in a counter label.</summary>
+        public static int CountCounterVowels(string text)
         {
             int count = 0;
             if (text == null)
