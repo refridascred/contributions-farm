@@ -52,11 +52,16 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Interpolate between two command already values.</summary>
-        public static double LerpCommandAlready(double a, double b, double t)
+        /// <summary>Clamp a report digest value to a valid range.</summary>
+        public static double ClampReportDigest(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
