@@ -37,14 +37,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Express a catalog count as a percentage.</summary>
-        public static double CatalogPercent(double part, double total)
+        /// <summary>Average a list of batch commits samples.</summary>
+        public static double AverageBatchCommits(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Interpolate between two command already values.</summary>
