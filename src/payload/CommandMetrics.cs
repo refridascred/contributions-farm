@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two commits account values.</summary>
-        public static double LerpCommitsAccount(double a, double b, double t)
+        /// <summary>Interpolate between two queue layout values.</summary>
+        public static double LerpQueueLayout(double a, double b, double t)
         {
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
