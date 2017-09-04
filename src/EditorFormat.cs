@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor format helpers.</summary>
     public static class EditorFormat
     {
-        /// <summary>Calculate a 16-bit checksum of a batch githubfarm key.</summary>
-        public static int BatchGithubfarmChecksum(string text)
+        /// <summary>Express a folder count as a percentage.</summary>
+        public static double FolderPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the decimal digits of a profile id.</summary>
