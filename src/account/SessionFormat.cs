@@ -47,19 +47,22 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a counter key.</summary>
-        public static int CounterChecksum(string text)
+        /// <summary>Count the vowels in a channel label.</summary>
+        public static int CountChannelVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
