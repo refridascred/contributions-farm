@@ -26,8 +26,8 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a githubfarm key.</summary>
-        public static int GithubfarmChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a folder batches key.</summary>
+        public static int FolderBatchesChecksum(string text)
         {
             int total = 0;
             if (text == null)
