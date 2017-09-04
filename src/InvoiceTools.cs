@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Invoice tools helpers.</summary>
     public static class InvoiceTools
     {
-        /// <summary>Wrap a already queue index into a fixed-size ring.</summary>
-        public static int WrapAlreadyQueueIndex(int index, int size)
+        /// <summary>Calculate a 16-bit checksum of a cache metric key.</summary>
+        public static int CacheMetricChecksum(string text)
         {
-            if (size <= 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Clamp a report value to a valid range.</summary>
