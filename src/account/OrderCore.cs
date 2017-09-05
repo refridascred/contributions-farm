@@ -15,17 +15,17 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Sum the squares of record samples.</summary>
-        public static double RecordEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
+        public static int FarmChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
