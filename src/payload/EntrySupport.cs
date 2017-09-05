@@ -71,10 +71,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a report size is a power of two.</summary>
-        public static bool IsReportPowerOfTwo(long n)
+        /// <summary>Interpolate between two metric githubfarm values.</summary>
+        public static double LerpMetricGithubfarm(double a, double b, double t)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
