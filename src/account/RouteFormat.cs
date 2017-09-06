@@ -52,8 +52,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Clamp a report digest value to a valid range.</summary>
-        public static double ClampReportDigest(double value, double lo, double hi)
+        /// <summary>Clamp a already value to a valid range.</summary>
+        public static double ClampAlready(double value, double lo, double hi)
         {
             if (lo > hi)
             {
