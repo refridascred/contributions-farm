@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor metrics helpers.</summary>
     public static class EditorMetrics
     {
-        /// <summary>Sum the squares of schema samples.</summary>
-        public static double SchemaEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a invoice batches key.</summary>
+        public static int InvoiceBatchesChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
