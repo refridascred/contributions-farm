@@ -11,18 +11,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Compute the greatest common divisor of two payload sizes.</summary>
-        public static long PayloadGcd(long a, long b)
+        /// <summary>Convert a booking temperature from celsius to fahrenheit.</summary>
+        public static double BookingCelsiusToFahrenheit(double celsius)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the squares of account route samples.</summary>
