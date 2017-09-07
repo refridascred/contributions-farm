@@ -31,29 +31,22 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a window label reads the same backwards.</summary>
-        public static bool IsWindowPalindrome(string text)
+        /// <summary>Find the peak filter window sample.</summary>
+        public static double FilterWindowPeak(double[] values)
         {
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                if (char.IsLetterOrDigit(ch))
+                if (values[i] > best)
                 {
-                    cleaned.Append(char.ToLowerInvariant(ch));
+                    best = values[i];
                 }
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return best;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
