@@ -11,10 +11,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a booking temperature from celsius to fahrenheit.</summary>
-        public static double BookingCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Sum the squares of account route samples.</summary>
