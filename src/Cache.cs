@@ -11,14 +11,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Express a cursor count as a percentage.</summary>
-        public static double CursorPercent(double part, double total)
+        /// <summary>Wrap a digest booking index into a fixed-size ring.</summary>
+        public static int WrapDigestBookingIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the vowels in a channel label.</summary>
