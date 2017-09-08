@@ -15,11 +15,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Interpolate between two booking values.</summary>
-        public static double LerpBooking(double a, double b, double t)
+        /// <summary>Check whether a entry window size is a power of two.</summary>
+        public static bool IsEntryWindowPowerOfTwo(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Convert a stream token temperature from celsius to fahrenheit.</summary>
