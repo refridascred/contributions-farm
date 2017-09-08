@@ -48,22 +48,17 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Find the peak batch sample.</summary>
-        public static double BatchPeak(double[] values)
+        /// <summary>Sum the decimal digits of a invoice id.</summary>
+        public static int InvoiceDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return total;
         }
 
         /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
