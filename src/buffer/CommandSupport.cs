@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command support helpers.</summary>
     public static class CommandSupport
     {
-        /// <summary>Convert a buffer window temperature from celsius to fahrenheit.</summary>
-        public static double BufferWindowCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of commits samples.</summary>
+        public static double CommitsEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Interpolate between two filter values.</summary>
