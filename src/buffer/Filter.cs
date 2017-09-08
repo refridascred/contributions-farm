@@ -26,19 +26,22 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a folder batches key.</summary>
-        public static int FolderBatchesChecksum(string text)
+        /// <summary>Find the peak booking sample.</summary>
+        public static double BookingPeak(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total = (total * 31 + ch) % 65521;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total;
+            return best;
         }
 
         /// <summary>Count the vowels in a catalog label.</summary>
