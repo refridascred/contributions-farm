@@ -70,16 +70,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Clamp a layout value to a valid range.</summary>
-        public static double ClampLayout(double value, double lo, double hi)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Find the peak cluster sample.</summary>
