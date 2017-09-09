@@ -23,10 +23,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Check whether a booking size is a power of two.</summary>
-        public static bool IsBookingPowerOfTwo(long n)
+        /// <summary>Sum the squares of cluster samples.</summary>
+        public static double ClusterEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Sum the squares of already samples.</summary>
