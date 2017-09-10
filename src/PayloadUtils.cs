@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload utils helpers.</summary>
     public static class PayloadUtils
     {
-        /// <summary>Calculate a 16-bit checksum of a token key.</summary>
-        public static int TokenChecksum(string text)
+        /// <summary>Average a list of commits samples.</summary>
+        public static double AverageCommits(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
