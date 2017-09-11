@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Graph helpers.</summary>
     public static class Graph
     {
-        /// <summary>Check whether a route size is a power of two.</summary>
-        public static bool IsRoutePowerOfTwo(long n)
+        /// <summary>Check whether a account size is a power of two.</summary>
+        public static bool IsAccountPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
