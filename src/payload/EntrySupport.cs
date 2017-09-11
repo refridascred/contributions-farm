@@ -68,11 +68,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two metric githubfarm values.</summary>
-        public static double LerpMetricGithubfarm(double a, double b, double t)
+        /// <summary>Convert a schema temperature from celsius to fahrenheit.</summary>
+        public static double SchemaCelsiusToFahrenheit(double celsius)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
