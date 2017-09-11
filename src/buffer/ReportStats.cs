@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report stats helpers.</summary>
     public static class ReportStats
     {
-        /// <summary>Find the peak folder entry sample.</summary>
-        public static double FolderEntryPeak(double[] values)
+        /// <summary>Wrap a window payload index into a fixed-size ring.</summary>
+        public static int WrapWindowPayloadIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Clamp a contributi catalog value to a valid range.</summary>
