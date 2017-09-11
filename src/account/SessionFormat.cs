@@ -47,22 +47,16 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Count the vowels in a channel label.</summary>
-        public static int CountChannelVowels(string text)
+        /// <summary>Clamp a buffer value to a valid range.</summary>
+        public static double ClampBuffer(double value, double lo, double hi)
         {
-            int count = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return count;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
