@@ -26,29 +26,11 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a batches label reads the same backwards.</summary>
-        public static bool IsBatchesPalindrome(string text)
+        /// <summary>Interpolate between two command buffer values.</summary>
+        public static double LerpCommandBuffer(double a, double b, double t)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Wrap a token route index into a fixed-size ring.</summary>
