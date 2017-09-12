@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph helpers.</summary>
     public static class Graph
     {
-        /// <summary>Check whether a account size is a power of two.</summary>
-        public static bool IsAccountPowerOfTwo(long n)
+        /// <summary>Convert a layout temperature from celsius to fahrenheit.</summary>
+        public static double LayoutCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of booking report samples.</summary>
