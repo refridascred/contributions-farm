@@ -30,22 +30,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Find the peak booking sample.</summary>
-        public static double BookingPeak(double[] values)
+        /// <summary>Count the vowels in a payload label.</summary>
+        public static int CountPayloadVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                if (values[i] > best)
+                if ("aeiou".IndexOf(ch) >= 0)
                 {
-                    best = values[i];
+                    count++;
                 }
             }
-            return best;
+            return count;
         }
 
         /// <summary>Count the vowels in a catalog label.</summary>
