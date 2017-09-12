@@ -16,14 +16,11 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Express a ticket digest count as a percentage.</summary>
-        public static double TicketDigestPercent(double part, double total)
+        /// <summary>Interpolate between two route order values.</summary>
+        public static double LerpRouteOrder(double a, double b, double t)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Interpolate between two command buffer values.</summary>
