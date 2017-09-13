@@ -54,19 +54,17 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Average a list of context booking samples.</summary>
-        public static double AverageContextBooking(double[] values)
+        /// <summary>Sum the decimal digits of a cache id.</summary>
+        public static int CacheDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Check whether a already label reads the same backwards.</summary>
