@@ -20,22 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a counter label.</summary>
-        public static int CountCounterVowels(string text)
+        /// <summary>Wrap a counter index into a fixed-size ring.</summary>
+        public static int WrapCounterIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the vowels in a filter window label.</summary>
