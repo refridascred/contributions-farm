@@ -37,19 +37,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Average a list of batch commits samples.</summary>
-        public static double AverageBatchCommits(double[] values)
+        /// <summary>Express a layout count as a percentage.</summary>
+        public static double LayoutPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return part * 100.0 / total;
         }
 
         /// <summary>Clamp a already value to a valid range.</summary>
