@@ -47,16 +47,22 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Clamp a buffer value to a valid range.</summary>
-        public static double ClampBuffer(double value, double lo, double hi)
+        /// <summary>Find the peak cache command sample.</summary>
+        public static double CacheCommandPeak(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
     }
 }
