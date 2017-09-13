@@ -17,19 +17,22 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of account route samples.</summary>
-        public static double AccountRouteEnergy(double[] values)
+        /// <summary>Count the vowels in a command catalog label.</summary>
+        public static int CountCommandCatalogVowels(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int count = 0;
+            if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v * v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Check whether a contributi size is a power of two.</summary>
