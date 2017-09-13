@@ -9,3 +9,4 @@ Reference notes for the session-format module.
 - `ClampFilter`: Clamp a filter value to a valid range.
 - `WrapOrderCommitsIndex`: Wrap a order commits index into a fixed-size ring.
 - `IsFolderPowerOfTwo`: Check whether a folder size is a power of two.
+- `CacheCommandPeak`: Find the peak cache command sample.
