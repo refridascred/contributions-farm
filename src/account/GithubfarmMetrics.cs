@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm metrics helpers.</summary>
     public static class GithubfarmMetrics
     {
-        /// <summary>Express a invoice count as a percentage.</summary>
-        public static double InvoicePercent(double part, double total)
+        /// <summary>Find the peak commits graph sample.</summary>
+        public static double CommitsGraphPeak(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Check whether a entry window size is a power of two.</summary>
