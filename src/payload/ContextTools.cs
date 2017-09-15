@@ -30,10 +30,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
+        public static double OrderCelsiusToFahrenheit(double celsius)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a cursor label reads the same backwards.</summary>
