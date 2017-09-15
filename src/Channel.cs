@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel helpers.</summary>
     public static class Channel
     {
-        /// <summary>Interpolate between two githubfarm values.</summary>
-        public static double LerpGithubfarm(double a, double b, double t)
+        /// <summary>Sum the decimal digits of a account window id.</summary>
+        public static int AccountWindowDigitSum(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Convert a metric githubfarm temperature from celsius to fahrenheit.</summary>
