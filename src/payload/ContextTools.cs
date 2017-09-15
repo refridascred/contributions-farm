@@ -36,29 +36,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a cursor label reads the same backwards.</summary>
-        public static bool IsCursorPalindrome(string text)
+        /// <summary>Check whether a contributi size is a power of two.</summary>
+        public static bool IsContributiPowerOfTwo(long n)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
