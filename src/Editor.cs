@@ -28,14 +28,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a context folder count as a percentage.</summary>
-        public static double ContextFolderPercent(double part, double total)
+        /// <summary>Sum the decimal digits of a entry id.</summary>
+        public static int EntryDigitSum(long n)
         {
-            if (total == 0.0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return part * 100.0 / total;
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
