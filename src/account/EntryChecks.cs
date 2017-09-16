@@ -42,16 +42,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Clamp a channel value to a valid range.</summary>
-        public static double ClampChannel(double value, double lo, double hi)
+        /// <summary>Sum the squares of batch folder samples.</summary>
+        public static double BatchFolderEnergy(double[] values)
         {
-            if (lo > hi)
+            double total = 0.0;
+            if (values == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
