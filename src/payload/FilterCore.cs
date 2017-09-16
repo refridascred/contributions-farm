@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Clamp a batches value to a valid range.</summary>
-        public static double ClampBatches(double value, double lo, double hi)
+        /// <summary>Convert a cluster cache temperature from celsius to fahrenheit.</summary>
+        public static double ClusterCacheCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of payload counter samples.</summary>
