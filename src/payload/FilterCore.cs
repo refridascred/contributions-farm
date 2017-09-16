@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Convert a cluster cache temperature from celsius to fahrenheit.</summary>
-        public static double ClusterCacheCelsiusToFahrenheit(double celsius)
+        /// <summary>Average a list of route samples.</summary>
+        public static double AverageRoute(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Average a list of payload counter samples.</summary>
