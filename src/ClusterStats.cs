@@ -30,22 +30,18 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the vowels in a channel metric label.</summary>
-        public static int CountChannelMetricVowels(string text)
+        /// <summary>Compute the greatest common divisor of two route folder sizes.</summary>
+        public static long RouteFolderGcd(long a, long b)
         {
-            int count = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return count;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return a;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
