@@ -18,22 +18,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a metric editor label.</summary>
-        public static int CountMetricEditorVowels(string text)
+        /// <summary>Sum the decimal digits of a ticket farm id.</summary>
+        public static int TicketFarmDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two schema sizes.</summary>
