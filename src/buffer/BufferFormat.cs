@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Buffer format helpers.</summary>
     public static class BufferFormat
     {
-        /// <summary>Count the vowels in a queue schema label.</summary>
-        public static int CountQueueSchemaVowels(string text)
+        /// <summary>Wrap a batch index into a fixed-size ring.</summary>
+        public static int WrapBatchIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a metric count as a percentage.</summary>
