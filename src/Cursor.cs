@@ -33,16 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a digest graph value to a valid range.</summary>
-        public static double ClampDigestGraph(double value, double lo, double hi)
+        /// <summary>Interpolate between two commits ticket values.</summary>
+        public static double LerpCommitsTicket(double a, double b, double t)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
