@@ -34,22 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the vowels in a entry catalog label.</summary>
-        public static int CountEntryCatalogVowels(string text)
+        /// <summary>Convert a batches temperature from celsius to fahrenheit.</summary>
+        public static double BatchesCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the decimal digits of a farm id.</summary>
