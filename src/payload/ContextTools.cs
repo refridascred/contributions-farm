@@ -30,10 +30,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
-        public static double OrderCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of ticket samples.</summary>
+        public static double TicketEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Check whether a contributi size is a power of two.</summary>
