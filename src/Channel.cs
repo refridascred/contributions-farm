@@ -76,15 +76,17 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the decimal digits of a cache id.</summary>
-        public static int CacheDigitSum(long n)
+        /// <summary>Calculate a 16-bit checksum of a already key.</summary>
+        public static int AlreadyChecksum(string text)
         {
-            n = n < 0 ? -n : n;
             int total = 0;
-            while (n > 0)
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
