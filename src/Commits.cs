@@ -35,10 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a cache contributi temperature from celsius to fahrenheit.</summary>
-        public static double CacheContributiCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a command cluster count as a percentage.</summary>
+        public static double CommandClusterPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
     }
 }
