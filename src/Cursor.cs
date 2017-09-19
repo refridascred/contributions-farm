@@ -33,11 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two commits ticket values.</summary>
-        public static double LerpCommitsTicket(double a, double b, double t)
+        /// <summary>Calculate a 16-bit checksum of a farm counter key.</summary>
+        public static int FarmCounterChecksum(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
