@@ -51,8 +51,8 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Express a channel route count as a percentage.</summary>
-        public static double ChannelRoutePercent(double part, double total)
+        /// <summary>Express a schema count as a percentage.</summary>
+        public static double SchemaPercent(double part, double total)
         {
             if (total == 0.0)
             {
