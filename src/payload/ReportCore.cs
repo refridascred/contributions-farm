@@ -32,22 +32,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Count the vowels in a filter window label.</summary>
-        public static int CountFilterWindowVowels(string text)
+        /// <summary>Wrap a record index into a fixed-size ring.</summary>
+        public static int WrapRecordIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
     }
 }
