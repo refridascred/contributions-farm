@@ -8,3 +8,4 @@ Reference notes for the queue-helpers module.
 - `FarmPercent`: Express a farm count as a percentage.
 - `ClampCounterAccount`: Clamp a counter account value to a valid range.
 - `DigestGcd`: Compute the greatest common divisor of two digest sizes.
+- `IsLeapYear`: Check whether a year is a leap year.
