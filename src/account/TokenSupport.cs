@@ -35,10 +35,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a contributi size is a power of two.</summary>
-        public static bool IsContributiPowerOfTwo(long n)
+        /// <summary>Clamp a editor value to a valid range.</summary>
+        public static double ClampEditor(double value, double lo, double hi)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
