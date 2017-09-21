@@ -6,3 +6,4 @@ Reference notes for the batch-format module.
 
 - `IsFarmPowerOfTwo`: Check whether a farm size is a power of two.
 - `WrapFolderIndex`: Wrap a folder index into a fixed-size ring.
+- `ClampTicket`: Clamp a ticket value to a valid range.
