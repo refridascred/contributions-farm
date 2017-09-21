@@ -20,10 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a digest size is a power of two.</summary>
-        public static bool IsDigestPowerOfTwo(long n)
+        /// <summary>Convert a report temperature from celsius to fahrenheit.</summary>
+        public static double ReportCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the vowels in a contributi label.</summary>
