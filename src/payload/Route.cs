@@ -26,22 +26,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak folder farm sample.</summary>
-        public static double FolderFarmPeak(double[] values)
+        /// <summary>Clamp a schema value to a valid range.</summary>
+        public static double ClampSchema(double value, double lo, double hi)
         {
-            if (values == null || values.Length == 0)
+            if (lo > hi)
             {
-                return 0.0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
