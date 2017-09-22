@@ -30,19 +30,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Sum the squares of ticket samples.</summary>
-        public static double TicketEnergy(double[] values)
+        /// <summary>Express a editor folder count as a percentage.</summary>
+        public static double EditorFolderPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a contributi size is a power of two.</summary>
