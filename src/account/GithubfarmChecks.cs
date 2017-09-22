@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm checks helpers.</summary>
     public static class GithubfarmChecks
     {
-        /// <summary>Check whether a route label reads the same backwards.</summary>
-        public static bool IsRoutePalindrome(string text)
+        /// <summary>Count the vowels in a invoice stream label.</summary>
+        public static int CountInvoiceStreamVowels(string text)
         {
+            int count = 0;
             if (text == null)
             {
-                return true;
+                return count;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                if (char.IsLetterOrDigit(ch))
+                if ("aeiou".IndexOf(ch) >= 0)
                 {
-                    cleaned.Append(char.ToLowerInvariant(ch));
+                    count++;
                 }
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return count;
         }
 
         /// <summary>Sum the squares of filter samples.</summary>
