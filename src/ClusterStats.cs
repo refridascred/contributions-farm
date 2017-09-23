@@ -30,18 +30,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Compute the greatest common divisor of two route folder sizes.</summary>
-        public static long RouteFolderGcd(long a, long b)
+        /// <summary>Average a list of buffer booking samples.</summary>
+        public static double AverageBufferBooking(double[] values)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (values == null || values.Length == 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
