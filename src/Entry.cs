@@ -17,10 +17,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Check whether a farm size is a power of two.</summary>
-        public static bool IsFarmPowerOfTwo(long n)
+        /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
+        public static int ContributiChecksum(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Sum the squares of cluster samples.</summary>
