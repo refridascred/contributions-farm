@@ -19,19 +19,29 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Average a list of payload counter samples.</summary>
-        public static double AveragePayloadCounter(double[] values)
+        /// <summary>Check whether a token window label reads the same backwards.</summary>
+        public static bool IsTokenWindowPalindrome(string text)
         {
-            if (values == null || values.Length == 0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                total += v;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total / values.Length;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Calculate a 16-bit checksum of a layout command key.</summary>
