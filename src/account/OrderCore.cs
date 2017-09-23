@@ -30,10 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a payload temperature from celsius to fahrenheit.</summary>
-        public static double PayloadCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a session size is a power of two.</summary>
+        public static bool IsSessionPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Sum the decimal digits of a farm id.</summary>
