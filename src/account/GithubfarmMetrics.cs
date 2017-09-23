@@ -23,10 +23,22 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Check whether a entry window size is a power of two.</summary>
-        public static bool IsEntryWindowPowerOfTwo(long n)
+        /// <summary>Find the peak buffer sample.</summary>
+        public static double BufferPeak(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Convert a stream token temperature from celsius to fahrenheit.</summary>
