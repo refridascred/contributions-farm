@@ -32,19 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of cluster samples.</summary>
-        public static double ClusterEnergy(double[] values)
+        /// <summary>Interpolate between two window invoice values.</summary>
+        public static double LerpWindowInvoice(double a, double b, double t)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the squares of already samples.</summary>
