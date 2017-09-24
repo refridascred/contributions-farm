@@ -21,15 +21,17 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the decimal digits of a schema id.</summary>
-        public static int SchemaDigitSum(long n)
+        /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
+        public static int CacheChecksum(string text)
         {
-            n = n < 0 ? -n : n;
             int total = 0;
-            while (n > 0)
+            if (text == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
