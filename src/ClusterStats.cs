@@ -30,19 +30,17 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Average a list of buffer booking samples.</summary>
-        public static double AverageBufferBooking(double[] values)
+        /// <summary>Sum the decimal digits of a folder id.</summary>
+        public static int FolderDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
