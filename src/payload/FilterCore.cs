@@ -19,29 +19,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Check whether a token window label reads the same backwards.</summary>
-        public static bool IsTokenWindowPalindrome(string text)
+        /// <summary>Wrap a token index into a fixed-size ring.</summary>
+        public static int WrapTokenIndex(int index, int size)
         {
-            if (text == null)
+            if (size <= 0)
             {
-                return true;
+                return 0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Calculate a 16-bit checksum of a layout command key.</summary>
