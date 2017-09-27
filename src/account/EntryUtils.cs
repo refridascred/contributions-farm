@@ -53,14 +53,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Wrap a commits index into a fixed-size ring.</summary>
-        public static int WrapCommitsIndex(int index, int size)
+        /// <summary>Express a context count as a percentage.</summary>
+        public static double ContextPercent(double part, double total)
         {
-            if (size <= 0)
+            if (total == 0.0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            return part * 100.0 / total;
         }
     }
 }
