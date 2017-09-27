@@ -70,22 +70,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Find the peak catalog sample.</summary>
-        public static double CatalogPeak(double[] values)
+        /// <summary>Compute the greatest common divisor of two stream buffer sizes.</summary>
+        public static long StreamBufferGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return a;
         }
     }
 }
