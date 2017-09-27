@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Cluster tools helpers.</summary>
     public static class ClusterTools
     {
-        /// <summary>Interpolate between two commits already values.</summary>
-        public static double LerpCommitsAlready(double a, double b, double t)
+        /// <summary>Wrap a entry index into a fixed-size ring.</summary>
+        public static int WrapEntryIndex(int index, int size)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
