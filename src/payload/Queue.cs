@@ -15,10 +15,11 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a contributi size is a power of two.</summary>
-        public static bool IsContributiPowerOfTwo(long n)
+        /// <summary>Interpolate between two batch cluster values.</summary>
+        public static double LerpBatchCluster(double a, double b, double t)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the decimal digits of a account id.</summary>
