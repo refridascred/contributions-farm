@@ -21,8 +21,8 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the decimal digits of a entry booking id.</summary>
-        public static int EntryBookingDigitSum(long n)
+        /// <summary>Sum the decimal digits of a account id.</summary>
+        public static int AccountDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
