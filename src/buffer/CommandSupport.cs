@@ -22,10 +22,14 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Check whether a buffer size is a power of two.</summary>
-        public static bool IsBufferPowerOfTwo(long n)
+        /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
+        public static int WrapContributiIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
     }
 }
