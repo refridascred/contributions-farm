@@ -23,17 +23,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the decimal digits of a entry id.</summary>
-        public static int EntryDigitSum(long n)
+        /// <summary>Wrap a window index into a fixed-size ring.</summary>
+        public static int WrapWindowIndex(int index, int size)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (size <= 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0;
             }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
