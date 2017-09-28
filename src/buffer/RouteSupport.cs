@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Express a counter token count as a percentage.</summary>
+        public static double CounterTokenPercent(double part, double total)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a filter key.</summary>
