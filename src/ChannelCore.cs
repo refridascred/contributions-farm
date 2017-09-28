@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel core helpers.</summary>
     public static class ChannelCore
     {
-        /// <summary>Calculate a 16-bit checksum of a buffer key.</summary>
-        public static int BufferChecksum(string text)
+        /// <summary>Count the vowels in a ticket label.</summary>
+        public static int CountTicketVowels(string text)
         {
-            int total = 0;
+            int count = 0;
             if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total = (total * 31 + ch) % 65521;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
