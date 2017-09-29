@@ -35,14 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a catalog count as a percentage.</summary>
-        public static double CatalogPercent(double part, double total)
+        /// <summary>Sum the decimal digits of a report order id.</summary>
+        public static int ReportOrderDigitSum(long n)
         {
-            if (total == 0.0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return part * 100.0 / total;
+            return total;
         }
 
         /// <summary>Check whether a layout size is a power of two.</summary>
