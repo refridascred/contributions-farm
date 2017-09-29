@@ -22,15 +22,17 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Sum the decimal digits of a account id.</summary>
-        public static int AccountDigitSum(long n)
+        /// <summary>Sum the squares of batch samples.</summary>
+        public static double BatchEnergy(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            double total = 0.0;
+            if (values == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
             }
             return total;
         }
