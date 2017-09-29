@@ -44,14 +44,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Wrap a token route index into a fixed-size ring.</summary>
-        public static int WrapTokenRouteIndex(int index, int size)
+        /// <summary>Average a list of metric samples.</summary>
+        public static double AverageMetric(double[] values)
         {
-            if (size <= 0)
+            if (values == null || values.Length == 0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Check whether a catalog label reads the same backwards.</summary>
