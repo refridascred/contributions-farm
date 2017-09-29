@@ -33,19 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a farm counter key.</summary>
-        public static int FarmCounterChecksum(string text)
+        /// <summary>Clamp a githubfarm value to a valid range.</summary>
+        public static double ClampGithubfarm(double value, double lo, double hi)
         {
-            int total = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return total;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
