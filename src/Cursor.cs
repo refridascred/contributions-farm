@@ -33,16 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a githubfarm value to a valid range.</summary>
-        public static double ClampGithubfarm(double value, double lo, double hi)
+        /// <summary>Sum the squares of window invoice samples.</summary>
+        public static double WindowInvoiceEnergy(double[] values)
         {
-            if (lo > hi)
+            double total = 0.0;
+            if (values == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
