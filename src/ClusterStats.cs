@@ -62,29 +62,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a already label reads the same backwards.</summary>
-        public static bool IsAlreadyPalindrome(string text)
+        /// <summary>Express a catalog count as a percentage.</summary>
+        public static double CatalogPercent(double part, double total)
         {
-            if (text == null)
+            if (total == 0.0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return part * 100.0 / total;
         }
     }
 }
