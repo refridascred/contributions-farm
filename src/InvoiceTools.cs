@@ -25,11 +25,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Interpolate between two ticket schema values.</summary>
-        public static double LerpTicketSchema(double a, double b, double t)
+        /// <summary>Sum the squares of filter samples.</summary>
+        public static double FilterEnergy(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Interpolate between two batch order values.</summary>
