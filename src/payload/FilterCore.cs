@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Compute the greatest common divisor of two filter sizes.</summary>
-        public static long FilterGcd(long a, long b)
+        /// <summary>Clamp a contributi token value to a valid range.</summary>
+        public static double ClampContributiToken(double value, double lo, double hi)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (lo > hi)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return a;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Wrap a token index into a fixed-size ring.</summary>
