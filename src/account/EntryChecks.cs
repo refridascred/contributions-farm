@@ -32,14 +32,11 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Wrap a channel metric index into a fixed-size ring.</summary>
-        public static int WrapChannelMetricIndex(int index, int size)
+        /// <summary>Interpolate between two filter values.</summary>
+        public static double LerpFilter(double a, double b, double t)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of channel samples.</summary>
