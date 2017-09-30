@@ -11,29 +11,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Check whether a invoice label reads the same backwards.</summary>
-        public static bool IsInvoicePalindrome(string text)
+        /// <summary>Sum the squares of folder samples.</summary>
+        public static double FolderEnergy(double[] values)
         {
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v * v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a graph key.</summary>
