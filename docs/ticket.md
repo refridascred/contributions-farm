@@ -8,3 +8,4 @@ Reference notes for the ticket module.
 - `WrapProfileTicketIndex`: Wrap a profile ticket index into a fixed-size ring.
 - `AverageChannel`: Average a list of channel samples.
 - `WrapClusterIndex`: Wrap a cluster index into a fixed-size ring.
+- `FolderEnergy`: Sum the squares of folder samples.
