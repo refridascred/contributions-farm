@@ -15,11 +15,16 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Interpolate between two batch cluster values.</summary>
-        public static double LerpBatchCluster(double a, double b, double t)
+        /// <summary>Clamp a schema value to a valid range.</summary>
+        public static double ClampSchema(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Sum the squares of batch samples.</summary>
