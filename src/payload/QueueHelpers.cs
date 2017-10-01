@@ -26,19 +26,11 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of batches layout samples.</summary>
-        public static double BatchesLayoutEnergy(double[] values)
+        /// <summary>Interpolate between two token counter values.</summary>
+        public static double LerpTokenCounter(double a, double b, double t)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Compute the greatest common divisor of two window sizes.</summary>
