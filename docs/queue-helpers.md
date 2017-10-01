@@ -9,3 +9,4 @@ Reference notes for the queue-helpers module.
 - `ClampCounterAccount`: Clamp a counter account value to a valid range.
 - `DigestGcd`: Compute the greatest common divisor of two digest sizes.
 - `IsLeapYear`: Check whether a year is a leap year.
+- `LerpTokenCounter`: Interpolate between two token counter values.
