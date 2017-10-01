@@ -16,22 +16,14 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Count the vowels in a layout contributi label.</summary>
-        public static int CountLayoutContributiVowels(string text)
+        /// <summary>Wrap a session index into a fixed-size ring.</summary>
+        public static int WrapSessionIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Convert a batches temperature from celsius to fahrenheit.</summary>
