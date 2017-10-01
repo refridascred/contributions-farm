@@ -38,10 +38,18 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
-        public static double ChannelCelsiusToFahrenheit(double celsius)
+        /// <summary>Compute the greatest common divisor of two account invoice sizes.</summary>
+        public static long AccountInvoiceGcd(long a, long b)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
     }
 }
