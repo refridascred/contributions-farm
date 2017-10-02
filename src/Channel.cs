@@ -76,19 +76,11 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Calculate a 16-bit checksum of a payload booking key.</summary>
-        public static int PayloadBookingChecksum(string text)
+        /// <summary>Interpolate between two counter report values.</summary>
+        public static double LerpCounterReport(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
