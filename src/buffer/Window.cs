@@ -31,10 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a catalog size is a power of two.</summary>
-        public static bool IsCatalogPowerOfTwo(long n)
+        /// <summary>Convert a editor temperature from celsius to fahrenheit.</summary>
+        public static double EditorCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Find the peak already layout sample.</summary>
