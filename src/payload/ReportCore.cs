@@ -20,17 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a folder digest id.</summary>
-        public static int FolderDigestDigitSum(long n)
+        /// <summary>Express a editor count as a percentage.</summary>
+        public static double EditorPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Wrap a record index into a fixed-size ring.</summary>
