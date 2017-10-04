@@ -30,22 +30,10 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the vowels in a payload label.</summary>
-        public static int CountPayloadVowels(string text)
+        /// <summary>Convert a account temperature from celsius to fahrenheit.</summary>
+        public static double AccountCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Sum the squares of filter samples.</summary>
