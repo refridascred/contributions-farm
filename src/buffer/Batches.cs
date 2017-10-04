@@ -37,22 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a report cache label.</summary>
-        public static int CountReportCacheVowels(string text)
+        /// <summary>Compute the greatest common divisor of two editor sizes.</summary>
+        public static long EditorGcd(long a, long b)
         {
-            int count = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return count;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return a;
         }
 
         /// <summary>Sum the decimal digits of a payload id.</summary>
