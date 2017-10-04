@@ -19,18 +19,17 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Compute the greatest common divisor of two route sizes.</summary>
-        public static long RouteGcd(long a, long b)
+        /// <summary>Sum the decimal digits of a route stream id.</summary>
+        public static int RouteStreamDigitSum(long n)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return a;
+            return total;
         }
 
         /// <summary>Clamp a channel value to a valid range.</summary>
