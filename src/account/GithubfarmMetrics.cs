@@ -68,15 +68,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a folder editor id.</summary>
-        public static int FolderEditorDigitSum(long n)
+        /// <summary>Sum the squares of order graph samples.</summary>
+        public static double OrderGraphEnergy(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            double total = 0.0;
+            if (values == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
             }
             return total;
         }
