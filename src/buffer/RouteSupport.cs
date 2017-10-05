@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Express a counter token count as a percentage.</summary>
-        public static double CounterTokenPercent(double part, double total)
+        /// <summary>Wrap a cache index into a fixed-size ring.</summary>
+        public static int WrapCacheIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Calculate a 16-bit checksum of a filter key.</summary>
