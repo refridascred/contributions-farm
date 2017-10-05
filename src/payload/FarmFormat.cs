@@ -26,17 +26,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the decimal digits of a entry id.</summary>
-        public static int EntryDigitSum(long n)
+        /// <summary>Check whether a cache size is a power of two.</summary>
+        public static bool IsCachePowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Interpolate between two batches cache values.</summary>
