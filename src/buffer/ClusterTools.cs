@@ -26,8 +26,8 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Interpolate between two catalog cache values.</summary>
-        public static double LerpCatalogCache(double a, double b, double t)
+        /// <summary>Interpolate between two editor values.</summary>
+        public static double LerpEditor(double a, double b, double t)
         {
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
