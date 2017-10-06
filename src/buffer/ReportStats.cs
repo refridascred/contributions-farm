@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report stats helpers.</summary>
     public static class ReportStats
     {
-        /// <summary>Wrap a window payload index into a fixed-size ring.</summary>
-        public static int WrapWindowPayloadIndex(int index, int size)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Sum the decimal digits of a route schema id.</summary>
