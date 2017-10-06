@@ -20,10 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a report temperature from celsius to fahrenheit.</summary>
-        public static double ReportCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of graph samples.</summary>
+        public static double GraphEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a contributi label.</summary>
