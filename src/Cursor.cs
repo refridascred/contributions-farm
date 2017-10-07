@@ -20,17 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a batches id.</summary>
-        public static int BatchesDigitSum(long n)
+        /// <summary>Check whether a batch size is a power of two.</summary>
+        public static bool IsBatchPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Sum the squares of window invoice samples.</summary>
