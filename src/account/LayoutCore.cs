@@ -23,19 +23,18 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the squares of route samples.</summary>
-        public static double RouteEnergy(double[] values)
+        /// <summary>Compute the greatest common divisor of two context sizes.</summary>
+        public static long ContextGcd(long a, long b)
         {
-            double total = 0.0;
-            if (values == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return a;
         }
 
         /// <summary>Sum the squares of channel samples.</summary>
