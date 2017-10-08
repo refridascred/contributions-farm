@@ -26,10 +26,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Convert a batches temperature from celsius to fahrenheit.</summary>
-        public static double BatchesCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a filter cursor index into a fixed-size ring.</summary>
+        public static int WrapFilterCursorIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Sum the decimal digits of a farm id.</summary>
