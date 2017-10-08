@@ -23,18 +23,15 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Compute the greatest common divisor of two context sizes.</summary>
-        public static long ContextGcd(long a, long b)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (month == 2)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            return a;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Sum the squares of channel samples.</summary>
