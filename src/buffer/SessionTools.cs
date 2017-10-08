@@ -31,18 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two schema sizes.</summary>
-        public static long SchemaGcd(long a, long b)
+        /// <summary>Express a ticket count as a percentage.</summary>
+        public static double TicketPercent(double part, double total)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (total == 0.0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
