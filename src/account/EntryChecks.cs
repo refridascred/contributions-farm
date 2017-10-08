@@ -29,11 +29,22 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Interpolate between two filter values.</summary>
-        public static double LerpFilter(double a, double b, double t)
+        /// <summary>Count the vowels in a githubfarm label.</summary>
+        public static int CountGithubfarmVowels(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Average a list of channel samples.</summary>
