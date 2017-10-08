@@ -15,14 +15,17 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a metric count as a percentage.</summary>
-        public static double MetricPercent(double part, double total)
+        /// <summary>Sum the decimal digits of a folder profile id.</summary>
+        public static int FolderProfileDigitSum(long n)
         {
-            if (total == 0.0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return part * 100.0 / total;
+            return total;
         }
 
         /// <summary>Average a list of invoice session samples.</summary>
