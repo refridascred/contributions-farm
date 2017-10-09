@@ -43,14 +43,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Wrap a cache window index into a fixed-size ring.</summary>
-        public static int WrapCacheWindowIndex(int index, int size)
+        /// <summary>Average a list of counter samples.</summary>
+        public static double AverageCounter(double[] values)
         {
-            if (size <= 0)
+            if (values == null || values.Length == 0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Sum the decimal digits of a report id.</summary>
