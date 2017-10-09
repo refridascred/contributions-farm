@@ -47,10 +47,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a batch temperature from celsius to fahrenheit.</summary>
-        public static double BatchCelsiusToFahrenheit(double celsius)
+        /// <summary>Average a list of graph ticket samples.</summary>
+        public static double AverageGraphTicket(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Sum the squares of buffer samples.</summary>
