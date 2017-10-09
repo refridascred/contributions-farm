@@ -36,8 +36,8 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the squares of filter samples.</summary>
-        public static double FilterEnergy(double[] values)
+        /// <summary>Sum the squares of farm samples.</summary>
+        public static double FarmEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
