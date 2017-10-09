@@ -64,17 +64,10 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Sum the decimal digits of a booking ticket id.</summary>
-        public static int BookingTicketDigitSum(long n)
+        /// <summary>Check whether a cursor size is a power of two.</summary>
+        public static bool IsCursorPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a farm index into a fixed-size ring.</summary>
