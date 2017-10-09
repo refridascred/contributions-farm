@@ -29,29 +29,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a invoice label reads the same backwards.</summary>
-        public static bool IsInvoicePalindrome(string text)
+        /// <summary>Check whether a token size is a power of two.</summary>
+        public static bool IsTokenPowerOfTwo(long n)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Average a list of already samples.</summary>
