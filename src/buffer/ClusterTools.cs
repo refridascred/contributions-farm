@@ -15,15 +15,22 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Count the vowels in a invoice label.</summary>
+        public static int CountInvoiceVowels(string text)
         {
-            if (month == 2)
+            int count = 0;
+            if (text == null)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                return count;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Interpolate between two editor values.</summary>
