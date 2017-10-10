@@ -25,19 +25,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of filter samples.</summary>
-        public static double FilterEnergy(double[] values)
+        /// <summary>Convert a report temperature from celsius to fahrenheit.</summary>
+        public static double ReportCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two batch order values.</summary>
