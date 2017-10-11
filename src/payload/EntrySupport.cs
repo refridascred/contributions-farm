@@ -28,11 +28,10 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Interpolate between two ticket values.</summary>
-        public static double LerpTicket(double a, double b, double t)
+        /// <summary>Convert a graph temperature from celsius to fahrenheit.</summary>
+        public static double GraphCelsiusToFahrenheit(double celsius)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Find the peak commits account sample.</summary>
