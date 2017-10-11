@@ -45,22 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak token sample.</summary>
-        public static double TokenPeak(double[] values)
+        /// <summary>Interpolate between two payload values.</summary>
+        public static double LerpPayload(double a, double b, double t)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a batch size is a power of two.</summary>
