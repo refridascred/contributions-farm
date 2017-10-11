@@ -26,19 +26,15 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the squares of window invoice samples.</summary>
-        public static double WindowInvoiceEnergy(double[] values)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            double total = 0.0;
-            if (values == null)
+            if (month == 2)
             {
-                return total;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
     }
 }
