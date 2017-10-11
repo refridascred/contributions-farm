@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm metrics helpers.</summary>
     public static class GithubfarmMetrics
     {
-        /// <summary>Find the peak commits graph sample.</summary>
-        public static double CommitsGraphPeak(double[] values)
+        /// <summary>Convert a route temperature from celsius to fahrenheit.</summary>
+        public static double RouteCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Find the peak buffer sample.</summary>
