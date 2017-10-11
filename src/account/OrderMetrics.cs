@@ -37,14 +37,11 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Express a digest count as a percentage.</summary>
-        public static double DigestPercent(double part, double total)
+        /// <summary>Interpolate between two metric values.</summary>
+        public static double LerpMetric(double a, double b, double t)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of metric samples.</summary>
