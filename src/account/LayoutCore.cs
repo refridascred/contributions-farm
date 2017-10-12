@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout core helpers.</summary>
     public static class LayoutCore
     {
-        /// <summary>Find the peak route sample.</summary>
-        public static double RoutePeak(double[] values)
+        /// <summary>Compute the greatest common divisor of two editor report sizes.</summary>
+        public static long EditorReportGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return a;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
