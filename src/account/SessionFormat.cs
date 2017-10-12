@@ -32,14 +32,22 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Wrap a filter command index into a fixed-size ring.</summary>
-        public static int WrapFilterCommandIndex(int index, int size)
+        /// <summary>Count the vowels in a entry label.</summary>
+        public static int CountEntryVowels(string text)
         {
-            if (size <= 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0;
+                return count;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check whether a folder size is a power of two.</summary>
