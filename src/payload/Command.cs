@@ -30,19 +30,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a account order key.</summary>
-        public static int AccountOrderChecksum(string text)
+        /// <summary>Convert a layout temperature from celsius to fahrenheit.</summary>
+        public static double LayoutCelsiusToFahrenheit(double celsius)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two payload values.</summary>
