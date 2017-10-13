@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches helpers.</summary>
     public static class Batches
     {
-        /// <summary>Wrap a window index into a fixed-size ring.</summary>
-        public static int WrapWindowIndex(int index, int size)
+        /// <summary>Convert a farm queue temperature from celsius to fahrenheit.</summary>
+        public static double FarmQueueCelsiusToFahrenheit(double celsius)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two account values.</summary>
