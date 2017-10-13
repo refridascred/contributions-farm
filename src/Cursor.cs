@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a batch size is a power of two.</summary>
-        public static bool IsBatchPowerOfTwo(long n)
+        /// <summary>Check whether a cluster size is a power of two.</summary>
+        public static bool IsClusterPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
