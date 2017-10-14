@@ -48,10 +48,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
-        public static double ChannelCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a editor size is a power of two.</summary>
+        public static bool IsEditorPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
