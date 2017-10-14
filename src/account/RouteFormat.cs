@@ -52,22 +52,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a account order label.</summary>
-        public static int CountAccountOrderVowels(string text)
+        /// <summary>Convert a queue metric temperature from celsius to fahrenheit.</summary>
+        public static double QueueMetricCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
