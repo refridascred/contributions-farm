@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Filter core helpers.</summary>
     public static class FilterCore
     {
-        /// <summary>Clamp a contributi token value to a valid range.</summary>
-        public static double ClampContributiToken(double value, double lo, double hi)
+        /// <summary>Check whether a record size is a power of two.</summary>
+        public static bool IsRecordPowerOfTwo(long n)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a token index into a fixed-size ring.</summary>
