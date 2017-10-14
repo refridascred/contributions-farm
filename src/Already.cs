@@ -53,8 +53,8 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Interpolate between two command farm values.</summary>
-        public static double LerpCommandFarm(double a, double b, double t)
+        /// <summary>Interpolate between two session values.</summary>
+        public static double LerpSession(double a, double b, double t)
         {
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
