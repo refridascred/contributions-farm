@@ -58,17 +58,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the decimal digits of a report id.</summary>
-        public static int ReportDigitSum(long n)
+        /// <summary>Express a ticket count as a percentage.</summary>
+        public static double TicketPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
     }
 }
