@@ -50,19 +50,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Average a list of entry cursor samples.</summary>
-        public static double AverageEntryCursor(double[] values)
+        /// <summary>Compute the greatest common divisor of two editor ticket sizes.</summary>
+        public static long EditorTicketGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return a;
         }
 
         /// <summary>Check whether a stream label reads the same backwards.</summary>
