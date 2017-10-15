@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already helpers.</summary>
     public static class Already
     {
-        /// <summary>Average a list of cluster samples.</summary>
-        public static double AverageCluster(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a context key.</summary>
+        public static int ContextChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a commits key.</summary>
