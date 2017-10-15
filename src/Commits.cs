@@ -35,14 +35,22 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Express a command cluster count as a percentage.</summary>
-        public static double CommandClusterPercent(double part, double total)
+        /// <summary>Count the vowels in a token account label.</summary>
+        public static int CountTokenAccountVowels(string text)
         {
-            if (total == 0.0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
