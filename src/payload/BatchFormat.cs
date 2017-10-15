@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch format helpers.</summary>
     public static class BatchFormat
     {
-        /// <summary>Clamp a route value to a valid range.</summary>
-        public static double ClampRoute(double value, double lo, double hi)
+        /// <summary>Convert a channel temperature from celsius to fahrenheit.</summary>
+        public static double ChannelCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Convert a cache temperature from celsius to fahrenheit.</summary>
