@@ -65,14 +65,10 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Wrap a buffer index into a fixed-size ring.</summary>
-        public static int WrapBufferIndex(int index, int size)
+        /// <summary>Check whether a session editor size is a power of two.</summary>
+        public static bool IsSessionEditorPowerOfTwo(long n)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
