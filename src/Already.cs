@@ -60,8 +60,8 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of stream samples.</summary>
-        public static double AverageStream(double[] values)
+        /// <summary>Average a list of entry buffer samples.</summary>
+        public static double AverageEntryBuffer(double[] values)
         {
             if (values == null || values.Length == 0)
             {
