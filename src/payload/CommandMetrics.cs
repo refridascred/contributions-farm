@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command metrics helpers.</summary>
     public static class CommandMetrics
     {
-        /// <summary>Sum the squares of batches samples.</summary>
-        public static double BatchesEnergy(double[] values)
+        /// <summary>Express a command count as a percentage.</summary>
+        public static double CommandPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Compute the greatest common divisor of two token sizes.</summary>
