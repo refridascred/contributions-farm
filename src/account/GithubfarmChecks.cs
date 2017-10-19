@@ -44,22 +44,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Count the vowels in a ticket label.</summary>
-        public static int CountTicketVowels(string text)
+        /// <summary>Express a record cache count as a percentage.</summary>
+        public static double RecordCachePercent(double part, double total)
         {
-            int count = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return part * 100.0 / total;
         }
 
         /// <summary>Average a list of account samples.</summary>
