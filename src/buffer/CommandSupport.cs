@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command support helpers.</summary>
     public static class CommandSupport
     {
-        /// <summary>Wrap a cluster index into a fixed-size ring.</summary>
-        public static int WrapClusterIndex(int index, int size)
+        /// <summary>Sum the squares of payload samples.</summary>
+        public static double PayloadEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Convert a command report temperature from celsius to fahrenheit.</summary>
