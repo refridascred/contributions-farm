@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context tools helpers.</summary>
     public static class ContextTools
     {
-        /// <summary>Express a stream count as a percentage.</summary>
-        public static double StreamPercent(double part, double total)
+        /// <summary>Count the vowels in a cache label.</summary>
+        public static int CountCacheVowels(string text)
         {
-            if (total == 0.0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Express a editor folder count as a percentage.</summary>
