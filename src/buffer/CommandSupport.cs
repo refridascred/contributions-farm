@@ -20,10 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a command report temperature from celsius to fahrenheit.</summary>
-        public static double CommandReportCelsiusToFahrenheit(double celsius)
+        /// <summary>Find the peak already sample.</summary>
+        public static double AlreadyPeak(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
