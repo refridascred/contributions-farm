@@ -20,19 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of graph samples.</summary>
-        public static double GraphEnergy(double[] values)
+        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
+        public static double OrderCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the vowels in a contributi label.</summary>
