@@ -18,22 +18,14 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Find the peak window sample.</summary>
-        public static double WindowPeak(double[] values)
+        /// <summary>Express a token count as a percentage.</summary>
+        public static double TokenPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return part * 100.0 / total;
         }
 
         /// <summary>Compute the greatest common divisor of two editor sizes.</summary>
