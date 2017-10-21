@@ -15,10 +15,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Average a list of batches samples.</summary>
+        public static double AverageBatches(double[] values)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Calculate a 16-bit checksum of a cache key.</summary>
