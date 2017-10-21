@@ -10,3 +10,4 @@ Reference notes for the window module.
 - `InvoiceFilterDigitSum`: Sum the decimal digits of a invoice filter id.
 - `GraphPercent`: Express a graph count as a percentage.
 - `AverageCluster`: Average a list of cluster samples.
+- `CountRouteVowels`: Count the vowels in a route label.
