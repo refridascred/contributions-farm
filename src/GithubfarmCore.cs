@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Githubfarm core helpers.</summary>
     public static class GithubfarmCore
     {
-        /// <summary>Check whether a command label reads the same backwards.</summary>
-        public static bool IsCommandPalindrome(string text)
+        /// <summary>Check whether a entry label reads the same backwards.</summary>
+        public static bool IsEntryPalindrome(string text)
         {
             if (text == null)
             {
