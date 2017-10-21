@@ -35,8 +35,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Count the vowels in a farm label.</summary>
-        public static int CountFarmVowels(string text)
+        /// <summary>Count the vowels in a token label.</summary>
+        public static int CountTokenVowels(string text)
         {
             int count = 0;
             if (text == null)
