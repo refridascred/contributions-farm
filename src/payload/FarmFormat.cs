@@ -37,11 +37,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Interpolate between two batches cache values.</summary>
-        public static double LerpBatchesCache(double a, double b, double t)
+        /// <summary>Express a order count as a percentage.</summary>
+        public static double OrderPercent(double part, double total)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak schema sample.</summary>
