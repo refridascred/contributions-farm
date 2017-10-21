@@ -16,10 +16,17 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Sum the decimal digits of a report id.</summary>
+        public static int ReportDigitSum(long n)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a queue digest id.</summary>
