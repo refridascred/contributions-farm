@@ -15,19 +15,10 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
-        public static int FarmChecksum(string text)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Check whether a session size is a power of two.</summary>
