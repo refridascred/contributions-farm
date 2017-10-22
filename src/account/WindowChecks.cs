@@ -55,10 +55,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a profile session size is a power of two.</summary>
-        public static bool IsProfileSessionPowerOfTwo(long n)
+        /// <summary>Sum the squares of filter samples.</summary>
+        public static double FilterEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
