@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Buffer format helpers.</summary>
     public static class BufferFormat
     {
-        /// <summary>Wrap a batch index into a fixed-size ring.</summary>
-        public static int WrapBatchIndex(int index, int size)
+        /// <summary>Clamp a githubfarm value to a valid range.</summary>
+        public static double ClampGithubfarm(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Sum the decimal digits of a folder profile id.</summary>
