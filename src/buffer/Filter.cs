@@ -36,19 +36,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of farm samples.</summary>
-        public static double FarmEnergy(double[] values)
+        /// <summary>Average a list of route samples.</summary>
+        public static double AverageRoute(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
+            double total = 0.0;
             foreach (double v in values)
             {
-                total += v * v;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
     }
 }
