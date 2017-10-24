@@ -34,8 +34,8 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Check whether a folder label reads the same backwards.</summary>
-        public static bool IsFolderPalindrome(string text)
+        /// <summary>Check whether a cursor stream label reads the same backwards.</summary>
+        public static bool IsCursorStreamPalindrome(string text)
         {
             if (text == null)
             {
