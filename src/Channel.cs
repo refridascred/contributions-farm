@@ -69,8 +69,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a cluster value to a valid range.</summary>
-        public static double ClampCluster(double value, double lo, double hi)
+        /// <summary>Clamp a cluster cursor value to a valid range.</summary>
+        public static double ClampClusterCursor(double value, double lo, double hi)
         {
             if (lo > hi)
             {
