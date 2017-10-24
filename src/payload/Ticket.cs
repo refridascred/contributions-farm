@@ -26,8 +26,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a graph key.</summary>
-        public static int GraphChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a layout farm key.</summary>
+        public static int LayoutFarmChecksum(string text)
         {
             int total = 0;
             if (text == null)
