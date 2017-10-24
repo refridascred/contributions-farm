@@ -30,10 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a commits size is a power of two.</summary>
-        public static bool IsCommitsPowerOfTwo(long n)
+        /// <summary>Wrap a record index into a fixed-size ring.</summary>
+        public static int WrapRecordIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Convert a context temperature from celsius to fahrenheit.</summary>
