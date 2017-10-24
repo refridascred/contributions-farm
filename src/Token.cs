@@ -70,10 +70,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a ticket temperature from celsius to fahrenheit.</summary>
-        public static double TicketCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a commits batch size is a power of two.</summary>
+        public static bool IsCommitsBatchPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
