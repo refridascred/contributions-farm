@@ -38,16 +38,15 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Clamp a editor value to a valid range.</summary>
-        public static double ClampEditor(double value, double lo, double hi)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            if (lo > hi)
+            if (month == 2)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
     }
 }
