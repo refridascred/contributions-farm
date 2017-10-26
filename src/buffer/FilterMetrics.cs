@@ -41,10 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a editor size is a power of two.</summary>
-        public static bool IsEditorPowerOfTwo(long n)
+        /// <summary>Sum the squares of catalog samples.</summary>
+        public static double CatalogEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
