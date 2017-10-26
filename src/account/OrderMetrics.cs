@@ -23,11 +23,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Interpolate between two route order values.</summary>
-        public static double LerpRouteOrder(double a, double b, double t)
+        /// <summary>Sum the squares of token samples.</summary>
+        public static double TokenEnergy(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two batches sizes.</summary>
