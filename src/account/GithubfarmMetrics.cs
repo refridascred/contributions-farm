@@ -29,10 +29,10 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a stream token temperature from celsius to fahrenheit.</summary>
-        public static double StreamTokenCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a graph size is a power of two.</summary>
+        public static bool IsGraphPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Count the vowels in a route label.</summary>
