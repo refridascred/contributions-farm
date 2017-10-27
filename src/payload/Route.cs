@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Route helpers.</summary>
     public static class Route
     {
-        /// <summary>Convert a entry temperature from celsius to fahrenheit.</summary>
-        public static double EntryCelsiusToFahrenheit(double celsius)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (month == 2)
+            {
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
+            }
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Sum the squares of stream samples.</summary>
