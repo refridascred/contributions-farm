@@ -17,19 +17,11 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the squares of stream invoice samples.</summary>
-        public static double StreamInvoiceEnergy(double[] values)
+        /// <summary>Interpolate between two batches digest values.</summary>
+        public static double LerpBatchesDigest(double a, double b, double t)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
