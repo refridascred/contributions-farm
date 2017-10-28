@@ -37,19 +37,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
-        public static int EntryChecksum(string text)
+        /// <summary>Wrap a cache index into a fixed-size ring.</summary>
+        public static int WrapCacheIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Convert a queue metric temperature from celsius to fahrenheit.</summary>
