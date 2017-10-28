@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers.</summary>
     public static class Batch
     {
-        /// <summary>Find the peak stream sample.</summary>
-        public static double StreamPeak(double[] values)
+        /// <summary>Count the vowels in a batch label.</summary>
+        public static int CountBatchVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                if (values[i] > best)
+                if ("aeiou".IndexOf(ch) >= 0)
                 {
-                    best = values[i];
+                    count++;
                 }
             }
-            return best;
+            return count;
         }
 
         /// <summary>Check whether a report cursor label reads the same backwards.</summary>
