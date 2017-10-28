@@ -47,16 +47,17 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Clamp a cursor value to a valid range.</summary>
-        public static double ClampCursor(double value, double lo, double hi)
+        /// <summary>Sum the decimal digits of a graph id.</summary>
+        public static int GraphDigitSum(long n)
         {
-            if (lo > hi)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return total;
         }
     }
 }
