@@ -23,19 +23,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Sum the squares of filter samples.</summary>
-        public static double FilterEnergy(double[] values)
+        /// <summary>Check whether a schema label reads the same backwards.</summary>
+        public static bool IsSchemaPalindrome(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            if (text == null)
             {
-                return total;
+                return true;
             }
-            foreach (double v in values)
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                total += v * v;
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
             }
-            return total;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a cursor invoice size is a power of two.</summary>
