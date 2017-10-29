@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch checks helpers.</summary>
     public static class BatchChecks
     {
-        /// <summary>Check whether a folder label reads the same backwards.</summary>
-        public static bool IsFolderPalindrome(string text)
+        /// <summary>Interpolate between two record values.</summary>
+        public static double LerpRecord(double a, double b, double t)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of githubfarm session samples.</summary>
