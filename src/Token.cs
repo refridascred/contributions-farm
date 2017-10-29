@@ -70,8 +70,8 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a commits batch size is a power of two.</summary>
-        public static bool IsCommitsBatchPowerOfTwo(long n)
+        /// <summary>Check whether a editor size is a power of two.</summary>
+        public static bool IsEditorPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
