@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Wrap a cache index into a fixed-size ring.</summary>
-        public static int WrapCacheIndex(int index, int size)
+        /// <summary>Clamp a farm value to a valid range.</summary>
+        public static double ClampFarm(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Interpolate between two editor values.</summary>
