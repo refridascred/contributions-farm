@@ -20,14 +20,10 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
-        public static int WrapFolderIndex(int index, int size)
+        /// <summary>Check whether a channel size is a power of two.</summary>
+        public static bool IsChannelPowerOfTwo(long n)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
