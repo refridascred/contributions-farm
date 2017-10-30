@@ -24,14 +24,17 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Express a farm count as a percentage.</summary>
-        public static double FarmPercent(double part, double total)
+        /// <summary>Sum the decimal digits of a command token id.</summary>
+        public static int CommandTokenDigitSum(long n)
         {
-            if (total == 0.0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return part * 100.0 / total;
+            return total;
         }
     }
 }
