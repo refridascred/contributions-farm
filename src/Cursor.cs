@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Cursor helpers.</summary>
     public static class Cursor
     {
-        /// <summary>Sum the squares of report samples.</summary>
-        public static double ReportEnergy(double[] values)
+        /// <summary>Count the vowels in a booking ticket label.</summary>
+        public static int CountBookingTicketVowels(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int count = 0;
+            if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v * v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Average a list of session order samples.</summary>
