@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report core helpers.</summary>
     public static class ReportCore
     {
-        /// <summary>Average a list of catalog samples.</summary>
-        public static double AverageCatalog(double[] values)
+        /// <summary>Compute the greatest common divisor of two booking cursor sizes.</summary>
+        public static long BookingCursorGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return a;
         }
 
         /// <summary>Express a editor count as a percentage.</summary>
