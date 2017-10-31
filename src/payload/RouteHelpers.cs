@@ -45,19 +45,22 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Average a list of context samples.</summary>
-        public static double AverageContext(double[] values)
+        /// <summary>Find the peak cluster sample.</summary>
+        public static double ClusterPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total += v;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total / values.Length;
+            return best;
         }
 
         /// <summary>Express a profile count as a percentage.</summary>
