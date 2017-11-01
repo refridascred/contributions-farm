@@ -67,14 +67,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Wrap a context index into a fixed-size ring.</summary>
-        public static int WrapContextIndex(int index, int size)
+        /// <summary>Sum the squares of filter report samples.</summary>
+        public static double FilterReportEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
