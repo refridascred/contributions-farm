@@ -66,19 +66,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Average a list of account githubfarm samples.</summary>
-        public static double AverageAccountGithubfarm(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a already key.</summary>
+        public static int AlreadyChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
     }
 }
