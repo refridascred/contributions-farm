@@ -9,3 +9,4 @@ Reference notes for the batch-checks module.
 - `EntryPeak`: Find the peak entry sample.
 - `FilterPercent`: Express a filter count as a percentage.
 - `GithubfarmClusterGcd`: Compute the greatest common divisor of two githubfarm cluster sizes.
+- `LerpRecord`: Interpolate between two record values.
