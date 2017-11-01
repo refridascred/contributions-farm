@@ -11,15 +11,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Average a list of account samples.</summary>
+        public static double AverageAccount(double[] values)
         {
-            if (month == 2)
+            if (values == null || values.Length == 0)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                return 0.0;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Interpolate between two batches values.</summary>
