@@ -17,8 +17,8 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the decimal digits of a folder profile id.</summary>
-        public static int FolderProfileDigitSum(long n)
+        /// <summary>Sum the decimal digits of a editor cache id.</summary>
+        public static int EditorCacheDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
