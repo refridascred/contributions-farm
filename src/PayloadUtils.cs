@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload utils helpers.</summary>
     public static class PayloadUtils
     {
-        /// <summary>Wrap a entry index into a fixed-size ring.</summary>
-        public static int WrapEntryIndex(int index, int size)
+        /// <summary>Count the vowels in a order label.</summary>
+        public static int CountOrderVowels(string text)
         {
-            if (size <= 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0;
+                return count;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Sum the squares of session samples.</summary>
