@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry utils helpers.</summary>
     public static class EntryUtils
     {
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Express a booking count as a percentage.</summary>
+        public static double BookingPercent(double part, double total)
         {
-            if (month == 2)
+            if (total == 0.0)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                return 0.0;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            return part * 100.0 / total;
         }
 
         /// <summary>Wrap a session index into a fixed-size ring.</summary>
