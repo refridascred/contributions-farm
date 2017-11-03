@@ -16,19 +16,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Average a list of catalog ticket samples.</summary>
-        public static double AverageCatalogTicket(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a account key.</summary>
+        public static int AccountChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Find the peak booking sample.</summary>
