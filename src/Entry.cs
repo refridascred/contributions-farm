@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry helpers.</summary>
     public static class Entry
     {
-        /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
-        public static double ProfileCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a report cursor label reads the same backwards.</summary>
+        public static bool IsReportCursorPalindrome(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
