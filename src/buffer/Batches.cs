@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches helpers.</summary>
     public static class Batches
     {
-        /// <summary>Convert a farm queue temperature from celsius to fahrenheit.</summary>
-        public static double FarmQueueCelsiusToFahrenheit(double celsius)
+        /// <summary>Count the vowels in a batch label.</summary>
+        public static int CountBatchVowels(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Sum the decimal digits of a counter id.</summary>
