@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Count the vowels in a session label.</summary>
-        public static int CountSessionVowels(string text)
+        /// <summary>Sum the squares of digest samples.</summary>
+        public static double DigestEnergy(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v * v;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
