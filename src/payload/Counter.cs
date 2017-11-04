@@ -22,19 +22,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Sum the squares of invoice samples.</summary>
-        public static double InvoiceEnergy(double[] values)
+        /// <summary>Convert a context temperature from celsius to fahrenheit.</summary>
+        public static double ContextCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Calculate a 16-bit checksum of a layout command key.</summary>
