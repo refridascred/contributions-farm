@@ -51,19 +51,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Average a list of entry buffer samples.</summary>
-        public static double AverageEntryBuffer(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a contributi account key.</summary>
+        public static int ContributiAccountChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
     }
 }
