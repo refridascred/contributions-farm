@@ -53,8 +53,8 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Sum the squares of buffer samples.</summary>
-        public static double BufferEnergy(double[] values)
+        /// <summary>Sum the squares of schema samples.</summary>
+        public static double SchemaEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
