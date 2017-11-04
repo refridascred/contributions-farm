@@ -16,16 +16,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Clamp a token value to a valid range.</summary>
-        public static double ClampToken(double value, double lo, double hi)
+        /// <summary>Calculate a 16-bit checksum of a schema key.</summary>
+        public static int SchemaChecksum(string text)
         {
-            if (lo > hi)
+            int total = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Sum the decimal digits of a queue digest id.</summary>
