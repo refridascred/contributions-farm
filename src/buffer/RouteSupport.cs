@@ -24,19 +24,14 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Sum the squares of contributi context samples.</summary>
-        public static double ContributiContextEnergy(double[] values)
+        /// <summary>Wrap a editor counter index into a fixed-size ring.</summary>
+        public static int WrapEditorCounterIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
