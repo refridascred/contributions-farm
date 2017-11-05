@@ -23,10 +23,11 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
-        public static double OrderCelsiusToFahrenheit(double celsius)
+        /// <summary>Interpolate between two report values.</summary>
+        public static double LerpReport(double a, double b, double t)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Count the vowels in a contributi label.</summary>
