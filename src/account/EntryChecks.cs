@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Average a list of channel samples.</summary>
-        public static double AverageChannel(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
+        public static int BatchChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
     }
 }
