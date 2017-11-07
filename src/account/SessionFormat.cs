@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a filter value to a valid range.</summary>
-        public static double ClampFilter(double value, double lo, double hi)
+        /// <summary>Clamp a cluster value to a valid range.</summary>
+        public static double ClampCluster(double value, double lo, double hi)
         {
             if (lo > hi)
             {
