@@ -20,10 +20,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a channel size is a power of two.</summary>
-        public static bool IsChannelPowerOfTwo(long n)
+        /// <summary>Sum the squares of metric already samples.</summary>
+        public static double MetricAlreadyEnergy(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
