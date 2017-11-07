@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor helpers.</summary>
     public static class Editor
     {
-        /// <summary>Convert a route temperature from celsius to fahrenheit.</summary>
-        public static double RouteCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a cursor size is a power of two.</summary>
+        public static bool IsCursorPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Clamp a queue value to a valid range.</summary>
