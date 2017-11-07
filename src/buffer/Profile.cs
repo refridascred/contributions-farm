@@ -34,14 +34,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Wrap a catalog batches index into a fixed-size ring.</summary>
-        public static int WrapCatalogBatchesIndex(int index, int size)
+        /// <summary>Express a payload context count as a percentage.</summary>
+        public static double PayloadContextPercent(double part, double total)
         {
-            if (size <= 0)
+            if (total == 0.0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            return part * 100.0 / total;
         }
     }
 }
