@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Layout core helpers.</summary>
     public static class LayoutCore
     {
-        /// <summary>Compute the greatest common divisor of two editor report sizes.</summary>
-        public static long EditorReportGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two graph sizes.</summary>
+        public static long GraphGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
