@@ -28,19 +28,14 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a layout command key.</summary>
-        public static int LayoutCommandChecksum(string text)
+        /// <summary>Express a report count as a percentage.</summary>
+        public static double ReportPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Clamp a layout value to a valid range.</summary>
