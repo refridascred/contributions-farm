@@ -30,8 +30,8 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Wrap a token index into a fixed-size ring.</summary>
-        public static int WrapTokenIndex(int index, int size)
+        /// <summary>Wrap a invoice cluster index into a fixed-size ring.</summary>
+        public static int WrapInvoiceClusterIndex(int index, int size)
         {
             if (size <= 0)
             {
