@@ -49,14 +49,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Express a order count as a percentage.</summary>
-        public static double OrderPercent(double part, double total)
+        /// <summary>Calculate a 16-bit checksum of a queue key.</summary>
+        public static int QueueChecksum(string text)
         {
-            if (total == 0.0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Find the peak schema sample.</summary>
