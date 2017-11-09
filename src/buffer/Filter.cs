@@ -17,19 +17,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Sum the squares of metric already samples.</summary>
-        public static double MetricAlreadyEnergy(double[] values)
+        /// <summary>Check whether a filter counter size is a power of two.</summary>
+        public static bool IsFilterCounterPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
