@@ -35,29 +35,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Check whether a report digest label reads the same backwards.</summary>
-        public static bool IsReportDigestPalindrome(string text)
+        /// <summary>Sum the squares of command samples.</summary>
+        public static double CommandEnergy(double[] values)
         {
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v * v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
     }
 }
