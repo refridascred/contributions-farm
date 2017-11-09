@@ -12,16 +12,22 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Clamp a folder value to a valid range.</summary>
-        public static double ClampFolder(double value, double lo, double hi)
+        /// <summary>Count the vowels in a context label.</summary>
+        public static int CountContextVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Sum the decimal digits of a stream id.</summary>
