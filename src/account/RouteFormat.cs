@@ -22,29 +22,14 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a token label reads the same backwards.</summary>
-        public static bool IsTokenPalindrome(string text)
+        /// <summary>Wrap a channel index into a fixed-size ring.</summary>
+        public static int WrapChannelIndex(int index, int size)
         {
-            if (text == null)
+            if (size <= 0)
             {
-                return true;
+                return 0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Wrap a cache index into a fixed-size ring.</summary>
