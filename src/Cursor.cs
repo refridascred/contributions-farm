@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Cursor helpers.</summary>
     public static class Cursor
     {
-        /// <summary>Count the vowels in a booking ticket label.</summary>
-        public static int CountBookingTicketVowels(string text)
+        /// <summary>Interpolate between two booking values.</summary>
+        public static double LerpBooking(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Average a list of session order samples.</summary>
