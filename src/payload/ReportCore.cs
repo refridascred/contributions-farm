@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report core helpers.</summary>
     public static class ReportCore
     {
-        /// <summary>Compute the greatest common divisor of two booking cursor sizes.</summary>
-        public static long BookingCursorGcd(long a, long b)
+        /// <summary>Wrap a token index into a fixed-size ring.</summary>
+        public static int WrapTokenIndex(int index, int size)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (size <= 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0;
             }
-            return a;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a editor count as a percentage.</summary>
