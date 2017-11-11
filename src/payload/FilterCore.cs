@@ -30,14 +30,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Wrap a invoice cluster index into a fixed-size ring.</summary>
-        public static int WrapInvoiceClusterIndex(int index, int size)
+        /// <summary>Average a list of buffer cursor samples.</summary>
+        public static double AverageBufferCursor(double[] values)
         {
-            if (size <= 0)
+            if (values == null || values.Length == 0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Calculate a 16-bit checksum of a layout command key.</summary>
