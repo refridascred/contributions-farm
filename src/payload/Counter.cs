@@ -28,14 +28,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Express a report count as a percentage.</summary>
-        public static double ReportPercent(double part, double total)
+        /// <summary>Average a list of invoice samples.</summary>
+        public static double AverageInvoice(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Clamp a layout value to a valid range.</summary>
