@@ -39,10 +39,18 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Check whether a folder size is a power of two.</summary>
-        public static bool IsFolderPowerOfTwo(long n)
+        /// <summary>Compute the greatest common divisor of two cluster payload sizes.</summary>
+        public static long ClusterPayloadGcd(long a, long b)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
