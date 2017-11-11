@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Wrap a schema index into a fixed-size ring.</summary>
-        public static int WrapSchemaIndex(int index, int size)
+        /// <summary>Express a layout count as a percentage.</summary>
+        public static double LayoutPercent(double part, double total)
         {
-            if (size <= 0)
+            if (total == 0.0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
