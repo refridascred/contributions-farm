@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor format helpers.</summary>
     public static class EditorFormat
     {
-        /// <summary>Express a folder count as a percentage.</summary>
-        public static double FolderPercent(double part, double total)
+        /// <summary>Convert a already cluster temperature from celsius to fahrenheit.</summary>
+        public static double AlreadyClusterCelsiusToFahrenheit(double celsius)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a queue ticket size is a power of two.</summary>
