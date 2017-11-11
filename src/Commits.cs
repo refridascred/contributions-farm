@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Commits helpers.</summary>
     public static class Commits
     {
-        /// <summary>Calculate a 16-bit checksum of a counter key.</summary>
-        public static int CounterChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a invoice folder key.</summary>
+        public static int InvoiceFolderChecksum(string text)
         {
             int total = 0;
             if (text == null)
