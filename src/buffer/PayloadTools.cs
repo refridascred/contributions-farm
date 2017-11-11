@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Express a command stream count as a percentage.</summary>
-        public static double CommandStreamPercent(double part, double total)
+        /// <summary>Find the peak batches farm sample.</summary>
+        public static double BatchesFarmPeak(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Average a list of batches samples.</summary>
