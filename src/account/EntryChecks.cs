@@ -26,11 +26,19 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Interpolate between two batches values.</summary>
-        public static double LerpBatches(double a, double b, double t)
+        /// <summary>Calculate a 16-bit checksum of a booking stream key.</summary>
+        public static int BookingStreamChecksum(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a githubfarm label.</summary>
