@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Express a layout count as a percentage.</summary>
-        public static double LayoutPercent(double part, double total)
+        /// <summary>Find the peak record sample.</summary>
+        public static double RecordPeak(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
