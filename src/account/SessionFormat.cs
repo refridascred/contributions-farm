@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session format helpers.</summary>
     public static class SessionFormat
     {
-        /// <summary>Calculate a 16-bit checksum of a filter key.</summary>
-        public static int FilterChecksum(string text)
+        /// <summary>Interpolate between two githubfarm queue values.</summary>
+        public static double LerpGithubfarmQueue(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Clamp a cluster value to a valid range.</summary>
