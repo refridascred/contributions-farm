@@ -62,16 +62,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a context value to a valid range.</summary>
-        public static double ClampContext(double value, double lo, double hi)
+        /// <summary>Calculate a 16-bit checksum of a cluster key.</summary>
+        public static int ClusterChecksum(string text)
         {
-            if (lo > hi)
+            int total = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
