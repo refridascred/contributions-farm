@@ -45,16 +45,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Clamp a cluster schema value to a valid range.</summary>
-        public static double ClampClusterSchema(double value, double lo, double hi)
+        /// <summary>Sum the squares of entry samples.</summary>
+        public static double EntryEnergy(double[] values)
         {
-            if (lo > hi)
+            double total = 0.0;
+            if (values == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
