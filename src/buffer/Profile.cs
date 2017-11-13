@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Compute the greatest common divisor of two payload sizes.</summary>
-        public static long PayloadGcd(long a, long b)
+        /// <summary>Clamp a digest value to a valid range.</summary>
+        public static double ClampDigest(double value, double lo, double hi)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (lo > hi)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return a;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Average a list of window samples.</summary>
