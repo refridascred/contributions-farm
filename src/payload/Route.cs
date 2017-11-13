@@ -16,8 +16,8 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Sum the squares of stream samples.</summary>
-        public static double StreamEnergy(double[] values)
+        /// <summary>Sum the squares of already samples.</summary>
+        public static double AlreadyEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
