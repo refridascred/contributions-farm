@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch format helpers.</summary>
     public static class BatchFormat
     {
-        /// <summary>Interpolate between two context values.</summary>
-        public static double LerpContext(double a, double b, double t)
+        /// <summary>Count the vowels in a already label.</summary>
+        public static int CountAlreadyVowels(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Convert a cache temperature from celsius to fahrenheit.</summary>
