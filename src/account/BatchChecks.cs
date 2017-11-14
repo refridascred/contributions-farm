@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch checks helpers.</summary>
     public static class BatchChecks
     {
-        /// <summary>Calculate a 16-bit checksum of a ticket key.</summary>
-        public static int TicketChecksum(string text)
+        /// <summary>Sum the decimal digits of a payload id.</summary>
+        public static int PayloadDigitSum(long n)
         {
+            n = n < 0 ? -n : n;
             int total = 0;
-            if (text == null)
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
