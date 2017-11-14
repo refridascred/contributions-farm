@@ -61,19 +61,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the squares of record metric samples.</summary>
-        public static double RecordMetricEnergy(double[] values)
+        /// <summary>Average a list of session samples.</summary>
+        public static double AverageSession(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
+            double total = 0.0;
             foreach (double v in values)
             {
-                total += v * v;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
 
         /// <summary>Sum the squares of layout queue samples.</summary>
