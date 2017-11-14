@@ -23,29 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a schema label reads the same backwards.</summary>
-        public static bool IsSchemaPalindrome(string text)
+        /// <summary>Count the vowels in a cluster label.</summary>
+        public static int CountClusterVowels(string text)
         {
+            int count = 0;
             if (text == null)
             {
-                return true;
+                return count;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                if (char.IsLetterOrDigit(ch))
+                if ("aeiou".IndexOf(ch) >= 0)
                 {
-                    cleaned.Append(char.ToLowerInvariant(ch));
+                    count++;
                 }
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return count;
         }
 
         /// <summary>Check whether a cursor invoice size is a power of two.</summary>
