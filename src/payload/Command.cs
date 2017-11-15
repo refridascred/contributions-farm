@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Interpolate between two already values.</summary>
-        public static double LerpAlready(double a, double b, double t)
+        /// <summary>Calculate a 16-bit checksum of a cluster key.</summary>
+        public static int ClusterChecksum(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Wrap a already index into a fixed-size ring.</summary>
