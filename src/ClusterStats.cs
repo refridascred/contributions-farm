@@ -30,17 +30,10 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Sum the decimal digits of a folder id.</summary>
-        public static int FolderDigitSum(long n)
+        /// <summary>Check whether a farm size is a power of two.</summary>
+        public static bool IsFarmPowerOfTwo(long n)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
