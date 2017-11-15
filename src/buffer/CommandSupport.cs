@@ -31,14 +31,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Wrap a contributi index into a fixed-size ring.</summary>
-        public static int WrapContributiIndex(int index, int size)
+        /// <summary>Sum the squares of buffer profile samples.</summary>
+        public static double BufferProfileEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
