@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph helpers.</summary>
     public static class Graph
     {
-        /// <summary>Convert a layout temperature from celsius to fahrenheit.</summary>
-        public static double LayoutCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the decimal digits of a batch schema id.</summary>
+        public static int BatchSchemaDigitSum(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a account label.</summary>
