@@ -39,18 +39,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Compute the greatest common divisor of two githubfarm cluster sizes.</summary>
-        public static long GithubfarmClusterGcd(long a, long b)
+        /// <summary>Express a digest count as a percentage.</summary>
+        public static double DigestPercent(double part, double total)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (total == 0.0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            return part * 100.0 / total;
         }
 
         /// <summary>Wrap a buffer index into a fixed-size ring.</summary>
