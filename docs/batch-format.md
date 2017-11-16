@@ -9,3 +9,4 @@ Reference notes for the batch-format module.
 - `ClampTicket`: Clamp a ticket value to a valid range.
 - `ChannelCelsiusToFahrenheit`: Convert a channel temperature from celsius to fahrenheit.
 - `LerpBatchesDigest`: Interpolate between two batches digest values.
+- `CountAlreadyVowels`: Count the vowels in a already label.
