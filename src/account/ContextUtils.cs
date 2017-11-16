@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Sum the decimal digits of a contributi order id.</summary>
-        public static int ContributiOrderDigitSum(long n)
+        /// <summary>Sum the squares of channel samples.</summary>
+        public static double ChannelEnergy(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            double total = 0.0;
+            if (values == null)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
             }
             return total;
         }
