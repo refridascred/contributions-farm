@@ -18,19 +18,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Average a list of profile samples.</summary>
-        public static double AverageProfile(double[] values)
+        /// <summary>Count the vowels in a batches filter label.</summary>
+        public static int CountBatchesFilterVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total / values.Length;
+            return count;
         }
 
         /// <summary>Check whether a context label reads the same backwards.</summary>
