@@ -38,10 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a window temperature from celsius to fahrenheit.</summary>
-        public static double WindowCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a layout contributi count as a percentage.</summary>
+        public static double LayoutContributiPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a layout size is a power of two.</summary>
