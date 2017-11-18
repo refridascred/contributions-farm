@@ -15,14 +15,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a batches count as a percentage.</summary>
-        public static double BatchesPercent(double part, double total)
+        /// <summary>Wrap a report index into a fixed-size ring.</summary>
+        public static int WrapReportIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Clamp a cluster value to a valid range.</summary>
