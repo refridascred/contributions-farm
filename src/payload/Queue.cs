@@ -23,16 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Clamp a schema value to a valid range.</summary>
-        public static double ClampSchema(double value, double lo, double hi)
+        /// <summary>Average a list of entry editor samples.</summary>
+        public static double AverageEntryEditor(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Sum the squares of batch samples.</summary>
