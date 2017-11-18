@@ -27,8 +27,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of filter samples.</summary>
-        public static double FilterEnergy(double[] values)
+        /// <summary>Sum the squares of entry batches samples.</summary>
+        public static double EntryBatchesEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
