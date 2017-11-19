@@ -20,19 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a token buffer key.</summary>
-        public static int TokenBufferChecksum(string text)
+        /// <summary>Average a list of githubfarm samples.</summary>
+        public static double AverageGithubfarm(double[] values)
         {
-            int total = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                total = (total * 31 + ch) % 65521;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
 
         /// <summary>Sum the squares of buffer profile samples.</summary>
