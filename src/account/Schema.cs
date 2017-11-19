@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Schema helpers.</summary>
     public static class Schema
     {
-        /// <summary>Calculate a 16-bit checksum of a metric key.</summary>
-        public static int MetricChecksum(string text)
+        /// <summary>Wrap a order index into a fixed-size ring.</summary>
+        public static int WrapOrderIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two invoice sizes.</summary>
