@@ -44,11 +44,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Interpolate between two farm session values.</summary>
-        public static double LerpFarmSession(double a, double b, double t)
+        /// <summary>Average a list of cluster samples.</summary>
+        public static double AverageCluster(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Convert a layout graph temperature from celsius to fahrenheit.</summary>
