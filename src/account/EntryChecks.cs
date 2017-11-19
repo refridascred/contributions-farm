@@ -26,19 +26,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a booking stream key.</summary>
-        public static int BookingStreamChecksum(string text)
+        /// <summary>Compute the greatest common divisor of two context sizes.</summary>
+        public static long ContextGcd(long a, long b)
         {
-            int total = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return a;
         }
 
         /// <summary>Count the vowels in a githubfarm label.</summary>
