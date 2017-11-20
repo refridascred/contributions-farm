@@ -23,8 +23,8 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a report cursor label reads the same backwards.</summary>
-        public static bool IsReportCursorPalindrome(string text)
+        /// <summary>Check whether a cluster label reads the same backwards.</summary>
+        public static bool IsClusterPalindrome(string text)
         {
             if (text == null)
             {
