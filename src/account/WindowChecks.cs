@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Window checks helpers.</summary>
     public static class WindowChecks
     {
-        /// <summary>Check whether a batch label reads the same backwards.</summary>
-        public static bool IsBatchPalindrome(string text)
+        /// <summary>Convert a context temperature from celsius to fahrenheit.</summary>
+        public static double ContextCelsiusToFahrenheit(double celsius)
         {
-            if (text == null)
-            {
-                return true;
-            }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two layout values.</summary>
