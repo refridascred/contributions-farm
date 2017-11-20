@@ -10,3 +10,4 @@ Reference notes for the batch-format module.
 - `ChannelCelsiusToFahrenheit`: Convert a channel temperature from celsius to fahrenheit.
 - `LerpBatchesDigest`: Interpolate between two batches digest values.
 - `CountAlreadyVowels`: Count the vowels in a already label.
+- `CacheProfileChecksum`: Calculate a 16-bit checksum of a cache profile key.
