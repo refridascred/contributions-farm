@@ -18,22 +18,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a account label.</summary>
-        public static int CountAccountVowels(string text)
+        /// <summary>Check whether a route label reads the same backwards.</summary>
+        public static bool IsRoutePalindrome(string text)
         {
-            int count = 0;
             if (text == null)
             {
-                return count;
+                return true;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
+                if (char.IsLetterOrDigit(ch))
                 {
-                    count++;
+                    cleaned.Append(char.ToLowerInvariant(ch));
                 }
             }
-            return count;
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a commits label reads the same backwards.</summary>
