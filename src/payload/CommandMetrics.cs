@@ -29,22 +29,10 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Find the peak filter editor sample.</summary>
-        public static double FilterEditorPeak(double[] values)
+        /// <summary>Convert a booking temperature from celsius to fahrenheit.</summary>
+        public static double BookingCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the vowels in a digest label.</summary>
