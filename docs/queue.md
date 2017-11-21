@@ -8,3 +8,4 @@ Reference notes for the queue module.
 - `QueueEnergy`: Sum the squares of queue samples.
 - `LerpCommand`: Interpolate between two command values.
 - `StreamDigitSum`: Sum the decimal digits of a stream id.
+- `AverageEntryEditor`: Average a list of entry editor samples.
