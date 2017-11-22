@@ -19,16 +19,22 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Clamp a queue value to a valid range.</summary>
-        public static double ClampQueue(double value, double lo, double hi)
+        /// <summary>Count the vowels in a already label.</summary>
+        public static int CountAlreadyVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Interpolate between two order values.</summary>
