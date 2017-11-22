@@ -10,3 +10,4 @@ Reference notes for the batch-checks module.
 - `FilterPercent`: Express a filter count as a percentage.
 - `GithubfarmClusterGcd`: Compute the greatest common divisor of two githubfarm cluster sizes.
 - `LerpRecord`: Interpolate between two record values.
+- `DigestPercent`: Express a digest count as a percentage.
