@@ -64,8 +64,8 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Average a list of account samples.</summary>
-        public static double AverageAccount(double[] values)
+        /// <summary>Average a list of command samples.</summary>
+        public static double AverageCommand(double[] values)
         {
             if (values == null || values.Length == 0)
             {
