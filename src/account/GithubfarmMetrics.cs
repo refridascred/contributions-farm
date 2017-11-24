@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm metrics helpers.</summary>
     public static class GithubfarmMetrics
     {
-        /// <summary>Convert a window temperature from celsius to fahrenheit.</summary>
-        public static double WindowCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of farm ticket samples.</summary>
+        public static double FarmTicketEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Clamp a already value to a valid range.</summary>
