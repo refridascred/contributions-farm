@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Calculate a 16-bit checksum of a cluster key.</summary>
-        public static int ClusterChecksum(string text)
+        /// <summary>Check whether a buffer profile size is a power of two.</summary>
+        public static bool IsBufferProfilePowerOfTwo(long n)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a already index into a fixed-size ring.</summary>
