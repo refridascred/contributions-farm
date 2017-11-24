@@ -59,8 +59,8 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a cursor size is a power of two.</summary>
-        public static bool IsCursorPowerOfTwo(long n)
+        /// <summary>Check whether a catalog size is a power of two.</summary>
+        public static bool IsCatalogPowerOfTwo(long n)
         {
             return n > 0 && (n & (n - 1)) == 0;
         }
