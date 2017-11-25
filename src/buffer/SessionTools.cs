@@ -18,17 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a ticket farm id.</summary>
-        public static int TicketFarmDigitSum(long n)
+        /// <summary>Average a list of batch samples.</summary>
+        public static double AverageBatch(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Express a ticket count as a percentage.</summary>
