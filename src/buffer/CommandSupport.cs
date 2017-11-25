@@ -35,17 +35,17 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of buffer profile samples.</summary>
-        public static double BufferProfileEnergy(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a channel token key.</summary>
+        public static int ChannelTokenChecksum(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int total = 0;
+            if (text == null)
             {
                 return total;
             }
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v * v;
+                total = (total * 31 + ch) % 65521;
             }
             return total;
         }
