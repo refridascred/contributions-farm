@@ -81,14 +81,10 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Express a profile count as a percentage.</summary>
-        public static double ProfilePercent(double part, double total)
+        /// <summary>Convert a already temperature from celsius to fahrenheit.</summary>
+        public static double AlreadyCelsiusToFahrenheit(double celsius)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
