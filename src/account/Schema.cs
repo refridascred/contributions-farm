@@ -29,29 +29,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Check whether a cursor stream label reads the same backwards.</summary>
-        public static bool IsCursorStreamPalindrome(string text)
+        /// <summary>Express a ticket count as a percentage.</summary>
+        public static double TicketPercent(double part, double total)
         {
-            if (text == null)
+            if (total == 0.0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return part * 100.0 / total;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
