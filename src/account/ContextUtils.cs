@@ -20,19 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of context samples.</summary>
-        public static double ContextEnergy(double[] values)
+        /// <summary>Wrap a folder index into a fixed-size ring.</summary>
+        public static int WrapFolderIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Clamp a batch entry value to a valid range.</summary>
