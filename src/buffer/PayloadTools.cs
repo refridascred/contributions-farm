@@ -76,10 +76,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Convert a catalog temperature from celsius to fahrenheit.</summary>
-        public static double CatalogCelsiusToFahrenheit(double celsius)
+        /// <summary>Express a report count as a percentage.</summary>
+        public static double ReportPercent(double part, double total)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
     }
 }
