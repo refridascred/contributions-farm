@@ -62,14 +62,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Express a graph count as a percentage.</summary>
-        public static double GraphPercent(double part, double total)
+        /// <summary>Calculate a 16-bit checksum of a session key.</summary>
+        public static int SessionChecksum(string text)
         {
-            if (total == 0.0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
