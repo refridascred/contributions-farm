@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Order helpers.</summary>
     public static class Order
     {
-        /// <summary>Count the vowels in a profile ticket label.</summary>
-        public static int CountProfileTicketVowels(string text)
+        /// <summary>Average a list of graph samples.</summary>
+        public static double AverageGraph(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v;
             }
-            return count;
+            return total / values.Length;
         }
 
         /// <summary>Interpolate between two catalog values.</summary>
