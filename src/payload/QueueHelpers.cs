@@ -30,10 +30,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Check whether a invoice size is a power of two.</summary>
-        public static bool IsInvoicePowerOfTwo(long n)
+        /// <summary>Convert a account cursor temperature from celsius to fahrenheit.</summary>
+        public static double AccountCursorCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Compute the greatest common divisor of two window sizes.</summary>
