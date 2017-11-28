@@ -36,14 +36,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a token count as a percentage.</summary>
-        public static double TokenPercent(double part, double total)
+        /// <summary>Check whether a layout label reads the same backwards.</summary>
+        public static bool IsLayoutPalindrome(string text)
         {
-            if (total == 0.0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            return part * 100.0 / total;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
