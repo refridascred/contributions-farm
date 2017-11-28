@@ -20,11 +20,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Interpolate between two queue values.</summary>
-        public static double LerpQueue(double a, double b, double t)
+        /// <summary>Clamp a buffer value to a valid range.</summary>
+        public static double ClampBuffer(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
