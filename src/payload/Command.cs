@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Check whether a buffer profile size is a power of two.</summary>
-        public static bool IsBufferProfilePowerOfTwo(long n)
+        /// <summary>Average a list of order samples.</summary>
+        public static double AverageOrder(double[] values)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Wrap a already index into a fixed-size ring.</summary>
