@@ -25,14 +25,16 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a batch profile index into a fixed-size ring.</summary>
-        public static int WrapBatchProfileIndex(int index, int size)
+        /// <summary>Clamp a folder value to a valid range.</summary>
+        public static double ClampFolder(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
