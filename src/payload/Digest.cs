@@ -22,16 +22,10 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Clamp a channel value to a valid range.</summary>
-        public static double ClampChannel(double value, double lo, double hi)
+        /// <summary>Convert a already temperature from celsius to fahrenheit.</summary>
+        public static double AlreadyCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Find the peak catalog sample.</summary>
