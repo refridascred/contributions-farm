@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Average a list of entry editor samples.</summary>
-        public static double AverageEntryEditor(double[] values)
+        /// <summary>Sum the decimal digits of a command layout id.</summary>
+        public static int CommandLayoutDigitSum(long n)
         {
-            if (values == null || values.Length == 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0.0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Sum the squares of batch samples.</summary>
