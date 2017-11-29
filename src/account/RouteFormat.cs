@@ -22,8 +22,8 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Wrap a channel index into a fixed-size ring.</summary>
-        public static int WrapChannelIndex(int index, int size)
+        /// <summary>Wrap a cluster index into a fixed-size ring.</summary>
+        public static int WrapClusterIndex(int index, int size)
         {
             if (size <= 0)
             {
