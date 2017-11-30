@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Batch helpers.</summary>
     public static class Batch
     {
-        /// <summary>Count the vowels in a batch label.</summary>
-        public static int CountBatchVowels(string text)
+        /// <summary>Count the vowels in a contributi label.</summary>
+        public static int CountContributiVowels(string text)
         {
             int count = 0;
             if (text == null)
