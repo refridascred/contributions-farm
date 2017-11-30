@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Session tools helpers.</summary>
     public static class SessionTools
     {
-        /// <summary>Sum the decimal digits of a cursor id.</summary>
-        public static int CursorDigitSum(long n)
+        /// <summary>Sum the decimal digits of a batches id.</summary>
+        public static int BatchesDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
