@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Route format helpers.</summary>
     public static class RouteFormat
     {
-        /// <summary>Count the days in a calendar month.</summary>
-        public static int DaysInMonth(int year, int month)
+        /// <summary>Clamp a layout context value to a valid range.</summary>
+        public static double ClampLayoutContext(double value, double lo, double hi)
         {
-            if (month == 2)
+            if (lo > hi)
             {
-                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-                return leap ? 29 : 28;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
