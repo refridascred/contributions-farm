@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Order helpers.</summary>
     public static class Order
     {
-        /// <summary>Average a list of graph samples.</summary>
-        public static double AverageGraph(double[] values)
+        /// <summary>Sum the squares of cache samples.</summary>
+        public static double CacheEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Interpolate between two catalog values.</summary>
