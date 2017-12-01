@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers.</summary>
     public static class Profile
     {
-        /// <summary>Clamp a digest value to a valid range.</summary>
-        public static double ClampDigest(double value, double lo, double hi)
+        /// <summary>Convert a batch temperature from celsius to fahrenheit.</summary>
+        public static double BatchCelsiusToFahrenheit(double celsius)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the vowels in a catalog label.</summary>
