@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Cursor helpers.</summary>
     public static class Cursor
     {
-        /// <summary>Interpolate between two booking values.</summary>
-        public static double LerpBooking(double a, double b, double t)
+        /// <summary>Clamp a record cursor value to a valid range.</summary>
+        public static double ClampRecordCursor(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Average a list of session order samples.</summary>
