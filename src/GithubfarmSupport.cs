@@ -23,19 +23,14 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the squares of queue record samples.</summary>
-        public static double QueueRecordEnergy(double[] values)
+        /// <summary>Wrap a invoice filter index into a fixed-size ring.</summary>
+        public static int WrapInvoiceFilterIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a layout contributi count as a percentage.</summary>
