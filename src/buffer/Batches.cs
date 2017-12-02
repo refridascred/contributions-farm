@@ -61,10 +61,14 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Express a stream count as a percentage.</summary>
+        public static double StreamPercent(double part, double total)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak filter editor sample.</summary>
