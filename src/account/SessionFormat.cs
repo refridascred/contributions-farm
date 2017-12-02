@@ -44,18 +44,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Compute the greatest common divisor of two cluster payload sizes.</summary>
-        public static long ClusterPayloadGcd(long a, long b)
+        /// <summary>Convert a profile catalog temperature from celsius to fahrenheit.</summary>
+        public static double ProfileCatalogCelsiusToFahrenheit(double celsius)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
-            {
-                long next = a % b;
-                a = b;
-                b = next;
-            }
-            return a;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
