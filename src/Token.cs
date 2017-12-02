@@ -70,10 +70,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a editor size is a power of two.</summary>
-        public static bool IsEditorPowerOfTwo(long n)
+        /// <summary>Express a route count as a percentage.</summary>
+        public static double RoutePercent(double part, double total)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return part * 100.0 / total;
         }
     }
 }
