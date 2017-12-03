@@ -25,14 +25,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Wrap a record index into a fixed-size ring.</summary>
-        public static int WrapRecordIndex(int index, int size)
+        /// <summary>Sum the squares of payload channel samples.</summary>
+        public static double PayloadChannelEnergy(double[] values)
         {
-            if (size <= 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0;
+                return total;
             }
-            return ((index % size) + size) % size;
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
