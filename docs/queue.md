@@ -9,3 +9,4 @@ Reference notes for the queue module.
 - `LerpCommand`: Interpolate between two command values.
 - `StreamDigitSum`: Sum the decimal digits of a stream id.
 - `AverageEntryEditor`: Average a list of entry editor samples.
+- `PayloadGcd`: Compute the greatest common divisor of two payload sizes.
