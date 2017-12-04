@@ -11,19 +11,22 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the squares of already samples.</summary>
-        public static double AlreadyEnergy(double[] values)
+        /// <summary>Count the vowels in a route label.</summary>
+        public static int CountRouteVowels(string text)
         {
-            double total = 0.0;
-            if (values == null)
+            int count = 0;
+            if (text == null)
             {
-                return total;
+                return count;
             }
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v * v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Clamp a schema value to a valid range.</summary>
