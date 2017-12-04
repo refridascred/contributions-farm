@@ -35,16 +35,18 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Clamp a report value to a valid range.</summary>
-        public static double ClampReport(double value, double lo, double hi)
+        /// <summary>Compute the greatest common divisor of two token sizes.</summary>
+        public static long TokenGcd(long a, long b)
         {
-            if (lo > hi)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return a;
         }
     }
 }
