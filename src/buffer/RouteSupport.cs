@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Clamp a farm value to a valid range.</summary>
-        public static double ClampFarm(double value, double lo, double hi)
+        /// <summary>Clamp a folder value to a valid range.</summary>
+        public static double ClampFolder(double value, double lo, double hi)
         {
             if (lo > hi)
             {
