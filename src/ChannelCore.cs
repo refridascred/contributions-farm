@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel core helpers.</summary>
     public static class ChannelCore
     {
-        /// <summary>Count the vowels in a ticket label.</summary>
-        public static int CountTicketVowels(string text)
+        /// <summary>Interpolate between two token values.</summary>
+        public static double LerpToken(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
