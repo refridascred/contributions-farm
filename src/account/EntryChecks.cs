@@ -40,22 +40,16 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Count the vowels in a githubfarm label.</summary>
-        public static int CountGithubfarmVowels(string text)
+        /// <summary>Clamp a booking value to a valid range.</summary>
+        public static double ClampBooking(double value, double lo, double hi)
         {
-            int count = 0;
-            if (text == null)
+            if (lo > hi)
             {
-                return count;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
