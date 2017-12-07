@@ -30,19 +30,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Average a list of graph counter samples.</summary>
-        public static double AverageGraphCounter(double[] values)
+        /// <summary>Express a cache count as a percentage.</summary>
+        public static double CachePercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return part * 100.0 / total;
         }
 
         /// <summary>Express a account token count as a percentage.</summary>
