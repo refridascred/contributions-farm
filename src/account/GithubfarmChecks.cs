@@ -30,22 +30,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Count the vowels in a cluster label.</summary>
-        public static int CountClusterVowels(string text)
+        /// <summary>Sum the squares of filter samples.</summary>
+        public static double FilterEnergy(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v * v;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check whether a cursor invoice size is a power of two.</summary>
