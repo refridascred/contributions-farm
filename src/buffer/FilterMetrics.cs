@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Filter metrics helpers.</summary>
     public static class FilterMetrics
     {
-        /// <summary>Wrap a farm index into a fixed-size ring.</summary>
-        public static int WrapFarmIndex(int index, int size)
+        /// <summary>Express a window count as a percentage.</summary>
+        public static double WindowPercent(double part, double total)
         {
-            if (size <= 0)
+            if (total == 0.0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the vowels in a session label.</summary>
