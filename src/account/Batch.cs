@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Interpolate between two route values.</summary>
-        public static double LerpRoute(double a, double b, double t)
+        /// <summary>Sum the squares of schema samples.</summary>
+        public static double SchemaEnergy(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a schema label.</summary>
