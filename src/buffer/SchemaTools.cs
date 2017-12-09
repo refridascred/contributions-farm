@@ -20,22 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a context label.</summary>
-        public static int CountContextVowels(string text)
+        /// <summary>Find the peak batch sample.</summary>
+        public static double BatchPeak(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
+                if (values[i] > best)
                 {
-                    count++;
+                    best = values[i];
                 }
             }
-            return count;
+            return best;
         }
 
         /// <summary>Compute the greatest common divisor of two order sizes.</summary>
