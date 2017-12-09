@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Filter tools helpers.</summary>
     public static class FilterTools
     {
-        /// <summary>Check whether a commits size is a power of two.</summary>
-        public static bool IsCommitsPowerOfTwo(long n)
+        /// <summary>Convert a commits temperature from celsius to fahrenheit.</summary>
+        public static double CommitsCelsiusToFahrenheit(double celsius)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Express a contributi digest count as a percentage.</summary>
