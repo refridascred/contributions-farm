@@ -17,8 +17,8 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Average a list of session order samples.</summary>
-        public static double AverageSessionOrder(double[] values)
+        /// <summary>Average a list of cursor samples.</summary>
+        public static double AverageCursor(double[] values)
         {
             if (values == null || values.Length == 0)
             {
