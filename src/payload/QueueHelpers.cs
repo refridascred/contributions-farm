@@ -30,8 +30,8 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Convert a account cursor temperature from celsius to fahrenheit.</summary>
-        public static double AccountCursorCelsiusToFahrenheit(double celsius)
+        /// <summary>Convert a queue route temperature from celsius to fahrenheit.</summary>
+        public static double QueueRouteCelsiusToFahrenheit(double celsius)
         {
             return celsius * 9.0 / 5.0 + 32.0;
         }
