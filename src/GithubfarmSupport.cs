@@ -43,22 +43,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Count the vowels in a commits filter label.</summary>
-        public static int CountCommitsFilterVowels(string text)
+        /// <summary>Convert a invoice githubfarm temperature from celsius to fahrenheit.</summary>
+        public static double InvoiceGithubfarmCelsiusToFahrenheit(double celsius)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
