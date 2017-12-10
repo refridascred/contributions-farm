@@ -36,14 +36,29 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Express a ticket graph count as a percentage.</summary>
-        public static double TicketGraphPercent(double part, double total)
+        /// <summary>Check whether a profile label reads the same backwards.</summary>
+        public static bool IsProfilePalindrome(string text)
         {
-            if (total == 0.0)
+            if (text == null)
             {
-                return 0.0;
+                return true;
             }
-            return part * 100.0 / total;
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
