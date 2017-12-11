@@ -35,16 +35,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Clamp a layout value to a valid range.</summary>
-        public static double ClampLayout(double value, double lo, double hi)
+        /// <summary>Calculate a 16-bit checksum of a folder key.</summary>
+        public static int FolderChecksum(string text)
         {
-            if (lo > hi)
+            int total = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
