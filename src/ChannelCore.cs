@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel core helpers.</summary>
     public static class ChannelCore
     {
-        /// <summary>Interpolate between two token values.</summary>
-        public static double LerpToken(double a, double b, double t)
+        /// <summary>Average a list of cluster githubfarm samples.</summary>
+        public static double AverageClusterGithubfarm(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
