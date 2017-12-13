@@ -25,16 +25,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Clamp a folder value to a valid range.</summary>
-        public static double ClampFolder(double value, double lo, double hi)
+        /// <summary>Calculate a 16-bit checksum of a metric key.</summary>
+        public static int MetricChecksum(string text)
         {
-            if (lo > hi)
+            int total = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
     }
 }
