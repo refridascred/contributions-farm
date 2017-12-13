@@ -20,14 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Express a channel count as a percentage.</summary>
-        public static double ChannelPercent(double part, double total)
+        /// <summary>Calculate a 16-bit checksum of a metric cursor key.</summary>
+        public static int MetricCursorChecksum(string text)
         {
-            if (total == 0.0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check whether a batches label reads the same backwards.</summary>
