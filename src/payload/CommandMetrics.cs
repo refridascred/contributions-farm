@@ -15,17 +15,11 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the decimal digits of a cache id.</summary>
-        public static int CacheDigitSum(long n)
+        /// <summary>Interpolate between two already values.</summary>
+        public static double LerpAlready(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Convert a booking temperature from celsius to fahrenheit.</summary>
