@@ -39,10 +39,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Convert a queue metric temperature from celsius to fahrenheit.</summary>
-        public static double QueueMetricCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of report samples.</summary>
+        public static double ReportEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
     }
 }
