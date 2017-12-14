@@ -23,10 +23,17 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Sum the decimal digits of a report id.</summary>
+        public static int ReportDigitSum(long n)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
+            {
+                total += (int)(n % 10);
+                n /= 10;
+            }
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a digest key.</summary>
