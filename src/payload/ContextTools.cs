@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context tools helpers.</summary>
     public static class ContextTools
     {
-        /// <summary>Calculate a 16-bit checksum of a route buffer key.</summary>
-        public static int RouteBufferChecksum(string text)
+        /// <summary>Convert a metric temperature from celsius to fahrenheit.</summary>
+        public static double MetricCelsiusToFahrenheit(double celsius)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
