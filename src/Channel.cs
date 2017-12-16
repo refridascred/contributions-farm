@@ -11,8 +11,8 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Count the vowels in a batches filter label.</summary>
-        public static int CountBatchesFilterVowels(string text)
+        /// <summary>Count the vowels in a graph label.</summary>
+        public static int CountGraphVowels(string text)
         {
             int count = 0;
             if (text == null)
