@@ -15,8 +15,8 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a editor count as a percentage.</summary>
-        public static double EditorPercent(double part, double total)
+        /// <summary>Express a graph order count as a percentage.</summary>
+        public static double GraphOrderPercent(double part, double total)
         {
             if (total == 0.0)
             {
