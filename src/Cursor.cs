@@ -32,17 +32,15 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of entry batches samples.</summary>
-        public static double EntryBatchesEnergy(double[] values)
+        /// <summary>Sum the decimal digits of a order id.</summary>
+        public static int OrderDigitSum(long n)
         {
-            double total = 0.0;
-            if (values == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
