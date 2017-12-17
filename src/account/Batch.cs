@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers.</summary>
     public static class Batch
     {
-        /// <summary>Count the vowels in a contributi label.</summary>
-        public static int CountContributiVowels(string text)
+        /// <summary>Sum the decimal digits of a farm id.</summary>
+        public static int FarmDigitSum(long n)
         {
-            int count = 0;
-            if (text == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return count;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return total;
         }
 
         /// <summary>Sum the squares of schema samples.</summary>
