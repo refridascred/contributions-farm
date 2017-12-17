@@ -16,10 +16,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Calculate a 16-bit checksum of a cluster key.</summary>
+        public static int ClusterChecksum(string text)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Express a report count as a percentage.</summary>
