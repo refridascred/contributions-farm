@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Schema helpers.</summary>
     public static class Schema
     {
-        /// <summary>Wrap a order index into a fixed-size ring.</summary>
-        public static int WrapOrderIndex(int index, int size)
+        /// <summary>Wrap a commits index into a fixed-size ring.</summary>
+        public static int WrapCommitsIndex(int index, int size)
         {
             if (size <= 0)
             {
