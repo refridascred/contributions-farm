@@ -29,8 +29,8 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Express a payload context count as a percentage.</summary>
-        public static double PayloadContextPercent(double part, double total)
+        /// <summary>Express a cache contributi count as a percentage.</summary>
+        public static double CacheContributiPercent(double part, double total)
         {
             if (total == 0.0)
             {
