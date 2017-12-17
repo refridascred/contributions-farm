@@ -35,29 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a batches label reads the same backwards.</summary>
-        public static bool IsBatchesPalindrome(string text)
+        /// <summary>Calculate a 16-bit checksum of a cursor profile key.</summary>
+        public static int CursorProfileChecksum(string text)
         {
+            int total = 0;
             if (text == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
             foreach (char ch in text)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Clamp a already value to a valid range.</summary>
