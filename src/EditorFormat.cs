@@ -29,11 +29,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Interpolate between two contributi values.</summary>
-        public static double LerpContributi(double a, double b, double t)
+        /// <summary>Sum the squares of cluster samples.</summary>
+        public static double ClusterEnergy(double[] values)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
