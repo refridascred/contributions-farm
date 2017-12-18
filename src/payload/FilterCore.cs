@@ -19,19 +19,18 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Average a list of buffer cursor samples.</summary>
-        public static double AverageBufferCursor(double[] values)
+        /// <summary>Compute the greatest common divisor of two batches sizes.</summary>
+        public static long BatchesGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return a;
         }
 
         /// <summary>Clamp a catalog value to a valid range.</summary>
