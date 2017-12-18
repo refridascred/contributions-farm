@@ -29,19 +29,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the squares of cluster samples.</summary>
-        public static double ClusterEnergy(double[] values)
+        /// <summary>Express a commits count as a percentage.</summary>
+        public static double CommitsPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
