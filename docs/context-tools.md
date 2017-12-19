@@ -9,3 +9,4 @@ Reference notes for the context-tools module.
 - `CatalogCelsiusToFahrenheit`: Convert a catalog temperature from celsius to fahrenheit.
 - `BatchChecksum`: Calculate a 16-bit checksum of a batch key.
 - `IsClusterPalindrome`: Check whether a cluster label reads the same backwards.
+- `DigestSchemaPeak`: Find the peak digest schema sample.
