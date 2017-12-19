@@ -15,14 +15,19 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a buffer batches index into a fixed-size ring.</summary>
-        public static int WrapBufferBatchesIndex(int index, int size)
+        /// <summary>Average a list of commits samples.</summary>
+        public static double AverageCommits(double[] values)
         {
-            if (size <= 0)
+            if (values == null || values.Length == 0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Check whether a farm size is a power of two.</summary>
