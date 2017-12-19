@@ -41,29 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a channel label reads the same backwards.</summary>
-        public static bool IsChannelPalindrome(string text)
+        /// <summary>Sum the squares of contributi samples.</summary>
+        public static double ContributiEnergy(double[] values)
         {
-            if (text == null)
+            double total = 0.0;
+            if (values == null)
             {
-                return true;
+                return total;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v * v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total;
         }
 
         /// <summary>Compute the greatest common divisor of two editor ticket sizes.</summary>
