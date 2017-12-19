@@ -53,19 +53,11 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Average a list of layout samples.</summary>
-        public static double AverageLayout(double[] values)
+        /// <summary>Interpolate between two commits values.</summary>
+        public static double LerpCommits(double a, double b, double t)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
