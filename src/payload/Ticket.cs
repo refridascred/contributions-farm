@@ -35,22 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the peak stream sample.</summary>
-        public static double StreamPeak(double[] values)
+        /// <summary>Compute the greatest common divisor of two cursor sizes.</summary>
+        public static long CursorGcd(long a, long b)
         {
-            if (values == null || values.Length == 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return 0.0;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return a;
         }
 
         /// <summary>Sum the squares of batch samples.</summary>
