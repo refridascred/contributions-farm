@@ -23,17 +23,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Sum the decimal digits of a report id.</summary>
-        public static int ReportDigitSum(long n)
+        /// <summary>Average a list of layout samples.</summary>
+        public static double AverageLayout(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Calculate a 16-bit checksum of a digest key.</summary>
