@@ -45,14 +45,16 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a already ticket index into a fixed-size ring.</summary>
-        public static int WrapAlreadyTicketIndex(int index, int size)
+        /// <summary>Clamp a cursor batch value to a valid range.</summary>
+        public static double ClampCursorBatch(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Find the peak token ticket sample.</summary>
