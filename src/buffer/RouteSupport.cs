@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Clamp a folder value to a valid range.</summary>
-        public static double ClampFolder(double value, double lo, double hi)
+        /// <summary>Count the vowels in a counter label.</summary>
+        public static int CountCounterVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Interpolate between two editor values.</summary>
