@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Filter metrics helpers.</summary>
     public static class FilterMetrics
     {
-        /// <summary>Express a window count as a percentage.</summary>
-        public static double WindowPercent(double part, double total)
+        /// <summary>Calculate a 16-bit checksum of a payload key.</summary>
+        public static int PayloadChecksum(string text)
         {
-            if (total == 0.0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            return part * 100.0 / total;
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a session label.</summary>
