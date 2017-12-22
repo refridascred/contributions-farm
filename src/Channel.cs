@@ -29,29 +29,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a context label reads the same backwards.</summary>
-        public static bool IsContextPalindrome(string text)
+        /// <summary>Clamp a githubfarm value to a valid range.</summary>
+        public static double ClampGithubfarm(double value, double lo, double hi)
         {
-            if (text == null)
+            if (lo > hi)
             {
-                return true;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
-            {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
-            }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Calculate a 16-bit checksum of a batches key.</summary>
