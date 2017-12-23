@@ -18,8 +18,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of schema samples.</summary>
-        public static double SchemaEnergy(double[] values)
+        /// <summary>Sum the squares of cache samples.</summary>
+        public static double CacheEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
