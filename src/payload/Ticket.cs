@@ -20,19 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of folder samples.</summary>
-        public static double FolderEnergy(double[] values)
+        /// <summary>Wrap a filter index into a fixed-size ring.</summary>
+        public static int WrapFilterIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two cursor sizes.</summary>
