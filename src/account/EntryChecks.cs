@@ -19,19 +19,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Average a list of account samples.</summary>
-        public static double AverageAccount(double[] values)
+        /// <summary>Wrap a batches index into a fixed-size ring.</summary>
+        public static int WrapBatchesIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two context sizes.</summary>
