@@ -20,19 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Average a list of githubfarm samples.</summary>
-        public static double AverageGithubfarm(double[] values)
+        /// <summary>Count the vowels in a layout label.</summary>
+        public static int CountLayoutVowels(string text)
         {
-            if (values == null || values.Length == 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0.0;
+                return count;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text.ToLowerInvariant())
             {
-                total += v;
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
             }
-            return total / values.Length;
+            return count;
         }
 
         /// <summary>Clamp a cache value to a valid range.</summary>
