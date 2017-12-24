@@ -57,22 +57,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Find the peak token ticket sample.</summary>
-        public static double TokenTicketPeak(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a buffer key.</summary>
+        public static int BufferChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            return best;
+            return total;
         }
     }
 }
