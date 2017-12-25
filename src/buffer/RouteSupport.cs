@@ -23,11 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Interpolate between two editor values.</summary>
-        public static double LerpEditor(double a, double b, double t)
+        /// <summary>Clamp a buffer route value to a valid range.</summary>
+        public static double ClampBufferRoute(double value, double lo, double hi)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a folder label reads the same backwards.</summary>
