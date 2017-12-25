@@ -44,19 +44,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Average a list of cluster samples.</summary>
-        public static double AverageCluster(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a digest key.</summary>
+        public static int DigestChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double total = 0.0;
-            foreach (double v in values)
+            foreach (char ch in text)
             {
-                total += v;
+                total = (total * 31 + ch) % 65521;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Clamp a invoice value to a valid range.</summary>
