@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload tools helpers.</summary>
     public static class PayloadTools
     {
-        /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
-        public static int ContributiChecksum(string text)
+        /// <summary>Express a stream metric count as a percentage.</summary>
+        public static double StreamMetricPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Wrap a buffer index into a fixed-size ring.</summary>
