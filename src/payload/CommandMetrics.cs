@@ -28,16 +28,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Clamp a cluster order value to a valid range.</summary>
-        public static double ClampClusterOrder(double value, double lo, double hi)
+        /// <summary>Average a list of invoice editor samples.</summary>
+        public static double AverageInvoiceEditor(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
