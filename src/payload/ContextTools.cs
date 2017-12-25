@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context tools helpers.</summary>
     public static class ContextTools
     {
-        /// <summary>Convert a metric temperature from celsius to fahrenheit.</summary>
-        public static double MetricCelsiusToFahrenheit(double celsius)
+        /// <summary>Compute the greatest common divisor of two token sizes.</summary>
+        public static long TokenGcd(long a, long b)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
