@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Schema tools helpers.</summary>
     public static class SchemaTools
     {
-        /// <summary>Interpolate between two catalog ticket values.</summary>
-        public static double LerpCatalogTicket(double a, double b, double t)
+        /// <summary>Check whether a layout record label reads the same backwards.</summary>
+        public static bool IsLayoutRecordPalindrome(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Find the peak batch sample.</summary>
