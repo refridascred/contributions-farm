@@ -17,10 +17,14 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Convert a profile temperature from celsius to fahrenheit.</summary>
-        public static double ProfileCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a channel index into a fixed-size ring.</summary>
+        public static int WrapChannelIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Sum the decimal digits of a invoice id.</summary>
