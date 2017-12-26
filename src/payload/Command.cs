@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Average a list of order samples.</summary>
-        public static double AverageOrder(double[] values)
+        /// <summary>Convert a digest temperature from celsius to fahrenheit.</summary>
+        public static double DigestCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a buffer size is a power of two.</summary>
