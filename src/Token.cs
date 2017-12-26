@@ -52,22 +52,11 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Count the vowels in a cursor schema label.</summary>
-        public static int CountCursorSchemaVowels(string text)
+        /// <summary>Interpolate between two graph values.</summary>
+        public static double LerpGraph(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Express a route count as a percentage.</summary>
