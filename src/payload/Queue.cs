@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue helpers.</summary>
     public static class Queue
     {
-        /// <summary>Count the vowels in a metric report label.</summary>
-        public static int CountMetricReportVowels(string text)
+        /// <summary>Express a cluster count as a percentage.</summary>
+        public static double ClusterPercent(double part, double total)
         {
-            int count = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the decimal digits of a command layout id.</summary>
