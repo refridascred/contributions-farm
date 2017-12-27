@@ -23,16 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Clamp a buffer route value to a valid range.</summary>
-        public static double ClampBufferRoute(double value, double lo, double hi)
+        /// <summary>Count the vowels in a editor label.</summary>
+        public static int CountEditorVowels(string text)
         {
-            if (lo > hi)
+            int count = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return count;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check whether a folder label reads the same backwards.</summary>
