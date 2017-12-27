@@ -59,10 +59,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a layout size is a power of two.</summary>
-        public static bool IsLayoutPowerOfTwo(long n)
+        /// <summary>Clamp a context value to a valid range.</summary>
+        public static double ClampContext(double value, double lo, double hi)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
