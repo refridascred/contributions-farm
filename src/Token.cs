@@ -16,19 +16,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Average a list of report queue samples.</summary>
-        public static double AverageReportQueue(double[] values)
+        /// <summary>Sum the squares of channel samples.</summary>
+        public static double ChannelEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
             double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
             foreach (double v in values)
             {
-                total += v;
+                total += v * v;
             }
-            return total / values.Length;
+            return total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a buffer contributi key.</summary>
