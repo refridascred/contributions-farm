@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers.</summary>
     public static class Batch
     {
-        /// <summary>Sum the decimal digits of a farm id.</summary>
-        public static int FarmDigitSum(long n)
+        /// <summary>Express a stream payload count as a percentage.</summary>
+        public static double StreamPayloadPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Sum the squares of cache samples.</summary>
