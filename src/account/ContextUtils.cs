@@ -30,14 +30,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Express a cache count as a percentage.</summary>
-        public static double CachePercent(double part, double total)
+        /// <summary>Wrap a ticket index into a fixed-size ring.</summary>
+        public static int WrapTicketIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a account token count as a percentage.</summary>
