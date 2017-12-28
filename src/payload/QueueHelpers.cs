@@ -35,8 +35,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a cursor profile key.</summary>
-        public static int CursorProfileChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a filter key.</summary>
+        public static int FilterChecksum(string text)
         {
             int total = 0;
             if (text == null)
