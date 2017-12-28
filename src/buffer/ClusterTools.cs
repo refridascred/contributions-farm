@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Cluster tools helpers.</summary>
     public static class ClusterTools
     {
-        /// <summary>Wrap a entry index into a fixed-size ring.</summary>
-        public static int WrapEntryIndex(int index, int size)
+        /// <summary>Convert a booking temperature from celsius to fahrenheit.</summary>
+        public static double BookingCelsiusToFahrenheit(double celsius)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Interpolate between two graph cache values.</summary>
