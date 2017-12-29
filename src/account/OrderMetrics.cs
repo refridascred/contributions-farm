@@ -33,19 +33,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a digest key.</summary>
-        public static int DigestChecksum(string text)
+        /// <summary>Express a token count as a percentage.</summary>
+        public static double TokenPercent(double part, double total)
         {
-            int total = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
