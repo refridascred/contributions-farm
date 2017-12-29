@@ -55,29 +55,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a profile label reads the same backwards.</summary>
-        public static bool IsProfilePalindrome(string text)
+        /// <summary>Average a list of catalog account samples.</summary>
+        public static double AverageCatalogAccount(double[] values)
         {
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total / values.Length;
         }
     }
 }
