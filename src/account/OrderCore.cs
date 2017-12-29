@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Find the peak record sample.</summary>
-        public static double RecordPeak(double[] values)
+        /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
+        public static double BufferCelsiusToFahrenheit(double celsius)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Check whether a token payload label reads the same backwards.</summary>
