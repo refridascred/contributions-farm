@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Filter tools helpers.</summary>
     public static class FilterTools
     {
-        /// <summary>Convert a commits temperature from celsius to fahrenheit.</summary>
-        public static double CommitsCelsiusToFahrenheit(double celsius)
+        /// <summary>Average a list of contributi samples.</summary>
+        public static double AverageContributi(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (values == null || values.Length == 0)
+            {
+                return 0.0;
+            }
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Express a contributi digest count as a percentage.</summary>
