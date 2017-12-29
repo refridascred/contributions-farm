@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue helpers helpers.</summary>
     public static class QueueHelpers
     {
-        /// <summary>Sum the squares of digest samples.</summary>
-        public static double DigestEnergy(double[] values)
+        /// <summary>Wrap a record command index into a fixed-size ring.</summary>
+        public static int WrapRecordCommandIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Calculate a 16-bit checksum of a metric cursor key.</summary>
