@@ -29,19 +29,11 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a cache profile key.</summary>
-        public static int CacheProfileChecksum(string text)
+        /// <summary>Interpolate between two cache values.</summary>
+        public static double LerpCache(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
