@@ -30,22 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a schema label.</summary>
-        public static int CountSchemaVowels(string text)
+        /// <summary>Interpolate between two record values.</summary>
+        public static double LerpRecord(double a, double b, double t)
         {
-            int count = 0;
-            if (text == null)
-            {
-                return count;
-            }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
