@@ -33,14 +33,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Express a token count as a percentage.</summary>
-        public static double TokenPercent(double part, double total)
+        /// <summary>Wrap a editor index into a fixed-size ring.</summary>
+        public static int WrapEditorIndex(int index, int size)
         {
-            if (total == 0.0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            return part * 100.0 / total;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
