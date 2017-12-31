@@ -23,17 +23,14 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Sum the decimal digits of a order id.</summary>
-        public static int OrderDigitSum(long n)
+        /// <summary>Express a farm count as a percentage.</summary>
+        public static double FarmPercent(double part, double total)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (total == 0.0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            return part * 100.0 / total;
         }
     }
 }
