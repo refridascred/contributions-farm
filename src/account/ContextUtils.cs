@@ -30,14 +30,16 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Wrap a ticket index into a fixed-size ring.</summary>
-        public static int WrapTicketIndex(int index, int size)
+        /// <summary>Clamp a farm githubfarm value to a valid range.</summary>
+        public static double ClampFarmGithubfarm(double value, double lo, double hi)
         {
-            if (size <= 0)
+            if (lo > hi)
             {
-                return 0;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            return ((index % size) + size) % size;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Express a account token count as a percentage.</summary>
