@@ -54,11 +54,10 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Interpolate between two context values.</summary>
-        public static double LerpContext(double a, double b, double t)
+        /// <summary>Convert a record folder temperature from celsius to fahrenheit.</summary>
+        public static double RecordFolderCelsiusToFahrenheit(double celsius)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
     }
 }
