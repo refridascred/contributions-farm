@@ -11,22 +11,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Count the vowels in a route label.</summary>
-        public static int CountRouteVowels(string text)
+        /// <summary>Average a list of batch samples.</summary>
+        public static double AverageBatch(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v;
             }
-            return count;
+            return total / values.Length;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
