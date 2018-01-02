@@ -15,19 +15,18 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the squares of cache samples.</summary>
-        public static double CacheEnergy(double[] values)
+        /// <summary>Compute the greatest common divisor of two order metric sizes.</summary>
+        public static long OrderMetricGcd(long a, long b)
         {
-            double total = 0.0;
-            if (values == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return a;
         }
 
         /// <summary>Interpolate between two record values.</summary>
