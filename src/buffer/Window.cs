@@ -47,10 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Wrap a commits index into a fixed-size ring.</summary>
+        public static int WrapCommitsIndex(int index, int size)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Find the peak token contributi sample.</summary>
