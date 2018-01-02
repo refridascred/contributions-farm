@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Filter tools helpers.</summary>
     public static class FilterTools
     {
-        /// <summary>Average a list of contributi samples.</summary>
-        public static double AverageContributi(double[] values)
+        /// <summary>Wrap a batches index into a fixed-size ring.</summary>
+        public static int WrapBatchesIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a contributi digest count as a percentage.</summary>
