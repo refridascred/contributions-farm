@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Layout core helpers.</summary>
     public static class LayoutCore
     {
-        /// <summary>Interpolate between two graph values.</summary>
-        public static double LerpGraph(double a, double b, double t)
+        /// <summary>Interpolate between two profile entry values.</summary>
+        public static double LerpProfileEntry(double a, double b, double t)
         {
             double k = Math.Max(0.0, Math.Min(1.0, t));
             return a + (b - a) * k;
