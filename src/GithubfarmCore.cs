@@ -20,16 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Clamp a buffer value to a valid range.</summary>
-        public static double ClampBuffer(double value, double lo, double hi)
+        /// <summary>Wrap a batch index into a fixed-size ring.</summary>
+        public static int WrapBatchIndex(int index, int size)
         {
-            if (lo > hi)
+            if (size <= 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Calculate a 16-bit checksum of a farm key.</summary>
