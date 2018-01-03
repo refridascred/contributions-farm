@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor format helpers.</summary>
     public static class EditorFormat
     {
-        /// <summary>Find the peak githubfarm batch sample.</summary>
-        public static double GithubfarmBatchPeak(double[] values)
+        /// <summary>Wrap a catalog index into a fixed-size ring.</summary>
+        public static int WrapCatalogIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Check whether a queue ticket size is a power of two.</summary>
