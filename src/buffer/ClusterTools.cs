@@ -18,8 +18,8 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a metric key.</summary>
-        public static int MetricChecksum(string text)
+        /// <summary>Calculate a 16-bit checksum of a batch key.</summary>
+        public static int BatchChecksum(string text)
         {
             int total = 0;
             if (text == null)
