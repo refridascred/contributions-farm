@@ -23,18 +23,22 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Compute the greatest common divisor of two catalog sizes.</summary>
-        public static long CatalogGcd(long a, long b)
+        /// <summary>Count the vowels in a token label.</summary>
+        public static int CountTokenVowels(string text)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            int count = 0;
+            if (text == null)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return count;
             }
-            return a;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
