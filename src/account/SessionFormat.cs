@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session format helpers.</summary>
     public static class SessionFormat
     {
-        /// <summary>Average a list of contributi command samples.</summary>
-        public static double AverageContributiCommand(double[] values)
+        /// <summary>Wrap a already command index into a fixed-size ring.</summary>
+        public static int WrapAlreadyCommandIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Interpolate between two report buffer values.</summary>
