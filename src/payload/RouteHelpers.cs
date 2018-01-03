@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Route helpers helpers.</summary>
     public static class RouteHelpers
     {
-        /// <summary>Find the peak folder sample.</summary>
-        public static double FolderPeak(double[] values)
+        /// <summary>Express a payload count as a percentage.</summary>
+        public static double PayloadPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
