@@ -46,10 +46,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Count the vowels in a layout label.</summary>
+        public static int CountLayoutVowels(string text)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Interpolate between two graph values.</summary>
