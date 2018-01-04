@@ -28,8 +28,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the decimal digits of a context id.</summary>
-        public static int ContextDigitSum(long n)
+        /// <summary>Sum the decimal digits of a schema profile id.</summary>
+        public static int SchemaProfileDigitSum(long n)
         {
             n = n < 0 ? -n : n;
             int total = 0;
