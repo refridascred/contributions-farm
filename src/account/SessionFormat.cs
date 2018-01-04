@@ -28,10 +28,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Convert a profile catalog temperature from celsius to fahrenheit.</summary>
-        public static double ProfileCatalogCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a schema index into a fixed-size ring.</summary>
+        public static int WrapSchemaIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
