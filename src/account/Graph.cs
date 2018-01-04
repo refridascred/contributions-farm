@@ -78,10 +78,22 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Convert a channel editor temperature from celsius to fahrenheit.</summary>
-        public static double ChannelEditorCelsiusToFahrenheit(double celsius)
+        /// <summary>Count the vowels in a buffer label.</summary>
+        public static int CountBufferVowels(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
