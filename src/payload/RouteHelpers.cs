@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Route helpers helpers.</summary>
     public static class RouteHelpers
     {
-        /// <summary>Express a payload count as a percentage.</summary>
-        public static double PayloadPercent(double part, double total)
+        /// <summary>Average a list of report samples.</summary>
+        public static double AverageReport(double[] values)
         {
-            if (total == 0.0)
+            if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            return part * 100.0 / total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
