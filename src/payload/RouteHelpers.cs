@@ -31,29 +31,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Check whether a booking counter label reads the same backwards.</summary>
-        public static bool IsBookingCounterPalindrome(string text)
+        /// <summary>Average a list of digest samples.</summary>
+        public static double AverageDigest(double[] values)
         {
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total / values.Length;
         }
 
         /// <summary>Clamp a route value to a valid range.</summary>
