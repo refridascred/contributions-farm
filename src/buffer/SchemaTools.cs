@@ -47,22 +47,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Find the peak order queue sample.</summary>
-        public static double OrderQueuePeak(double[] values)
+        /// <summary>Wrap a entry index into a fixed-size ring.</summary>
+        public static int WrapEntryIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Check whether a command label reads the same backwards.</summary>
