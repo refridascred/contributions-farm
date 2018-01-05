@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Cluster stats helpers.</summary>
     public static class ClusterStats
     {
-        /// <summary>Wrap a command index into a fixed-size ring.</summary>
-        public static int WrapCommandIndex(int index, int size)
+        /// <summary>Express a contributi cursor count as a percentage.</summary>
+        public static double ContributiCursorPercent(double part, double total)
         {
-            if (size <= 0)
+            if (total == 0.0)
             {
-                return 0;
+                return 0.0;
             }
-            return ((index % size) + size) % size;
+            return part * 100.0 / total;
         }
 
         /// <summary>Average a list of commits samples.</summary>
