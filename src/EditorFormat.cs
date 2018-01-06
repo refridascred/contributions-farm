@@ -31,10 +31,18 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Convert a order temperature from celsius to fahrenheit.</summary>
-        public static double OrderCelsiusToFahrenheit(double celsius)
+        /// <summary>Compute the greatest common divisor of two report catalog sizes.</summary>
+        public static long ReportCatalogGcd(long a, long b)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
+            {
+                long next = a % b;
+                a = b;
+                b = next;
+            }
+            return a;
         }
 
         /// <summary>Interpolate between two invoice values.</summary>
