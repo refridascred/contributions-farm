@@ -17,10 +17,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Convert a counter temperature from celsius to fahrenheit.</summary>
-        public static double CounterCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of payload samples.</summary>
+        public static double PayloadEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Count the vowels in a token label.</summary>
