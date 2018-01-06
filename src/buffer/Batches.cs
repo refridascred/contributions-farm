@@ -23,17 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Sum the decimal digits of a counter id.</summary>
-        public static int CounterDigitSum(long n)
+        /// <summary>Interpolate between two layout contributi values.</summary>
+        public static double LerpLayoutContributi(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Check whether a layout label reads the same backwards.</summary>
