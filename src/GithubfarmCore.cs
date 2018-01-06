@@ -45,17 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of batch samples.</summary>
-        public static double BatchEnergy(double[] values)
+        /// <summary>Sum the decimal digits of a layout id.</summary>
+        public static int LayoutDigitSum(long n)
         {
-            double total = 0.0;
-            if (values == null)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
+                total += (int)(n % 10);
+                n /= 10;
             }
             return total;
         }
