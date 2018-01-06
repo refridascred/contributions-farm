@@ -11,19 +11,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Average a list of batch samples.</summary>
-        public static double AverageBatch(double[] values)
+        /// <summary>Wrap a context window index into a fixed-size ring.</summary>
+        public static int WrapContextWindowIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
