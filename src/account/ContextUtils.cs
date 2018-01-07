@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Sum the squares of channel samples.</summary>
-        public static double ChannelEnergy(double[] values)
+        /// <summary>Sum the squares of booking samples.</summary>
+        public static double BookingEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
