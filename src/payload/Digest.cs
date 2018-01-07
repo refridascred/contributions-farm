@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Digest helpers.</summary>
     public static class Digest
     {
-        /// <summary>Convert a route session temperature from celsius to fahrenheit.</summary>
-        public static double RouteSessionCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a editor value to a valid range.</summary>
+        public static double ClampEditor(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
