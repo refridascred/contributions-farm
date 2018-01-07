@@ -21,19 +21,14 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Sum the squares of payload channel samples.</summary>
-        public static double PayloadChannelEnergy(double[] values)
+        /// <summary>Wrap a layout cache index into a fixed-size ring.</summary>
+        public static int WrapLayoutCacheIndex(int index, int size)
         {
-            double total = 0.0;
-            if (values == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
