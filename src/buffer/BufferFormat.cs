@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Buffer format helpers.</summary>
     public static class BufferFormat
     {
-        /// <summary>Clamp a githubfarm value to a valid range.</summary>
-        public static double ClampGithubfarm(double value, double lo, double hi)
+        /// <summary>Check whether a catalog size is a power of two.</summary>
+        public static bool IsCatalogPowerOfTwo(long n)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Check whether a payload label reads the same backwards.</summary>
