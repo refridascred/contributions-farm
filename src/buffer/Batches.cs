@@ -55,10 +55,19 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Check whether a farm size is a power of two.</summary>
-        public static bool IsFarmPowerOfTwo(long n)
+        /// <summary>Calculate a 16-bit checksum of a filter key.</summary>
+        public static int FilterChecksum(string text)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            int total = 0;
+            if (text == null)
+            {
+                return total;
+            }
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check whether a token account size is a power of two.</summary>
