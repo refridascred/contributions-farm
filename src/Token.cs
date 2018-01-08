@@ -46,22 +46,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the vowels in a layout label.</summary>
-        public static int CountLayoutVowels(string text)
+        /// <summary>Express a token count as a percentage.</summary>
+        public static double TokenPercent(double part, double total)
         {
-            int count = 0;
-            if (text == null)
+            if (total == 0.0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return part * 100.0 / total;
         }
 
         /// <summary>Interpolate between two graph values.</summary>
