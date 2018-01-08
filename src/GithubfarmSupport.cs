@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm support helpers.</summary>
     public static class GithubfarmSupport
     {
-        /// <summary>Find the peak invoice sample.</summary>
-        public static double InvoicePeak(double[] values)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
-            {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
-            }
-            return best;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Check whether a queue label reads the same backwards.</summary>
