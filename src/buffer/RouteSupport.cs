@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Average a list of payload samples.</summary>
-        public static double AveragePayload(double[] values)
+        /// <summary>Wrap a batches index into a fixed-size ring.</summary>
+        public static int WrapBatchesIndex(int index, int size)
         {
-            if (values == null || values.Length == 0)
+            if (size <= 0)
             {
-                return 0.0;
+                return 0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two layout sizes.</summary>
