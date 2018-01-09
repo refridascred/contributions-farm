@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Cache helpers.</summary>
     public static class Cache
     {
-        /// <summary>Express a cursor count as a percentage.</summary>
-        public static double CursorPercent(double part, double total)
+        /// <summary>Check whether a catalog commits size is a power of two.</summary>
+        public static bool IsCatalogCommitsPowerOfTwo(long n)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Find the peak filter record sample.</summary>
