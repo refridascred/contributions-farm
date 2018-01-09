@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context utils helpers.</summary>
     public static class ContextUtils
     {
-        /// <summary>Sum the squares of booking samples.</summary>
-        public static double BookingEnergy(double[] values)
+        /// <summary>Check whether a record size is a power of two.</summary>
+        public static bool IsRecordPowerOfTwo(long n)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Wrap a folder index into a fixed-size ring.</summary>
