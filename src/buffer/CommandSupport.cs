@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command support helpers.</summary>
     public static class CommandSupport
     {
-        /// <summary>Sum the squares of payload samples.</summary>
-        public static double PayloadEnergy(double[] values)
+        /// <summary>Convert a context temperature from celsius to fahrenheit.</summary>
+        public static double ContextCelsiusToFahrenheit(double celsius)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Convert a stream temperature from celsius to fahrenheit.</summary>
