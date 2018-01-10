@@ -43,19 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Average a list of context queue samples.</summary>
-        public static double AverageContextQueue(double[] values)
+        /// <summary>Interpolate between two catalog values.</summary>
+        public static double LerpCatalog(double a, double b, double t)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Calculate a 16-bit checksum of a already key.</summary>
