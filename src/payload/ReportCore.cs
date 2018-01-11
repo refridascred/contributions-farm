@@ -21,14 +21,17 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Wrap a layout cache index into a fixed-size ring.</summary>
-        public static int WrapLayoutCacheIndex(int index, int size)
+        /// <summary>Sum the decimal digits of a farm id.</summary>
+        public static int FarmDigitSum(long n)
         {
-            if (size <= 0)
+            n = n < 0 ? -n : n;
+            int total = 0;
+            while (n > 0)
             {
-                return 0;
+                total += (int)(n % 10);
+                n /= 10;
             }
-            return ((index % size) + size) % size;
+            return total;
         }
     }
 }
