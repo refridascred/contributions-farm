@@ -31,19 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a buffer contributi key.</summary>
-        public static int BufferContributiChecksum(string text)
+        /// <summary>Convert a cursor temperature from celsius to fahrenheit.</summary>
+        public static double CursorCelsiusToFahrenheit(double celsius)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Express a token count as a percentage.</summary>
