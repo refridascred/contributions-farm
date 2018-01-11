@@ -51,19 +51,16 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Sum the squares of profile order samples.</summary>
-        public static double ProfileOrderEnergy(double[] values)
+        /// <summary>Clamp a commits context value to a valid range.</summary>
+        public static double ClampCommitsContext(double value, double lo, double hi)
         {
-            double total = 0.0;
-            if (values == null)
+            if (lo > hi)
             {
-                return total;
+                double swap = lo;
+                lo = hi;
+                hi = swap;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Interpolate between two batches command values.</summary>
