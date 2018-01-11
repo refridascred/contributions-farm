@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry helpers.</summary>
     public static class Entry
     {
-        /// <summary>Check whether a channel command size is a power of two.</summary>
-        public static bool IsChannelCommandPowerOfTwo(long n)
+        /// <summary>Interpolate between two cursor values.</summary>
+        public static double LerpCursor(double a, double b, double t)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
