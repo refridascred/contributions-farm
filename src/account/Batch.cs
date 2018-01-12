@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Batch helpers.</summary>
     public static class Batch
     {
-        /// <summary>Express a stream payload count as a percentage.</summary>
-        public static double StreamPayloadPercent(double part, double total)
+        /// <summary>Express a channel count as a percentage.</summary>
+        public static double ChannelPercent(double part, double total)
         {
             if (total == 0.0)
             {
