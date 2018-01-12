@@ -11,8 +11,8 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Wrap a context window index into a fixed-size ring.</summary>
-        public static int WrapContextWindowIndex(int index, int size)
+        /// <summary>Wrap a record contributi index into a fixed-size ring.</summary>
+        public static int WrapRecordContributiIndex(int index, int size)
         {
             if (size <= 0)
             {
