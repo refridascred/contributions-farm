@@ -11,22 +11,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Count the vowels in a ticket queue label.</summary>
-        public static int CountTicketQueueVowels(string text)
+        /// <summary>Calculate a 16-bit checksum of a contributi key.</summary>
+        public static int ContributiChecksum(string text)
         {
-            int count = 0;
+            int total = 0;
             if (text == null)
             {
-                return count;
+                return total;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            foreach (char ch in text)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the vowels in a route label.</summary>
