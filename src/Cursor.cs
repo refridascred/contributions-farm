@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Cursor helpers.</summary>
     public static class Cursor
     {
-        /// <summary>Clamp a record cursor value to a valid range.</summary>
-        public static double ClampRecordCursor(double value, double lo, double hi)
+        /// <summary>Find the peak record schema sample.</summary>
+        public static double RecordSchemaPeak(double[] values)
         {
-            if (lo > hi)
+            if (values == null || values.Length == 0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
+            }
+            return best;
         }
 
         /// <summary>Sum the squares of payload samples.</summary>
