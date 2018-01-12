@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Route helpers helpers.</summary>
     public static class RouteHelpers
     {
-        /// <summary>Average a list of report samples.</summary>
-        public static double AverageReport(double[] values)
+        /// <summary>Express a record githubfarm count as a percentage.</summary>
+        public static double RecordGithubfarmPercent(double part, double total)
         {
-            if (values == null || values.Length == 0)
+            if (total == 0.0)
             {
                 return 0.0;
             }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return part * 100.0 / total;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
