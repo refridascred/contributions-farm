@@ -16,18 +16,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Compute the greatest common divisor of two batches sizes.</summary>
-        public static long BatchesGcd(long a, long b)
+        /// <summary>Average a list of route editor samples.</summary>
+        public static double AverageRouteEditor(double[] values)
         {
-            a = a < 0 ? -a : a;
-            b = b < 0 ? -b : b;
-            while (b != 0)
+            if (values == null || values.Length == 0)
             {
-                long next = a % b;
-                a = b;
-                b = next;
+                return 0.0;
             }
-            return a;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
 
         /// <summary>Sum the squares of cluster samples.</summary>
