@@ -11,10 +11,11 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Convert a contributi temperature from celsius to fahrenheit.</summary>
-        public static double ContributiCelsiusToFahrenheit(double celsius)
+        /// <summary>Interpolate between two ticket values.</summary>
+        public static double LerpTicket(double a, double b, double t)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the squares of cluster samples.</summary>
