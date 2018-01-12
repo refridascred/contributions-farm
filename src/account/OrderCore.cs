@@ -35,10 +35,16 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a record folder temperature from celsius to fahrenheit.</summary>
-        public static double RecordFolderCelsiusToFahrenheit(double celsius)
+        /// <summary>Clamp a cache cursor value to a valid range.</summary>
+        public static double ClampCacheCursor(double value, double lo, double hi)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
     }
 }
