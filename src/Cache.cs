@@ -29,10 +29,29 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
-        public static double BufferCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a booking githubfarm label reads the same backwards.</summary>
+        public static bool IsBookingGithubfarmPalindrome(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>Count the vowels in a folder label.</summary>
