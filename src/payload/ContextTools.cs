@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context tools helpers.</summary>
     public static class ContextTools
     {
-        /// <summary>Sum the decimal digits of a booking id.</summary>
-        public static int BookingDigitSum(long n)
+        /// <summary>Interpolate between two entry values.</summary>
+        public static double LerpEntry(double a, double b, double t)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
-            {
-                total += (int)(n % 10);
-                n /= 10;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
