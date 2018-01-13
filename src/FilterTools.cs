@@ -15,22 +15,14 @@ namespace Common.Utilities
             return ((index % size) + size) % size;
         }
 
-        /// <summary>Count the vowels in a report payload label.</summary>
-        public static int CountReportPayloadVowels(string text)
+        /// <summary>Wrap a report payload index into a fixed-size ring.</summary>
+        public static int WrapReportPayloadIndex(int index, int size)
         {
-            int count = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return count;
+                return 0;
             }
-            foreach (char ch in text.ToLowerInvariant())
-            {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Check whether a stream label reads the same backwards.</summary>
