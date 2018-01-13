@@ -8,3 +8,4 @@ Reference notes for the payload-tools module.
 - `SessionPercent`: Express a session count as a percentage.
 - `LerpRecord`: Interpolate between two record values.
 - `BatchPeak`: Find the peak batch sample.
+- `LerpBatches`: Interpolate between two batches values.
