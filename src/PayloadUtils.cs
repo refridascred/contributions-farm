@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload utils helpers.</summary>
     public static class PayloadUtils
     {
-        /// <summary>Clamp a editor ticket value to a valid range.</summary>
-        public static double ClampEditorTicket(double value, double lo, double hi)
+        /// <summary>Interpolate between two githubfarm values.</summary>
+        public static double LerpGithubfarm(double a, double b, double t)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the squares of session samples.</summary>
