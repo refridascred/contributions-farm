@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already helpers.</summary>
     public static class Already
     {
-        /// <summary>Calculate a 16-bit checksum of a context key.</summary>
-        public static int ContextChecksum(string text)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            int total = 0;
-            if (text == null)
+            if (month == 2)
             {
-                return total;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
         /// <summary>Check whether a year is a leap year.</summary>
