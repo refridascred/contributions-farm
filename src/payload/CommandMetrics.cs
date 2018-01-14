@@ -28,11 +28,10 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Interpolate between two report values.</summary>
-        public static double LerpReport(double a, double b, double t)
+        /// <summary>Check whether a session size is a power of two.</summary>
+        public static bool IsSessionPowerOfTwo(long n)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
