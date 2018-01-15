@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Command support helpers.</summary>
     public static class CommandSupport
     {
-        /// <summary>Convert a context temperature from celsius to fahrenheit.</summary>
-        public static double ContextCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Convert a stream temperature from celsius to fahrenheit.</summary>
