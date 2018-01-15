@@ -47,17 +47,15 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the decimal digits of a cluster id.</summary>
-        public static int ClusterDigitSum(long n)
+        /// <summary>Count the days in a calendar month.</summary>
+        public static int DaysInMonth(int year, int month)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (month == 2)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                bool leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+                return leap ? 29 : 28;
             }
-            return total;
+            return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
     }
 }
