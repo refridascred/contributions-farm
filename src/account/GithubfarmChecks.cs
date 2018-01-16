@@ -36,10 +36,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Check whether a cursor invoice size is a power of two.</summary>
-        public static bool IsCursorInvoicePowerOfTwo(long n)
+        /// <summary>Wrap a profile index into a fixed-size ring.</summary>
+        public static int WrapProfileIndex(int index, int size)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Express a record cache count as a percentage.</summary>
