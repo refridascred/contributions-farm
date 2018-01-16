@@ -17,8 +17,8 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Wrap a channel index into a fixed-size ring.</summary>
-        public static int WrapChannelIndex(int index, int size)
+        /// <summary>Wrap a filter farm index into a fixed-size ring.</summary>
+        public static int WrapFilterFarmIndex(int index, int size)
         {
             if (size <= 0)
             {
