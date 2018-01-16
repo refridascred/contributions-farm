@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a batch already key.</summary>
-        public static int BatchAlreadyChecksum(string text)
+        /// <summary>Compute the greatest common divisor of two route sizes.</summary>
+        public static long RouteGcd(long a, long b)
         {
-            int total = 0;
-            if (text == null)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                return total;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return a;
         }
 
         /// <summary>Wrap a record index into a fixed-size ring.</summary>
