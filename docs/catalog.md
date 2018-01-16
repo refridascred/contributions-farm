@@ -9,3 +9,4 @@ Reference notes for the catalog module.
 - `AccountDigitSum`: Sum the decimal digits of a account id.
 - `LerpRoute`: Interpolate between two route values.
 - `AverageAccountGithubfarm`: Average a list of account githubfarm samples.
+- `IsLeapYear`: Check whether a year is a leap year.
