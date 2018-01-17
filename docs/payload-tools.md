@@ -9,3 +9,4 @@ Reference notes for the payload-tools module.
 - `LerpRecord`: Interpolate between two record values.
 - `BatchPeak`: Find the peak batch sample.
 - `LerpBatches`: Interpolate between two batches values.
+- `CounterFarmPercent`: Express a counter farm count as a percentage.
