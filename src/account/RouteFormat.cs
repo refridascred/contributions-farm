@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Route format helpers.</summary>
     public static class RouteFormat
     {
-        /// <summary>Clamp a layout context value to a valid range.</summary>
-        public static double ClampLayoutContext(double value, double lo, double hi)
+        /// <summary>Calculate a 16-bit checksum of a counter key.</summary>
+        public static int CounterChecksum(string text)
         {
-            if (lo > hi)
+            int total = 0;
+            if (text == null)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return total;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            foreach (char ch in text)
+            {
+                total = (total * 31 + ch) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Wrap a filter farm index into a fixed-size ring.</summary>
