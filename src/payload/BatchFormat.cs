@@ -23,10 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Convert a cache temperature from celsius to fahrenheit.</summary>
-        public static double CacheCelsiusToFahrenheit(double celsius)
+        /// <summary>Interpolate between two profile githubfarm values.</summary>
+        public static double LerpProfileGithubfarm(double a, double b, double t)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Interpolate between two cache values.</summary>
