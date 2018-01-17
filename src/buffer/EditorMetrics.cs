@@ -44,22 +44,19 @@ namespace Common.Utilities
             return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
         }
 
-        /// <summary>Find the peak account cursor sample.</summary>
-        public static double AccountCursorPeak(double[] values)
+        /// <summary>Average a list of metric context samples.</summary>
+        public static double AverageMetricContext(double[] values)
         {
             if (values == null || values.Length == 0)
             {
                 return 0.0;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v;
             }
-            return best;
+            return total / values.Length;
         }
 
         /// <summary>Find the peak catalog sample.</summary>
