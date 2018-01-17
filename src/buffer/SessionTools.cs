@@ -63,11 +63,29 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Interpolate between two batches command values.</summary>
-        public static double LerpBatchesCommand(double a, double b, double t)
+        /// <summary>Check whether a context label reads the same backwards.</summary>
+        public static bool IsContextPalindrome(string text)
         {
-            double k = Math.Max(0.0, Math.Min(1.0, t));
-            return a + (b - a) * k;
+            if (text == null)
+            {
+                return true;
+            }
+            var cleaned = new System.Text.StringBuilder();
+            foreach (char ch in text)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    cleaned.Append(char.ToLowerInvariant(ch));
+                }
+            }
+            for (int i = 0; i < cleaned.Length / 2; i++)
+            {
+                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
