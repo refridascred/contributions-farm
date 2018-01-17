@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Schema helpers.</summary>
     public static class Schema
     {
-        /// <summary>Wrap a commits index into a fixed-size ring.</summary>
-        public static int WrapCommitsIndex(int index, int size)
+        /// <summary>Wrap a cache token index into a fixed-size ring.</summary>
+        public static int WrapCacheTokenIndex(int index, int size)
         {
             if (size <= 0)
             {
