@@ -11,22 +11,19 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Count the vowels in a filter label.</summary>
-        public static int CountFilterVowels(string text)
+        /// <summary>Average a list of farm samples.</summary>
+        public static double AverageFarm(double[] values)
         {
-            int count = 0;
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return count;
+                return 0.0;
             }
-            foreach (char ch in text.ToLowerInvariant())
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if ("aeiou".IndexOf(ch) >= 0)
-                {
-                    count++;
-                }
+                total += v;
             }
-            return count;
+            return total / values.Length;
         }
 
         /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
