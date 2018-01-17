@@ -40,19 +40,14 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of cache samples.</summary>
-        public static double CacheEnergy(double[] values)
+        /// <summary>Express a counter farm count as a percentage.</summary>
+        public static double CounterFarmPercent(double part, double total)
         {
-            double total = 0.0;
-            if (values == null)
+            if (total == 0.0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return part * 100.0 / total;
         }
 
         /// <summary>Calculate a 16-bit checksum of a context queue key.</summary>
