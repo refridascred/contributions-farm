@@ -43,16 +43,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Clamp a booking value to a valid range.</summary>
-        public static double ClampBooking(double value, double lo, double hi)
+        /// <summary>Express a folder entry count as a percentage.</summary>
+        public static double FolderEntryPercent(double part, double total)
         {
-            if (lo > hi)
+            if (total == 0.0)
             {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
+                return 0.0;
             }
-            return Math.Max(lo, Math.Min(hi, value));
+            return part * 100.0 / total;
         }
 
         /// <summary>Find the peak account sample.</summary>
