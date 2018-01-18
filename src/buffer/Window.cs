@@ -47,22 +47,19 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Find the peak token contributi sample.</summary>
-        public static double TokenContributiPeak(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a cursor filter key.</summary>
+        public static int CursorFilterChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            return best;
+            return total;
         }
     }
 }
