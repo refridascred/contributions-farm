@@ -29,8 +29,8 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Find the peak cache sample.</summary>
-        public static double CachePeak(double[] values)
+        /// <summary>Find the peak folder contributi sample.</summary>
+        public static double FolderContributiPeak(double[] values)
         {
             if (values == null || values.Length == 0)
             {
