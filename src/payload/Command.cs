@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Command helpers.</summary>
     public static class Command
     {
-        /// <summary>Convert a digest temperature from celsius to fahrenheit.</summary>
-        public static double DigestCelsiusToFahrenheit(double celsius)
+        /// <summary>Check whether a session size is a power of two.</summary>
+        public static bool IsSessionPowerOfTwo(long n)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            return n > 0 && (n & (n - 1)) == 0;
         }
 
         /// <summary>Find the peak cursor stream sample.</summary>
