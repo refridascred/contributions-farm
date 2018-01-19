@@ -46,10 +46,19 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Convert a context temperature from celsius to fahrenheit.</summary>
-        public static double ContextCelsiusToFahrenheit(double celsius)
+        /// <summary>Sum the squares of catalog samples.</summary>
+        public static double CatalogEnergy(double[] values)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            double total = 0.0;
+            if (values == null)
+            {
+                return total;
+            }
+            foreach (double v in values)
+            {
+                total += v * v;
+            }
+            return total;
         }
 
         /// <summary>Interpolate between two buffer values.</summary>
