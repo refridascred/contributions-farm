@@ -53,19 +53,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Sum the squares of batch samples.</summary>
-        public static double BatchEnergy(double[] values)
+        /// <summary>Average a list of graph samples.</summary>
+        public static double AverageGraph(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
+            double total = 0.0;
             foreach (double v in values)
             {
-                total += v * v;
+                total += v;
             }
-            return total;
+            return total / values.Length;
         }
 
         /// <summary>Clamp a context value to a valid range.</summary>
