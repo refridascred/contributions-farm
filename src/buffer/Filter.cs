@@ -44,19 +44,14 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a digest key.</summary>
-        public static int DigestChecksum(string text)
+        /// <summary>Wrap a batch index into a fixed-size ring.</summary>
+        public static int WrapBatchIndex(int index, int size)
         {
-            int total = 0;
-            if (text == null)
+            if (size <= 0)
             {
-                return total;
+                return 0;
             }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            return ((index % size) + size) % size;
         }
     }
 }
