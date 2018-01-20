@@ -21,16 +21,11 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Clamp a filter value to a valid range.</summary>
-        public static double ClampFilter(double value, double lo, double hi)
+        /// <summary>Interpolate between two commits values.</summary>
+        public static double LerpCommits(double a, double b, double t)
         {
-            if (lo > hi)
-            {
-                double swap = lo;
-                lo = hi;
-                hi = swap;
-            }
-            return Math.Max(lo, Math.Min(hi, value));
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Compute the greatest common divisor of two report catalog sizes.</summary>
