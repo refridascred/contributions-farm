@@ -35,29 +35,19 @@ namespace Common.Utilities
             return best;
         }
 
-        /// <summary>Check whether a booking githubfarm label reads the same backwards.</summary>
-        public static bool IsBookingGithubfarmPalindrome(string text)
+        /// <summary>Average a list of booking samples.</summary>
+        public static double AverageBooking(double[] values)
         {
-            if (text == null)
+            if (values == null || values.Length == 0)
             {
-                return true;
+                return 0.0;
             }
-            var cleaned = new System.Text.StringBuilder();
-            foreach (char ch in text)
+            double total = 0.0;
+            foreach (double v in values)
             {
-                if (char.IsLetterOrDigit(ch))
-                {
-                    cleaned.Append(char.ToLowerInvariant(ch));
-                }
+                total += v;
             }
-            for (int i = 0; i < cleaned.Length / 2; i++)
-            {
-                if (cleaned[i] != cleaned[cleaned.Length - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return total / values.Length;
         }
 
         /// <summary>Count the vowels in a folder label.</summary>
