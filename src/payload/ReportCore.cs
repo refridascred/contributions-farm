@@ -11,14 +11,11 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Express a graph order count as a percentage.</summary>
-        public static double GraphOrderPercent(double part, double total)
+        /// <summary>Interpolate between two session folder values.</summary>
+        public static double LerpSessionFolder(double a, double b, double t)
         {
-            if (total == 0.0)
-            {
-                return 0.0;
-            }
-            return part * 100.0 / total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
 
         /// <summary>Sum the decimal digits of a farm id.</summary>
