@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Order core helpers.</summary>
     public static class OrderCore
     {
-        /// <summary>Convert a buffer temperature from celsius to fahrenheit.</summary>
-        public static double BufferCelsiusToFahrenheit(double celsius)
+        /// <summary>Count the vowels in a window account label.</summary>
+        public static int CountWindowAccountVowels(string text)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            int count = 0;
+            if (text == null)
+            {
+                return count;
+            }
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check whether a stream size is a power of two.</summary>
