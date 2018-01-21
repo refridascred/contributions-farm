@@ -11,10 +11,14 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Convert a stream temperature from celsius to fahrenheit.</summary>
-        public static double StreamCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a layout batches index into a fixed-size ring.</summary>
+        public static int WrapLayoutBatchesIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Clamp a cache value to a valid range.</summary>
