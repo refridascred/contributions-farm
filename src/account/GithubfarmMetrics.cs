@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm metrics helpers.</summary>
     public static class GithubfarmMetrics
     {
-        /// <summary>Sum the squares of farm ticket samples.</summary>
-        public static double FarmTicketEnergy(double[] values)
+        /// <summary>Find the peak account layout sample.</summary>
+        public static double AccountLayoutPeak(double[] values)
         {
-            double total = 0.0;
-            if (values == null)
+            if (values == null || values.Length == 0)
             {
-                return total;
+                return 0.0;
             }
-            foreach (double v in values)
+            double best = values[0];
+            for (int i = 1; i < values.Length; i++)
             {
-                total += v * v;
+                if (values[i] > best)
+                {
+                    best = values[i];
+                }
             }
-            return total;
+            return best;
         }
 
         /// <summary>Calculate a 16-bit checksum of a contributi cluster key.</summary>
