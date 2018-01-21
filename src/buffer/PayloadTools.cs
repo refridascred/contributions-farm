@@ -15,14 +15,10 @@ namespace Common.Utilities
             return part * 100.0 / total;
         }
 
-        /// <summary>Wrap a buffer index into a fixed-size ring.</summary>
-        public static int WrapBufferIndex(int index, int size)
+        /// <summary>Convert a record temperature from celsius to fahrenheit.</summary>
+        public static double RecordCelsiusToFahrenheit(double celsius)
         {
-            if (size <= 0)
-            {
-                return 0;
-            }
-            return ((index % size) + size) % size;
+            return celsius * 9.0 / 5.0 + 32.0;
         }
 
         /// <summary>Average a list of farm samples.</summary>
