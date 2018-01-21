@@ -11,22 +11,19 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Find the peak graph sample.</summary>
-        public static double GraphPeak(double[] values)
+        /// <summary>Calculate a 16-bit checksum of a already cursor key.</summary>
+        public static int AlreadyCursorChecksum(string text)
         {
-            if (values == null || values.Length == 0)
+            int total = 0;
+            if (text == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (char ch in text)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total = (total * 31 + ch) % 65521;
             }
-            return best;
+            return total;
         }
 
         /// <summary>Wrap a filter cursor index into a fixed-size ring.</summary>
