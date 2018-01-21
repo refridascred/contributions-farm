@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Route support helpers.</summary>
     public static class RouteSupport
     {
-        /// <summary>Convert a counter schema temperature from celsius to fahrenheit.</summary>
-        public static double CounterSchemaCelsiusToFahrenheit(double celsius)
+        /// <summary>Wrap a context batches index into a fixed-size ring.</summary>
+        public static int WrapContextBatchesIndex(int index, int size)
         {
-            return celsius * 9.0 / 5.0 + 32.0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Compute the greatest common divisor of two layout sizes.</summary>
