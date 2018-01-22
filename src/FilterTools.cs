@@ -53,19 +53,10 @@ namespace Common.Utilities
             return true;
         }
 
-        /// <summary>Average a list of catalog account samples.</summary>
-        public static double AverageCatalogAccount(double[] values)
+        /// <summary>Check whether a command size is a power of two.</summary>
+        public static bool IsCommandPowerOfTwo(long n)
         {
-            if (values == null || values.Length == 0)
-            {
-                return 0.0;
-            }
-            double total = 0.0;
-            foreach (double v in values)
-            {
-                total += v;
-            }
-            return total / values.Length;
+            return n > 0 && (n & (n - 1)) == 0;
         }
     }
 }
