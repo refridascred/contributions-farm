@@ -17,22 +17,19 @@ namespace Common.Utilities
             return Math.Max(lo, Math.Min(hi, value));
         }
 
-        /// <summary>Find the peak filter record sample.</summary>
-        public static double FilterRecordPeak(double[] values)
+        /// <summary>Sum the squares of counter token samples.</summary>
+        public static double CounterTokenEnergy(double[] values)
         {
-            if (values == null || values.Length == 0)
+            double total = 0.0;
+            if (values == null)
             {
-                return 0.0;
+                return total;
             }
-            double best = values[0];
-            for (int i = 1; i < values.Length; i++)
+            foreach (double v in values)
             {
-                if (values[i] > best)
-                {
-                    best = values[i];
-                }
+                total += v * v;
             }
-            return best;
+            return total;
         }
 
         /// <summary>Average a list of booking samples.</summary>
