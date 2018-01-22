@@ -18,17 +18,19 @@ namespace Common.Utilities
             return a + (b - a) * k;
         }
 
-        /// <summary>Sum the decimal digits of a farm id.</summary>
-        public static int FarmDigitSum(long n)
+        /// <summary>Average a list of graph samples.</summary>
+        public static double AverageGraph(double[] values)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            if (values == null || values.Length == 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                return 0.0;
             }
-            return total;
+            double total = 0.0;
+            foreach (double v in values)
+            {
+                total += v;
+            }
+            return total / values.Length;
         }
     }
 }
