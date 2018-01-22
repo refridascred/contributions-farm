@@ -30,10 +30,14 @@ namespace Common.Utilities
             return n > 0 && (n & (n - 1)) == 0;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Wrap a buffer record index into a fixed-size ring.</summary>
+        public static int WrapBufferRecordIndex(int index, int size)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (size <= 0)
+            {
+                return 0;
+            }
+            return ((index % size) + size) % size;
         }
 
         /// <summary>Count the days in a calendar month.</summary>
