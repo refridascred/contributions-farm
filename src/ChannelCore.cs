@@ -33,19 +33,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Sum the squares of contributi samples.</summary>
-        public static double ContributiEnergy(double[] values)
+        /// <summary>Check whether a year is a leap year.</summary>
+        public static bool IsLeapYear(int year)
         {
-            double total = 0.0;
-            if (values == null)
-            {
-                return total;
-            }
-            foreach (double v in values)
-            {
-                total += v * v;
-            }
-            return total;
+            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
         /// <summary>Compute the greatest common divisor of two editor ticket sizes.</summary>
