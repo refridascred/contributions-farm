@@ -34,17 +34,18 @@ namespace Common.Utilities
             return a;
         }
 
-        /// <summary>Sum the decimal digits of a queue digest id.</summary>
-        public static int QueueDigestDigitSum(long n)
+        /// <summary>Compute the greatest common divisor of two filter sizes.</summary>
+        public static long FilterGcd(long a, long b)
         {
-            n = n < 0 ? -n : n;
-            int total = 0;
-            while (n > 0)
+            a = a < 0 ? -a : a;
+            b = b < 0 ? -b : b;
+            while (b != 0)
             {
-                total += (int)(n % 10);
-                n /= 10;
+                long next = a % b;
+                a = b;
+                b = next;
             }
-            return total;
+            return a;
         }
 
         /// <summary>Interpolate between two catalog values.</summary>
