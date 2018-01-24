@@ -11,14 +11,22 @@ namespace Common.Utilities
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
 
-        /// <summary>Wrap a layout batches index into a fixed-size ring.</summary>
-        public static int WrapLayoutBatchesIndex(int index, int size)
+        /// <summary>Count the vowels in a ticket label.</summary>
+        public static int CountTicketVowels(string text)
         {
-            if (size <= 0)
+            int count = 0;
+            if (text == null)
             {
-                return 0;
+                return count;
             }
-            return ((index % size) + size) % size;
+            foreach (char ch in text.ToLowerInvariant())
+            {
+                if ("aeiou".IndexOf(ch) >= 0)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>Clamp a cache value to a valid range.</summary>
