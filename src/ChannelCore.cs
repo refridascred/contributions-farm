@@ -33,10 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check whether a year is a leap year.</summary>
-        public static bool IsLeapYear(int year)
+        /// <summary>Clamp a cursor value to a valid range.</summary>
+        public static double ClampCursor(double value, double lo, double hi)
         {
-            return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Compute the greatest common divisor of two editor ticket sizes.</summary>
