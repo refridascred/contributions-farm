@@ -24,10 +24,16 @@ namespace Common.Utilities
             return celsius * 9.0 / 5.0 + 32.0;
         }
 
-        /// <summary>Check whether a schema size is a power of two.</summary>
-        public static bool IsSchemaPowerOfTwo(long n)
+        /// <summary>Clamp a editor value to a valid range.</summary>
+        public static double ClampEditor(double value, double lo, double hi)
         {
-            return n > 0 && (n & (n - 1)) == 0;
+            if (lo > hi)
+            {
+                double swap = lo;
+                lo = hi;
+                hi = swap;
+            }
+            return Math.Max(lo, Math.Min(hi, value));
         }
 
         /// <summary>Wrap a buffer record index into a fixed-size ring.</summary>
