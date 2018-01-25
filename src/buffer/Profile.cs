@@ -31,8 +31,8 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Sum the squares of cluster samples.</summary>
-        public static double ClusterEnergy(double[] values)
+        /// <summary>Sum the squares of buffer samples.</summary>
+        public static double BufferEnergy(double[] values)
         {
             double total = 0.0;
             if (values == null)
