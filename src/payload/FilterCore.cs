@@ -26,19 +26,11 @@ namespace Common.Utilities
             return total / values.Length;
         }
 
-        /// <summary>Calculate a 16-bit checksum of a entry key.</summary>
-        public static int EntryChecksum(string text)
+        /// <summary>Interpolate between two commits values.</summary>
+        public static double LerpCommits(double a, double b, double t)
         {
-            int total = 0;
-            if (text == null)
-            {
-                return total;
-            }
-            foreach (char ch in text)
-            {
-                total = (total * 31 + ch) % 65521;
-            }
-            return total;
+            double k = Math.Max(0.0, Math.Min(1.0, t));
+            return a + (b - a) * k;
         }
     }
 }
