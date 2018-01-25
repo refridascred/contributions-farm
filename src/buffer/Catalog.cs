@@ -20,8 +20,8 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compute the greatest common divisor of two graph sizes.</summary>
-        public static long GraphGcd(long a, long b)
+        /// <summary>Compute the greatest common divisor of two cluster sizes.</summary>
+        public static long ClusterGcd(long a, long b)
         {
             a = a < 0 ? -a : a;
             b = b < 0 ? -b : b;
